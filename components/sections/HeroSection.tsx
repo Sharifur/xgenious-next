@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import { useState } from 'react';
 
 const HeroBackground = dynamic(() => import('@/components/ui/HeroBackground'), { ssr: false });
 
@@ -85,44 +86,56 @@ function StackBlock({
   );
 }
 
-/* ── Floating feature card ── */
+/* ── Floating feature card with upward arrow pointer ── */
 function FeatureCard({
   icon,
   title,
   tags,
+  withPointer = false,
 }: {
   icon: React.ReactNode;
   title: string;
   tags: string[];
+  withPointer?: boolean;
 }) {
   return (
-    <div
-      className="bg-white flex flex-col gap-3 p-4 w-[220px]"
-      style={{
-        boxShadow: '0 4px 20px rgba(0,0,0,0.10)',
-        borderRadius: 10,
-      }}
-    >
-      <div className="flex items-center gap-2.5">
-        <div
-          className="w-8 h-8 flex items-center justify-center flex-shrink-0"
-          style={{ background: '#FFE8E1', borderRadius: 16 }}
-        >
-          {icon}
-        </div>
-        <span className="text-[16px] font-medium text-[#0F1112] whitespace-nowrap">
-          {title}
-        </span>
-      </div>
-      <div className="flex items-center gap-1 flex-wrap">
-        {tags.map((tag) => (
-          <span
-            key={tag}
-            className="px-2.5 py-1 text-[12px] font-medium text-[#2F2F2F] leading-4 bg-[#F5F6F8] border border-[#E5E7EC] rounded-full"
+    <div className="relative w-[220px]">
+      {/* Upward arrow pointer (sits on top edge of card) */}
+      {withPointer && (
+        <span
+          aria-hidden
+          className="absolute left-1/2 -translate-x-1/2 -top-2 w-4 h-4 bg-white rotate-45"
+          style={{
+            boxShadow: '-1px -1px 1px rgba(0,0,0,0.04)',
+          }}
+        />
+      )}
+
+      <div
+        className="relative bg-white flex flex-col gap-3 p-4"
+        style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.10)', borderRadius: 10 }}
+      >
+        <div className="flex items-center gap-2.5">
+          <div
+            className="w-8 h-8 flex items-center justify-center flex-shrink-0"
+            style={{ background: '#FFE8E1', borderRadius: 16 }}
           >
-            {tag}
+            {icon}
+          </div>
+          <span className="text-[16px] font-medium text-[#0F1112] whitespace-nowrap">
+            {title}
           </span>
-        ))}
+        </div>
+        <div className="flex items-center gap-1 flex-wrap">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2.5 py-1 text-[12px] font-medium text-[#2F2F2F] leading-4 bg-[#F5F6F8] border border-[#E5E7EC] rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -160,22 +173,118 @@ const I_DEV = (
   </svg>
 );
 
-function Dot() {
+function PulseDot({
+  active,
+  delay = 0,
+  onActivate,
+  onDeactivate,
+  onClick,
+  ariaLabel,
+}: {
+  active: boolean;
+  delay?: number;
+  onActivate: () => void;
+  onDeactivate: () => void;
+  onClick: () => void;
+  ariaLabel: string;
+}) {
+  const ringColor = active ? 'rgba(242,107,78,0.55)' : 'rgba(15,17,18,0.45)';
+  const coreColor = active ? '#F26B4E' : '#2F2F2F';
+
   return (
-    <div className="relative w-[44px] h-[44px] rounded-full" style={{ background: '#E2E2E2' }}>
-      <div
-        className="absolute rounded-full"
-        style={{ width: 34, height: 34, background: 'rgba(255,255,255,0.31)', top: 5, left: 5 }}
+    <button
+      type="button"
+      aria-label={ariaLabel}
+      aria-pressed={active}
+      onMouseEnter={onActivate}
+      onMouseLeave={onDeactivate}
+      onFocus={onActivate}
+      onBlur={onDeactivate}
+      onClick={onClick}
+      className="relative w-[44px] h-[44px] cursor-pointer focus:outline-none flex items-center justify-center"
+    >
+      {/* Two staggered expanding pulse rings — slow, always-on */}
+      <span
+        aria-hidden
+        className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full pointer-events-none"
+        style={{
+          background: ringColor,
+          animation: `blinkPulse 3.6s cubic-bezier(0.4,0,0.6,1) ${delay}ms infinite`,
+          transformOrigin: 'center',
+        }}
       />
-      <div
-        className="absolute rounded-full"
-        style={{ width: 10, height: 10, background: '#2F2F2F', top: 17, left: 17 }}
+      <span
+        aria-hidden
+        className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full pointer-events-none"
+        style={{
+          background: ringColor,
+          animation: `blinkPulse 3.6s cubic-bezier(0.4,0,0.6,1) ${delay + 1800}ms infinite`,
+          transformOrigin: 'center',
+        }}
       />
-    </div>
+
+      {/* Static halo (visible base) */}
+      <span
+        aria-hidden
+        className="absolute inset-0 rounded-full transition-colors duration-200"
+        style={{
+          background: active ? 'rgba(242,107,78,0.15)' : 'rgba(226,226,226,0.7)',
+        }}
+      />
+      {/* Inner white ring */}
+      <span
+        aria-hidden
+        className="absolute rounded-full transition-colors duration-200"
+        style={{
+          width: 26,
+          height: 26,
+          background: active ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.7)',
+        }}
+      />
+      {/* Core dot — gentle breathing on top */}
+      <span
+        aria-hidden
+        className="relative rounded-full transition-colors duration-200"
+        style={{
+          width: 12,
+          height: 12,
+          background: coreColor,
+          animation: `blinkCore 1.8s ease-in-out ${delay}ms infinite`,
+          boxShadow: active ? '0 0 0 3px rgba(242,107,78,0.25)' : 'none',
+        }}
+      />
+    </button>
   );
 }
 
+/* Dot positions correspond to marked points on the globe map —
+   placed on actual landmasses (Africa, Eurasia, East Asia) to convey
+   "we work globally". Each card appears below its dot with an upward arrow. */
+const dots = [
+  { x: '27%', y: 140, delay: 0,    label: 'Show AI Agent capabilities',         card: 0 }, // Africa
+  { x: '46%', y: 50,  delay: 700,  label: 'Show Custom Software capabilities',  card: 1 }, // Eurasia
+  { x: '75%', y: 90,  delay: 1400, label: 'Show Development capabilities',      card: 2 }, // East Asia
+] as const;
+
+const featureCards = [
+  { icon: I_AI,  title: 'AI Agent',         tags: ['Intelligent', 'Scalable'] },
+  { icon: I_SW,  title: 'Custom Software',  tags: ['Flexible', 'User-Centric'] },
+  { icon: I_DEV, title: 'Development',      tags: ['Secure', 'Efficient'] },
+];
+
+const CARD_WIDTH = 220;
+const DOT_SIZE = 44;
+const ARROW_GAP = 22; // space below dot for the arrow + breathing room
+
 export default function HeroSection() {
+  // Index of the active globe point (null = none). Hover shows it; click pins it.
+  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
+  const [pinnedIdx, setPinnedIdx] = useState<number | null>(null);
+  const activeIdx = hoverIdx ?? pinnedIdx;
+
+  const setHover = (i: number | null) => setHoverIdx(i);
+  const togglePin = (i: number) => setPinnedIdx((p) => (p === i ? null : i));
+
   return (
     <section
       className="relative overflow-hidden pt-[180px] pb-[40px]"
@@ -352,40 +461,61 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Dots row */}
-        <div className="relative w-full mt-16 hidden lg:block max-w-[1040px]" style={{ height: 49 }}>
-          <div className="absolute" style={{ left: '19%', top: 0 }}>
-            <Dot />
-          </div>
-          <div className="absolute left-1/2 -translate-x-1/2" style={{ top: 0 }}>
-            <Dot />
-          </div>
-          <div className="absolute" style={{ right: '19%', top: 0 }}>
-            <Dot />
-          </div>
+        {/* Dots + cards — each dot has its own (x,y) on the globe;
+            its card sits directly below it with an upward arrow */}
+        <div className="relative w-full mt-16 hidden lg:block max-w-[1040px]" style={{ height: 280 }}>
+          {/* Dots — staggered vertically so they sit on different points of the globe */}
+          {dots.map((d, i) => (
+            <div
+              key={`dot-${i}`}
+              className="absolute"
+              style={{
+                left: d.x,
+                top: d.y,
+                transform: 'translateX(-50%)', // centre the 44px dot on its x coordinate
+              }}
+            >
+              <PulseDot
+                active={activeIdx === d.card}
+                delay={d.delay}
+                ariaLabel={d.label}
+                onActivate={() => setHover(d.card)}
+                onDeactivate={() => setHover(null)}
+                onClick={() => togglePin(d.card)}
+              />
+            </div>
+          ))}
+
+          {/* Cards — each anchored under its own dot's (x,y) */}
+          {featureCards.map((card, i) => {
+            const dot = dots.find((d) => d.card === i)!;
+            const visible = activeIdx === i;
+            const cardTop = dot.y + DOT_SIZE + ARROW_GAP;
+
+            return (
+              <div
+                key={card.title}
+                className="absolute transition-all duration-300 ease-out"
+                style={{
+                  left: dot.x,
+                  top: cardTop,
+                  marginLeft: -CARD_WIDTH / 2, // shift left by half card width so it's centered on the dot's x
+                  opacity: visible ? 1 : 0,
+                  transform: `translateY(${visible ? 0 : 8}px)`,
+                  pointerEvents: visible ? 'auto' : 'none',
+                }}
+              >
+                <FeatureCard icon={card.icon} title={card.title} tags={card.tags} withPointer />
+              </div>
+            );
+          })}
         </div>
 
-        {/* Floating feature cards (over the globe) */}
-        <div
-          className="relative w-full hidden lg:block max-w-[1040px] mt-2"
-          style={{ height: 250 }}
-        >
-          <div className="absolute" style={{ left: 0, bottom: 60 }}>
-            <FeatureCard icon={I_AI} title="AI Agent" tags={['Intelligent', 'Scalable']} />
-          </div>
-          <div className="absolute left-1/2 -translate-x-1/2" style={{ top: 0 }}>
-            <FeatureCard icon={I_SW} title="Custom Software" tags={['Flexible', 'User-Centric']} />
-          </div>
-          <div className="absolute" style={{ right: 0, bottom: 60 }}>
-            <FeatureCard icon={I_DEV} title="Development" tags={['Secure', 'Efficient']} />
-          </div>
-        </div>
-
-        {/* Mobile feature cards */}
+        {/* Mobile feature cards — always visible */}
         <div className="flex flex-col gap-4 mt-12 pb-6 w-full max-w-sm lg:hidden">
-          <FeatureCard icon={I_AI} title="AI Agent" tags={['Intelligent', 'Scalable']} />
-          <FeatureCard icon={I_SW} title="Custom Software" tags={['Flexible', 'User-Centric']} />
-          <FeatureCard icon={I_DEV} title="Development" tags={['Secure', 'Efficient']} />
+          {featureCards.map((card) => (
+            <FeatureCard key={card.title} icon={card.icon} title={card.title} tags={card.tags} />
+          ))}
         </div>
       </div>
     </section>

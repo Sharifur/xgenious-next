@@ -146,18 +146,35 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
+            {/* Primary — dark pill with shimmer sweep + lift */}
             <Link
               href="/contact"
-              className="inline-flex items-center h-[38px] px-[20px] rounded-full bg-[#0F1112] text-white text-[13px] font-semibold hover:bg-[#222] transition-colors"
+              className="group relative inline-flex items-center h-[38px] px-[20px] rounded-full bg-[#0F1112] text-white text-[13px] font-semibold overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(15,17,18,0.25)] active:translate-y-0"
             >
-              Contact Us
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 bg-white/15 opacity-0 transition-all duration-700 ease-out group-hover:left-[120%] group-hover:opacity-100"
+              />
+              <span className="relative">Contact Us</span>
             </Link>
+
+            {/* Icon CTA — coral with soft halo + arrow nudge */}
             <Link
               href="/contact"
               aria-label="Get in touch"
-              className="w-[38px] h-[38px] rounded-full bg-[#F26B4E] flex items-center justify-center hover:bg-[#EC7161] transition-colors flex-shrink-0"
+              className="group relative w-[38px] h-[38px] rounded-full bg-[#F26B4E] flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(242,107,78,0.45)] active:translate-y-0"
             >
-              <svg width="14" height="14" viewBox="0 0 15 15" fill="none">
+              <span
+                aria-hidden
+                className="absolute inset-0 rounded-full bg-[#F26B4E] opacity-0 scale-100 group-hover:scale-[1.45] group-hover:opacity-30 transition-all duration-500 ease-out"
+              />
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 15 15"
+                fill="none"
+                className="relative transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              >
                 <path
                   d="M2.5 7.5h10M8.5 3.5l4 4-4 4"
                   stroke="white"
