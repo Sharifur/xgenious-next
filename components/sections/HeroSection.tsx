@@ -188,8 +188,9 @@ function PulseDot({
   onClick: () => void;
   ariaLabel: string;
 }) {
-  const ringColor = active ? 'rgba(242,107,78,0.55)' : 'rgba(15,17,18,0.45)';
-  const coreColor = active ? '#F26B4E' : '#2F2F2F';
+  // Always coral — primary brand colour so the pulsing dots draw the eye
+  const ringColor = active ? 'rgba(242,107,78,0.75)' : 'rgba(242,107,78,0.55)';
+  const coreColor = '#F26B4E';
 
   return (
     <button
@@ -223,12 +224,12 @@ function PulseDot({
         }}
       />
 
-      {/* Static halo (visible base) */}
+      {/* Static halo (visible base) — soft coral tint always */}
       <span
         aria-hidden
         className="absolute inset-0 rounded-full transition-colors duration-200"
         style={{
-          background: active ? 'rgba(242,107,78,0.15)' : 'rgba(226,226,226,0.7)',
+          background: active ? 'rgba(242,107,78,0.22)' : 'rgba(242,107,78,0.12)',
         }}
       />
       {/* Inner white ring */}
@@ -238,10 +239,10 @@ function PulseDot({
         style={{
           width: 26,
           height: 26,
-          background: active ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.7)',
+          background: 'rgba(255,255,255,0.92)',
         }}
       />
-      {/* Core dot — gentle breathing on top */}
+      {/* Core dot — coral, gently breathing on top */}
       <span
         aria-hidden
         className="relative rounded-full transition-colors duration-200"
@@ -250,7 +251,7 @@ function PulseDot({
           height: 12,
           background: coreColor,
           animation: `blinkCore 1.8s ease-in-out ${delay}ms infinite`,
-          boxShadow: active ? '0 0 0 3px rgba(242,107,78,0.25)' : 'none',
+          boxShadow: '0 0 0 2px rgba(242,107,78,0.25)',
         }}
       />
     </button>
@@ -338,16 +339,57 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Globe at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none hidden lg:flex justify-center">
-        <Image
-          src="/globe.png"
-          alt=""
-          width={1203}
-          height={375}
-          priority
-          className="w-[80%] max-w-[1203px] h-auto"
+      {/* Globe at bottom — with rotation, coral glow, and light sweep */}
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none hidden lg:block overflow-hidden">
+        {/* Coral glow that pulses behind the globe */}
+        <span
+          aria-hidden
+          className="absolute left-1/2 -translate-x-1/2 rounded-full"
+          style={{
+            bottom: -120,
+            width: 900,
+            height: 320,
+            background:
+              'radial-gradient(closest-side, rgba(242,107,78,0.45), rgba(242,107,78,0.18) 60%, transparent 75%)',
+            filter: 'blur(16px)',
+            animation: 'globeGlowPulse 5s ease-in-out infinite',
+          }}
         />
+
+        {/* Globe wrapper — slowly rotates */}
+        <div
+          className="relative flex justify-center"
+          style={{
+            width: '80%',
+            maxWidth: 1203,
+            margin: '0 auto',
+            animation: 'globeSpin 90s linear infinite',
+            transformOrigin: '50% 70%',
+          }}
+        >
+          <Image
+            src="/globe.png"
+            alt=""
+            width={1203}
+            height={375}
+            priority
+            className="w-full h-auto select-none"
+          />
+
+          {/* Light sweep beam — slides across the globe */}
+          <span
+            aria-hidden
+            className="absolute top-0 bottom-0 pointer-events-none"
+            style={{
+              left: 0,
+              width: '22%',
+              background:
+                'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%)',
+              animation: 'globeLightSweep 6.5s ease-in-out infinite',
+              mixBlendMode: 'screen',
+            }}
+          />
+        </div>
       </div>
 
       {/* Main content */}
