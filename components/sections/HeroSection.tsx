@@ -178,7 +178,7 @@ function Dot() {
 export default function HeroSection() {
   return (
     <section
-      className="relative overflow-hidden pt-[140px] pb-[40px]"
+      className="relative overflow-hidden pt-[180px] pb-[40px]"
       style={{
         minHeight: 900,
         background:
@@ -241,43 +241,52 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Corner stack blocks */}
-      <div className="absolute hidden lg:block" style={{ left: 'calc(50% - 490px)', top: 159 }}>
-        <StackBlock
-          icon="/icons/fi_laravel.svg"
-          borderColor="rgba(242,78,30,0.16)"
-          cursorColor="#F24E1E"
-          corner="br"
-        />
-      </div>
-      <div className="absolute hidden lg:block" style={{ right: 'calc(50% - 490px)', top: 159 }}>
-        <StackBlock
-          icon="/icons/fi_nodejs.svg"
-          borderColor="rgba(10,207,131,0.16)"
-          cursorColor="#0ACF83"
-          corner="bl"
-        />
-      </div>
-      <div className="absolute hidden lg:block" style={{ left: 'calc(50% - 490px)', top: 500 }}>
-        <StackBlock
-          icon="/icons/fi_openai.svg"
-          borderColor="rgba(0,0,0,0.16)"
-          cursorColor="#0F1112"
-          corner="tr"
-        />
-      </div>
-      <div className="absolute hidden lg:block" style={{ right: 'calc(50% - 490px)', top: 500 }}>
-        <StackBlock
-          icon="/icons/fi_react.svg"
-          borderColor="rgba(20,110,245,0.16)"
-          cursorColor="#146EF5"
-          corner="tl"
-        />
-      </div>
-
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center text-center px-6">
-        <div className="w-full max-w-[884px]">
+        <div
+          className="relative w-full max-w-[1100px] px-6 sm:px-10 lg:px-16 py-12 lg:py-16 rounded-[5px]"
+          style={{
+            background: 'transparent',
+            border: '1px solid rgba(255,255,255,0.55)',
+            boxShadow:
+              '0 1px 0 0 rgba(255,255,255,0.7) inset, 0 -1px 0 0 rgba(255,255,255,0.15) inset',
+          }}
+        >
+          {/* Corner stack blocks — icon-box midpoint anchored exactly on each panel corner */}
+          <div className="absolute hidden lg:block z-20" style={{ left: -25, top: -25 }}>
+            <StackBlock
+              icon="/icons/fi_laravel.svg"
+              borderColor="rgba(242,78,30,0.16)"
+              cursorColor="#F24E1E"
+              corner="br"
+            />
+          </div>
+          <div className="absolute hidden lg:block z-20" style={{ right: -25, top: -25 }}>
+            <StackBlock
+              icon="/icons/fi_nodejs.svg"
+              borderColor="rgba(10,207,131,0.16)"
+              cursorColor="#0ACF83"
+              corner="bl"
+            />
+          </div>
+          <div className="absolute hidden lg:block z-20" style={{ left: -25, bottom: -25 }}>
+            <StackBlock
+              icon="/icons/fi_openai.svg"
+              borderColor="rgba(0,0,0,0.16)"
+              cursorColor="#0F1112"
+              corner="tr"
+            />
+          </div>
+          <div className="absolute hidden lg:block z-20" style={{ right: -25, bottom: -25 }}>
+            <StackBlock
+              icon="/icons/fi_react.svg"
+              borderColor="rgba(20,110,245,0.16)"
+              cursorColor="#146EF5"
+              corner="tl"
+            />
+          </div>
+
+          <div className="relative">
           {/* Pill eyebrow */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-sm border border-white/80 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#F26B4E]" />
@@ -339,6 +348,7 @@ export default function HeroSection() {
             >
               View Case Studies
             </Link>
+          </div>
           </div>
         </div>
 
