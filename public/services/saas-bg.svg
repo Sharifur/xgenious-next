@@ -1,0 +1,112 @@
+<svg viewBox="0 0 1320 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Base soft blue -->
+    <linearGradient id="base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#DCE2F0"/>
+      <stop offset="55%" stop-color="#E1E7F3"/>
+      <stop offset="100%" stop-color="#E5EAF5"/>
+    </linearGradient>
+
+    <!-- Soft glow on the upper-right (where the ribbon "core" lives) -->
+    <radialGradient id="glow" cx="78%" cy="32%" r="55%">
+      <stop offset="0%"  stop-color="#FFFFFF" stop-opacity="0.85"/>
+      <stop offset="55%" stop-color="#F4F7FB" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Bright ribbon highlight (top edge of each fold) -->
+    <linearGradient id="ribbonHi" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"  stop-color="#FFFFFF" stop-opacity="0.85"/>
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Soft shadow beneath each fold -->
+    <linearGradient id="ribbonLo" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"  stop-color="#A5B5D2" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#A5B5D2" stop-opacity="0.22"/>
+    </linearGradient>
+
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="2.4"/>
+    </filter>
+  </defs>
+
+  <!-- Base -->
+  <rect width="1320" height="480" fill="url(#base)"/>
+  <rect width="1320" height="480" fill="url(#glow)"/>
+
+  <!-- Ribbon folds — fanning from upper-right, swooping down/left -->
+  <g filter="url(#soft)">
+    <!-- Outer fold -->
+    <path
+      d="M 1320 70
+         C 1080 90, 880 180, 660 270
+         C 480 340, 240 380, 80 400
+         L 80 480 L 1320 480 Z"
+      fill="url(#ribbonHi)"
+      opacity="0.9"
+    />
+    <!-- Mid fold -->
+    <path
+      d="M 1320 140
+         C 1140 160, 940 240, 720 320
+         C 560 370, 320 405, 140 420
+         L 140 480 L 1320 480 Z"
+      fill="url(#ribbonHi)"
+      opacity="0.65"
+    />
+    <!-- Inner fold -->
+    <path
+      d="M 1320 210
+         C 1180 230, 1020 290, 820 360
+         C 660 400, 440 425, 240 440
+         L 240 480 L 1320 480 Z"
+      fill="url(#ribbonHi)"
+      opacity="0.5"
+    />
+    <!-- Innermost fold -->
+    <path
+      d="M 1320 290
+         C 1220 305, 1100 340, 920 390
+         C 780 420, 580 440, 380 450
+         L 380 480 L 1320 480 Z"
+      fill="url(#ribbonHi)"
+      opacity="0.4"
+    />
+  </g>
+
+  <!-- Subtle shadows underneath each fold -->
+  <g filter="url(#soft)" opacity="0.55">
+    <path
+      d="M 1320 80
+         C 1080 100, 880 190, 660 280
+         C 480 350, 240 390, 80 410
+         L 80 460
+         C 240 440, 480 400, 660 330
+         C 880 240, 1080 150, 1320 130 Z"
+      fill="url(#ribbonLo)"
+    />
+    <path
+      d="M 1320 150
+         C 1140 170, 940 250, 720 330
+         C 560 380, 320 415, 140 430
+         L 140 470
+         C 320 455, 560 420, 720 370
+         C 940 290, 1140 210, 1320 190 Z"
+      fill="url(#ribbonLo)"
+    />
+  </g>
+
+  <!-- A faint upper sweep to suggest the "spiral core" on the right -->
+  <g opacity="0.5">
+    <path
+      d="M 1100 100
+         C 1180 80, 1280 90, 1320 130
+         L 1320 50
+         C 1240 30, 1140 50, 1100 100 Z"
+      fill="url(#ribbonHi)"
+      filter="url(#soft)"
+    />
+  </g>
+</svg>

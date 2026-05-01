@@ -1,4 +1,8 @@
+'use client';
+
 import type { ReactElement } from 'react';
+import { useState } from 'react';
+import Image from 'next/image';
 import { services } from '@/data/saas-page';
 
 /* ───────────────────────────────────────────────────────────────
@@ -7,81 +11,190 @@ import { services } from '@/data/saas-page';
    - 4 stacked service cards with rich isometric-feel illustrations
    ─────────────────────────────────────────────────────────────── */
 
-/* ── Illustration: SaaS — laptop + storage stack ── */
+/* ── Illustration: SaaS — rich isometric scene matching reference image
+       (server stack, cloud, coins, gears, SaaS tablet, laptop, phone, etc.)  */
 const Saas = () => (
-  <div className="relative w-[260px] h-[200px] flex-shrink-0">
-    {/* Floor plate */}
-    <div
-      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[210px] h-3 rounded-full"
-      style={{ background: 'rgba(15,17,18,0.06)', filter: 'blur(6px)' }}
-    />
-    {/* Server stack on left */}
-    <div className="absolute left-2 bottom-6 flex flex-col gap-1.5">
-      {[0, 1, 2].map((i) => (
-        <div
-          key={i}
-          className="w-14 h-6 rounded-md flex items-center px-2 gap-1"
-          style={{
-            background: 'linear-gradient(180deg, #FFFFFF, #DDE2F8)',
-            boxShadow: '0 2px 6px rgba(60,80,170,0.18)',
-          }}
-        >
-          <div className="w-1 h-1 rounded-full bg-[#22C55E]" />
-          <div className="w-1 h-1 rounded-full bg-[#F26B4E]" />
-          <div className="flex-1 h-0.5 rounded bg-[#C7CDF0]" />
-        </div>
-      ))}
-    </div>
-    {/* Boxes on right */}
-    <div className="absolute right-3 bottom-7 flex flex-col gap-1">
-      <div
-        className="w-12 h-9 rounded-md"
-        style={{
-          background: 'linear-gradient(135deg, #F26B4E, #EC7161)',
-          boxShadow: '0 4px 8px rgba(242,107,78,0.3)',
-        }}
+  <svg viewBox="0 0 420 320" className="w-full max-w-[420px] h-auto" aria-hidden>
+    <defs>
+      <linearGradient id="purp" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#A89AE6" />
+        <stop offset="100%" stopColor="#6E5BCC" />
+      </linearGradient>
+      <linearGradient id="purpDark" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#7567C8" />
+        <stop offset="100%" stopColor="#3F3596" />
+      </linearGradient>
+      <linearGradient id="coral" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#F26B4E" />
+        <stop offset="100%" stopColor="#EC7161" />
+      </linearGradient>
+      <linearGradient id="gold" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#FFD66B" />
+        <stop offset="100%" stopColor="#F2A933" />
+      </linearGradient>
+    </defs>
+
+    {/* Connection lines (subtle coral) */}
+    <g stroke="#F26B4E" strokeWidth="1.2" fill="none" opacity="0.55">
+      <path d="M85 78 L 175 145" />
+      <path d="M175 145 L 295 88" />
+      <path d="M175 145 L 295 165" />
+      <path d="M175 145 L 105 230" />
+      <path d="M175 145 L 195 245" />
+      <path d="M295 165 L 320 235" />
+    </g>
+
+    {/* Server stack (top-left) */}
+    <g>
+      {[0, 1, 2].map((i) => {
+        const y = 32 + i * 26;
+        return (
+          <g key={i}>
+            <rect x="32" y={y} width="78" height="22" rx="3" fill="url(#purp)" stroke="#F26B4E" strokeWidth="1.2" />
+            <rect x="40" y={y + 5} width="40" height="3" rx="1" fill="#3F3596" />
+            <rect x="40" y={y + 11} width="55" height="2" rx="1" fill="#3F3596" />
+            <circle cx="100" cy={y + 11} r="1.6" fill="#F26B4E" />
+          </g>
+        );
+      })}
+    </g>
+
+    {/* Cloud (top-mid) */}
+    <g>
+      <path
+        d="M155 55 q-12 0 -14 12 q-12 0 -12 12 q0 12 14 12 h36 q14 0 14 -12 q0 -10 -10 -12 q-2 -12 -14 -12 z"
+        fill="url(#purp)"
+        stroke="#F26B4E"
+        strokeWidth="1.2"
       />
-      <div
-        className="w-12 h-7 rounded-md"
-        style={{
-          background: 'linear-gradient(135deg, #FFE8E1, #FFDEDA)',
-          boxShadow: '0 2px 6px rgba(15,17,18,0.08)',
-        }}
-      />
-    </div>
-    {/* Center laptop */}
-    <div className="absolute left-1/2 -translate-x-1/2 top-6">
-      <div
-        className="w-[150px] h-[100px] rounded-md bg-white shadow-xl border-[3px] border-[#0F1112] overflow-hidden"
-        style={{ boxShadow: '0 12px 24px rgba(40,50,140,0.18)' }}
+    </g>
+
+    {/* Coin stack (top-right) */}
+    <g>
+      {[0, 1, 2].map((i) => {
+        const y = 80 - i * 6;
+        return (
+          <ellipse
+            key={i}
+            cx="290"
+            cy={y}
+            rx="22"
+            ry="6"
+            fill="url(#gold)"
+            stroke="#D88B0E"
+            strokeWidth="0.8"
+          />
+        );
+      })}
+      <rect x="268" y="68" width="44" height="12" fill="url(#gold)" />
+      <ellipse cx="290" cy="68" rx="22" ry="6" fill="url(#gold)" />
+    </g>
+
+    {/* Disc with play button */}
+    <g>
+      <ellipse cx="278" cy="115" rx="28" ry="9" fill="url(#purpDark)" />
+      <ellipse cx="278" cy="111" rx="28" ry="9" fill="url(#purp)" stroke="#F26B4E" strokeWidth="1.2" />
+      <circle cx="278" cy="111" r="9" fill="url(#coral)" />
+      <path d="M275 107 l 6 4 -6 4 z" fill="white" />
+    </g>
+
+    {/* Browser window (right) */}
+    <g>
+      <rect x="335" y="92" width="70" height="58" rx="3" fill="url(#purp)" stroke="#F26B4E" strokeWidth="1.2" />
+      <rect x="335" y="92" width="70" height="9" rx="3" fill="url(#purpDark)" />
+      <circle cx="340" cy="96.5" r="1.2" fill="#F26B4E" />
+      <circle cx="344" cy="96.5" r="1.2" fill="#FFD66B" />
+      <rect x="345" y="115" width="50" height="3" rx="1" fill="#3F3596" />
+      <rect x="345" y="123" width="40" height="3" rx="1" fill="#3F3596" />
+    </g>
+
+    {/* SaaS tablet (center, focal) */}
+    <g>
+      <rect x="135" y="125" width="100" height="60" rx="4" fill="url(#purpDark)" />
+      <rect x="135" y="120" width="100" height="60" rx="4" fill="url(#purp)" stroke="#F26B4E" strokeWidth="1.4" />
+      <text
+        x="185"
+        y="156"
+        textAnchor="middle"
+        fontFamily="Inter, sans-serif"
+        fontSize="20"
+        fontWeight="700"
+        fill="#F26B4E"
       >
-        <div className="h-3 bg-[#0F1112] flex items-center px-1.5 gap-0.5">
-          <div className="w-1 h-1 rounded-full bg-[#EF4444]/70" />
-          <div className="w-1 h-1 rounded-full bg-[#F59E0B]/70" />
-          <div className="w-1 h-1 rounded-full bg-[#10B981]/70" />
-        </div>
-        <div className="p-2 space-y-1">
-          <div className="h-2 rounded bg-[#7E89E8]/40" />
-          <div className="grid grid-cols-3 gap-1">
-            <div className="h-8 rounded bg-[#7E89E8]/30" />
-            <div className="h-8 rounded bg-[#7E89E8]/20" />
-            <div className="h-8 rounded bg-[#F26B4E]/40" />
-          </div>
-          <div className="h-3 rounded bg-[#7E89E8]/20" />
-        </div>
-      </div>
-      <div className="w-[170px] h-1 bg-[#0F1112] rounded-b-md -ml-2.5" />
-    </div>
-    {/* Floating coral chip */}
-    <div
-      className="absolute top-2 right-6 w-7 h-7 rounded-full flex items-center justify-center"
-      style={{ background: '#F26B4E', boxShadow: '0 4px 10px rgba(242,107,78,0.45)' }}
-    >
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <path d="M3 7l3 3 5-6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </div>
-  </div>
+        SaaS
+      </text>
+    </g>
+
+    {/* Chat bubble (mid-left) */}
+    <g>
+      <rect x="60" y="155" width="50" height="26" rx="6" fill="url(#purp)" stroke="#F26B4E" strokeWidth="1.2" />
+      <path d="M70 178 l -4 8 l 12 -5 z" fill="url(#purp)" stroke="#F26B4E" strokeWidth="1.2" />
+      <circle cx="73" cy="168" r="2" fill="#F26B4E" />
+      <circle cx="83" cy="168" r="2" fill="#F26B4E" />
+      <circle cx="93" cy="168" r="2" fill="#F26B4E" />
+    </g>
+
+    {/* Gears (bottom-left) */}
+    <g transform="translate(82 215)">
+      <g fill="url(#purpDark)" stroke="#F26B4E" strokeWidth="1">
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+          <rect key={deg} x="-3" y="-22" width="6" height="6" transform={`rotate(${deg})`} />
+        ))}
+        <circle r="16" />
+        <circle r="6" fill="#F26B4E" />
+      </g>
+    </g>
+    <g transform="translate(118 248)">
+      <g fill="url(#purpDark)" stroke="#F26B4E" strokeWidth="1">
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+          <rect key={deg} x="-2" y="-15" width="4" height="4" transform={`rotate(${deg})`} />
+        ))}
+        <circle r="11" />
+        <circle r="4" fill="#F26B4E" />
+      </g>
+    </g>
+
+    {/* Phone with WiFi (bottom-center) */}
+    <g>
+      <rect x="170" y="220" width="42" height="60" rx="6" fill="url(#purpDark)" stroke="#F26B4E" strokeWidth="1.2" />
+      <rect x="174" y="226" width="34" height="42" rx="3" fill="url(#purp)" />
+      <g transform="translate(191 247)" stroke="#FFD66B" strokeWidth="1.6" fill="none" strokeLinecap="round">
+        <path d="M -6 -3 q 6 -6 12 0" />
+        <path d="M -3 0 q 3 -3 6 0" />
+        <circle cx="0" cy="3" r="1.5" fill="#FFD66B" stroke="none" />
+      </g>
+    </g>
+
+    {/* Document (bottom-left) */}
+    <g>
+      <rect x="22" y="252" width="56" height="36" rx="2" fill="url(#purp)" stroke="#F26B4E" strokeWidth="1.2" />
+      <rect x="28" y="262" width="44" height="2.5" rx="0.5" fill="#F26B4E" />
+      <rect x="28" y="268" width="44" height="2.5" rx="0.5" fill="#F26B4E" />
+      <rect x="28" y="274" width="32" height="2.5" rx="0.5" fill="#F26B4E" />
+      <rect x="28" y="280" width="38" height="2.5" rx="0.5" fill="#F26B4E" />
+    </g>
+
+    {/* Laptop (right) */}
+    <g>
+      <path
+        d="M255 230 L 405 230 L 410 280 L 250 280 Z"
+        fill="url(#purpDark)"
+        stroke="#F26B4E"
+        strokeWidth="1.2"
+      />
+      <path
+        d="M268 232 L 392 232 L 395 270 L 265 270 Z"
+        fill="url(#purp)"
+      />
+      <path
+        d="M260 280 L 400 280 L 408 290 L 252 290 Z"
+        fill="url(#purpDark)"
+        stroke="#F26B4E"
+        strokeWidth="1.2"
+      />
+      <ellipse cx="330" cy="285" rx="14" ry="2" fill="#3F3596" />
+    </g>
+  </svg>
 );
 
 /* ── Illustration: Web App — figures + browser windows ── */
@@ -298,6 +411,60 @@ const ill: Record<string, ReactElement> = {
   ai: <AI />,
 };
 
+/* ── Image with SVG fallback. If the file at `src` is missing or fails
+       to load, the inline `fallback` element is shown instead — so the
+       card never displays a broken-image icon. */
+function IllustrationImg({
+  src,
+  alt,
+  fallback,
+}: {
+  src: string;
+  alt: string;
+  fallback: ReactElement;
+}) {
+  const [errored, setErrored] = useState(false);
+  if (errored) return fallback;
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      width={420}
+      height={320}
+      className="w-full max-w-[420px] h-auto"
+      onError={() => setErrored(true)}
+      unoptimized
+    />
+  );
+}
+
+/* ── Decorative background image with graceful fallback to a solid color. */
+function CardBackground({ src }: { src: string }) {
+  const [errored, setErrored] = useState(false);
+  if (errored) return null;
+  return (
+    <div
+      aria-hidden
+      className="absolute inset-0 pointer-events-none"
+      style={{
+        backgroundImage: `url(${src})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Hidden image element used purely to detect 404 → triggers fallback */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt=""
+        className="hidden"
+        onError={() => setErrored(true)}
+      />
+    </div>
+  );
+}
+
 export default function ServicesGrid() {
   return (
     <section id="solutions" className="py-24 bg-white">
@@ -328,45 +495,69 @@ export default function ServicesGrid() {
           {services.map((s) => (
             <article
               key={s.number}
-              className="rounded-[20px] px-8 lg:px-10 py-7 lg:py-8 flex flex-col sm:flex-row items-center gap-8 transition-transform hover:-translate-y-0.5 overflow-hidden"
+              className="relative rounded-[24px] flex flex-col sm:flex-row items-stretch transition-transform hover:-translate-y-0.5 overflow-hidden min-h-[300px]"
               style={{ backgroundColor: s.bg }}
             >
-              <div className="flex-1 max-w-[520px]">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[20px] font-semibold text-[#0F1112]/55 leading-none">
+              {/* Optional decorative background image (auto-falls back to bg color on 404) */}
+              {s.bgImage && <CardBackground src={s.bgImage} />}
+
+              {/* Left — copy */}
+              <div className="relative flex-1 px-10 lg:px-14 py-10 lg:py-14 flex flex-col justify-center max-w-[640px]">
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="text-[36px] lg:text-[40px] font-bold text-[#0F1112] leading-none tracking-[-0.01em]">
                     {s.number}
                   </span>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
                     <path
-                      d="M3 8h10M9 4l4 4-4 4"
+                      d="M4 11h14M13 6l5 5-5 5"
                       stroke="#0F1112"
-                      strokeOpacity="0.55"
-                      strokeWidth="1.5"
+                      strokeWidth="1.8"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <h3 className="text-[22px] font-semibold leading-7 text-[#0F1112]">
+                  <h3 className="text-[32px] lg:text-[36px] font-bold leading-tight text-[#0F1112] tracking-[-0.01em]">
                     {s.title}
                   </h3>
                 </div>
-                <p className="text-[13px] leading-[22px] text-[#484848]">
+                <p className="text-[15px] leading-[24px] text-[#484848] max-w-[480px]">
                   {s.description}
                 </p>
-                <button className="mt-6 inline-flex items-center gap-2 px-4 h-9 rounded-full bg-white text-[#0F1112] text-[12px] font-medium shadow-[0_1px_3px_rgba(15,17,18,0.08)] hover:shadow-[0_4px_10px_rgba(15,17,18,0.12)] transition-shadow">
+                <button className="mt-[100px] self-start inline-flex items-center gap-2 px-5 h-11 rounded-full bg-white text-[#0F1112] text-[13px] font-medium shadow-[0_2px_8px_rgba(15,17,18,0.08)] hover:shadow-[0_6px_16px_rgba(15,17,18,0.14)] transition-shadow">
                   View More Details
-                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                     <path
                       d="M3.5 8.5l5-5M4.5 3.5h4v4"
                       stroke="currentColor"
-                      strokeWidth="1.4"
+                      strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
                   </svg>
                 </button>
               </div>
-              <div className="flex-shrink-0">{ill[s.illustration]}</div>
+
+              {/* Vertical divider — only when there's a real illustration on the right */}
+              {s.illustrationImage && (
+                <div
+                  aria-hidden
+                  className="hidden lg:block w-px self-stretch my-12"
+                  style={{ background: 'rgba(15,17,18,0.10)' }}
+                />
+              )}
+
+              {/* Right — illustration (uses real image when present, SVG otherwise) */}
+              <div className="relative flex-shrink-0 flex items-center justify-center px-8 py-6 lg:py-10 lg:pr-14 lg:pl-10">
+                {s.illustrationImage ? (
+                  <IllustrationImg
+                    src={s.illustrationImage}
+                    alt={`${s.title} illustration`}
+                    fallback={ill[s.illustration]}
+                  />
+                ) : (
+                  ill[s.illustration]
+                )}
+              </div>
             </article>
           ))}
         </div>

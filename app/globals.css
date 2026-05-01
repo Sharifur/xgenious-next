@@ -58,25 +58,6 @@ html {
   50%      { opacity: 0.7;  transform: scale(0.85); }
 }
 
-/* Slow globe rotation — gives subtle "earth is turning" feel */
-@keyframes globeSpin {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Coral glow pulse beneath the globe */
-@keyframes globeGlowPulse {
-  0%, 100% { opacity: 0.45; transform: translateX(-50%) scale(1);    }
-  50%      { opacity: 0.85; transform: translateX(-50%) scale(1.18); }
-}
-
-/* Light sweep across the globe — diagonal beam slides L→R */
-@keyframes globeLightSweep {
-  0%   { transform: translateX(-30%) skewX(-18deg); opacity: 0;   }
-  10%  { opacity: 0.55; }
-  60%  { opacity: 0.55; }
-  100% { transform: translateX(160%)  skewX(-18deg); opacity: 0;   }
-}
 
 /* Container utility — Figma uses 1200px content width */
 .container-page {

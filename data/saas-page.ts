@@ -20,6 +20,10 @@ export type Service = {
   description: string;
   bg: string;
   illustration: 'saas' | 'web' | 'mobile' | 'ai';
+  /** Optional asset paths — when provided, the card uses real images
+   *  instead of the inline SVG illustration. */
+  bgImage?: string;
+  illustrationImage?: string;
 };
 
 export const services: Service[] = [
@@ -28,16 +32,21 @@ export const services: Service[] = [
     title: 'SaaS Development',
     description:
       'From-scratch multi-tenant SaaS products. Subscription billing, multi-region hosting, audit logs, SSO, and compliance built into the architecture — not bolted on later.',
-    bg: '#E8EAFC',
+    bg: '#E1E7F3',
     illustration: 'saas',
+    /* Background: SVG approximation that ships with the repo. Swap to
+       /services/saas-bg.png to use the real reference image once saved. */
+    bgImage: '/services/saas-bg.svg',
+    illustrationImage: '/services/saas-illustration.png',
   },
   {
     number: '02',
     title: 'Web App Development',
     description:
       'Custom web platforms — internal tools, B2B portals, enterprise dashboards, custom CRMs. Single-tenant, project-shaped builds engineered for your exact workflow.',
-    bg: '#D6EFE5',
+    bg: '#CFF3E0',
     illustration: 'web',
+    bgImage: '/services/web-bg.svg',
   },
   {
     number: '03',

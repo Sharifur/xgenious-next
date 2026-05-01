@@ -1,0 +1,112 @@
+<svg viewBox="0 0 1320 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Base mint green -->
+    <linearGradient id="webBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#C8F0DC"/>
+      <stop offset="55%"  stop-color="#CFF3E0"/>
+      <stop offset="100%" stop-color="#D8F6E6"/>
+    </linearGradient>
+
+    <!-- Soft glow on the lower-left (where the ribbon "core" lives) -->
+    <radialGradient id="webGlow" cx="22%" cy="78%" r="55%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.85"/>
+      <stop offset="55%"  stop-color="#EDFAF3" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Bright ribbon highlight (top edge of each fold) -->
+    <linearGradient id="webRibbonHi" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.85"/>
+      <stop offset="60%"  stop-color="#FFFFFF" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Soft shadow beneath each fold -->
+    <linearGradient id="webRibbonLo" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#7DC8A4" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#7DC8A4" stop-opacity="0.22"/>
+    </linearGradient>
+
+    <filter id="webSoft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="2.4"/>
+    </filter>
+  </defs>
+
+  <!-- Base -->
+  <rect width="1320" height="480" fill="url(#webBase)"/>
+  <rect width="1320" height="480" fill="url(#webGlow)"/>
+
+  <!-- Ribbon folds — fanning from lower-left, swooping up/right -->
+  <g filter="url(#webSoft)">
+    <!-- Outer fold -->
+    <path
+      d="M 0 410
+         C 240 390, 480 350, 720 240
+         C 880 160, 1080 100, 1320 70
+         L 1320 0 L 0 0 Z"
+      fill="url(#webRibbonHi)"
+      opacity="0.9"
+    />
+    <!-- Mid fold -->
+    <path
+      d="M 0 420
+         C 200 420, 380 410, 600 320
+         C 760 250, 940 170, 1180 110
+         L 1320 90 L 1320 0 L 0 0 Z"
+      fill="url(#webRibbonHi)"
+      opacity="0.65"
+    />
+    <!-- Inner fold -->
+    <path
+      d="M 0 440
+         C 160 440, 320 430, 500 360
+         C 660 290, 820 210, 1020 160
+         L 1200 130 L 1320 110 L 1320 0 L 0 0 Z"
+      fill="url(#webRibbonHi)"
+      opacity="0.5"
+    />
+    <!-- Innermost fold -->
+    <path
+      d="M 0 460
+         C 120 455, 240 450, 380 410
+         C 520 360, 660 300, 820 250
+         L 1000 210 L 1320 170 L 1320 0 L 0 0 Z"
+      fill="url(#webRibbonHi)"
+      opacity="0.4"
+    />
+  </g>
+
+  <!-- Subtle shadows underneath each fold -->
+  <g filter="url(#webSoft)" opacity="0.5">
+    <path
+      d="M 0 420
+         C 240 400, 480 360, 720 250
+         C 880 170, 1080 110, 1320 80
+         L 1320 130
+         C 1080 160, 880 220, 720 300
+         C 480 410, 240 450, 0 470 Z"
+      fill="url(#webRibbonLo)"
+    />
+    <path
+      d="M 0 440
+         C 200 440, 380 430, 600 340
+         C 760 270, 940 190, 1180 130
+         L 1180 180
+         C 940 240, 760 320, 600 390
+         C 380 470, 200 480, 0 480 Z"
+      fill="url(#webRibbonLo)"
+    />
+  </g>
+
+  <!-- Spiral core hint on the lower-left -->
+  <g opacity="0.55">
+    <path
+      d="M 80 460
+         C 60 420, 80 380, 130 360
+         C 200 340, 260 380, 280 430
+         L 280 480 L 0 480 L 0 460 Z"
+      fill="url(#webRibbonHi)"
+      filter="url(#webSoft)"
+    />
+  </g>
+</svg>
