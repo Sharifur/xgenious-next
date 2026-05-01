@@ -2,39 +2,36 @@
 
 @theme {
   /* ── Brand color: Burnt Sienna (Figma "color/red/63") ── */
-  --color-accent: #F26B4E;
-  --color-accent-hover: #EC7161;
-  --color-accent-soft: #FFE8E1;       /* Pippin — peach tint for badges/chips */
-  --color-accent-soft-2: #FFDEDA;     /* slightly deeper peach for icon bgs */
+  --color-coral: #F26B4E;
+  --color-coral-hover: #EC7161;
+  --color-peach: #FFE8E1;
+  --color-peach-2: #FFDEDA;
 
   /* ── Dark surfaces ── */
-  --color-dark: #0C0C0E;              /* Woodsmoke — primary dark */
-  --color-dark-2: #0F1112;            /* primary text on light */
-  --color-dark-card: #131418;
-  --color-dark-border: #1F2127;
+  --color-ink: #0C0C0E;
+  --color-ink-2: #0F1112;
+  --color-ink-card: #131418;
+  --color-ink-line: #1F2127;
 
-  /* ── Neutral light surfaces ── */
-  --color-cream: #EFEDF0;             /* "Natural color" */
-  --color-cream-50: #F5F6F8;          /* lightest gray bg */
+  /* ── Light surfaces ── */
+  --color-cream: #EFEDF0;
+  --color-mist: #F5F6F8;
   --color-line: #D8D8D8;
-  --color-line-soft: #E5E7EC;         /* Athens Gray */
+  --color-line-soft: #E5E7EC;
 
   /* ── Text ── */
-  --color-text: #0F1112;
-  --color-text-soft: #2F2F2F;
-  --color-text-mute: #484848;
-  --color-text-mute-2: #8A8F99;       /* Manatee */
-  --color-text-dark-mute: #A6A6A6;
-  --color-text-dark-mute-2: #B9BAC0;
+  --color-body: #2F2F2F;
+  --color-mute: #484848;
+  --color-mute-2: #8A8F99;
+  --color-mute-dark: #A6A6A6;
+  --color-mute-dark-2: #B9BAC0;
 
-  /* ── Typography ── */
+  /* ── Typography (Inter only) ── */
   --font-sans: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-inter: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --background: #ffffff;
+  --background: #FFFFFF;
   --foreground: #0F1112;
 }
 
@@ -49,8 +46,47 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Italic display variant — used for emphasised words in headings */
-.heading-italic {
-  font-style: italic;
-  font-weight: 600;
+/* Pulsing ring for the hero globe dots — starts at the dot's size and
+   expands outward beyond it so the ring is visible as a halo. */
+@keyframes blinkPulse {
+  0%        { transform: scale(1);   opacity: 0.65; }
+  75%, 100% { transform: scale(2.4); opacity: 0;    }
+}
+
+@keyframes blinkCore {
+  0%, 100% { opacity: 1;    transform: scale(1);    }
+  50%      { opacity: 0.7;  transform: scale(0.85); }
+}
+
+/* Slow globe rotation — gives subtle "earth is turning" feel */
+@keyframes globeSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Coral glow pulse beneath the globe */
+@keyframes globeGlowPulse {
+  0%, 100% { opacity: 0.45; transform: translateX(-50%) scale(1);    }
+  50%      { opacity: 0.85; transform: translateX(-50%) scale(1.18); }
+}
+
+/* Light sweep across the globe — diagonal beam slides L→R */
+@keyframes globeLightSweep {
+  0%   { transform: translateX(-30%) skewX(-18deg); opacity: 0;   }
+  10%  { opacity: 0.55; }
+  60%  { opacity: 0.55; }
+  100% { transform: translateX(160%)  skewX(-18deg); opacity: 0;   }
+}
+
+/* Container utility — Figma uses 1200px content width */
+.container-page {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .container-page {
+    padding-inline: 2rem;
+  }
 }

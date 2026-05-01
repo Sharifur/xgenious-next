@@ -11,32 +11,33 @@ interface StatCounterProps {
 
 export default function StatCounter({ value, suffix, label }: StatCounterProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!isInView) return;
-    let start = 0;
-    const duration = 1800;
-    const step = Math.ceil(value / (duration / 16));
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= value) {
-        setCount(value);
-        clearInterval(timer);
-      } else {
-        setCount(start);
-      }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [isInView, value]);
+    if (!inView) return;
+    const duration = 1700;
+    const start = performance.now();
+
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setCount(Math.floor(value * eased));
+      if (t < 1) requestAnimationFrame(tick);
+      else setCount(value);
+    };
+    requestAnimationFrame(tick);
+  }, [inView, value]);
 
   return (
-    <div ref={ref} className="flex flex-col items-center text-center">
+    <div ref={ref} className={label ? 'flex flex-col items-start text-left' : 'inline'}>
       <span className="text-[44px] lg:text-[52px] leading-none font-semibold text-white tabular-nums tracking-[-0.02em]">
-        {count.toLocaleString()}{suffix}
+        {count.toLocaleString()}
+        {suffix}
       </span>
-      <span className="mt-3 text-[13px] text-[#A6A6A6] font-medium">{label}</span>
+      {label && (
+        <span className="mt-3 text-[13px] text-[#A6A6A6] font-medium">{label}</span>
+      )}
     </div>
   );
 }

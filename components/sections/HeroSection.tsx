@@ -3,89 +3,82 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import { useState } from 'react';
 
 const HeroBackground = dynamic(() => import('@/components/ui/HeroBackground'), { ssr: false });
 
-// Cursor arrow path extracted from Group 1707483028.svg (viewBox "53 53 12 12")
-// Raw path points toward bottom-right; rotated per corner to point inward toward content
-const CURSOR_PATH =
-  'M60.5664 64.0131L56.544 62.4391C54.224 61.5313 53.064 61.0774 53.1025 60.3574C53.1409 59.6373 54.3515 59.3072 56.7727 58.6469C57.4936 58.4503 57.8541 58.3519 58.104 58.1021C58.3539 57.8521 58.4522 57.4917 58.6489 56.7707C59.3091 54.3496 59.6393 53.139 60.3593 53.1005C61.0794 53.0621 61.5333 54.2221 62.4411 56.5421L64.0151 60.5644C64.9655 62.9934 65.4408 64.2079 64.8253 64.8233C64.2098 65.4388 62.9953 64.9636 60.5664 64.0131Z';
-
-// Which corner of the 66×66 container holds the cursor
-// Box (50×50) sits at the opposite corner; cursor (16×16) at the sharp-radius corner
-type Corner = 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
-
-const BOX_POS: Record<Corner, React.CSSProperties> = {
-  'bottom-right': { top: 0, left: 0 },
-  'bottom-left': { top: 0, right: 0 },
-  'top-right':   { bottom: 0, left: 0 },
-  'top-left':    { bottom: 0, right: 0 },
+/* ── Corner stack-icon block with cursor arrow ── */
+type Corner = 'tl' | 'tr' | 'bl' | 'br';
+const RADIUS: Record<Corner, string> = {
+  tl: '6px 99px 99px 99px',
+  tr: '99px 6px 99px 99px',
+  bl: '99px 99px 99px 6px',
+  br: '99px 99px 6px 99px',
 };
 const CURSOR_POS: Record<Corner, React.CSSProperties> = {
-  'bottom-right': { bottom: 0, right: 0 },
-  'bottom-left':  { bottom: 0, left: 0 },
-  'top-right':    { top: 0, right: 0 },
-  'top-left':     { top: 0, left: 0 },
+  tl: { top: 0, left: 0 },
+  tr: { top: 0, right: 0 },
+  bl: { bottom: 0, left: 0 },
+  br: { bottom: 0, right: 0 },
 };
-// Raw cursor points bottom-right; transform so it always points inward
-const CURSOR_TRANSFORM: Record<Corner, string> = {
-  'bottom-right': 'none',
-  'bottom-left':  'scaleX(-1)',
-  'top-right':    'scaleY(-1)',
-  'top-left':     'rotate(180deg)',
+const CURSOR_TF: Record<Corner, string> = {
+  tl: 'rotate(180deg)',
+  tr: 'scaleY(-1)',
+  bl: 'scaleX(-1)',
+  br: 'none',
 };
 
-function CornerBlock({
+function StackBlock({
   icon,
-  borderColor,
-  radius,
-  bg = '#F5F5F5',
   cursorColor,
-  cursorCorner,
+  borderColor,
+  corner,
+  bg = '#FFFFFF',
 }: {
   icon: string;
-  borderColor: string;
-  radius: string;
-  bg?: string;
   cursorColor: string;
-  cursorCorner: Corner;
+  borderColor: string;
+  corner: Corner;
+  bg?: string;
 }) {
+  // Box sits opposite the cursor corner
+  const boxPos: Record<Corner, React.CSSProperties> = {
+    tl: { bottom: 0, right: 0 },
+    tr: { bottom: 0, left: 0 },
+    bl: { top: 0, right: 0 },
+    br: { top: 0, left: 0 },
+  };
+
   return (
-    <div className="relative" style={{ width: '66px', height: '66px' }}>
-      {/* White icon box */}
+    <div className="relative" style={{ width: 66, height: 66 }}>
       <div
         className="absolute w-[50px] h-[50px] flex items-center justify-center"
         style={{
-          ...BOX_POS[cursorCorner],
+          ...boxPos[corner],
           background: bg,
           border: `1px solid ${borderColor}`,
-          borderRadius: radius,
+          borderRadius: RADIUS[corner],
           boxShadow:
-            '0px 0px 0px 1px rgba(255,255,255,0.5), 0px 0px 1px 0.1px rgba(0,0,0,0.04)',
+            '0 0 0 1px rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.04)',
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={icon} alt="" width="24" height="24" style={{ objectFit: 'contain' }} />
+        <img src={icon} alt="" width="24" height="24" />
       </div>
-
-      {/* Cursor arrow — CSS-built via extracted SVG path, rotated to point toward content */}
       <div
-        className="absolute"
+        className="absolute w-4 h-4"
         style={{
-          ...CURSOR_POS[cursorCorner],
-          width: '16px',
-          height: '16px',
-          transform: CURSOR_TRANSFORM[cursorCorner],
-          filter: 'drop-shadow(0px 1px 2px rgba(0,0,0,0.06))',
+          ...CURSOR_POS[corner],
+          transform: CURSOR_TF[corner],
+          filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.06))',
         }}
       >
         <svg width="16" height="16" viewBox="53 53 12 12" fill="none">
           <path
-            d={CURSOR_PATH}
+            d="M60.566 64.013l-4.022-1.574c-2.32-.908-3.48-1.362-3.441-2.082.038-.72 1.249-1.05 3.67-1.71.722-.197 1.082-.296 1.332-.546.25-.25.348-.61.545-1.331.66-2.42.99-3.632 1.71-3.67.72-.038 1.174 1.122 2.082 3.442l1.574 4.022c.95 2.43 1.426 3.644.81 4.26-.616.615-1.83.14-4.26-.81z"
             fill={cursorColor}
             stroke="white"
             strokeWidth="0.5"
-            strokeLinejoin="round"
           />
         </svg>
       </div>
@@ -93,291 +86,480 @@ function CornerBlock({
   );
 }
 
-function FeatureTag({ label }: { label: string }) {
+/* ── Floating feature card with upward arrow pointer ── */
+function FeatureCard({
+  icon,
+  title,
+  tags,
+  withPointer = false,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  tags: string[];
+  withPointer?: boolean;
+}) {
   return (
-    <span
-      className="px-3 py-[6px] text-[13px] font-medium text-[#2F2F2F] leading-5"
-      style={{ background: '#F5F6F8', border: '1px solid #E5E7EC', borderRadius: '999px' }}
-    >
-      {label}
-    </span>
-  );
-}
+    <div className="relative w-[220px]">
+      {/* Upward arrow pointer (sits on top edge of card) */}
+      {withPointer && (
+        <span
+          aria-hidden
+          className="absolute left-1/2 -translate-x-1/2 -top-2 w-4 h-4 bg-white rotate-45"
+          style={{
+            boxShadow: '-1px -1px 1px rgba(0,0,0,0.04)',
+          }}
+        />
+      )}
 
-function FeatureCard({ icon, title, tags }: { icon: React.ReactNode; title: string; tags: string[] }) {
-  return (
-    <div
-      className="bg-white flex flex-col gap-4 p-4"
-      style={{ boxShadow: '0px 4px 20.7px rgba(0,0,0,0.10)', borderRadius: '8px' }}
-    >
-      <div className="flex items-center gap-[7px]">
-        <div
-          className="w-8 h-8 flex items-center justify-center flex-shrink-0"
-          style={{ background: '#FFDEDA', borderRadius: '16px' }}
-        >
-          {icon}
+      <div
+        className="relative bg-white flex flex-col gap-3 p-4"
+        style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.10)', borderRadius: 10 }}
+      >
+        <div className="flex items-center gap-2.5">
+          <div
+            className="w-8 h-8 flex items-center justify-center flex-shrink-0"
+            style={{ background: '#FFE8E1', borderRadius: 16 }}
+          >
+            {icon}
+          </div>
+          <span className="text-[16px] font-medium text-[#0F1112] whitespace-nowrap">
+            {title}
+          </span>
         </div>
-        <span className="text-[20px] font-medium text-[#0F1112] leading-7 whitespace-nowrap">{title}</span>
-      </div>
-      <div className="flex items-center gap-1 flex-wrap">
-        {tags.map((tag) => (
-          <FeatureTag key={tag} label={tag} />
-        ))}
+        <div className="flex items-center gap-1 flex-wrap">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2.5 py-1 text-[12px] font-medium text-[#2F2F2F] leading-4 bg-[#F5F6F8] border border-[#E5E7EC] rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
-const AI_ICON = (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <rect x="3" y="3" width="8" height="8" rx="1.5" fill="#181818" />
-    <rect x="13" y="3" width="8" height="8" rx="1.5" fill="#181818" />
-    <rect x="3" y="13" width="8" height="8" rx="1.5" fill="#181818" />
-    <rect x="13" y="13" width="8" height="8" rx="1.5" fill="#181818" />
+const I_AI = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <rect x="3" y="3" width="8" height="8" rx="1.5" fill="#0F1112" />
+    <rect x="13" y="3" width="8" height="8" rx="1.5" fill="#0F1112" />
+    <rect x="3" y="13" width="8" height="8" rx="1.5" fill="#0F1112" />
+    <rect x="13" y="13" width="8" height="8" rx="1.5" fill="#0F1112" />
+  </svg>
+);
+const I_SW = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path
+      d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+      stroke="#0F1112"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+const I_DEV = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <circle cx="12" cy="12" r="9" stroke="#0F1112" strokeWidth="1.4" />
+    <path d="M3 12h18" stroke="#0F1112" strokeWidth="1.4" strokeLinecap="round" />
+    <path
+      d="M12 3c2.5 3 4 5.8 4 9s-1.5 6-4 9M12 3c-2.5 3-4 5.8-4 9s1.5 6 4 9"
+      stroke="#0F1112"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
-const SW_ICON = (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#181818" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+function PulseDot({
+  active,
+  delay = 0,
+  onActivate,
+  onDeactivate,
+  onClick,
+  ariaLabel,
+}: {
+  active: boolean;
+  delay?: number;
+  onActivate: () => void;
+  onDeactivate: () => void;
+  onClick: () => void;
+  ariaLabel: string;
+}) {
+  // Always coral — primary brand colour so the pulsing dots draw the eye
+  const ringColor = active ? 'rgba(242,107,78,0.75)' : 'rgba(242,107,78,0.55)';
+  const coreColor = '#F26B4E';
 
-const DEV_ICON = (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <circle cx="12" cy="12" r="9" stroke="#181818" strokeWidth="1.4" />
-    <path d="M12 3a9 9 0 0 1 0 18M3 12h18" stroke="#181818" strokeWidth="1.4" strokeLinecap="round" />
-    <path d="M12 3c2.5 3 4 5.8 4 9s-1.5 6-4 9M12 3c-2.5 3-4 5.8-4 9s1.5 6 4 9" stroke="#181818" strokeWidth="1.4" strokeLinecap="round" />
-  </svg>
-);
+  return (
+    <button
+      type="button"
+      aria-label={ariaLabel}
+      aria-pressed={active}
+      onMouseEnter={onActivate}
+      onMouseLeave={onDeactivate}
+      onFocus={onActivate}
+      onBlur={onDeactivate}
+      onClick={onClick}
+      className="relative w-[44px] h-[44px] cursor-pointer focus:outline-none flex items-center justify-center"
+    >
+      {/* Two staggered expanding pulse rings — slow, always-on */}
+      <span
+        aria-hidden
+        className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full pointer-events-none"
+        style={{
+          background: ringColor,
+          animation: `blinkPulse 3.6s cubic-bezier(0.4,0,0.6,1) ${delay}ms infinite`,
+          transformOrigin: 'center',
+        }}
+      />
+      <span
+        aria-hidden
+        className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full pointer-events-none"
+        style={{
+          background: ringColor,
+          animation: `blinkPulse 3.6s cubic-bezier(0.4,0,0.6,1) ${delay + 1800}ms infinite`,
+          transformOrigin: 'center',
+        }}
+      />
+
+      {/* Static halo (visible base) — soft coral tint always */}
+      <span
+        aria-hidden
+        className="absolute inset-0 rounded-full transition-colors duration-200"
+        style={{
+          background: active ? 'rgba(242,107,78,0.22)' : 'rgba(242,107,78,0.12)',
+        }}
+      />
+      {/* Inner white ring */}
+      <span
+        aria-hidden
+        className="absolute rounded-full transition-colors duration-200"
+        style={{
+          width: 26,
+          height: 26,
+          background: 'rgba(255,255,255,0.92)',
+        }}
+      />
+      {/* Core dot — coral, gently breathing on top */}
+      <span
+        aria-hidden
+        className="relative rounded-full transition-colors duration-200"
+        style={{
+          width: 12,
+          height: 12,
+          background: coreColor,
+          animation: `blinkCore 1.8s ease-in-out ${delay}ms infinite`,
+          boxShadow: '0 0 0 2px rgba(242,107,78,0.25)',
+        }}
+      />
+    </button>
+  );
+}
+
+/* Dot positions correspond to marked points on the globe map —
+   placed on actual landmasses (Africa, Eurasia, East Asia) to convey
+   "we work globally". Each card appears below its dot with an upward arrow. */
+const dots = [
+  { x: '27%', y: 140, delay: 0,    label: 'Show AI Agent capabilities',         card: 0 }, // Africa
+  { x: '46%', y: 50,  delay: 700,  label: 'Show Custom Software capabilities',  card: 1 }, // Eurasia
+  { x: '75%', y: 90,  delay: 1400, label: 'Show Development capabilities',      card: 2 }, // East Asia
+] as const;
+
+const featureCards = [
+  { icon: I_AI,  title: 'AI Agent',         tags: ['Intelligent', 'Scalable'] },
+  { icon: I_SW,  title: 'Custom Software',  tags: ['Flexible', 'User-Centric'] },
+  { icon: I_DEV, title: 'Development',      tags: ['Secure', 'Efficient'] },
+];
+
+const CARD_WIDTH = 220;
+const DOT_SIZE = 44;
+const ARROW_GAP = 22; // space below dot for the arrow + breathing room
 
 export default function HeroSection() {
+  // Index of the active globe point (null = none). Hover shows it; click pins it.
+  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
+  const [pinnedIdx, setPinnedIdx] = useState<number | null>(null);
+  const activeIdx = hoverIdx ?? pinnedIdx;
+
+  const setHover = (i: number | null) => setHoverIdx(i);
+  const togglePin = (i: number) => setPinnedIdx((p) => (p === i ? null : i));
+
   return (
     <section
-      className="relative overflow-hidden"
+      className="relative overflow-hidden pt-[180px] pb-[40px]"
       style={{
-        minHeight: '900px',
-        backgroundImage: 'url(/hero-section-bg.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center top',
+        minHeight: 900,
+        background:
+          'radial-gradient(120% 60% at 50% 0%, #FFF1EC 0%, #FFE8E1 35%, #F5EFEC 70%, #ECEAEB 100%)',
       }}
     >
-      {/* Animated background lines */}
       <HeroBackground />
 
-      {/* Diagonal decorative strips */}
+      {/* Diagonal light strips */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
         <div
           className="absolute"
           style={{
-            width: '187px', height: '900px',
-            left: 'calc(50% - 560px)', top: '95px',
-            background: 'linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 33.78%, rgba(255,255,255,0) 66.97%)',
-            transform: 'rotate(24.5deg)', transformOrigin: 'top center',
+            width: 187,
+            height: 900,
+            left: 'calc(50% - 560px)',
+            top: 95,
+            background:
+              'linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 33%, rgba(255,255,255,0) 66%)',
+            transform: 'rotate(24.5deg)',
+            transformOrigin: 'top center',
           }}
         />
         <div
           className="absolute"
           style={{
-            width: '187px', height: '950px',
-            left: 'calc(50% + 375px)', top: '95px',
-            background: 'linear-gradient(180deg, rgba(255,255,255,0) 46.29%, rgba(255,255,255,0.45) 67.05%, rgba(255,255,255,0) 100%)',
-            transform: 'rotate(24.5deg)', transformOrigin: 'top center',
+            width: 187,
+            height: 950,
+            left: 'calc(50% + 375px)',
+            top: 95,
+            background:
+              'linear-gradient(180deg, rgba(255,255,255,0) 46%, rgba(255,255,255,0.45) 67%, rgba(255,255,255,0) 100%)',
+            transform: 'rotate(24.5deg)',
+            transformOrigin: 'top center',
           }}
         />
       </div>
 
-      {/* Vertical guide lines */}
+      {/* Vertical guides */}
       <div className="absolute inset-0 pointer-events-none hidden lg:block">
-        <div className="absolute top-0 bottom-0 w-px" style={{ left: 'calc(50% - 490px)', background: 'rgba(0,0,0,0.06)' }} />
-        <div className="absolute top-0 bottom-0 w-px" style={{ left: 'calc(50% + 490px)', background: 'rgba(0,0,0,0.06)' }} />
-      </div>
-
-      {/* Glassmorphism panel behind content */}
-      <div
-        className="absolute hidden lg:block pointer-events-none"
-        style={{
-          width: '1037px',
-          left: 'calc(50% - 518.5px)',
-          top: '98px',
-          height: '480px',
-          background: 'rgba(255, 255, 255, 0.18)',
-          backdropFilter: 'blur(32px)',
-          WebkitBackdropFilter: 'blur(32px)',
-          border: '1px solid rgba(255, 255, 255, 0.38)',
-          boxShadow: 'inset 0 0 80px rgba(255, 255, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(255, 255, 255, 0.15)',
-        }}
-      />
-
-      {/* ── Globe image — absolute at the bottom ── */}
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none hidden lg:flex justify-center">
-        <Image
-          src="/globe.png"
-          alt=""
-          width={1203}
-          height={375}
-          priority
-          className="w-[80%] max-w-[1203px] h-auto"
-          style={{ display: 'block' }}
+        <div
+          className="absolute top-0 bottom-0 w-px"
+          style={{ left: 'calc(50% - 490px)', background: 'rgba(0,0,0,0.06)' }}
+        />
+        <div
+          className="absolute top-0 bottom-0 w-px"
+          style={{ left: 'calc(50% + 490px)', background: 'rgba(0,0,0,0.06)' }}
         />
       </div>
 
-      {/* ── Corner blocks (icon box + inward-pointing cursor arrow) ── */}
-
-      {/* Top-left: Laravel — sharp corner at bottom-right, cursor points bottom-right */}
-      <div className="absolute hidden lg:block" style={{ left: 'calc(50% - 490px)', top: '159px' }}>
-        <CornerBlock
-          icon="/icons/fi_laravel.svg"
-          borderColor="rgba(242,78,30,0.16)"
-          radius="99px 99px 6px 99px"
-          bg="#FFFFFF"
-          cursorColor="#F24E1E"
-          cursorCorner="bottom-right"
+      {/* Globe at bottom — with rotation, coral glow, and light sweep */}
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none hidden lg:block overflow-hidden">
+        {/* Coral glow that pulses behind the globe */}
+        <span
+          aria-hidden
+          className="absolute left-1/2 -translate-x-1/2 rounded-full"
+          style={{
+            bottom: -120,
+            width: 900,
+            height: 320,
+            background:
+              'radial-gradient(closest-side, rgba(242,107,78,0.45), rgba(242,107,78,0.18) 60%, transparent 75%)',
+            filter: 'blur(16px)',
+            animation: 'globeGlowPulse 5s ease-in-out infinite',
+          }}
         />
-      </div>
 
-      {/* Top-right: Node.js — sharp corner at bottom-left, cursor points bottom-left */}
-      <div className="absolute hidden lg:block" style={{ right: 'calc(50% - 490px)', top: '159px' }}>
-        <CornerBlock
-          icon="/icons/fi_nodejs.svg"
-          borderColor="rgba(10,207,131,0.16)"
-          radius="99px 99px 99px 6px"
-          cursorColor="#0ACF83"
-          cursorCorner="bottom-left"
-        />
-      </div>
+        {/* Globe wrapper — slowly rotates */}
+        <div
+          className="relative flex justify-center"
+          style={{
+            width: '80%',
+            maxWidth: 1203,
+            margin: '0 auto',
+            animation: 'globeSpin 90s linear infinite',
+            transformOrigin: '50% 70%',
+          }}
+        >
+          <Image
+            src="/globe.png"
+            alt=""
+            width={1203}
+            height={375}
+            priority
+            className="w-full h-auto select-none"
+          />
 
-      {/* Bottom-left: OpenAI — sharp corner at top-right, cursor points top-right */}
-      <div className="absolute hidden lg:block" style={{ left: 'calc(50% - 490px)', top: '500px' }}>
-        <CornerBlock
-          icon="/icons/fi_openai.svg"
-          borderColor="rgba(0,0,0,0.16)"
-          radius="99px 6px 99px 99px"
-          cursorColor="#000000"
-          cursorCorner="top-right"
-        />
-      </div>
-
-      {/* Bottom-right: React/Figma — sharp corner at top-left, cursor points top-left */}
-      <div className="absolute hidden lg:block" style={{ right: 'calc(50% - 490px)', top: '500px' }}>
-        <CornerBlock
-          icon="/icons/fi_react.svg"
-          borderColor="rgba(20,110,245,0.16)"
-          radius="6px 99px 99px 99px"
-          cursorColor="#146EF5"
-          cursorCorner="top-left"
-        />
-      </div>
-
-      {/* ── Main content ── */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 pt-[200px]">
-        <div style={{ maxWidth: '884px', width: '100%' }}>
-          <h1
-            className="text-[#181818]"
+          {/* Light sweep beam — slides across the globe */}
+          <span
+            aria-hidden
+            className="absolute top-0 bottom-0 pointer-events-none"
             style={{
-              fontFamily: 'var(--font-inter), Inter, sans-serif',
+              left: 0,
+              width: '22%',
+              background:
+                'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%)',
+              animation: 'globeLightSweep 6.5s ease-in-out infinite',
+              mixBlendMode: 'screen',
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Main content */}
+      <div className="relative z-10 flex flex-col items-center text-center px-6">
+        <div
+          className="relative w-full max-w-[1100px] px-6 sm:px-10 lg:px-16 py-12 lg:py-16 rounded-[5px]"
+          style={{
+            background: 'transparent',
+            border: '1px solid rgba(255,255,255,0.55)',
+            boxShadow:
+              '0 1px 0 0 rgba(255,255,255,0.7) inset, 0 -1px 0 0 rgba(255,255,255,0.15) inset',
+          }}
+        >
+          {/* Corner stack blocks — icon-box midpoint anchored exactly on each panel corner */}
+          <div className="absolute hidden lg:block z-20" style={{ left: -25, top: -25 }}>
+            <StackBlock
+              icon="/icons/fi_laravel.svg"
+              borderColor="rgba(242,78,30,0.16)"
+              cursorColor="#F24E1E"
+              corner="br"
+            />
+          </div>
+          <div className="absolute hidden lg:block z-20" style={{ right: -25, top: -25 }}>
+            <StackBlock
+              icon="/icons/fi_nodejs.svg"
+              borderColor="rgba(10,207,131,0.16)"
+              cursorColor="#0ACF83"
+              corner="bl"
+            />
+          </div>
+          <div className="absolute hidden lg:block z-20" style={{ left: -25, bottom: -25 }}>
+            <StackBlock
+              icon="/icons/fi_openai.svg"
+              borderColor="rgba(0,0,0,0.16)"
+              cursorColor="#0F1112"
+              corner="tr"
+            />
+          </div>
+          <div className="absolute hidden lg:block z-20" style={{ right: -25, bottom: -25 }}>
+            <StackBlock
+              icon="/icons/fi_react.svg"
+              borderColor="rgba(20,110,245,0.16)"
+              cursorColor="#146EF5"
+              corner="tl"
+            />
+          </div>
+
+          <div className="relative">
+          {/* Pill eyebrow */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-sm border border-white/80 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F26B4E]" />
+            <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#2F2F2F]">
+              Custom SaaS Development
+            </span>
+          </div>
+
+          <h1
+            className="text-[#0F1112]"
+            style={{
               fontWeight: 600,
-              fontSize: 'clamp(40px, 5.5vw, 72px)',
-              lineHeight: '1.11',
+              fontSize: 'clamp(40px, 5.4vw, 70px)',
+              lineHeight: 1.1,
               letterSpacing: '-0.02em',
-              marginBottom: '24px',
+              marginBottom: 22,
             }}
           >
             Where Custom Solutions Meet{' '}
-            <em style={{ fontStyle: 'italic', fontWeight: 600 }}>Real Impact</em>
+            <span style={{ fontStyle: 'italic', fontWeight: 600 }}>Real Impact</span>
           </h1>
 
           <p
             className="text-[#2F2F2F] mx-auto"
             style={{
-              fontFamily: 'var(--font-inter), Inter, sans-serif',
               fontWeight: 400,
-              fontSize: '18px',
+              fontSize: 18,
               lineHeight: '27px',
-              maxWidth: '676px',
-              marginBottom: '32px',
+              maxWidth: 676,
+              marginBottom: 32,
             }}
           >
-            We&apos;re an engineering-led studio building greenfield SaaS, web apps, mobile
-            apps, and AI agents for mid-market companies. Real projects from $50K — no
-            script clones, no copy-paste templates.
+            We&apos;re an engineering-led studio building greenfield SaaS, web apps, mobile apps,
+            and AI agents for mid-market companies. Real projects from $50K — no script clones,
+            no copy-paste templates.
           </p>
 
-          <div className="flex items-center justify-center gap-8 flex-wrap">
+          <div className="flex items-center justify-center gap-4 flex-wrap">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center font-semibold text-white transition-opacity hover:opacity-90"
-              style={{
-                fontFamily: 'var(--font-inter), Inter, sans-serif',
-                fontSize: '16px', fontWeight: 600,
-                width: '201px', height: '56px',
-                background: '#EC7161', borderRadius: '30px',
-              }}
+              className="inline-flex items-center justify-center gap-2 font-semibold text-white text-[15px] hover:opacity-95 transition"
+              style={{ width: 201, height: 56, background: '#F26B4E', borderRadius: 30 }}
             >
               Start Your Project
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M3 8h10M9 4l4 4-4 4"
+                  stroke="white"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </Link>
             <Link
               href="/work"
-              className="inline-flex items-center justify-center font-semibold transition-colors hover:border-gray-400"
-              style={{
-                fontFamily: 'var(--font-inter), Inter, sans-serif',
-                fontSize: '16px', fontWeight: 600,
-                color: '#0F1112',
-                width: '209px', height: '56px',
-                background: '#FFFFFF',
-                border: '1px solid #D8D8D8', borderRadius: '30px',
-              }}
+              className="inline-flex items-center justify-center font-semibold text-[15px] text-[#0F1112] bg-white border border-[#D8D8D8] hover:border-[#0F1112]/30 transition"
+              style={{ width: 209, height: 56, borderRadius: 30 }}
             >
               View Case Studies
             </Link>
           </div>
-        </div>
-
-        {/* ── Decorative dots row — sits above globe ── */}
-        <div className="relative w-full mt-16 hidden lg:block" style={{ height: '49px', maxWidth: '1040px' }}>
-          <div className="absolute" style={{ left: '19%', top: '0' }}>
-            <ConcentricDot />
-          </div>
-          <div className="absolute" style={{ left: '50%', transform: 'translateX(-50%)', top: '0' }}>
-            <ConcentricDot />
-          </div>
-          <div className="absolute" style={{ right: '19%', top: '0' }}>
-            <ConcentricDot />
           </div>
         </div>
 
-        {/* ── Feature cards — float over the globe ── */}
-        <div className="relative w-full hidden lg:block" style={{ height: '250px', maxWidth: '1040px' }}>
-          {/* Left card */}
-          <div className="absolute" style={{ left: '0', bottom: '60px' }}>
-            <FeatureCard icon={AI_ICON} title="AI Agent" tags={['Intelligent', 'Scalable']} />
-          </div>
-          {/* Center card — slightly higher */}
-          <div className="absolute" style={{ left: '50%', transform: 'translateX(-50%)', top: '0' }}>
-            <FeatureCard icon={SW_ICON} title="Custom Software" tags={['Flexible', 'User-Centric']} />
-          </div>
-          {/* Right card */}
-          <div className="absolute" style={{ right: '0', bottom: '60px' }}>
-            <FeatureCard icon={DEV_ICON} title="Development" tags={['Secure', 'Efficient']} />
-          </div>
+        {/* Dots + cards — each dot has its own (x,y) on the globe;
+            its card sits directly below it with an upward arrow */}
+        <div className="relative w-full mt-16 hidden lg:block max-w-[1040px]" style={{ height: 280 }}>
+          {/* Dots — staggered vertically so they sit on different points of the globe */}
+          {dots.map((d, i) => (
+            <div
+              key={`dot-${i}`}
+              className="absolute"
+              style={{
+                left: d.x,
+                top: d.y,
+                transform: 'translateX(-50%)', // centre the 44px dot on its x coordinate
+              }}
+            >
+              <PulseDot
+                active={activeIdx === d.card}
+                delay={d.delay}
+                ariaLabel={d.label}
+                onActivate={() => setHover(d.card)}
+                onDeactivate={() => setHover(null)}
+                onClick={() => togglePin(d.card)}
+              />
+            </div>
+          ))}
+
+          {/* Cards — each anchored under its own dot's (x,y) */}
+          {featureCards.map((card, i) => {
+            const dot = dots.find((d) => d.card === i)!;
+            const visible = activeIdx === i;
+            const cardTop = dot.y + DOT_SIZE + ARROW_GAP;
+
+            return (
+              <div
+                key={card.title}
+                className="absolute transition-all duration-300 ease-out"
+                style={{
+                  left: dot.x,
+                  top: cardTop,
+                  marginLeft: -CARD_WIDTH / 2, // shift left by half card width so it's centered on the dot's x
+                  opacity: visible ? 1 : 0,
+                  transform: `translateY(${visible ? 0 : 8}px)`,
+                  pointerEvents: visible ? 'auto' : 'none',
+                }}
+              >
+                <FeatureCard icon={card.icon} title={card.title} tags={card.tags} withPointer />
+              </div>
+            );
+          })}
         </div>
 
-        {/* Mobile feature cards */}
-        <div className="flex flex-col gap-4 mt-10 pb-10 w-full max-w-sm lg:hidden">
-          <FeatureCard icon={AI_ICON} title="AI Agent" tags={['Intelligent', 'Scalable']} />
-          <FeatureCard icon={SW_ICON} title="Custom Software" tags={['Flexible', 'User-Centric']} />
-          <FeatureCard icon={DEV_ICON} title="Development" tags={['Secure', 'Efficient']} />
+        {/* Mobile feature cards — always visible */}
+        <div className="flex flex-col gap-4 mt-12 pb-6 w-full max-w-sm lg:hidden">
+          {featureCards.map((card) => (
+            <FeatureCard key={card.title} icon={card.icon} title={card.title} tags={card.tags} />
+          ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function ConcentricDot() {
-  return (
-    <div className="relative w-[49px] h-[49px] rounded-full" style={{ background: '#E2E2E2' }}>
-      <div className="absolute rounded-full" style={{ width: '39px', height: '39px', background: 'rgba(255,255,255,0.31)', top: '5px', left: '5px' }} />
-      <div className="absolute rounded-full" style={{ width: '12px', height: '12px', background: '#2F2F2F', top: '18.5px', left: '18.5px' }} />
-    </div>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import HeroSection from '@/components/sections/HeroSection';
 import TrustedBy from '@/components/sections/TrustedBy';
 import ServicesGrid from '@/components/sections/ServicesGrid';
-import StatsSection from '@/components/sections/StatsSection';
+import WhyChooseUs from '@/components/sections/WhyChooseUs';
 import PortfolioGrid from '@/components/sections/PortfolioGrid';
 import TechStack from '@/components/sections/TechStack';
 import ProcessSteps from '@/components/sections/ProcessSteps';
@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 
 export default function SaasDevelopmentPage() {
   return (
-    <main>
+    <>
       <HeroSection />
       <TrustedBy />
       <ServicesGrid />
-      <StatsSection />
+      <WhyChooseUs />
       <PortfolioGrid />
       <TechStack />
       <ProcessSteps />
@@ -33,6 +33,6 @@ export default function SaasDevelopmentPage() {
       <FAQ />
       <BookingCTA />
       <FinalCTA />
-    </main>
+    </>
   );
 }

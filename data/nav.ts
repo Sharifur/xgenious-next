@@ -1,4 +1,10 @@
-export const servicesDropdown = [
+export interface DropdownItem {
+  label: string;
+  href: string;
+  description?: string;
+}
+
+export const servicesDropdown: DropdownItem[] = [
   { label: 'Web Solutions', href: '/services/web-solutions' },
   { label: 'Mobile Apps', href: '/services/mobile-apps' },
   { label: 'UI/UX Design', href: '/services/ui-ux-design' },
@@ -10,7 +16,7 @@ export const servicesDropdown = [
   { label: 'Installation Service', href: '/services/installation' },
 ];
 
-export const productsDropdown = [
+export const productsDropdown: DropdownItem[] = [
   { label: 'Nazmart', description: 'Multi-Tenancy eCommerce SAAS', href: '#' },
   { label: 'Helpnest', description: 'AI Power Support Chatbot', href: '#' },
   { label: 'Nexelit', description: 'Multipurpose Website CMS', href: '#' },
@@ -19,7 +25,7 @@ export const productsDropdown = [
   { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', href: '#' },
 ];
 
-export const companyDropdown = [
+export const companyDropdown: DropdownItem[] = [
   { label: 'About Us', href: '/about' },
   { label: 'Documentation', href: '#' },
   { label: 'Priority Support', href: '#' },
