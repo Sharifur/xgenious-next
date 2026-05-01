@@ -20,7 +20,10 @@ export type Service = {
   description: string;
   bg: string;
   illustration: 'saas' | 'web' | 'mobile' | 'ai';
-  dark?: boolean;
+  /** Optional asset paths — when provided, the card uses real images
+   *  instead of the inline SVG illustration. */
+  bgImage?: string;
+  illustrationImage?: string;
 };
 
 export const services: Service[] = [
@@ -28,34 +31,38 @@ export const services: Service[] = [
     number: '01',
     title: 'SaaS Development',
     description:
-      'We design and build scalable SaaS platforms from scratch — multi-tenant architecture, subscription billing, user management, and everything in between.',
-    bg: '#FFE8E1',
+      'From-scratch multi-tenant SaaS products. Subscription billing, multi-region hosting, audit logs, SSO, and compliance built into the architecture — not bolted on later.',
+    bg: '#E1E7F3',
     illustration: 'saas',
+    /* Background: SVG approximation that ships with the repo. Swap to
+       /services/saas-bg.png to use the real reference image once saved. */
+    bgImage: '/services/saas-bg.svg',
+    illustrationImage: '/services/saas-illustration.png',
   },
   {
     number: '02',
     title: 'Web App Development',
     description:
-      'High-performance web applications built with modern frameworks. Complex dashboards to customer-facing products that scale with growth.',
-    bg: '#E0EEEA',
+      'Custom web platforms — internal tools, B2B portals, enterprise dashboards, custom CRMs. Single-tenant, project-shaped builds engineered for your exact workflow.',
+    bg: '#CFF3E0',
     illustration: 'web',
+    bgImage: '/services/web-bg.svg',
   },
   {
     number: '03',
     title: 'Mobile App Development',
     description:
-      'Native and cross-platform mobile apps for iOS and Android. Built with React Native and Flutter for maximum performance and code reuse.',
-    bg: '#F5F6F8',
+      'iOS and Android via Flutter, with native fallback when the build demands it. App Store and Play Store submission included. Push, offline, biometrics, payments — all production-grade.',
+    bg: '#F5E1CD',
     illustration: 'mobile',
   },
   {
     number: '04',
     title: 'AI Agent Development',
     description:
-      'Custom AI agents that automate complex workflows — from intelligent document processing to multi-step decision systems integrated into your product.',
-    bg: '#0C0C0E',
+      'RAG pipelines, agentic workflows, voice agents, and LLM features built into existing or new SaaS. Production evals, observability, and a real ROI model — not demoware.',
+    bg: '#EADBF5',
     illustration: 'ai',
-    dark: true,
   },
 ];
 

@@ -339,57 +339,16 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Globe at bottom — with rotation, coral glow, and light sweep */}
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none hidden lg:block overflow-hidden">
-        {/* Coral glow that pulses behind the globe */}
-        <span
-          aria-hidden
-          className="absolute left-1/2 -translate-x-1/2 rounded-full"
-          style={{
-            bottom: -120,
-            width: 900,
-            height: 320,
-            background:
-              'radial-gradient(closest-side, rgba(242,107,78,0.45), rgba(242,107,78,0.18) 60%, transparent 75%)',
-            filter: 'blur(16px)',
-            animation: 'globeGlowPulse 5s ease-in-out infinite',
-          }}
+      {/* Globe at bottom — static (no animation) */}
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none hidden lg:flex justify-center">
+        <Image
+          src="/globe.png"
+          alt=""
+          width={1203}
+          height={375}
+          priority
+          className="w-[80%] max-w-[1203px] h-auto select-none"
         />
-
-        {/* Globe wrapper — slowly rotates */}
-        <div
-          className="relative flex justify-center"
-          style={{
-            width: '80%',
-            maxWidth: 1203,
-            margin: '0 auto',
-            animation: 'globeSpin 90s linear infinite',
-            transformOrigin: '50% 70%',
-          }}
-        >
-          <Image
-            src="/globe.png"
-            alt=""
-            width={1203}
-            height={375}
-            priority
-            className="w-full h-auto select-none"
-          />
-
-          {/* Light sweep beam — slides across the globe */}
-          <span
-            aria-hidden
-            className="absolute top-0 bottom-0 pointer-events-none"
-            style={{
-              left: 0,
-              width: '22%',
-              background:
-                'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%)',
-              animation: 'globeLightSweep 6.5s ease-in-out infinite',
-              mixBlendMode: 'screen',
-            }}
-          />
-        </div>
       </div>
 
       {/* Main content */}
@@ -476,13 +435,34 @@ export default function HeroSection() {
           </p>
 
           <div className="flex items-center justify-center gap-4 flex-wrap">
+            {/* Primary — coral pill: lift + shimmer sweep + glow shadow + arrow nudge */}
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 font-semibold text-white text-[15px] hover:opacity-95 transition"
+              className="group relative inline-flex items-center justify-center gap-2 font-semibold text-white text-[15px] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(242,107,78,0.45)] active:translate-y-0 active:shadow-[0_4px_12px_rgba(242,107,78,0.35)]"
               style={{ width: 201, height: 56, background: '#F26B4E', borderRadius: 30 }}
             >
-              Start Your Project
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              {/* Shimmer sweep */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 bg-white/25 opacity-0 transition-all duration-700 ease-out group-hover:left-[120%] group-hover:opacity-100"
+              />
+              {/* Background tint shift on hover */}
+              <span
+                aria-hidden
+                className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style={{
+                  background:
+                    'linear-gradient(135deg, #F26B4E 0%, #EC7161 50%, #E85B41 100%)',
+                }}
+              />
+              <span className="relative">Start Your Project</span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                className="relative transition-transform duration-300 ease-out group-hover:translate-x-1"
+              >
                 <path
                   d="M3 8h10M9 4l4 4-4 4"
                   stroke="white"
@@ -492,12 +472,22 @@ export default function HeroSection() {
                 />
               </svg>
             </Link>
+
+            {/* Secondary — white pill: lift + dark fill-from-bottom + text inverts */}
             <Link
               href="/work"
-              className="inline-flex items-center justify-center font-semibold text-[15px] text-[#0F1112] bg-white border border-[#D8D8D8] hover:border-[#0F1112]/30 transition"
+              className="group relative inline-flex items-center justify-center font-semibold text-[15px] bg-white border border-[#D8D8D8] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#0F1112] hover:shadow-[0_12px_28px_rgba(15,17,18,0.18)] active:translate-y-0"
               style={{ width: 209, height: 56, borderRadius: 30 }}
             >
-              View Case Studies
+              {/* Dark fill that rises from the bottom on hover */}
+              <span
+                aria-hidden
+                className="absolute inset-x-0 bottom-0 h-0 bg-[#0F1112] transition-[height] duration-300 ease-out group-hover:h-full"
+                style={{ borderRadius: 30 }}
+              />
+              <span className="relative text-[#0F1112] transition-colors duration-300 group-hover:text-white">
+                View Case Studies
+              </span>
             </Link>
           </div>
           </div>
