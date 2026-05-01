@@ -72,45 +72,73 @@ export default function WhyChooseUs() {
           </p>
         </div>
 
-        {/* 3 differentiator cards */}
+        {/* 3 differentiator cards — middle one (i=1) is the highlighted/active state */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
-          {whyChooseCards.map((card, i) => (
-            <article
-              key={card.title}
-              className={`rounded-2xl p-7 flex flex-col bg-[#131418] border ${
-                i === 1 ? 'border-[#F26B4E]/30' : 'border-[#1F2127]'
-              }`}
-            >
-              <div className="w-10 h-10 rounded-lg bg-[#1F2127] flex items-center justify-center mb-6">
-                {Icons[card.icon]}
-              </div>
-              <h3 className="text-[18px] font-semibold text-white leading-[26px] mb-3">
-                {card.title}
-              </h3>
-              <p className="text-[13px] text-[#A6A6A6] leading-[20px] mb-6 flex-1">
-                {card.body}
-              </p>
-
-              {/* Nested quote card */}
-              <div
-                className={`rounded-xl p-4 relative ${
-                  i === 1
-                    ? 'bg-white/5 border border-[#F26B4E]/40'
-                    : 'bg-white/[0.03] border border-[#1F2127]'
-                }`}
+          {whyChooseCards.map((card, i) => {
+            const isActive = i === 1;
+            return (
+              <article
+                key={card.title}
+                className="relative rounded-2xl p-7 flex flex-col transition-all"
+                style={
+                  isActive
+                    ? {
+                        // 1px linear-gradient border (BABABA → 170E0D) on a #2F2F2F card body.
+                        // Achieved via two stacked backgrounds with different background-clips
+                        // so rounded corners are preserved.
+                        background:
+                          'linear-gradient(#2F2F2F, #2F2F2F) padding-box, linear-gradient(180deg, #BABABA 0%, #170E0D 100%) border-box',
+                        border: '1px solid transparent',
+                      }
+                    : {
+                        background: '#131418',
+                        border: '1px solid #1F2127',
+                      }
+                }
               >
-                <p className="text-[12px] italic text-[#E5E7EC] leading-[18px] pr-10 mb-2">
-                  &ldquo;{card.quote}&rdquo;
-                </p>
-                <div className="absolute top-3 right-3">
-                  <QuoteMark />
+                <div className="w-10 h-10 rounded-lg bg-[#1F2127] flex items-center justify-center mb-6">
+                  {Icons[card.icon]}
                 </div>
-                <p className="text-[11px] font-medium text-[#F26B4E] mt-3">
-                  — {card.quoteAttribution}
+                <h3 className="text-[18px] font-semibold text-white leading-[26px] mb-3">
+                  {card.title}
+                </h3>
+                <p className="text-[13px] text-[#A6A6A6] leading-[20px] mb-6 flex-1">
+                  {card.body}
                 </p>
-              </div>
-            </article>
-          ))}
+
+                {/* Nested quote card */}
+                <div
+                  className="rounded-xl p-4 relative"
+                  style={
+                    isActive
+                      ? {
+                          background: '#FFFFFF',
+                          // Only a left coral accent — no other borders
+                          borderLeft: '2px solid #F26B4E',
+                        }
+                      : {
+                          background: 'rgba(255,255,255,0.03)',
+                          border: '1px solid #1F2127',
+                        }
+                  }
+                >
+                  <p
+                    className={`text-[12px] italic leading-[18px] pr-10 mb-2 ${
+                      isActive ? 'text-[#2F2F2F]' : 'text-[#E5E7EC]'
+                    }`}
+                  >
+                    &ldquo;{card.quote}&rdquo;
+                  </p>
+                  <div className="absolute top-3 right-3">
+                    <QuoteMark />
+                  </div>
+                  <p className="text-[11px] font-medium text-[#F26B4E] mt-3">
+                    — {card.quoteAttribution}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
         {/* 4 stat cards */}
@@ -120,7 +148,7 @@ export default function WhyChooseUs() {
               key={stat.label}
               className="rounded-2xl bg-[#131418] border border-[#1F2127] p-7 flex flex-col"
             >
-              <span className="text-[12px] font-medium text-[#8A8F99] mb-12">
+              <span className="text-[12px] font-medium text-[#8A8F99] mb-[120px]">
                 {stat.number}/
               </span>
               <div className="flex items-baseline gap-1">
