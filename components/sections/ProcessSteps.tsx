@@ -1,102 +1,419 @@
+'use client';
+
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { processSteps } from '@/data/saas-page';
 
-export default function ProcessSteps() {
+/* ── Dedicated icon per step ── */
+
+// 01 Discovery & Requirements — magnifying glass over a document
+const IconDiscovery = ({ active }: { active: boolean }) => {
+  const c = active ? '#F26B4E' : '#0F1112';
   return (
-    <section className="py-24 bg-white">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M5 3h9l5 5v9a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z" stroke={c} strokeWidth="1.6" strokeLinejoin="round" />
+      <path d="M14 3v5h5" stroke={c} strokeWidth="1.6" strokeLinejoin="round" />
+      <circle cx="11" cy="14" r="2.6" stroke={c} strokeWidth="1.6" />
+      <path d="M13 16l2 2" stroke={c} strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+};
+
+// 02 Solution Architecture — connected nodes / network
+const IconArchitecture = ({ active }: { active: boolean }) => {
+  const c = active ? '#F26B4E' : '#0F1112';
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <circle cx="12" cy="6" r="2.4" stroke={c} strokeWidth="1.6" />
+      <circle cx="5" cy="18" r="2.4" stroke={c} strokeWidth="1.6" />
+      <circle cx="19" cy="18" r="2.4" stroke={c} strokeWidth="1.6" />
+      <circle cx="12" cy="13" r="2.4" stroke={c} strokeWidth="1.6" />
+      <path d="M12 8.4v2.2M10 14.4l-3.4 2.4M14 14.4l3.4 2.4" stroke={c} strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+};
+
+// 03 Development & Customization — code brackets
+const IconDevelopment = ({ active }: { active: boolean }) => {
+  const c = active ? '#F26B4E' : '#0F1112';
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M9 7l-5 5 5 5M15 7l5 5-5 5" stroke={c} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M13 5l-2 14" stroke={c} strokeWidth="1.7" strokeLinecap="round" />
+    </svg>
+  );
+};
+
+// 04 QC & Deployment — rocket
+const IconDeployment = ({ active }: { active: boolean }) => {
+  const c = active ? '#F26B4E' : '#0F1112';
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M14.5 3c2 0 4 .5 5.5 1.5C21 6 21.5 8 21.5 10c-3 0-6 1.5-8 4l-3.5 3.5L7 14l3.5-3.5C13 8.5 14.5 5.5 14.5 3z"
+        stroke={c}
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <circle cx="15.5" cy="8.5" r="1.4" fill={c} />
+      <path d="M5 16l-2 5 5-2M9 18l-3 3" stroke={c} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+};
+
+const stepIcons = [IconDiscovery, IconArchitecture, IconDevelopment, IconDeployment];
+
+/* ── Reusable shared visual frame ── */
+function VisualFrame({ children, gradient }: { children: React.ReactNode; gradient: string }) {
+  return (
+    <div
+      className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden"
+      style={{ background: gradient }}
+    >
+      <svg
+        viewBox="0 0 400 300"
+        className="absolute inset-0 w-full h-full"
+        preserveAspectRatio="xMidYMid slice"
+        aria-hidden
+      >
+        {children}
+      </svg>
+    </div>
+  );
+}
+
+/* ── 1. Discovery & Requirements — magnifying glass over analytics ── */
+const DiscoveryVisual = () => (
+  <VisualFrame gradient="linear-gradient(135deg, #A4C5D8, #7AA5BD)">
+    <defs>
+      <linearGradient id="suit1" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#3F4A55" />
+        <stop offset="100%" stopColor="#1F262E" />
+      </linearGradient>
+    </defs>
+    <path d="M -20 220 L 200 200 L 220 320 L -20 320 Z" fill="url(#suit1)" />
+
+    {/* Floating chart bars */}
+    <g opacity="0.85">
+      {[0, 1, 2, 3, 4, 5].map((i) => (
+        <rect key={i} x={280 + i * 18} y={40 - i * 4} width="14" height={30 + i * 5} fill="#FFE8E1" rx="1" />
+      ))}
+      <text x="320" y="80" fontFamily="Inter, sans-serif" fontSize="6" fill="#FFFFFF" textAnchor="middle">
+        Lorem Ipsum
+      </text>
+    </g>
+
+    {/* Pie chart */}
+    <g transform="translate(330 130)">
+      <circle r="22" fill="#1F262E" />
+      <path d="M 0 -22 A 22 22 0 0 1 18 12 L 0 0 Z" fill="#10B981" />
+      <path d="M 18 12 A 22 22 0 0 1 -18 12 L 0 0 Z" fill="#FFE8E1" />
+      <text y="38" fontFamily="Inter, sans-serif" fontSize="6" fill="#FFFFFF" textAnchor="middle">
+        Lorem Ipsum
+      </text>
+    </g>
+
+    {/* Magnifier */}
+    <g transform="translate(200 145)">
+      <circle r="62" fill="#FFFFFF" opacity="0.95" />
+      <circle r="50" fill="#E1ECF2" />
+      <circle r="38" fill="#A8C8DA" />
+      <circle r="28" fill="#FFFFFF" />
+      <g transform="translate(-10 -8)">
+        <circle cx="0" cy="-2" r="3" fill="#1E5C7A" />
+        <path d="M -5 8 q 5 -6 10 0 v 2 h -10 z" fill="#1E5C7A" />
+      </g>
+      <g transform="translate(8 -2)">
+        <rect x="0" y="2" width="2" height="6" fill="#F26B4E" />
+        <rect x="3" y="-1" width="2" height="9" fill="#F26B4E" />
+        <rect x="6" y="-3" width="2" height="11" fill="#F26B4E" />
+      </g>
+      {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg) => (
+        <line key={deg} x1="0" y1="-58" x2="0" y2="-54" stroke="#1E5C7A" strokeWidth="1.4" transform={`rotate(${deg})`} />
+      ))}
+    </g>
+    <circle cx="200" cy="145" r="68" fill="none" stroke="#0F1112" strokeWidth="6" />
+    <line x1="248" y1="195" x2="295" y2="245" stroke="#0F1112" strokeWidth="9" strokeLinecap="round" />
+    <g transform="translate(255 200)">
+      <circle r="14" fill="#5C0A0A" />
+      <text y="3" fontFamily="Inter, sans-serif" fontSize="6" fontWeight="600" fill="#F26B4E" textAnchor="middle">
+        Xgenious
+      </text>
+    </g>
+  </VisualFrame>
+);
+
+/* ── 2. Solution Architecture — blueprints + connected nodes ── */
+const ArchitectureVisual = () => (
+  <VisualFrame gradient="linear-gradient(135deg, #DCE7F2, #B6CBE3)">
+    <defs>
+      <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#FFFFFF" strokeWidth="0.5" opacity="0.4" />
+      </pattern>
+    </defs>
+    <rect width="400" height="300" fill="url(#grid)" />
+
+    {/* Architecture nodes */}
+    <g stroke="#1E3A5F" strokeWidth="1.5" fill="none">
+      <line x1="100" y1="80" x2="200" y2="150" />
+      <line x1="200" y1="150" x2="300" y2="80" />
+      <line x1="200" y1="150" x2="100" y2="220" />
+      <line x1="200" y1="150" x2="300" y2="220" />
+      <line x1="100" y1="80" x2="100" y2="220" />
+      <line x1="300" y1="80" x2="300" y2="220" />
+    </g>
+
+    {/* Center hub */}
+    <g transform="translate(200 150)">
+      <circle r="32" fill="#FFFFFF" stroke="#1E3A5F" strokeWidth="2" />
+      <circle r="20" fill="#F26B4E" />
+      <path d="M -8 0 L -2 6 L 8 -6" stroke="#FFFFFF" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    </g>
+
+    {/* Corner nodes */}
+    {[
+      { x: 100, y: 80, label: 'API' },
+      { x: 300, y: 80, label: 'DB' },
+      { x: 100, y: 220, label: 'CDN' },
+      { x: 300, y: 220, label: 'AUTH' },
+    ].map((n) => (
+      <g key={n.label} transform={`translate(${n.x} ${n.y})`}>
+        <rect x="-22" y="-14" width="44" height="28" rx="4" fill="#FFFFFF" stroke="#1E3A5F" strokeWidth="1.5" />
+        <text y="4" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="600" fill="#1E3A5F" textAnchor="middle">
+          {n.label}
+        </text>
+      </g>
+    ))}
+
+    {/* Floating blueprint detail */}
+    <g transform="translate(340 260)" opacity="0.7">
+      <rect x="-22" y="-14" width="44" height="28" rx="2" fill="none" stroke="#1E3A5F" strokeWidth="1" />
+      <line x1="-18" y1="-8" x2="18" y2="-8" stroke="#1E3A5F" strokeWidth="0.6" />
+      <line x1="-18" y1="0" x2="14" y2="0" stroke="#1E3A5F" strokeWidth="0.6" />
+      <line x1="-18" y1="8" x2="10" y2="8" stroke="#1E3A5F" strokeWidth="0.6" />
+    </g>
+  </VisualFrame>
+);
+
+/* ── 3. Development & Customization — code editor mockup ── */
+const DevelopmentVisual = () => (
+  <VisualFrame gradient="linear-gradient(135deg, #1E2530, #0F141A)">
+    {/* Window */}
+    <rect x="40" y="40" width="320" height="220" rx="8" fill="#252B36" stroke="#3A424F" strokeWidth="1" />
+    <rect x="40" y="40" width="320" height="22" rx="8" fill="#1A1F28" />
+    <circle cx="56" cy="51" r="4" fill="#EF4444" />
+    <circle cx="70" cy="51" r="4" fill="#F59E0B" />
+    <circle cx="84" cy="51" r="4" fill="#10B981" />
+
+    {/* Sidebar */}
+    <rect x="40" y="62" width="60" height="198" fill="#1A1F28" />
+    {[80, 100, 120, 140, 160, 180].map((y) => (
+      <rect key={y} x="50" y={y} width="40" height="3" rx="0.5" fill="#3A424F" />
+    ))}
+
+    {/* Code lines */}
+    <g fontFamily="monospace" fontSize="10" fill="#FFFFFF">
+      <text x="115" y="92"><tspan fill="#C28BFF">function</tspan> <tspan fill="#7DD3FC">build</tspan>() {`{`}</text>
+      <text x="125" y="110"><tspan fill="#C28BFF">const</tspan> app = <tspan fill="#7DD3FC">create</tspan>();</text>
+      <text x="125" y="128"><tspan fill="#C28BFF">return</tspan> app.<tspan fill="#FBBF24">deploy</tspan>();</text>
+      <text x="115" y="146">{`}`}</text>
+      <text x="115" y="172"><tspan fill="#9CA3AF">{'// agile sprints'}</tspan></text>
+      <text x="115" y="190"><tspan fill="#C28BFF">async function</tspan> <tspan fill="#7DD3FC">ship</tspan>() {`{`}</text>
+      <text x="125" y="208"><tspan fill="#C28BFF">await</tspan> <tspan fill="#FBBF24">test</tspan>();</text>
+      <text x="125" y="226"><tspan fill="#C28BFF">await</tspan> <tspan fill="#FBBF24">release</tspan>();</text>
+      <text x="115" y="244">{`}`}</text>
+    </g>
+
+    {/* Cursor blink */}
+    <rect x="194" y="200" width="2" height="11" fill="#F26B4E">
+      <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
+    </rect>
+
+    {/* Floating gear */}
+    <g transform="translate(340 90)" fill="#F26B4E">
+      {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+        <rect key={deg} x="-2.5" y="-16" width="5" height="6" transform={`rotate(${deg})`} />
+      ))}
+      <circle r="11" />
+      <circle r="4" fill="#1E2530" />
+    </g>
+  </VisualFrame>
+);
+
+/* ── 4. QC & Deployment — checklist + rocket ── */
+const DeploymentVisual = () => (
+  <VisualFrame gradient="linear-gradient(135deg, #FFE8E1, #FFCCB8)">
+    {/* Stars */}
+    {[
+      [50, 60], [80, 30], [120, 80], [330, 50], [360, 100], [320, 30],
+    ].map(([x, y], i) => (
+      <g key={i} transform={`translate(${x} ${y})`}>
+        <path d="M 0 -3 L 1 -1 L 3 0 L 1 1 L 0 3 L -1 1 L -3 0 L -1 -1 Z" fill="#FFFFFF" opacity="0.7" />
+      </g>
+    ))}
+
+    {/* Checklist card */}
+    <g>
+      <rect x="40" y="80" width="160" height="160" rx="10" fill="#FFFFFF" stroke="#F26B4E" strokeWidth="1" />
+      <text x="60" y="108" fontFamily="Inter, sans-serif" fontSize="11" fontWeight="700" fill="#0F1112">
+        QA Checklist
+      </text>
+      {[
+        { y: 130, text: 'Unit tests', done: true },
+        { y: 150, text: 'E2E tests', done: true },
+        { y: 170, text: 'Performance', done: true },
+        { y: 190, text: 'Accessibility', done: true },
+        { y: 210, text: 'Production deploy', done: false },
+      ].map((item) => (
+        <g key={item.text}>
+          <rect x="60" y={item.y - 8} width="12" height="12" rx="2" fill={item.done ? '#F26B4E' : 'none'} stroke="#F26B4E" strokeWidth="1.2" />
+          {item.done && (
+            <path d={`M ${63} ${item.y - 2} L ${66} ${item.y + 1} L ${70} ${item.y - 4}`} stroke="white" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          )}
+          <text x="80" y={item.y + 1} fontFamily="Inter, sans-serif" fontSize="9" fill="#2F2F2F">
+            {item.text}
+          </text>
+        </g>
+      ))}
+    </g>
+
+    {/* Rocket */}
+    <g transform="translate(290 160)">
+      <path
+        d="M 0 -50 C -10 -45, -16 -20, -16 5 L -16 25 L 16 25 L 16 5 C 16 -20, 10 -45, 0 -50 Z"
+        fill="#FFFFFF"
+        stroke="#0F1112"
+        strokeWidth="1.6"
+      />
+      <circle cx="0" cy="-15" r="6" fill="#7DD3FC" stroke="#0F1112" strokeWidth="1.4" />
+      {/* Fins */}
+      <path d="M -16 5 L -28 30 L -16 25 Z" fill="#F26B4E" stroke="#0F1112" strokeWidth="1.4" />
+      <path d="M 16 5 L 28 30 L 16 25 Z" fill="#F26B4E" stroke="#0F1112" strokeWidth="1.4" />
+      {/* Flame */}
+      <path d="M -10 25 Q -8 50, 0 60 Q 8 50, 10 25 Z" fill="#F26B4E" />
+      <path d="M -5 30 Q -4 45, 0 55 Q 4 45, 5 30 Z" fill="#FBBF24" />
+    </g>
+
+    {/* Cloud */}
+    <g transform="translate(310 80)" fill="#FFFFFF" opacity="0.85">
+      <ellipse cx="0" cy="0" rx="18" ry="8" />
+      <ellipse cx="-12" cy="2" rx="8" ry="6" />
+      <ellipse cx="14" cy="2" rx="9" ry="6" />
+    </g>
+  </VisualFrame>
+);
+
+const visuals = [
+  <DiscoveryVisual key="d" />,
+  <ArchitectureVisual key="a" />,
+  <DevelopmentVisual key="dev" />,
+  <DeploymentVisual key="qa" />,
+];
+
+export default function ProcessSteps() {
+  const [active, setActive] = useState(0);
+
+  return (
+    <section
+      id="process"
+      className="py-24 relative overflow-hidden"
+      style={{
+        background:
+          'radial-gradient(120% 100% at 50% 0%, #FFF6F1 0%, #FBF1EB 35%, #F5EFEB 70%, #F0EAE5 100%)',
+      }}
+    >
       <div className="container-page">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left — steps */}
-          <div>
-            <span className="inline-block text-[12px] font-semibold uppercase tracking-[0.2em] text-[#F26B4E] mb-4">
-              How We Work
-            </span>
-            <h2 className="text-[44px] leading-[52px] font-semibold text-[#0F1112] tracking-[-0.01em]">
-              Clear Process,{' '}
-              <span className="italic font-semibold">Consistent Results</span>
-            </h2>
-            <p className="mt-5 text-[#484848] text-[15px] leading-6 max-w-[460px]">
-              No black boxes. You see every step, own every decision, and have full visibility
-              into where your project stands at all times.
-            </p>
+        {/* Centered header */}
+        <div className="text-center mb-14 max-w-[680px] mx-auto">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#FFE8E1] text-[#F26B4E] text-[12px] font-medium mb-5">
+            How We Work
+          </span>
+          <h2 className="text-[40px] lg:text-[44px] leading-[52px] font-bold text-[#0F1112] tracking-[-0.01em]">
+            Clear Process,{' '}
+            <span className="italic font-bold">Consistent Results.</span>
+          </h2>
+          <p className="mt-4 text-[#484848] text-[14px] leading-[22px] max-w-[560px] mx-auto">
+            From research to delivery, we combine strategy, design, and technology to create
+            scalable and user-focused digital experiences.
+          </p>
+        </div>
 
-            <ol className="mt-10 space-y-0">
-              {processSteps.map((step, i) => (
-                <li key={step.number} className="flex gap-5 relative">
-                  {i < processSteps.length - 1 && (
-                    <div className="absolute left-[18px] top-10 bottom-0 w-px bg-[#E5E7EC]" />
-                  )}
-                  <div className="flex-shrink-0 w-9 h-9 rounded-full bg-[#FFE8E1] flex items-center justify-center relative z-10">
-                    <span className="text-[12px] font-semibold text-[#F26B4E]">{step.number}</span>
-                  </div>
-                  <div className="pb-7">
-                    <h3 className="text-[16px] font-semibold text-[#0F1112] mb-1.5 leading-6">
-                      {step.title}
-                    </h3>
-                    <p className="text-[14px] text-[#484848] leading-[22px]">{step.description}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          {/* Right — focus visual */}
-          <div className="relative">
-            <div className="rounded-3xl bg-[#F5F6F8] aspect-[4/5] overflow-hidden relative">
-              {/* Grid pattern */}
-              <div
-                className="absolute inset-0 opacity-50"
-                style={{
-                  backgroundImage:
-                    'linear-gradient(#E5E7EC 1px, transparent 1px), linear-gradient(90deg, #E5E7EC 1px, transparent 1px)',
-                  backgroundSize: '32px 32px',
-                }}
-              />
-
-              {/* Magnifying glass */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <div className="relative">
-                  <div className="w-44 h-44 rounded-full bg-white/70 backdrop-blur-sm border-[6px] border-[#0F1112] shadow-2xl shadow-black/20 flex items-center justify-center">
-                    <div className="w-28 h-28 rounded-2xl bg-[#F26B4E] flex items-center justify-center">
-                      <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                        <path
-                          d="M14 14h20v20H14z"
-                          stroke="white"
-                          strokeWidth="3"
-                          strokeLinejoin="round"
-                          opacity="0.3"
-                        />
-                        <path
-                          d="M14 24h20M24 14v20"
-                          stroke="white"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                        />
-                      </svg>
+        {/* 2-column body */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          {/* Left — interactive step list */}
+          <div className="flex flex-col">
+            {processSteps.map((step, i) => {
+              const isActive = active === i;
+              const Icon = stepIcons[i];
+              return (
+                <button
+                  key={step.number}
+                  type="button"
+                  onClick={() => setActive(i)}
+                  onMouseEnter={() => setActive(i)}
+                  aria-pressed={isActive}
+                  className={`group relative text-left transition-all duration-500 ease-out overflow-hidden ${
+                    isActive
+                      ? 'bg-white rounded-xl px-6 py-5 shadow-[0_2px_18px_rgba(15,17,18,0.06)]'
+                      : 'px-6 py-5'
+                  }`}
+                >
+                  <div className="flex items-start gap-4">
+                    <span
+                      className={`flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-300 ${
+                        isActive ? 'bg-[#FFE8E1]' : 'bg-[#F5F6F8]'
+                      }`}
+                    >
+                      <Icon active={isActive} />
+                    </span>
+                    <div className="flex-1">
+                      <h3 className="text-[17px] font-semibold text-[#0F1112] leading-7">
+                        {step.title}
+                      </h3>
+                      {/* Description: animated open/close */}
+                      <AnimatePresence initial={false}>
+                        {isActive && (
+                          <motion.p
+                            key="desc"
+                            initial={{ height: 0, opacity: 0, marginTop: 0 }}
+                            animate={{ height: 'auto', opacity: 1, marginTop: 6 }}
+                            exit={{ height: 0, opacity: 0, marginTop: 0 }}
+                            transition={{ duration: 0.35, ease: 'easeOut' }}
+                            className="text-[13px] text-[#8A8F99] leading-[20px] overflow-hidden"
+                          >
+                            {step.description}
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
                     </div>
                   </div>
-                  <div className="absolute -bottom-12 -right-8 w-4 h-20 rounded-full bg-[#0F1112] rotate-45 origin-top-left" />
-                </div>
-              </div>
 
-              {/* Floating stats */}
-              <div className="absolute top-6 right-6 bg-white rounded-2xl shadow-xl shadow-black/5 p-4 border border-[#E5E7EC]">
-                <p className="text-[10px] text-[#8A8F99] font-medium uppercase tracking-wider">
-                  Sprint Completion
-                </p>
-                <p className="text-[24px] font-semibold text-[#0F1112] mt-0.5">96%</p>
-                <div className="mt-2 w-32 h-1 rounded-full bg-[#E5E7EC] overflow-hidden">
-                  <div className="h-full w-[96%] rounded-full bg-[#F26B4E]" />
-                </div>
-              </div>
+                  {/* Bottom accent line */}
+                  <span
+                    aria-hidden
+                    className={`absolute left-0 right-0 bottom-0 transition-all duration-300 ${
+                      isActive ? 'h-[3px] bg-[#F26B4E] rounded-full' : 'h-px bg-[#E5E7EC]'
+                    }`}
+                  />
+                </button>
+              );
+            })}
+          </div>
 
-              <div className="absolute bottom-6 left-6 bg-white rounded-2xl shadow-xl shadow-black/5 p-4 border border-[#E5E7EC]">
-                <p className="text-[10px] text-[#8A8F99] font-medium uppercase tracking-wider">
-                  On-Time Delivery
-                </p>
-                <p className="text-[24px] font-semibold text-[#0F1112] mt-0.5">98%</p>
-                <p className="text-[10px] text-emerald-600 font-medium mt-1">Industry avg: 64%</p>
-              </div>
-            </div>
+          {/* Right — animated swappable visual */}
+          <div className="relative w-full aspect-[4/3]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, scale: 0.97, y: 8 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.97, y: -8 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                className="absolute inset-0"
+              >
+                {visuals[active]}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>

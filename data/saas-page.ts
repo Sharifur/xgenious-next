@@ -183,8 +183,7 @@ export const processSteps = [
   {
     number: '01',
     title: 'Discovery & Requirements',
-    description:
-      'Deeply understanding your business goals, user needs, and technical constraints to define a clear roadmap.',
+    description: 'Understanding business needs, goals and technical requirement.',
   },
   {
     number: '02',
@@ -200,7 +199,7 @@ export const processSteps = [
   },
   {
     number: '04',
-    title: 'QA & Deployment',
+    title: 'QC & Deployment',
     description:
       'Comprehensive testing across devices and environments, followed by a smooth production deployment.',
   },
