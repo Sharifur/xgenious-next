@@ -2,12 +2,12 @@ import { trustedLogos } from '@/data/saas-page';
 
 export default function TrustedBy() {
   return (
-    <section className="py-12 bg-white">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <p className="text-center text-[12px] font-medium uppercase tracking-[0.18em] text-[#8A8F99] mb-8">
+    <section className="py-14 bg-white">
+      <div className="container-page">
+        <p className="text-center text-[12px] font-medium uppercase tracking-[0.18em] text-[#8A8F99] mb-7">
           Trusted by Leading Global Companies
         </p>
-        <div className="flex items-center justify-center flex-wrap gap-x-12 gap-y-6 lg:gap-x-16">
+        <div className="flex items-center justify-center flex-wrap gap-x-12 gap-y-5 lg:gap-x-16">
           {trustedLogos.map((logo) => (
             <span
               key={logo}

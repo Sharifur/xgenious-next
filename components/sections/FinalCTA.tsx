@@ -1,58 +1,53 @@
+import Image from 'next/image';
+
 export default function FinalCTA() {
   return (
-    <section className="py-24 bg-dark relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-accent/5 blur-3xl" />
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-blue-500/5 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-purple-500/5 blur-3xl" />
+    <section className="bg-[#0C0C0E] relative overflow-hidden pt-24 pb-32">
+      {/* Globe — bottom-fade */}
+      <div className="absolute inset-x-0 bottom-0 h-[400px] pointer-events-none flex justify-center">
+        <Image
+          src="/globe.png"
+          alt=""
+          width={1600}
+          height={500}
+          className="w-full max-w-[1600px] h-auto opacity-90"
+          style={{
+            filter: 'drop-shadow(0 0 60px rgba(242,107,78,0.2))',
+            mixBlendMode: 'screen',
+          }}
+        />
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-        <span className="text-xs font-semibold uppercase tracking-widest text-accent">
-          Let's Build Together
-        </span>
-        <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-          Ready to Build Your SaaS or{' '}
-          <span className="text-accent italic">Marketplace?</span>
+      {/* Glow */}
+      <div className="absolute inset-x-0 bottom-0 h-[300px] pointer-events-none">
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-[-100px] w-[800px] h-[400px] rounded-full bg-[#F26B4E]/15 blur-3xl" />
+      </div>
+
+      <div className="container-page relative z-10 text-center">
+        <h2 className="text-[40px] lg:text-[44px] leading-[1.15] font-semibold text-white tracking-[-0.01em] max-w-[720px] mx-auto">
+          Ready to Build Your SaaS or
+          <br />
+          <span className="italic font-semibold">Marketplace?</span>
         </h2>
-        <p className="mt-6 text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
-          From idea to production in weeks, not months. Let's talk about what
-          you're building and how we can help you ship it.
+        <p className="mt-5 text-[#A6A6A6] text-[14px] leading-6 max-w-[480px] mx-auto">
+          Book a free consultation — get a roadmap &amp; estimate.
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-accent text-white font-semibold text-sm hover:bg-accent-hover transition-colors shadow-lg shadow-orange-900/30"
-          >
-            Start Your Project
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-          <a
-            href="#portfolio"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-dark-border text-gray-300 font-semibold text-sm hover:border-gray-600 hover:text-white transition-colors"
-          >
-            View Our Work
-          </a>
-        </div>
-
-        {/* Trust indicators */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-8">
-          {[
-            { value: '7000+', label: 'Projects' },
-            { value: '100%', label: 'Satisfaction' },
-            { value: '24h', label: 'Response' },
-            { value: '5★', label: 'Rating' },
-          ].map((item) => (
-            <div key={item.label} className="text-center">
-              <p className="text-xl font-bold text-white">{item.value}</p>
-              <p className="text-xs text-gray-500 mt-0.5">{item.label}</p>
-            </div>
-          ))}
-        </div>
+        <a
+          href="#contact"
+          className="mt-8 inline-flex items-center gap-2 h-12 px-7 rounded-full bg-[#F26B4E] text-white font-semibold text-[14px] hover:bg-[#EC7161] transition-colors shadow-[0_8px_28px_rgba(242,107,78,0.35)]"
+        >
+          Book a free consultation
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </a>
       </div>
     </section>
   );

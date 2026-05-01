@@ -6,26 +6,38 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface AccordionItemProps {
   question: string;
   answer: string;
+  defaultOpen?: boolean;
 }
 
-export default function AccordionItem({ question, answer }: AccordionItemProps) {
-  const [open, setOpen] = useState(false);
+export default function AccordionItem({ question, answer, defaultOpen = false }: AccordionItemProps) {
+  const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div className="border-b border-gray-200 last:border-0">
+    <div
+      className={`rounded-2xl transition-colors ${
+        open ? 'bg-white border border-[#E5E7EC] shadow-[0_4px_18px_rgba(15,17,18,0.05)]' : 'bg-[#F5F6F8]'
+      }`}
+    >
       <button
-        className="w-full flex items-center justify-between py-5 text-left gap-4"
-        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between px-7 py-5 text-left gap-4"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
       >
-        <span className="text-base font-semibold text-gray-900">{question}</span>
+        <span className="text-[16px] font-semibold text-[#0F1112] leading-7">{question}</span>
         <span
-          className={`flex-shrink-0 w-7 h-7 rounded-full border-2 border-gray-300 flex items-center justify-center transition-transform ${
-            open ? 'rotate-45 border-accent' : ''
+          className={`flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all ${
+            open ? 'bg-[#F26B4E] text-white' : 'text-[#0F1112]'
           }`}
         >
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M6 1v10M1 6h10" stroke={open ? '#FF5500' : '#9CA3AF'} strokeWidth="2" strokeLinecap="round" />
-          </svg>
+          {open ? (
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 9l4-4 4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          ) : (
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          )}
         </span>
       </button>
 
@@ -38,7 +50,7 @@ export default function AccordionItem({ question, answer }: AccordionItemProps) 
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-gray-600 text-sm leading-relaxed">{answer}</p>
+            <p className="px-7 pb-6 text-[#484848] text-[14px] leading-[22px] max-w-[760px]">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
