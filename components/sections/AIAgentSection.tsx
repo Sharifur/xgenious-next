@@ -12,7 +12,12 @@ import { aiFeatures, aiTabs } from '@/data/saas-page';
 function VisualFrame({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#0C0C0E] border border-[#1F2127]">
-      <svg viewBox="0 0 400 280" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet" aria-hidden>
+      <svg
+        viewBox="0 0 400 280"
+        className="absolute inset-0 w-full h-full"
+        preserveAspectRatio="xMidYMid meet"
+        aria-hidden
+      >
         {children}
       </svg>
     </div>
@@ -208,12 +213,12 @@ const IntegrationsVisual = () => (
 
     {/* Surrounding app nodes */}
     {[
-      { x: 80,  y: 60,  bg: '#1F2127', icon: 'S', color: '#3B82F6' }, // Slack
-      { x: 320, y: 60,  bg: '#1F2127', icon: 'G', color: '#10B981' }, // GitHub
-      { x: 50,  y: 140, bg: '#1F2127', icon: 'N', color: '#22C55E' }, // Notion
-      { x: 350, y: 140, bg: '#1F2127', icon: 'L', color: '#A78BFA' }, // Linear
-      { x: 80,  y: 220, bg: '#1F2127', icon: 'F', color: '#EF4444' }, // Figma
-      { x: 320, y: 220, bg: '#1F2127', icon: 'D', color: '#7DD3FC' }, // Drive
+      { x: 80,  y: 60,  bg: '#1F2127', icon: 'S', color: '#3B82F6' },
+      { x: 320, y: 60,  bg: '#1F2127', icon: 'G', color: '#10B981' },
+      { x: 50,  y: 140, bg: '#1F2127', icon: 'N', color: '#22C55E' },
+      { x: 350, y: 140, bg: '#1F2127', icon: 'L', color: '#A78BFA' },
+      { x: 80,  y: 220, bg: '#1F2127', icon: 'F', color: '#EF4444' },
+      { x: 320, y: 220, bg: '#1F2127', icon: 'D', color: '#7DD3FC' },
     ].map((n) => (
       <g key={`${n.x}-${n.y}`} transform={`translate(${n.x} ${n.y})`}>
         <circle r="22" fill={n.bg} stroke={n.color} strokeWidth="1.4" />
