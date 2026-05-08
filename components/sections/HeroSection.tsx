@@ -277,7 +277,30 @@ const CARD_WIDTH = 220;
 const DOT_SIZE = 44;
 const ARROW_GAP = 22; // space below dot for the arrow + breathing room
 
-export default function HeroSection() {
+type HeroProps = {
+  eyebrow?: string;
+  title?: React.ReactNode;
+  subtitle?: string;
+  primaryCtaText?: string;
+  primaryCtaHref?: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+};
+
+export default function HeroSection({
+  eyebrow = 'Custom SaaS Development',
+  title = (
+    <>
+      Where Custom Solutions Meet{' '}
+      <span style={{ fontStyle: 'italic', fontWeight: 600 }}>Real Impact</span>
+    </>
+  ),
+  subtitle = "We're an engineering-led studio building greenfield SaaS, web apps, mobile apps, and AI agents for mid-market companies. Real projects from $50K — no script clones, no copy-paste templates.",
+  primaryCtaText = 'Start Your Project',
+  primaryCtaHref = '/contact',
+  secondaryCtaText = 'View Case Studies',
+  secondaryCtaHref = '/work',
+}: HeroProps = {}) {
   // Index of the active globe point (null = none). Hover shows it; click pins it.
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
   const [pinnedIdx, setPinnedIdx] = useState<number | null>(null);
@@ -401,7 +424,7 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-sm border border-white/80 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#F26B4E]" />
             <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#2F2F2F]">
-              Custom SaaS Development
+              {eyebrow}
             </span>
           </div>
 
@@ -415,8 +438,7 @@ export default function HeroSection() {
               marginBottom: 22,
             }}
           >
-            Where Custom Solutions Meet{' '}
-            <span style={{ fontStyle: 'italic', fontWeight: 600 }}>Real Impact</span>
+            {title}
           </h1>
 
           <p
@@ -429,15 +451,13 @@ export default function HeroSection() {
               marginBottom: 32,
             }}
           >
-            We&apos;re an engineering-led studio building greenfield SaaS, web apps, mobile apps,
-            and AI agents for mid-market companies. Real projects from $50K — no script clones,
-            no copy-paste templates.
+            {subtitle}
           </p>
 
           <div className="flex items-center justify-center gap-4 flex-wrap">
             {/* Primary — coral pill: lift + shimmer sweep + glow shadow + arrow nudge */}
             <Link
-              href="/contact"
+              href={primaryCtaHref}
               className="group relative inline-flex items-center justify-center gap-2 font-semibold text-white text-[15px] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(242,107,78,0.45)] active:translate-y-0 active:shadow-[0_4px_12px_rgba(242,107,78,0.35)]"
               style={{ width: 201, height: 56, background: '#F26B4E', borderRadius: 30 }}
             >
@@ -455,7 +475,7 @@ export default function HeroSection() {
                     'linear-gradient(135deg, #F26B4E 0%, #EC7161 50%, #E85B41 100%)',
                 }}
               />
-              <span className="relative">Start Your Project</span>
+              <span className="relative">{primaryCtaText}</span>
               <svg
                 width="14"
                 height="14"
@@ -475,7 +495,7 @@ export default function HeroSection() {
 
             {/* Secondary — white pill: lift + dark fill-from-bottom + text inverts */}
             <Link
-              href="/work"
+              href={secondaryCtaHref}
               className="group relative inline-flex items-center justify-center font-semibold text-[15px] bg-white border border-[#D8D8D8] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#0F1112] hover:shadow-[0_12px_28px_rgba(15,17,18,0.18)] active:translate-y-0"
               style={{ width: 209, height: 56, borderRadius: 30 }}
             >
@@ -486,7 +506,7 @@ export default function HeroSection() {
                 style={{ borderRadius: 30 }}
               />
               <span className="relative text-[#0F1112] transition-colors duration-300 group-hover:text-white">
-                View Case Studies
+                {secondaryCtaText}
               </span>
             </Link>
           </div>

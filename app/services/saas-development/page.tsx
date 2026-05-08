@@ -1,38 +1,34 @@
 import type { Metadata } from 'next';
-import HeroSection from '@/components/sections/HeroSection';
-import TrustedBy from '@/components/sections/TrustedBy';
-import ServicesGrid from '@/components/sections/ServicesGrid';
-import WhyChooseUs from '@/components/sections/WhyChooseUs';
-import PortfolioGrid from '@/components/sections/PortfolioGrid';
-import TechStack from '@/components/sections/TechStack';
-import ProcessSteps from '@/components/sections/ProcessSteps';
-import AIAgentSection from '@/components/sections/AIAgentSection';
-import Testimonials from '@/components/sections/Testimonials';
-import FAQ from '@/components/sections/FAQ';
-import BookingCTA from '@/components/sections/BookingCTA';
-import FinalCTA from '@/components/sections/FinalCTA';
+import Hero from './_components/Hero';
+import WhatWeBuild from './_components/WhatWeBuild';
+import HowWeWork from './_components/HowWeWork';
+import TrustCompliance from './_components/TrustCompliance';
+import Pricing from './_components/Pricing';
+import TechStack from './_components/TechStack';
+import Testimonial from './_components/Testimonial';
+import BookCall from './_components/BookCall';
+import FAQSection from './_components/FAQSection';
+import CTASection from './_components/CTASection';
 
 export const metadata: Metadata = {
-  title: 'SaaS Development Services | Xgenious',
+  title: 'SaaS Development | Xgenious',
   description:
-    'We build scalable SaaS platforms, web apps, mobile products, and AI agents. From MVP to production — on time, with full ownership.',
+    'Powerful SaaS Solutions for Business Growth. GDPR, HIPAA and SOC 2 ready architectures by default. Built by a team that has shipped 50+ SaaS products since 2017.',
 };
 
 export default function SaasDevelopmentPage() {
   return (
     <>
-      <HeroSection />
-      <TrustedBy />
-      <ServicesGrid />
-      <WhyChooseUs />
-      <PortfolioGrid />
+      <Hero />
+      <WhatWeBuild />
+      <HowWeWork />
+      <TrustCompliance />
+      <Pricing />
       <TechStack />
-      <ProcessSteps />
-      <AIAgentSection />
-      <Testimonials />
-      <FAQ />
-      <BookingCTA />
-      <FinalCTA />
+      <Testimonial />
+      <BookCall />
+      <FAQSection />
+      <CTASection />
     </>
   );
 }
