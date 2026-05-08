@@ -1,93 +1,92 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
 
 const faqs = [
   {
-    q: 'What are product design services?',
-    a: 'Product design services encompass a comprehensive set of strategies, methodologies, and creative processes aimed at conceiving, developing, and refining digital or physical products to meet user needs and business goals.',
+    q: 'Does webflow support custom code?',
+    a: 'Yes. We integrate custom code within Webflow projects where needed, though our app development work is focused on native iOS, Android, and Flutter cross-platform builds.',
   },
   {
-    q: 'How long does it take to build a mobile app?',
-    a: 'Timeline depends on complexity. A simple MVP typically takes 8–12 weeks. Full-featured apps with complex backends can take 4–6 months. We publish a milestone list on day one.',
+    q: 'How fast can you actually ship a SaaS MVP?',
+    a: 'Our fixed-scope MVP packages run 8–16 weeks from signed agreement to production. We publish the milestone list on day one so there are no sprint surprises.',
   },
   {
-    q: 'Do you build for both iOS and Android?',
-    a: 'Yes. We use Flutter for cross-platform development, delivering native-quality apps for iOS, Android, and web from a single codebase — saving time and cost without sacrificing quality.',
+    q: 'What does the fixed price cover?',
+    a: 'The fixed price covers everything in the agreed scope: design, development, testing, and App Store/Play Store submission. Changes outside scope are quoted separately before any work begins.',
   },
   {
-    q: 'What happens after the app launches?',
-    a: 'Every engagement includes a post-launch support window. After that you can move to a monthly retainer for feature work, infrastructure management, and on-call SRE.',
+    q: 'Where will my customer data be hosted?',
+    a: 'By default we deploy to AWS in the region you specify (EU, US, GCC). We can accommodate GDPR, HIPAA, and local data-residency requirements from day one.',
   },
   {
-    q: 'Can we work under NDA before sharing our idea?',
+    q: 'Do you sign GDPR DPAs?',
+    a: 'Yes. A GDPR Data Processing Agreement is standard on every engagement. HIPAA Business Associate Agreements are available on request at no extra cost.',
+  },
+  {
+    q: 'Can we work under NDA?',
     a: 'Absolutely. We sign NDAs before any detailed discussions. Send us a request and we will have it back to you within one business day.',
+  },
+  {
+    q: 'What happens after launch?',
+    a: 'Every plan includes a post-launch support window. After that you can move to a monthly retainer for feature work, app store updates, and on-call support.',
   },
 ];
 
 export default function FAQSection() {
-  const [open, setOpen] = useState(1);
+  const [open, setOpen] = useState<number>(1);
 
   return (
     <section className="py-[120px] bg-white">
-      <div className="container-page flex items-start gap-[120px]">
-        {/* Left */}
-        <div className="flex flex-col gap-8 flex-shrink-0" style={{ maxWidth: 420 }}>
-          <h2
-            className="text-[#26302b] font-semibold capitalize"
-            style={{ fontSize: 64, lineHeight: '72px' }}
+      <div className="container-page flex flex-col gap-[72px] items-center">
+        <div className="flex flex-col items-center gap-4 text-center max-w-[621px]">
+          <div
+            className="inline-flex items-center px-4 py-[6px] rounded-[165px]"
+            style={{ background: 'rgba(242,107,78,0.12)' }}
           >
-            Development<br />Questions<br />Answered
-          </h2>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 font-semibold text-white rounded-[30px] self-start transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(236,113,97,0.4)]"
-            style={{ background: '#ec7161', padding: '22px 32px', fontSize: 16 }}
-          >
-            Ask Questions
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-              <path d="M7 13H19M19 13L14 8M19 13L14 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
+            <span className="text-[#ec7161] font-normal" style={{ fontSize: 16, lineHeight: '24px' }}>
+              Frequently Asked &amp; Questions
+            </span>
+          </div>
+          <div className="flex flex-col gap-4 items-center">
+            <h2 className="text-[#0f1112] font-semibold" style={{ fontSize: 44, lineHeight: '52px' }}>
+              Real Questions, Real Answer
+            </h2>
+            <p className="text-[#484848] font-normal" style={{ fontSize: 16, lineHeight: '24px', maxWidth: 492 }}>
+              The questions every app buyer actually asks. If yours isn&apos;t here, ask it on the call — we will answer it honestly.
+            </p>
+          </div>
         </div>
 
-        {/* Right accordion */}
-        <div className="flex flex-col gap-4 flex-1">
+        <div className="flex flex-col gap-4 w-full">
           {faqs.map((faq, i) => {
             const isOpen = open === i;
             return (
-              <div key={i} className="border-b" style={{ borderColor: '#e7e7e7' }}>
+              <div key={i} className="rounded-[4px] bg-[#f5f6f8] overflow-hidden">
                 <button
-                  className="w-full flex items-center justify-between text-left py-5 gap-4"
+                  className="w-full flex items-center justify-between text-left px-4 py-4 gap-4"
+                  style={{ minHeight: 56 }}
                   onClick={() => setOpen(isOpen ? -1 : i)}
                 >
-                  <span className="font-semibold" style={{ fontSize: 20, lineHeight: '28px', color: '#26302b' }}>
+                  <span className="font-medium" style={{ fontSize: 20, lineHeight: '28px', color: '#0f1112' }}>
                     {faq.q}
                   </span>
-                  <div
-                    className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full"
-                    style={{
-                      background: isOpen ? '#ec7161' : '#f5f6f8',
-                      transition: 'background 0.2s',
-                    }}
-                  >
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}
-                    >
-                      <path d="M3 5L8 10L13 5" stroke={isOpen ? 'white' : '#26302b'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
+                  {isOpen ? (
+                    <div className="relative flex-shrink-0 w-8 h-8">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/images/web-app-dev/faq-icon-up-bg.svg" alt="" className="absolute inset-0 w-full h-full" />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/images/web-app-dev/faq-icon-up-frame.svg" alt="" className="absolute inset-[4px] w-6 h-6 rotate-180" />
+                    </div>
+                  ) : (
+                    <div className="flex-shrink-0 w-8 h-8 bg-white rounded-[16px] flex items-center justify-center">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/images/web-app-dev/faq-icon-down.svg" alt="" width={16} height={16} />
+                    </div>
+                  )}
                 </button>
                 {isOpen && (
-                  <p
-                    className="font-normal pb-5"
-                    style={{ fontSize: 18, lineHeight: '26px', color: '#484848' }}
-                  >
+                  <p className="font-normal px-4 pb-4" style={{ fontSize: 18, lineHeight: '26px', color: '#2f2f2f' }}>
                     {faq.a}
                   </p>
                 )}

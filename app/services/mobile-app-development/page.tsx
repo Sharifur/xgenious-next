@@ -1,34 +1,30 @@
 import type { Metadata } from 'next';
 import Hero from './_components/Hero';
-import Experience from './_components/Experience';
-import StatsCounter from './_components/StatsCounter';
+import WhyChooseUs from './_components/WhyChooseUs';
+import Process from './_components/Process';
+import WorkShowcase from './_components/WorkShowcase';
 import TechStack from './_components/TechStack';
-import WhatWeBuild from './_components/WhatWeBuild';
-import HowWeWork from './_components/HowWeWork';
-import Testimonials from './_components/Testimonials';
-import Clients from './_components/Clients';
-import BlogPosts from './_components/BlogPosts';
+import Pricing from './_components/Pricing';
+import BookCall from './_components/BookCall';
 import FAQSection from './_components/FAQSection';
 import CTASection from './_components/CTASection';
 
 export const metadata: Metadata = {
-  title: 'Mobile App Development | Xgenious',
+  title: 'App Development | Xgenious',
   description:
-    'Outstanding Mobile Apps Development Experience. Flutter, React Native, Swift and Kotlin apps for iOS and Android. Built by a team that has shipped 50+ products since 2017.',
+    'Precision-built iOS, Android, and cross-platform mobile applications. Flutter, Kotlin, and Swift apps designed for growth and user engagement. Built by a team that has shipped 40+ products.',
 };
 
-export default function MobileAppDevelopmentPage() {
+export default function AppDevelopmentPage() {
   return (
     <>
       <Hero />
-      <Experience />
-      <StatsCounter />
+      <WhyChooseUs />
+      <Process />
+      <WorkShowcase />
       <TechStack />
-      <WhatWeBuild />
-      <HowWeWork />
-      <Testimonials />
-      <Clients />
-      <BlogPosts />
+      <Pricing />
+      <BookCall />
       <FAQSection />
       <CTASection />
     </>

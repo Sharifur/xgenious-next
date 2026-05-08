@@ -7,7 +7,6 @@ export interface DropdownItem {
 export const servicesDropdown: DropdownItem[] = [
   { label: 'Web App Development', href: '/services/web-app-development' },
   { label: 'Mobile App Development', href: '/services/mobile-app-development' },
-  { label: 'App Development', href: '/services/app-development' },
   { label: 'SaaS Development', href: '/services/saas-development' },
 ];
 
@@ -38,7 +37,6 @@ export const footerLinks = {
   services: [
     { label: 'Web App Development', href: '/services/web-app-development' },
     { label: 'Mobile App Development', href: '/services/mobile-app-development' },
-    { label: 'App Development', href: '/services/app-development' },
     { label: 'SaaS Development', href: '/services/saas-development' },
   ],
   company: [
