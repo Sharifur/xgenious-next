@@ -59,9 +59,9 @@ html {
 }
 
 
-/* Container utility — Figma uses 1200px content width */
+/* Container utility */
 .container-page {
-  max-width: 1200px;
+  max-width: 1320px;
   margin-inline: auto;
   padding-inline: 1.5rem;
 }
@@ -70,4 +70,13 @@ html {
   .container-page {
     padding-inline: 2rem;
   }
+}
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-25%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-25%); }
+  to   { transform: translateX(0); }
 }
