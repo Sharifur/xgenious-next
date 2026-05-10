@@ -467,7 +467,7 @@ function CardBackground({ src }: { src: string }) {
 
 export default function ServicesGrid() {
   return (
-    <section id="solutions" className="py-24 bg-white">
+    <section id="solutions" className="py-24 bg-white pt-10">
       <div className="container-page">
         {/* Header — split: heading left, description right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
