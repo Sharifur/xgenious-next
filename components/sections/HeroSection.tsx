@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
+import { IconArrowRight } from '@tabler/icons-react';
 
 const HeroBackground = dynamic(() => import('@/components/ui/HeroBackground'), { ssr: false });
 
@@ -476,21 +477,11 @@ export default function HeroSection({
                 }}
               />
               <span className="relative">{primaryCtaText}</span>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 16 16"
-                fill="none"
+              <IconArrowRight
+                size={14}
+                stroke={1.6}
                 className="relative transition-transform duration-300 ease-out group-hover:translate-x-1"
-              >
-                <path
-                  d="M3 8h10M9 4l4 4-4 4"
-                  stroke="white"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              />
             </Link>
 
             {/* Secondary — white pill: lift + dark fill-from-bottom + text inverts */}

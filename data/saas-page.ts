@@ -20,6 +20,7 @@ export type Service = {
   description: string;
   bg: string;
   illustration: 'saas' | 'web' | 'mobile' | 'ai';
+  href: string;
   /** Optional asset paths — when provided, the card uses real images
    *  instead of the inline SVG illustration. */
   bgImage?: string;
@@ -34,8 +35,7 @@ export const services: Service[] = [
       'From-scratch multi-tenant SaaS products. Subscription billing, multi-region hosting, audit logs, SSO, and compliance built into the architecture — not bolted on later.',
     bg: '#E1E7F3',
     illustration: 'saas',
-    /* Background: SVG approximation that ships with the repo. Swap to
-       /services/saas-bg.png to use the real reference image once saved. */
+    href: '/services/saas-development',
     bgImage: '/services/saas-development-service-bg.jpg',
     illustrationImage: '/services/saas-illustration.png',
   },
@@ -46,6 +46,7 @@ export const services: Service[] = [
       'Custom web platforms — internal tools, B2B portals, enterprise dashboards, custom CRMs. Single-tenant, project-shaped builds engineered for your exact workflow.',
     bg: '#CFF3E0',
     illustration: 'web',
+    href: '/services/web-app-development',
     bgImage: '/services/web-app-development-bg.jpg',
     illustrationImage: '/services/web-app-development-illustration.png',
   },
@@ -56,6 +57,7 @@ export const services: Service[] = [
       'iOS and Android via Flutter, with native fallback when the build demands it. App Store and Play Store submission included. Push, offline, biometrics, payments — all production-grade.',
     bg: '#F5E1CD',
     illustration: 'mobile',
+    href: '/services/mobile-app-development',
     bgImage: '/services/mobile-app-development-bg.jpg',
     illustrationImage: '/services/mobile-app-development-illustration.png',
   },
@@ -66,6 +68,7 @@ export const services: Service[] = [
       'RAG pipelines, agentic workflows, voice agents, and LLM features built into existing or new SaaS. Production evals, observability, and a real ROI model — not demoware.',
     bg: '#EADBF5',
     illustration: 'ai',
+    href: '/services/ai-agent-development',
     bgImage: '/services/ai-agent-development-bg.jpg',
     illustrationImage: '/services/ai-agent-development-illustration.png',
   },

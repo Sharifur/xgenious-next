@@ -1,9 +1,11 @@
 'use client';
 
 import type { ReactElement } from 'react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
-import { services } from '@/data/saas-page';
+import Link from 'next/link';
+import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion';
+import { services, type Service } from '@/data/saas-page';
 
 /* ───────────────────────────────────────────────────────────────
    "Creating the Future of Your Digital Presence"
@@ -431,7 +433,7 @@ function IllustrationImg({
       alt={alt}
       width={420}
       height={320}
-      className="w-full max-w-[420px] h-auto"
+      className="w-auto h-auto max-w-[350px]"
       onError={() => setErrored(true)}
       unoptimized
     />
@@ -465,7 +467,107 @@ function CardBackground({ src }: { src: string }) {
   );
 }
 
+/* Each card receives the shared container scroll progress so all cards
+   remain sticky simultaneously within the one parent. */
+function StackCard({
+  s,
+  index,
+  total,
+  progress,
+}: {
+  s: Service;
+  index: number;
+  total: number;
+  progress: MotionValue<number>;
+}) {
+  const n = total - 1; // number of transitions
+  // Divide [0,1] into equal segments; card i scales during segment i
+  const segStart = index / n;
+  const segEnd = Math.min((index + 1) / n, 1);
+
+  const scale = useTransform(progress, [segStart, segEnd], [1, index === total - 1 ? 1 : 0.9]);
+
+  return (
+    <>
+      {/* Spacer between cards creates the scroll distance needed for stacking */}
+      {index > 0 && <div aria-hidden style={{ height: '100vh' }} />}
+
+      <motion.article
+        style={{
+          scale,
+          position: 'sticky',
+          top: '120px',
+          zIndex: index + 1,
+          backgroundColor: s.bg,
+        }}
+        className="relative rounded-[24px] flex flex-col sm:flex-row items-stretch justify-between overflow-hidden min-h-[300px] pt-10 pb-10 pl-10 pr-10"
+      >
+        {s.bgImage && <CardBackground src={s.bgImage} />}
+
+        {/* Left — copy */}
+        <div className="relative flex-1 py-5 flex flex-col justify-between max-w-[640px]">
+          <div>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="text-[36px] lg:text-[40px] font-bold text-[#0F1112] leading-none tracking-[-0.01em]">
+                {s.number}
+              </span>
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path
+                  d="M4 11h14M13 6l5 5-5 5"
+                  stroke="#0F1112"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <h3 className="text-[32px] lg:text-[36px] font-bold leading-tight text-[#0F1112] tracking-[-0.01em]">
+                {s.title}
+              </h3>
+            </div>
+            <p className="text-[15px] leading-[24px] text-[#484848] max-w-[480px]">
+              {s.description}
+            </p>
+          </div>
+          <Link
+            href={s.href}
+            className="mt-[150px] self-start inline-flex items-center gap-2 px-5 h-11 rounded-full bg-white text-[#0F1112] text-[13px] font-medium shadow-[0_2px_8px_rgba(15,17,18,0.08)] hover:bg-[#F26B4E] hover:text-white hover:shadow-[0_6px_16px_rgba(242,107,78,0.35)] transition-colors duration-300 ease-in-out"
+          >
+            View More Details
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path
+                d="M3.5 8.5l5-5M4.5 3.5h4v4"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Link>
+        </div>
+
+        {/* Right — illustration */}
+        <div className="relative flex-shrink-0 w-[410px] flex items-center pl-[60px] pr-10 border-l border-[#BABABA] overflow-hidden">
+          <div className="ml-auto">
+            {s.illustrationImage ? (
+              <IllustrationImg
+                src={s.illustrationImage}
+                alt={`${s.title} illustration`}
+                fallback={ill[s.illustration]}
+              />
+            ) : (
+              ill[s.illustration]
+            )}
+          </div>
+        </div>
+      </motion.article>
+    </>
+  );
+}
+
 export default function ServicesGrid() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef });
+
   return (
     <section id="solutions" className="py-24 bg-white pt-10">
       <div className="container-page">
@@ -490,76 +592,19 @@ export default function ServicesGrid() {
           </div>
         </div>
 
-        {/* Service cards */}
-        <div className="space-y-5">
-          {services.map((s) => (
-            <article
+        {/* Single container — all cards share the same sticky context */}
+        <div ref={containerRef}>
+          {services.map((s, index) => (
+            <StackCard
               key={s.number}
-              className="relative rounded-[24px] flex flex-col sm:flex-row items-stretch transition-transform hover:-translate-y-0.5 overflow-hidden min-h-[300px]"
-              style={{ backgroundColor: s.bg }}
-            >
-              {/* Optional decorative background image (auto-falls back to bg color on 404) */}
-              {s.bgImage && <CardBackground src={s.bgImage} />}
-
-              {/* Left — copy */}
-              <div className="relative flex-1 px-10 lg:px-14 py-10 lg:py-14 flex flex-col justify-center max-w-[640px]">
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="text-[36px] lg:text-[40px] font-bold text-[#0F1112] leading-none tracking-[-0.01em]">
-                    {s.number}
-                  </span>
-                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                    <path
-                      d="M4 11h14M13 6l5 5-5 5"
-                      stroke="#0F1112"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <h3 className="text-[32px] lg:text-[36px] font-bold leading-tight text-[#0F1112] tracking-[-0.01em]">
-                    {s.title}
-                  </h3>
-                </div>
-                <p className="text-[15px] leading-[24px] text-[#484848] max-w-[480px]">
-                  {s.description}
-                </p>
-                <button className="mt-[100px] self-start inline-flex items-center gap-2 px-5 h-11 rounded-full bg-white text-[#0F1112] text-[13px] font-medium shadow-[0_2px_8px_rgba(15,17,18,0.08)] hover:shadow-[0_6px_16px_rgba(15,17,18,0.14)] transition-shadow">
-                  View More Details
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path
-                      d="M3.5 8.5l5-5M4.5 3.5h4v4"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Vertical divider — only when there's a real illustration on the right */}
-              {s.illustrationImage && (
-                <div
-                  aria-hidden
-                  className="hidden lg:block w-px self-stretch my-12"
-                  style={{ background: 'rgba(15,17,18,0.10)' }}
-                />
-              )}
-
-              {/* Right — illustration (uses real image when present, SVG otherwise) */}
-              <div className="relative flex-shrink-0 flex items-center justify-center px-8 py-6 lg:py-10 lg:pr-14 lg:pl-10">
-                {s.illustrationImage ? (
-                  <IllustrationImg
-                    src={s.illustrationImage}
-                    alt={`${s.title} illustration`}
-                    fallback={ill[s.illustration]}
-                  />
-                ) : (
-                  ill[s.illustration]
-                )}
-              </div>
-            </article>
+              s={s}
+              index={index}
+              total={services.length}
+              progress={scrollYProgress}
+            />
           ))}
+          {/* Bottom breathing room after last card */}
+          <div aria-hidden style={{ height: '40vh' }} />
         </div>
       </div>
     </section>

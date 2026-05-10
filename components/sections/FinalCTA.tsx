@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { IconArrowRight } from '@tabler/icons-react';
 
 export default function FinalCTA() {
   return (
@@ -38,15 +39,7 @@ export default function FinalCTA() {
           className="mt-8 inline-flex items-center gap-2 h-12 px-7 rounded-full bg-[#F26B4E] text-white font-semibold text-[14px] hover:bg-[#EC7161] transition-colors shadow-[0_8px_28px_rgba(242,107,78,0.35)]"
         >
           Book a free consultation
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M3 8h10M9 4l4 4-4 4"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <IconArrowRight size={14} stroke={1.5} />
         </a>
       </div>
     </section>

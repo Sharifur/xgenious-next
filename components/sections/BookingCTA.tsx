@@ -1,4 +1,5 @@
 'use client';
+import { IconArrowRight, IconChevronDown } from '@tabler/icons-react';
 
 const days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 // 5 weeks of dates with availability state
@@ -19,9 +20,7 @@ function CalendarMock() {
         <span className="text-[14px] font-semibold text-[#0F1112]">Pick a time</span>
         <button className="flex items-center gap-1.5 text-[12px] text-[#8A8F99]">
           April 2
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-            <path d="M2 4l3 3 3-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <IconChevronDown size={10} stroke={1.4} />
         </button>
       </div>
 
@@ -70,9 +69,7 @@ function CalendarMock() {
       {/* Confirm */}
       <button className="mt-5 w-full h-11 rounded-full bg-[#F26B4E] text-white text-[13px] font-semibold flex items-center justify-center gap-2 hover:bg-[#EC7161] transition-colors">
         Confirm 2:30 PM, April 2
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <IconArrowRight size={12} stroke={1.5} />
       </button>
     </div>
   );
