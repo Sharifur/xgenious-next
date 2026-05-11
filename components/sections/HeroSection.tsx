@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { IconArrowRight } from '@tabler/icons-react';
 
 const HeroBackground = dynamic(() => import('@/components/ui/HeroBackground'), { ssr: false });
@@ -302,10 +302,22 @@ export default function HeroSection({
   secondaryCtaText = 'View Case Studies',
   secondaryCtaHref = '/work',
 }: HeroProps = {}) {
-  // Index of the active globe point (null = none). Hover shows it; click pins it.
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
   const [pinnedIdx, setPinnedIdx] = useState<number | null>(null);
-  const activeIdx = hoverIdx ?? pinnedIdx;
+  const [autoIdx, setAutoIdx] = useState<number>(0);
+  const autoRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Auto-cycle through dots every 2.5 s; pause while user is hovering or has pinned
+  useEffect(() => {
+    autoRef.current = setInterval(() => {
+      if (hoverIdx === null && pinnedIdx === null) {
+        setAutoIdx((i) => (i + 1) % dots.length);
+      }
+    }, 2500);
+    return () => { if (autoRef.current) clearInterval(autoRef.current); };
+  }, [hoverIdx, pinnedIdx]);
+
+  const activeIdx = hoverIdx ?? pinnedIdx ?? autoIdx;
 
   const setHover = (i: number | null) => setHoverIdx(i);
   const togglePin = (i: number) => setPinnedIdx((p) => (p === i ? null : i));

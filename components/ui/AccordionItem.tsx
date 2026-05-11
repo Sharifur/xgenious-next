@@ -19,7 +19,7 @@ export default function AccordionItem({ question, answer, defaultOpen = false }:
       }`}
     >
       <button
-        className="w-full flex items-center justify-between px-7 py-5 text-left gap-4"
+        className="w-full flex items-center justify-between px-7 py-5 text-left gap-4 cursor-pointer"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
       >
