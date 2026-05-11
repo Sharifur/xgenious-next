@@ -87,24 +87,14 @@ export default function WhyChooseUs() {
             return (
               <article
                 key={card.title}
-                className="relative rounded-2xl p-7 flex flex-col transition-all cursor-default"
+                className="relative rounded-2xl p-7 flex flex-col cursor-default"
                 onMouseEnter={() => setActiveIdx(i)}
                 onMouseLeave={() => setActiveIdx(1)}
-                style={
-                  isActive
-                    ? {
-                        // 1px linear-gradient border (BABABA → 170E0D) on a #2F2F2F card body.
-                        // Achieved via two stacked backgrounds with different background-clips
-                        // so rounded corners are preserved.
-                        background:
-                          'linear-gradient(#2F2F2F, #2F2F2F) padding-box, linear-gradient(180deg, #BABABA 0%, #170E0D 100%) border-box',
-                        border: '1px solid transparent',
-                      }
-                    : {
-                        background: '#131418',
-                        border: '1px solid #1F2127',
-                      }
-                }
+                style={{
+                  background: isActive ? '#2F2F2F' : '#131418',
+                  border: `1px solid ${isActive ? '#BABABA' : '#1F2127'}`,
+                  transition: 'background 0.35s ease, border-color 0.35s ease',
+                }}
               >
                 <div className="w-10 h-10 rounded-lg bg-[#434343] flex items-center justify-center mb-6">
                   {Icons[card.icon]}
@@ -119,22 +109,18 @@ export default function WhyChooseUs() {
                 {/* Nested quote card */}
                 <div
                   className="rounded-xl p-4 relative"
-                  style={
-                    isActive
-                      ? {
-                          background: '#FFFFFF',
-                          borderLeft: '3px solid #F26B4E',
-                        }
-                      : {
-                          background: '#2F2F2F',
-                          borderLeft: '3px solid #BABABA',
-                        }
-                  }
+                  style={{
+                    background: isActive ? '#FFFFFF' : '#2F2F2F',
+                    borderLeft: `3px solid ${isActive ? '#F26B4E' : '#BABABA'}`,
+                    transition: 'background 0.35s ease, border-color 0.35s ease',
+                  }}
                 >
                   <p
-                    className={`text-[12px] italic leading-[18px] pr-10 mb-2 ${
-                      isActive ? 'text-[#2F2F2F]' : 'text-[#E5E7EC]'
-                    }`}
+                    className="text-[12px] italic leading-[18px] pr-10 mb-2"
+                    style={{
+                      color: isActive ? '#2F2F2F' : '#E5E7EC',
+                      transition: 'color 0.35s ease',
+                    }}
                   >
                     &ldquo;{card.quote}&rdquo;
                   </p>
