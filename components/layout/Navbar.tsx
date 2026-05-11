@@ -42,20 +42,26 @@ function Dropdown({
   active?: boolean;
 }) {
   const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
-    function onDocClick(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    }
-    document.addEventListener('mousedown', onDocClick);
-    return () => document.removeEventListener('mousedown', onDocClick);
-  }, []);
+  function cancelClose() {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  }
+
+  function scheduleClose() {
+    closeTimer.current = setTimeout(() => setOpen(false), 300);
+  }
+
+  useEffect(() => () => { if (closeTimer.current) clearTimeout(closeTimer.current); }, []);
 
   return (
-    <div ref={ref} className="relative">
+    <div
+      className="relative"
+      onMouseEnter={() => { cancelClose(); setOpen(true); }}
+      onMouseLeave={scheduleClose}
+    >
       <button
-        className={`flex items-center gap-1.5 text-[14px] font-medium leading-5 transition-colors py-1 ${
+        className={`flex items-center gap-1.5 text-[14px] font-medium leading-5 transition-colors py-1 cursor-pointer ${
           active ? 'text-[#F26B4E]' : 'text-[#2F2F2F] hover:text-[#0F1112]'
         }`}
         onClick={() => setOpen((v) => !v)}
