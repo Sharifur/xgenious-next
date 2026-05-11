@@ -24,12 +24,16 @@ function VisualFrame({ children }: { children: React.ReactNode }) {
   );
 }
 
-/* 01 Custom AI Agent Development — autopilot customer support chat */
+/* 01 Custom AI Agent Development — typewriter input → send → AI reply */
 
-// phase durations in ms
-const PHASE_DURATIONS = [1200, 700, 1400, 700, 1200, 700, 1400, 2800];
-//                        ^user1 typing  ^ai1 typing  ^user2 typing  ^ai2 typing
-//                              ^user1 msg     ^ai1 msg     ^user2 msg     ^ai2 msg + pause
+const MSG1 = 'Hi, I need help with my order #4521';
+const MSG2 = 'Can I change the delivery address?';
+
+// phases: 0=typing msg1, 1=msg1 in chat, 2=AI typing1, 3=AI msg1,
+//         4=typing msg2, 5=msg2 in chat, 6=AI typing2, 7=AI msg2+pause
+const PHASE_DELAYS: Record<number, number> = {
+  1: 500, 2: 1400, 3: 800, 5: 500, 6: 1400, 7: 2800,
+};
 
 function TypingDots({ color = '#A6A6A6' }: { color?: string }) {
   return (
@@ -74,24 +78,51 @@ function ChatBubble({ from, text, typing }: { from: 'user' | 'ai'; text?: string
 
 const DevelopmentVisual = () => {
   const [phase, setPhase] = useState(0);
+  const [inputText, setInputText] = useState('');
+  const [charIdx, setCharIdx] = useState(0);
 
+  const isTypingPhase = phase === 0 || phase === 4;
+  const currentMsg = phase <= 3 ? MSG1 : MSG2;
+
+  // Typewriter: add one char at a time into the input field
   useEffect(() => {
-    const timer = setTimeout(
-      () => setPhase((p) => (p >= 7 ? 0 : p + 1)),
-      PHASE_DURATIONS[phase] ?? 1000,
-    );
-    return () => clearTimeout(timer);
-  }, [phase]);
+    if (!isTypingPhase) return;
+    if (charIdx < currentMsg.length) {
+      const t = setTimeout(() => {
+        setInputText(currentMsg.slice(0, charIdx + 1));
+        setCharIdx((c) => c + 1);
+      }, 52);
+      return () => clearTimeout(t);
+    }
+    // Finished typing → send after brief pause
+    const t = setTimeout(() => {
+      setPhase((p) => p + 1);
+      setInputText('');
+      setCharIdx(0);
+    }, 380);
+    return () => clearTimeout(t);
+  }, [phase, charIdx, isTypingPhase, currentMsg]);
 
-  // what's visible at each phase
-  const showUserTyping1 = phase === 0;
-  const showUserMsg1    = phase >= 1;
-  const showAiTyping1   = phase === 2;
-  const showAiMsg1      = phase >= 3;
-  const showUserTyping2 = phase === 4;
-  const showUserMsg2    = phase >= 5;
-  const showAiTyping2   = phase === 6;
-  const showAiMsg2      = phase >= 7;
+  // Fixed-delay phases (non-typing)
+  useEffect(() => {
+    if (isTypingPhase) return;
+    const delay = PHASE_DELAYS[phase];
+    if (delay === undefined) return;
+    const t = setTimeout(
+      () => setPhase((p) => (p >= 7 ? 0 : p + 1)),
+      delay,
+    );
+    return () => clearTimeout(t);
+  }, [phase, isTypingPhase]);
+
+  const showUserMsg1  = phase >= 1;
+  const showAiTyping1 = phase === 2;
+  const showAiMsg1    = phase >= 3;
+  const showUserMsg2  = phase >= 5;
+  const showAiTyping2 = phase === 6;
+  const showAiMsg2    = phase >= 7;
+
+  const showPlaceholder = inputText === '';
 
   return (
     <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#0C0C0E] border border-[#1F2127] flex flex-col">
@@ -114,20 +145,31 @@ const DevelopmentVisual = () => {
 
       {/* Messages */}
       <div className="flex-1 p-4 flex flex-col gap-3 overflow-hidden">
-        {showUserTyping1 && <ChatBubble key="ut1" from="user" typing />}
-        {showUserMsg1    && <ChatBubble key="um1" from="user" text="Hi, I need help with my order #4521" />}
-        {showAiTyping1   && <ChatBubble key="at1" from="ai" typing />}
-        {showAiMsg1      && <ChatBubble key="am1" from="ai" text="On it! Order #4521 is in transit — arriving tomorrow by 5 PM." />}
-        {showUserTyping2 && <ChatBubble key="ut2" from="user" typing />}
-        {showUserMsg2    && <ChatBubble key="um2" from="user" text="Can I change the delivery address?" />}
-        {showAiTyping2   && <ChatBubble key="at2" from="ai" typing />}
-        {showAiMsg2      && <ChatBubble key="am2" from="ai" text="Done! Address updated and confirmation sent to your email." />}
+        {showUserMsg1  && <ChatBubble key="um1" from="user" text={MSG1} />}
+        {showAiTyping1 && <ChatBubble key="at1" from="ai" typing />}
+        {showAiMsg1    && <ChatBubble key="am1" from="ai" text="On it! Order #4521 is in transit — arriving tomorrow by 5 PM." />}
+        {showUserMsg2  && <ChatBubble key="um2" from="user" text={MSG2} />}
+        {showAiTyping2 && <ChatBubble key="at2" from="ai" typing />}
+        {showAiMsg2    && <ChatBubble key="am2" from="ai" text="Done! Address updated and confirmation sent to your email." />}
       </div>
 
-      {/* Input bar */}
+      {/* Input bar — typewriter text appears here */}
       <div className="px-4 py-3 border-t border-[#1F2127] flex items-center gap-2 flex-shrink-0 bg-[#131418]">
-        <div className="flex-1 bg-[#1F2127] rounded-full px-3 py-2">
-          <p className="text-[10px] text-[#484848]">Customer message...</p>
+        <div
+          className="flex-1 bg-[#1F2127] rounded-full px-3 py-2 flex items-center overflow-hidden"
+          style={{ minHeight: 28 }}
+        >
+          {showPlaceholder ? (
+            <p className="text-[10px] text-[#484848] select-none">Customer message...</p>
+          ) : (
+            <p className="text-[10px] text-[#E5E7EC] truncate">
+              {inputText}
+              <span
+                className="inline-block w-[1px] h-[10px] bg-[#F26B4E] ml-[1px] align-middle"
+                style={{ animation: 'blinkPulse 1s step-end infinite' }}
+              />
+            </p>
+          )}
         </div>
         <div className="w-7 h-7 rounded-full bg-[#F26B4E] flex items-center justify-center flex-shrink-0">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
