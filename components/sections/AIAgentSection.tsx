@@ -6,13 +6,15 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { aiFeatures, aiTabs } from '@/data/saas-page';
 
 const LOGOS: Record<string, string> = {
-  'Stripe':  '/integrations/stripe.svg',
-  'Slack':   '/integrations/slack.png',
-  'Gmail':   '/integrations/gmail.svg',
-  'HubSpot': '/integrations/hubspot.svg',
-  'Shopify': '/integrations/shopify.svg',
-  'Notion':  '/integrations/notion.svg',
-  'Cal.com': '/integrations/calcom.svg',
+  'Stripe':     '/integrations/stripe.svg',
+  'Slack':      '/integrations/slack.png',
+  'Gmail':      '/integrations/gmail.svg',
+  'HubSpot':    '/integrations/hubspot.svg',
+  'Shopify':    '/integrations/shopify.svg',
+  'Notion':     '/integrations/notion.svg',
+  'Cal.com':    '/integrations/calcom.svg',
+  'Mailchimp':  '/integrations/mailchimp.svg',
+  'Asana':      '/integrations/asana.svg',
 };
 
 function PlatformLogo({ name, size = 16 }: { name: string; size?: number }) {
@@ -328,14 +330,17 @@ function WfStepRow({ step, status, isLast }: { step: (typeof WF_STEPS)[number]; 
                 style={{ color: status === 'idle' ? '#3F3F46' : '#E5E7EC' }}>
                 {step.label}
               </span>
-              <span className="text-[9px] px-1.5 py-0.5 rounded flex-shrink-0"
+              <div
+                className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 transition-all duration-300"
                 style={{
                   background: status === 'idle' ? '#18181B' : step.color + '18',
-                  color: status === 'idle' ? '#3F3F46' : step.color,
                   border: `1px solid ${status === 'idle' ? '#27272A' : step.color + '35'}`,
-                }}>
-                {step.app}
-              </span>
+                  opacity: status === 'idle' ? 0.4 : 1,
+                }}
+                title={step.app}
+              >
+                <PlatformLogo name={step.app} size={13} />
+              </div>
             </div>
             {isActive && (
               <span className="text-[9px] flex-shrink-0"
