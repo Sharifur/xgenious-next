@@ -769,7 +769,7 @@ export default function AIAgentSection() {
         {/* Outer scale wrapper — grows from small square in top-right */}
         <motion.div
           className="w-full"
-          style={{ scale, transformOrigin: 'top right', willChange: 'transform' }}
+          style={{ scale, transformOrigin: 'center', willChange: 'transform' }}
         >
           <section className="py-16">
             <div className="container-page">
