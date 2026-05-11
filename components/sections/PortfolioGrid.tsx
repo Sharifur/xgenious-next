@@ -70,7 +70,7 @@ export default function PortfolioGrid() {
       {/* Full-width auto-sliding strip */}
       <div className="relative overflow-hidden">
         {/* Left shadow — 50% overflows outside the left edge */}
-        <svg width="200" height="500" viewBox="0 0 294 1347" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 z-10 pointer-events-none select-none" style={{ left: -100 }} aria-hidden>
+        <svg width="400" height="500" viewBox="0 0 294 1347" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 z-10 pointer-events-none select-none" style={{ left: -200 }} aria-hidden>
           <g filter="url(#shadow-left)">
             <ellipse cx="-84" cy="673.199" rx="244" ry="539.5" fill="white" fillOpacity="0.88"/>
           </g>
@@ -83,7 +83,7 @@ export default function PortfolioGrid() {
           </defs>
         </svg>
         {/* Right shadow — flipped horizontally, 50% overflows outside the right edge */}
-        <svg width="200" height="500" viewBox="0 0 294 1347" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 z-10 pointer-events-none select-none" style={{ right: -100, transform: 'scaleX(-1)' }} aria-hidden>
+        <svg width="400" height="500" viewBox="0 0 294 1347" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 z-10 pointer-events-none select-none" style={{ right: -200, transform: 'scaleX(-1)' }} aria-hidden>
           <g filter="url(#shadow-right)">
             <ellipse cx="-84" cy="673.199" rx="244" ry="539.5" fill="white" fillOpacity="0.88"/>
           </g>
