@@ -71,10 +71,10 @@ export default function PortfolioGrid() {
       <div className="relative overflow-hidden">
         {/* Left shadow */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/shadow.svg" alt="" aria-hidden className="absolute left-0 top-0 h-full w-auto z-10 pointer-events-none select-none" style={{ objectFit: 'fill' }} />
+        <img src="/shadow.svg" alt="" aria-hidden className="absolute left-0 top-0 w-auto z-10 pointer-events-none select-none" style={{ height: 500 }} />
         {/* Right shadow — flipped horizontally */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/shadow.svg" alt="" aria-hidden className="absolute right-0 top-0 h-full w-auto z-10 pointer-events-none select-none" style={{ objectFit: 'fill', transform: 'scaleX(-1)' }} />
+        <img src="/shadow.svg" alt="" aria-hidden className="absolute right-0 top-0 w-auto z-10 pointer-events-none select-none" style={{ height: 500, transform: 'scaleX(-1)' }} />
         <div
           className="flex gap-5 w-max px-5"
           style={{
