@@ -331,17 +331,15 @@ function WfStepRow({ step, status, isLast }: { step: (typeof WF_STEPS)[number]; 
                 {step.label}
               </span>
               <div
-                className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 transition-all duration-300"
+                className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300"
                 style={{
-                  background: step.app === 'Mailchimp'
-                    ? (status === 'idle' ? '#2a2a2a' : '#ffffff')
-                    : (status === 'idle' ? '#18181B' : step.color + '18'),
-                  border: `1px solid ${status === 'idle' ? '#27272A' : step.color + '35'}`,
-                  opacity: status === 'idle' ? 0.45 : 1,
+                  background: '#ffffff',
+                  border: `1px solid ${status === 'idle' ? '#27272A' : step.color + '50'}`,
+                  opacity: status === 'idle' ? 0.4 : 1,
                 }}
                 title={step.app}
               >
-                <PlatformLogo name={step.app} size={18} />
+                <PlatformLogo name={step.app} size={22} />
               </div>
             </div>
             {isActive && (
