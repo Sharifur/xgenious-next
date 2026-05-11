@@ -269,13 +269,12 @@ export const processSteps = [
 
 /* ── AI AGENT ── */
 export const aiFeatures = [
-  { number: '01', title: 'Custom AI Agent Development',  description: 'Autonomous reasoning, tool use, multi-step workflows' },
-  { number: '02', title: 'Work flow Automation',         description: 'End-to-end orchestration across systems and teams' },
-  { number: '03', title: 'Data-Driven Decision Systems', description: 'Predictive models tuned to your operational reality' },
-  { number: '04', title: 'Intelligent Integrations',     description: 'LLM-native connectors for the tools you already use' },
+  { number: '01', title: 'Custom AI Agent Development', description: 'Autonomous reasoning, tool use, multi-step workflows' },
+  { number: '02', title: 'Workflow Automation',         description: 'End-to-end orchestration across systems and teams' },
+  { number: '03', title: 'Intelligent Integrations',    description: 'LLM-native connectors for the tools you already use' },
 ];
 
-export const aiTabs = ['Development', 'Automation', 'Data-Driven', 'Integrations'];
+export const aiTabs = ['Development', 'Automation', 'Integrations'];
 
 /* ── TESTIMONIALS ── */
 export type Testimonial = {
