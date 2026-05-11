@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import StatCounter from '@/components/ui/StatCounter';
 import { stats, whyChooseCards } from '@/data/saas-page';
@@ -45,6 +48,8 @@ const QuoteMark = () => (
 );
 
 export default function WhyChooseUs() {
+  const [activeIdx, setActiveIdx] = useState(1);
+
   return (
     <section className="py-24 bg-[#0C0C0E] relative overflow-hidden">
       {/* Subtle radial glow */}
@@ -76,14 +81,15 @@ export default function WhyChooseUs() {
           </p>
         </div>
 
-        {/* 3 differentiator cards — middle one (i=1) is the highlighted/active state */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
           {whyChooseCards.map((card, i) => {
-            const isActive = i === 1;
+            const isActive = activeIdx === i;
             return (
               <article
                 key={card.title}
-                className="relative rounded-2xl p-7 flex flex-col transition-all"
+                className="relative rounded-2xl p-7 flex flex-col transition-all cursor-default"
+                onMouseEnter={() => setActiveIdx(i)}
+                onMouseLeave={() => setActiveIdx(1)}
                 style={
                   isActive
                     ? {
