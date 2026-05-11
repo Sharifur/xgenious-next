@@ -182,43 +182,189 @@ const DevelopmentVisual = () => {
   );
 };
 
-/* 02 Automation — animated workflow pipeline (lead onboarding scenario) */
-const WORKFLOW_STEPS = [
+/* 02 Automation — execution timeline (lead onboarding workflow) */
+
+type WfStatus = 'idle' | 'running' | 'done';
+
+const WF_STEPS = [
   {
-    abbr: 'EM', label: 'Send welcome email', detail: 'To: lead@company.com', color: '#EA4335',
-    icon: <path d="M2 4h10v7H2zM2 4l5 4 5-4" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinejoin="round" />,
+    label: 'Send welcome email',
+    app: 'Mailchimp',
+    running: 'Sending via SMTP...',
+    done: 'Delivered · 0.3 s',
+    output: 'lead@company.com',
+    color: '#4FC3F7',
   },
   {
-    abbr: 'CR', label: 'Create CRM contact', detail: 'HubSpot pipeline added', color: '#FF7A59',
-    icon: <><circle cx="6" cy="4" r="2.5" stroke="currentColor" strokeWidth="1.2" fill="none" /><path d="M1 11c0-2.8 2.2-4 5-4s5 1.2 5 4" stroke="currentColor" strokeWidth="1.2" fill="none" /></>,
+    label: 'Create CRM contact',
+    app: 'HubSpot',
+    running: 'POST /contacts...',
+    done: 'Contact #84231 created',
+    output: 'Pipeline: New Lead',
+    color: '#FF7A59',
   },
   {
-    abbr: 'SL', label: 'Notify sales channel', detail: '#inbound-leads alerted', color: '#4A9C6D',
-    icon: <><rect x="1.5" y="2" width="11" height="8" rx="2" stroke="currentColor" strokeWidth="1.2" fill="none" /><path d="M4 12l2-2h5" stroke="currentColor" strokeWidth="1.2" fill="none" /></>,
+    label: 'Alert sales channel',
+    app: 'Slack',
+    running: 'Posting message...',
+    done: 'Message delivered',
+    output: '#inbound-leads',
+    color: '#4A9C6D',
   },
   {
-    abbr: 'TK', label: 'Create onboarding task', detail: 'Due in 48h · Assigned', color: '#6366F1',
-    icon: <><rect x="2" y="1.5" width="10" height="11" rx="1.5" stroke="currentColor" strokeWidth="1.2" fill="none" /><path d="M4 5h6M4 7.5h4M4.5 10l1.5 1.5L9 7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" fill="none" /></>,
-  },
-  {
-    abbr: 'AN', label: 'Log to analytics', detail: 'Funnel stage: MQL', color: '#10B981',
-    icon: <><path d="M2 11L5 7l3 2 4-5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" fill="none" /><path d="M2 13h10" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></>,
+    label: 'Schedule follow-up',
+    app: 'Asana',
+    running: 'Creating task...',
+    done: 'Task #T-2847 created',
+    output: 'Due in 48 h · assigned',
+    color: '#A78BFA',
   },
 ];
+
+function WfConnector({ fromStatus }: { fromStatus: WfStatus }) {
+  return (
+    <div className="flex items-center" style={{ paddingLeft: 13, height: 18 }}>
+      <div
+        className="w-px flex-none"
+        style={{
+          height: '100%',
+          background:
+            fromStatus === 'done'
+              ? '#10B981'
+              : fromStatus === 'running'
+              ? '#F26B4E'
+              : '#252528',
+          opacity: fromStatus === 'idle' ? 0.4 : 1,
+          transition: 'background 0.4s',
+        }}
+      />
+    </div>
+  );
+}
+
+function WfStepRow({
+  step,
+  status,
+  isLast,
+}: {
+  step: (typeof WF_STEPS)[number];
+  status: WfStatus;
+  isLast: boolean;
+}) {
+  const isDone    = status === 'done';
+  const isRunning = status === 'running';
+
+  return (
+    <>
+      <div className="flex items-start gap-3">
+        {/* Left: icon circle */}
+        <div className="flex flex-col items-center flex-shrink-0" style={{ width: 28 }}>
+          <div
+            className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300"
+            style={{
+              background: isDone
+                ? 'rgba(16,185,129,0.15)'
+                : isRunning
+                ? 'rgba(242,107,78,0.15)'
+                : '#18181B',
+              border: isDone
+                ? '1.5px solid rgba(16,185,129,0.5)'
+                : isRunning
+                ? '1.5px solid rgba(242,107,78,0.5)'
+                : '1.5px solid #27272A',
+              boxShadow: isRunning ? '0 0 10px rgba(242,107,78,0.25)' : 'none',
+            }}
+          >
+            {isDone ? (
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <path d="M2 5.5l2.5 2.5L9 3" stroke="#10B981" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            ) : isRunning ? (
+              <span className="w-2 h-2 rounded-full bg-[#F26B4E]" style={{ animation: 'blinkPulse 0.8s step-end infinite' }} />
+            ) : (
+              <span className="w-1.5 h-1.5 rounded-full bg-[#3F3F46]" />
+            )}
+          </div>
+        </div>
+
+        {/* Right: content */}
+        <div
+          className="flex-1 min-w-0 rounded-lg px-3 py-2 transition-all duration-300"
+          style={{
+            background: isDone
+              ? 'rgba(16,185,129,0.04)'
+              : isRunning
+              ? 'rgba(242,107,78,0.06)'
+              : 'transparent',
+            border: isRunning
+              ? '1px solid rgba(242,107,78,0.14)'
+              : isDone
+              ? '1px solid rgba(16,185,129,0.1)'
+              : '1px solid transparent',
+          }}
+        >
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-1.5 min-w-0">
+              <span
+                className="text-[11px] font-medium truncate"
+                style={{ color: status === 'idle' ? '#3F3F46' : '#E5E7EC' }}
+              >
+                {step.label}
+              </span>
+              <span
+                className="text-[9px] px-1.5 py-0.5 rounded flex-shrink-0"
+                style={{
+                  background: status === 'idle' ? '#18181B' : step.color + '18',
+                  color: status === 'idle' ? '#3F3F46' : step.color,
+                  border: `1px solid ${status === 'idle' ? '#27272A' : step.color + '35'}`,
+                }}
+              >
+                {step.app}
+              </span>
+            </div>
+            {isRunning && (
+              <span className="text-[9px] text-[#F26B4E] flex-shrink-0" style={{ animation: 'blinkPulse 1.2s step-end infinite' }}>
+                running
+              </span>
+            )}
+            {isDone && (
+              <span className="text-[9px] text-[#10B981] flex-shrink-0">{step.done.split('·')[1]?.trim() ?? ''}</span>
+            )}
+          </div>
+
+          {/* Sub-line */}
+          {isRunning && (
+            <p className="text-[9px] mt-1 font-mono text-[#F26B4E]/70" style={{ animation: 'fadeSlideUp 0.25s ease-out both' }}>
+              {step.running}
+            </p>
+          )}
+          {isDone && (
+            <div className="flex items-center gap-1 mt-1" style={{ animation: 'fadeSlideUp 0.25s ease-out both' }}>
+              <span className="text-[9px] text-[#8A8F99]">{step.output}</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {!isLast && <WfConnector fromStatus={status} />}
+    </>
+  );
+}
 
 const AutomationVisual = () => {
   const [phase, setPhase] = useState(0);
 
   useEffect(() => {
-    // phase 0 = trigger shown, 1-5 = step running, 6 = all done + pause
-    const delays = [700, 950, 950, 950, 950, 950, 2600];
-    const t = setTimeout(() => setPhase((p) => (p >= 6 ? 0 : p + 1)), delays[phase] ?? 950);
+    // 0 = trigger, 1-4 = step running, 5 = all done + pause
+    const delays = [600, 1000, 1000, 1000, 1000, 2600];
+    const t = setTimeout(() => setPhase((p) => (p >= 5 ? 0 : p + 1)), delays[phase] ?? 1000);
     return () => clearTimeout(t);
   }, [phase]);
 
   const completedCount = Math.max(0, phase - 1);
+  const allDone = phase === 5;
 
-  const getStatus = (i: number): 'idle' | 'running' | 'done' => {
+  const getStatus = (i: number): WfStatus => {
     if (phase === 0) return 'idle';
     if (i < phase - 1) return 'done';
     if (i === phase - 1) return 'running';
@@ -227,89 +373,85 @@ const AutomationVisual = () => {
 
   return (
     <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#0C0C0E] border border-[#1F2127] flex flex-col">
-      {/* Trigger card */}
-      <div
-        className="mx-4 mt-4 rounded-xl p-3 flex items-center gap-3 flex-shrink-0"
-        style={{ background: 'rgba(242,107,78,0.07)', border: '1px solid rgba(242,107,78,0.18)', animation: 'fadeSlideUp 0.4s ease-out both' }}
-      >
-        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(242,107,78,0.14)' }}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M8.5 1.5L2 8h5l-1.5 5 7.5-7.5H8L8.5 1.5z" fill="#F26B4E" />
+
+      {/* Header bar */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[#1A1A1D] flex-shrink-0" style={{ background: '#0E0E11' }}>
+        <div className="flex items-center gap-2">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <path d="M7.5 1L1.5 7.5h4.5l-1.5 4.5L11 5.5H6.5L7.5 1z" fill="#F26B4E" />
           </svg>
+          <span className="text-[11px] font-semibold text-[#E5E7EC]">Lead Onboarding</span>
         </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-[11px] font-semibold text-[#E5E7EC]">New lead form submitted</p>
-          <p className="text-[10px] text-[#8A8F99]">lead@company.com · just now</p>
+        <div
+          className="flex items-center gap-1.5 px-2 py-0.5 rounded-full"
+          style={allDone
+            ? { background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.25)' }
+            : { background: 'rgba(242,107,78,0.1)', border: '1px solid rgba(242,107,78,0.2)' }
+          }
+        >
+          <span
+            className="w-1.5 h-1.5 rounded-full"
+            style={{
+              background: allDone ? '#10B981' : '#F26B4E',
+              animation: allDone ? 'none' : 'blinkPulse 1s step-end infinite',
+            }}
+          />
+          <span className="text-[9px] font-semibold" style={{ color: allDone ? '#10B981' : '#F26B4E' }}>
+            {allDone ? 'Complete' : phase === 0 ? 'Starting' : 'Running'}
+          </span>
         </div>
-        <span className="text-[9px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0" style={{ background: 'rgba(16,185,129,0.14)', color: '#10B981' }}>
-          LIVE
-        </span>
       </div>
 
-      {/* Workflow steps */}
-      <div className="flex-1 px-4 pt-3 flex flex-col gap-1.5 overflow-hidden">
-        {WORKFLOW_STEPS.map((step, i) => {
-          const status = getStatus(i);
-          return (
-            <div
-              key={step.abbr}
-              className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-300"
-              style={{
-                background: status === 'running' ? 'rgba(242,107,78,0.07)' : status === 'done' ? 'rgba(16,185,129,0.04)' : 'rgba(31,33,39,0.4)',
-                border: status === 'running' ? '1px solid rgba(242,107,78,0.18)' : '1px solid transparent',
-              }}
-            >
-              {/* app icon */}
-              <div
-                className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0"
-                style={{ background: step.color + '22', color: step.color }}
-              >
-                <svg width="14" height="14" viewBox="0 0 14 14">{step.icon}</svg>
-              </div>
-              {/* label + detail */}
-              <div className="flex-1 min-w-0">
-                <p className="text-[11px] font-medium truncate" style={{ color: status === 'idle' ? '#3F3F3F' : '#E5E7EC' }}>
-                  {step.label}
-                </p>
-                {status !== 'idle' && (
-                  <p className="text-[9px] text-[#8A8F99] truncate" style={{ animation: 'fadeSlideUp 0.3s ease-out both' }}>
-                    {step.detail}
-                  </p>
-                )}
-              </div>
-              {/* status badge */}
-              {status === 'done' && (
-                <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(16,185,129,0.14)' }}>
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M2 5l2 2.5L8 2.5" stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-              )}
-              {status === 'running' && (
-                <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(242,107,78,0.14)' }}>
-                  <span className="w-2 h-2 rounded-full bg-[#F26B4E]" style={{ animation: 'blinkPulse 0.9s step-end infinite' }} />
-                </div>
-              )}
-              {status === 'idle' && (
-                <div className="w-5 h-5 rounded-full border border-[#2A2A2A] flex-shrink-0" />
-              )}
+      {/* Trigger row */}
+      <div className="px-4 pt-3 flex-shrink-0">
+        <div className="flex items-start gap-3">
+          <div
+            className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
+            style={{ background: 'rgba(242,107,78,0.15)', border: '1.5px solid rgba(242,107,78,0.4)' }}
+          >
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+              <path d="M6.5 1L1 6.5h4L3.5 10 10 4.5H6L6.5 1z" fill="#F26B4E" />
+            </svg>
+          </div>
+          <div
+            className="flex-1 min-w-0 rounded-lg px-3 py-2"
+            style={{ background: 'rgba(242,107,78,0.06)', border: '1px solid rgba(242,107,78,0.14)' }}
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-semibold text-[#E5E7EC]">Trigger: Form submitted</span>
+              <span className="text-[9px] font-semibold text-[#10B981]">received</span>
             </div>
-          );
-        })}
+            <p className="text-[9px] text-[#8A8F99] mt-0.5">lead@company.com · just now</p>
+          </div>
+        </div>
+        <WfConnector fromStatus="done" />
       </div>
 
-      {/* Progress bar */}
-      <div className="px-4 py-3 flex-shrink-0">
+      {/* Steps */}
+      <div className="flex-1 px-4 overflow-hidden">
+        {WF_STEPS.map((step, i) => (
+          <WfStepRow key={step.app} step={step} status={getStatus(i)} isLast={i === WF_STEPS.length - 1} />
+        ))}
+      </div>
+
+      {/* Footer: progress */}
+      <div className="px-4 py-3 flex-shrink-0 border-t border-[#1A1A1D]">
         <div className="flex items-center justify-between mb-1.5">
-          <span className="text-[9px] text-[#8A8F99]">{completedCount} / {WORKFLOW_STEPS.length} actions complete</span>
-          {phase === 6 && <span className="text-[9px] font-semibold text-[#10B981]">Workflow done</span>}
+          <span className="text-[9px] text-[#52525B]">
+            {completedCount} / {WF_STEPS.length} actions
+          </span>
+          <span className="text-[9px]" style={{ color: allDone ? '#10B981' : '#52525B' }}>
+            {allDone ? 'All done' : phase === 0 ? 'Queued' : `Step ${Math.min(phase, WF_STEPS.length)} of ${WF_STEPS.length}`}
+          </span>
         </div>
-        <div className="h-1 rounded-full overflow-hidden" style={{ background: '#1F2127' }}>
+        <div className="h-[3px] rounded-full overflow-hidden" style={{ background: '#1F2127' }}>
           <div
             className="h-full rounded-full transition-all duration-500 ease-out"
             style={{
-              width: `${(completedCount / WORKFLOW_STEPS.length) * 100}%`,
-              background: phase === 6 ? '#10B981' : '#F26B4E',
+              width: `${(completedCount / WF_STEPS.length) * 100}%`,
+              background: allDone
+                ? '#10B981'
+                : `linear-gradient(90deg, #10B981 0%, #F26B4E 100%)`,
             }}
           />
         </div>
