@@ -469,60 +469,242 @@ const AutomationVisual = () => {
   );
 };
 
-/* 03 Integrations — central hub with connected app icons */
-const IntegrationsVisual = () => (
-  <VisualFrame>
-    <defs>
-      <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#F26B4E" stopOpacity="0.35" />
-        <stop offset="100%" stopColor="#F26B4E" stopOpacity="0" />
-      </radialGradient>
-    </defs>
+/* 03 Integrations — real-world event flow: trigger → AI → actions */
 
-    <circle cx="200" cy="140" r="110" fill="url(#hubGlow)" />
+const INT_SCENARIOS = [
+  {
+    trigger: { name: 'Stripe',   color: '#635BFF', event: 'Payment received · $299.00', detail: 'from john@acme.com' },
+    actions:  [
+      { name: 'HubSpot', color: '#FF7A59', text: 'Deal marked Closed Won' },
+      { name: 'Slack',   color: '#4A9C6D', text: 'Notified #sales-wins channel' },
+    ],
+  },
+  {
+    trigger: { name: 'Gmail',    color: '#EA4335', event: 'New email from prospect', detail: '"Can we schedule a demo?"' },
+    actions:  [
+      { name: 'HubSpot', color: '#FF7A59', text: 'Contact + deal created' },
+      { name: 'Cal.com', color: '#4285F4', text: 'Demo slot booked · 3 PM' },
+    ],
+  },
+  {
+    trigger: { name: 'Shopify',  color: '#96BF48', event: 'New order #SH-1234', detail: '3 items · $187.50' },
+    actions:  [
+      { name: 'Stripe',  color: '#635BFF', text: 'Invoice generated + sent' },
+      { name: 'Slack',   color: '#4A9C6D', text: '#fulfillment team alerted' },
+    ],
+  },
+  {
+    trigger: { name: 'HubSpot',  color: '#FF7A59', event: 'Deal stage advanced', detail: 'Proposal → Contract Sent' },
+    actions:  [
+      { name: 'Gmail',   color: '#EA4335', text: 'Contract email dispatched' },
+      { name: 'Notion',  color: '#9B9B8E', text: 'Project board spun up' },
+    ],
+  },
+];
 
-    {/* Connection lines */}
-    <g stroke="#F26B4E" strokeWidth="1.4" fill="none" strokeDasharray="4 4" opacity="0.7">
-      <line x1="200" y1="140" x2="80" y2="60" />
-      <line x1="200" y1="140" x2="320" y2="60" />
-      <line x1="200" y1="140" x2="50" y2="140" />
-      <line x1="200" y1="140" x2="350" y2="140" />
-      <line x1="200" y1="140" x2="80" y2="220" />
-      <line x1="200" y1="140" x2="320" y2="220" />
-    </g>
+const INT_PLATFORMS = [
+  { name: 'Stripe',   color: '#635BFF' },
+  { name: 'Slack',    color: '#4A9C6D' },
+  { name: 'Gmail',    color: '#EA4335' },
+  { name: 'HubSpot',  color: '#FF7A59' },
+  { name: 'Shopify',  color: '#96BF48' },
+  { name: 'Notion',   color: '#9B9B8E' },
+  { name: 'Cal.com',  color: '#4285F4' },
+];
 
-    {/* Center hub */}
-    <g transform="translate(200 140)">
-      <circle r="36" fill="#F26B4E" />
-      <text textAnchor="middle" y="5" fontFamily="Inter, sans-serif" fontSize="14" fontWeight="700" fill="white">
-        AI
-      </text>
-    </g>
+// 4 scenarios × 3 sub-phases: 0=trigger, 1=+action1, 2=+action2+pause
+const INT_DELAYS = [
+  520, 1050, 1700,
+  520, 1050, 1700,
+  520, 1050, 1700,
+  520, 1050, 2600,
+];
 
-    {/* Surrounding app nodes */}
-    {[
-      { x: 80,  y: 60,  bg: '#1F2127', icon: 'S', color: '#3B82F6' },
-      { x: 320, y: 60,  bg: '#1F2127', icon: 'G', color: '#10B981' },
-      { x: 50,  y: 140, bg: '#1F2127', icon: 'N', color: '#22C55E' },
-      { x: 350, y: 140, bg: '#1F2127', icon: 'L', color: '#A78BFA' },
-      { x: 80,  y: 220, bg: '#1F2127', icon: 'F', color: '#EF4444' },
-      { x: 320, y: 220, bg: '#1F2127', icon: 'D', color: '#7DD3FC' },
-    ].map((n) => (
-      <g key={`${n.x}-${n.y}`} transform={`translate(${n.x} ${n.y})`}>
-        <circle r="22" fill={n.bg} stroke={n.color} strokeWidth="1.4" />
-        <text textAnchor="middle" y="5" fontFamily="Inter, sans-serif" fontSize="14" fontWeight="700" fill={n.color}>
-          {n.icon}
-        </text>
-      </g>
-    ))}
+function IntPlatformChip({ name, color, active }: { name: string; color: string; active: boolean }) {
+  return (
+    <div
+      className="flex items-center gap-1 px-2 py-[3px] rounded-full flex-shrink-0 transition-all duration-300"
+      style={{
+        background: active ? color + '22' : '#18181B',
+        border: `1px solid ${active ? color + '55' : '#27272A'}`,
+      }}
+    >
+      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all duration-300"
+        style={{ background: active ? color : '#3F3F46' }} />
+      <span className="text-[8px] font-medium transition-all duration-300"
+        style={{ color: active ? color : '#52525B' }}>
+        {name}
+      </span>
+    </div>
+  );
+}
 
-    {/* Pulsing rings on hub */}
-    <circle cx="200" cy="140" r="36" fill="none" stroke="#F26B4E" strokeWidth="1.5" opacity="0.5">
-      <animate attributeName="r" from="36" to="60" dur="2.4s" repeatCount="indefinite" />
-      <animate attributeName="opacity" from="0.5" to="0" dur="2.4s" repeatCount="indefinite" />
-    </circle>
-  </VisualFrame>
-);
+function IntFlowConnector({ active }: { active: boolean }) {
+  return (
+    <div className="flex items-center gap-2 py-1" style={{ paddingLeft: 11 }}>
+      <div className="w-px transition-all duration-500"
+        style={{ height: 14, background: active ? '#F26B4E' : '#252528' }} />
+    </div>
+  );
+}
+
+function IntActionCard({ action, delay = 0 }: { action: { name: string; color: string; text: string }; delay?: number }) {
+  return (
+    <div
+      className="flex items-center gap-2.5 rounded-lg px-3 py-2.5"
+      style={{
+        background: action.color + '0D',
+        border: `1px solid ${action.color}28`,
+        animation: `fadeSlideUp 0.3s ease-out ${delay}ms both`,
+      }}
+    >
+      {/* platform dot */}
+      <div className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-bold"
+        style={{ background: action.color + '22', color: action.color }}>
+        {action.name.slice(0, 2).toUpperCase()}
+      </div>
+      <div className="flex-1 min-w-0">
+        <span className="text-[10px] font-semibold text-[#E5E7EC]">{action.name}</span>
+        <p className="text-[9px] text-[#8A8F99] truncate mt-0.5">{action.text}</p>
+      </div>
+      {/* checkmark */}
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="flex-shrink-0">
+        <circle cx="6.5" cy="6.5" r="6" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.4)" strokeWidth="1" />
+        <path d="M3.5 6.5l2 2 4-4" stroke="#10B981" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
+  );
+}
+
+const IntegrationsVisual = () => {
+  const [phase, setPhase] = useState(0);
+
+  useEffect(() => {
+    const t = setTimeout(
+      () => setPhase((p) => (p >= INT_DELAYS.length - 1 ? 0 : p + 1)),
+      INT_DELAYS[phase] ?? 1000,
+    );
+    return () => clearTimeout(t);
+  }, [phase]);
+
+  const scenarioIdx = Math.floor(phase / 3);
+  const subPhase    = phase % 3;
+  const scenario    = INT_SCENARIOS[scenarioIdx];
+
+  // which platform names are "active" right now
+  const activePlatforms = new Set<string>([scenario.trigger.name]);
+  if (subPhase >= 1) activePlatforms.add(scenario.actions[0].name);
+  if (subPhase >= 2) activePlatforms.add(scenario.actions[1].name);
+
+  // completed events for the log strip (previous scenarios)
+  const prevIdx = (scenarioIdx - 1 + INT_SCENARIOS.length) % INT_SCENARIOS.length;
+  const prevScenario = INT_SCENARIOS[prevIdx];
+
+  return (
+    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#0C0C0E] border border-[#1F2127] flex flex-col">
+
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[#1A1A1D] flex-shrink-0" style={{ background: '#0E0E11' }}>
+        <div className="flex items-center gap-2">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <circle cx="6" cy="6" r="5" stroke="#F26B4E" strokeWidth="1.2" />
+            <circle cx="6" cy="6" r="2" fill="#F26B4E" />
+            <path d="M6 1v1.5M6 9.5V11M1 6h1.5M9.5 6H11" stroke="#F26B4E" strokeWidth="1.2" strokeLinecap="round" />
+          </svg>
+          <span className="text-[11px] font-semibold text-[#E5E7EC]">Intelligent Integrations</span>
+        </div>
+        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full"
+          style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.22)' }}>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" style={{ animation: 'blinkPulse 1.2s step-end infinite' }} />
+          <span className="text-[9px] font-semibold text-[#10B981]">7 platforms live</span>
+        </div>
+      </div>
+
+      {/* Platform chips */}
+      <div className="flex items-center gap-1.5 px-4 py-2.5 flex-shrink-0 flex-wrap">
+        {INT_PLATFORMS.map((p) => (
+          <IntPlatformChip key={p.name} name={p.name} color={p.color} active={activePlatforms.has(p.name)} />
+        ))}
+      </div>
+
+      {/* Event flow */}
+      <div className="flex-1 px-4 pb-2 flex flex-col overflow-hidden">
+
+        {/* Trigger card */}
+        <div
+          key={`trigger-${scenarioIdx}`}
+          className="rounded-xl p-3"
+          style={{
+            background: scenario.trigger.color + '10',
+            border: `1px solid ${scenario.trigger.color}30`,
+            animation: 'fadeSlideUp 0.35s ease-out both',
+          }}
+        >
+          <div className="flex items-center justify-between mb-1">
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded flex items-center justify-center text-[7px] font-bold flex-shrink-0"
+                style={{ background: scenario.trigger.color + '25', color: scenario.trigger.color }}>
+                {scenario.trigger.name.slice(0, 2).toUpperCase()}
+              </div>
+              <span className="text-[10px] font-semibold" style={{ color: scenario.trigger.color }}>
+                {scenario.trigger.name}
+              </span>
+              <span className="text-[8px] text-[#52525B] px-1.5 py-0.5 rounded"
+                style={{ background: '#1A1A1D', border: '1px solid #27272A' }}>
+                trigger
+              </span>
+            </div>
+            <span className="text-[8px] text-[#10B981] font-medium">received</span>
+          </div>
+          <p className="text-[11px] font-semibold text-[#E5E7EC]">{scenario.trigger.event}</p>
+          <p className="text-[9px] text-[#8A8F99] mt-0.5">{scenario.trigger.detail}</p>
+        </div>
+
+        {/* AI connector */}
+        <IntFlowConnector active />
+        <div className="flex items-center gap-2 mb-1 flex-shrink-0">
+          <div className="w-6 h-6 rounded-full bg-[#F26B4E] flex items-center justify-center text-[8px] font-bold text-white flex-shrink-0">
+            AI
+          </div>
+          <span className="text-[9px]" style={{ color: subPhase === 0 ? '#8A8F99' : '#10B981' }}>
+            {subPhase === 0 ? 'Analyzing event...' : `${subPhase === 1 ? '1' : '2'} action${subPhase > 1 ? 's' : ''} dispatched`}
+          </span>
+          {subPhase === 0 && (
+            <div className="flex gap-[3px] items-center">
+              {[0, 120, 240].map((d) => (
+                <span key={d} className="w-1 h-1 rounded-full bg-[#8A8F99]"
+                  style={{ animation: `bounce 0.9s ${d}ms infinite` }} />
+              ))}
+            </div>
+          )}
+        </div>
+        <IntFlowConnector active={subPhase >= 1} />
+
+        {/* Action cards */}
+        <div className="flex flex-col gap-1.5">
+          {subPhase >= 1 && <IntActionCard key={`a0-${scenarioIdx}`} action={scenario.actions[0]} />}
+          {subPhase >= 2 && <IntActionCard key={`a1-${scenarioIdx}`} action={scenario.actions[1]} delay={120} />}
+        </div>
+      </div>
+
+      {/* Footer: previous event log */}
+      <div className="px-4 py-2.5 flex-shrink-0 border-t border-[#1A1A1D] flex items-center gap-2">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <circle cx="5" cy="5" r="4.5" stroke="#10B981" strokeWidth="1" />
+          <path d="M3 5l1.5 1.5L7 3" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <span className="text-[9px] text-[#52525B]">
+          <span style={{ color: prevScenario.trigger.color }}>{prevScenario.trigger.name}</span>
+          {' → '}
+          <span style={{ color: prevScenario.actions[0].color }}>{prevScenario.actions[0].name}</span>
+          {' + '}
+          <span style={{ color: prevScenario.actions[1].color }}>{prevScenario.actions[1].name}</span>
+          {' · completed'}
+        </span>
+      </div>
+    </div>
+  );
+};
 
 const visuals = [
   <DevelopmentVisual key="dev" />,
