@@ -69,32 +69,12 @@ export default function PortfolioGrid() {
 
       {/* Full-width auto-sliding strip */}
       <div className="relative overflow-hidden">
-        {/* Left shadow — 50% overflows outside the left edge */}
-        <svg width="400" height="500" viewBox="0 0 294 1347" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 z-10 pointer-events-none select-none" style={{ left: -200 }} aria-hidden>
-          <g filter="url(#shadow-left)">
-            <ellipse cx="-84" cy="673.199" rx="244" ry="539.5" fill="white" fillOpacity="0.88"/>
-          </g>
-          <defs>
-            <filter id="shadow-left" x="-461.7" y="-0.000778198" width="755.4" height="1346.4" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-              <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-              <feGaussianBlur stdDeviation="66.85" result="effect1_foregroundBlur"/>
-            </filter>
-          </defs>
-        </svg>
-        {/* Right shadow — flipped horizontally, 50% overflows outside the right edge */}
-        <svg width="400" height="500" viewBox="0 0 294 1347" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 z-10 pointer-events-none select-none" style={{ right: -200, transform: 'scaleX(-1)' }} aria-hidden>
-          <g filter="url(#shadow-right)">
-            <ellipse cx="-84" cy="673.199" rx="244" ry="539.5" fill="white" fillOpacity="0.88"/>
-          </g>
-          <defs>
-            <filter id="shadow-right" x="-461.7" y="-0.000778198" width="755.4" height="1346.4" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-              <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-              <feGaussianBlur stdDeviation="66.85" result="effect1_foregroundBlur"/>
-            </filter>
-          </defs>
-        </svg>
+        {/* Left fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-64 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, #fff 30%, rgba(255,255,255,0.6) 65%, transparent 100%)' }} />
+        {/* Right fade */}
+        <div className="absolute right-0 top-0 bottom-0 w-64 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to left, #fff 30%, rgba(255,255,255,0.6) 65%, transparent 100%)' }} />
         <div
           className="flex gap-5 w-max px-5"
           style={{
