@@ -19,7 +19,7 @@ export default function FAQ() {
           </p>
         </div>
 
-        <div className="space-y-3">
+        <div className="max-w-[66.666%] mx-auto space-y-3">
           {faqs.map((faq, i) => (
             <AccordionItem
               key={faq.question}
