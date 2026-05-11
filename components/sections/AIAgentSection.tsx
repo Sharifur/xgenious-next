@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import { aiFeatures, aiTabs } from '@/data/saas-page';
 
 const LOGOS: Record<string, string> = {
@@ -735,9 +735,27 @@ const visuals = [
 /* ──────────────────────────────────────────────────────────── */
 
 export default function AIAgentSection() {
-  const [active, setActive] = useState(1); // Automation default per Figma
+  const [active, setActive] = useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'start start'],
+  });
+
+  // Scale from tiny (top-right origin) → full size at 45% progress, hold for rest
+  const scale = useTransform(scrollYProgress, [0, 0.45, 1], [0.08, 1, 1]);
+  // Subtle opacity fade-in alongside scale
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
   return (
+    <div ref={containerRef} style={{ minHeight: '200vh' }}>
+      {/* Sticky viewport — section stays visible while user scrolls through pin zone */}
+      <div className="sticky top-0 h-screen overflow-hidden flex items-center">
+        <motion.div
+          className="w-full"
+          style={{ scale, opacity, transformOrigin: 'top right', willChange: 'transform' }}
+        >
     <section className="py-16">
       <div className="container-page">
         {/* Inner contained dark card */}
@@ -843,5 +861,8 @@ export default function AIAgentSection() {
         </div>
       </div>
     </section>
+        </motion.div>
+      </div>
+    </div>
   );
 }
