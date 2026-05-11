@@ -1,8 +1,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { aiFeatures, aiTabs } from '@/data/saas-page';
+
+const LOGOS: Record<string, string> = {
+  'Stripe':  '/integrations/stripe.svg',
+  'Slack':   '/integrations/slack.png',
+  'Gmail':   '/integrations/gmail.svg',
+  'HubSpot': '/integrations/hubspot.svg',
+  'Shopify': '/integrations/shopify.svg',
+  'Notion':  '/integrations/notion.svg',
+  'Cal.com': '/integrations/calcom.svg',
+};
+
+function PlatformLogo({ name, size = 16 }: { name: string; size?: number }) {
+  const src = LOGOS[name];
+  if (!src) return <span className="text-[7px] font-bold">{name.slice(0, 2).toUpperCase()}</span>;
+  return <Image src={src} alt={name} width={size} height={size} style={{ objectFit: 'contain' }} unoptimized />;
+}
 
 /* ────────────────────────────────────────────────────────────
    Right-side visuals — one per feature/tab. Each visual is an
@@ -523,16 +540,18 @@ const INT_DELAYS = [
 function IntPlatformChip({ name, color, active }: { name: string; color: string; active: boolean }) {
   return (
     <div
-      className="flex items-center gap-1 px-2 py-[3px] rounded-full flex-shrink-0 transition-all duration-300"
+      className="flex items-center gap-1.5 px-2 py-[3px] rounded-full flex-shrink-0 transition-all duration-300"
       style={{
-        background: active ? color + '22' : '#18181B',
-        border: `1px solid ${active ? color + '55' : '#27272A'}`,
+        background: active ? color + '18' : '#18181B',
+        border: `1px solid ${active ? color + '50' : '#27272A'}`,
+        opacity: active ? 1 : 0.55,
       }}
     >
-      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all duration-300"
-        style={{ background: active ? color : '#3F3F46' }} />
+      <div className="w-3.5 h-3.5 flex-shrink-0 flex items-center justify-center">
+        <PlatformLogo name={name} size={14} />
+      </div>
       <span className="text-[8px] font-medium transition-all duration-300"
-        style={{ color: active ? color : '#52525B' }}>
+        style={{ color: active ? '#E5E7EC' : '#52525B' }}>
         {name}
       </span>
     </div>
@@ -558,10 +577,10 @@ function IntActionCard({ action, delay = 0 }: { action: { name: string; color: s
         animation: `fadeSlideUp 0.3s ease-out ${delay}ms both`,
       }}
     >
-      {/* platform dot */}
-      <div className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-bold"
-        style={{ background: action.color + '22', color: action.color }}>
-        {action.name.slice(0, 2).toUpperCase()}
+      {/* platform logo */}
+      <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0"
+        style={{ background: action.color + '18' }}>
+        <PlatformLogo name={action.name} size={16} />
       </div>
       <div className="flex-1 min-w-0">
         <span className="text-[10px] font-semibold text-[#E5E7EC]">{action.name}</span>
@@ -642,9 +661,9 @@ const IntegrationsVisual = () => {
         >
           <div className="flex items-center justify-between mb-1">
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 rounded flex items-center justify-center text-[7px] font-bold flex-shrink-0"
-                style={{ background: scenario.trigger.color + '25', color: scenario.trigger.color }}>
-                {scenario.trigger.name.slice(0, 2).toUpperCase()}
+              <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0"
+                style={{ background: scenario.trigger.color + '22' }}>
+                <PlatformLogo name={scenario.trigger.name} size={16} />
               </div>
               <span className="text-[10px] font-semibold" style={{ color: scenario.trigger.color }}>
                 {scenario.trigger.name}
