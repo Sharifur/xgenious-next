@@ -121,6 +121,60 @@ export const stats = [
   { number: '04', value: 100,  suffix: '+', label: 'Product develop' },
 ];
 
+/* ── OWN PRODUCTS — shown in WhyChooseUs section ── */
+export type OwnProduct = {
+  name: string;
+  description: string;
+  badges: string[];
+  image: string;
+  href: string;
+};
+
+export const ownProducts: OwnProduct[] = [
+  {
+    name: 'Nazmart',
+    description: 'Multi-Tenancy eCommerce Platform (SAAS)',
+    badges: ['eCommerce', 'SaaS'],
+    image: '/products/nazmart.jpg',
+    href: 'https://xgenious.com/our-products/nazmart-multi-tenancy-ecommerce-platform-saas/',
+  },
+  {
+    name: 'Xilancer',
+    description: 'Freelancer Marketplace Platform',
+    badges: ['Marketplace'],
+    image: '/products/xilancer.jpg',
+    href: 'https://xgenious.com/our-products/xilancer-freelancer-marketplace-platform/',
+  },
+  {
+    name: 'Prohandy',
+    description: 'On Demand Home Service Platform',
+    badges: ['Home Service', 'Marketplace'],
+    image: '/products/prohandy.jpg',
+    href: 'https://xgenious.com/our-products/prohandy-on-demand-home-service-marketplace-platform',
+  },
+  {
+    name: 'Fundorex',
+    description: 'Crowdfunding and Donation Platform',
+    badges: ['Fundraising', 'Donation'],
+    image: '/products/fundorex.jpg',
+    href: 'https://xgenious.com/our-products/fundorex-crowdfunding-platform/',
+  },
+  {
+    name: 'Helpnest',
+    description: 'AI Chatbot & Customer Support SaaS Platform',
+    badges: ['AI Chatbot', 'SaaS'],
+    image: '/products/helpnest.jpg',
+    href: 'https://xgenious.com/our-products/laravel-ai-chatbot-support-script/',
+  },
+  {
+    name: 'Nexelit',
+    description: 'Multipurpose Website CMS & Business CMS',
+    badges: ['Drag & Drop Page Builder', '21+ Home Page'],
+    image: '/products/nexelit.jpg',
+    href: 'https://xgenious.com/our-products/nexelit-multipurpose-website-business-management-system-cms/',
+  },
+];
+
 /* ── PORTFOLIO — Our Own Products ── */
 export type Portfolio = {
   title: string;
@@ -215,13 +269,12 @@ export const processSteps = [
 
 /* ── AI AGENT ── */
 export const aiFeatures = [
-  { number: '01', title: 'Custom AI Agent Development',  description: 'Autonomous reasoning, tool use, multi-step workflows' },
-  { number: '02', title: 'Work flow Automation',         description: 'End-to-end orchestration across systems and teams' },
-  { number: '03', title: 'Data-Driven Decision Systems', description: 'Predictive models tuned to your operational reality' },
-  { number: '04', title: 'Intelligent Integrations',     description: 'LLM-native connectors for the tools you already use' },
+  { number: '01', title: 'Custom AI Agent Development', description: 'Autonomous reasoning, tool use, multi-step workflows' },
+  { number: '02', title: 'Workflow Automation',         description: 'End-to-end orchestration across systems and teams' },
+  { number: '03', title: 'Intelligent Integrations',    description: 'LLM-native connectors for the tools you already use' },
 ];
 
-export const aiTabs = ['Development', 'Automation', 'Data-Driven', 'Integrations'];
+export const aiTabs = ['Development', 'Automation', 'Integrations'];
 
 /* ── TESTIMONIALS ── */
 export type Testimonial = {

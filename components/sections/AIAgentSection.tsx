@@ -1,8 +1,27 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { aiFeatures, aiTabs } from '@/data/saas-page';
+
+const LOGOS: Record<string, string> = {
+  'Stripe':     '/integrations/stripe.svg',
+  'Slack':      '/integrations/slack.png',
+  'Gmail':      '/integrations/gmail.svg',
+  'HubSpot':    '/integrations/hubspot.svg',
+  'Shopify':    '/integrations/shopify.svg',
+  'Notion':     '/integrations/notion.svg',
+  'Cal.com':    '/integrations/calcom.svg',
+  'Mailchimp':  '/integrations/mailchimp.svg',
+  'Asana':      '/integrations/asana.svg',
+};
+
+function PlatformLogo({ name, size = 16 }: { name: string; size?: number }) {
+  const src = LOGOS[name];
+  if (!src) return <span className="text-[7px] font-bold">{name.slice(0, 2).toUpperCase()}</span>;
+  return <Image src={src} alt={name} width={size} height={size} style={{ objectFit: 'contain' }} unoptimized />;
+}
 
 /* ────────────────────────────────────────────────────────────
    Right-side visuals — one per feature/tab. Each visual is an
@@ -24,222 +43,692 @@ function VisualFrame({ children }: { children: React.ReactNode }) {
   );
 }
 
-/* 01 Development — code window with AI tokens */
-const DevelopmentVisual = () => (
-  <VisualFrame>
-    <defs>
-      <linearGradient id="codeBg" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#1A1F28" />
-        <stop offset="100%" stopColor="#0F141A" />
-      </linearGradient>
-    </defs>
-    <rect x="40" y="30" width="320" height="220" rx="10" fill="url(#codeBg)" stroke="#2A323D" strokeWidth="1" />
-    <rect x="40" y="30" width="320" height="22" rx="10" fill="#0F141A" />
-    <circle cx="56" cy="41" r="3.5" fill="#EF4444" opacity="0.7" />
-    <circle cx="68" cy="41" r="3.5" fill="#F59E0B" opacity="0.7" />
-    <circle cx="80" cy="41" r="3.5" fill="#10B981" opacity="0.7" />
+/* 01 Custom AI Agent Development — typewriter input → send → AI reply */
 
-    <g fontFamily="monospace" fontSize="11">
-      <text x="60" y="80" fill="#9CA3AF">{'1'}</text>
-      <text x="80" y="80"><tspan fill="#C28BFF">async function</tspan> <tspan fill="#7DD3FC">agent</tspan>() {`{`}</text>
-      <text x="60" y="100" fill="#9CA3AF">{'2'}</text>
-      <text x="95" y="100"><tspan fill="#C28BFF">const</tspan> tool = <tspan fill="#FBBF24">await</tspan> use(</text>
-      <text x="60" y="120" fill="#9CA3AF">{'3'}</text>
-      <text x="105" y="120"><tspan fill="#A7F3D0">&apos;web_search&apos;</tspan></text>
-      <text x="60" y="140" fill="#9CA3AF">{'4'}</text>
-      <text x="95" y="140">);</text>
-      <text x="60" y="160" fill="#9CA3AF">{'5'}</text>
-      <text x="95" y="160"><tspan fill="#C28BFF">return</tspan> tool.<tspan fill="#FBBF24">reason</tspan>();</text>
-      <text x="60" y="180" fill="#9CA3AF">{'6'}</text>
-      <text x="80" y="180">{`}`}</text>
-    </g>
+// 6 conversation pairs — each has 4 sub-phases:
+//   0=typing in input, 1=user msg in chat, 2=AI typing, 3=AI msg shown
+const CHAT_PAIRS = [
+  { user: 'Hi, I need help with my order #4521',      ai: 'On it! Order #4521 is in transit — arriving tomorrow by 5 PM.' },
+  { user: 'Can I change the delivery address?',        ai: 'Done! Address updated and confirmation sent to your email.' },
+  { user: 'What time does the delivery window start?', ai: 'Your delivery window is 2 PM – 6 PM tomorrow.' },
+  { user: 'Can I track my delivery in real time?',     ai: 'Yes! Track it live at the link we sent to your email.' },
+  { user: 'Will someone call before arrival?',         ai: 'Yes, the driver will call 30 minutes before reaching you.' },
+  { user: 'Thanks, that\'s all I needed!',             ai: 'Happy to help! We\'re here 24/7 whenever you need us.' },
+];
+const TOTAL_PHASES = CHAT_PAIRS.length * 4; // 24
 
-    {/* Floating AI badge */}
-    <g transform="translate(310 80)">
-      <rect x="-22" y="-10" width="44" height="20" rx="10" fill="#F26B4E" />
-      <text textAnchor="middle" y="4" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="700" fill="white">
-        AI
-      </text>
-    </g>
-
-    {/* Cursor */}
-    <rect x="170" y="172" width="2" height="11" fill="#F26B4E">
-      <animate attributeName="opacity" values="1;0;1" dur="0.9s" repeatCount="indefinite" />
-    </rect>
-  </VisualFrame>
-);
-
-/* 02 Automation — brain with electric tendrils */
-const AutomationVisual = () => (
-  <VisualFrame>
-    <defs>
-      <radialGradient id="brainGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#4DD0E1" stopOpacity="0.45" />
-        <stop offset="60%" stopColor="#26C6DA" stopOpacity="0.15" />
-        <stop offset="100%" stopColor="#26C6DA" stopOpacity="0" />
-      </radialGradient>
-      <linearGradient id="brainBody" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#4DD0E1" />
-        <stop offset="100%" stopColor="#0097A7" />
-      </linearGradient>
-    </defs>
-    <circle cx="200" cy="140" r="130" fill="url(#brainGlow)" />
-
-    <g stroke="#4DD0E1" strokeWidth="1.4" fill="none" strokeLinecap="round" opacity="0.7">
-      <path d="M 200 50 Q 180 30 160 20" />
-      <path d="M 170 60 Q 130 40 90 50" />
-      <path d="M 260 70 Q 290 50 320 60" />
-      <path d="M 280 110 Q 320 90 360 100" />
-      <path d="M 120 130 Q 70 130 30 150" />
-      <path d="M 150 200 Q 100 220 60 240" />
-      <path d="M 270 230 Q 320 250 360 260" />
-    </g>
-
-    <path
-      d="M 200 70 C 150 70 110 100 110 150 C 110 200 150 230 200 230 C 250 230 290 200 290 150 C 290 100 250 70 200 70 Z"
-      fill="url(#brainBody)"
-      opacity="0.85"
-    />
-    <path d="M 140 130 Q 170 120 200 130 Q 230 140 260 130" stroke="#80DEEA" strokeWidth="1.5" fill="none" opacity="0.8" />
-    <path d="M 130 160 Q 165 155 200 165 Q 235 175 270 160" stroke="#80DEEA" strokeWidth="1.5" fill="none" opacity="0.8" />
-    <path d="M 140 190 Q 170 185 200 190 Q 230 195 260 185" stroke="#80DEEA" strokeWidth="1.5" fill="none" opacity="0.8" />
-
-    {/* CPU chip */}
-    <g>
-      <rect x="160" y="125" width="80" height="60" rx="6" fill="rgba(0,0,0,0.4)" stroke="#B2EBF2" strokeWidth="1.2" />
-      <rect x="172" y="138" width="56" height="34" rx="3" stroke="#80DEEA" strokeWidth="0.8" fill="none" />
-    </g>
-  </VisualFrame>
-);
-
-/* 03 Data-Driven — animated bar chart with growing bars */
-const DataDrivenVisual = () => (
-  <VisualFrame>
-    <defs>
-      <linearGradient id="barGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-        <stop offset="0%" stopColor="#F26B4E" />
-        <stop offset="100%" stopColor="#FFB39E" />
-      </linearGradient>
-    </defs>
-
-    {/* Grid */}
-    <g stroke="#1F2127" strokeWidth="1">
-      {[60, 110, 160, 210].map((y) => (
-        <line key={y} x1="60" y1={y} x2="360" y2={y} />
+function TypingDots({ color = '#A6A6A6' }: { color?: string }) {
+  return (
+    <div className="flex gap-1 items-center px-1">
+      {[0, 150, 300].map((d) => (
+        <span
+          key={d}
+          className="w-1.5 h-1.5 rounded-full"
+          style={{ background: color, animation: `bounce 1s ${d}ms infinite` }}
+        />
       ))}
-    </g>
+    </div>
+  );
+}
 
-    {/* Y-axis labels */}
-    <g fontFamily="Inter, sans-serif" fontSize="9" fill="#8A8F99">
-      <text x="50" y="64" textAnchor="end">100</text>
-      <text x="50" y="114" textAnchor="end">75</text>
-      <text x="50" y="164" textAnchor="end">50</text>
-      <text x="50" y="214" textAnchor="end">25</text>
-    </g>
+function ChatBubble({ from, text, typing }: { from: 'user' | 'ai'; text?: string; typing?: boolean }) {
+  const isAi = from === 'ai';
+  return (
+    <div
+      className={`flex gap-2 items-end ${isAi ? 'flex-row-reverse' : ''}`}
+      style={{ animation: 'fadeSlideUp 0.35s ease-out both' }}
+    >
+      <div
+        className={`w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-[8px] font-bold ${
+          isAi ? 'bg-[#F26B4E] text-white' : 'bg-[#2F2F2F] text-[#A6A6A6]'
+        }`}
+      >
+        {isAi ? 'AI' : 'U'}
+      </div>
+      <div
+        className={`rounded-2xl px-3 py-2 max-w-[78%] text-[11px] leading-[16px] ${
+          isAi
+            ? 'bg-[#F26B4E]/15 border border-[#F26B4E]/25 text-[#E5E7EC] rounded-br-sm'
+            : 'bg-[#1F2127] text-[#E5E7EC] rounded-bl-sm'
+        }`}
+      >
+        {typing ? <TypingDots color={isAi ? '#F26B4E' : '#A6A6A6'} /> : text}
+      </div>
+    </div>
+  );
+}
 
-    {/* Bars */}
-    {[
-      { x: 80, h: 130, label: 'Q1' },
-      { x: 130, h: 90, label: 'Q2' },
-      { x: 180, h: 160, label: 'Q3' },
-      { x: 230, h: 110, label: 'Q4' },
-      { x: 280, h: 180, label: 'Q5' },
-      { x: 330, h: 145, label: 'Q6' },
-    ].map((bar, i) => (
-      <g key={bar.label}>
-        <rect x={bar.x - 14} y={210 - bar.h} width="28" height={bar.h} rx="3" fill="url(#barGrad)">
-          <animate attributeName="height" from="0" to={bar.h} dur={`${0.4 + i * 0.08}s`} fill="freeze" />
-          <animate attributeName="y" from="210" to={210 - bar.h} dur={`${0.4 + i * 0.08}s`} fill="freeze" />
-        </rect>
-        <text x={bar.x} y="226" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fill="#8A8F99">
-          {bar.label}
-        </text>
-      </g>
-    ))}
+const DevelopmentVisual = () => {
+  const [phase, setPhase] = useState(0);
+  const [inputText, setInputText] = useState('');
+  const [charIdx, setCharIdx] = useState(0);
 
-    {/* Trend line */}
-    <path
-      d="M 80 80 L 130 120 L 180 50 L 230 100 L 280 30 L 330 65"
-      stroke="#7DD3FC"
-      strokeWidth="2"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    {[80, 130, 180, 230, 280, 330].map((x, i) => {
-      const ys = [80, 120, 50, 100, 30, 65];
-      return <circle key={x} cx={x} cy={ys[i]} r="3" fill="#7DD3FC" />;
-    })}
+  const round = Math.floor(phase / 4);
+  const subPhase = phase % 4;
+  const isTypingPhase = subPhase === 0;
+  const currentMsg = CHAT_PAIRS[round]?.user ?? '';
 
-    {/* Floating insight badge */}
-    <g transform="translate(310 250)">
-      <rect x="-50" y="-12" width="100" height="22" rx="11" fill="#F26B4E" />
-      <text textAnchor="middle" y="3" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="600" fill="white">
-        +24% predicted
-      </text>
-    </g>
-  </VisualFrame>
-);
+  // Typewriter — one char every 52 ms, then send
+  useEffect(() => {
+    if (!isTypingPhase) return;
+    if (charIdx < currentMsg.length) {
+      const t = setTimeout(() => {
+        setInputText(currentMsg.slice(0, charIdx + 1));
+        setCharIdx((c) => c + 1);
+      }, 52);
+      return () => clearTimeout(t);
+    }
+    const t = setTimeout(() => {
+      setPhase((p) => p + 1);
+      setInputText('');
+      setCharIdx(0);
+    }, 380);
+    return () => clearTimeout(t);
+  }, [phase, charIdx, isTypingPhase, currentMsg]);
 
-/* 04 Integrations — central hub with connected app icons */
-const IntegrationsVisual = () => (
-  <VisualFrame>
-    <defs>
-      <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#F26B4E" stopOpacity="0.35" />
-        <stop offset="100%" stopColor="#F26B4E" stopOpacity="0" />
-      </radialGradient>
-    </defs>
+  // Fixed delays for non-typing sub-phases
+  useEffect(() => {
+    if (isTypingPhase) return;
+    const isLast = phase === TOTAL_PHASES - 1;
+    const delay = subPhase === 1 ? 500 : subPhase === 2 ? 1400 : isLast ? 2800 : 800;
+    const t = setTimeout(() => setPhase((p) => (p >= TOTAL_PHASES - 1 ? 0 : p + 1)), delay);
+    return () => clearTimeout(t);
+  }, [phase, isTypingPhase, subPhase]);
 
-    <circle cx="200" cy="140" r="110" fill="url(#hubGlow)" />
+  // Sliding window: show last 2 completed pairs so the chat stays compact
+  const startRound = Math.max(0, round - 1);
+  const visibleItems: { from: 'user' | 'ai'; text: string; key: string }[] = [];
+  for (let r = startRound; r <= round && r < CHAT_PAIRS.length; r++) {
+    const pair = CHAT_PAIRS[r];
+    const base = r * 4;
+    if (phase >= base + 1) visibleItems.push({ from: 'user', text: pair.user, key: `u${r}` });
+    if (phase >= base + 3) visibleItems.push({ from: 'ai',   text: pair.ai,   key: `a${r}` });
+  }
+  const showAiTyping = subPhase === 2;
 
-    {/* Connection lines */}
-    <g stroke="#F26B4E" strokeWidth="1.4" fill="none" strokeDasharray="4 4" opacity="0.7">
-      <line x1="200" y1="140" x2="80" y2="60" />
-      <line x1="200" y1="140" x2="320" y2="60" />
-      <line x1="200" y1="140" x2="50" y2="140" />
-      <line x1="200" y1="140" x2="350" y2="140" />
-      <line x1="200" y1="140" x2="80" y2="220" />
-      <line x1="200" y1="140" x2="320" y2="220" />
-    </g>
+  return (
+    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#0C0C0E] border border-[#1F2127] flex flex-col">
+      {/* Header */}
+      <div className="flex items-center gap-3 px-4 py-3 border-b border-[#1F2127] bg-[#131418] flex-shrink-0">
+        <div className="w-8 h-8 rounded-full bg-[#F26B4E] flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">
+          AI
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="text-[12px] font-semibold text-white">Support Agent</p>
+          <div className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+            <p className="text-[10px] text-[#10B981]">Autopilot active</p>
+          </div>
+        </div>
+        <span className="px-2 py-0.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/25 text-[#10B981] text-[10px] font-medium flex-shrink-0">
+          24/7
+        </span>
+      </div>
 
-    {/* Center hub */}
-    <g transform="translate(200 140)">
-      <circle r="36" fill="#F26B4E" />
-      <text textAnchor="middle" y="5" fontFamily="Inter, sans-serif" fontSize="14" fontWeight="700" fill="white">
-        AI
-      </text>
-    </g>
+      {/* Messages — sliding 2-pair window */}
+      <div className="flex-1 p-4 flex flex-col gap-3 overflow-hidden">
+        {visibleItems.map((item) => (
+          <ChatBubble key={item.key} from={item.from} text={item.text} />
+        ))}
+        {showAiTyping && <ChatBubble key={`at${round}`} from="ai" typing />}
+      </div>
 
-    {/* Surrounding app nodes */}
-    {[
-      { x: 80,  y: 60,  bg: '#1F2127', icon: 'S', color: '#3B82F6' },
-      { x: 320, y: 60,  bg: '#1F2127', icon: 'G', color: '#10B981' },
-      { x: 50,  y: 140, bg: '#1F2127', icon: 'N', color: '#22C55E' },
-      { x: 350, y: 140, bg: '#1F2127', icon: 'L', color: '#A78BFA' },
-      { x: 80,  y: 220, bg: '#1F2127', icon: 'F', color: '#EF4444' },
-      { x: 320, y: 220, bg: '#1F2127', icon: 'D', color: '#7DD3FC' },
-    ].map((n) => (
-      <g key={`${n.x}-${n.y}`} transform={`translate(${n.x} ${n.y})`}>
-        <circle r="22" fill={n.bg} stroke={n.color} strokeWidth="1.4" />
-        <text textAnchor="middle" y="5" fontFamily="Inter, sans-serif" fontSize="14" fontWeight="700" fill={n.color}>
-          {n.icon}
-        </text>
-      </g>
-    ))}
+      {/* Input bar — typewriter text appears here */}
+      <div className="px-4 py-3 border-t border-[#1F2127] flex items-center gap-2 flex-shrink-0 bg-[#131418]">
+        <div
+          className="flex-1 bg-[#1F2127] rounded-full px-3 py-2 flex items-center overflow-hidden"
+          style={{ minHeight: 28 }}
+        >
+          {inputText === '' ? (
+            <p className="text-[10px] text-[#484848] select-none">Customer message...</p>
+          ) : (
+            <p className="text-[10px] text-[#E5E7EC] truncate">
+              {inputText}
+              <span
+                className="inline-block w-[1px] h-[10px] bg-[#F26B4E] ml-[1px] align-middle"
+                style={{ animation: 'blinkPulse 1s step-end infinite' }}
+              />
+            </p>
+          )}
+        </div>
+        <div className="w-7 h-7 rounded-full bg-[#F26B4E] flex items-center justify-center flex-shrink-0">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M1 11L11 1M11 1H4M11 1v7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-    {/* Pulsing rings on hub */}
-    <circle cx="200" cy="140" r="36" fill="none" stroke="#F26B4E" strokeWidth="1.5" opacity="0.5">
-      <animate attributeName="r" from="36" to="60" dur="2.4s" repeatCount="indefinite" />
-      <animate attributeName="opacity" from="0.5" to="0" dur="2.4s" repeatCount="indefinite" />
-    </circle>
-  </VisualFrame>
-);
+/* 02 Automation — execution timeline (lead onboarding workflow) */
+
+type WfStatus = 'idle' | 'connecting' | 'working' | 'done';
+
+const WF_STEPS = [
+  {
+    label: 'Send welcome email',
+    app: 'Mailchimp',
+    connect: 'Authenticating with Mailchimp...',
+    working: 'Sending via SMTP · lead@company.com',
+    done: '0.4 s',
+    output: 'Delivered to inbox',
+    color: '#4FC3F7',
+  },
+  {
+    label: 'Create CRM contact',
+    app: 'HubSpot',
+    connect: 'Connecting to HubSpot API...',
+    working: 'POST /crm/v3/objects/contacts',
+    done: '0.8 s',
+    output: 'Contact #84231 · Pipeline: New Lead',
+    color: '#FF7A59',
+  },
+  {
+    label: 'Alert sales channel',
+    app: 'Slack',
+    connect: 'Connecting to Slack workspace...',
+    working: 'Posting to #inbound-leads...',
+    done: '0.3 s',
+    output: 'Message delivered · 3 members notified',
+    color: '#4A9C6D',
+  },
+  {
+    label: 'Schedule follow-up',
+    app: 'Asana',
+    connect: 'Connecting to Asana project...',
+    working: 'Creating task with due date...',
+    done: '0.6 s',
+    output: 'Task #T-2847 · Due in 48 h',
+    color: '#A78BFA',
+  },
+];
+
+// each step has 3 sub-phases: connecting(base) → working(base+1) → done(base+2)
+// phase 0 = trigger, then 3 phases per step, then final pause
+// total: 1 + 4*3 + 1 = 14 phases (0–13)
+const WF_DELAYS = [
+  700,          // 0  trigger shown
+  950, 1350, 380, // 1-3  step 0: connecting / working / done-pause
+  950, 1350, 380, // 4-6  step 1
+  950, 1350, 380, // 7-9  step 2
+  950, 1350, 380, // 10-12 step 3
+  3200,         // 13 all done + long pause
+];
+const WF_TOTAL = WF_DELAYS.length; // 14
+
+function WfConnector({ fromStatus }: { fromStatus: WfStatus }) {
+  const color =
+    fromStatus === 'done'       ? '#10B981' :
+    fromStatus === 'working'    ? '#F26B4E' :
+    fromStatus === 'connecting' ? '#F26B4E' :
+    '#252528';
+  return (
+    <div style={{ paddingLeft: 13, height: 16 }}>
+      <div className="w-px h-full transition-all duration-500" style={{ background: color, opacity: fromStatus === 'idle' ? 0.3 : 1 }} />
+    </div>
+  );
+}
+
+function WfStepRow({ step, status, isLast }: { step: (typeof WF_STEPS)[number]; status: WfStatus; isLast: boolean }) {
+  const isDone       = status === 'done';
+  const isWorking    = status === 'working';
+  const isConnecting = status === 'connecting';
+  const isActive     = isWorking || isConnecting;
+
+  /* circle icon bg / border */
+  const circleBg     = isDone ? 'rgba(16,185,129,0.15)' : isActive ? 'rgba(242,107,78,0.12)' : '#18181B';
+  const circleBorder = isDone ? '1.5px solid rgba(16,185,129,0.45)' : isActive ? '1.5px solid rgba(242,107,78,0.45)' : '1.5px solid #27272A';
+  const circleGlow   = isActive ? '0 0 10px rgba(242,107,78,0.2)' : 'none';
+
+  /* card bg / border */
+  const cardBg     = isDone ? 'rgba(16,185,129,0.04)' : isActive ? 'rgba(242,107,78,0.05)' : 'transparent';
+  const cardBorder = isDone ? '1px solid rgba(16,185,129,0.1)' : isActive ? '1px solid rgba(242,107,78,0.14)' : '1px solid transparent';
+
+  /* status badge */
+  const badgeText  = isConnecting ? 'connecting' : isWorking ? 'in progress' : isDone ? step.done : '';
+  const badgeColor = isDone ? '#10B981' : '#F26B4E';
+
+  return (
+    <>
+      <div className="flex items-start gap-3">
+        {/* Timeline circle */}
+        <div className="flex-shrink-0" style={{ width: 28 }}>
+          <div
+            className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-400"
+            style={{ background: circleBg, border: circleBorder, boxShadow: circleGlow }}
+          >
+            {isDone && (
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <path d="M2 5.5l2.5 2.5L9 3" stroke="#10B981" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            )}
+            {isConnecting && (
+              /* 3 tiny bouncing dots */
+              <div className="flex gap-[3px] items-center">
+                {[0, 120, 240].map((d) => (
+                  <span key={d} className="w-1 h-1 rounded-full bg-[#F26B4E]"
+                    style={{ animation: `bounce 0.9s ${d}ms infinite` }} />
+                ))}
+              </div>
+            )}
+            {isWorking && (
+              <span className="w-2 h-2 rounded-full bg-[#F26B4E]"
+                style={{ animation: 'blinkPulse 0.75s step-end infinite' }} />
+            )}
+            {status === 'idle' && <span className="w-1.5 h-1.5 rounded-full bg-[#3F3F46]" />}
+          </div>
+        </div>
+
+        {/* Card */}
+        <div className="flex-1 min-w-0 rounded-lg px-3 py-2 transition-all duration-300"
+          style={{ background: cardBg, border: cardBorder }}>
+          {/* Row 1: label + app badge + status badge */}
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-1.5 min-w-0">
+              <span className="text-[11px] font-medium truncate"
+                style={{ color: status === 'idle' ? '#3F3F46' : '#E5E7EC' }}>
+                {step.label}
+              </span>
+              <div
+                className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300"
+                style={{
+                  background: '#ffffff',
+                  border: `1px solid ${status === 'idle' ? '#27272A' : step.color + '50'}`,
+                  opacity: status === 'idle' ? 0.4 : 1,
+                }}
+                title={step.app}
+              >
+                <PlatformLogo name={step.app} size={22} />
+              </div>
+            </div>
+            {isActive && (
+              <span className="text-[9px] flex-shrink-0"
+                style={{ color: badgeColor, animation: 'blinkPulse 1.1s step-end infinite' }}>
+                {badgeText}
+              </span>
+            )}
+            {isDone && (
+              <span className="text-[9px] flex-shrink-0" style={{ color: badgeColor }}>{badgeText}</span>
+            )}
+          </div>
+
+          {/* Row 2: sub-line changes per state */}
+          {isConnecting && (
+            <p className="text-[9px] mt-1 text-[#8A8F99]"
+              style={{ animation: 'fadeSlideUp 0.2s ease-out both' }}>
+              {step.connect}
+            </p>
+          )}
+          {isWorking && (
+            <p className="text-[9px] mt-1 font-mono text-[#F26B4E]/70"
+              style={{ animation: 'fadeSlideUp 0.2s ease-out both' }}>
+              {step.working}
+            </p>
+          )}
+          {isDone && (
+            <p className="text-[9px] mt-1 text-[#8A8F99]"
+              style={{ animation: 'fadeSlideUp 0.2s ease-out both' }}>
+              {step.output}
+            </p>
+          )}
+        </div>
+      </div>
+
+      {!isLast && <WfConnector fromStatus={status} />}
+    </>
+  );
+}
+
+const AutomationVisual = () => {
+  const [phase, setPhase] = useState(0);
+
+  useEffect(() => {
+    const t = setTimeout(
+      () => setPhase((p) => (p >= WF_TOTAL - 1 ? 0 : p + 1)),
+      WF_DELAYS[phase] ?? 1000,
+    );
+    return () => clearTimeout(t);
+  }, [phase]);
+
+  const completedCount = WF_STEPS.filter((_, i) => phase >= i * 3 + 3).length;
+  const allDone = phase === WF_TOTAL - 1;
+
+  const getStatus = (i: number): WfStatus => {
+    const base = i * 3 + 1;
+    if (phase < base)       return 'idle';
+    if (phase === base)     return 'connecting';
+    if (phase === base + 1) return 'working';
+    return 'done';
+  };
+
+  return (
+    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#0C0C0E] border border-[#1F2127] flex flex-col">
+
+      {/* Header bar */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[#1A1A1D] flex-shrink-0" style={{ background: '#0E0E11' }}>
+        <div className="flex items-center gap-2">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <path d="M7.5 1L1.5 7.5h4.5l-1.5 4.5L11 5.5H6.5L7.5 1z" fill="#F26B4E" />
+          </svg>
+          <span className="text-[11px] font-semibold text-[#E5E7EC]">Lead Onboarding</span>
+        </div>
+        <div
+          className="flex items-center gap-1.5 px-2 py-0.5 rounded-full"
+          style={allDone
+            ? { background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.25)' }
+            : { background: 'rgba(242,107,78,0.1)', border: '1px solid rgba(242,107,78,0.2)' }
+          }
+        >
+          <span
+            className="w-1.5 h-1.5 rounded-full"
+            style={{
+              background: allDone ? '#10B981' : '#F26B4E',
+              animation: allDone ? 'none' : 'blinkPulse 1s step-end infinite',
+            }}
+          />
+          <span className="text-[9px] font-semibold" style={{ color: allDone ? '#10B981' : '#F26B4E' }}>
+            {allDone ? 'Complete' : phase === 0 ? 'Starting' : 'Running'}
+          </span>
+        </div>
+      </div>
+
+      {/* Trigger row */}
+      <div className="px-4 pt-3 flex-shrink-0">
+        <div className="flex items-start gap-3">
+          <div
+            className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
+            style={{ background: 'rgba(242,107,78,0.15)', border: '1.5px solid rgba(242,107,78,0.4)' }}
+          >
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+              <path d="M6.5 1L1 6.5h4L3.5 10 10 4.5H6L6.5 1z" fill="#F26B4E" />
+            </svg>
+          </div>
+          <div
+            className="flex-1 min-w-0 rounded-lg px-3 py-2"
+            style={{ background: 'rgba(242,107,78,0.06)', border: '1px solid rgba(242,107,78,0.14)' }}
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-semibold text-[#E5E7EC]">Trigger: Form submitted</span>
+              <span className="text-[9px] font-semibold text-[#10B981]">received</span>
+            </div>
+            <p className="text-[9px] text-[#8A8F99] mt-0.5">lead@company.com · just now</p>
+          </div>
+        </div>
+        <WfConnector fromStatus="done" />
+      </div>
+
+      {/* Steps */}
+      <div className="flex-1 px-4 overflow-hidden">
+        {WF_STEPS.map((step, i) => (
+          <WfStepRow key={step.app} step={step} status={getStatus(i)} isLast={i === WF_STEPS.length - 1} />
+        ))}
+      </div>
+
+      {/* Footer: progress */}
+      <div className="px-4 py-3 flex-shrink-0 border-t border-[#1A1A1D]">
+        <div className="flex items-center justify-between mb-1.5">
+          <span className="text-[9px] text-[#52525B]">
+            {completedCount} / {WF_STEPS.length} actions
+          </span>
+          <span className="text-[9px]" style={{ color: allDone ? '#10B981' : '#52525B' }}>
+            {allDone ? 'All done' : phase === 0 ? 'Queued' : `Step ${Math.min(phase, WF_STEPS.length)} of ${WF_STEPS.length}`}
+          </span>
+        </div>
+        <div className="h-[3px] rounded-full overflow-hidden" style={{ background: '#1F2127' }}>
+          <div
+            className="h-full rounded-full transition-all duration-500 ease-out"
+            style={{
+              width: `${(completedCount / WF_STEPS.length) * 100}%`,
+              background: allDone
+                ? '#10B981'
+                : `linear-gradient(90deg, #10B981 0%, #F26B4E 100%)`,
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* 03 Integrations — real-world event flow: trigger → AI → actions */
+
+const INT_SCENARIOS = [
+  {
+    trigger: { name: 'Stripe',   color: '#635BFF', event: 'Payment received · $299.00', detail: 'from john@acme.com' },
+    actions:  [
+      { name: 'HubSpot', color: '#FF7A59', text: 'Deal marked Closed Won' },
+      { name: 'Slack',   color: '#4A9C6D', text: 'Notified #sales-wins channel' },
+    ],
+  },
+  {
+    trigger: { name: 'Gmail',    color: '#EA4335', event: 'New email from prospect', detail: '"Can we schedule a demo?"' },
+    actions:  [
+      { name: 'HubSpot', color: '#FF7A59', text: 'Contact + deal created' },
+      { name: 'Cal.com', color: '#4285F4', text: 'Demo slot booked · 3 PM' },
+    ],
+  },
+  {
+    trigger: { name: 'Shopify',  color: '#96BF48', event: 'New order #SH-1234', detail: '3 items · $187.50' },
+    actions:  [
+      { name: 'Stripe',  color: '#635BFF', text: 'Invoice generated + sent' },
+      { name: 'Slack',   color: '#4A9C6D', text: '#fulfillment team alerted' },
+    ],
+  },
+  {
+    trigger: { name: 'HubSpot',  color: '#FF7A59', event: 'Deal stage advanced', detail: 'Proposal → Contract Sent' },
+    actions:  [
+      { name: 'Gmail',   color: '#EA4335', text: 'Contract email dispatched' },
+      { name: 'Notion',  color: '#9B9B8E', text: 'Project board spun up' },
+    ],
+  },
+];
+
+const INT_PLATFORMS = [
+  { name: 'Stripe',   color: '#635BFF' },
+  { name: 'Slack',    color: '#4A9C6D' },
+  { name: 'Gmail',    color: '#EA4335' },
+  { name: 'HubSpot',  color: '#FF7A59' },
+  { name: 'Shopify',  color: '#96BF48' },
+  { name: 'Notion',   color: '#9B9B8E' },
+  { name: 'Cal.com',  color: '#4285F4' },
+];
+
+// 4 scenarios × 3 sub-phases: 0=trigger, 1=+action1, 2=+action2+pause
+const INT_DELAYS = [
+  520, 1050, 1700,
+  520, 1050, 1700,
+  520, 1050, 1700,
+  520, 1050, 2600,
+];
+
+function IntPlatformChip({ name, color, active }: { name: string; color: string; active: boolean }) {
+  return (
+    <div
+      className="w-12 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300"
+      style={{
+        background: '#ffffff',
+        border: `1.5px solid ${active ? color + '80' : '#E5E7EC30'}`,
+        opacity: active ? 1 : 0.45,
+        boxShadow: active ? `0 0 0 3px ${color}22` : 'none',
+      }}
+      title={name}
+    >
+      <PlatformLogo name={name} size={22} />
+    </div>
+  );
+}
+
+function IntFlowConnector({ active }: { active: boolean }) {
+  return (
+    <div className="flex items-center gap-2 py-1" style={{ paddingLeft: 11 }}>
+      <div className="w-px transition-all duration-500"
+        style={{ height: 14, background: active ? '#F26B4E' : '#252528' }} />
+    </div>
+  );
+}
+
+function IntActionCard({ action, delay = 0 }: { action: { name: string; color: string; text: string }; delay?: number }) {
+  return (
+    <div
+      className="flex items-center gap-2.5 rounded-lg px-3 py-2.5"
+      style={{
+        background: action.color + '0D',
+        border: `1px solid ${action.color}28`,
+        animation: `fadeSlideUp 0.3s ease-out ${delay}ms both`,
+      }}
+    >
+      {/* platform logo */}
+      <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0"
+        style={{ background: action.color + '18' }}>
+        <PlatformLogo name={action.name} size={16} />
+      </div>
+      <div className="flex-1 min-w-0">
+        <span className="text-[10px] font-semibold text-[#E5E7EC]">{action.name}</span>
+        <p className="text-[9px] text-[#8A8F99] truncate mt-0.5">{action.text}</p>
+      </div>
+      {/* checkmark */}
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="flex-shrink-0">
+        <circle cx="6.5" cy="6.5" r="6" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.4)" strokeWidth="1" />
+        <path d="M3.5 6.5l2 2 4-4" stroke="#10B981" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
+  );
+}
+
+const IntegrationsVisual = () => {
+  const [phase, setPhase] = useState(0);
+
+  useEffect(() => {
+    const t = setTimeout(
+      () => setPhase((p) => (p >= INT_DELAYS.length - 1 ? 0 : p + 1)),
+      INT_DELAYS[phase] ?? 1000,
+    );
+    return () => clearTimeout(t);
+  }, [phase]);
+
+  const scenarioIdx = Math.floor(phase / 3);
+  const subPhase    = phase % 3;
+  const scenario    = INT_SCENARIOS[scenarioIdx];
+
+  // which platform names are "active" right now
+  const activePlatforms = new Set<string>([scenario.trigger.name]);
+  if (subPhase >= 1) activePlatforms.add(scenario.actions[0].name);
+  if (subPhase >= 2) activePlatforms.add(scenario.actions[1].name);
+
+  // completed events for the log strip (previous scenarios)
+  const prevIdx = (scenarioIdx - 1 + INT_SCENARIOS.length) % INT_SCENARIOS.length;
+  const prevScenario = INT_SCENARIOS[prevIdx];
+
+  return (
+    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#0C0C0E] border border-[#1F2127] flex flex-col">
+
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[#1A1A1D] flex-shrink-0" style={{ background: '#0E0E11' }}>
+        <div className="flex items-center gap-2">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <circle cx="6" cy="6" r="5" stroke="#F26B4E" strokeWidth="1.2" />
+            <circle cx="6" cy="6" r="2" fill="#F26B4E" />
+            <path d="M6 1v1.5M6 9.5V11M1 6h1.5M9.5 6H11" stroke="#F26B4E" strokeWidth="1.2" strokeLinecap="round" />
+          </svg>
+          <span className="text-[11px] font-semibold text-[#E5E7EC]">Intelligent Integrations</span>
+        </div>
+        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full"
+          style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.22)' }}>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" style={{ animation: 'blinkPulse 1.2s step-end infinite' }} />
+          <span className="text-[9px] font-semibold text-[#10B981]">7 platforms live</span>
+        </div>
+      </div>
+
+      {/* Platform chips */}
+      <div className="flex items-center gap-1.5 px-4 py-2.5 flex-shrink-0 flex-wrap">
+        {INT_PLATFORMS.map((p) => (
+          <IntPlatformChip key={p.name} name={p.name} color={p.color} active={activePlatforms.has(p.name)} />
+        ))}
+      </div>
+
+      {/* Event flow */}
+      <div className="flex-1 px-4 pb-2 flex flex-col overflow-hidden">
+
+        {/* Trigger card */}
+        <div
+          key={`trigger-${scenarioIdx}`}
+          className="rounded-xl p-3"
+          style={{
+            background: scenario.trigger.color + '10',
+            border: `1px solid ${scenario.trigger.color}30`,
+            animation: 'fadeSlideUp 0.35s ease-out both',
+          }}
+        >
+          <div className="flex items-center justify-between mb-1">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0"
+                style={{ background: scenario.trigger.color + '22' }}>
+                <PlatformLogo name={scenario.trigger.name} size={16} />
+              </div>
+              <span className="text-[10px] font-semibold" style={{ color: scenario.trigger.color }}>
+                {scenario.trigger.name}
+              </span>
+              <span className="text-[8px] text-[#52525B] px-1.5 py-0.5 rounded"
+                style={{ background: '#1A1A1D', border: '1px solid #27272A' }}>
+                trigger
+              </span>
+            </div>
+            <span className="text-[8px] text-[#10B981] font-medium">received</span>
+          </div>
+          <p className="text-[11px] font-semibold text-[#E5E7EC]">{scenario.trigger.event}</p>
+          <p className="text-[9px] text-[#8A8F99] mt-0.5">{scenario.trigger.detail}</p>
+        </div>
+
+        {/* AI connector */}
+        <IntFlowConnector active />
+        <div className="flex items-center gap-2 mb-1 flex-shrink-0">
+          <div className="w-6 h-6 rounded-full bg-[#F26B4E] flex items-center justify-center text-[8px] font-bold text-white flex-shrink-0">
+            AI
+          </div>
+          <span className="text-[9px]" style={{ color: subPhase === 0 ? '#8A8F99' : '#10B981' }}>
+            {subPhase === 0 ? 'Analyzing event...' : `${subPhase === 1 ? '1' : '2'} action${subPhase > 1 ? 's' : ''} dispatched`}
+          </span>
+          {subPhase === 0 && (
+            <div className="flex gap-[3px] items-center">
+              {[0, 120, 240].map((d) => (
+                <span key={d} className="w-1 h-1 rounded-full bg-[#8A8F99]"
+                  style={{ animation: `bounce 0.9s ${d}ms infinite` }} />
+              ))}
+            </div>
+          )}
+        </div>
+        <IntFlowConnector active={subPhase >= 1} />
+
+        {/* Action cards */}
+        <div className="flex flex-col gap-1.5">
+          {subPhase >= 1 && <IntActionCard key={`a0-${scenarioIdx}`} action={scenario.actions[0]} />}
+          {subPhase >= 2 && <IntActionCard key={`a1-${scenarioIdx}`} action={scenario.actions[1]} delay={120} />}
+        </div>
+      </div>
+
+      {/* Footer: previous event log */}
+      <div className="px-4 py-2.5 flex-shrink-0 border-t border-[#1A1A1D] flex items-center gap-2">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <circle cx="5" cy="5" r="4.5" stroke="#10B981" strokeWidth="1" />
+          <path d="M3 5l1.5 1.5L7 3" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <span className="text-[9px] text-[#52525B]">
+          <span style={{ color: prevScenario.trigger.color }}>{prevScenario.trigger.name}</span>
+          {' → '}
+          <span style={{ color: prevScenario.actions[0].color }}>{prevScenario.actions[0].name}</span>
+          {' + '}
+          <span style={{ color: prevScenario.actions[1].color }}>{prevScenario.actions[1].name}</span>
+          {' · completed'}
+        </span>
+      </div>
+    </div>
+  );
+};
 
 const visuals = [
   <DevelopmentVisual key="dev" />,
   <AutomationVisual key="auto" />,
-  <DataDrivenVisual key="data" />,
   <IntegrationsVisual key="int" />,
 ];
 
