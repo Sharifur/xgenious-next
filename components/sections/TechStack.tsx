@@ -73,7 +73,7 @@ const ALL_ENTRIES = buildEntries();
 
 export default function TechStack() {
   return (
-    <section id="tech-stack" className="py-24 bg-white">
+    <section id="tech-stack" className="pb-24 bg-white">
       <div className="container-page">
         {/* Header */}
         <div className="text-center mb-12 max-w-[680px] mx-auto">

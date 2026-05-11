@@ -6,9 +6,9 @@ import { ownProducts, type OwnProduct } from '@/data/saas-page';
 
 const EDGE_MASK = {
   WebkitMaskImage:
-    'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+    'linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)',
   maskImage:
-    'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+    'linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)',
 };
 
 function ProductCard({ p }: { p: OwnProduct }) {
