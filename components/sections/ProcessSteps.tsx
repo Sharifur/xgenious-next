@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { processSteps } from '@/data/saas-page';
 
@@ -82,64 +83,90 @@ function VisualFrame({ children, gradient }: { children: React.ReactNode; gradie
   );
 }
 
-/* ── 1. Discovery & Requirements — magnifying glass over analytics ── */
+/* ── 1. Discovery & Requirements — user research + requirements doc ── */
 const DiscoveryVisual = () => (
-  <VisualFrame gradient="linear-gradient(135deg, #A4C5D8, #7AA5BD)">
+  <VisualFrame gradient="linear-gradient(135deg, #DCE8F4, #B4CCE0)">
     <defs>
-      <linearGradient id="suit1" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#3F4A55" />
-        <stop offset="100%" stopColor="#1F262E" />
+      <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse">
+        <circle cx="1" cy="1" r="1" fill="#FFFFFF" opacity="0.3" />
+      </pattern>
+      <linearGradient id="disc-card" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#FFFFFF" />
+        <stop offset="100%" stopColor="#F0F6FB" />
       </linearGradient>
     </defs>
-    <path d="M -20 220 L 200 200 L 220 320 L -20 320 Z" fill="url(#suit1)" />
 
-    {/* Floating chart bars */}
-    <g opacity="0.85">
-      {[0, 1, 2, 3, 4, 5].map((i) => (
-        <rect key={i} x={280 + i * 18} y={40 - i * 4} width="14" height={30 + i * 5} fill="#FFE8E1" rx="1" />
-      ))}
-      <text x="320" y="80" fontFamily="Inter, sans-serif" fontSize="6" fill="#FFFFFF" textAnchor="middle">
-        Lorem Ipsum
-      </text>
+    {/* Dot grid bg */}
+    <rect width="400" height="300" fill="url(#dots)" />
+
+    {/* ── User / interviewer icon (left) ── */}
+    <g transform="translate(58 130)">
+      <circle r="28" fill="#FFFFFF" opacity="0.85" stroke="#9BBDD4" strokeWidth="1" />
+      <circle cy="-9" r="9" fill="#5A8BAA" />
+      <path d="M -13 12 Q -13 2 0 0 Q 13 2 13 12 Z" fill="#5A8BAA" />
     </g>
+    {/* Speech bubble */}
+    <rect x="18" y="58" width="88" height="36" rx="7" fill="#FFFFFF" stroke="#9BBDD4" strokeWidth="1" />
+    <path d="M 48 94 L 43 104 L 56 94 Z" fill="#FFFFFF" stroke="#9BBDD4" strokeWidth="1" />
+    <text x="62" y="73" fontFamily="Inter,sans-serif" fontSize="7.5" fontWeight="600" fill="#1E3A5F" textAnchor="middle">What do</text>
+    <text x="62" y="86" fontFamily="Inter,sans-serif" fontSize="7.5" fontWeight="600" fill="#1E3A5F" textAnchor="middle">you need?</text>
 
-    {/* Pie chart */}
-    <g transform="translate(330 130)">
-      <circle r="22" fill="#1F262E" />
-      <path d="M 0 -22 A 22 22 0 0 1 18 12 L 0 0 Z" fill="#10B981" />
-      <path d="M 18 12 A 22 22 0 0 1 -18 12 L 0 0 Z" fill="#FFE8E1" />
-      <text y="38" fontFamily="Inter, sans-serif" fontSize="6" fill="#FFFFFF" textAnchor="middle">
-        Lorem Ipsum
-      </text>
-    </g>
+    {/* Dashed arrow from user to doc */}
+    <path d="M 90 130 Q 120 130 130 130" stroke="#9BBDD4" strokeWidth="1.2" strokeDasharray="4 3" fill="none" />
+    <polygon points="130,126 138,130 130,134" fill="#9BBDD4" />
 
-    {/* Magnifier */}
-    <g transform="translate(200 145)">
-      <circle r="62" fill="#FFFFFF" opacity="0.95" />
-      <circle r="50" fill="#E1ECF2" />
-      <circle r="38" fill="#A8C8DA" />
-      <circle r="28" fill="#FFFFFF" />
-      <g transform="translate(-10 -8)">
-        <circle cx="0" cy="-2" r="3" fill="#1E5C7A" />
-        <path d="M -5 8 q 5 -6 10 0 v 2 h -10 z" fill="#1E5C7A" />
+    {/* ── Requirements document (center) ── */}
+    <rect x="138" y="36" width="128" height="228" rx="8" fill="url(#disc-card)" stroke="#B8D0E3" strokeWidth="1" />
+    {/* Clip at top */}
+    <rect x="175" y="30" width="54" height="16" rx="4" fill="#5A8BAA" />
+    <rect x="184" y="34" width="36" height="8" rx="2" fill="#3D6E8A" />
+    {/* Header label */}
+    <rect x="138" y="36" width="128" height="26" rx="8" fill="#1E3A5F" />
+    <text x="202" y="53" fontFamily="Inter,sans-serif" fontSize="9" fontWeight="700" fill="#FFFFFF" textAnchor="middle">Requirements</text>
+
+    {/* Checkbox items */}
+    {[
+      { y: 86,  label: 'User research',    done: true  },
+      { y: 114, label: 'Stakeholder input', done: true  },
+      { y: 142, label: 'Feature mapping',   done: true  },
+      { y: 170, label: 'Tech constraints',  done: false },
+      { y: 198, label: 'Scope definition',  done: false },
+      { y: 226, label: 'Timeline & budget', done: false },
+    ].map((item) => (
+      <g key={item.label}>
+        <rect x="154" y={item.y - 8} width="13" height="13" rx="2.5"
+          fill={item.done ? '#F26B4E' : 'none'}
+          stroke={item.done ? '#F26B4E' : '#9BBDD4'}
+          strokeWidth="1.2"
+        />
+        {item.done && (
+          <path
+            d={`M ${157} ${item.y - 1} L ${160} ${item.y + 2} L ${165} ${item.y - 4}`}
+            stroke="#FFFFFF" strokeWidth="1.5" fill="none"
+            strokeLinecap="round" strokeLinejoin="round"
+          />
+        )}
+        <text x="174" y={item.y + 2} fontFamily="Inter,sans-serif" fontSize="8.5" fill={item.done ? '#1E3A5F' : '#7AA0BA'}>
+          {item.label}
+        </text>
       </g>
-      <g transform="translate(8 -2)">
-        <rect x="0" y="2" width="2" height="6" fill="#F26B4E" />
-        <rect x="3" y="-1" width="2" height="9" fill="#F26B4E" />
-        <rect x="6" y="-3" width="2" height="11" fill="#F26B4E" />
-      </g>
-      {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg) => (
-        <line key={deg} x1="0" y1="-58" x2="0" y2="-54" stroke="#1E5C7A" strokeWidth="1.4" transform={`rotate(${deg})`} />
-      ))}
-    </g>
-    <circle cx="200" cy="145" r="68" fill="none" stroke="#0F1112" strokeWidth="6" />
-    <line x1="248" y1="195" x2="295" y2="245" stroke="#0F1112" strokeWidth="9" strokeLinecap="round" />
-    <g transform="translate(255 200)">
-      <circle r="14" fill="#5C0A0A" />
-      <text y="3" fontFamily="Inter, sans-serif" fontSize="6" fontWeight="600" fill="#F26B4E" textAnchor="middle">
-        Xgenious
-      </text>
-    </g>
+    ))}
+
+    {/* ── Magnifying glass (right) ── */}
+    <circle cx="310" cy="148" r="52" fill="#FFFFFF" opacity="0.15" />
+    <circle cx="310" cy="148" r="46" fill="#FFFFFF" opacity="0.7" stroke="#1E3A5F" strokeWidth="3.5" />
+    {/* Zoomed content inside glass */}
+    <rect x="280" y="132" width="60" height="9" rx="2" fill="#F26B4E" opacity="0.85" />
+    <rect x="284" y="148" width="12" height="12" rx="2.5" fill="#F26B4E" />
+    <path d="M 287 154 L 290 157 L 295 150" stroke="#FFFFFF" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    <rect x="302" y="149" width="34" height="4" rx="1.5" fill="#1E3A5F" opacity="0.5" />
+    <rect x="302" y="157" width="24" height="4" rx="1.5" fill="#1E3A5F" opacity="0.3" />
+    {/* Handle */}
+    <line x1="346" y1="185" x2="375" y2="215" stroke="#1E3A5F" strokeWidth="7" strokeLinecap="round" />
+    <line x1="344" y1="183" x2="373" y2="213" stroke="#3A6888" strokeWidth="4" strokeLinecap="round" />
+
+    {/* Dashed arrow from doc to magnifier */}
+    <path d="M 266 148 Q 280 148 290 148" stroke="#9BBDD4" strokeWidth="1.2" strokeDasharray="4 3" fill="none" />
   </VisualFrame>
 );
 
@@ -317,12 +344,16 @@ export default function ProcessSteps() {
     <section
       id="process"
       className="py-24 relative overflow-hidden"
-      style={{
-        background:
-          'radial-gradient(120% 100% at 50% 0%, #FFF6F1 0%, #FBF1EB 35%, #F5EFEB 70%, #F0EAE5 100%)',
-      }}
     >
-      <div className="container-page">
+      {/* Background image */}
+      <Image
+        src="/how-we-work-bg.jpg"
+        alt=""
+        fill
+        className="object-cover"
+        priority={false}
+      />
+      <div className="container-page relative z-10">
         {/* Centered header */}
         <div className="text-center mb-14 max-w-[680px] mx-auto">
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#FFE8E1] text-[#F26B4E] text-[12px] font-medium mb-5">

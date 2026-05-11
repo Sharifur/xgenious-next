@@ -4,7 +4,7 @@ import { faqs } from '@/data/saas-page';
 export default function FAQ() {
   return (
     <section className="py-24 bg-white">
-      <div className="max-w-[913px] mx-auto px-6">
+      <div className="container-page">
         <div className="text-center mb-12 max-w-[640px] mx-auto">
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#FFE8E1] text-[#F26B4E] text-[12px] font-medium mb-5">
             Frequently Asked &amp; Questions
