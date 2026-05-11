@@ -184,164 +184,171 @@ const DevelopmentVisual = () => {
 
 /* 02 Automation — execution timeline (lead onboarding workflow) */
 
-type WfStatus = 'idle' | 'running' | 'done';
+type WfStatus = 'idle' | 'connecting' | 'working' | 'done';
 
 const WF_STEPS = [
   {
     label: 'Send welcome email',
     app: 'Mailchimp',
-    running: 'Sending via SMTP...',
-    done: 'Delivered · 0.3 s',
-    output: 'lead@company.com',
+    connect: 'Authenticating with Mailchimp...',
+    working: 'Sending via SMTP · lead@company.com',
+    done: '0.4 s',
+    output: 'Delivered to inbox',
     color: '#4FC3F7',
   },
   {
     label: 'Create CRM contact',
     app: 'HubSpot',
-    running: 'POST /contacts...',
-    done: 'Contact #84231 created',
-    output: 'Pipeline: New Lead',
+    connect: 'Connecting to HubSpot API...',
+    working: 'POST /crm/v3/objects/contacts',
+    done: '0.8 s',
+    output: 'Contact #84231 · Pipeline: New Lead',
     color: '#FF7A59',
   },
   {
     label: 'Alert sales channel',
     app: 'Slack',
-    running: 'Posting message...',
-    done: 'Message delivered',
-    output: '#inbound-leads',
+    connect: 'Connecting to Slack workspace...',
+    working: 'Posting to #inbound-leads...',
+    done: '0.3 s',
+    output: 'Message delivered · 3 members notified',
     color: '#4A9C6D',
   },
   {
     label: 'Schedule follow-up',
     app: 'Asana',
-    running: 'Creating task...',
-    done: 'Task #T-2847 created',
-    output: 'Due in 48 h · assigned',
+    connect: 'Connecting to Asana project...',
+    working: 'Creating task with due date...',
+    done: '0.6 s',
+    output: 'Task #T-2847 · Due in 48 h',
     color: '#A78BFA',
   },
 ];
 
+// each step has 3 sub-phases: connecting(base) → working(base+1) → done(base+2)
+// phase 0 = trigger, then 3 phases per step, then final pause
+// total: 1 + 4*3 + 1 = 14 phases (0–13)
+const WF_DELAYS = [
+  700,          // 0  trigger shown
+  950, 1350, 380, // 1-3  step 0: connecting / working / done-pause
+  950, 1350, 380, // 4-6  step 1
+  950, 1350, 380, // 7-9  step 2
+  950, 1350, 380, // 10-12 step 3
+  3200,         // 13 all done + long pause
+];
+const WF_TOTAL = WF_DELAYS.length; // 14
+
 function WfConnector({ fromStatus }: { fromStatus: WfStatus }) {
+  const color =
+    fromStatus === 'done'       ? '#10B981' :
+    fromStatus === 'working'    ? '#F26B4E' :
+    fromStatus === 'connecting' ? '#F26B4E' :
+    '#252528';
   return (
-    <div className="flex items-center" style={{ paddingLeft: 13, height: 18 }}>
-      <div
-        className="w-px flex-none"
-        style={{
-          height: '100%',
-          background:
-            fromStatus === 'done'
-              ? '#10B981'
-              : fromStatus === 'running'
-              ? '#F26B4E'
-              : '#252528',
-          opacity: fromStatus === 'idle' ? 0.4 : 1,
-          transition: 'background 0.4s',
-        }}
-      />
+    <div style={{ paddingLeft: 13, height: 16 }}>
+      <div className="w-px h-full transition-all duration-500" style={{ background: color, opacity: fromStatus === 'idle' ? 0.3 : 1 }} />
     </div>
   );
 }
 
-function WfStepRow({
-  step,
-  status,
-  isLast,
-}: {
-  step: (typeof WF_STEPS)[number];
-  status: WfStatus;
-  isLast: boolean;
-}) {
-  const isDone    = status === 'done';
-  const isRunning = status === 'running';
+function WfStepRow({ step, status, isLast }: { step: (typeof WF_STEPS)[number]; status: WfStatus; isLast: boolean }) {
+  const isDone       = status === 'done';
+  const isWorking    = status === 'working';
+  const isConnecting = status === 'connecting';
+  const isActive     = isWorking || isConnecting;
+
+  /* circle icon bg / border */
+  const circleBg     = isDone ? 'rgba(16,185,129,0.15)' : isActive ? 'rgba(242,107,78,0.12)' : '#18181B';
+  const circleBorder = isDone ? '1.5px solid rgba(16,185,129,0.45)' : isActive ? '1.5px solid rgba(242,107,78,0.45)' : '1.5px solid #27272A';
+  const circleGlow   = isActive ? '0 0 10px rgba(242,107,78,0.2)' : 'none';
+
+  /* card bg / border */
+  const cardBg     = isDone ? 'rgba(16,185,129,0.04)' : isActive ? 'rgba(242,107,78,0.05)' : 'transparent';
+  const cardBorder = isDone ? '1px solid rgba(16,185,129,0.1)' : isActive ? '1px solid rgba(242,107,78,0.14)' : '1px solid transparent';
+
+  /* status badge */
+  const badgeText  = isConnecting ? 'connecting' : isWorking ? 'in progress' : isDone ? step.done : '';
+  const badgeColor = isDone ? '#10B981' : '#F26B4E';
 
   return (
     <>
       <div className="flex items-start gap-3">
-        {/* Left: icon circle */}
-        <div className="flex flex-col items-center flex-shrink-0" style={{ width: 28 }}>
+        {/* Timeline circle */}
+        <div className="flex-shrink-0" style={{ width: 28 }}>
           <div
-            className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300"
-            style={{
-              background: isDone
-                ? 'rgba(16,185,129,0.15)'
-                : isRunning
-                ? 'rgba(242,107,78,0.15)'
-                : '#18181B',
-              border: isDone
-                ? '1.5px solid rgba(16,185,129,0.5)'
-                : isRunning
-                ? '1.5px solid rgba(242,107,78,0.5)'
-                : '1.5px solid #27272A',
-              boxShadow: isRunning ? '0 0 10px rgba(242,107,78,0.25)' : 'none',
-            }}
+            className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-400"
+            style={{ background: circleBg, border: circleBorder, boxShadow: circleGlow }}
           >
-            {isDone ? (
+            {isDone && (
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
                 <path d="M2 5.5l2.5 2.5L9 3" stroke="#10B981" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            ) : isRunning ? (
-              <span className="w-2 h-2 rounded-full bg-[#F26B4E]" style={{ animation: 'blinkPulse 0.8s step-end infinite' }} />
-            ) : (
-              <span className="w-1.5 h-1.5 rounded-full bg-[#3F3F46]" />
             )}
+            {isConnecting && (
+              /* 3 tiny bouncing dots */
+              <div className="flex gap-[3px] items-center">
+                {[0, 120, 240].map((d) => (
+                  <span key={d} className="w-1 h-1 rounded-full bg-[#F26B4E]"
+                    style={{ animation: `bounce 0.9s ${d}ms infinite` }} />
+                ))}
+              </div>
+            )}
+            {isWorking && (
+              <span className="w-2 h-2 rounded-full bg-[#F26B4E]"
+                style={{ animation: 'blinkPulse 0.75s step-end infinite' }} />
+            )}
+            {status === 'idle' && <span className="w-1.5 h-1.5 rounded-full bg-[#3F3F46]" />}
           </div>
         </div>
 
-        {/* Right: content */}
-        <div
-          className="flex-1 min-w-0 rounded-lg px-3 py-2 transition-all duration-300"
-          style={{
-            background: isDone
-              ? 'rgba(16,185,129,0.04)'
-              : isRunning
-              ? 'rgba(242,107,78,0.06)'
-              : 'transparent',
-            border: isRunning
-              ? '1px solid rgba(242,107,78,0.14)'
-              : isDone
-              ? '1px solid rgba(16,185,129,0.1)'
-              : '1px solid transparent',
-          }}
-        >
+        {/* Card */}
+        <div className="flex-1 min-w-0 rounded-lg px-3 py-2 transition-all duration-300"
+          style={{ background: cardBg, border: cardBorder }}>
+          {/* Row 1: label + app badge + status badge */}
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-1.5 min-w-0">
-              <span
-                className="text-[11px] font-medium truncate"
-                style={{ color: status === 'idle' ? '#3F3F46' : '#E5E7EC' }}
-              >
+              <span className="text-[11px] font-medium truncate"
+                style={{ color: status === 'idle' ? '#3F3F46' : '#E5E7EC' }}>
                 {step.label}
               </span>
-              <span
-                className="text-[9px] px-1.5 py-0.5 rounded flex-shrink-0"
+              <span className="text-[9px] px-1.5 py-0.5 rounded flex-shrink-0"
                 style={{
                   background: status === 'idle' ? '#18181B' : step.color + '18',
                   color: status === 'idle' ? '#3F3F46' : step.color,
                   border: `1px solid ${status === 'idle' ? '#27272A' : step.color + '35'}`,
-                }}
-              >
+                }}>
                 {step.app}
               </span>
             </div>
-            {isRunning && (
-              <span className="text-[9px] text-[#F26B4E] flex-shrink-0" style={{ animation: 'blinkPulse 1.2s step-end infinite' }}>
-                running
+            {isActive && (
+              <span className="text-[9px] flex-shrink-0"
+                style={{ color: badgeColor, animation: 'blinkPulse 1.1s step-end infinite' }}>
+                {badgeText}
               </span>
             )}
             {isDone && (
-              <span className="text-[9px] text-[#10B981] flex-shrink-0">{step.done.split('·')[1]?.trim() ?? ''}</span>
+              <span className="text-[9px] flex-shrink-0" style={{ color: badgeColor }}>{badgeText}</span>
             )}
           </div>
 
-          {/* Sub-line */}
-          {isRunning && (
-            <p className="text-[9px] mt-1 font-mono text-[#F26B4E]/70" style={{ animation: 'fadeSlideUp 0.25s ease-out both' }}>
-              {step.running}
+          {/* Row 2: sub-line changes per state */}
+          {isConnecting && (
+            <p className="text-[9px] mt-1 text-[#8A8F99]"
+              style={{ animation: 'fadeSlideUp 0.2s ease-out both' }}>
+              {step.connect}
+            </p>
+          )}
+          {isWorking && (
+            <p className="text-[9px] mt-1 font-mono text-[#F26B4E]/70"
+              style={{ animation: 'fadeSlideUp 0.2s ease-out both' }}>
+              {step.working}
             </p>
           )}
           {isDone && (
-            <div className="flex items-center gap-1 mt-1" style={{ animation: 'fadeSlideUp 0.25s ease-out both' }}>
-              <span className="text-[9px] text-[#8A8F99]">{step.output}</span>
-            </div>
+            <p className="text-[9px] mt-1 text-[#8A8F99]"
+              style={{ animation: 'fadeSlideUp 0.2s ease-out both' }}>
+              {step.output}
+            </p>
           )}
         </div>
       </div>
@@ -355,20 +362,22 @@ const AutomationVisual = () => {
   const [phase, setPhase] = useState(0);
 
   useEffect(() => {
-    // 0 = trigger, 1-4 = step running, 5 = all done + pause
-    const delays = [600, 1000, 1000, 1000, 1000, 2600];
-    const t = setTimeout(() => setPhase((p) => (p >= 5 ? 0 : p + 1)), delays[phase] ?? 1000);
+    const t = setTimeout(
+      () => setPhase((p) => (p >= WF_TOTAL - 1 ? 0 : p + 1)),
+      WF_DELAYS[phase] ?? 1000,
+    );
     return () => clearTimeout(t);
   }, [phase]);
 
-  const completedCount = Math.max(0, phase - 1);
-  const allDone = phase === 5;
+  const completedCount = WF_STEPS.filter((_, i) => phase >= i * 3 + 3).length;
+  const allDone = phase === WF_TOTAL - 1;
 
   const getStatus = (i: number): WfStatus => {
-    if (phase === 0) return 'idle';
-    if (i < phase - 1) return 'done';
-    if (i === phase - 1) return 'running';
-    return 'idle';
+    const base = i * 3 + 1;
+    if (phase < base)       return 'idle';
+    if (phase === base)     return 'connecting';
+    if (phase === base + 1) return 'working';
+    return 'done';
   };
 
   return (
