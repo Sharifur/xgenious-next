@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import { aiFeatures, aiTabs } from '@/data/saas-page';
 
 const LOGOS: Record<string, string> = {
@@ -738,33 +738,42 @@ export default function AIAgentSection() {
   const [active, setActive] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // offset covers full scroll through the section:
+  //   progress=0 → section top at viewport bottom (entering)
+  //   progress=1 → section bottom at viewport top (leaving)
+  // With minHeight=300vh: entrance=100vh (0→0.25), pin zone=200vh (0.25→0.75), exit=100vh (0.75→1)
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start end', 'start start'],
+    offset: ['start end', 'end start'],
   });
 
-  // Outer wrapper: starts as a visible small square, grows linearly to full size
-  const scale  = useTransform(scrollYProgress, [0, 1], [0.28, 1]);
+  // Scale up during entrance phase [0 → 0.25]
+  const scale = useTransform(scrollYProgress, [0, 0.25], [0.28, 1]);
 
-  // Card background fades in early
-  const cardOpacity = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
+  // Card + content reveal during entrance
+  const cardOpacity    = useTransform(scrollYProgress, [0.02, 0.18], [0, 1]);
+  const pillOpacity    = useTransform(scrollYProgress, [0.05, 0.18], [0, 1]);
+  const pillY          = useTransform(scrollYProgress, [0.05, 0.18], [18, 0]);
+  const headingOpacity = useTransform(scrollYProgress, [0.08, 0.20], [0, 1]);
+  const headingY       = useTransform(scrollYProgress, [0.08, 0.20], [18, 0]);
+  const bodyOpacity    = useTransform(scrollYProgress, [0.11, 0.22], [0, 1]);
+  const bodyY          = useTransform(scrollYProgress, [0.11, 0.22], [14, 0]);
+  const listOpacity    = useTransform(scrollYProgress, [0.14, 0.24], [0, 1]);
+  const listY          = useTransform(scrollYProgress, [0.14, 0.24], [14, 0]);
+  const visualOpacity  = useTransform(scrollYProgress, [0.09, 0.22], [0, 1]);
+  const visualY        = useTransform(scrollYProgress, [0.09, 0.22], [24, 0]);
 
-  // Left column — pill, heading, body, list stagger in one after another
-  const pillOpacity    = useTransform(scrollYProgress, [0.35, 0.55], [0, 1]);
-  const pillY          = useTransform(scrollYProgress, [0.35, 0.55], [18, 0]);
-  const headingOpacity = useTransform(scrollYProgress, [0.42, 0.62], [0, 1]);
-  const headingY       = useTransform(scrollYProgress, [0.42, 0.62], [18, 0]);
-  const bodyOpacity    = useTransform(scrollYProgress, [0.50, 0.68], [0, 1]);
-  const bodyY          = useTransform(scrollYProgress, [0.50, 0.68], [14, 0]);
-  const listOpacity    = useTransform(scrollYProgress, [0.57, 0.75], [0, 1]);
-  const listY          = useTransform(scrollYProgress, [0.57, 0.75], [14, 0]);
-
-  // Right visual panel comes in slightly after heading
-  const visualOpacity = useTransform(scrollYProgress, [0.50, 0.72], [0, 1]);
-  const visualY       = useTransform(scrollYProgress, [0.50, 0.72], [24, 0]);
+  // Tab switching driven by scroll position in the pin zone (0.25 → 0.75)
+  // Split evenly into 3 thirds: 0→1, 1→2, 2→3 switch at 0.417 and 0.583
+  useMotionValueEvent(scrollYProgress, 'change', (v) => {
+    if (v < 0.25 || v > 0.75) return; // only switch during pin zone
+    if (v < 0.417)      setActive(0);
+    else if (v < 0.583) setActive(1);
+    else                setActive(2);
+  });
 
   return (
-    <div ref={containerRef} style={{ minHeight: '210vh' }}>
+    <div ref={containerRef} style={{ minHeight: '300vh' }}>
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
         {/* Outer scale wrapper — grows from small square in top-right */}
         <motion.div
