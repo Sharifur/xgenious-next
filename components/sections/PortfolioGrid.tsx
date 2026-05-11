@@ -18,6 +18,9 @@ function ProductCard({ p }: { p: OwnProduct }) {
       {/* Bottom gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
+      {/* Black overlay on hover */}
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-400" />
+
       {/* Glass shine — sweeps left→right once on hover */}
       <div className="absolute top-0 left-0 h-full w-32 -translate-x-48 skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none group-hover:translate-x-[700px] transition-transform duration-700 ease-in-out" />
 
