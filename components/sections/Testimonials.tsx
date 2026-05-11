@@ -1,103 +1,110 @@
-'use client';
+const TESTIMONIALS = [
+  {
+    name: 'Esther Howard',
+    role: 'Founder & CEO',
+    quote: 'Working with Xgenious transformed how we ship product. They understood our vision from day one and delivered beyond expectations.',
+    initials: 'EH',
+    bg: 'linear-gradient(135deg, #8B7355, #6B5A40)',
+  },
+  {
+    name: 'Jane Cooper',
+    role: 'Founder & CEO',
+    quote: 'The team built our entire SaaS platform from scratch. Clean architecture, fast delivery, and zero surprises on pricing.',
+    initials: 'JC',
+    bg: 'linear-gradient(135deg, #6B8E6B, #4A6B4A)',
+  },
+  {
+    name: 'Wade Warren',
+    role: 'Founder & CEO',
+    quote: 'Their AI agent cut our support load by 70% in the first month. Best engineering investment we have ever made.',
+    initials: 'WW',
+    bg: 'linear-gradient(135deg, #7B8C9B, #5A6B7A)',
+  },
+  {
+    name: 'Leslie Alexander',
+    role: 'Product Lead',
+    quote: 'Xgenious pushed back on bad ideas and championed the right ones — that is rare. Felt like a true in-house team.',
+    initials: 'LA',
+    bg: 'linear-gradient(135deg, #9B7B8C, #7A5A6B)',
+  },
+  {
+    name: 'Jacob Jones',
+    role: 'CTO',
+    quote: 'From MVP to production in 8 weeks. The scope was fixed, the price was fixed, and they delivered exactly what was promised.',
+    initials: 'JJ',
+    bg: 'linear-gradient(135deg, #8C7B6B, #6B5A4A)',
+  },
+  {
+    name: 'Robert Fox',
+    role: 'Founder & CEO',
+    quote: 'Integrations that used to take months were done in days. The codebase they handed over is one I am proud to maintain.',
+    initials: 'RF',
+    bg: 'linear-gradient(135deg, #6B7B8C, #4A5A6B)',
+  },
+];
 
-import { useState } from 'react';
-import { testimonials, type Testimonial } from '@/data/saas-page';
-
-const QuoteMark = () => (
-  <svg width="36" height="28" viewBox="0 0 32 24" fill="none">
-    <path
-      d="M0 24V14C0 7 4 2 11 0L13 4C8 6 6 9 6 14H12V24H0zm19 0V14c0-7 4-12 11-14l2 4c-5 2-7 5-7 10h6v10H19z"
-      fill="#0F1112"
-    />
-  </svg>
-);
-
-function Card({ t }: { t: Testimonial }) {
+function QuoteMark() {
   return (
-    <article className="rounded-2xl bg-[#F5F6F8] flex overflow-hidden h-[340px]">
-      {/* Left — quote */}
-      <div className="flex-1 p-8 flex flex-col">
+    <svg width="40" height="32" viewBox="0 0 32 24" fill="none" aria-hidden>
+      <path
+        d="M0 24V14C0 7 4 2 11 0L13 4C8 6 6 9 6 14H12V24H0zm19 0V14c0-7 4-12 11-14l2 4c-5 2-7 5-7 10h6v10H19z"
+        fill="#F26B4E"
+      />
+    </svg>
+  );
+}
+
+function Avatar({ initials, bg }: { initials: string; bg: string }) {
+  return (
+    <div
+      className="w-16 h-16 rounded-full flex items-center justify-center text-white text-[18px] font-bold flex-shrink-0 ring-4 ring-white shadow-md"
+      style={{ background: bg }}
+    >
+      {initials}
+    </div>
+  );
+}
+
+function Card({ t }: { t: (typeof TESTIMONIALS)[number] }) {
+  return (
+    <article className="rounded-2xl border border-[#E5E7EC] bg-white p-7 flex flex-col items-center text-center">
+      <Avatar initials={t.initials} bg={t.bg} />
+      <p className="mt-4 text-[15px] font-semibold text-[#0F1112]">{t.name}</p>
+      <p className="text-[13px] text-[#8A8F99] mt-0.5">{t.role}</p>
+      <p className="mt-5 text-[14px] text-[#484848] leading-[22px] flex-1">{t.quote}</p>
+      <div className="mt-6">
         <QuoteMark />
-        <p className="mt-6 text-[15px] text-[#2F2F2F] leading-[24px] flex-1">{t.quote}</p>
-        <div className="mt-6 pt-5 border-t border-[#E5E7EC]">
-          <p className="text-[16px] font-semibold text-[#0F1112]">{t.name}</p>
-          <p className="text-[12px] text-[#8A8F99] mt-0.5">{t.role}</p>
-        </div>
-      </div>
-
-      {/* Right — photo placeholder */}
-      <div className="w-[44%] relative" style={{ background: t.photoBg }}>
-        {/* Simple silhouette placeholder */}
-        <svg viewBox="0 0 200 340" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <radialGradient id="grad" cx="50%" cy="35%" r="55%">
-              <stop offset="0%" stopColor="#A6A6A6" />
-              <stop offset="100%" stopColor={t.photoBg} />
-            </radialGradient>
-          </defs>
-          <rect width="200" height="340" fill="url(#grad)" />
-          {/* Head */}
-          <circle cx="100" cy="125" r="40" fill="#5A5A5A" />
-          {/* Shoulders */}
-          <path d="M 30 340 C 30 250, 60 200, 100 195 C 140 200, 170 250, 170 340 Z" fill="#5A5A5A" />
-        </svg>
-
-        {/* Play button overlay */}
-        <button
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/95 flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
-          aria-label="Play testimonial"
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 2l9 5-9 5V2z" fill="#0F1112" />
-          </svg>
-        </button>
       </div>
     </article>
   );
 }
 
 export default function Testimonials() {
-  const [page, setPage] = useState(0);
-  const perPage = 2;
-  const maxPage = Math.max(0, Math.ceil(testimonials.length / perPage) - 1);
-  const start = page * perPage;
-  const visible = testimonials.slice(start, start + perPage);
-
   return (
     <section className="py-24 bg-white">
       <div className="container-page">
-        <div className="flex items-end justify-between gap-6 mb-10">
-          <h2 className="text-[44px] leading-[52px] font-semibold text-[#0F1112] tracking-[-0.01em] max-w-[460px]">
-            Where Feedback Meets{' '}
-            <span className="italic font-semibold">Excellence</span>
-          </h2>
-
-          <div className="flex items-center gap-2 flex-shrink-0">
-            <button
-              onClick={() => setPage((p) => Math.max(0, p - 1))}
-              disabled={page === 0}
-              className="w-11 h-11 rounded-full bg-[#F5F6F8] flex items-center justify-center text-[#0F1112] hover:bg-[#FFE8E1] disabled:opacity-40 disabled:hover:bg-[#F5F6F8] transition-colors"
-              aria-label="Previous"
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M9 3L5 7l4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-            <button
-              onClick={() => setPage((p) => Math.min(maxPage, p + 1))}
-              disabled={page >= maxPage}
-              className="w-11 h-11 rounded-full bg-[#0F1112] flex items-center justify-center text-white hover:bg-[#F26B4E] disabled:opacity-40 disabled:hover:bg-[#0F1112] transition-colors"
-              aria-label="Next"
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-14">
+          <div>
+            <span className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#F26B4E]/40 text-[#F26B4E] text-[13px] font-medium mb-5">
+              Testimonials
+            </span>
+            <h2 className="text-[42px] lg:text-[52px] leading-[1.1] font-bold text-[#0F1112] tracking-[-0.02em]">
+              Where Feedback Meets{' '}
+              <br />
+              <span className="italic font-bold">Excellence</span>
+            </h2>
           </div>
+          <p className="text-[15px] text-[#8A8F99] leading-[24px] max-w-[340px] md:pt-16">
+            SaaS products, custom web platforms, mobile apps, and AI agents.
+            From-scratch builds with published scope, fixed pricing, and a
+            committed delivery date.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {visible.map((t) => (
+        {/* 3×2 grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {TESTIMONIALS.map((t) => (
             <Card key={t.name} t={t} />
           ))}
         </div>
