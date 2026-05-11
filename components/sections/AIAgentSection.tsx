@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import { aiFeatures, aiTabs } from '@/data/saas-page';
 
 const LOGOS: Record<string, string> = {
@@ -735,113 +735,155 @@ const visuals = [
 /* ──────────────────────────────────────────────────────────── */
 
 export default function AIAgentSection() {
-  const [active, setActive] = useState(1); // Automation default per Figma
+  const [active, setActive] = useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // offset covers full scroll through the section:
+  //   progress=0 → section top at viewport bottom (entering)
+  //   progress=1 → section bottom at viewport top (leaving)
+  // With minHeight=300vh: entrance=100vh (0→0.25), pin zone=200vh (0.25→0.75), exit=100vh (0.75→1)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
+
+  // Scale up during entrance phase [0 → 0.25]
+  const scale = useTransform(scrollYProgress, [0, 0.25], [0.28, 1]);
+
+  // Card + content reveal during entrance
+  const cardOpacity    = useTransform(scrollYProgress, [0.02, 0.18], [0, 1]);
+  const pillOpacity    = useTransform(scrollYProgress, [0.05, 0.18], [0, 1]);
+  const pillY          = useTransform(scrollYProgress, [0.05, 0.18], [18, 0]);
+  const headingOpacity = useTransform(scrollYProgress, [0.08, 0.20], [0, 1]);
+  const headingY       = useTransform(scrollYProgress, [0.08, 0.20], [18, 0]);
+  const bodyOpacity    = useTransform(scrollYProgress, [0.11, 0.22], [0, 1]);
+  const bodyY          = useTransform(scrollYProgress, [0.11, 0.22], [14, 0]);
+  const listOpacity    = useTransform(scrollYProgress, [0.14, 0.24], [0, 1]);
+  const listY          = useTransform(scrollYProgress, [0.14, 0.24], [14, 0]);
+  const visualOpacity  = useTransform(scrollYProgress, [0.09, 0.22], [0, 1]);
+  const visualY        = useTransform(scrollYProgress, [0.09, 0.22], [24, 0]);
+
+  // Tab switching driven by scroll position in the pin zone (0.25 → 0.75)
+  // Split evenly into 3 thirds: 0→1, 1→2, 2→3 switch at 0.417 and 0.583
+  useMotionValueEvent(scrollYProgress, 'change', (v) => {
+    if (v < 0.25 || v > 0.75) return; // only switch during pin zone
+    if (v < 0.417)      setActive(0);
+    else if (v < 0.583) setActive(1);
+    else                setActive(2);
+  });
 
   return (
-    <section className="py-16">
-      <div className="container-page">
-        {/* Inner contained dark card */}
-        <div className="rounded-[28px] bg-[#0C0C0E] border border-[#1F2127] p-8 lg:p-14">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
-            {/* Left — copy + interactive feature list */}
-            <div className="flex flex-col">
-              {/* Capabilities pill */}
-              <span className="inline-flex items-center self-start px-4 py-1.5 rounded-full border border-[#F26B4E]/40 text-[#F26B4E] text-[14px] font-medium mb-8">
-                Capabilities
-              </span>
+    <div ref={containerRef} style={{ minHeight: '300vh' }}>
+      <div className="sticky top-0 h-screen overflow-hidden flex items-center">
+        {/* Outer scale wrapper — grows from small square in top-right */}
+        <motion.div
+          className="w-full"
+          style={{ scale, transformOrigin: 'center', willChange: 'transform' }}
+        >
+          <section className="py-16">
+            <div className="container-page">
+              <motion.div
+                className="rounded-[28px] bg-[#0C0C0E] border border-[#1F2127] p-8 lg:p-14"
+                style={{ opacity: cardOpacity }}
+              >
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
 
-              {/* Heading — large display weight, italic emphasis */}
-              <h2 className="text-[44px] lg:text-[54px] leading-[1.05] font-bold text-white tracking-[-0.02em]">
-                AI Agent that{' '}
-                <span className="italic font-bold">Actually do Work</span>
-              </h2>
+                  {/* Left — copy + interactive feature list */}
+                  <div className="flex flex-col">
+                    <motion.span
+                      style={{ opacity: pillOpacity, y: pillY }}
+                      className="inline-flex items-center self-start px-4 py-1.5 rounded-full border border-[#F26B4E]/40 text-[#F26B4E] text-[14px] font-medium mb-8"
+                    >
+                      Capabilities
+                    </motion.span>
 
-              {/* Description */}
-              <p className="mt-6 text-[#8A8F99] text-[15px] leading-[24px] max-w-[520px]">
-                We build smart, scalable, and efficient digital products by embedding intelligence
-                at every layer — from autonomous agents that reason in real time, to systems that
-                learn, adapt, and decide alongside your team.
-              </p>
+                    <motion.h2
+                      style={{ opacity: headingOpacity, y: headingY }}
+                      className="text-[44px] lg:text-[54px] leading-[1.05] font-bold text-white tracking-[-0.02em]"
+                    >
+                      AI Agent that{' '}
+                      <span className="italic font-bold">Actually do Work</span>
+                    </motion.h2>
 
-              {/* Features list — italic numbers in a fixed-width column, bold titles, divider lines */}
-              <ul className="mt-12">
-                {aiFeatures.map((f, i) => {
-                  const isActive = active === i;
-                  return (
-                    <li key={f.number} className="border-b border-[#1F2127] last:border-b-0">
-                      <button
-                        type="button"
-                        onClick={() => setActive(i)}
-                        onMouseEnter={() => setActive(i)}
-                        aria-pressed={isActive}
-                        className="w-full flex items-center gap-6 py-6 text-left group"
-                      >
-                        <span
-                          className={`italic text-[15px] font-medium flex-shrink-0 w-12 transition-colors ${
-                            isActive ? 'text-[#F26B4E]' : 'text-[#8A8F99]'
-                          }`}
-                        >
-                          /{f.number}.
-                        </span>
-                        <div className="flex-1">
-                          <h3
-                            className={`text-[22px] font-bold leading-7 mb-1.5 transition-colors ${
-                              isActive ? 'text-[#F26B4E]' : 'text-white group-hover:text-[#F26B4E]'
-                            }`}
-                          >
-                            {f.title}
-                          </h3>
-                          <p className="text-[14px] text-[#8A8F99] leading-[22px]">{f.description}</p>
-                        </div>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+                    <motion.p
+                      style={{ opacity: bodyOpacity, y: bodyY }}
+                      className="mt-6 text-[#8A8F99] text-[15px] leading-[24px] max-w-[520px]"
+                    >
+                      We build smart, scalable, and efficient digital products by embedding intelligence
+                      at every layer — from autonomous agents that reason in real time, to systems that
+                      learn, adapt, and decide alongside your team.
+                    </motion.p>
 
-            {/* Right — animated visual driven by the active left-side feature.
-                No tabs — left list is the single source of truth. */}
-            <div className="rounded-[24px] bg-[#131418] border border-[#1F2127] p-6 lg:p-8 flex flex-col h-full min-h-[480px]">
-              <div className="relative w-full flex-1 min-h-0">
-                <AnimatePresence mode="wait">
+                    <motion.ul className="mt-12" style={{ opacity: listOpacity, y: listY }}>
+                      {aiFeatures.map((f, i) => {
+                        const isActive = active === i;
+                        return (
+                          <li key={f.number} className="border-b border-[#1F2127] last:border-b-0">
+                            <button
+                              type="button"
+                              onClick={() => setActive(i)}
+                              onMouseEnter={() => setActive(i)}
+                              aria-pressed={isActive}
+                              className="w-full flex items-center gap-6 py-6 text-left group"
+                            >
+                              <span className={`italic text-[15px] font-medium flex-shrink-0 w-12 transition-colors ${isActive ? 'text-[#F26B4E]' : 'text-[#8A8F99]'}`}>
+                                /{f.number}.
+                              </span>
+                              <div className="flex-1">
+                                <h3 className={`text-[22px] font-bold leading-7 mb-1.5 transition-colors ${isActive ? 'text-[#F26B4E]' : 'text-white group-hover:text-[#F26B4E]'}`}>
+                                  {f.title}
+                                </h3>
+                                <p className="text-[14px] text-[#8A8F99] leading-[22px]">{f.description}</p>
+                              </div>
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </motion.ul>
+                  </div>
+
+                  {/* Right — animated visual */}
                   <motion.div
-                    key={active}
-                    initial={{ opacity: 0, scale: 0.96, y: 8 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.96, y: -8 }}
-                    transition={{ duration: 0.4, ease: 'easeOut' }}
-                    className="absolute inset-0"
+                    style={{ opacity: visualOpacity, y: visualY }}
+                    className="rounded-[24px] bg-[#131418] border border-[#1F2127] p-6 lg:p-8 flex flex-col h-full min-h-[480px]"
                   >
-                    {visuals[active]}
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+                    <div className="relative w-full flex-1 min-h-0">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={active}
+                          initial={{ opacity: 0, scale: 0.96, y: 8 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.96, y: -8 }}
+                          transition={{ duration: 0.4, ease: 'easeOut' }}
+                          className="absolute inset-0"
+                        >
+                          {visuals[active]}
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
 
-              {/* Subtle label showing the active capability */}
-              <div className="mt-6 flex items-center justify-between gap-3 flex-shrink-0">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#F26B4E] animate-pulse" />
-                  <span className="text-[12px] font-medium text-[#E5E7EC]">
-                    {aiTabs[active]}
-                  </span>
+                    <div className="mt-6 flex items-center justify-between gap-3 flex-shrink-0">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#F26B4E] animate-pulse" />
+                        <span className="text-[12px] font-medium text-[#E5E7EC]">{aiTabs[active]}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        {aiTabs.map((_, i) => (
+                          <span
+                            key={i}
+                            className={`w-1.5 h-1.5 rounded-full transition-all ${active === i ? 'bg-[#F26B4E] w-4' : 'bg-[#3F3F3F]'}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+
                 </div>
-                {/* Tiny dot indicators for the 4 capabilities */}
-                <div className="flex items-center gap-1.5">
-                  {aiTabs.map((_, i) => (
-                    <span
-                      key={i}
-                      className={`w-1.5 h-1.5 rounded-full transition-all ${
-                        active === i ? 'bg-[#F26B4E] w-4' : 'bg-[#3F3F3F]'
-                      }`}
-                    />
-                  ))}
-                </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
-        </div>
+          </section>
+        </motion.div>
       </div>
-    </section>
+    </div>
   );
 }

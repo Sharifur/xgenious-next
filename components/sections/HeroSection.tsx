@@ -363,17 +363,6 @@ export default function HeroSection({
         />
       </div>
 
-      {/* Vertical guides */}
-      <div className="absolute inset-0 pointer-events-none hidden lg:block">
-        <div
-          className="absolute top-0 bottom-0 w-px"
-          style={{ left: 'calc(50% - 490px)', background: 'rgba(0,0,0,0.06)' }}
-        />
-        <div
-          className="absolute top-0 bottom-0 w-px"
-          style={{ left: 'calc(50% + 490px)', background: 'rgba(0,0,0,0.06)' }}
-        />
-      </div>
 
       {/* Globe at bottom — static (no animation) */}
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none hidden lg:flex justify-center">

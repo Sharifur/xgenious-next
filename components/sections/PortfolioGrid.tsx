@@ -4,12 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { ownProducts, type OwnProduct } from '@/data/saas-page';
 
-const EDGE_MASK = {
-  WebkitMaskImage:
-    'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
-  maskImage:
-    'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
-};
 
 function ProductCard({ p }: { p: OwnProduct }) {
   return (
@@ -71,7 +65,13 @@ export default function PortfolioGrid() {
       </div>
 
       {/* Full-width auto-sliding strip */}
-      <div className="overflow-hidden" style={EDGE_MASK}>
+      <div className="relative overflow-hidden">
+        {/* Left white fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-48 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.85) 40%, transparent 100%)' }} />
+        {/* Right white fade */}
+        <div className="absolute right-0 top-0 bottom-0 w-48 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to left, #ffffff 0%, rgba(255,255,255,0.85) 40%, transparent 100%)' }} />
         <div
           className="flex gap-5 w-max px-5"
           style={{

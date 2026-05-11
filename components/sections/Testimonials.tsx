@@ -76,7 +76,7 @@ function Card({ t }: { t: (typeof TESTIMONIALS)[number] }) {
 
 export default function Testimonials() {
   return (
-    <section className="py-24 bg-white">
+    <section className="pt-[50px] pb-24 bg-white">
       <div className="container-page">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-14">
