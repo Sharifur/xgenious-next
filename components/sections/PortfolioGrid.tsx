@@ -70,11 +70,11 @@ export default function PortfolioGrid() {
       {/* Full-width auto-sliding strip */}
       <div className="relative overflow-hidden">
         {/* Left fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-64 z-10 pointer-events-none"
-          style={{ background: 'linear-gradient(to right, #fff 30%, rgba(255,255,255,0.6) 65%, transparent 100%)' }} />
+        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, #fff 0%, rgba(255,255,255,0.5) 50%, transparent 100%)' }} />
         {/* Right fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-64 z-10 pointer-events-none"
-          style={{ background: 'linear-gradient(to left, #fff 30%, rgba(255,255,255,0.6) 65%, transparent 100%)' }} />
+        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to left, #fff 0%, rgba(255,255,255,0.5) 50%, transparent 100%)' }} />
         <div
           className="flex gap-5 w-max px-5"
           style={{
