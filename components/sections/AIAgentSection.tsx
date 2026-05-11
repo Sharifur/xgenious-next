@@ -26,14 +26,17 @@ function VisualFrame({ children }: { children: React.ReactNode }) {
 
 /* 01 Custom AI Agent Development — typewriter input → send → AI reply */
 
-const MSG1 = 'Hi, I need help with my order #4521';
-const MSG2 = 'Can I change the delivery address?';
-
-// phases: 0=typing msg1, 1=msg1 in chat, 2=AI typing1, 3=AI msg1,
-//         4=typing msg2, 5=msg2 in chat, 6=AI typing2, 7=AI msg2+pause
-const PHASE_DELAYS: Record<number, number> = {
-  1: 500, 2: 1400, 3: 800, 5: 500, 6: 1400, 7: 2800,
-};
+// 6 conversation pairs — each has 4 sub-phases:
+//   0=typing in input, 1=user msg in chat, 2=AI typing, 3=AI msg shown
+const CHAT_PAIRS = [
+  { user: 'Hi, I need help with my order #4521',      ai: 'On it! Order #4521 is in transit — arriving tomorrow by 5 PM.' },
+  { user: 'Can I change the delivery address?',        ai: 'Done! Address updated and confirmation sent to your email.' },
+  { user: 'What time does the delivery window start?', ai: 'Your delivery window is 2 PM – 6 PM tomorrow.' },
+  { user: 'Can I track my delivery in real time?',     ai: 'Yes! Track it live at the link we sent to your email.' },
+  { user: 'Will someone call before arrival?',         ai: 'Yes, the driver will call 30 minutes before reaching you.' },
+  { user: 'Thanks, that\'s all I needed!',             ai: 'Happy to help! We\'re here 24/7 whenever you need us.' },
+];
+const TOTAL_PHASES = CHAT_PAIRS.length * 4; // 24
 
 function TypingDots({ color = '#A6A6A6' }: { color?: string }) {
   return (
@@ -81,10 +84,12 @@ const DevelopmentVisual = () => {
   const [inputText, setInputText] = useState('');
   const [charIdx, setCharIdx] = useState(0);
 
-  const isTypingPhase = phase === 0 || phase === 4;
-  const currentMsg = phase <= 3 ? MSG1 : MSG2;
+  const round = Math.floor(phase / 4);
+  const subPhase = phase % 4;
+  const isTypingPhase = subPhase === 0;
+  const currentMsg = CHAT_PAIRS[round]?.user ?? '';
 
-  // Typewriter: add one char at a time into the input field
+  // Typewriter — one char every 52 ms, then send
   useEffect(() => {
     if (!isTypingPhase) return;
     if (charIdx < currentMsg.length) {
@@ -94,7 +99,6 @@ const DevelopmentVisual = () => {
       }, 52);
       return () => clearTimeout(t);
     }
-    // Finished typing → send after brief pause
     const t = setTimeout(() => {
       setPhase((p) => p + 1);
       setInputText('');
@@ -103,26 +107,25 @@ const DevelopmentVisual = () => {
     return () => clearTimeout(t);
   }, [phase, charIdx, isTypingPhase, currentMsg]);
 
-  // Fixed-delay phases (non-typing)
+  // Fixed delays for non-typing sub-phases
   useEffect(() => {
     if (isTypingPhase) return;
-    const delay = PHASE_DELAYS[phase];
-    if (delay === undefined) return;
-    const t = setTimeout(
-      () => setPhase((p) => (p >= 7 ? 0 : p + 1)),
-      delay,
-    );
+    const isLast = phase === TOTAL_PHASES - 1;
+    const delay = subPhase === 1 ? 500 : subPhase === 2 ? 1400 : isLast ? 2800 : 800;
+    const t = setTimeout(() => setPhase((p) => (p >= TOTAL_PHASES - 1 ? 0 : p + 1)), delay);
     return () => clearTimeout(t);
-  }, [phase, isTypingPhase]);
+  }, [phase, isTypingPhase, subPhase]);
 
-  const showUserMsg1  = phase >= 1;
-  const showAiTyping1 = phase === 2;
-  const showAiMsg1    = phase >= 3;
-  const showUserMsg2  = phase >= 5;
-  const showAiTyping2 = phase === 6;
-  const showAiMsg2    = phase >= 7;
-
-  const showPlaceholder = inputText === '';
+  // Sliding window: show last 2 completed pairs so the chat stays compact
+  const startRound = Math.max(0, round - 1);
+  const visibleItems: { from: 'user' | 'ai'; text: string; key: string }[] = [];
+  for (let r = startRound; r <= round && r < CHAT_PAIRS.length; r++) {
+    const pair = CHAT_PAIRS[r];
+    const base = r * 4;
+    if (phase >= base + 1) visibleItems.push({ from: 'user', text: pair.user, key: `u${r}` });
+    if (phase >= base + 3) visibleItems.push({ from: 'ai',   text: pair.ai,   key: `a${r}` });
+  }
+  const showAiTyping = subPhase === 2;
 
   return (
     <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#0C0C0E] border border-[#1F2127] flex flex-col">
@@ -143,14 +146,12 @@ const DevelopmentVisual = () => {
         </span>
       </div>
 
-      {/* Messages */}
+      {/* Messages — sliding 2-pair window */}
       <div className="flex-1 p-4 flex flex-col gap-3 overflow-hidden">
-        {showUserMsg1  && <ChatBubble key="um1" from="user" text={MSG1} />}
-        {showAiTyping1 && <ChatBubble key="at1" from="ai" typing />}
-        {showAiMsg1    && <ChatBubble key="am1" from="ai" text="On it! Order #4521 is in transit — arriving tomorrow by 5 PM." />}
-        {showUserMsg2  && <ChatBubble key="um2" from="user" text={MSG2} />}
-        {showAiTyping2 && <ChatBubble key="at2" from="ai" typing />}
-        {showAiMsg2    && <ChatBubble key="am2" from="ai" text="Done! Address updated and confirmation sent to your email." />}
+        {visibleItems.map((item) => (
+          <ChatBubble key={item.key} from={item.from} text={item.text} />
+        ))}
+        {showAiTyping && <ChatBubble key={`at${round}`} from="ai" typing />}
       </div>
 
       {/* Input bar — typewriter text appears here */}
@@ -159,7 +160,7 @@ const DevelopmentVisual = () => {
           className="flex-1 bg-[#1F2127] rounded-full px-3 py-2 flex items-center overflow-hidden"
           style={{ minHeight: 28 }}
         >
-          {showPlaceholder ? (
+          {inputText === '' ? (
             <p className="text-[10px] text-[#484848] select-none">Customer message...</p>
           ) : (
             <p className="text-[10px] text-[#E5E7EC] truncate">
