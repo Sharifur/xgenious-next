@@ -18,6 +18,9 @@ function ProductCard({ p }: { p: OwnProduct }) {
       {/* Bottom gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
+      {/* Black overlay on hover */}
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-400" />
+
       {/* Glass shine — sweeps left→right once on hover */}
       <div className="absolute top-0 left-0 h-full w-32 -translate-x-48 skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none group-hover:translate-x-[700px] transition-transform duration-700 ease-in-out" />
 
@@ -66,12 +69,12 @@ export default function PortfolioGrid() {
 
       {/* Full-width auto-sliding strip */}
       <div className="relative overflow-hidden">
-        {/* Left white fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-48 z-10 pointer-events-none"
-          style={{ background: 'linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.85) 40%, transparent 100%)' }} />
-        {/* Right white fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-48 z-10 pointer-events-none"
-          style={{ background: 'linear-gradient(to left, #ffffff 0%, rgba(255,255,255,0.85) 40%, transparent 100%)' }} />
+        {/* Left fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, #fff 0%, rgba(255,255,255,0.5) 50%, transparent 100%)' }} />
+        {/* Right fade */}
+        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to left, #fff 0%, rgba(255,255,255,0.5) 50%, transparent 100%)' }} />
         <div
           className="flex gap-5 w-max px-5"
           style={{
