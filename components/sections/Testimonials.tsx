@@ -45,12 +45,7 @@ const TESTIMONIALS = [
 
 function QuoteMark() {
   return (
-    <svg width="40" height="32" viewBox="0 0 32 24" fill="none" aria-hidden>
-      <path
-        d="M0 24V14C0 7 4 2 11 0L13 4C8 6 6 9 6 14H12V24H0zm19 0V14c0-7 4-12 11-14l2 4c-5 2-7 5-7 10h6v10H19z"
-        fill="#F26B4E"
-      />
-    </svg>
+    <img src="/testimonial-quote.svg" alt="" aria-hidden width={40} height={40} />
   );
 }
 
