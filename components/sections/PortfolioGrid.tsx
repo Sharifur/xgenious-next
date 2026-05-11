@@ -70,11 +70,31 @@ export default function PortfolioGrid() {
       {/* Full-width auto-sliding strip */}
       <div className="relative overflow-hidden">
         {/* Left shadow */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/shadow.svg" alt="" aria-hidden className="absolute left-0 top-0 w-auto z-10 pointer-events-none select-none" style={{ height: 500 }} />
+        <svg width="294" height="500" viewBox="0 0 294 1347" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0 z-10 pointer-events-none select-none" aria-hidden>
+          <g filter="url(#shadow-left)">
+            <ellipse cx="-84" cy="673.199" rx="244" ry="539.5" fill="white" fillOpacity="0.88"/>
+          </g>
+          <defs>
+            <filter id="shadow-left" x="-461.7" y="-0.000778198" width="755.4" height="1346.4" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+              <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+              <feGaussianBlur stdDeviation="66.85" result="effect1_foregroundBlur"/>
+            </filter>
+          </defs>
+        </svg>
         {/* Right shadow — flipped horizontally */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/shadow.svg" alt="" aria-hidden className="absolute right-0 top-0 w-auto z-10 pointer-events-none select-none" style={{ height: 500, transform: 'scaleX(-1)' }} />
+        <svg width="294" height="500" viewBox="0 0 294 1347" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute right-0 top-0 z-10 pointer-events-none select-none" style={{ transform: 'scaleX(-1)' }} aria-hidden>
+          <g filter="url(#shadow-right)">
+            <ellipse cx="-84" cy="673.199" rx="244" ry="539.5" fill="white" fillOpacity="0.88"/>
+          </g>
+          <defs>
+            <filter id="shadow-right" x="-461.7" y="-0.000778198" width="755.4" height="1346.4" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+              <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+              <feGaussianBlur stdDeviation="66.85" result="effect1_foregroundBlur"/>
+            </filter>
+          </defs>
+        </svg>
         <div
           className="flex gap-5 w-max px-5"
           style={{
