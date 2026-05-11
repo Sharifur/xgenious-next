@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { aiFeatures, aiTabs } from '@/data/saas-page';
 
@@ -24,50 +24,120 @@ function VisualFrame({ children }: { children: React.ReactNode }) {
   );
 }
 
-/* 01 Development — code window with AI tokens */
-const DevelopmentVisual = () => (
-  <VisualFrame>
-    <defs>
-      <linearGradient id="codeBg" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#1A1F28" />
-        <stop offset="100%" stopColor="#0F141A" />
-      </linearGradient>
-    </defs>
-    <rect x="40" y="30" width="320" height="220" rx="10" fill="url(#codeBg)" stroke="#2A323D" strokeWidth="1" />
-    <rect x="40" y="30" width="320" height="22" rx="10" fill="#0F141A" />
-    <circle cx="56" cy="41" r="3.5" fill="#EF4444" opacity="0.7" />
-    <circle cx="68" cy="41" r="3.5" fill="#F59E0B" opacity="0.7" />
-    <circle cx="80" cy="41" r="3.5" fill="#10B981" opacity="0.7" />
+/* 01 Custom AI Agent Development — autopilot customer support chat */
 
-    <g fontFamily="monospace" fontSize="11">
-      <text x="60" y="80" fill="#9CA3AF">{'1'}</text>
-      <text x="80" y="80"><tspan fill="#C28BFF">async function</tspan> <tspan fill="#7DD3FC">agent</tspan>() {`{`}</text>
-      <text x="60" y="100" fill="#9CA3AF">{'2'}</text>
-      <text x="95" y="100"><tspan fill="#C28BFF">const</tspan> tool = <tspan fill="#FBBF24">await</tspan> use(</text>
-      <text x="60" y="120" fill="#9CA3AF">{'3'}</text>
-      <text x="105" y="120"><tspan fill="#A7F3D0">&apos;web_search&apos;</tspan></text>
-      <text x="60" y="140" fill="#9CA3AF">{'4'}</text>
-      <text x="95" y="140">);</text>
-      <text x="60" y="160" fill="#9CA3AF">{'5'}</text>
-      <text x="95" y="160"><tspan fill="#C28BFF">return</tspan> tool.<tspan fill="#FBBF24">reason</tspan>();</text>
-      <text x="60" y="180" fill="#9CA3AF">{'6'}</text>
-      <text x="80" y="180">{`}`}</text>
-    </g>
+// phase durations in ms
+const PHASE_DURATIONS = [1200, 700, 1400, 700, 1200, 700, 1400, 2800];
+//                        ^user1 typing  ^ai1 typing  ^user2 typing  ^ai2 typing
+//                              ^user1 msg     ^ai1 msg     ^user2 msg     ^ai2 msg + pause
 
-    {/* Floating AI badge */}
-    <g transform="translate(310 80)">
-      <rect x="-22" y="-10" width="44" height="20" rx="10" fill="#F26B4E" />
-      <text textAnchor="middle" y="4" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="700" fill="white">
-        AI
-      </text>
-    </g>
+function TypingDots({ color = '#A6A6A6' }: { color?: string }) {
+  return (
+    <div className="flex gap-1 items-center px-1">
+      {[0, 150, 300].map((d) => (
+        <span
+          key={d}
+          className="w-1.5 h-1.5 rounded-full"
+          style={{ background: color, animation: `bounce 1s ${d}ms infinite` }}
+        />
+      ))}
+    </div>
+  );
+}
 
-    {/* Cursor */}
-    <rect x="170" y="172" width="2" height="11" fill="#F26B4E">
-      <animate attributeName="opacity" values="1;0;1" dur="0.9s" repeatCount="indefinite" />
-    </rect>
-  </VisualFrame>
-);
+function ChatBubble({ from, text, typing }: { from: 'user' | 'ai'; text?: string; typing?: boolean }) {
+  const isAi = from === 'ai';
+  return (
+    <div
+      className={`flex gap-2 items-end ${isAi ? 'flex-row-reverse' : ''}`}
+      style={{ animation: 'fadeSlideUp 0.35s ease-out both' }}
+    >
+      <div
+        className={`w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-[8px] font-bold ${
+          isAi ? 'bg-[#F26B4E] text-white' : 'bg-[#2F2F2F] text-[#A6A6A6]'
+        }`}
+      >
+        {isAi ? 'AI' : 'U'}
+      </div>
+      <div
+        className={`rounded-2xl px-3 py-2 max-w-[78%] text-[11px] leading-[16px] ${
+          isAi
+            ? 'bg-[#F26B4E]/15 border border-[#F26B4E]/25 text-[#E5E7EC] rounded-br-sm'
+            : 'bg-[#1F2127] text-[#E5E7EC] rounded-bl-sm'
+        }`}
+      >
+        {typing ? <TypingDots color={isAi ? '#F26B4E' : '#A6A6A6'} /> : text}
+      </div>
+    </div>
+  );
+}
+
+const DevelopmentVisual = () => {
+  const [phase, setPhase] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(
+      () => setPhase((p) => (p >= 7 ? 0 : p + 1)),
+      PHASE_DURATIONS[phase] ?? 1000,
+    );
+    return () => clearTimeout(timer);
+  }, [phase]);
+
+  // what's visible at each phase
+  const showUserTyping1 = phase === 0;
+  const showUserMsg1    = phase >= 1;
+  const showAiTyping1   = phase === 2;
+  const showAiMsg1      = phase >= 3;
+  const showUserTyping2 = phase === 4;
+  const showUserMsg2    = phase >= 5;
+  const showAiTyping2   = phase === 6;
+  const showAiMsg2      = phase >= 7;
+
+  return (
+    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#0C0C0E] border border-[#1F2127] flex flex-col">
+      {/* Header */}
+      <div className="flex items-center gap-3 px-4 py-3 border-b border-[#1F2127] bg-[#131418] flex-shrink-0">
+        <div className="w-8 h-8 rounded-full bg-[#F26B4E] flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">
+          AI
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="text-[12px] font-semibold text-white">Support Agent</p>
+          <div className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+            <p className="text-[10px] text-[#10B981]">Autopilot active</p>
+          </div>
+        </div>
+        <span className="px-2 py-0.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/25 text-[#10B981] text-[10px] font-medium flex-shrink-0">
+          24/7
+        </span>
+      </div>
+
+      {/* Messages */}
+      <div className="flex-1 p-4 flex flex-col gap-3 overflow-hidden">
+        {showUserTyping1 && <ChatBubble key="ut1" from="user" typing />}
+        {showUserMsg1    && <ChatBubble key="um1" from="user" text="Hi, I need help with my order #4521" />}
+        {showAiTyping1   && <ChatBubble key="at1" from="ai" typing />}
+        {showAiMsg1      && <ChatBubble key="am1" from="ai" text="On it! Order #4521 is in transit — arriving tomorrow by 5 PM." />}
+        {showUserTyping2 && <ChatBubble key="ut2" from="user" typing />}
+        {showUserMsg2    && <ChatBubble key="um2" from="user" text="Can I change the delivery address?" />}
+        {showAiTyping2   && <ChatBubble key="at2" from="ai" typing />}
+        {showAiMsg2      && <ChatBubble key="am2" from="ai" text="Done! Address updated and confirmation sent to your email." />}
+      </div>
+
+      {/* Input bar */}
+      <div className="px-4 py-3 border-t border-[#1F2127] flex items-center gap-2 flex-shrink-0 bg-[#131418]">
+        <div className="flex-1 bg-[#1F2127] rounded-full px-3 py-2">
+          <p className="text-[10px] text-[#484848]">Customer message...</p>
+        </div>
+        <div className="w-7 h-7 rounded-full bg-[#F26B4E] flex items-center justify-center flex-shrink-0">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M1 11L11 1M11 1H4M11 1v7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 /* 02 Automation — brain with electric tendrils */
 const AutomationVisual = () => (
@@ -112,76 +182,7 @@ const AutomationVisual = () => (
   </VisualFrame>
 );
 
-/* 03 Data-Driven — animated bar chart with growing bars */
-const DataDrivenVisual = () => (
-  <VisualFrame>
-    <defs>
-      <linearGradient id="barGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-        <stop offset="0%" stopColor="#F26B4E" />
-        <stop offset="100%" stopColor="#FFB39E" />
-      </linearGradient>
-    </defs>
-
-    {/* Grid */}
-    <g stroke="#1F2127" strokeWidth="1">
-      {[60, 110, 160, 210].map((y) => (
-        <line key={y} x1="60" y1={y} x2="360" y2={y} />
-      ))}
-    </g>
-
-    {/* Y-axis labels */}
-    <g fontFamily="Inter, sans-serif" fontSize="9" fill="#8A8F99">
-      <text x="50" y="64" textAnchor="end">100</text>
-      <text x="50" y="114" textAnchor="end">75</text>
-      <text x="50" y="164" textAnchor="end">50</text>
-      <text x="50" y="214" textAnchor="end">25</text>
-    </g>
-
-    {/* Bars */}
-    {[
-      { x: 80, h: 130, label: 'Q1' },
-      { x: 130, h: 90, label: 'Q2' },
-      { x: 180, h: 160, label: 'Q3' },
-      { x: 230, h: 110, label: 'Q4' },
-      { x: 280, h: 180, label: 'Q5' },
-      { x: 330, h: 145, label: 'Q6' },
-    ].map((bar, i) => (
-      <g key={bar.label}>
-        <rect x={bar.x - 14} y={210 - bar.h} width="28" height={bar.h} rx="3" fill="url(#barGrad)">
-          <animate attributeName="height" from="0" to={bar.h} dur={`${0.4 + i * 0.08}s`} fill="freeze" />
-          <animate attributeName="y" from="210" to={210 - bar.h} dur={`${0.4 + i * 0.08}s`} fill="freeze" />
-        </rect>
-        <text x={bar.x} y="226" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fill="#8A8F99">
-          {bar.label}
-        </text>
-      </g>
-    ))}
-
-    {/* Trend line */}
-    <path
-      d="M 80 80 L 130 120 L 180 50 L 230 100 L 280 30 L 330 65"
-      stroke="#7DD3FC"
-      strokeWidth="2"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    {[80, 130, 180, 230, 280, 330].map((x, i) => {
-      const ys = [80, 120, 50, 100, 30, 65];
-      return <circle key={x} cx={x} cy={ys[i]} r="3" fill="#7DD3FC" />;
-    })}
-
-    {/* Floating insight badge */}
-    <g transform="translate(310 250)">
-      <rect x="-50" y="-12" width="100" height="22" rx="11" fill="#F26B4E" />
-      <text textAnchor="middle" y="3" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="600" fill="white">
-        +24% predicted
-      </text>
-    </g>
-  </VisualFrame>
-);
-
-/* 04 Integrations — central hub with connected app icons */
+/* 03 Integrations — central hub with connected app icons */
 const IntegrationsVisual = () => (
   <VisualFrame>
     <defs>
@@ -239,7 +240,6 @@ const IntegrationsVisual = () => (
 const visuals = [
   <DevelopmentVisual key="dev" />,
   <AutomationVisual key="auto" />,
-  <DataDrivenVisual key="data" />,
   <IntegrationsVisual key="int" />,
 ];
 
