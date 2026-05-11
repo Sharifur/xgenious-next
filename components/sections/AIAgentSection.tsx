@@ -547,15 +547,16 @@ const INT_DELAYS = [
 function IntPlatformChip({ name, color, active }: { name: string; color: string; active: boolean }) {
   return (
     <div
-      className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300"
+      className="w-12 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300"
       style={{
-        background: active ? color + '18' : '#18181B',
-        border: `1px solid ${active ? color + '50' : '#27272A'}`,
+        background: '#ffffff',
+        border: `1.5px solid ${active ? color + '80' : '#E5E7EC30'}`,
         opacity: active ? 1 : 0.45,
+        boxShadow: active ? `0 0 0 3px ${color}22` : 'none',
       }}
       title={name}
     >
-      <PlatformLogo name={name} size={18} />
+      <PlatformLogo name={name} size={22} />
     </div>
   );
 }
