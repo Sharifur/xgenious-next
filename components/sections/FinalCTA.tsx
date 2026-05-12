@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { IconArrowRight } from '@tabler/icons-react';
+import Button, { ArrowIcon } from '@/components/ui/Button';
 
 export default function FinalCTA() {
   return (
@@ -34,13 +34,9 @@ export default function FinalCTA() {
           Book a free consultation — get a roadmap &amp; estimate.
         </p>
 
-        <a
-          href="#contact"
-          className="mt-8 inline-flex items-center gap-2 h-12 px-7 rounded-full bg-[#F26B4E] text-white font-semibold text-[14px] hover:bg-[#EC7161] transition-colors shadow-[0_8px_28px_rgba(242,107,78,0.35)]"
-        >
+        <Button href="/contact" variant="coral" icon={<ArrowIcon />} className="mt-8">
           Book a free consultation
-          <IconArrowRight size={14} stroke={1.5} />
-        </a>
+        </Button>
       </div>
     </section>
   );

@@ -67,12 +67,7 @@ const EDGE_MASK = {
 
 export default function TrustedBy() {
   return (
-    <section className="py-16 bg-white">
-      <div className="container-page">
-        <h3 className="text-center text-[20px] font-bold text-[#0F1112] mb-10">
-          Trusted by Leading Global Compnay
-        </h3>
-      </div>
+    <section className="pt-6 pb-[100px] bg-white">
 
       {/* Row 1 — slides RIGHT */}
       <div

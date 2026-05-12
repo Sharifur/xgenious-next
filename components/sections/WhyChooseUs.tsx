@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import StatCounter from '@/components/ui/StatCounter';
-import { stats, whyChooseCards } from '@/data/saas-page';
+import StatsGrid from '@/components/ui/StatsGrid';
+import { whyChooseCards } from '@/data/saas-page';
 
 const Icons: Record<string, React.ReactElement> = {
   code: (
@@ -137,24 +137,8 @@ export default function WhyChooseUs() {
         </div>
 
         {/* 4 stat cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-2xl bg-[#161616] border border-[#1F2127] p-7 flex flex-col"
-            >
-              <span className="text-[12px] font-medium text-[#8A8F99] mb-[120px]">
-                {stat.number}/
-              </span>
-              <div className="flex items-baseline gap-1">
-                <StatCounter value={stat.value} suffix="" label="" />
-                <span className="text-[28px] font-medium text-[#A6A6A6] leading-none">
-                  {stat.suffix}
-                </span>
-              </div>
-              <span className="mt-2 text-[13px] text-[#A6A6A6] font-medium">{stat.label}</span>
-            </div>
-          ))}
+        <div className="mt-10">
+          <StatsGrid variant="dark" />
         </div>
 
       </div>

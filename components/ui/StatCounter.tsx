@@ -7,9 +7,10 @@ interface StatCounterProps {
   value: number;
   suffix: string;
   label: string;
+  numberClass?: string;
 }
 
-export default function StatCounter({ value, suffix, label }: StatCounterProps) {
+export default function StatCounter({ value, suffix, label, numberClass = 'text-white' }: StatCounterProps) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const [count, setCount] = useState(0);
@@ -31,7 +32,7 @@ export default function StatCounter({ value, suffix, label }: StatCounterProps) 
 
   return (
     <div ref={ref} className={label ? 'flex flex-col items-start text-left' : 'inline'}>
-      <span className="text-[44px] lg:text-[52px] leading-none font-semibold text-white tabular-nums tracking-[-0.02em]">
+      <span className={`text-[44px] lg:text-[52px] leading-none font-semibold tabular-nums tracking-[-0.02em] ${numberClass}`}>
         {count.toLocaleString()}
         {suffix}
       </span>

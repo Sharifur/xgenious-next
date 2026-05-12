@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import TrustedBy from '@/components/sections/TrustedBy';
+import StatsGrid from '@/components/ui/StatsGrid';
+import Button, { ArrowIcon } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
   title: 'About Us — Xgenious',
@@ -32,28 +35,15 @@ const IMG = {
   ],
 };
 
-const STATS = [
-  { num: '7000', label: 'Customer Happy' },
-  { num: '19', label: 'Awards Achieved' },
-  { num: '25', label: 'Team Members' },
-  { num: '100', label: 'Product Develop' },
-];
 
-function ArrowRight() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 export default function AboutPage() {
   return (
     <>
       {/* ── 1. Hero ── */}
-      <section style={{ background: 'linear-gradient(180deg, #f5f6ea 0%, #f3dacd 100%)' }} className="pt-[140px] pb-0">
+      <section style={{ background: 'linear-gradient(180deg, #f5f6ea 0%, #f3dacd 100%)' }} className="pt-[140px] pb-[100px]">
         <div className="container-page flex flex-col items-center text-center gap-6 pb-14">
-          <h1 className="text-[72px] font-semibold leading-[80px] text-[#181818]">
+          <h1 className="text-[72px] font-semibold leading-[80px] text-[#181818] max-w-[1100px]">
             Crafting the Digital Future{' '}
             <span className="font-medium italic">Through Software</span>
           </h1>
@@ -66,7 +56,7 @@ export default function AboutPage() {
           <img
             src={IMG.heroTeam}
             alt="Xgenious annual team tour"
-            className="w-full h-[520px] object-cover rounded-xl"
+            className="w-full max-w-[1100px] mx-auto block h-[520px] object-cover rounded-xl"
           />
         </div>
       </section>
@@ -74,7 +64,7 @@ export default function AboutPage() {
       {/* ── 2. Innovation Motto ── */}
       <section className="bg-white py-20">
         <div className="container-page">
-          <p className="text-[36px] font-medium leading-[46px] text-[#0f1112] text-center max-w-[1320px] mx-auto">
+          <p className="text-[32px] font-medium leading-[46px] text-[#0f1112] text-center max-w-[1320px] mx-auto">
             Building innovation, Robust websites for the digital age. Driving growth and enhancing
             digital footprints for business of all sizes. Xgenious is an Envato Elite Author —
             40+ products, 12000+ customers, and a trusted partner for digital growth worldwide.
@@ -83,51 +73,28 @@ export default function AboutPage() {
       </section>
 
       {/* ── 3. Trusted By ── */}
-      <section className="bg-white pb-16 relative overflow-hidden">
-        <p className="text-[24px] font-semibold leading-[32px] text-[#181818] text-center mb-10">
-          Trusted by Leading Global Company
-        </p>
-        <div className="flex justify-center flex-wrap">
-          {IMG.logos.map((logo, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-center border-r border-t border-b border-[#d8d8d8] first:border-l h-[110px] w-[192px] flex-shrink-0"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={logo.src} alt={logo.name} className="h-[26px] w-auto object-contain" />
-            </div>
-          ))}
-        </div>
-        <div className="flex justify-center flex-wrap border-t border-[#d8d8d8]">
-          {[...IMG.logos].reverse().map((logo, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-center border-r border-b border-[#d8d8d8] first:border-l h-[110px] w-[192px] flex-shrink-0"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={logo.src} alt={logo.name} className="h-[26px] w-auto object-contain" />
-            </div>
-          ))}
-        </div>
-      </section>
+      <TrustedBy />
 
       {/* ── 4. Stats / About ── */}
-      <section className="bg-[#f5f6f8] py-24 relative overflow-hidden">
-        <div className="absolute inset-y-0 right-0 w-[60%] pointer-events-none opacity-10">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMG.statsFaintBg} alt="" aria-hidden className="w-full h-full object-cover" />
-        </div>
-        <div className="container-page relative flex flex-col gap-16">
+      <section className="bg-[#F5F6F8] py-24 relative overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/start-with-us-section-bg-path.png"
+          alt=""
+          aria-hidden
+          className="absolute bottom-0 right-0 z-0 pointer-events-none"
+        />
+        <div className="container-page relative z-10 flex flex-col gap-16">
           <div className="flex gap-[232px] items-start flex-wrap lg:flex-nowrap">
             <div className="flex flex-col gap-4 w-full lg:w-[552px] flex-shrink-0">
-              <span className="inline-flex items-center justify-center self-start px-4 py-1.5 rounded-full bg-[rgba(242,107,78,0.12)] text-[#ec7161] text-[16px] leading-[24px]">
+              <span className="inline-block self-start px-3 py-1 rounded-full bg-[#FFE8E1] text-[#F26B4E] text-[11px] font-medium">
                 Start With Us
               </span>
               <h2 className="text-[44px] font-semibold leading-[52px] text-[#181818]">
                 Honest service you can trust—no surprises, no confusion
               </h2>
             </div>
-            <div className="flex flex-col gap-11 text-[18px] leading-[27px] text-[#383838] flex-1">
+            <div className="flex flex-col gap-11 text-[16px] leading-[27px] text-[#383838] flex-1">
               <p>
                 At Xgenious, we craft scalable digital solutions that help businesses grow, adapt,
                 and lead in a fast-moving world. We combine strategy, design, and technology to
@@ -141,47 +108,42 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {STATS.map((stat, i) => (
-              <div key={i} className="bg-white rounded-lg p-8 flex flex-col gap-2">
-                <p className="text-[#2f2f2f] text-[16px] leading-[24px]">0{i + 1}/</p>
-                <p className="text-[#181818] font-semibold leading-[56px]">
-                  <span className="text-[48px]">{stat.num}</span>
-                  <span className="text-[24px]">+</span>
-                </p>
-                <p className="text-[#2f2f2f] text-[18px] leading-[26px]">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+          <StatsGrid variant="light" />
         </div>
       </section>
 
       {/* ── 5. Culture Gallery ── */}
-      <section className="bg-white py-24">
+      {/* No top padding — right-column images start from the very top edge */}
+      <section className="bg-white pt-[100px] pb-[100px]">
         <div className="container-page">
-          <h2 className="text-[44px] font-semibold leading-[52px] text-[#181818] mb-12 max-w-[552px]">
-            Creating experiences Rooted in Authentic culture
-          </h2>
-          {/* Staggered masonry layout matching Figma */}
-          <div className="flex gap-6 items-start">
-            {/* Column 1 */}
-            <div className="flex flex-col gap-6 flex-1 mt-24">
-              <div className="bg-[#d9d9d9] rounded-lg h-[473px]" />
+          <div
+            className="grid gap-5"
+            style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}
+          >
+            {/* Title — col 1-2, row 1: at the top, same row-start as Image 1 & 2 */}
+            <div className="col-start-1 col-end-3 row-start-1 row-end-2 pb-12 pr-[80px]">
+              <h2 className="text-[44px] font-semibold leading-[52px] text-[#181818]">
+                Creating experiences Rooted in Authentic culture
+              </h2>
             </div>
-            {/* Column 2 */}
-            <div className="flex flex-col gap-6 flex-1">
-              <div className="bg-[#d9d9d9] rounded-lg h-[315px]" />
-              <div className="bg-[#d9d9d9] rounded-lg h-[315px]" />
-            </div>
-            {/* Column 3 */}
-            <div className="flex flex-col gap-6 flex-1">
-              <div className="bg-[#d9d9d9] rounded-lg h-[549px]" />
-              <div className="bg-[#d9d9d9] rounded-lg h-[221px]" />
-            </div>
-            {/* Column 4 */}
-            <div className="flex flex-col gap-6 flex-1 mt-14">
-              <div className="bg-[#d9d9d9] rounded-lg h-[431px]" />
-            </div>
+
+            {/* Image 1 — col 3, rows 1-2, tall portrait */}
+            <div className="col-start-3 col-end-4 row-start-1 row-end-3 h-[430px] bg-[#d9d9d9] rounded-2xl self-start" />
+
+            {/* Image 2 — col 4, rows 1-2: same row-start as title = guaranteed top alignment */}
+            <div className="col-start-4 col-end-5 row-start-1 row-end-3 h-[330px] bg-[#d9d9d9] rounded-2xl self-start mt-[100px]" />
+
+            {/* Image 3 — col 1, rows 2-3, tall left image */}
+            <div className="col-start-1 col-end-2 row-start-2 row-end-4 h-[380px] bg-[#d9d9d9] rounded-2xl self-start" />
+
+            {/* Image 4 — col 2, row 2, portrait */}
+            <div className="col-start-2 col-end-3 row-start-2 row-end-3 h-[255px] bg-[#d9d9d9] rounded-2xl self-start" />
+
+            {/* Image 5 — col 2-3, row 3, wide landscape */}
+            <div className="col-start-2 col-end-4 row-start-3 row-end-4 h-[250px] bg-[#d9d9d9] rounded-2xl" />
+
+            {/* Image 6 — col 4, row 3, medium landscape */}
+            <div className="col-start-4 col-end-5 row-start-3 row-end-4 h-[170px] bg-[#d9d9d9] rounded-2xl self-start" />
           </div>
         </div>
       </section>
@@ -190,7 +152,7 @@ export default function AboutPage() {
       <section className="bg-[#f5f6f8] py-24 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMG.founderBg} alt="" aria-hidden className="w-full h-full object-cover opacity-30 -scale-y-100" />
+          <img src="/founder-section-bg.jpg" alt="" aria-hidden className="w-full h-full object-cover opacity-30 -scale-y-100" />
         </div>
         <div className="container-page relative">
           <h2 className="text-[44px] font-semibold leading-[52px] text-[#181818] text-center mb-[70px]">
@@ -200,7 +162,7 @@ export default function AboutPage() {
             <div className="flex-shrink-0 w-full lg:w-[560px] overflow-hidden bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={IMG.founder}
+                src="/sharifur-rahman-robin.jpg"
                 alt="Sharifur Rahman — Founder & CEO"
                 className="w-full h-[582px] object-cover"
               />
@@ -232,47 +194,17 @@ export default function AboutPage() {
                   digital future. Let&rsquo;s connect and create something amazing together.&rdquo;
                 </p>
               </div>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#ec7161] text-white text-[16px] font-semibold self-start hover:bg-[#d9614f] transition-colors"
-              >
+              <Button href="/contact" variant="coral" icon={<ArrowIcon rotate />} className="self-start">
                 Let&rsquo;s Connect
-                <ArrowRight />
-              </Link>
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 7. Brain Behind Xgenious ── */}
-      <section className="bg-white py-24">
-        <div className="container-page">
-          <h2 className="text-[44px] font-semibold leading-[52px] text-[#181818] mb-[70px]">
-            Brain Behind Xgenious
-          </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {IMG.team.map((member) => (
-              <div key={member.name} className="flex flex-col gap-3">
-                <div className="h-[384px] overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={member.src}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <p className="text-[24px] font-medium leading-[32px] text-[#181818]">{member.name}</p>
-                  <p className="text-[18px] leading-[27px] text-[#515151] mt-1">{member.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── 8. Career ── */}
-      <section className="bg-[#f5f6f8] py-24">
+      <section className="bg-white py-24">
         <div className="container-page flex gap-16 items-center flex-wrap lg:flex-nowrap">
           <div className="flex-shrink-0 w-full lg:w-[603px] h-[500px] bg-[#c4c4c4] rounded-xl" />
           <div className="flex flex-col gap-8 flex-1">
@@ -284,14 +216,9 @@ export default function AboutPage() {
               who love technology and creativity to help us make great websites and apps. Come work
               in a friendly team where your ideas really make a difference.
             </p>
-            <Link href="/careers" className="inline-flex items-center self-start">
-              <span className="px-8 py-[22px] bg-[#ec7161] text-white text-[16px] font-bold rounded-l-full leading-none hover:bg-[#d9614f] transition-colors">
-                Join with us
-              </span>
-              <span className="w-[56px] h-[56px] flex items-center justify-center bg-[#ec7161] rounded-r-full hover:bg-[#d9614f] transition-colors border-l border-white/20">
-                <ArrowRight />
-              </span>
-            </Link>
+            <Button href="/careers" variant="coral" icon={<ArrowIcon rotate />} className="self-start">
+              Join with us
+            </Button>
           </div>
         </div>
       </section>
@@ -318,13 +245,9 @@ export default function AboutPage() {
           <p className="text-[18px] font-medium leading-[26px] text-[#efedf0]">
             Book a free consultation — get a roadmap &amp; estimate.
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#ec7161] text-white text-[16px] font-semibold hover:bg-[#d9614f] transition-colors"
-          >
+          <Button href="/contact" variant="coral" icon={<ArrowIcon />}>
             Book a Free Consultation
-            <ArrowRight />
-          </Link>
+          </Button>
         </div>
       </section>
     </>
