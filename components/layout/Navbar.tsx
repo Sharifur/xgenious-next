@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import Button from '@/components/ui/Button';
 import { useState, useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import {
@@ -109,7 +110,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pt-4 px-4 lg:px-8">
       <div
-        className={`max-w-[1100px] mx-auto bg-white rounded-full border border-[#E5E7EC] transition-shadow duration-300 ${
+        className={`max-w-[1320px] mx-auto bg-white rounded-full border border-[#E5E7EC] transition-shadow duration-300 ${
           scrolled
             ? 'shadow-[0_12px_32px_rgba(15,17,18,0.10)]'
             : 'shadow-[0_4px_18px_rgba(15,17,18,0.06)]'
@@ -152,17 +153,7 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
-            {/* Primary — dark pill with shimmer sweep + lift */}
-            <Link
-              href="/contact"
-              className="group relative inline-flex items-center h-[38px] px-[20px] rounded-full bg-[#0F1112] text-white text-[13px] font-semibold overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(15,17,18,0.25)] active:translate-y-0"
-            >
-              <span
-                aria-hidden
-                className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 bg-white/15 opacity-0 transition-all duration-700 ease-out group-hover:left-[120%] group-hover:opacity-100"
-              />
-              <span className="relative">Contact Us</span>
-            </Link>
+            <Button href="/contact" variant="primary" size="sm">Contact Us</Button>
 
             {/* Icon CTA — coral with soft halo + arrow nudge */}
             <Link
@@ -217,7 +208,7 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <div className="lg:hidden mt-2 max-w-[1100px] mx-auto bg-white rounded-3xl border border-[#E5E7EC] shadow-lg px-6 py-5 flex flex-col gap-4 max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden mt-2 max-w-[1320px] mx-auto bg-white rounded-3xl border border-[#E5E7EC] shadow-lg px-6 py-5 flex flex-col gap-4 max-h-[80vh] overflow-y-auto">
           {[
             { label: 'Services', items: servicesDropdown },
             { label: 'Product', items: productsDropdown },
@@ -254,13 +245,9 @@ export default function Navbar() {
           <Link href="/contact" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>
             Contact
           </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#0F1112] text-white text-[13px] font-semibold"
-            onClick={() => setMenuOpen(false)}
-          >
+          <Button href="/contact" variant="primary" size="sm" onClick={() => setMenuOpen(false)}>
             Contact Us
-          </Link>
+          </Button>
         </div>
       )}
     </header>
