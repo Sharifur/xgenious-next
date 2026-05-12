@@ -1,99 +1,116 @@
-import Link from 'next/link';
+import Button, { ArrowIcon } from '@/components/ui/Button';
 
-function RatingBadge({ logo, name }: { logo: string; name: string }) {
+function Cursor({ color, delay = '0s' }: { color: string; delay?: string }) {
   return (
-    <div className="flex items-center gap-1">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/saas-dev/laurel.svg" alt="" width={23} height={56} />
-      <div className="flex flex-col items-center gap-[6px]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logo} alt={name} width={52} height={17} className="object-contain" />
-        <div className="flex gap-0.5">
-          {[0, 1, 2, 3, 4].map((i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img key={i} src="/images/saas-dev/star-full.svg" alt="" width={13} height={13} />
-          ))}
-        </div>
-      </div>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/saas-dev/laurel.svg" alt="" width={23} height={56} className="scale-x-[-1]" />
-    </div>
+    <svg
+      width="13"
+      height="15"
+      viewBox="0 0 13 15"
+      fill="none"
+      style={{ animation: `cursorChase 6s ease-in-out ${delay} infinite` }}
+    >
+      <path d="M1 1L1 13L4.5 9.5L7 14L9 13L6.5 8.5L11.5 8.5L1 1Z" fill={color} />
+    </svg>
   );
 }
 
 export default function Hero() {
   return (
     <section
-      className="relative overflow-hidden pt-[140px] pb-[80px]"
-      style={{ background: 'linear-gradient(180deg, rgba(236,113,97,0.07) 0%, #ffffff 65%)' }}
+      className="relative overflow-hidden pt-[200px] pb-[200px]"
+      style={{ background: 'linear-gradient(180deg, #f5f6ea 0%, #f3dacd 100%)' }}
     >
-      <div className="absolute left-[5%] top-[152px] hidden lg:flex rotate-[-6deg]">
-        <div className="bg-[#dbecf5] border-[0.5px] border-white flex gap-2 items-center px-[14px] py-[10px] rounded-[99px] shadow-[0px_1px_1.5px_rgba(0,0,0,0.04)]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/saas-dev/chip-code.svg" alt="" width={24} height={24} />
-          <span className="text-[#2bb6ff] font-medium text-[17px] leading-6">Code</span>
-        </div>
-      </div>
+      <div className="container-page relative">
 
-      <div className="absolute right-[5%] top-[152px] hidden lg:flex rotate-[6deg]">
-        <div className="bg-[#e9e9e9] border-[0.6px] border-white flex gap-2 items-center px-[14px] py-[10px] rounded-[99px] shadow-[0px_1px_3px_rgba(0,0,0,0.04)]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/saas-dev/chip-server.svg" alt="" width={24} height={24} />
-          <span className="text-[#181818] font-normal text-[17px] leading-6">Server</span>
-        </div>
-      </div>
-
-      <div className="absolute left-[5%] bottom-[120px] hidden lg:flex rotate-[6deg]">
-        <div className="bg-[#e8e6f7] border-[0.6px] border-white flex gap-2 items-center px-[14px] py-[10px] rounded-[99px] shadow-[0px_1px_1.5px_rgba(0,0,0,0.04)]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/saas-dev/chip-text.svg" alt="" width={24} height={24} />
-          <span className="text-[#8e79ff] font-medium text-[17px] leading-6">Text</span>
-        </div>
-      </div>
-
-      <div className="absolute right-[5%] bottom-[120px] hidden lg:flex rotate-[-6deg]">
-        <div className="bg-[#f0fff2] border-[0.6px] border-white flex gap-2 items-center px-[22px] py-[10px] rounded-[99px] shadow-[0px_1px_3px_rgba(0,0,0,0.04)]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/saas-dev/chip-api.svg" alt="" width={24} height={24} />
-          <span className="text-[#12b503] font-normal text-[17px] leading-6">API</span>
-        </div>
-      </div>
-
-      <div className="container-page flex flex-col items-center text-center gap-8">
-        <div className="flex items-center gap-8">
-          <RatingBadge logo="/images/saas-dev/badge-clutch.svg" name="Clutch" />
-          <RatingBadge logo="/images/saas-dev/badge-google.svg" name="Google" />
-        </div>
-
-        <h1 className="text-[#181818] font-semibold" style={{ fontSize: 72, lineHeight: '80px' }}>
-          {'Powerful SaaS Solutions for '}
-          <em className="font-medium" style={{ fontStyle: 'italic' }}>Business Growth</em>
-        </h1>
-
-        <p className="text-[#2f2f2f] font-normal" style={{ fontSize: 18, lineHeight: '27px', maxWidth: 682 }}>
-          For founders and mid-market teams who need a real SaaS, not a script. GDPR, HIPAA and SOC 2 ready
-          architectures by default. Built by a team that has shipped 50+ SaaS products since 2017.
-        </p>
-
-        <div className="flex items-center gap-[17px] flex-wrap justify-center">
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 font-semibold text-white rounded-[30px] px-8 py-4 text-[16px] leading-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(236,113,97,0.5)]"
-            style={{ background: '#ec7161' }}
-          >
-            Start New Project
+        {/* Code — top left */}
+        <div
+          className="absolute left-0 top-0 hidden lg:flex flex-col items-start gap-2"
+          style={{ animation: 'chipOrbit 6s ease-in-out infinite' }}
+        >
+          <div className="bg-[#dbecf5] border-[0.5px] border-white flex gap-2 items-center px-[14px] py-[10px] rounded-[99px] shadow-[0px_1px_1.5px_rgba(0,0,0,0.04)] -rotate-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/web-app-dev/arrow-white.svg" alt="" width={24} height={24} />
-          </Link>
-          <Link
-            href="#pricing"
-            className="inline-flex items-center gap-2 font-semibold text-[#181818] rounded-[30px] px-8 py-4 text-[16px] leading-6 border border-[#2f2f2f] bg-white transition-all duration-200 hover:-translate-y-0.5"
-          >
-            SaaS Packages
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/web-app-dev/arrow-dark.svg" alt="" width={24} height={24} />
-          </Link>
+            <img src="/images/saas-dev/chip-code.svg" alt="" width={24} height={24} />
+            <span className="text-[#2bb6ff] font-medium text-[17px] leading-6">Code</span>
+          </div>
+          <div className="ml-8">
+            <Cursor color="#2bb6ff" delay="1.5s" />
+          </div>
         </div>
+
+        {/* Server — top right */}
+        <div
+          className="absolute right-0 top-0 hidden lg:flex flex-col items-end gap-2"
+          style={{ animation: 'chipOrbit 7s ease-in-out 1s infinite' }}
+        >
+          <div className="bg-[#e9e9e9] border-[0.6px] border-white flex gap-2 items-center px-[14px] py-[10px] rounded-[99px] shadow-[0px_1px_3px_rgba(0,0,0,0.04)] rotate-6">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/saas-dev/chip-server.svg" alt="" width={24} height={24} />
+            <span className="text-[#181818] font-normal text-[17px] leading-6">Server</span>
+          </div>
+          <div className="mr-8">
+            <Cursor color="#181818" delay="2.5s" />
+          </div>
+        </div>
+
+        {/* Center content */}
+        <div className="flex flex-col items-center text-center gap-8 lg:px-[180px]">
+          <div className="flex items-center gap-8">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/saas-dev/badge-clutch.svg" alt="Clutch" width={124} height={56} className="object-contain" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/saas-dev/badge-google.svg" alt="Google" width={124} height={56} className="object-contain" />
+          </div>
+
+          <h1 className="text-[#181818] font-semibold text-[72px] leading-[80px] max-w-[1050px]">
+            <span className="whitespace-nowrap">Powerful SaaS Solutions for</span><br />
+            <em className="font-medium italic">Business Growth</em>
+          </h1>
+
+          <p className="text-[#2F2F2F] text-[18px] leading-[27px] max-w-[650px]">
+            For founders and mid-market teams who need a real SaaS, not a script. GDPR, HIPAA and SOC 2 ready
+            architectures by default. Built by a team that has shipped 50+ SaaS products since 2017.
+          </p>
+
+          <div className="flex items-center gap-4 flex-wrap justify-center">
+            <Button href="/contact" variant="coral" icon={<ArrowIcon />}>
+              Start New Project
+            </Button>
+            <Button href="#pricing" variant="outline" icon={<ArrowIcon />}>
+              SaaS Packages
+            </Button>
+          </div>
+        </div>
+
+        {/* Text — bottom left */}
+        <div
+          className="absolute left-0 bottom-0 hidden lg:flex flex-col items-start gap-2"
+          style={{ animation: 'chipOrbit 8s ease-in-out 0.5s infinite' }}
+        >
+          <div className="ml-6">
+            <Cursor color="#8e79ff" delay="2s" />
+          </div>
+          <div className="bg-[#e8e6f7] border-[0.6px] border-white flex gap-2 items-center px-[14px] py-[10px] rounded-[99px] shadow-[0px_1px_1.5px_rgba(0,0,0,0.04)] rotate-6">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/saas-dev/chip-text.svg" alt="" width={24} height={24} />
+            <span className="text-[#8e79ff] font-medium text-[17px] leading-6">Text</span>
+          </div>
+        </div>
+
+        {/* API — bottom right */}
+        <div
+          className="absolute right-0 bottom-0 hidden lg:flex flex-col items-end gap-2"
+          style={{ animation: 'chipOrbit 6.5s ease-in-out 1.5s infinite' }}
+        >
+          <div className="mr-6">
+            <Cursor color="#12b503" delay="3s" />
+          </div>
+          <div className="bg-[#f0fff2] border-[0.6px] border-white flex gap-2 items-center px-[14px] py-[10px] rounded-[99px] shadow-[0px_1px_3px_rgba(0,0,0,0.04)] -rotate-6">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/saas-dev/chip-api.svg" alt="" width={24} height={24} />
+            <span className="text-[#12b503] font-normal text-[17px] leading-6">API</span>
+          </div>
+        </div>
+
       </div>
     </section>
   );

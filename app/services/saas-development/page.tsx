@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Hero from './_components/Hero';
+import ProofCards from './_components/ProofCards';
 import WhatWeBuild from './_components/WhatWeBuild';
 import HowWeWork from './_components/HowWeWork';
 import TrustCompliance from './_components/TrustCompliance';
@@ -20,6 +21,7 @@ export default function SaasDevelopmentPage() {
   return (
     <>
       <Hero />
+      <ProofCards />
       <WhatWeBuild />
       <HowWeWork />
       <TrustCompliance />

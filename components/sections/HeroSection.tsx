@@ -364,16 +364,15 @@ export default function HeroSection({
       </div>
 
 
-      {/* Globe at bottom — static (no animation) */}
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none hidden lg:flex justify-center">
-        <Image
-          src="/globe.png"
-          alt=""
-          width={1203}
-          height={375}
-          priority
-          className="w-[80%] max-w-[1203px] h-auto select-none"
-        />
+      {/* Globe at bottom — top 27% visible, slides up on load */}
+      <div
+        className="absolute bottom-0 left-0 right-0 pointer-events-none hidden lg:flex justify-center"
+        style={{ animation: 'globeRise 1s cubic-bezier(0.22,1,0.36,1) both' }}
+      >
+        <div className="w-[80%] max-w-[1203px] overflow-hidden" style={{ aspectRatio: '1203 / 330' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/World.svg" alt="" className="w-full h-auto select-none block" />
+        </div>
       </div>
 
       {/* Main content */}

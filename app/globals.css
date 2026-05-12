@@ -90,3 +90,30 @@ html {
   from { transform: translateX(-25%); }
   to   { transform: translateX(0); }
 }
+
+@keyframes globeRise {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardSweep {
+  0%   { transform: translateX(-100%) translateY(-50%); }
+  100% { transform: translateX(250%) translateY(-50%); }
+}
+
+@keyframes chipOrbit {
+  0%   { transform: translate(0px, 0px); }
+  25%  { transform: translate(6px, -8px); }
+  50%  { transform: translate(0px, -14px); }
+  75%  { transform: translate(-6px, -8px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+/* cursor chases the chip with a slight lag + tilt */
+@keyframes cursorChase {
+  0%   { transform: translate(0px, 0px)   rotate(0deg)   scale(1); }
+  20%  { transform: translate(4px, -5px)  rotate(-8deg)  scale(0.9); }
+  50%  { transform: translate(2px, -12px) rotate(-14deg) scale(1.05); }
+  75%  { transform: translate(-4px, -6px) rotate(-6deg)  scale(0.95); }
+  100% { transform: translate(0px, 0px)   rotate(0deg)   scale(1); }
+}

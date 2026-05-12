@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
-type Variant = 'primary' | 'coral';
+type Variant = 'primary' | 'coral' | 'outline';
 type Size = 'sm' | 'md';
 
 const variants: Record<Variant, { base: string; shimmer: string; shadow: string }> = {
@@ -16,6 +16,11 @@ const variants: Record<Variant, { base: string; shimmer: string; shadow: string 
     base: 'bg-[#ec7161] text-white',
     shimmer: 'bg-white/20',
     shadow: 'hover:shadow-[0_8px_22px_rgba(236,113,97,0.45)]',
+  },
+  outline: {
+    base: 'bg-white text-[#181818] border border-[#181818]',
+    shimmer: 'bg-[#181818]/8',
+    shadow: 'hover:shadow-[0_8px_22px_rgba(15,17,18,0.12)]',
   },
 };
 
