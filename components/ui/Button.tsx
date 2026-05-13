@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 type Variant = 'primary' | 'coral' | 'outline';
 type Size = 'sm' | 'md';
 
-const variants: Record<Variant, { base: string; shimmer: string; shadow: string }> = {
+const variants: Record<Variant, { base: string; shimmer: string; shadow: string; fill?: string }> = {
   primary: {
     base: 'bg-[#0F1112] text-white',
     shimmer: 'bg-white/15',
@@ -18,9 +18,10 @@ const variants: Record<Variant, { base: string; shimmer: string; shadow: string 
     shadow: 'hover:shadow-[0_8px_22px_rgba(236,113,97,0.45)]',
   },
   outline: {
-    base: 'bg-white text-[#181818] border border-[#181818]',
-    shimmer: 'bg-[#181818]/8',
-    shadow: 'hover:shadow-[0_8px_22px_rgba(15,17,18,0.12)]',
+    base: 'bg-white text-[#181818] border border-[#181818] hover:border-[#ec7161] hover:text-white',
+    shimmer: '',
+    shadow: 'hover:shadow-[0_8px_22px_rgba(236,113,97,0.30)]',
+    fill: 'bg-[#ec7161]',
   },
 };
 
@@ -48,16 +49,24 @@ export default function Button({
   className = '',
   onClick,
 }: ButtonProps) {
-  const { base, shimmer, shadow } = variants[variant];
+  const { base, shimmer, shadow, fill } = variants[variant];
 
   const cls = `group relative inline-flex items-center gap-2 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:-translate-y-0.5 ${shadow} active:translate-y-0 ${base} ${sizes[size]} ${className}`;
 
   const inner = (
     <>
-      <span
-        aria-hidden
-        className={`pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 ${shimmer} opacity-0 transition-all duration-700 ease-out group-hover:left-[120%] group-hover:opacity-100`}
-      />
+      {shimmer && (
+        <span
+          aria-hidden
+          className={`pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 ${shimmer} opacity-0 transition-all duration-700 ease-out group-hover:left-[120%] group-hover:opacity-100`}
+        />
+      )}
+      {fill && (
+        <span
+          aria-hidden
+          className={`pointer-events-none absolute inset-0 ${fill} translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out`}
+        />
+      )}
       <span className="relative">{children}</span>
       {icon && <span className="relative flex items-center">{icon}</span>}
     </>

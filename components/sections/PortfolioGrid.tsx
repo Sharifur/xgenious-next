@@ -1,5 +1,6 @@
 'use client';
 
+import SectionBadge from '@/components/ui/SectionBadge';
 import { useState } from 'react';
 import Image from 'next/image';
 import { ownProducts, type OwnProduct } from '@/data/saas-page';
@@ -53,9 +54,7 @@ export default function PortfolioGrid() {
       {/* Header */}
       <div className="container-page">
         <div className="text-center mb-12 max-w-[640px] mx-auto">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#FFE8E1] text-[#F26B4E] text-[12px] font-medium mb-5">
-            Our Own Products
-          </span>
+          <SectionBadge className="mb-5">Our Own Products</SectionBadge>
           <h2 className="text-[44px] leading-[52px] font-semibold text-[#0F1112] tracking-[-0.01em]">
             Built for Your{' '}
             <span className="italic font-semibold">Digital Future</span>

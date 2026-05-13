@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import { services, type Service } from '@/data/saas-page';
+import SectionBadge from '@/components/ui/SectionBadge';
 
 /* ───────────────────────────────────────────────────────────────
    "Creating the Future of Your Digital Presence"
@@ -574,9 +575,7 @@ export default function ServicesGrid() {
         {/* Header — split: heading left, description right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
           <div className="lg:col-span-7">
-            <span className="inline-block px-3 py-1 rounded-full bg-[#FFE8E1] text-[#F26B4E] text-[11px] font-medium mb-5">
-              What We Build
-            </span>
+            <SectionBadge className="mb-5">What We Build</SectionBadge>
             <h2 className="text-[36px] lg:text-[40px] leading-[44px] font-semibold text-[#0F1112] tracking-[-0.01em]">
               Creating the Future of Your
               <br />

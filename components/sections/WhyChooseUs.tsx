@@ -1,5 +1,6 @@
 'use client';
 
+import SectionBadge from '@/components/ui/SectionBadge';
 import { useState } from 'react';
 import Image from 'next/image';
 import StatsGrid from '@/components/ui/StatsGrid';
@@ -68,9 +69,7 @@ export default function WhyChooseUs() {
 
       <div className="container-page relative">
         <div className="text-center mb-14 max-w-[640px] mx-auto">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#FFE8E1]/15 border border-[#F26B4E]/30 text-[#F26B4E] text-[12px] font-medium mb-5">
-            Why Mid-Market Team Pick Us
-          </span>
+          <SectionBadge className="mb-5">Why Mid-Market Team Pick Us</SectionBadge>
           <h2 className="text-[44px] leading-[52px] font-semibold text-white tracking-[-0.01em]">
             Built for Your{' '}
             <span className="italic font-semibold">Digital Future</span>

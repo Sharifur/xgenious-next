@@ -117,3 +117,8 @@ html {
   75%  { transform: translate(-4px, -6px) rotate(-6deg)  scale(0.95); }
   100% { transform: translate(0px, 0px)   rotate(0deg)   scale(1); }
 }
+
+@keyframes tagBorderSweep {
+  0%   { background-position: 0 0, 0% 50%; }
+  100% { background-position: 0 0, 300% 50%; }
+}
