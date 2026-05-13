@@ -1,3 +1,4 @@
+import SectionBadge from '@/components/ui/SectionBadge';
 function BuildCard({
   icon,
   title,
@@ -88,17 +89,10 @@ const cards = [
 
 export default function WhatWeBuild() {
   return (
-    <section className="py-[120px] bg-white">
+    <section className="pt-[40px] pb-[120px] bg-white">
       <div className="container-page flex flex-col gap-[72px] items-center">
         <div className="flex flex-col items-center gap-4 text-center max-w-[732px]">
-          <div
-            className="inline-flex items-center px-4 py-[6px] rounded-[165px]"
-            style={{ background: 'rgba(242,107,78,0.12)' }}
-          >
-            <span className="text-[#ec7161] font-normal" style={{ fontSize: 16, lineHeight: '24px' }}>
-              What We Build
-            </span>
-          </div>
+          <SectionBadge>What We Build</SectionBadge>
           <div className="flex flex-col gap-4 items-center">
             <h2 className="text-[#0f1112] font-semibold" style={{ fontSize: 44, lineHeight: '52px' }}>
               SaaS Engineering, End-to-End.

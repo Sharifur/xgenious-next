@@ -1,3 +1,4 @@
+import SectionBadge from '@/components/ui/SectionBadge';
 /* Tech Stack — each line carries a logo that flows into the central mark */
 
 const CX = 550;
@@ -77,9 +78,7 @@ export default function TechStack() {
       <div className="container-page">
         {/* Header */}
         <div className="text-center mb-12 max-w-[680px] mx-auto">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#FFE8E1] text-[#F26B4E] text-[12px] font-medium mb-5">
-            Tech Stack
-          </span>
+          <SectionBadge className="mb-5">Tech Stack</SectionBadge>
           <h2 className="text-[44px] leading-[52px] font-semibold text-[#0F1112] tracking-[-0.01em]">
             Modern Stack, Optimized
             <br />

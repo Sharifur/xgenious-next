@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <TrustedBy />
+      <TrustedBy title="Trusted by Leading Global Company" />
       <ServicesGrid />
       <WhyChooseUs />
       <PortfolioGrid />

@@ -65,9 +65,14 @@ const EDGE_MASK = {
     'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
 };
 
-export default function TrustedBy() {
+export default function TrustedBy({ title }: { title?: string }) {
   return (
-    <section className="pt-6 pb-[100px] bg-white">
+    <section className={`${title ? 'pt-[100px]' : 'pt-6'} pb-[100px] bg-white`}>
+      {title && (
+        <p className="text-center text-[24px] font-semibold text-[#181818] mb-8">
+          {title}
+        </p>
+      )}
 
       {/* Row 1 — slides RIGHT */}
       <div

@@ -3,6 +3,8 @@ import Link from 'next/link';
 import TrustedBy from '@/components/sections/TrustedBy';
 import StatsGrid from '@/components/ui/StatsGrid';
 import Button, { ArrowIcon } from '@/components/ui/Button';
+import SectionBadge from '@/components/ui/SectionBadge';
+import Testimonials from '@/components/sections/Testimonials';
 
 export const metadata: Metadata = {
   title: 'About Us — Xgenious',
@@ -87,9 +89,7 @@ export default function AboutPage() {
         <div className="container-page relative z-10 flex flex-col gap-16">
           <div className="flex gap-[232px] items-start flex-wrap lg:flex-nowrap">
             <div className="flex flex-col gap-4 w-full lg:w-[552px] flex-shrink-0">
-              <span className="inline-block self-start px-3 py-1 rounded-full bg-[#FFE8E1] text-[#F26B4E] text-[11px] font-medium">
-                Start With Us
-              </span>
+              <SectionBadge className="self-start">Start With Us</SectionBadge>
               <h2 className="text-[44px] font-semibold leading-[52px] text-[#181818]">
                 Honest service you can trust—no surprises, no confusion
               </h2>
@@ -202,6 +202,8 @@ export default function AboutPage() {
         </div>
       </section>
 
+
+      <Testimonials />
 
       {/* ── 8. Career ── */}
       <section className="bg-white py-24">
