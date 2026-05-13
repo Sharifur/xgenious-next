@@ -1,7 +1,75 @@
+const features = [
+  {
+    icon: '/images/app-dev/why-icon-rapid.svg',
+    title: 'Rapid Development',
+    desc: 'Accelerate your time to market with our agile development methodology and proven frameworks that deliver results faster.',
+  },
+  {
+    icon: '/images/app-dev/why-icon-security.svg',
+    title: 'Enterprise Security',
+    desc: 'Built-in security best practices protect user data and prevent vulnerabilities with industry-standard encryption.',
+  },
+  {
+    icon: '/images/app-dev/why-icon-support.svg',
+    title: 'Ongoing Support',
+    desc: 'Accelerate your time to market with our agile development methodology and proven frameworks that deliver results faster.',
+  },
+  {
+    icon: '/images/app-dev/why-icon-design.svg',
+    title: 'User-Centered Design',
+    desc: 'Built-in security best practices protect user data and prevent vulnerabilities with industry-standard encryption.',
+  },
+];
+
 export default function WhyChooseUs() {
   return (
-    <section className="py-[120px] bg-white">
-      <div className="container-page flex flex-col gap-[72px]">
+    <section className="py-[120px]" style={{ background: '#F5F6F8' }}>
+      <div className="container-page flex flex-col gap-[96px]">
+
+        {/* ── Part 1: Crafted for Performance and Security ── */}
+        <div className="flex items-center gap-16">
+          {/* Left — title + feature cards */}
+          <div className="flex flex-col gap-10" style={{ flex: '0 0 520px' }}>
+            <h2 className="font-semibold text-[#0f1112]" style={{ fontSize: 44, lineHeight: '52px', maxWidth: 420 }}>
+              Crafted for Performance and Security
+            </h2>
+            <div className="grid grid-cols-2 gap-4">
+              {features.map((f) => (
+                <div
+                  key={f.title}
+                  className="flex flex-col gap-3 rounded-[12px] p-5"
+                  style={{ background: '#f5f6f8' }}
+                >
+                  <div
+                    className="flex items-center justify-center rounded-[8px]"
+                    style={{ width: 40, height: 40, background: 'white' }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={f.icon} alt="" width={22} height={22} />
+                  </div>
+                  <p className="font-semibold text-[#181818]" style={{ fontSize: 16, lineHeight: '24px' }}>
+                    {f.title}
+                  </p>
+                  <p className="font-normal text-[#484848]" style={{ fontSize: 14, lineHeight: '21px' }}>
+                    {f.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right — phone mockup */}
+          <div className="flex-1 flex items-center justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/app-dev/why-phone-peach.png"
+              alt="App performance"
+              className="w-full max-w-[520px] object-contain"
+            />
+          </div>
+        </div>
+
+        {/* ── Part 2: Why Choose US ── */}
         {/* Header */}
         <div className="flex flex-col gap-4 items-center text-center" style={{ maxWidth: 712, margin: '0 auto' }}>
           <div
@@ -22,14 +90,13 @@ export default function WhyChooseUs() {
           </div>
         </div>
 
-        {/* 3 cards */}
+        {/* 3 bento cards */}
         <div className="flex items-end gap-6">
           {/* Left card — peach, tall */}
           <div
             className="relative flex-shrink-0 overflow-hidden rounded-[12px]"
             style={{ background: '#f3dccf', width: 424, height: 642 }}
           >
-            {/* Phone mockup */}
             <div className="absolute inset-0 overflow-hidden" style={{ top: 106 }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -45,7 +112,6 @@ export default function WhyChooseUs() {
             >
               User-First App Experience
             </p>
-            {/* Icon circle */}
             <div
               className="absolute flex items-center justify-center rounded-[23.5px]"
               style={{ width: 47, height: 47, right: 24, top: 33, background: 'white' }}
@@ -57,11 +123,11 @@ export default function WhyChooseUs() {
 
           {/* Middle card — blue-purple, shorter */}
           <div
-            className="relative flex-shrink-0 rounded-[12px] flex flex-col justify-between"
+            className="relative flex-shrink-0 rounded-[12px]"
             style={{ background: '#cfd1ff', width: 424, height: 457 }}
           >
             <p
-              className="absolute font-semibold text-[#0f1112] text-center whitespace-nowrap"
+              className="absolute font-semibold text-[#0f1112]"
               style={{ fontSize: 72, lineHeight: '80px', right: 24, top: 32 }}
             >
               40+
@@ -85,7 +151,6 @@ export default function WhyChooseUs() {
             className="relative flex-shrink-0 overflow-hidden rounded-[12px]"
             style={{ background: 'white', width: 424, height: 642, border: '1px solid #bababa' }}
           >
-            {/* Man with phone */}
             <div className="absolute overflow-hidden" style={{ left: -90, top: 79, width: 639, height: 639 }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -100,7 +165,6 @@ export default function WhyChooseUs() {
             >
               Built Together, Built Better
             </p>
-            {/* Icon circle */}
             <div
               className="absolute flex items-center justify-center rounded-[23.5px]"
               style={{ width: 47, height: 47, right: 24, top: 32, background: '#f3dccf' }}
@@ -110,6 +174,7 @@ export default function WhyChooseUs() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

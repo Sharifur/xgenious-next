@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Hero from './_components/Hero';
+import TrustedBy from '@/components/sections/TrustedBy';
 import WhyChooseUs from './_components/WhyChooseUs';
 import Process from './_components/Process';
 import WorkShowcase from './_components/WorkShowcase';
@@ -29,6 +30,7 @@ export default function AppDevelopmentPage() {
   return (
     <>
       <Hero />
+      <TrustedBy title="Trusted by Leading Global Compnay" />
       <WhyChooseUs />
       <Process />
       <WorkShowcase />
