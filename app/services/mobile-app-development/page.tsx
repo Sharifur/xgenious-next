@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Hero from './_components/Hero';
 import TrustedBy from '@/components/sections/TrustedBy';
 import WhyChooseUs from './_components/WhyChooseUs';
+import WhatWeBuild from './_components/WhatWeBuild';
 import Process from './_components/Process';
 import WorkShowcase from './_components/WorkShowcase';
 import TechStack from './_components/TechStack';
@@ -32,10 +33,11 @@ export default function AppDevelopmentPage() {
       <Hero />
       <TrustedBy title="Trusted by Leading Global Compnay" />
       <WhyChooseUs />
+      <WhatWeBuild />
+      <Pricing />
       <Process />
       <WorkShowcase />
       <TechStack />
-      <Pricing />
       <BookCall />
       <FAQ faqs={faqItems} description="The questions every app buyer actually asks. If yours isn't here, ask it on the call — we will answer it honestly." />
       <CTASection />
