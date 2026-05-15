@@ -50,7 +50,7 @@ function Counter({ target }: { target: number }) {
 
 const slideUp = {
   hidden: { y: 80, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 export default function WhyChooseUs() {
