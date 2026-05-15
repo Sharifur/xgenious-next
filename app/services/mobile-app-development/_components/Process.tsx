@@ -1,59 +1,68 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 const steps = [
   {
     title: 'Ideation',
     desc: 'Problem validation, ICP definition, competitive map, feature ranking, and we both sign before a single line of code is written.',
-    icon: (
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <path d="M20 4C11.2 4 4 11.2 4 20s7.2 16 16 16 16-7.2 16-16S28.8 4 20 4zm0 28c-6.6 0-12-5.4-12-12S13.4 8 20 8s12 5.4 12 12-5.4 12-12 12zm0-20a8 8 0 100 16 8 8 0 000-16zm0 12a4 4 0 110-8 4 4 0 010 8z" fill="#ec7161"/>
-      </svg>
-    ),
+    iconSrc: '/images/app-dev/process-icon-ideation.svg',
   },
   {
     title: 'Wireframing',
     desc: 'Problem validation, ICP definition, competitive map, feature ranking, and we both sign before a single line of code is written.',
-    icon: null,
     iconSrc: '/images/app-dev/process-icon-wireframe.svg',
   },
   {
     title: 'UI Design',
     desc: 'Problem validation, ICP definition, competitive map, feature ranking, and we both sign before a single line of code is written.',
-    icon: null,
-    iconSrc: '/images/app-dev/process-icon-design.svg',
+    iconSrc: '/images/app-dev/process-icon-ui-design.svg',
   },
   {
     title: 'Development',
     desc: 'Problem validation, ICP definition, competitive map, feature ranking, and we both sign before a single line of code is written.',
-    icon: (
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <path d="M14 10l-8 10 8 10M26 10l8 10-8 10M22 8l-4 24" stroke="#ec7161" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
+    iconSrc: '/images/app-dev/process-icon-development.svg',
   },
 ];
 
 export default function Process() {
   return (
-    <section className="relative overflow-hidden bg-white" style={{ minHeight: 1465 }}>
+    <section className="relative overflow-hidden bg-white pt-[898px]">
+
+      {/* Cloud — top-left, overlapping phone */}
+      <motion.img
+        src="/images/app-dev/cloud-sm.png"
+        alt=""
+        className="absolute top-[340px] left-[4%] w-[220px] pointer-events-none z-[3]"
+        animate={{ y: [0, -12, 0], x: [0, 7, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      {/* Cloud — bottom-left, lower area */}
+      <motion.img
+        src="/images/app-dev/cloud-lg.png"
+        alt=""
+        className="absolute top-[680px] left-[2%] w-[280px] pointer-events-none z-[3]"
+        animate={{ y: [0, -16, 0], x: [0, 9, 0] }}
+        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+      />
+
+      {/* Cloud — right side, mid height */}
+      <motion.img
+        src="/images/app-dev/cloud-wide.png"
+        alt=""
+        className="absolute top-[500px] right-[3%] w-[260px] pointer-events-none z-[3]"
+        animate={{ y: [0, -10, 0], x: [0, -7, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2.5 }}
+      />
+
       {/* Title */}
-      <h2
-        className="absolute font-semibold text-[#0f1112] text-center"
-        style={{
-          fontSize: 44,
-          lineHeight: '52px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          top: 120,
-          width: 616,
-        }}
-      >
+      <h2 className="absolute font-semibold text-[#0f1112] text-center text-[44px] leading-[52px] left-1/2 -translate-x-1/2 top-[120px] w-[616px]">
         The Process Behind Our Solutions
       </h2>
 
       {/* Central phone mockup */}
-      <div
-        className="absolute overflow-hidden"
-        style={{ left: '50%', transform: 'translateX(-50%)', top: 296, width: 618, height: 751 }}
-      >
+      <div className="absolute overflow-hidden left-1/2 -translate-x-1/2 top-[296px] w-[618px] h-[751px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/app-dev/process-phone.png"
@@ -62,45 +71,28 @@ export default function Process() {
         />
       </div>
 
-      {/* White blur overlay */}
-      <div
-        className="absolute"
-        style={{
-          left: 362,
-          top: 921,
-          width: 1199,
-          height: 354,
-          background: 'white',
-          filter: 'blur(50px)',
-          zIndex: 1,
-        }}
+      {/* Blur overlay */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/images/app-dev/process-blur.svg"
+        alt=""
+        className="absolute top-[590px] left-1/2 -translate-x-1/2 w-[1399px] pointer-events-none z-[2]"
       />
 
-      {/* 4 process steps */}
-      <div
-        className="absolute z-10"
-        style={{ left: 300, top: 1098, right: 300 }}
-      >
+      {/* Steps — normal flow, drives section height */}
+      <div className="relative z-10 max-w-[1320px] mx-auto px-6 lg:px-8 bg-white pb-[100px]">
         <div className="grid grid-cols-4 gap-6">
           {steps.map((step) => (
-            <div key={step.title} className="flex flex-col gap-[25px]">
-              {/* Icon box */}
-              <div
-                className="flex items-center justify-center rounded-[8px] flex-shrink-0"
-                style={{ width: 64, height: 64, background: '#f5f6f8' }}
-              >
-                {step.iconSrc ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={step.iconSrc} alt={step.title} width={40} height={40} />
-                ) : (
-                  step.icon
-                )}
+            <div key={step.title} className="group flex flex-col gap-[25px]">
+              <div className="flex items-center justify-center w-16 h-16 rounded-[8px] bg-[#f5f6f8] group-hover:bg-[#ec7161] transition-colors duration-300 shrink-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={step.iconSrc} alt={step.title} width={40} height={40} />
               </div>
               <div className="flex flex-col gap-4">
-                <p className="font-bold text-[#181818]" style={{ fontSize: 36, lineHeight: '46px' }}>
+                <p className="font-bold text-[#181818] text-[36px] leading-[46px]">
                   {step.title}
                 </p>
-                <p className="font-normal text-[#484848]" style={{ fontSize: 16, lineHeight: '24px' }}>
+                <p className="font-normal text-[#484848] text-base leading-6">
                   {step.desc}
                 </p>
               </div>
@@ -109,8 +101,6 @@ export default function Process() {
         </div>
       </div>
 
-      {/* Spacer to push section to correct height */}
-      <div style={{ height: 1465 }} />
     </section>
   );
 }

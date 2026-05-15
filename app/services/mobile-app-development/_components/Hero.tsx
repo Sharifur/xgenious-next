@@ -1,107 +1,134 @@
-import Link from 'next/link';
+'use client';
+
+import { motion } from 'framer-motion';
+import Button, { ArrowIcon } from '@/components/ui/Button';
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden" style={{ background: '#f5f6ea' }}>
+    <section className="relative overflow-hidden pb-0" style={{ background: 'linear-gradient(180deg, #f8f7ef 0%, #ecddd2 100%)' }}>
       {/* Background ellipse */}
       <div
         className="absolute pointer-events-none"
-        style={{
-          left: '50%',
-          top: 155,
-          transform: 'translateX(-50%)',
-          width: 3085,
-          height: 1619,
-          opacity: 1,
-        }}
+        style={{ left: '50%', top: 155, transform: 'translateX(-50%)', width: 3085, height: 1619 }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/app-dev/hero-ellipse.svg" alt="" className="w-full h-full object-contain" />
       </div>
 
-      <div className="container-page relative z-10 flex flex-col items-center" style={{ paddingTop: 100, paddingBottom: 0 }}>
+      {/* Play Store badge */}
+      <motion.div
+        className="absolute z-20 pointer-events-none"
+        style={{ left: '20%', top: 340, rotate: -6 }}
+        animate={{ y: [0, -10, 0], x: [0, 6, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/app-dev/badge-playstore.png" alt="Play Store" className="h-12 w-auto" />
+      </motion.div>
+
+      {/* Large cloud — left, floating */}
+      <motion.div
+        className="absolute pointer-events-none"
+        style={{ left: '10%', top: '45%', width: 600, height: 420, opacity: 0.85, zIndex: 1 }}
+        animate={{ y: [0, -20, 0], x: [0, 12, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/app-dev/hero-cloud-left.png" alt="" className="w-full h-full object-contain" />
+      </motion.div>
+
+      {/* Small cloud — right, floating */}
+      <motion.div
+        className="absolute pointer-events-none"
+        style={{ right: '10%', top: '52%', width: 300, height: 200, opacity: 0.8, zIndex: 1 }}
+        animate={{ y: [0, -12, 0], x: [0, -8, 0] }}
+        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/app-dev/hero-cloud-right.png" alt="" className="w-full h-full object-contain" />
+      </motion.div>
+
+      {/* Flutter badge */}
+      <motion.div
+        className="absolute z-20 pointer-events-none"
+        style={{ right: '20%', top: 300, rotate: 6 }}
+        animate={{ y: [0, -8, 0], x: [0, -5, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/app-dev/badge-flutter.png" alt="Flutter" className="h-12 w-auto" />
+      </motion.div>
+
+      <div className="container-page relative z-10 flex flex-col items-center" style={{ paddingTop: 180, paddingBottom: 0 }}>
         {/* Heading + CTA */}
-        <div className="flex flex-col gap-8 items-center text-center" style={{ maxWidth: 888 }}>
+        <div className="flex flex-col gap-8 items-center text-center">
           <div className="flex flex-col gap-4 items-center">
-            <h1
-              className="font-semibold"
-              style={{ fontSize: 72, lineHeight: '80px', color: '#181818' }}
-            >
-              {`Precision-Built Apps for a `}
+            <h1 className="font-semibold" style={{ fontSize: 72, lineHeight: '80px', color: '#181818', maxWidth: 900 }}>
+              Precision-Built Apps for a{' '}
               <em className="font-medium" style={{ fontStyle: 'italic' }}>Mobile-First World</em>
             </h1>
-            <p
-              className="font-normal"
-              style={{ fontSize: 18, lineHeight: '27px', color: '#2f2f2f', maxWidth: 744 }}
-            >
+            <p className="font-normal" style={{ fontSize: 18, lineHeight: '27px', color: '#2f2f2f', maxWidth: 750 }}>
               Transform your vision into reality with custom iOS, Android, and cross-platform mobile
               applications designed for growth and user engagement.
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 font-semibold text-white rounded-[30px] px-8 py-4 text-[16px] leading-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(236,113,97,0.5)]"
-            style={{ background: '#ec7161' }}
-          >
+          <Button href="/contact" variant="coral" icon={<ArrowIcon />}>
             Start New Project
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
+          </Button>
         </div>
 
-        {/* Floating badges above phone */}
-        <div
-          className="relative flex items-center justify-between"
-          style={{ width: 1200, marginTop: 40 }}
-        >
-          {/* Play Store badge */}
-          <div
-            className="inline-flex items-center gap-2 px-[14px] py-[10px] rounded-[99px]"
-            style={{
-              background: '#fff0f1',
-              border: '0.6px solid white',
-              boxShadow: '0px 1px 1.5px rgba(0,0,0,0.04)',
-              transform: 'rotate(6deg)',
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/app-dev/badge-playstore.svg" alt="Play Store" width={24} height={24} />
-            <span className="font-normal" style={{ fontSize: 17, color: '#03569b' }}>Play Store</span>
-          </div>
+        {/* Phone mockups — bottom clipped by section overflow-hidden */}
+        <div className="relative w-full flex items-end justify-center" style={{ marginTop: 100, marginBottom: -130 }}>
 
-          {/* Flutter badge */}
-          <div
-            className="inline-flex items-center gap-2 px-[22px] py-[10px] rounded-[99px]"
+          {/* Left — Prohandy, top leans toward center (clockwise) */}
+          <motion.img
+            src="/images/app-dev/mock-prohandy.png"
+            alt="Prohandy app"
+            initial={{ y: 180, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="block flex-shrink-0"
             style={{
-              background: '#eefbff',
-              border: '0.6px solid white',
-              boxShadow: '0px 1px 3px rgba(0,0,0,0.04)',
-              transform: 'rotate(-6deg)',
+              width: 270,
+              zIndex: 10,
+              rotate: -10,
+              transformOrigin: 'bottom center',
+              marginRight: -90,
+              filter: 'drop-shadow(0 24px 40px rgba(0,0,0,0.18))',
             }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/app-dev/badge-flutter.png" alt="Flutter" width={25} height={24} />
-            <span className="font-normal" style={{ fontSize: 17, color: '#03569b' }}>Flutter</span>
-          </div>
-        </div>
+          />
 
-        {/* Phone mockup */}
-        <div className="relative" style={{ width: 1129, height: 741, marginTop: -20 }}>
-          {/* Cloud decorations */}
-          <div className="absolute pointer-events-none" style={{ right: -39, bottom: 0, width: 577, height: 374, opacity: 0.8 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/app-dev/hero-cloud-left.png" alt="" className="w-full h-full object-contain" />
-          </div>
-          <div className="absolute pointer-events-none" style={{ right: -8, top: 0, width: 381, height: 246, opacity: 0.8 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/app-dev/hero-cloud-right.png" alt="" className="w-full h-full object-contain" />
-          </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/app-dev/hero-phone.png"
-            alt="Mobile app showcase"
-            className="relative z-10 w-full h-full object-contain"
+          {/* Center — Go Car, upright */}
+          <motion.img
+            src="/images/app-dev/mock-gocar.png"
+            alt="Go Car app"
+            initial={{ y: 180, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.75, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="block flex-shrink-0"
+            style={{
+              width: 320,
+              zIndex: 20,
+              filter: 'drop-shadow(0 32px 56px rgba(0,0,0,0.22))',
+            }}
+          />
+
+          {/* Right — Xilancer, top leans toward center (counter-clockwise) */}
+          <motion.img
+            src="/images/app-dev/mock-xilancer.png"
+            alt="Xilancer app"
+            initial={{ y: 180, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.75, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="block flex-shrink-0"
+            style={{
+              width: 270,
+              zIndex: 10,
+              rotate: 10,
+              transformOrigin: 'bottom center',
+              marginLeft: -90,
+              filter: 'drop-shadow(0 24px 40px rgba(0,0,0,0.18))',
+            }}
           />
         </div>
       </div>
