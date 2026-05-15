@@ -61,7 +61,7 @@ export default function WhyChooseUs() {
   const rightInView = useInView(rightCardRef, { once: true, margin: '-80px' });
 
   return (
-    <section className="pt-[10px] pb-[120px] bg-[#F5F6F8]">
+    <section className="pt-[10px] pb-[120px] xl:pt-[100px] xl:pb-0 bg-[#F5F6F8]">
       <div className="container-page flex flex-col gap-[96px]">
 
         {/* ── Part 1: Crafted for Performance and Security ── */}
@@ -86,12 +86,12 @@ export default function WhyChooseUs() {
           </div>
 
           {/* Right — single illustration */}
-          <div className="flex-1 flex items-start justify-center overflow-visible">
+          <div className="flex-1 flex items-start justify-center overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/app-dev/crafted-illustration.png"
               alt="App performance illustration"
-              className="max-w-none"
+              className="w-full max-w-[600px] xl:max-w-none"
             />
           </div>
         </div>

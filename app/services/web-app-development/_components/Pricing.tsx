@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import SectionBadge from '@/components/ui/SectionBadge';
+import Button, { ArrowIcon } from '@/components/ui/Button';
 
 const features = [
   'Single-tenant SaaS, 1 user role',
@@ -28,8 +29,8 @@ function PlanCard({ name, dark, popular, cta, ctaDark }: typeof plans[0]) {
     >
       {popular && (
         <div
-          className="absolute top-0 right-6 px-[10.2px] py-[4px] rounded-[999px] font-bold text-white"
-          style={{ background: '#ec7161', fontSize: 11.2, lineHeight: '16.83px', letterSpacing: 0.45 }}
+          className="absolute top-5 right-5 px-3 py-1 rounded-full font-bold text-white text-[11px] leading-none"
+          style={{ background: '#ec7161', letterSpacing: 0.45 }}
         >
           Most popular
         </div>
@@ -75,15 +76,14 @@ function PlanCard({ name, dark, popular, cta, ctaDark }: typeof plans[0]) {
       </div>
 
       <div className="mt-6">
-        <Link
+        <Button
           href="/contact"
-          className="flex items-center justify-center gap-2 font-semibold text-white rounded-[30px] px-8 py-4 w-full text-[16px] leading-6 transition-all duration-200 hover:-translate-y-0.5"
-          style={{ background: ctaDark ? '#181818' : '#ec7161' }}
+          variant={ctaDark ? 'primary' : 'coral'}
+          icon={<ArrowIcon />}
+          className="w-full justify-center"
         >
           {cta}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/web-app-dev/arrow-white.svg" alt="" width={24} height={24} />
-        </Link>
+        </Button>
       </div>
     </div>
   );
@@ -94,14 +94,7 @@ export default function Pricing() {
     <section id="pricing" className="py-[120px] bg-[#f5f6f8]">
       <div className="container-page flex flex-col gap-[72px] items-center">
         <div className="flex flex-col items-center gap-4 text-center max-w-[616px]">
-          <div
-            className="inline-flex items-center px-4 py-[6px] rounded-[165px]"
-            style={{ background: 'rgba(242,107,78,0.12)' }}
-          >
-            <span className="text-[#ec7161] font-normal" style={{ fontSize: 16, lineHeight: '24px' }}>
-              Pricing
-            </span>
-          </div>
+          <SectionBadge>Pricing</SectionBadge>
           <div className="flex flex-col gap-4 items-center">
             <h2 className="text-[#0f1112] font-semibold" style={{ fontSize: 44, lineHeight: '52px' }}>
               Pick a starting point, no discovery tax

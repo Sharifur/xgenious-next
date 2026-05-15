@@ -1,10 +1,16 @@
 import type { Metadata } from 'next';
 import Hero from './_components/Hero';
 import WhatWeBuild from './_components/WhatWeBuild';
+import HowWeWork from './_components/HowWeWork';
+import CaseStudies from './_components/CaseStudies';
 import Pricing from './_components/Pricing';
-import TrustCompliance from '@/components/sections/TrustCompliance';
-import WorkShowcase from './_components/WorkShowcase';
+import TrustCompliance from './_components/TrustCompliance';
 import FAQ, { type FaqItem } from '@/components/sections/FAQ';
+import TechStack from './_components/TechStack';
+import Testimonials from '@/components/sections/Testimonials';
+import BookCall from './_components/BookCall';
+import CTASection from './_components/CTASection';
+import TrustedBy from '@/components/sections/TrustedBy';
 
 const faqItems: FaqItem[] = [
   { question: 'Does webflow support custom code?', answer: 'Yes. Webflow supports custom HTML, CSS, and JavaScript. You can embed code directly in pages, sections, or globally via the project settings.' },
@@ -15,8 +21,6 @@ const faqItems: FaqItem[] = [
   { question: 'Can we work under NDA before sharing our idea?', answer: 'Absolutely. We sign NDAs before any detailed discussions. Send us a request and we will have it back to you within one business day.' },
   { question: 'What happens after launch — do you offer support retainers?', answer: 'Every plan includes a post-launch support window. After that you can move to a monthly retainer for feature work, infrastructure management, and on-call SRE.' },
 ];
-import CTASection from './_components/CTASection';
-import TrustedBy from '@/components/sections/TrustedBy';
 
 export const metadata: Metadata = {
   title: 'Web App Development Services | Xgenious',
@@ -28,11 +32,15 @@ export default function WebAppDevelopmentPage() {
   return (
     <>
       <Hero />
-      <TrustedBy />
+      <TrustedBy title="Trusted by teams around the world" />
       <WhatWeBuild />
-      <Pricing />
+      <HowWeWork />
+      <CaseStudies />
       <TrustCompliance />
-      <WorkShowcase />
+      <Pricing />
+      <TechStack />
+      <Testimonials />
+      <BookCall />
       <FAQ faqs={faqItems} description="The questions every web app buyer actually asks. If yours isn't here, ask it on the call — we will answer it honestly." />
       <CTASection />
     </>
