@@ -25,9 +25,8 @@ export default function FinalCTA() {
       </div>
 
       <div className="container-page relative z-10 text-center">
-        <h2 className="text-[40px] lg:text-[44px] leading-[1.15] font-semibold text-white tracking-[-0.01em] max-w-[720px] mx-auto">
-          Ready to Build Your SaaS or
-          <br />
+        <h2 className="text-[30px] sm:text-[36px] lg:text-[44px] leading-[1.15] font-semibold text-white tracking-[-0.01em] max-w-[720px] mx-auto">
+          Ready to Build Your SaaS or{' '}
           <span className="italic font-semibold">Marketplace?</span>
         </h2>
         <p className="mt-5 text-[#A6A6A6] text-[14px] leading-6 max-w-[480px] mx-auto">

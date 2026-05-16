@@ -324,9 +324,9 @@ export default function HeroSection({
 
   return (
     <section
-      className="relative overflow-hidden pt-[180px] pb-[40px]"
+      className="relative overflow-hidden pt-[120px] sm:pt-[150px] lg:pt-[180px] pb-[40px]"
       style={{
-        minHeight: 900,
+        minHeight: 'auto',
         background:
           'radial-gradient(120% 60% at 50% 0%, #FFF1EC 0%, #FFE8E1 35%, #F5EFEC 70%, #ECEAEB 100%)',
       }}
@@ -443,11 +443,9 @@ export default function HeroSection({
           </h1>
 
           <p
-            className="text-[#2F2F2F] mx-auto"
+            className="text-[#2F2F2F] mx-auto text-[15px] sm:text-[17px] leading-[24px] sm:leading-[27px]"
             style={{
               fontWeight: 400,
-              fontSize: 18,
-              lineHeight: '27px',
               maxWidth: 676,
               marginBottom: 32,
             }}
@@ -455,12 +453,12 @@ export default function HeroSection({
             {subtitle}
           </p>
 
-          <div className="flex items-center justify-center gap-4 flex-wrap">
-            {/* Primary — coral pill: lift + shimmer sweep + glow shadow + arrow nudge */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
+            {/* Primary — coral pill */}
             <Link
               href={primaryCtaHref}
-              className="group relative inline-flex items-center justify-center gap-2 font-semibold text-white text-[15px] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(242,107,78,0.45)] active:translate-y-0 active:shadow-[0_4px_12px_rgba(242,107,78,0.35)]"
-              style={{ width: 201, height: 56, background: '#F26B4E', borderRadius: 30 }}
+              className="group relative inline-flex items-center justify-center gap-2 font-semibold text-white text-[15px] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(242,107,78,0.45)] active:translate-y-0 active:shadow-[0_4px_12px_rgba(242,107,78,0.35)] w-full sm:w-auto px-7"
+              style={{ height: 52, background: '#F26B4E', borderRadius: 30, minWidth: 190 }}
             >
               {/* Shimmer sweep */}
               <span
@@ -484,11 +482,11 @@ export default function HeroSection({
               />
             </Link>
 
-            {/* Secondary — white pill: lift + dark fill-from-bottom + text inverts */}
+            {/* Secondary — white pill */}
             <Link
               href={secondaryCtaHref}
-              className="group relative inline-flex items-center justify-center font-semibold text-[15px] bg-white border border-[#D8D8D8] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#0F1112] hover:shadow-[0_12px_28px_rgba(15,17,18,0.18)] active:translate-y-0"
-              style={{ width: 209, height: 56, borderRadius: 30 }}
+              className="group relative inline-flex items-center justify-center font-semibold text-[15px] bg-white border border-[#D8D8D8] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#0F1112] hover:shadow-[0_12px_28px_rgba(15,17,18,0.18)] active:translate-y-0 w-full sm:w-auto px-7"
+              style={{ height: 52, borderRadius: 30, minWidth: 190 }}
             >
               {/* Dark fill that rises from the bottom on hover */}
               <span
