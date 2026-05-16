@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Hero from './_components/Hero';
 import AIServices from './_components/AIServices';
+import AgentWorkflow from './_components/AgentWorkflow';
 import WhatWeBuild from './_components/WhatWeBuild';
 import HowWeWork from './_components/HowWeWork';
 import CaseStudies from './_components/CaseStudies';
@@ -35,6 +36,7 @@ export default function AiAgentDevelopmentPage() {
       <Hero />
       <TrustedBy title="Trusted by Leading Global Companies" dark />
       <AIServices />
+      <AgentWorkflow />
       <WhatWeBuild />
       <HowWeWork />
       <CaseStudies />

@@ -152,25 +152,25 @@ const services = [
   {
     title: 'Custom AI Agent Development',
     desc: 'Domain-specific agents trained on your data, business rules, and tone — purpose-built from architecture to deployment.',
-    visual: <AgentVisual />,
+    visual: <img src="/services/custom-ai-agent-development.jpg" alt="Custom AI Agent Development" className="w-full h-full object-cover" />,
     tall: true,
   },
   {
     title: 'AI Workflow Automation',
     desc: 'Replace fragile if-this-then-that automation with agents that handle exceptions, edge cases, and judgement calls.',
-    visual: <WorkflowDiagram />,
+    visual: <img src="/services/ai-workflow.jpg" alt="AI Workflow Automation" className="w-full h-full object-cover" />,
     tall: true,
   },
   {
     title: 'AI Customer Support',
     desc: 'Conversational agents with memory, context-awareness, and tool access — across web, WhatsApp, Slack, and voice.',
-    visual: <SupportVisual />,
+    visual: <img src="/services/ai-customer-support.jpg" alt="AI Customer Support" className="w-full h-full object-cover" />,
     tall: false,
   },
   {
     title: 'AI Chatbot Systems',
     desc: 'Conversational agents with memory, context-awareness, and tool access — across web, WhatsApp, Slack, and voice.',
-    visual: <ChatbotVisual />,
+    visual: <img src="/services/ai-chatbot.jpg" alt="AI Chatbot Systems" className="w-full h-full object-cover" />,
     tall: false,
   },
 ];
@@ -194,7 +194,7 @@ function Card({ title, desc, visual, tall }: (typeof services)[number]) {
 
 export default function AIServices() {
   return (
-    <section className="py-[120px]" style={{ background: '#070b14' }}>
+    <section className="pb-[120px]" style={{ background: '#070b14' }}>
       <div className="container-page flex flex-col gap-[64px]">
 
         {/* Header */}
@@ -203,7 +203,7 @@ export default function AIServices() {
             <span className="w-6 h-[2px] bg-[#ec7161] rounded-full" />
             <span className="text-[#ec7161] text-[14px] font-medium">Services</span>
           </div>
-          <h2 className="font-bold text-white text-[44px] leading-[54px] max-w-[680px]">
+          <h2 className="font-bold text-white text-[44px] leading-[54px] max-w-[850px]">
             Build Intelligent AI Agents for Modern Business Operations.
           </h2>
           <p className="font-normal text-[#9ca3af] text-[16px] leading-6 max-w-[560px]">
