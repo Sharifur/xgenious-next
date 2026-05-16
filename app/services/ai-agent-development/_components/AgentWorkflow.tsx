@@ -264,7 +264,7 @@ export default function AgentWorkflow() {
             {pipelineSteps.map((step, i) => {
               const onFrac    = (8 + i * 0.8) / 13;
               const drawEnd   = Math.min(onFrac + 2 / 13, 0.96);
-              const kfTimes   = [0, onFrac, drawEnd, 0.98, 1] as const;
+              const kfTimes: number[]   = [0, onFrac, drawEnd, 0.98, 1];
               return (
               <div key={step.label} className="flex items-center flex-1 min-w-0">
                 <div
