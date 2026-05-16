@@ -87,7 +87,7 @@ export default function AgentWorkflow() {
   // Times are proportional to pixel path length for constant-speed travel.
 
   return (
-    <section className="py-[120px]" style={{ background: '#070b14' }}>
+    <section className="pb-[120px]" style={{ background: '#070b14' }}>
       <div className="container-page flex flex-col gap-16">
 
         {/* Header */}

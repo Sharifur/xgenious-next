@@ -5,11 +5,11 @@ type DayProps = {
 
 function Day({ num, variant }: DayProps) {
   const styles: Record<DayProps['variant'], { bg: string; color: string; fontWeight: number }> = {
-    prev: { bg: '#f5f6f8', color: '#8a8f99', fontWeight: 400 },
-    weekday: { bg: '#ececf3', color: '#f26b4e', fontWeight: 600 },
-    weekend: { bg: '#f5f6f8', color: '#8a8f99', fontWeight: 400 },
-    selected: { bg: '#f26b4e', color: '#fff', fontWeight: 700 },
-    'available-weekend': { bg: '#f5efff', color: '#8a8f99', fontWeight: 400 },
+    prev: { bg: 'rgba(255,255,255,0.04)', color: '#4b5563', fontWeight: 400 },
+    weekday: { bg: 'rgba(236,113,97,0.12)', color: '#ec7161', fontWeight: 600 },
+    weekend: { bg: 'rgba(255,255,255,0.04)', color: '#4b5563', fontWeight: 400 },
+    selected: { bg: '#ec7161', color: '#fff', fontWeight: 700 },
+    'available-weekend': { bg: 'rgba(255,255,255,0.06)', color: '#6b7280', fontWeight: 400 },
   };
   const s = styles[variant];
   return (
@@ -69,8 +69,8 @@ const timeSlots = ['10:00 AM', '10:30 AM', '2:00 PM', '2:30 PM', '4:00 PM', '4:3
 
 export default function BookCall() {
   return (
-    <section className="py-[120px]" style={{ background: '#f5f6f8' }}>
-      <div className="container-page flex gap-[140px] items-start">
+    <section className="pb-[120px]" style={{ background: '#070b14' }}>
+      <div className="container-page flex gap-[140px] items-start rounded-[24px] py-[80px] px-[80px]" style={{ background: '#111111' }}>
         {/* Left panel */}
         <div className="flex flex-col gap-8 flex-shrink-0" style={{ maxWidth: 560 }}>
           {/* Avatar + name */}
@@ -80,21 +80,21 @@ export default function BookCall() {
               <img src="/images/saas-dev/book-call-avatar.png" alt="Kamrul Ibn Zaman" className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col gap-1">
-              <p className="font-medium text-[#181818]" style={{ fontSize: 28, lineHeight: '36px' }}>
+              <p className="font-medium text-white" style={{ fontSize: 28, lineHeight: '36px' }}>
                 Kamrul Ibn Zaman
               </p>
-              <p className="font-normal text-[#515151]" style={{ fontSize: 18, lineHeight: '27px' }}>
+              <p className="font-normal text-[#9ca3af]" style={{ fontSize: 18, lineHeight: '27px' }}>
                 Project Manager
               </p>
             </div>
           </div>
 
           <div className="flex flex-col gap-6">
-            <h2 className="text-[#0f1112] font-semibold" style={{ fontSize: 44, lineHeight: '52px' }}>
-              Book a 30-min SaaS strategy call.
+            <h2 className="text-white font-semibold" style={{ fontSize: 44, lineHeight: '52px' }}>
+              Book a 30-min AI strategy call.
             </h2>
-            <p className="text-[#2f2f2f] font-normal" style={{ fontSize: 16, lineHeight: '24px' }}>
-              No Sales pitch. No obligation. Come with a problem—leave with a concrete next step, a realistic budget range, and an honest read on whether we&apos;re the right fit.
+            <p className="text-[#9ca3af] font-normal" style={{ fontSize: 16, lineHeight: '24px' }}>
+              No sales pitch. No obligation. Come with a problem — leave with a concrete next step, a realistic budget range, and an honest read on whether we&apos;re the right fit.
             </p>
           </div>
 
@@ -110,7 +110,7 @@ export default function BookCall() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/images/saas-dev/book-call-check.svg" alt="" className="w-full h-full object-contain" />
                 </div>
-                <span className="text-[#2f2f2f] font-normal" style={{ fontSize: 16, lineHeight: '24px' }}>
+                <span className="text-[#d1d5db] font-normal" style={{ fontSize: 16, lineHeight: '24px' }}>
                   {item}
                 </span>
               </div>
@@ -119,19 +119,19 @@ export default function BookCall() {
         </div>
 
         {/* Right calendar panel */}
-        <div className="bg-white rounded-[12px] p-8 flex-shrink-0 flex flex-col gap-5" style={{ width: 620 }}>
+        <div className="rounded-[12px] p-8 flex-shrink-0 flex flex-col gap-5" style={{ width: 620, background: '#111111', border: '1px solid rgba(255,255,255,0.08)' }}>
           {/* Header */}
           <div className="flex items-center justify-between">
-            <span className="font-semibold text-[#0c0c0e]" style={{ fontSize: 16, lineHeight: '24px' }}>
+            <span className="font-semibold text-white" style={{ fontSize: 16, lineHeight: '24px' }}>
               Pick a time
             </span>
             <div className="flex items-center gap-1">
-              <span className="font-normal text-[#8a8f99]" style={{ fontSize: 12, lineHeight: '18px' }}>
+              <span className="font-normal text-[#6b7280]" style={{ fontSize: 12, lineHeight: '18px' }}>
                 April 2026
               </span>
               <div className="w-4 h-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/saas-dev/book-call-cal-arrow.svg" alt="" className="w-full h-full object-contain" />
+                <img src="/images/saas-dev/book-call-cal-arrow.svg" alt="" className="w-full h-full object-contain opacity-40" />
               </div>
             </div>
           </div>
@@ -142,7 +142,7 @@ export default function BookCall() {
             {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
               <div key={`h${i}`} className="flex items-center justify-center py-4">
                 <span
-                  className="font-bold uppercase tracking-[0.8px] text-[#8a8f99]"
+                  className="font-bold uppercase tracking-[0.8px] text-[#6b7280]"
                   style={{ fontSize: 12, lineHeight: '16px' }}
                 >
                   {d}
@@ -158,15 +158,15 @@ export default function BookCall() {
           {/* Time slots */}
           <div
             className="grid grid-cols-2 gap-2 pt-5"
-            style={{ borderTop: '1px solid #e7e7e7' }}
+            style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
           >
             {timeSlots.map((t) => (
               <div
                 key={t}
                 className="flex items-center justify-center rounded-[10px] py-[11px]"
-                style={{ border: '1px solid #e7e7e7' }}
+                style={{ border: '1px solid rgba(255,255,255,0.08)' }}
               >
-                <span className="font-medium text-[#181818]" style={{ fontSize: 13, lineHeight: '19.5px' }}>
+                <span className="font-medium text-[#d1d5db]" style={{ fontSize: 13, lineHeight: '19.5px' }}>
                   {t}
                 </span>
               </div>

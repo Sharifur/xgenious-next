@@ -1,4 +1,3 @@
-import SectionBadge from '@/components/ui/SectionBadge';
 import Button, { ArrowIcon } from '@/components/ui/Button';
 
 const features = [
@@ -11,57 +10,72 @@ const features = [
 ];
 
 const plans = [
-  { name: 'Agent Starter', dark: false, popular: false, price: '$8k', timeline: '4 Weeks', cta: 'Start with Starter', ctaDark: true },
-  { name: 'Agent Pro', dark: true, popular: true, price: '$18k', timeline: '8 Weeks', cta: 'Start with Pro', ctaDark: false },
-  { name: 'Agent Enterprise', dark: false, popular: false, price: 'Custom', timeline: '12+ Weeks', cta: 'Talk to Us', ctaDark: true },
+  { name: 'Agent Starter',     popular: false, price: '$8k',    timeline: '4 Weeks',  cta: 'Start with Starter' },
+  { name: 'Agent Pro',         popular: true,  price: '$18k',   timeline: '8 Weeks',  cta: 'Start with Pro' },
+  { name: 'Agent Enterprise',  popular: false, price: 'Custom', timeline: '12+ Weeks',cta: 'Talk to Us' },
 ];
 
-const checkDark = '/images/web-app-dev/check-dark.svg';
 const checkLight = '/images/web-app-dev/check-light.svg';
-const dot = '/images/web-app-dev/dot.svg';
 
-function PlanCard({ name, dark, popular, price, timeline, cta, ctaDark }: typeof plans[0]) {
-  const borderColor = dark ? 'rgba(255,255,255,0.1)' : '#e7e7e7';
-  const subtextColor = dark ? '#bababa' : '#2f2f2f';
-  const featureColor = dark ? '#bababa' : '#2f2f2f';
-  const checkIcon = dark ? checkLight : checkDark;
-
+function PlanCard({ name, popular, price, timeline, cta }: typeof plans[0]) {
   return (
     <div
       className="relative flex flex-col p-6 rounded-[12px]"
-      style={{ background: dark ? '#181818' : '#fff' }}
+      style={{
+        background: '#111111',
+        border: popular ? '1.5px solid rgba(236,113,97,0.75)' : '1px solid rgba(255,255,255,0.1)',
+      }}
     >
       {popular && (
-        <div className="absolute top-5 right-5 px-3 py-1 rounded-full font-bold text-white text-[11px] leading-none" style={{ background: '#ec7161', letterSpacing: 0.45 }}>
+        <div
+          className="absolute top-5 right-5 px-3 py-1 rounded-full font-bold text-white text-[11px] leading-none"
+          style={{ background: '#ec7161', letterSpacing: 0.45 }}
+        >
           Most popular
         </div>
       )}
+
       <div className="flex flex-col gap-6 flex-1">
-        <p className="font-medium text-[#ec7161]" style={{ fontSize: 18, lineHeight: '27px' }}>{name}</p>
+        <p className="font-medium text-[#ec7161] text-[18px] leading-[27px]">{name}</p>
+
         <div className="flex flex-col gap-2">
           <div className="flex items-baseline gap-1">
-            <span className="font-semibold" style={{ fontSize: 44, lineHeight: '52px', color: dark ? '#fff' : '#0f1112' }}>{price}</span>
-            {price !== 'Custom' && <span className="font-normal ml-1" style={{ fontSize: 16, lineHeight: '24px', color: subtextColor }}>Fixed</span>}
+            <span className="font-semibold text-white" style={{ fontSize: 44, lineHeight: '52px' }}>{price}</span>
+            {price !== 'Custom' && (
+              <span className="font-normal text-[#9ca3af] text-[16px] leading-6 ml-1">Fixed</span>
+            )}
           </div>
           <div className="flex items-center gap-2">
-            <span className="font-normal" style={{ fontSize: 16, lineHeight: '24px', color: subtextColor }}>{timeline}</span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={dot} alt="" width={6} height={6} />
-            <span className="font-normal" style={{ fontSize: 16, lineHeight: '24px', color: subtextColor }}>1 Sprint cycle</span>
+            <span className="text-[#9ca3af] text-[16px] leading-6">{timeline}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#ec7161] flex-shrink-0" />
+            <span className="text-[#9ca3af] text-[16px] leading-6">1 Sprint cycle</span>
           </div>
         </div>
-        <div className="flex flex-col gap-2">
+
+        <div className="flex flex-col gap-0">
           {features.map((f, i) => (
-            <div key={f} className="flex items-center gap-[10px] pt-2 pb-[9px]" style={{ borderBottom: i < features.length - 1 ? `1px solid ${borderColor}` : 'none' }}>
+            <div
+              key={f}
+              className="flex items-center gap-[10px] py-[11px]"
+              style={{ borderBottom: i < features.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={checkIcon} alt="" width={20} height={20} className="flex-shrink-0" />
-              <span className="font-normal" style={{ fontSize: 18, lineHeight: '27px', color: featureColor }}>{f}</span>
+              <img src={checkLight} alt="" width={18} height={18} className="flex-shrink-0" />
+              <span className="text-[#d1d5db] text-[15px] leading-[22px]">{f}</span>
             </div>
           ))}
         </div>
       </div>
+
       <div className="mt-6">
-        <Button href="/contact" variant={ctaDark ? 'primary' : 'coral'} icon={<ArrowIcon />} className="w-full justify-center">{cta}</Button>
+        <Button
+          href="/contact"
+          variant={popular ? 'coral' : 'primary'}
+          icon={<ArrowIcon />}
+          className="w-full justify-center"
+        >
+          {cta}
+        </Button>
       </div>
     </div>
   );
@@ -69,22 +83,28 @@ function PlanCard({ name, dark, popular, price, timeline, cta, ctaDark }: typeof
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-[120px] bg-[#f5f6f8]">
+    <section id="pricing" className="pb-[120px]" style={{ background: '#070b14' }}>
       <div className="container-page flex flex-col gap-[72px] items-center">
-        <div className="flex flex-col items-center gap-4 text-center max-w-[616px]">
-          <SectionBadge>Pricing</SectionBadge>
-          <div className="flex flex-col gap-4 items-center">
-            <h2 className="text-[#0f1112] font-semibold" style={{ fontSize: 44, lineHeight: '52px' }}>
-              Fixed scope. No surprise invoices.
-            </h2>
-            <p className="text-[#484848] font-normal" style={{ fontSize: 16, lineHeight: '24px', maxWidth: 568 }}>
-              Every package includes scoping, build, testing, and deployment. If your requirements exceed the package, we quote before writing a line of code.
-            </p>
+
+        {/* Header */}
+        <div className="flex flex-col items-center text-center gap-5 max-w-[620px]">
+          <div className="flex items-center gap-2">
+            <span className="w-6 h-[2px] bg-[#ec7161] rounded-full" />
+            <span className="text-[#ec7161] text-[14px] font-medium">Pricing</span>
           </div>
+          <h2 className="font-bold text-white text-[44px] leading-[54px]">
+            Pick a Starting Point, no Discovery Tax
+          </h2>
+          <p className="text-[#9ca3af] text-[16px] leading-6">
+            Scope is published. Timeline is committed. If we quote outside your package, we&apos;ll tell you upfront, not mid-sprint.
+          </p>
         </div>
+
+        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
           {plans.map((plan) => <PlanCard key={plan.name} {...plan} />)}
         </div>
+
       </div>
     </section>
   );

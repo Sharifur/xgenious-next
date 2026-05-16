@@ -2,13 +2,12 @@ import type { Metadata } from 'next';
 import Hero from './_components/Hero';
 import AIServices from './_components/AIServices';
 import AgentWorkflow from './_components/AgentWorkflow';
-import WhatWeBuild from './_components/WhatWeBuild';
-import HowWeWork from './_components/HowWeWork';
+import Capabilities from './_components/Capabilities';
+import WhyXgenious from './_components/WhyXgenious';
+import IndustryUseCases from './_components/IndustryUseCases';
 import CaseStudies from './_components/CaseStudies';
-import TrustCompliance from './_components/TrustCompliance';
 import Pricing from './_components/Pricing';
 import TechStack from './_components/TechStack';
-import Testimonials from '@/components/sections/Testimonials';
 import BookCall from './_components/BookCall';
 import FAQ, { type FaqItem } from '@/components/sections/FAQ';
 import CTASection from './_components/CTASection';
@@ -37,15 +36,14 @@ export default function AiAgentDevelopmentPage() {
       <TrustedBy title="Trusted by Leading Global Companies" dark />
       <AIServices />
       <AgentWorkflow />
-      <WhatWeBuild />
-      <HowWeWork />
-      <CaseStudies />
-      <TrustCompliance />
-      <Pricing />
+      <WhyXgenious />
       <TechStack />
-      <Testimonials />
+      <Capabilities />
+      <IndustryUseCases />
+      <CaseStudies />
+      <Pricing />
       <BookCall />
-      <FAQ faqs={faqItems} description="The questions every AI buyer actually asks. If yours isn't here, ask it on the call — we will answer it honestly." />
+      <FAQ faqs={faqItems} description="The questions every AI buyer actually asks. If yours isn't here, ask it on the call — we will answer it honestly." dark />
       <CTASection />
     </>
   );

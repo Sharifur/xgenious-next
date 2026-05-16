@@ -161,7 +161,7 @@ function PulseDot({ active, color }: { active: boolean; color?: string }) {
   );
 }
 
-function AnimatedCounter({ target, key: _key }: { target: number; key?: string }) {
+function AnimatedCounter({ target }: { target: number }) {
   const [val, setVal] = useState(0);
   useEffect(() => {
     setVal(0);
@@ -514,7 +514,7 @@ export default function Hero() {
           <Button href="/contact" variant="coral" icon={<ArrowIcon />}>
             Start Your AI Project
           </Button>
-          <Button href="#pricing" variant="outline" icon={<ArrowIcon />} className="!border-white/40 !text-white hover:!border-[#ec7161]">
+          <Button href="#pricing" variant="outline" icon={<ArrowIcon />} className="!bg-transparent !border-white/40 !text-white hover:!border-[#ec7161]">
             View Packages
           </Button>
         </div>
