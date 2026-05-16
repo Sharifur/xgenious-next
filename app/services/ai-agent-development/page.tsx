@@ -32,7 +32,7 @@ export default function AiAgentDevelopmentPage() {
   return (
     <>
       <Hero />
-      <TrustedBy title="Trusted by teams automating their operations" />
+      <TrustedBy title="Trusted by Leading Global Companies" dark />
       <WhatWeBuild />
       <HowWeWork />
       <CaseStudies />
