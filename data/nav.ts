@@ -5,9 +5,10 @@ export interface DropdownItem {
 }
 
 export const servicesDropdown: DropdownItem[] = [
-  { label: 'Web App Development', href: '/services/web-app-development' },
-  { label: 'Mobile App Development', href: '/services/mobile-app-development' },
-  { label: 'SaaS Development', href: '/services/saas-development' },
+  { label: 'Web App Development', href: '/services/web-app-development', description: 'B2B portals, dashboards & enterprise platforms' },
+  { label: 'Mobile App Development', href: '/services/mobile-app-development', description: 'iOS, Android & cross-platform apps' },
+  { label: 'SaaS Development', href: '/services/saas-development', description: 'End-to-end SaaS products from MVP to scale' },
+  { label: 'AI Agent Development', href: '/services/ai-agent-development', description: 'Custom AI agents & workflow automation' },
 ];
 
 export const productsDropdown: DropdownItem[] = [
@@ -38,6 +39,7 @@ export const footerLinks = {
     { label: 'Web App Development', href: '/services/web-app-development' },
     { label: 'Mobile App Development', href: '/services/mobile-app-development' },
     { label: 'SaaS Development', href: '/services/saas-development' },
+    { label: 'AI Agent Development', href: '/services/ai-agent-development' },
   ],
   company: [
     { label: 'About', href: '/about' },
