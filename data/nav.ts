@@ -23,8 +23,6 @@ export const productsDropdown: DropdownItem[] = [
 export const companyDropdown: DropdownItem[] = [
   { label: 'About Us', href: '/about' },
   { label: 'Documentation', href: '#' },
-  { label: 'Priority Support', href: '#' },
-  { label: 'Support Ticket', href: '#' },
 ];
 
 export const footerLinks = {

@@ -133,13 +133,7 @@ export default function Navbar() {
             <Dropdown label="Product" items={productsDropdown} />
             <Dropdown label="Company" items={companyDropdown} />
             <Link
-              href="/work"
-              className="text-[14px] font-medium leading-5 text-[#2F2F2F] hover:text-[#0F1112] transition-colors"
-            >
-              Work
-            </Link>
-            <Link
-              href="/blog"
+              href="https://xgenious.com/blog/"
               className="text-[14px] font-medium leading-5 text-[#2F2F2F] hover:text-[#0F1112] transition-colors"
             >
               Blog
@@ -236,10 +230,7 @@ export default function Navbar() {
             </details>
           ))}
 
-          <Link href="/work" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>
-            Work
-          </Link>
-          <Link href="/blog" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>
+          <Link href="https://xgenious.com/blog/" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>
             Blog
           </Link>
           <Link href="/contact" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>
