@@ -13,7 +13,7 @@ export default function AboutSection() {
             <div className="relative rounded-[16px] overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/how-we-work-bg.jpg"
+                src="/images/mvp/about-team.jpg"
                 alt="MVP development team collaborating on product design"
                 className="w-full h-auto object-cover"
               />
