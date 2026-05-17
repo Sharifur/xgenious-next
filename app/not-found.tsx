@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-[80px]"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-[80px] pb-[80px]"
       style={{ background: 'linear-gradient(180deg, #f5f6ea 0%, #f3dacd 60%, #fff 100%)' }}
     >
       {/* Faint grid */}
@@ -31,11 +31,11 @@ export default function NotFound() {
         }}
       />
 
-      <div className="container-page px-4 sm:px-6 lg:px-0 relative z-10 flex flex-col items-center text-center gap-6 sm:gap-8">
+      <div className="container-page px-4 sm:px-6 lg:px-0 relative z-10 flex flex-col items-center text-center gap-5 sm:gap-8 w-full">
         {/* 404 number */}
         <div className="relative select-none">
           <span
-            className="text-[120px] sm:text-[180px] lg:text-[220px] font-bold leading-none tracking-tight"
+            className="text-[100px] sm:text-[160px] lg:text-[220px] font-bold leading-none tracking-tight"
             style={{ color: 'rgba(15,17,18,0.06)' }}
           >
             404
@@ -89,7 +89,7 @@ export default function NotFound() {
         {/* Service cards */}
         <div className="mt-4 pt-8 border-t border-[#E5E7EC] w-full flex flex-col items-center gap-6">
           <p className="text-[12px] font-medium text-[#6b7280] uppercase tracking-widest">Or explore</p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 w-full max-w-[900px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full max-w-[900px]">
             {[
               {
                 label: 'Web App Dev',
@@ -141,7 +141,7 @@ export default function NotFound() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="group flex flex-col gap-3 bg-white/70 hover:bg-white border border-[#E5E7EC] hover:border-[#ec7161]/30 rounded-2xl p-4 sm:p-5 text-left transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,17,18,0.08)]"
+                className="group flex flex-row sm:flex-col items-center sm:items-start gap-3 sm:gap-3 bg-white/70 hover:bg-white border border-[#E5E7EC] hover:border-[#ec7161]/30 rounded-2xl p-4 sm:p-5 text-left transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(15,17,18,0.08)]"
               >
                 <span className="w-9 h-9 rounded-xl bg-[#fef2ef] flex items-center justify-center text-[#ec7161] flex-shrink-0 group-hover:bg-[#ec7161] group-hover:text-white transition-colors">
                   {item.icon}
