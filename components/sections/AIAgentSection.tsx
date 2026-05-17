@@ -736,46 +736,108 @@ const visuals = [
 
 export default function AIAgentSection() {
   const [active, setActive] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // offset covers full scroll through the section:
-  //   progress=0 → section top at viewport bottom (entering)
-  //   progress=1 → section bottom at viewport top (leaving)
-  // With minHeight=300vh: entrance=100vh (0→0.25), pin zone=200vh (0.25→0.75), exit=100vh (0.75→1)
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start end', 'end start'],
   });
 
-  // Scale up during entrance phase [0 → 0.25]
-  const scale = useTransform(scrollYProgress, [0, 0.25], [0.28, 1]);
-
-  // Card + content reveal during entrance
-  const cardOpacity    = useTransform(scrollYProgress, [0.02, 0.18], [0, 1]);
-  const pillOpacity    = useTransform(scrollYProgress, [0.05, 0.18], [0, 1]);
-  const pillY          = useTransform(scrollYProgress, [0.05, 0.18], [18, 0]);
+  const scale        = useTransform(scrollYProgress, [0, 0.25], [0.28, 1]);
+  const cardOpacity  = useTransform(scrollYProgress, [0.02, 0.18], [0, 1]);
+  const pillOpacity  = useTransform(scrollYProgress, [0.05, 0.18], [0, 1]);
+  const pillY        = useTransform(scrollYProgress, [0.05, 0.18], [18, 0]);
   const headingOpacity = useTransform(scrollYProgress, [0.08, 0.20], [0, 1]);
-  const headingY       = useTransform(scrollYProgress, [0.08, 0.20], [18, 0]);
-  const bodyOpacity    = useTransform(scrollYProgress, [0.11, 0.22], [0, 1]);
-  const bodyY          = useTransform(scrollYProgress, [0.11, 0.22], [14, 0]);
-  const listOpacity    = useTransform(scrollYProgress, [0.14, 0.24], [0, 1]);
-  const listY          = useTransform(scrollYProgress, [0.14, 0.24], [14, 0]);
-  const visualOpacity  = useTransform(scrollYProgress, [0.09, 0.22], [0, 1]);
-  const visualY        = useTransform(scrollYProgress, [0.09, 0.22], [24, 0]);
+  const headingY     = useTransform(scrollYProgress, [0.08, 0.20], [18, 0]);
+  const bodyOpacity  = useTransform(scrollYProgress, [0.11, 0.22], [0, 1]);
+  const bodyY        = useTransform(scrollYProgress, [0.11, 0.22], [14, 0]);
+  const listOpacity  = useTransform(scrollYProgress, [0.14, 0.24], [0, 1]);
+  const listY        = useTransform(scrollYProgress, [0.14, 0.24], [14, 0]);
+  const visualOpacity = useTransform(scrollYProgress, [0.09, 0.22], [0, 1]);
+  const visualY      = useTransform(scrollYProgress, [0.09, 0.22], [24, 0]);
 
-  // Tab switching driven by scroll position in the pin zone (0.25 → 0.75)
-  // Split evenly into 3 thirds: 0→1, 1→2, 2→3 switch at 0.417 and 0.583
   useMotionValueEvent(scrollYProgress, 'change', (v) => {
-    if (v < 0.25 || v > 0.75) return; // only switch during pin zone
+    if (isMobile) return;
+    if (v < 0.25 || v > 0.75) return;
     if (v < 0.417)      setActive(0);
     else if (v < 0.583) setActive(1);
     else                setActive(2);
   });
 
+  /* ── Mobile layout — no sticky, no animations, no visual panels ── */
+  if (isMobile) {
+    return (
+      <section className="py-14 bg-white">
+        {/* ref anchor keeps useScroll happy — framer-motion throws if ref defined but unattached */}
+        <div ref={containerRef} style={{ display: 'none' }} aria-hidden />
+        <div className="container-page px-4">
+          <div className="rounded-[24px] bg-[#0C0C0E] border border-[#1F2127] p-6">
+
+            <span className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#F26B4E]/40 text-[#F26B4E] text-[13px] font-medium mb-6">
+              Capabilities
+            </span>
+
+            <h2 className="text-[28px] leading-[1.15] font-bold text-white tracking-[-0.02em] mb-4">
+              AI Agent that{' '}
+              <span className="italic font-bold">Actually do Work</span>
+            </h2>
+
+            <p className="text-[#8A8F99] text-[14px] leading-[23px] mb-8">
+              We build smart, scalable, and efficient digital products by embedding intelligence
+              at every layer — from autonomous agents that reason in real time, to systems that
+              learn, adapt, and decide alongside your team.
+            </p>
+
+            <ul className="border-t border-[#1F2127]">
+              {aiFeatures.map((f, i) => {
+                const isActive = active === i;
+                return (
+                  <li key={f.number} className="border-b border-[#1F2127]">
+                    <button
+                      type="button"
+                      onClick={() => setActive(i)}
+                      className="w-full flex items-start gap-4 py-5 text-left"
+                    >
+                      <span className={`italic text-[14px] font-medium flex-shrink-0 w-10 pt-0.5 transition-colors ${isActive ? 'text-[#F26B4E]' : 'text-[#8A8F99]'}`}>
+                        /{f.number}.
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <h3 className={`text-[18px] font-bold leading-6 transition-colors ${isActive ? 'text-[#F26B4E]' : 'text-white'}`}>
+                          {f.title}
+                        </h3>
+                        {isActive && (
+                          <p className="text-[13px] text-[#8A8F99] leading-[21px] mt-2">{f.description}</p>
+                        )}
+                      </div>
+                      <svg
+                        width="16" height="16" viewBox="0 0 16 16" fill="none"
+                        className={`flex-shrink-0 mt-1 transition-transform duration-200 ${isActive ? 'rotate-180' : ''}`}
+                      >
+                        <path d="M4 6l4 4 4-4" stroke={isActive ? '#F26B4E' : '#8A8F99'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  /* ── Desktop layout — full scroll animation ── */
   return (
     <div ref={containerRef} style={{ minHeight: '300vh' }}>
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
-        {/* Outer scale wrapper — grows from small square in top-right */}
         <motion.div
           className="w-full"
           style={{ scale, transformOrigin: 'center', willChange: 'transform' }}
@@ -799,7 +861,7 @@ export default function AIAgentSection() {
 
                     <motion.h2
                       style={{ opacity: headingOpacity, y: headingY }}
-                      className="text-[44px] lg:text-[54px] leading-[1.05] font-bold text-white tracking-[-0.02em]"
+                      className="text-[28px] sm:text-[38px] lg:text-[54px] leading-[1.1] font-bold text-white tracking-[-0.02em]"
                     >
                       AI Agent that{' '}
                       <span className="italic font-bold">Actually do Work</span>

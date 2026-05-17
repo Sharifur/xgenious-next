@@ -65,15 +65,15 @@ function IconBadge({ icon }: { icon: ReactNode }) {
 
 function CapabilityCard({ icon, title, desc, className = '' }: (typeof CAPS)[number] & { className?: string }) {
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative mt-[30px] sm:mt-0 ${className}`}>
       <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-20">
         <IconBadge icon={icon} />
       </div>
       <div
-        className="rounded-[16px] p-[40px] pt-14 text-center flex flex-col gap-[40px]"
+        className="rounded-[16px] p-5 sm:p-[40px] pt-10 sm:pt-14 text-center flex flex-col gap-[40px]"
         style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.08)' }}
       >
-        <h3 className="text-white font-medium text-[32px] leading-[40px]">{title}</h3>
+        <h3 className="text-white font-medium text-[20px] leading-[28px] sm:text-[28px] sm:leading-[36px] lg:text-[32px] lg:leading-[40px]">{title}</h3>
         <p className="text-[#9ca3af] text-[15px] leading-[24px]">{desc}</p>
       </div>
     </div>
@@ -82,7 +82,7 @@ function CapabilityCard({ icon, title, desc, className = '' }: (typeof CAPS)[num
 
 export default function Capabilities() {
   return (
-    <section className="relative pb-[120px]" style={{ background: '#070b14' }}>
+    <section className="relative pb-14 sm:pb-20 lg:pb-[120px]" style={{ background: '#070b14' }}>
       {/* Decorative top-left glow */}
       <img
         src="/gradient-blur-2.png"
@@ -91,7 +91,7 @@ export default function Capabilities() {
         className="absolute pointer-events-none select-none"
         style={{ top: -80, left: -120, width: 600, opacity: 0.5 }}
       />
-      <div className="container-page flex flex-col gap-16 relative z-10">
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-16 relative z-10">
 
         {/* Header */}
         <div className="flex flex-col items-center text-center gap-5">
@@ -99,10 +99,10 @@ export default function Capabilities() {
             <span className="w-6 h-[2px] bg-[#ec7161] rounded-full" />
             <span className="text-[#ec7161] text-[14px] font-medium">Capabilities</span>
           </div>
-          <h2 className="font-bold text-white text-[48px] leading-[58px]">
+          <h2 className="font-bold text-white text-[24px] leading-[32px] sm:text-[34px] sm:leading-[42px] lg:text-[48px] lg:leading-[58px]">
             Connected AI Capabilities
           </h2>
-          <p className="text-[#9ca3af] text-[16px] leading-6 max-w-[560px]">
+          <p className="text-[#9ca3af] text-[14px] sm:text-[16px] leading-6 max-w-[560px]">
             A complete ecosystem of intelligent AI capabilities designed to automate workflows, enhance decision-making, and scale business operations.
           </p>
         </div>
@@ -110,6 +110,7 @@ export default function Capabilities() {
         {/* Diagram */}
         <div className="relative">
 
+          <div className="hidden sm:block">
           {/* Central orb — same SVG as AgentWorkflow Multi-Layer Orchestration (unique IDs: cap_*) */}
           <div className="flex justify-center relative z-10">
             <motion.svg
@@ -185,11 +186,12 @@ export default function Capabilities() {
             />
             <polygon points="493,348 507,348 500,357" fill={ARROW_FILL} />
           </svg>
+          </div>
 
           {/* Cards grid — left/right at y≈240, center badge at y≈352 (mt-28 = 112px lower) */}
-          <div className="grid grid-cols-3 gap-8 mt-40 relative z-10 items-start">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-6 sm:mt-40 relative z-10 items-start">
             <CapabilityCard {...CAPS[0]} />
-            <CapabilityCard {...CAPS[1]} className="mt-28" />
+            <CapabilityCard {...CAPS[1]} className="sm:mt-28" />
             <CapabilityCard {...CAPS[2]} />
           </div>
 

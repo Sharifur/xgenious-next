@@ -100,7 +100,7 @@ function FeatureCard({
   withPointer?: boolean;
 }) {
   return (
-    <div className="relative w-[220px]">
+    <div className="relative w-full lg:w-[220px]">
       {/* Upward arrow pointer (sits on top edge of card) */}
       {withPointer && (
         <span
@@ -324,7 +324,7 @@ export default function HeroSection({
 
   return (
     <section
-      className="relative overflow-hidden pt-[120px] sm:pt-[150px] lg:pt-[180px] pb-[40px]"
+      className="relative overflow-hidden pt-[80px] sm:pt-[120px] lg:pt-[160px] pb-[40px]"
       style={{
         minHeight: 'auto',
         background:
@@ -378,7 +378,7 @@ export default function HeroSection({
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center text-center px-6">
         <div
-          className="relative w-full max-w-[1100px] px-6 sm:px-10 lg:px-16 py-12 lg:py-16 rounded-[5px]"
+          className="relative w-full max-w-[1100px] px-4 sm:px-10 lg:px-16 py-6 sm:py-10 lg:py-16 rounded-[5px]"
           style={{
             background: 'transparent',
             border: '1px solid rgba(255,255,255,0.55)',
@@ -457,8 +457,8 @@ export default function HeroSection({
             {/* Primary — coral pill */}
             <Link
               href={primaryCtaHref}
-              className="group relative inline-flex items-center justify-center gap-2 font-semibold text-white text-[15px] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(242,107,78,0.45)] active:translate-y-0 active:shadow-[0_4px_12px_rgba(242,107,78,0.35)] w-full sm:w-auto px-7"
-              style={{ height: 52, background: '#F26B4E', borderRadius: 30, minWidth: 190 }}
+              className="group relative inline-flex items-center justify-center gap-2 font-semibold text-white text-[14px] sm:text-[15px] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(242,107,78,0.45)] active:translate-y-0 active:shadow-[0_4px_12px_rgba(242,107,78,0.35)] w-[80%] sm:w-auto px-6"
+              style={{ height: 44, background: '#F26B4E', borderRadius: 30, minWidth: 160 }}
             >
               {/* Shimmer sweep */}
               <span
@@ -485,8 +485,8 @@ export default function HeroSection({
             {/* Secondary — white pill */}
             <Link
               href={secondaryCtaHref}
-              className="group relative inline-flex items-center justify-center font-semibold text-[15px] bg-white border border-[#D8D8D8] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#0F1112] hover:shadow-[0_12px_28px_rgba(15,17,18,0.18)] active:translate-y-0 w-full sm:w-auto px-7"
-              style={{ height: 52, borderRadius: 30, minWidth: 190 }}
+              className="group relative inline-flex items-center justify-center font-semibold text-[14px] sm:text-[15px] bg-white border border-[#D8D8D8] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#0F1112] hover:shadow-[0_12px_28px_rgba(15,17,18,0.18)] active:translate-y-0 w-[80%] sm:w-auto px-6"
+              style={{ height: 44, borderRadius: 30, minWidth: 160 }}
             >
               {/* Dark fill that rises from the bottom on hover */}
               <span
@@ -553,7 +553,7 @@ export default function HeroSection({
         </div>
 
         {/* Mobile feature cards — always visible */}
-        <div className="flex flex-col gap-4 mt-12 pb-6 w-full max-w-sm lg:hidden">
+        <div className="flex flex-col gap-4 mt-8 pb-6 w-full lg:hidden">
           {featureCards.map((card) => (
             <FeatureCard key={card.title} icon={card.icon} title={card.title} tags={card.tags} />
           ))}

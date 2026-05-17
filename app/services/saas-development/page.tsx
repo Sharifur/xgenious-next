@@ -2,7 +2,14 @@ import type { Metadata } from 'next';
 import Hero from './_components/Hero';
 import ProofCards from './_components/ProofCards';
 import WhatWeBuild from './_components/WhatWeBuild';
-import HowWeWork from './_components/HowWeWork';
+import HowWeWork from '@/components/sections/HowWeWork';
+
+const howWeWorkSteps = [
+  { label: '01. Ideate', desc: 'Problem validation, ICP definition, competitive map, feature ranking, and we both sign before a single line of code is written.' },
+  { label: '02. Design', desc: 'Wireframes, component library, and a production-ready Figma system — every screen approved before the first commit.' },
+  { label: '03. Develop', desc: 'Sprint-based builds, weekly demos, full test coverage, and a staging environment you can access at any time.' },
+  { label: '04. Launch', desc: "Production deploy, monitoring, post-launch SRE, and a 30-day warranty. We don't disappear after go-live." },
+];
 import CaseStudies from './_components/CaseStudies';
 import TrustCompliance from '@/components/sections/TrustCompliance';
 import Pricing from './_components/Pricing';
@@ -34,7 +41,7 @@ export default function SaasDevelopmentPage() {
       <Hero />
       <ProofCards />
       <WhatWeBuild />
-      <HowWeWork />
+      <HowWeWork steps={howWeWorkSteps} description="SaaS products, custom web platforms, mobile apps, and AI agents. From-scratch builds with published scope, fixed pricing, and a committed delivery date." />
       <CaseStudies />
       <TrustCompliance />
       <Pricing />

@@ -69,31 +69,31 @@ const timeSlots = ['10:00 AM', '10:30 AM', '2:00 PM', '2:30 PM', '4:00 PM', '4:3
 
 export default function BookCall() {
   return (
-    <section className="pb-[120px]" style={{ background: '#070b14' }}>
-      <div className="container-page flex gap-[140px] items-start rounded-[24px] py-[80px] px-[80px]" style={{ background: '#111111' }}>
+    <section className="py-14 sm:py-20 lg:pb-[120px]" style={{ background: '#070b14' }}>
+      <div className="container-page flex flex-col lg:flex-row gap-8 lg:gap-[140px] lg:items-start rounded-[20px] sm:rounded-[24px] py-6 px-4 sm:py-10 sm:px-8 lg:py-[80px] lg:px-[80px]" style={{ background: '#111111' }}>
         {/* Left panel */}
-        <div className="flex flex-col gap-8 flex-shrink-0" style={{ maxWidth: 560 }}>
+        <div className="flex flex-col gap-6 sm:gap-8">
           {/* Avatar + name */}
           <div className="flex items-center gap-4">
-            <div className="w-[92px] h-[92px] rounded-full overflow-hidden flex-shrink-0">
+            <div className="w-[72px] h-[72px] sm:w-[92px] sm:h-[92px] rounded-full overflow-hidden flex-shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/saas-dev/book-call-avatar.png" alt="Kamrul Ibn Zaman" className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col gap-1">
-              <p className="font-medium text-white" style={{ fontSize: 28, lineHeight: '36px' }}>
+              <p className="font-medium text-white text-[20px] leading-[28px] sm:text-[28px] sm:leading-[36px]">
                 Kamrul Ibn Zaman
               </p>
-              <p className="font-normal text-[#9ca3af]" style={{ fontSize: 18, lineHeight: '27px' }}>
+              <p className="font-normal text-[#9ca3af] text-[14px] leading-[21px] sm:text-[18px] sm:leading-[27px]">
                 Project Manager
               </p>
             </div>
           </div>
 
           <div className="flex flex-col gap-6">
-            <h2 className="text-white font-semibold" style={{ fontSize: 44, lineHeight: '52px' }}>
+            <h2 className="text-white font-semibold text-[24px] leading-[32px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]">
               Book a 30-min AI strategy call.
             </h2>
-            <p className="text-[#9ca3af] font-normal" style={{ fontSize: 16, lineHeight: '24px' }}>
+            <p className="text-[#9ca3af] font-normal text-[14px] leading-[22px] sm:text-[16px] sm:leading-[24px]">
               No sales pitch. No obligation. Come with a problem — leave with a concrete next step, a realistic budget range, and an honest read on whether we&apos;re the right fit.
             </p>
           </div>
@@ -110,7 +110,7 @@ export default function BookCall() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/images/saas-dev/book-call-check.svg" alt="" className="w-full h-full object-contain" />
                 </div>
-                <span className="text-[#d1d5db] font-normal" style={{ fontSize: 16, lineHeight: '24px' }}>
+                <span className="text-[#d1d5db] font-normal text-[14px] leading-[22px] sm:text-[16px] sm:leading-[24px]">
                   {item}
                 </span>
               </div>
@@ -119,7 +119,7 @@ export default function BookCall() {
         </div>
 
         {/* Right calendar panel */}
-        <div className="rounded-[12px] p-8 flex-shrink-0 flex flex-col gap-5" style={{ width: 620, background: '#111111', border: '1px solid rgba(255,255,255,0.08)' }}>
+        <div className="rounded-[12px] p-5 sm:p-8 flex-1 flex flex-col gap-5" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.08)' }}>
           {/* Header */}
           <div className="flex items-center justify-between">
             <span className="font-semibold text-white" style={{ fontSize: 16, lineHeight: '24px' }}>

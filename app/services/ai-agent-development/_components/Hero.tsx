@@ -501,13 +501,13 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="container-page flex flex-col items-center text-center gap-8 relative z-10">
-        <h1 className="text-white font-bold text-[72px] leading-[82px] max-w-[850px]">
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col items-center text-center gap-6 sm:gap-8 relative z-10">
+        <h1 className="text-white font-bold text-[32px] leading-[40px] sm:text-[48px] sm:leading-[58px] lg:text-[72px] lg:leading-[82px] max-w-[850px]">
           Your AI-Powered Digital
           <br />
           <em className="font-semibold italic">Workforce</em>
         </h1>
-        <p className="text-[#9ca3af] font-normal text-[18px] leading-[27px] max-w-[560px]">
+        <p className="text-[#9ca3af] font-normal text-[14px] leading-[21px] sm:text-[16px] sm:leading-6 lg:text-[18px] lg:leading-[27px] max-w-[560px]">
           Xgenious designs and deploys AI agents, multi-agent systems, and workflow automation — production grade, enterprise secure, and trained on your business logic.
         </p>
         <div className="flex items-center gap-[17px] flex-wrap justify-center">
@@ -521,8 +521,8 @@ export default function Hero() {
       </div>
 
       {/* Agent workspace */}
-      <div className="container-page mt-14 relative z-10">
-        <div className="max-w-[1100px] mx-auto">
+      <div className="container-page px-4 sm:px-6 lg:px-0 mt-10 md:mt-14 relative z-10">
+        <div className="hidden md:block max-w-[1100px] mx-auto">
           <AgentWorkspace />
         </div>
       </div>

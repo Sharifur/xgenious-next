@@ -67,7 +67,7 @@ export default function TrustedBy({ title, dark = false }: { title?: string; dar
   const row2Border = dark ? 'rgba(255,255,255,0.06)' : '#F5F6F8';
 
   return (
-    <section className={`${title ? 'pt-[100px]' : 'pt-6'} pb-[100px]`} style={{ background: sectionBg }}>
+    <section className={`${title ? 'pt-[100px]' : 'pt-6'} pb-10 sm:pb-16 lg:pb-[100px]`} style={{ background: sectionBg }}>
       {title && (
         <p className="text-center text-[24px] font-semibold mb-8" style={{ color: titleColor }}>
           {title}

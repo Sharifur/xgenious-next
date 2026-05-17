@@ -174,15 +174,15 @@ export default function WorkShowcase() {
   const [activeIdx, setActiveIdx] = useState(0);
 
   return (
-    <section className="py-[120px]" style={{ background: '#F5F6F8' }}>
-      <div className="container-page">
+    <section className="py-14 sm:py-20 lg:py-[120px]" style={{ background: '#F5F6F8' }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0">
         {/* Header */}
-        <div className="text-center mb-14 max-w-[640px] mx-auto">
-          <SectionBadge className="mb-5">Work Showcase</SectionBadge>
-          <h2 className="text-[44px] leading-[52px] font-semibold text-[#0F1112] tracking-[-0.01em]">
+        <div className="text-center mb-10 sm:mb-14 max-w-[640px] mx-auto">
+          <SectionBadge className="mb-4 sm:mb-5">Work Showcase</SectionBadge>
+          <h2 className="text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[44px] lg:leading-[52px] font-semibold text-[#0F1112] tracking-[-0.01em]">
             Launch On a Ready-Made SaaS
           </h2>
-          <p className="mt-4 text-[#484848] text-[15px] leading-6 max-w-[440px] mx-auto">
+          <p className="mt-3 sm:mt-4 text-[#484848] text-[14px] sm:text-[15px] leading-6 max-w-[440px] mx-auto">
             Seven productized SaaS platforms you can deploy today. Managed hosting, multi-tenant,
             subscription priced. White label available.
           </p>
@@ -205,11 +205,11 @@ export default function WorkShowcase() {
                     {/* Left */}
                     <div className="flex flex-col gap-6 flex-1 min-w-0">
                       <div>
-                        <p className="text-[12px] font-medium text-[#ec7161] mb-1">{product.tagline}</p>
-                        <h3 className="text-[32px] font-bold text-[#0F1112] leading-[38px] mb-3">
+                        <p className="text-[11px] sm:text-[12px] font-medium text-[#ec7161] mb-1">{product.tagline}</p>
+                        <h3 className="text-[24px] sm:text-[32px] font-bold text-[#0F1112] leading-[30px] sm:leading-[38px] mb-2 sm:mb-3">
                           {product.name}
                         </h3>
-                        <p className="text-[14px] text-[#484848] leading-[22px] max-w-[400px]">
+                        <p className="text-[13px] sm:text-[14px] text-[#484848] leading-[21px] sm:leading-[22px] max-w-[400px]">
                           {product.description}
                         </p>
                       </div>
@@ -251,15 +251,17 @@ export default function WorkShowcase() {
                   <button
                     type="button"
                     onClick={() => setActiveIdx(i)}
-                    className="w-full flex items-center justify-between py-5 text-left group"
+                    className="w-full flex items-center justify-between py-4 sm:py-5 text-left group"
                   >
-                    <h3 className="text-[22px] font-bold text-[#0F1112] leading-[28px] group-hover:text-[#ec7161] transition-colors duration-200">
-                      {product.name}
-                      <span className="text-[14px] font-normal text-[#A0A0A0] ml-3">{product.tagline}</span>
-                    </h3>
-                    <div className="flex items-center gap-4 flex-shrink-0">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-0 min-w-0">
+                      <h3 className="text-[18px] sm:text-[22px] font-bold text-[#0F1112] leading-[26px] sm:leading-[28px] group-hover:text-[#ec7161] transition-colors duration-200">
+                        {product.name}
+                      </h3>
+                      <span className="text-[12px] sm:text-[14px] font-normal text-[#A0A0A0] sm:ml-3">{product.tagline}</span>
+                    </div>
+                    <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0 ml-3">
                       {product.image && (
-                        <div className="w-[88px] h-[58px] rounded-lg overflow-hidden bg-[#d8d8d8] flex-shrink-0">
+                        <div className="hidden sm:block w-[88px] h-[58px] rounded-lg overflow-hidden bg-[#d8d8d8] flex-shrink-0">
                           <Image
                             src={product.image}
                             alt={product.name}

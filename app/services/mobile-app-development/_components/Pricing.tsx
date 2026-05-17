@@ -1,3 +1,5 @@
+import SectionBadge from '@/components/ui/SectionBadge';
+
 const features = [
   'Custom UI/UX Design',
   'iOS & Android Native Build',
@@ -25,8 +27,8 @@ function PlanCard({ name, price, timeline, dark, popular, ctaLabel }: PlanCardPr
 
   return (
     <div
-      className="relative flex flex-col rounded-[12px] overflow-hidden"
-      style={{ background: bg, border: dark ? 'none' : '1px solid #e8e8e8', width: 424, height: 614, padding: 24 }}
+      className="relative flex flex-col rounded-[12px] overflow-hidden w-full md:w-[424px] p-6"
+      style={{ background: bg, border: dark ? 'none' : '1px solid #e8e8e8' }}
     >
       {popular && (
         <div
@@ -40,10 +42,10 @@ function PlanCard({ name, price, timeline, dark, popular, ctaLabel }: PlanCardPr
       )}
 
       <div className="flex flex-col gap-4">
-        <p className="font-medium" style={{ fontSize: 16, lineHeight: '24px', color: textSecondary }}>
+        <p className="font-medium text-[14px] leading-[21px] md:text-[16px] md:leading-6" style={{ color: textSecondary }}>
           {name}
         </p>
-        <p className="font-bold" style={{ fontSize: 48, lineHeight: '56px', color: textPrimary }}>
+        <p className="font-bold text-[32px] leading-[40px] md:text-[48px] md:leading-[56px]" style={{ color: textPrimary }}>
           {price}
         </p>
         <p className="font-normal" style={{ fontSize: 14, lineHeight: '21px', color: textSecondary }}>
@@ -58,7 +60,7 @@ function PlanCard({ name, price, timeline, dark, popular, ctaLabel }: PlanCardPr
           <div key={f} className="flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={checkIcon} alt="" width={20} height={20} />
-            <span className="font-normal" style={{ fontSize: 16, lineHeight: '24px', color: textSecondary }}>
+            <span className="font-normal text-[14px] leading-[21px] md:text-[16px] md:leading-6" style={{ color: textSecondary }}>
               {f}
             </span>
           </div>
@@ -66,14 +68,8 @@ function PlanCard({ name, price, timeline, dark, popular, ctaLabel }: PlanCardPr
       </div>
 
       <button
-        className="w-full flex items-center justify-center rounded-[30px] py-4 font-semibold transition-all duration-200 hover:-translate-y-0.5"
-        style={{
-          background: dark ? '#ec7161' : '#181818',
-          color: 'white',
-          fontSize: 16,
-          lineHeight: '24px',
-          marginTop: 24,
-        }}
+        className="w-full flex items-center justify-center rounded-[30px] py-3 md:py-4 text-[14px] leading-[21px] md:text-[16px] md:leading-6 font-semibold transition-all duration-200 hover:-translate-y-0.5"
+        style={{ background: dark ? '#ec7161' : '#181818', color: 'white', marginTop: 24 }}
       >
         {ctaLabel}
       </button>
@@ -83,26 +79,19 @@ function PlanCard({ name, price, timeline, dark, popular, ctaLabel }: PlanCardPr
 
 export default function Pricing() {
   return (
-    <section className="py-[120px]" style={{ background: '#f5f6f8' }}>
-      <div className="container-page flex flex-col gap-[72px]">
+    <section className="py-14 sm:py-20 lg:py-[120px]" style={{ background: '#f5f6f8' }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-14 lg:gap-[72px]">
         <div className="flex flex-col gap-4 items-center text-center">
-          <div
-            className="inline-flex items-center justify-center px-4 py-[6px] rounded-[165px]"
-            style={{ background: 'rgba(242,107,78,0.12)' }}
-          >
-            <span className="font-normal text-[#ec7161]" style={{ fontSize: 16, lineHeight: '24px' }}>
-              Pricing
-            </span>
-          </div>
-          <h2 className="font-semibold text-[#0f1112]" style={{ fontSize: 44, lineHeight: '52px', maxWidth: 712 }}>
+          <SectionBadge>Pricing</SectionBadge>
+          <h2 className="font-semibold text-[#0f1112] text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]" style={{ maxWidth: 712 }}>
             Pick a starting point, no discovery tax
           </h2>
-          <p className="font-normal text-[#484848]" style={{ fontSize: 16, lineHeight: '24px', maxWidth: 580 }}>
+          <p className="font-normal text-[#484848] text-[14px] leading-[21px] sm:text-[16px] sm:leading-6" style={{ maxWidth: 580 }}>
             Scope is published. Price is fixed. The only variable is how fast you want to move.
           </p>
         </div>
 
-        <div className="flex items-end justify-center gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <PlanCard
             name="MVP Starter"
             price="$15k Fixed"

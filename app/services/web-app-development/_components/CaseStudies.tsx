@@ -150,13 +150,13 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
 
 export default function CaseStudies() {
   return (
-    <section className="py-[120px]" style={{ background: '#F5F6F8' }}>
-      <div className="container-page">
+    <section className="py-14 sm:py-20 lg:py-[120px]" style={{ background: '#F5F6F8' }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-14">
-          <div className="flex flex-col gap-4 max-w-[480px]">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-8 mb-8 sm:mb-10 lg:mb-14">
+          <div className="flex flex-col gap-3 sm:gap-4 max-w-[480px]">
             <SectionBadge className="self-start">Case Studies</SectionBadge>
-            <h2 className="text-[52px] leading-[60px] font-semibold text-[#0F1112] tracking-[-0.01em]">
+            <h2 className="text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[52px] lg:leading-[60px] font-semibold text-[#0F1112] tracking-[-0.01em]">
               Where Code Meets{' '}
               <em className="font-medium italic">Conversion.</em>
             </h2>

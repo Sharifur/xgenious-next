@@ -24,7 +24,7 @@ function PlanCard({ name, dark, popular, cta, ctaDark }: typeof plans[0]) {
 
   return (
     <div
-      className="relative flex flex-col p-6 rounded-[12px] h-[614px]"
+      className="relative flex flex-col p-6 rounded-[12px]"
       style={{ background: dark ? '#181818' : '#fff' }}
     >
       {popular && (
@@ -37,13 +37,13 @@ function PlanCard({ name, dark, popular, cta, ctaDark }: typeof plans[0]) {
       )}
 
       <div className="flex flex-col gap-6 flex-1">
-        <p className="font-medium" style={{ fontSize: 18, lineHeight: '27px', color: '#ec7161' }}>
+        <p className="font-medium text-[14px] leading-[21px] sm:text-[18px] sm:leading-[27px]" style={{ color: '#ec7161' }}>
           {name}
         </p>
 
         <div className="flex flex-col gap-2">
           <div className="flex items-baseline gap-1 whitespace-nowrap">
-            <span className="font-semibold" style={{ fontSize: 44, lineHeight: '52px', color: dark ? '#fff' : '#0f1112' }}>
+            <span className="font-semibold text-[32px] leading-[40px] sm:text-[44px] sm:leading-[52px]" style={{ color: dark ? '#fff' : '#0f1112' }}>
               $15k
             </span>
             <span className="font-normal ml-1" style={{ fontSize: 16, lineHeight: '24px', color: subtextColor }}>
@@ -67,7 +67,7 @@ function PlanCard({ name, dark, popular, cta, ctaDark }: typeof plans[0]) {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={checkIcon} alt="" width={20} height={20} className="flex-shrink-0" />
-              <span className="font-normal" style={{ fontSize: 18, lineHeight: '27px', color: featureColor }}>
+              <span className="font-normal text-[13px] leading-5 sm:text-[15px] sm:leading-6 lg:text-[18px] lg:leading-[27px]" style={{ color: featureColor }}>
                 {f}
               </span>
             </div>
@@ -91,15 +91,15 @@ function PlanCard({ name, dark, popular, cta, ctaDark }: typeof plans[0]) {
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-[120px] bg-[#f5f6f8]">
-      <div className="container-page flex flex-col gap-[72px] items-center">
+    <section id="pricing" className="py-14 sm:py-20 lg:py-[120px] bg-[#f5f6f8]">
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-14 lg:gap-[72px] items-center">
         <div className="flex flex-col items-center gap-4 text-center max-w-[616px]">
           <SectionBadge>Pricing</SectionBadge>
           <div className="flex flex-col gap-4 items-center">
-            <h2 className="text-[#0f1112] font-semibold" style={{ fontSize: 44, lineHeight: '52px' }}>
+            <h2 className="text-[#0f1112] font-semibold text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]">
               Pick a starting point, no discovery tax
             </h2>
-            <p className="text-[#484848] font-normal" style={{ fontSize: 16, lineHeight: '24px', maxWidth: 568 }}>
+            <p className="text-[#484848] font-normal text-[14px] leading-[21px] sm:text-[16px] sm:leading-6" style={{ maxWidth: 568 }}>
               Scope is published. Timeline is committed. If we quote outside your package, we&apos;ll tell you upfront, not mid-sprint.
             </p>
           </div>

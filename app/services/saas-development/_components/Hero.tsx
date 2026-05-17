@@ -17,10 +17,10 @@ function Cursor({ color, delay = '0s' }: { color: string; delay?: string }) {
 export default function Hero() {
   return (
     <section
-      className="relative overflow-hidden pt-[200px] pb-[200px]"
+      className="relative overflow-hidden pt-[100px] pb-[100px] sm:pt-[140px] sm:pb-[140px] lg:pt-[200px] lg:pb-[200px]"
       style={{ background: 'linear-gradient(180deg, #f5f6ea 0%, #f3dacd 100%)' }}
     >
-      <div className="container-page relative">
+      <div className="container-page relative px-4 sm:px-6 lg:px-0">
 
         {/* Code — top left */}
         <div
@@ -53,20 +53,20 @@ export default function Hero() {
         </div>
 
         {/* Center content */}
-        <div className="flex flex-col items-center text-center gap-8 lg:px-[180px]">
+        <div className="flex flex-col items-center text-center gap-6 sm:gap-8 lg:px-[180px]">
           <div className="flex items-center gap-8">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/saas-dev/badge-clutch.svg" alt="Clutch" width={124} height={56} className="object-contain" />
+            <img src="/images/saas-dev/badge-clutch.svg" alt="Clutch" width={90} height={40} className="object-contain sm:w-[124px] sm:h-[56px]" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/saas-dev/badge-google.svg" alt="Google" width={124} height={56} className="object-contain" />
+            <img src="/images/saas-dev/badge-google.svg" alt="Google" width={90} height={40} className="object-contain sm:w-[124px] sm:h-[56px]" />
           </div>
 
-          <h1 className="text-[#181818] font-semibold text-[72px] leading-[80px] max-w-[1050px]">
-            <span className="whitespace-nowrap">Powerful SaaS Solutions for</span><br />
+          <h1 className="text-[#181818] font-semibold text-[32px] leading-[40px] sm:text-[48px] sm:leading-[56px] lg:text-[72px] lg:leading-[80px] max-w-[1050px]">
+            <span className="lg:whitespace-nowrap">Powerful SaaS Solutions for</span><br />
             <em className="font-medium italic">Business Growth</em>
           </h1>
 
-          <p className="text-[#2F2F2F] text-[18px] leading-[27px] max-w-[650px]">
+          <p className="text-[#2F2F2F] text-[14px] leading-[21px] sm:text-[16px] sm:leading-6 lg:text-[18px] lg:leading-[27px] max-w-[650px]">
             For founders and mid-market teams who need a real SaaS, not a script. GDPR, HIPAA and SOC 2 ready
             architectures by default. Built by a team that has shipped 50+ SaaS products since 2017.
           </p>

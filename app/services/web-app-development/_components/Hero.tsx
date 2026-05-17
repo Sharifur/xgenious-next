@@ -44,52 +44,52 @@ const badges = [
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#eeeee8] pt-[140px] pb-[120px]">
+    <section className="relative overflow-hidden bg-[#eeeee8] pt-[120px] pb-[100px] sm:pt-[140px] sm:pb-[110px] lg:pt-[160px] lg:pb-[130px]">
 
-      {/* Floating tech badges */}
+      {/* Floating tech badges — hidden on mobile to avoid overlap */}
       {badges.map((b) => (
         <motion.img
           key={b.alt}
           src={b.src}
           alt={b.alt}
-          className={`absolute z-10 max-w-none pointer-events-none ${b.className}`}
+          className={`hidden md:block absolute z-10 max-w-none pointer-events-none ${b.className}`}
           animate={{ y: b.yRange, x: b.xRange }}
           transition={{ duration: b.duration, repeat: Infinity, ease: 'easeInOut', delay: b.delay }}
         />
       ))}
 
       {/* Center content */}
-      <div className="container-page flex flex-col items-center text-center gap-8">
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col items-center text-center gap-6 sm:gap-8">
 
         {/* Social proof pill */}
-        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-[99px] border border-[#d1d5db] bg-white/60 backdrop-blur-sm">
+        <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-[99px] border border-[#d1d5db] bg-white/60 backdrop-blur-sm">
           <div className="flex -space-x-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/web-app-dev/avatar-1.png" alt="" width={32} height={32} className="rounded-full ring-2 ring-white object-cover" />
+            <img src="/images/web-app-dev/avatar-1.png" alt="" width={28} height={28} className="rounded-full ring-2 ring-white object-cover w-7 h-7 sm:w-8 sm:h-8" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/web-app-dev/avatar-2.png" alt="" width={32} height={32} className="rounded-full ring-2 ring-white object-cover" />
+            <img src="/images/web-app-dev/avatar-2.png" alt="" width={28} height={28} className="rounded-full ring-2 ring-white object-cover w-7 h-7 sm:w-8 sm:h-8" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/web-app-dev/avatar-3.png" alt="" width={32} height={32} className="rounded-full ring-2 ring-white object-cover" />
+            <img src="/images/web-app-dev/avatar-3.png" alt="" width={28} height={28} className="rounded-full ring-2 ring-white object-cover w-7 h-7 sm:w-8 sm:h-8" />
           </div>
-          <span className="font-normal text-[#374151] text-[14px] leading-5">
+          <span className="font-normal text-[#374151] text-[12px] sm:text-[14px] leading-5">
             Loved by 4.3k people with a big trust
           </span>
         </div>
 
         {/* Heading */}
-        <div className="flex flex-col items-center gap-6 w-full">
-          <h1 className="text-[#181818] font-bold text-[72px] leading-[80px]">
+        <div className="flex flex-col items-center gap-4 sm:gap-6 w-full">
+          <h1 className="text-[#181818] font-bold text-[36px] leading-[44px] sm:text-[52px] sm:leading-[60px] lg:text-[72px] lg:leading-[80px]">
             Custom Website
             <br />
             <em className="font-semibold italic">Development That Delivers</em>
           </h1>
-          <p className="text-[#2f2f2f] font-normal text-[18px] leading-[27px] max-w-[620px]">
+          <p className="text-[#2f2f2f] font-normal text-[15px] sm:text-[17px] lg:text-[18px] leading-[24px] sm:leading-[26px] lg:leading-[27px] max-w-[560px] sm:max-w-[620px]">
             Ship a B2B portal, admin dashboard or internal platform in 8 to 12 weeks, from $20k. Built on React, Next.js and Laravel — audit logs and GDPR ready on day one.
           </p>
         </div>
 
         {/* CTAs */}
-        <div className="flex items-center gap-[17px] flex-wrap justify-center">
+        <div className="flex flex-row items-center justify-center gap-3 sm:gap-[17px] flex-wrap">
           <Button href="/contact" variant="coral" icon={<ArrowIcon />}>
             Start New Project
           </Button>

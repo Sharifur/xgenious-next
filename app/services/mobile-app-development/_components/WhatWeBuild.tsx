@@ -470,13 +470,13 @@ function PhonePair({ activeId }: { activeId: number }) {
   }, [activeId]);
 
   return (
-    <div className="relative w-[460px] h-[520px]">
-      {/* Left phone — tilted counter-clockwise, behind */}
-      <div className="absolute bottom-0 left-0 origin-bottom -rotate-[10deg] z-10">
+    <div className="relative w-[230px] h-[460px] sm:w-[460px] sm:h-[520px]">
+      {/* Left phone — hidden on mobile, tilted on sm+ */}
+      <div className="hidden sm:block absolute bottom-0 left-0 origin-bottom -rotate-[10deg] z-10">
         <SinglePhone service={service} phase={phase} screenIdx={0} model={service.phones[0]} />
       </div>
-      {/* Right phone — slight clockwise tilt, in front */}
-      <div className="absolute bottom-0 right-0 origin-bottom rotate-[6deg] z-20">
+      {/* Right phone — centered on mobile, tilted on sm+ */}
+      <div className="absolute bottom-0 right-0 origin-bottom sm:rotate-[6deg] z-20">
         <SinglePhone service={service} phase={phase} screenIdx={1} model={service.phones[1]} />
       </div>
     </div>
@@ -489,12 +489,12 @@ export default function WhatWeBuild() {
   const [active, setActive] = useState(1);
 
   return (
-    <section className="py-[120px] bg-white">
-      <div className="container-page flex items-center gap-16">
+    <section className="py-14 sm:py-20 lg:py-[120px] bg-white">
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col lg:flex-row lg:items-center lg:gap-16">
 
         {/* Left — accordion */}
-        <div className="flex flex-col gap-10 w-[480px] shrink-0">
-          <h2 className="font-semibold text-[#0f1112] text-[44px] leading-[52px]">
+        <div className="flex flex-col gap-8 lg:gap-10 w-full lg:w-[480px] shrink-0">
+          <h2 className="font-semibold text-[#0f1112] text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]">
             Custom Mobile Solutions for Modern Businesses
           </h2>
 
@@ -534,7 +534,7 @@ export default function WhatWeBuild() {
         </div>
 
         {/* Right — animated phone pair */}
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-none lg:flex-1 flex items-center justify-center pt-8 lg:pt-0">
           <PhonePair activeId={active} />
         </div>
 

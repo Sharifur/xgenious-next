@@ -39,7 +39,7 @@ const BAR_HEIGHTS = [28, 32, 38, 36, 44, 48, 43, 54, 52, 60, 65, 70, 76, 84];
 
 export default function WhyXgenious() {
   return (
-    <section className="relative pb-[120px] overflow-hidden" style={{ background: '#070b14' }}>
+    <section className="relative pb-14 sm:pb-20 lg:pb-[120px] overflow-hidden" style={{ background: '#070b14' }}>
       {/* Decorative top-right glow */}
       <img
         src="/gradient-blur.png"
@@ -53,7 +53,7 @@ export default function WhyXgenious() {
           opacity: 0.5,
         }}
       />
-      <div className="container-page flex flex-col gap-14 relative z-10">
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-14 relative z-10">
 
         {/* Header */}
         <div className="flex flex-col gap-5">
@@ -61,7 +61,7 @@ export default function WhyXgenious() {
             <span className="w-6 h-[2px] bg-[#ec7161] rounded-full" />
             <span className="text-[#ec7161] text-[14px] font-medium">Why Xgenious</span>
           </div>
-          <h2 className="font-bold text-white text-[48px] leading-[58px] max-w-[540px]">
+          <h2 className="font-bold text-white text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[48px] lg:leading-[58px] max-w-[540px]">
             Built for Teams Who Refuse Prototype Grade AI
           </h2>
         </div>
@@ -71,11 +71,11 @@ export default function WhyXgenious() {
           className="rounded-[20px] p-5"
           style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}
         >
-          <div className="flex gap-4">
+          <div className="flex flex-col lg:flex-row gap-4">
 
             {/* Featured-01 card */}
             <div
-              className="flex flex-col justify-between rounded-[14px] p-6 w-[290px] flex-shrink-0"
+              className="flex flex-col justify-between rounded-[14px] p-6 w-full lg:w-[290px] lg:flex-shrink-0"
               style={{ background: '#050608', border: '1px solid rgba(255,255,255,0.07)' }}
             >
               <div className="flex flex-col gap-4">
@@ -116,7 +116,7 @@ export default function WhyXgenious() {
             </div>
 
             {/* 3×2 grid of feature cards */}
-            <div className="flex-1 grid grid-cols-3 gap-4">
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {features.map((f) => (
                 <motion.div
                   key={f.num}

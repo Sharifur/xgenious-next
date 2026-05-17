@@ -20,13 +20,13 @@ export default function AccordionItem({ question, answer, defaultOpen = false, d
   return (
     <div className={`rounded-2xl transition-colors ${wrapperClass}`}>
       <button
-        className="w-full flex items-center justify-between px-7 py-5 text-left gap-4 cursor-pointer"
+        className="w-full flex items-center justify-between px-4 py-4 sm:px-7 sm:py-5 text-left gap-4 cursor-pointer"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
       >
-        <span className={`text-[16px] font-semibold leading-7 ${dark ? 'text-white' : 'text-[#0F1112]'}`}>{question}</span>
+        <span className={`text-[14px] leading-[22px] sm:text-[16px] sm:leading-7 font-semibold ${dark ? 'text-white' : 'text-[#0F1112]'}`}>{question}</span>
         <span
-          className={`flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all ${
+          className={`flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all ${
             open ? 'bg-[#ec7161] text-white' : dark ? 'text-white' : 'text-[#0F1112]'
           }`}
         >
@@ -51,7 +51,7 @@ export default function AccordionItem({ question, answer, defaultOpen = false, d
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <p className={`px-7 pb-6 text-[14px] leading-[22px] max-w-[760px] ${dark ? 'text-[#9ca3af]' : 'text-[#484848]'}`}>{answer}</p>
+            <p className={`px-4 sm:px-7 pb-5 text-[14px] leading-[22px] max-w-[760px] ${dark ? 'text-[#9ca3af]' : 'text-[#484848]'}`}>{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>

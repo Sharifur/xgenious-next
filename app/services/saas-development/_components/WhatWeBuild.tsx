@@ -11,7 +11,7 @@ function BuildCard({
   tags: string[];
 }) {
   return (
-    <div className="bg-[#f5f6f8] flex flex-col items-start p-8 rounded-[12px] gap-6">
+    <div className="bg-[#f5f6f8] flex flex-col items-start p-5 sm:p-8 rounded-[12px] gap-4 sm:gap-6">
       <div
         className="flex items-center justify-center border border-[#bababa] rounded-[32px] flex-shrink-0"
         style={{ width: 64, height: 64, background: '#f5ebda' }}
@@ -20,10 +20,10 @@ function BuildCard({
         <img src={icon} alt="" width={36} height={36} className="object-contain" />
       </div>
       <div className="flex flex-col gap-2">
-        <p className="text-[#181818] font-semibold" style={{ fontSize: 20, lineHeight: '28px' }}>
+        <p className="text-[#181818] font-semibold text-[16px] leading-[24px] sm:text-[20px] sm:leading-[28px]">
           {title}
         </p>
-        <p className="text-[#484848] font-normal" style={{ fontSize: 16, lineHeight: '24px' }}>
+        <p className="text-[#484848] font-normal text-[14px] leading-[21px] sm:text-[16px] sm:leading-[24px]">
           {description}
         </p>
       </div>
@@ -89,15 +89,15 @@ const cards = [
 
 export default function WhatWeBuild() {
   return (
-    <section className="pt-[40px] pb-[120px] bg-white">
-      <div className="container-page flex flex-col gap-[72px] items-center">
+    <section className="pt-8 pb-14 sm:pt-10 sm:pb-20 lg:pt-[40px] lg:pb-[120px] bg-white">
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-14 lg:gap-[72px] items-center">
         <div className="flex flex-col items-center gap-4 text-center max-w-[732px]">
           <SectionBadge>What We Build</SectionBadge>
           <div className="flex flex-col gap-4 items-center">
-            <h2 className="text-[#0f1112] font-semibold" style={{ fontSize: 44, lineHeight: '52px' }}>
+            <h2 className="text-[#0f1112] font-semibold text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]">
               SaaS Engineering, End-to-End.
             </h2>
-            <p className="text-[#484848] font-normal" style={{ fontSize: 16, lineHeight: '24px', maxWidth: 401 }}>
+            <p className="text-[#484848] font-normal text-[14px] leading-[21px] sm:text-[16px] sm:leading-6" style={{ maxWidth: 401 }}>
               Six capability lines across the full SaaS lifecycle. Pick one or work with us across all six.
             </p>
           </div>

@@ -108,7 +108,7 @@ export default function Navbar() {
   const isServicesActive = pathname?.startsWith('/services');
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pt-4 px-4 lg:px-8">
+    <header className="fixed top-0 left-0 right-0 z-50 pt-3 px-3 lg:pt-4 lg:px-8">
       <div
         className={`max-w-[1320px] mx-auto bg-white rounded-full border border-[#E5E7EC] transition-shadow duration-300 ${
           scrolled
@@ -157,8 +157,8 @@ export default function Navbar() {
 
             {/* Icon CTA — coral with soft halo + arrow nudge */}
             <Link
-              href="/contact"
-              aria-label="Get in touch"
+              href="https://xgenious.com/my-account/"
+              aria-label="My Account"
               className="group relative w-[38px] h-[38px] rounded-full bg-[#F26B4E] flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(242,107,78,0.45)] active:translate-y-0"
             >
               <span
@@ -245,8 +245,8 @@ export default function Navbar() {
           <Link href="/contact" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>
             Contact
           </Link>
-          <Button href="/contact" variant="primary" size="sm" onClick={() => setMenuOpen(false)}>
-            Contact Us
+          <Button href="https://xgenious.com/my-account/" variant="primary" size="sm" onClick={() => setMenuOpen(false)}>
+            My Account
           </Button>
         </div>
       )}

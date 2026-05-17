@@ -202,7 +202,7 @@ const Saas = () => (
 
 /* ── Illustration: Web App — figures + browser windows ── */
 const Web = () => (
-  <div className="relative w-[260px] h-[200px] flex-shrink-0">
+  <div className="relative w-[260px] h-[160px] sm:h-[200px] flex-shrink-0 overflow-hidden">
     <div
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[200px] h-3 rounded-full"
       style={{ background: 'rgba(15,17,18,0.06)', filter: 'blur(6px)' }}
@@ -265,7 +265,7 @@ const Web = () => (
 
 /* ── Illustration: Mobile — phone with floating app icons ── */
 const Mobile = () => (
-  <div className="relative w-[260px] h-[200px] flex-shrink-0">
+  <div className="relative w-[260px] h-[160px] sm:h-[200px] flex-shrink-0 overflow-hidden">
     <div
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[180px] h-3 rounded-full"
       style={{ background: 'rgba(15,17,18,0.08)', filter: 'blur(8px)' }}
@@ -334,7 +334,7 @@ const Mobile = () => (
 
 /* ── Illustration: AI Agent — robot with chat & icons ── */
 const AI = () => (
-  <div className="relative w-[260px] h-[200px] flex-shrink-0">
+  <div className="relative w-[260px] h-[160px] sm:h-[200px] flex-shrink-0 overflow-hidden">
     <div
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[160px] h-3 rounded-full"
       style={{ background: 'rgba(15,17,18,0.08)', filter: 'blur(6px)' }}
@@ -434,7 +434,7 @@ function IllustrationImg({
       alt={alt}
       width={420}
       height={320}
-      className="w-auto h-auto max-w-[350px]"
+      className="w-auto h-auto max-w-[350px] max-h-[160px] sm:max-h-none object-contain"
       onError={() => setErrored(true)}
       unoptimized
     />
@@ -548,7 +548,7 @@ function StackCard({
 
         {/* Right — illustration */}
         <div className="relative flex-shrink-0 w-full lg:w-[380px] flex items-center justify-center lg:justify-end lg:pl-12 lg:pr-6 lg:border-l lg:border-[#BABABA] overflow-hidden mt-6 lg:mt-0">
-          <div className="ml-auto">
+          <div className="lg:ml-auto">
             {s.illustrationImage ? (
               <IllustrationImg
                 src={s.illustrationImage}
@@ -578,7 +578,7 @@ export default function ServicesGrid() {
             <SectionBadge className="mb-5">What We Build</SectionBadge>
             <h2 className="text-[28px] sm:text-[36px] lg:text-[40px] leading-[36px] sm:leading-[44px] font-semibold text-[#0F1112] tracking-[-0.01em]">
               Creating the Future of Your
-              <br />
+              <br className="hidden lg:block" />
               <span className="italic font-semibold">Digital Presence</span>
             </h2>
           </div>
