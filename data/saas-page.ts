@@ -73,7 +73,7 @@ export const services: Service[] = [
     cta: 'Deploy an AI agent',
     bg: '#EADBF5',
     illustration: 'ai',
-    href: '/ai-agent-development',
+    href: '/ai-agent-development-services',
     bgImage: '/services/ai-agent-development-bg.jpg',
     illustrationImage: '/services/ai-agent-development-illustration.png',
   },
@@ -130,10 +130,10 @@ export const whyChooseCards: WhyChooseCard[] = [
 
 /* ── STATS — 4 numbered stat cards under the differentiator cards ── */
 export const stats = [
-  { number: '01', value: 13000, suffix: '+', label: 'Happy Customers' },
-  { number: '02', value: 19,   suffix: '+', label: 'Awards Achieved' },
+  { number: '01', value: 13000, suffix: '+', label: 'Businesses Served' },
+  { number: '02', value: 4,    suffix: '',   label: 'Industry Awards' },
   { number: '03', value: 25,   suffix: '+', label: 'Team Members' },
-  { number: '04', value: 100,  suffix: '+', label: 'Product develop' },
+  { number: '04', value: 7,    suffix: '',   label: 'Live SaaS Products' },
 ];
 
 /* ── OWN PRODUCTS — shown in WhyChooseUs section ── */

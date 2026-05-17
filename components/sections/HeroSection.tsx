@@ -271,7 +271,7 @@ const dots = [
 ] as const;
 
 const featureCards = [
-  { icon: I_AI,  title: 'AI Agent',         tags: ['Intelligent', 'Scalable'],  href: '/ai-agent-development' },
+  { icon: I_AI,  title: 'AI Agent',         tags: ['Intelligent', 'Scalable'],  href: '/ai-agent-development-services' },
   { icon: I_SW,  title: 'Custom Software',  tags: ['Flexible', 'User-Centric'], href: '/custom-saas-development-company' },
   { icon: I_DEV, title: 'Development',      tags: ['Secure', 'Efficient'],      href: '/web-app-development-company' },
 ];

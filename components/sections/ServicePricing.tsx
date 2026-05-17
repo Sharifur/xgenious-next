@@ -18,18 +18,22 @@ type Props = {
   heading?: string;
   subhead?: string;
   id?: string;
+  theme?: 'light' | 'dark';
 };
 
-function PlanCard({ name, price, timeline, bestFor, features, cta, ctaHref, dark = false, popular = false }: PricingPlan) {
-  const borderColor   = dark ? 'rgba(255,255,255,0.1)' : '#e7e7e7';
-  const subtextColor  = dark ? '#bababa' : '#6b7280';
-  const featureColor  = dark ? '#d1d5db' : '#2f2f2f';
-  const checkIcon     = dark ? '/images/web-app-dev/check-light.svg' : '/images/web-app-dev/check-dark.svg';
+function PlanCard({ name, price, timeline, bestFor, features, cta, ctaHref, dark = false, popular = false, pageDark = false }: PricingPlan & { pageDark?: boolean }) {
+  const isLightOnDark = pageDark && !dark;
+  const borderColor  = (dark || isLightOnDark) ? 'rgba(255,255,255,0.1)' : '#e7e7e7';
+  const subtextColor = (dark || isLightOnDark) ? '#9ca3af' : '#6b7280';
+  const featureColor = (dark || isLightOnDark) ? '#d1d5db' : '#2f2f2f';
+  const checkIcon    = (dark || isLightOnDark) ? '/images/web-app-dev/check-light.svg' : '/images/web-app-dev/check-dark.svg';
+  const cardBg       = dark ? '#050608' : isLightOnDark ? '#111111' : '#fff';
+  const cardBorder   = (dark || isLightOnDark) ? '1px solid rgba(255,255,255,0.07)' : 'none';
 
   return (
     <div
       className="relative flex flex-col p-6 rounded-[12px] h-full"
-      style={{ background: dark ? '#181818' : '#fff' }}
+      style={{ background: cardBg, border: cardBorder }}
     >
       {popular && (
         <div
@@ -47,7 +51,7 @@ function PlanCard({ name, price, timeline, bestFor, features, cta, ctaHref, dark
 
         <div className="flex flex-col gap-0.5">
           <span className="font-normal text-[13px]" style={{ color: subtextColor }}>Start from</span>
-          <span className="font-semibold" style={{ fontSize: 36, lineHeight: '44px', color: dark ? '#fff' : '#0f1112' }}>
+          <span className="font-semibold" style={{ fontSize: 36, lineHeight: '44px', color: (dark || isLightOnDark) ? '#fff' : '#0f1112' }}>
             {price}
           </span>
         </div>
@@ -83,7 +87,7 @@ function PlanCard({ name, price, timeline, bestFor, features, cta, ctaHref, dark
       <div className="mt-6">
         <Button
           href={ctaHref}
-          variant={dark ? 'coral' : 'primary'}
+          variant={dark ? 'coral' : isLightOnDark ? 'outline' : 'primary'}
           icon={<ArrowIcon />}
           className="w-full justify-center"
         >
@@ -99,17 +103,19 @@ export default function ServicePricing({
   heading = 'Pick a starting point, no discovery tax',
   subhead = "Scope is published. Price is fixed. The only variable is how fast you want to move.",
   id = 'pricing',
+  theme = 'light',
 }: Props) {
+  const isDark = theme === 'dark';
   return (
-    <section id={id} className="py-14 sm:py-20 lg:py-[120px] bg-[#f5f6f8]">
+    <section id={id} className="py-14 sm:py-20 lg:py-[120px]" style={{ background: isDark ? '#070b14' : '#f5f6f8' }}>
       <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-14 lg:gap-[72px] items-center">
         <div className="flex flex-col items-center gap-4 text-center max-w-[616px]">
-          <SectionBadge>Pricing</SectionBadge>
+          <SectionBadge variant={isDark ? 'dark' : undefined}>Pricing</SectionBadge>
           <div className="flex flex-col gap-4 items-center">
-            <h2 className="text-[#0f1112] font-semibold text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]">
+            <h2 style={{ color: isDark ? '#fff' : '#0f1112' }} className="font-semibold text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]">
               {heading}
             </h2>
-            <p className="text-[#484848] font-normal" style={{ fontSize: 16, lineHeight: '24px', maxWidth: 568 }}>
+            <p style={{ color: isDark ? '#9ca3af' : '#484848', fontSize: 16, lineHeight: '24px', maxWidth: 568 }} className="font-normal">
               {subhead}
             </p>
           </div>
@@ -117,7 +123,7 @@ export default function ServicePricing({
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 w-full items-stretch">
           {plans.map((plan) => (
-            <PlanCard key={plan.name} {...plan} />
+            <PlanCard key={plan.name} {...plan} pageDark={isDark} />
           ))}
         </div>
 
@@ -133,7 +139,7 @@ export default function ServicePricing({
                 <circle cx="8" cy="8" r="7" stroke="#ec7161" strokeWidth="1.2" />
                 <path d="M5 8l2 2 4-4" stroke="#ec7161" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span className="text-[14px] text-[#484848]">{point}</span>
+              <span className="text-[14px]" style={{ color: isDark ? '#9ca3af' : '#484848' }}>{point}</span>
             </div>
           ))}
         </div>

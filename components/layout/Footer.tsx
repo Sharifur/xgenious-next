@@ -31,7 +31,7 @@ const SERVICES = [
   { label: 'Web App Development', href: '/web-app-development-company' },
   { label: 'Mobile App Development', href: '/mobile-app-development' },
   { label: 'SaaS Development', href: '/custom-saas-development-company' },
-  { label: 'AI Agent Development', href: '/ai-agent-development' },
+  { label: 'AI Agent Development', href: '/ai-agent-development-services' },
 ];
 
 const LINKS = [

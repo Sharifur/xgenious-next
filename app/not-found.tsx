@@ -105,7 +105,7 @@ export default function NotFound() {
               {
                 label: 'AI Agent Dev',
                 desc: 'Custom AI & automation',
-                href: '/ai-agent-development',
+                href: '/ai-agent-development-services',
                 icon: (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8"/>
