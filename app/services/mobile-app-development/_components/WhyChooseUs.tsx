@@ -61,17 +61,17 @@ export default function WhyChooseUs() {
   const rightInView = useInView(rightCardRef, { once: true, margin: '-80px' });
 
   return (
-    <section className="pt-[10px] pb-[120px] xl:pt-[100px] xl:pb-0 bg-[#F5F6F8]">
-      <div className="container-page flex flex-col gap-[96px]">
+    <section className="pt-10 pb-14 sm:pt-16 sm:pb-20 xl:pt-[100px] xl:pb-0 bg-[#F5F6F8]">
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-14 lg:gap-[96px]">
 
         {/* ── Part 1: Crafted for Performance and Security ── */}
-        <div className="flex items-start gap-16">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:gap-16 gap-8">
           {/* Left — title + feature cards */}
-          <div className="flex flex-col gap-10 w-[520px] shrink-0">
-            <h2 className="font-semibold text-[#0f1112] text-[44px] leading-[52px]">
+          <div className="flex flex-col gap-8 lg:gap-10 w-full lg:w-[520px] shrink-0">
+            <h2 className="font-semibold text-[#0f1112] text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]">
               Crafted for Performance and Security
             </h2>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {features.map((f) => (
                 <div key={f.title} className="group flex flex-col gap-3 rounded-[12px] p-5 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                   <div className="flex items-center justify-center w-10 h-10 rounded-[8px] bg-[#181818] group-hover:bg-[#ec7161] transition-colors duration-200">
@@ -100,19 +100,19 @@ export default function WhyChooseUs() {
         <div className="flex flex-col gap-4 items-center text-center max-w-[712px] mx-auto">
           <SectionBadge>Why Choose US</SectionBadge>
           <div className="flex flex-col gap-4 items-center">
-            <h2 className="font-semibold text-[#0f1112] text-[44px] leading-[52px]">
+            <h2 className="font-semibold text-[#0f1112] text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]">
               Why Businesses Trust Us With Their Apps
             </h2>
-            <p className="font-normal text-[#484848] text-[16px] leading-6 max-w-[580px]">
+            <p className="font-normal text-[#484848] text-[14px] leading-[21px] sm:text-[16px] sm:leading-6 max-w-[580px]">
               We build fast, scalable mobile apps designed to deliver seamless user experiences and support business growth.
             </p>
           </div>
         </div>
 
         {/* 3 bento cards */}
-        <div className="flex items-end gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end gap-6">
           {/* Left card — peach, tall */}
-          <div ref={leftCardRef} className="relative shrink-0 overflow-hidden rounded-[12px] bg-[#f3dccf] w-[424px] h-[642px]">
+          <div ref={leftCardRef} className="relative overflow-hidden rounded-[12px] bg-[#f3dccf] w-full lg:w-[424px] h-[320px] sm:h-[420px] lg:h-[642px]">
             <motion.div
               className="absolute inset-0 overflow-hidden top-[106px]"
               variants={slideUp}
@@ -132,15 +132,15 @@ export default function WhyChooseUs() {
           </div>
 
           {/* Middle card — blue-purple, shorter */}
-          <div className="relative shrink-0 rounded-[12px] bg-[#cfd1ff] w-[424px] h-[457px]">
-            <p className="absolute font-semibold text-[#0f1112] text-[72px] leading-[80px] right-6 top-8">
+          <div className="relative rounded-[12px] bg-[#cfd1ff] w-full lg:w-[424px] h-auto lg:h-[457px] flex flex-col lg:block">
+            <p className="self-start lg:absolute font-semibold text-[#0f1112] text-[40px] leading-[48px] lg:text-[72px] lg:leading-[80px] px-6 pt-6 lg:px-0 lg:pt-0 lg:right-6 lg:top-8">
               <Counter target={40} />
             </p>
-            <div className="absolute flex flex-col gap-[14px] left-6 top-[291px] w-[373px]">
+            <div className="flex flex-col gap-[14px] px-6 pb-6 pt-4 lg:absolute lg:p-0 lg:left-6 lg:top-[291px] lg:w-[373px]">
               <p className="font-semibold text-[#181818] text-[24px] leading-8">
                 Apps Successfully Delivered
               </p>
-              <p className="font-normal text-[#2f2f2f] text-[16px] leading-6">
+              <p className="font-normal text-[#2f2f2f] text-[14px] leading-[22px] lg:text-[16px] lg:leading-6">
                 From ambitious startups to rapidly growing businesses around the world, we provide
                 reliable and scalable solutions designed to support every stage of growth.
               </p>
@@ -148,9 +148,9 @@ export default function WhyChooseUs() {
           </div>
 
           {/* Right card — white, tall */}
-          <div ref={rightCardRef} className="relative shrink-0 overflow-hidden rounded-[12px] bg-white w-[424px] h-[642px] border border-[#bababa]">
+          <div ref={rightCardRef} className="relative overflow-hidden rounded-[12px] bg-white w-full lg:w-[424px] h-[320px] sm:h-[420px] lg:h-[642px] border border-[#bababa]">
             <motion.div
-              className="absolute overflow-hidden -left-[90px] top-[79px] w-[639px] h-[639px]"
+              className="absolute overflow-hidden left-0 lg:-left-[90px] top-[79px] w-full lg:w-[639px] h-full lg:h-[639px]"
               variants={slideUp}
               initial="hidden"
               animate={rightInView ? 'visible' : 'hidden'}

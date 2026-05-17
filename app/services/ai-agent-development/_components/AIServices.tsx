@@ -194,8 +194,8 @@ function Card({ title, desc, visual, tall }: (typeof services)[number]) {
 
 export default function AIServices() {
   return (
-    <section className="pb-[120px]" style={{ background: '#070b14' }}>
-      <div className="container-page flex flex-col gap-[64px]">
+    <section className="pt-10 pb-14 sm:pt-14 sm:pb-20 lg:pt-16 lg:pb-[120px]" style={{ background: '#070b14' }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-14 lg:gap-[64px]">
 
         {/* Header */}
         <div className="flex flex-col items-center text-center gap-5">
@@ -203,22 +203,22 @@ export default function AIServices() {
             <span className="w-6 h-[2px] bg-[#ec7161] rounded-full" />
             <span className="text-[#ec7161] text-[14px] font-medium">Services</span>
           </div>
-          <h2 className="font-bold text-white text-[44px] leading-[54px] max-w-[850px]">
+          <h2 className="font-bold text-white text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[54px] max-w-[850px]">
             Build Intelligent AI Agents for Modern Business Operations.
           </h2>
-          <p className="font-normal text-[#9ca3af] text-[16px] leading-6 max-w-[560px]">
+          <p className="font-normal text-[#9ca3af] text-[14px] sm:text-[16px] leading-6 max-w-[560px]">
             Custom built, production ready AI agents engineered for real workflow. Not chatbots — autonomous systems that use tools, reason over data and complete entire jobs.
           </p>
         </div>
 
         {/* Row 1 — asymmetric */}
-        <div className="grid grid-cols-[2fr_3fr] gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-5">
           <Card {...services[0]} />
           <Card {...services[1]} />
         </div>
 
         {/* Row 2 — equal */}
-        <div className="grid grid-cols-2 gap-5 -mt-[44px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:-mt-[44px]">
           <Card {...services[2]} />
           <Card {...services[3]} />
         </div>

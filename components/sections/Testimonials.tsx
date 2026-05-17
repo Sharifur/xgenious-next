@@ -88,9 +88,9 @@ function TestimonialCard({
   name, role, quote, photo, videoUrl, onPlay,
 }: TestimonialItem & { onPlay?: () => void }) {
   return (
-    <div className="flex rounded-[8px] overflow-hidden" style={{ background: '#f5f6f8', height: 350 }}>
+    <div className="flex flex-col sm:flex-row rounded-[8px] overflow-hidden" style={{ background: '#f5f6f8' }}>
       {/* Left: content */}
-      <div className="flex flex-col justify-between flex-1 p-8">
+      <div className="flex flex-col justify-between flex-1 p-6 sm:p-8">
         <div className="flex flex-col gap-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/saas-dev/testimonial-quote.svg" alt="" width={32} height={32} className="object-contain" />
@@ -105,7 +105,7 @@ function TestimonialCard({
       </div>
 
       {/* Right: photo */}
-      <div className="relative flex-shrink-0" style={{ width: '42%' }}>
+      <div className="relative flex-shrink-0 h-48 sm:h-auto sm:w-[42%]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={photo} alt={name} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.35)' }} />
@@ -160,11 +160,11 @@ export default function Testimonials({
     <>
       <section className="py-[120px] bg-white">
         <div className="container-page flex flex-col gap-[72px]">
-          <div className="flex items-start justify-between">
-            <h2 className="text-[#0f1112] font-semibold" style={{ fontSize: 44, lineHeight: '52px', maxWidth: 620 }}>
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+            <h2 className="text-[32px] sm:text-[44px] leading-[40px] sm:leading-[52px] font-semibold text-[#0f1112]" style={{ maxWidth: 620 }}>
               {title}
             </h2>
-            <div className="flex items-center gap-3 flex-shrink-0 mt-1">
+            <div className="flex items-center gap-3 flex-shrink-0 sm:mt-1">
               <button
                 aria-label="Previous"
                 onClick={() => go(-1)}

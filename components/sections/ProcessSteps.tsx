@@ -358,7 +358,7 @@ export default function ProcessSteps() {
         {/* Centered header */}
         <div className="text-center mb-14 max-w-[680px] mx-auto">
           <SectionBadge className="mb-5">How We Work</SectionBadge>
-          <h2 className="text-[40px] lg:text-[44px] leading-[52px] font-bold text-[#0F1112] tracking-[-0.01em]">
+          <h2 className="text-[30px] sm:text-[40px] lg:text-[44px] leading-[38px] sm:leading-[52px] font-bold text-[#0F1112] tracking-[-0.01em]">
             Clear Process,{' '}
             <span className="italic font-bold">Consistent Results.</span>
           </h2>

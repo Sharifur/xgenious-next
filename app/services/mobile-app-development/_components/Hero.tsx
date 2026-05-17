@@ -17,7 +17,7 @@ export default function Hero() {
 
       {/* Play Store badge */}
       <motion.div
-        className="absolute z-20 pointer-events-none"
+        className="hidden md:block absolute z-20 pointer-events-none"
         style={{ left: '20%', top: 340, rotate: -6 }}
         animate={{ y: [0, -10, 0], x: [0, 6, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
@@ -50,7 +50,7 @@ export default function Hero() {
 
       {/* Flutter badge */}
       <motion.div
-        className="absolute z-20 pointer-events-none"
+        className="hidden md:block absolute z-20 pointer-events-none"
         style={{ right: '20%', top: 300, rotate: 6 }}
         animate={{ y: [0, -8, 0], x: [0, -5, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
@@ -59,15 +59,15 @@ export default function Hero() {
         <img src="/images/app-dev/badge-flutter.png" alt="Flutter" className="h-12 w-auto" />
       </motion.div>
 
-      <div className="container-page relative z-10 flex flex-col items-center" style={{ paddingTop: 180, paddingBottom: 0 }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0 relative z-10 flex flex-col items-center" style={{ paddingTop: 120, paddingBottom: 0 }}>
         {/* Heading + CTA */}
-        <div className="flex flex-col gap-8 items-center text-center">
+        <div className="flex flex-col gap-6 sm:gap-8 items-center text-center">
           <div className="flex flex-col gap-4 items-center">
-            <h1 className="font-semibold" style={{ fontSize: 72, lineHeight: '80px', color: '#181818', maxWidth: 900 }}>
+            <h1 className="font-semibold text-[36px] leading-[44px] sm:text-[52px] sm:leading-[60px] lg:text-[72px] lg:leading-[80px]" style={{ color: '#181818', maxWidth: 900 }}>
               Precision-Built Apps for a{' '}
               <em className="font-medium" style={{ fontStyle: 'italic' }}>Mobile-First World</em>
             </h1>
-            <p className="font-normal" style={{ fontSize: 18, lineHeight: '27px', color: '#2f2f2f', maxWidth: 750 }}>
+            <p className="font-normal text-[14px] sm:text-[16px] lg:text-[18px]" style={{ lineHeight: '27px', color: '#2f2f2f', maxWidth: 750 }}>
               Transform your vision into reality with custom iOS, Android, and cross-platform mobile
               applications designed for growth and user engagement.
             </p>

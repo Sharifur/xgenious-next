@@ -32,12 +32,12 @@ const CARDS = [
 export default function ProofCards() {
   return (
     <section className="bg-white py-16">
-      <div className="container-page">
+      <div className="container-page px-4 sm:px-6 lg:px-0">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {CARDS.map((card) => (
             <div
               key={card.title}
-              className="relative overflow-hidden rounded-2xl p-7 flex flex-col gap-5"
+              className="relative overflow-hidden rounded-2xl p-5 sm:p-7 flex flex-col gap-4 sm:gap-5"
               style={{
                 background: `
                   radial-gradient(ellipse 60% 55% at 22% 18%, rgba(255,252,245,0.11) 0%, transparent 65%),
@@ -66,16 +66,16 @@ export default function ProofCards() {
               </div>
 
               {/* Title */}
-              <p className="relative text-white font-bold text-[32px] leading-tight">
+              <p className="relative text-white font-bold text-[24px] leading-tight sm:text-[32px]">
                 {card.title}
               </p>
 
               {/* Subtitle + body */}
               <div className="relative flex flex-col gap-2">
-                <p className="text-white font-bold text-[20px] leading-snug">
+                <p className="text-white font-bold text-[16px] leading-snug sm:text-[20px]">
                   {card.subtitle}
                 </p>
-                <p className="text-[#A6A6A6] text-[16px] leading-[24px]">
+                <p className="text-[#A6A6A6] text-[14px] leading-[21px] sm:text-[16px] sm:leading-[24px]">
                   {card.body}
                 </p>
               </div>

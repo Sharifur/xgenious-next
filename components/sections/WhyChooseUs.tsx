@@ -70,7 +70,7 @@ export default function WhyChooseUs() {
       <div className="container-page relative">
         <div className="text-center mb-14 max-w-[640px] mx-auto">
           <SectionBadge className="mb-5">Why Mid-Market Team Pick Us</SectionBadge>
-          <h2 className="text-[44px] leading-[52px] font-semibold text-white tracking-[-0.01em]">
+          <h2 className="text-[32px] sm:text-[44px] leading-[40px] sm:leading-[52px] font-semibold text-white tracking-[-0.01em]">
             Built for Your{' '}
             <span className="italic font-semibold">Digital Future</span>
           </h2>

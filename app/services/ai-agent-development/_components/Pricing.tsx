@@ -40,7 +40,7 @@ function PlanCard({ name, popular, price, timeline, cta }: typeof plans[0]) {
 
         <div className="flex flex-col gap-2">
           <div className="flex items-baseline gap-1">
-            <span className="font-semibold text-white" style={{ fontSize: 44, lineHeight: '52px' }}>{price}</span>
+            <span className="font-semibold text-white text-[32px] leading-[40px] sm:text-[44px] sm:leading-[52px]">{price}</span>
             {price !== 'Custom' && (
               <span className="font-normal text-[#9ca3af] text-[16px] leading-6 ml-1">Fixed</span>
             )}
@@ -61,7 +61,7 @@ function PlanCard({ name, popular, price, timeline, cta }: typeof plans[0]) {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={checkLight} alt="" width={18} height={18} className="flex-shrink-0" />
-              <span className="text-[#d1d5db] text-[15px] leading-[22px]">{f}</span>
+              <span className="text-[#d1d5db] text-[13px] sm:text-[15px] leading-[22px]">{f}</span>
             </div>
           ))}
         </div>
@@ -83,8 +83,8 @@ function PlanCard({ name, popular, price, timeline, cta }: typeof plans[0]) {
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="pb-[120px]" style={{ background: '#070b14' }}>
-      <div className="container-page flex flex-col gap-[72px] items-center">
+    <section id="pricing" className="py-14 sm:py-20 lg:pb-[120px]" style={{ background: '#070b14' }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-14 lg:gap-[72px] items-center">
 
         {/* Header */}
         <div className="flex flex-col items-center text-center gap-5 max-w-[620px]">
@@ -92,10 +92,10 @@ export default function Pricing() {
             <span className="w-6 h-[2px] bg-[#ec7161] rounded-full" />
             <span className="text-[#ec7161] text-[14px] font-medium">Pricing</span>
           </div>
-          <h2 className="font-bold text-white text-[44px] leading-[54px]">
+          <h2 className="font-bold text-white text-[24px] leading-[32px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[54px]">
             Pick a Starting Point, no Discovery Tax
           </h2>
-          <p className="text-[#9ca3af] text-[16px] leading-6">
+          <p className="text-[#9ca3af] text-[14px] sm:text-[16px] leading-6">
             Scope is published. Timeline is committed. If we quote outside your package, we&apos;ll tell you upfront, not mid-sprint.
           </p>
         </div>

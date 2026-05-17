@@ -161,24 +161,24 @@ function Card({ icon, title, description, tags, img }: CardProps) {
 
 export default function WhatWeBuild() {
   return (
-    <section className="py-[120px] bg-white">
-      <div className="container-page flex flex-col gap-[64px]">
+    <section className="pt-10 pb-16 sm:py-20 lg:py-[120px] bg-white">
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-12 lg:gap-[64px]">
 
-        {/* Header — split */}
-        <div className="flex items-end justify-between gap-8">
-          <div className="flex flex-col gap-4">
+        {/* Header — stacks on mobile, side-by-side on lg */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-8">
+          <div className="flex flex-col items-start gap-3 sm:gap-4">
             <SectionBadge>Services</SectionBadge>
-            <h2 className="font-semibold text-[#0f1112] text-[44px] leading-[52px]">
+            <h2 className="font-semibold text-[#0f1112] text-[28px] leading-[36px] sm:text-[36px] sm:leading-[44px] lg:text-[44px] lg:leading-[52px]">
               What We Build
             </h2>
           </div>
-          <p className="font-normal text-[#484848] text-[16px] leading-6 max-w-[360px] pb-1">
+          <p className="font-normal text-[#484848] text-[14px] sm:text-[16px] leading-6 max-w-full lg:max-w-[360px] lg:pb-1">
             Six capability lines across the full web app lifecycle. Pick one or work with us across all six.
           </p>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {cards.map((card) => (
             <Card key={card.title} {...card} />
           ))}

@@ -28,13 +28,13 @@ export default function FAQ({
   };
 
   return (
-    <section className={dark ? 'pb-[120px]' : 'py-[120px]'} style={{ background: dark ? '#070b14' : '#fff' }}>
+    <section className={dark ? 'lg:pb-[120px] pb-12' : 'py-12 lg:py-[120px]'} style={{ background: dark ? '#070b14' : '#fff' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <div className="container-page">
-        <div className="text-center mb-[72px] max-w-[640px] mx-auto">
+      <div className="container-page px-4 sm:px-6 lg:px-0">
+        <div className="text-center mb-10 sm:mb-14 lg:mb-[72px] max-w-[640px] mx-auto">
           {dark ? (
             <div className="flex items-center justify-center gap-2 mb-5">
               <span className="w-6 h-[2px] bg-[#ec7161] rounded-full" />
@@ -43,15 +43,15 @@ export default function FAQ({
           ) : (
             <SectionBadge className="mb-5">Frequently Asked &amp; Questions</SectionBadge>
           )}
-          <h2 className={`text-[44px] leading-[52px] font-semibold ${dark ? 'text-white' : 'text-[#0F1112]'}`}>
+          <h2 className={`text-[28px] sm:text-[36px] lg:text-[44px] leading-[36px] sm:leading-[44px] lg:leading-[52px] font-semibold ${dark ? 'text-white' : 'text-[#0F1112]'}`}>
             {title}
           </h2>
-          <p className={`mt-4 text-[16px] leading-6 max-w-[492px] mx-auto ${dark ? 'text-[#9ca3af]' : 'text-[#484848]'}`}>
+          <p className={`mt-4 text-[14px] leading-[21px] sm:text-[16px] sm:leading-6 max-w-[492px] mx-auto ${dark ? 'text-[#9ca3af]' : 'text-[#484848]'}`}>
             {description}
           </p>
         </div>
 
-        <div className="max-w-[66.666%] mx-auto space-y-3">
+        <div className="w-full lg:max-w-[66.666%] mx-auto space-y-3">
           {faqs.map((faq, i) => (
             <AccordionItem
               key={faq.question}

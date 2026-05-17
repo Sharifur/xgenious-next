@@ -1,7 +1,14 @@
 import type { Metadata } from 'next';
 import Hero from './_components/Hero';
 import WhatWeBuild from './_components/WhatWeBuild';
-import HowWeWork from './_components/HowWeWork';
+import HowWeWork from '@/components/sections/HowWeWork';
+
+const howWeWorkSteps = [
+  { label: '01. Discover', desc: 'Requirements workshop, user flow mapping, tech stack decision, and a signed scope doc before a single wireframe is drawn.' },
+  { label: '02. Design', desc: 'Wireframes, component library, and a production-ready Figma system — every screen and interaction approved before development starts.' },
+  { label: '03. Build', desc: 'Sprint-based builds with weekly demos, full test coverage, CI/CD pipeline, and a staging environment you can access at any time.' },
+  { label: '04. Ship', desc: "Production deploy, performance tuning, post-launch monitoring, and a 30-day warranty. We don't disappear after go-live." },
+];
 import CaseStudies from './_components/CaseStudies';
 import Pricing from './_components/Pricing';
 import TrustCompliance from './_components/TrustCompliance';
@@ -34,7 +41,7 @@ export default function WebAppDevelopmentPage() {
       <Hero />
       <TrustedBy title="Trusted by teams around the world" />
       <WhatWeBuild />
-      <HowWeWork />
+      <HowWeWork steps={howWeWorkSteps} description="Custom web apps, B2B portals, internal tools and enterprise platforms — built with published scope, fixed pricing, and a committed delivery date." />
       <CaseStudies />
       <TrustCompliance />
       <Pricing />

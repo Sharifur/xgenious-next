@@ -202,7 +202,7 @@ const Saas = () => (
 
 /* ── Illustration: Web App — figures + browser windows ── */
 const Web = () => (
-  <div className="relative w-[260px] h-[200px] flex-shrink-0">
+  <div className="relative w-[260px] h-[160px] sm:h-[200px] flex-shrink-0 overflow-hidden">
     <div
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[200px] h-3 rounded-full"
       style={{ background: 'rgba(15,17,18,0.06)', filter: 'blur(6px)' }}
@@ -265,7 +265,7 @@ const Web = () => (
 
 /* ── Illustration: Mobile — phone with floating app icons ── */
 const Mobile = () => (
-  <div className="relative w-[260px] h-[200px] flex-shrink-0">
+  <div className="relative w-[260px] h-[160px] sm:h-[200px] flex-shrink-0 overflow-hidden">
     <div
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[180px] h-3 rounded-full"
       style={{ background: 'rgba(15,17,18,0.08)', filter: 'blur(8px)' }}
@@ -334,7 +334,7 @@ const Mobile = () => (
 
 /* ── Illustration: AI Agent — robot with chat & icons ── */
 const AI = () => (
-  <div className="relative w-[260px] h-[200px] flex-shrink-0">
+  <div className="relative w-[260px] h-[160px] sm:h-[200px] flex-shrink-0 overflow-hidden">
     <div
       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[160px] h-3 rounded-full"
       style={{ background: 'rgba(15,17,18,0.08)', filter: 'blur(6px)' }}
@@ -434,7 +434,7 @@ function IllustrationImg({
       alt={alt}
       width={420}
       height={320}
-      className="w-auto h-auto max-w-[350px]"
+      className="w-auto h-auto max-w-[350px] max-h-[160px] sm:max-h-none object-contain"
       onError={() => setErrored(true)}
       unoptimized
     />
@@ -501,7 +501,7 @@ function StackCard({
           zIndex: index + 1,
           backgroundColor: s.bg,
         }}
-        className="relative rounded-[24px] flex flex-col sm:flex-row items-stretch justify-between overflow-hidden min-h-[300px] pt-10 pb-10 pl-10 pr-10"
+        className="relative rounded-[24px] flex flex-col lg:flex-row items-stretch justify-between overflow-hidden min-h-[300px] p-6 sm:p-8 lg:p-10"
       >
         {s.bgImage && <CardBackground src={s.bgImage} />}
 
@@ -509,7 +509,7 @@ function StackCard({
         <div className="relative flex-1 py-5 flex flex-col justify-between max-w-[640px]">
           <div>
             <div className="flex items-center gap-4 mb-6">
-              <span className="text-[36px] lg:text-[40px] font-bold text-[#0F1112] leading-none tracking-[-0.01em]">
+              <span className="text-[28px] sm:text-[36px] lg:text-[40px] font-bold text-[#0F1112] leading-none tracking-[-0.01em]">
                 {s.number}
               </span>
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
@@ -521,7 +521,7 @@ function StackCard({
                   strokeLinejoin="round"
                 />
               </svg>
-              <h3 className="text-[32px] lg:text-[36px] font-bold leading-tight text-[#0F1112] tracking-[-0.01em]">
+              <h3 className="text-[24px] sm:text-[28px] lg:text-[34px] font-bold leading-tight text-[#0F1112] tracking-[-0.01em]">
                 {s.title}
               </h3>
             </div>
@@ -531,7 +531,7 @@ function StackCard({
           </div>
           <Link
             href={s.href}
-            className="mt-[150px] self-start inline-flex items-center gap-2 px-5 h-11 rounded-full bg-white text-[#0F1112] text-[13px] font-medium shadow-[0_2px_8px_rgba(15,17,18,0.08)] hover:bg-[#F26B4E] hover:text-white hover:shadow-[0_6px_16px_rgba(242,107,78,0.35)] transition-colors duration-300 ease-in-out"
+            className="mt-8 lg:mt-[120px] self-start inline-flex items-center gap-2 px-5 h-11 rounded-full bg-white text-[#0F1112] text-[13px] font-medium shadow-[0_2px_8px_rgba(15,17,18,0.08)] hover:bg-[#F26B4E] hover:text-white hover:shadow-[0_6px_16px_rgba(242,107,78,0.35)] transition-colors duration-300 ease-in-out"
           >
             View More Details
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -547,8 +547,8 @@ function StackCard({
         </div>
 
         {/* Right — illustration */}
-        <div className="relative flex-shrink-0 w-[410px] flex items-center pl-[60px] pr-10 border-l border-[#BABABA] overflow-hidden">
-          <div className="ml-auto">
+        <div className="relative flex-shrink-0 w-full lg:w-[380px] flex items-center justify-center lg:justify-end lg:pl-12 lg:pr-6 lg:border-l lg:border-[#BABABA] overflow-hidden mt-6 lg:mt-0">
+          <div className="lg:ml-auto">
             {s.illustrationImage ? (
               <IllustrationImg
                 src={s.illustrationImage}
@@ -576,9 +576,9 @@ export default function ServicesGrid() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
           <div className="lg:col-span-7">
             <SectionBadge className="mb-5">What We Build</SectionBadge>
-            <h2 className="text-[36px] lg:text-[40px] leading-[44px] font-semibold text-[#0F1112] tracking-[-0.01em]">
+            <h2 className="text-[28px] sm:text-[36px] lg:text-[40px] leading-[36px] sm:leading-[44px] font-semibold text-[#0F1112] tracking-[-0.01em]">
               Creating the Future of Your
-              <br />
+              <br className="hidden lg:block" />
               <span className="italic font-semibold">Digital Presence</span>
             </h2>
           </div>

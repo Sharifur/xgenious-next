@@ -39,8 +39,8 @@ function TechCard({ name, sub, logo }: (typeof TECHS)[number]) {
 
 export default function TechStack() {
   return (
-    <section className="pb-[120px]" style={{ background: '#070b14' }}>
-      <div className="container-page flex flex-col gap-14">
+    <section className="pb-14 sm:pb-20 lg:pb-[120px]" style={{ background: '#070b14' }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-14">
 
         {/* Header */}
         <div className="flex flex-col items-center text-center gap-5">
@@ -48,10 +48,10 @@ export default function TechStack() {
             <span className="w-6 h-[2px] bg-[#ec7161] rounded-full" />
             <span className="text-[#ec7161] text-[14px] font-medium">Foundations</span>
           </div>
-          <h2 className="font-bold text-white text-[48px] leading-[58px]">
+          <h2 className="font-bold text-white text-[24px] leading-[32px] sm:text-[34px] sm:leading-[42px] lg:text-[48px] lg:leading-[58px]">
             A Modern AI Engineering Stack.
           </h2>
-          <p className="text-[#9ca3af] text-[16px] leading-6 max-w-[560px]">
+          <p className="text-[#9ca3af] text-[14px] sm:text-[16px] leading-6 max-w-[560px]">
             We&apos;re vendor-agnostic but opinionated. These are the tools we trust in production.
           </p>
         </div>

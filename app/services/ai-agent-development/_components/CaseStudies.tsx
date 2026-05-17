@@ -73,13 +73,13 @@ function StatBlock({ stat }: { stat: Stat }) {
 
 function CaseCard({ cs }: { cs: CaseStudy }) {
   const content = (
-    <div className="flex flex-col gap-6 flex-1 p-8 lg:p-10 lg:pr-[60px]">
+    <div className={`flex flex-col gap-4 sm:gap-6 flex-1 p-5 sm:p-8 lg:p-10 lg:pr-[60px]${cs.imageRight ? ' lg:order-first' : ''}`}>
       <div>
-        <h3 className="text-[26px] font-bold text-white leading-[34px] mb-3">{cs.title}</h3>
-        <p className="text-[14px] text-[#9ca3af] leading-[22px]">{cs.description}</p>
+        <h3 className="text-[20px] leading-[28px] sm:text-[26px] sm:leading-[34px] font-bold text-white mb-2 sm:mb-3">{cs.title}</h3>
+        <p className="text-[13px] sm:text-[14px] text-[#9ca3af] leading-[21px] sm:leading-[22px]">{cs.description}</p>
       </div>
 
-      <div className="flex gap-8 mt-[20px]">
+      <div className="flex gap-6 sm:gap-8 mt-[10px] sm:mt-[20px]">
         {cs.stats.map((s) => (
           <StatBlock key={s.label} stat={s} />
         ))}
@@ -101,7 +101,7 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
         href={cs.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="group inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-full text-white text-[13px] font-semibold mt-[60px] transition-all duration-300 hover:-translate-y-0.5"
+        className="group inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-full text-white text-[13px] font-semibold mt-6 sm:mt-[60px] transition-all duration-300 hover:-translate-y-0.5"
         style={{ background: '#ec7161', boxShadow: '0 0 0 rgba(236,113,97,0)' }}
         onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 8px 22px rgba(236,113,97,0.4)')}
         onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 0 0 rgba(236,113,97,0)')}
@@ -114,56 +114,49 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
     </div>
   );
 
-  const visual = (
-    <div
-      className="w-full lg:w-[45%] flex-shrink-0 flex items-center justify-center overflow-hidden p-8 lg:p-10"
-      style={{
-        background: '#0d1017',
-        borderRadius: cs.imageRight ? '0 16px 16px 0' : '16px 0 0 16px',
-      }}
-    >
-      <Image
-        src={cs.image}
-        alt={cs.title}
-        width={480}
-        height={360}
-        className="w-full h-auto rounded-lg object-contain"
-      />
-    </div>
-  );
-
   return (
     <div
       className="flex flex-col lg:flex-row rounded-2xl overflow-hidden"
       style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}
     >
-      {cs.imageRight ? (
-        <>{content}{visual}</>
-      ) : (
-        <>{visual}{content}</>
-      )}
+      <div
+        className={`w-full lg:w-[45%] flex-shrink-0 flex items-center justify-center overflow-hidden p-5 sm:p-8 lg:p-10${cs.imageRight ? ' lg:order-last' : ''}`}
+        style={{
+          background: '#0d1017',
+          borderRadius: cs.imageRight ? '0 16px 16px 0' : '16px 0 0 16px',
+        }}
+      >
+        <Image
+          src={cs.image}
+          alt={cs.title}
+          width={480}
+          height={360}
+          className="w-full h-auto rounded-lg object-contain"
+        />
+      </div>
+      {content}
     </div>
   );
 }
 
 export default function CaseStudies() {
   return (
-    <section className="pb-[120px]" style={{ background: '#070b14' }}>
-      <div className="container-page">
+    <section className="py-14 sm:py-20 lg:pb-[120px]" style={{ background: '#070b14' }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-14">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between px-0 gap-6 sm:gap-8 mb-10 sm:mb-14">
           <div className="flex flex-col gap-4 max-w-[480px]">
             <div className="flex items-center gap-2">
               <span className="w-6 h-[2px] bg-[#ec7161] rounded-full" />
               <span className="text-[#ec7161] text-[14px] font-medium">Case Studies</span>
             </div>
-            <h2 className="text-[52px] leading-[60px] font-semibold text-white tracking-[-0.01em]">
+            <h2 className="text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[52px] lg:leading-[60px] font-semibold text-white tracking-[-0.01em]">
               Where Code Meets{' '}
               <em className="font-medium italic">Conversion.</em>
             </h2>
           </div>
           <div className="max-w-[380px] lg:pt-2">
-            <p className="text-[15px] leading-[24px] text-[#9ca3af]">
+            <p className="text-[14px] sm:text-[15px] leading-[24px] text-[#9ca3af]">
               Custom-built platforms with measurable outcomes. Published scope, fixed pricing, and a committed delivery date — shipped, scaled, and proven in production.
             </p>
           </div>

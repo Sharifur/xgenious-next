@@ -87,8 +87,8 @@ export default function AgentWorkflow() {
   // Times are proportional to pixel path length for constant-speed travel.
 
   return (
-    <section className="pb-[120px]" style={{ background: '#070b14' }}>
-      <div className="container-page flex flex-col gap-16">
+    <section className="pb-14 sm:pb-20 lg:pb-[120px]" style={{ background: '#070b14' }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-16">
 
         {/* Header */}
         <div className="flex flex-col items-center text-center gap-5">
@@ -96,17 +96,17 @@ export default function AgentWorkflow() {
             <span className="w-6 h-[2px] bg-[#ec7161] rounded-full" />
             <span className="text-[#ec7161] text-[14px] font-medium">AI Agent Workflow</span>
           </div>
-          <h2 className="font-bold text-white text-[44px] leading-[54px] max-w-[720px]">
+          <h2 className="font-bold text-white text-[24px] leading-[32px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[54px] max-w-[720px]">
             How an Agent Thinks, Retrieves &amp; Responds
           </h2>
-          <p className="text-[#9ca3af] text-[16px] leading-6 max-w-[600px]">
+          <p className="text-[#9ca3af] text-[14px] sm:text-[16px] leading-6 max-w-[600px]">
             Every reply our agents produce passes through a four-layer knowledge pipeline and a nine-step contract. No layer is optional. No step can be reordered. Three hard stops protect the customer from drift.
           </p>
         </div>
 
         {/* Diagram card */}
         <div
-          className="rounded-[16px] border border-white/[0.07] p-10 flex flex-col"
+          className="hidden md:flex rounded-[16px] border border-white/[0.07] p-10 flex-col"
           style={{ background: '#0d1117' }}
         >
           {/* Input nodes */}
@@ -314,6 +314,22 @@ export default function AgentWorkflow() {
             })}
           </div>
 
+        </div>
+
+        <div className="flex flex-col gap-3 md:hidden">
+          {pipelineSteps.map((step, i) => (
+            <div
+              key={step.label}
+              className="flex items-start gap-4 rounded-[10px] p-4"
+              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
+            >
+              <span className="text-[#ec7161] text-[12px] font-bold flex-shrink-0 mt-0.5">0{i + 1}</span>
+              <div>
+                <p className="text-white text-[14px] font-medium">{step.label}</p>
+                <p className="text-[#6b7280] text-[11px] mt-0.5">{step.sub}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

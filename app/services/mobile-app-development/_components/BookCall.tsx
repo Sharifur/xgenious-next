@@ -63,8 +63,8 @@ const timeSlots = ['10:00 AM', '10:30 AM', '2:00 PM', '2:30 PM', '4:00 PM', '4:3
 
 export default function BookCall() {
   return (
-    <section className="py-[120px]" style={{ background: '#f5f6f8' }}>
-      <div className="container-page flex gap-[140px] items-start">
+    <section className="py-14 sm:py-20 lg:py-[120px]" style={{ background: '#f5f6f8' }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col lg:flex-row lg:gap-[140px] lg:items-start gap-10">
         {/* Left panel */}
         <div className="flex flex-col gap-8 flex-shrink-0" style={{ maxWidth: 560 }}>
           <div className="flex items-center gap-4">
@@ -83,7 +83,7 @@ export default function BookCall() {
           </div>
 
           <div className="flex flex-col gap-6">
-            <h2 className="text-[#0f1112] font-semibold" style={{ fontSize: 44, lineHeight: '52px' }}>
+            <h2 className="text-[#0f1112] font-semibold text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]">
               Book a 30-min app strategy call.
             </h2>
             <p className="text-[#2f2f2f] font-normal" style={{ fontSize: 16, lineHeight: '24px' }}>
@@ -111,7 +111,7 @@ export default function BookCall() {
         </div>
 
         {/* Right calendar panel */}
-        <div className="bg-white rounded-[12px] p-8 flex-shrink-0 flex flex-col gap-5" style={{ width: 620 }}>
+        <div className="bg-white rounded-[12px] p-8 flex-shrink-0 flex flex-col gap-5 w-full lg:w-[620px]">
           <div className="flex items-center justify-between">
             <span className="font-semibold text-[#0c0c0e]" style={{ fontSize: 16, lineHeight: '24px' }}>
               Pick a time

@@ -38,12 +38,12 @@ export default function TrustCompliance() {
   const rows = [cards.slice(0, 4), cards.slice(4, 8)];
 
   return (
-    <section className="py-[120px] bg-white">
-      <div className="container-page flex flex-col gap-[72px] items-center">
+    <section className="py-14 sm:py-20 lg:py-[120px] bg-white">
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-14 lg:gap-[72px] items-center">
         <div className="flex flex-col items-center gap-4 text-center max-w-[621px]">
           <SectionBadge>Trust &amp; Compliance</SectionBadge>
           <div className="flex flex-col gap-4 items-center">
-            <h2 className="text-[#0f1112] font-semibold" style={{ fontSize: 44, lineHeight: '52px' }}>
+            <h2 className="text-[#0f1112] font-semibold text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]">
               Security is Not a Phase Two Concern
             </h2>
             <p className="text-[#484848] font-normal" style={{ fontSize: 16, lineHeight: '24px', maxWidth: 611 }}>

@@ -142,18 +142,18 @@ export default function IndustryUseCases() {
   const [paused, setPaused] = useState(false);
 
   return (
-    <section className="pb-[120px] relative" style={{ background: '#070b14' }}>
+    <section className="pb-14 sm:pb-20 lg:pb-[120px] relative" style={{ background: '#070b14' }}>
       {/* Header */}
-      <div className="container-page mb-14">
+      <div className="container-page px-4 sm:px-6 lg:px-0 mb-10 sm:mb-14">
         <div className="text-center max-w-[600px] mx-auto flex flex-col gap-5">
           <div className="flex items-center justify-center gap-2">
             <span className="w-6 h-[2px] bg-[#ec7161] rounded-full" />
             <span className="text-[#ec7161] text-[14px] font-medium">Use Cases</span>
           </div>
-          <h2 className="font-bold text-white text-[48px] leading-[58px]">
+          <h2 className="font-bold text-white text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[48px] lg:leading-[58px]">
             AI Agents Deployed<br />Across Every Industry
           </h2>
-          <p className="text-[#9ca3af] text-[16px] leading-6">
+          <p className="text-[#9ca3af] text-[14px] sm:text-[16px] leading-6">
             From SaaS to healthcare — purpose-built AI agents that understand your domain, speak your terminology, and automate your workflows.
           </p>
         </div>
@@ -163,12 +163,12 @@ export default function IndustryUseCases() {
       <div className="relative overflow-hidden">
         {/* Left fade */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+          className="hidden sm:block absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
           style={{ background: 'linear-gradient(to right, #070b14 0%, transparent 100%)' }}
         />
         {/* Right fade */}
         <div
-          className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+          className="hidden sm:block absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
           style={{ background: 'linear-gradient(to left, #070b14 0%, transparent 100%)' }}
         />
 

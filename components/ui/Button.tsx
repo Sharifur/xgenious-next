@@ -26,8 +26,8 @@ const variants: Record<Variant, { base: string; shimmer: string; shadow: string;
 };
 
 const sizes: Record<Size, string> = {
-  sm: 'h-[38px] px-[20px] text-[13px]',
-  md: 'px-[20px] py-[10px] text-[16px]',
+  sm: 'h-[38px] px-[16px] sm:px-[20px] text-[12px] sm:text-[13px]',
+  md: 'px-4 sm:px-[20px] py-[9px] sm:py-[10px] text-[14px] sm:text-[16px]',
 };
 
 interface ButtonProps {
