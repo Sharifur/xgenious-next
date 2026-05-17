@@ -9,6 +9,7 @@ export const servicesDropdown: DropdownItem[] = [
   { label: 'Mobile App Development', href: '/mobile-app-development', description: 'iOS, Android & cross-platform apps' },
   { label: 'SaaS Development', href: '/custom-saas-development-company', description: 'End-to-end SaaS products from MVP to scale' },
   { label: 'AI Agent Development', href: '/ai-agent-development-services', description: 'Custom AI agents & workflow automation' },
+  { label: 'MVP Development', href: '/mvp-development', description: 'Working product in 6–8 weeks, built to scale' },
 ];
 
 export const productsDropdown: DropdownItem[] = [
@@ -38,6 +39,7 @@ export const footerLinks = {
     { label: 'Mobile App Development', href: '/mobile-app-development' },
     { label: 'SaaS Development', href: '/custom-saas-development-company' },
     { label: 'AI Agent Development', href: '/ai-agent-development-services' },
+    { label: 'MVP Development', href: '/mvp-development' },
   ],
   company: [
     { label: 'About', href: '/about' },
