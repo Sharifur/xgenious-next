@@ -8,14 +8,18 @@ type Props = {
   faqs?: FaqItem[];
   title?: string;
   description?: string;
+  badge?: string;
   dark?: boolean;
+  noPaddingTop?: boolean;
 };
 
 export default function FAQ({
   faqs = defaultFaqs,
-  title = 'Real Questions, Real Answer',
+  title = 'Real Questions. Real Answers.',
   description = "The questions every buyer actually asks. If yours isn't here, ask it on the call — we will answer it honestly.",
+  badge,
   dark = false,
+  noPaddingTop = false,
 }: Props) {
   const schema = {
     '@context': 'https://schema.org',
@@ -28,7 +32,7 @@ export default function FAQ({
   };
 
   return (
-    <section className={dark ? 'lg:pb-[120px] pb-12' : 'py-12 lg:py-[120px]'} style={{ background: dark ? '#070b14' : '#fff' }}>
+    <section className={dark ? 'lg:pb-[120px] pb-12' : noPaddingTop ? 'pb-12 lg:pb-[120px]' : 'py-12 lg:py-[120px]'} style={{ background: dark ? '#070b14' : '#fff' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -38,10 +42,10 @@ export default function FAQ({
           {dark ? (
             <div className="flex items-center justify-center gap-2 mb-5">
               <span className="w-6 h-[2px] bg-[#ec7161] rounded-full" />
-              <span className="text-[#ec7161] text-[14px] font-medium">Frequently Asked Questions</span>
+              <span className="text-[#ec7161] text-[14px] font-medium">{badge ?? 'Frequently Asked Questions'}</span>
             </div>
           ) : (
-            <SectionBadge className="mb-5">Frequently Asked &amp; Questions</SectionBadge>
+            <SectionBadge className="mb-5">{badge ?? 'Frequently Asked & Questions'}</SectionBadge>
           )}
           <h2 className={`text-[28px] sm:text-[36px] lg:text-[44px] leading-[36px] sm:leading-[44px] lg:leading-[52px] font-semibold ${dark ? 'text-white' : 'text-[#0F1112]'}`}>
             {title}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -12,17 +12,42 @@ const inter = Inter({
   style: ["normal", "italic"],
 });
 
+const nunitoSans = Nunito_Sans({
+  variable: "--font-nunito-sans",
+  subsets: ["latin"],
+  weight: ["700", "800", "900"],
+});
+
 export const metadata: Metadata = {
-  title: "Xgenious — Custom SaaS & Software Development",
+  metadataBase: new URL("https://xgenious.com"),
+  title: {
+    default: "Custom Software Development Company | Xgenious",
+    template: "%s | Xgenious",
+  },
   description:
-    "We build scalable SaaS platforms, web apps, mobile products, and AI agents. From MVP to production — on time, with full ownership.",
+    "Xgenious is a custom software development company building SaaS, web apps, mobile, and AI agents for mid-market teams. Fixed-price from $50K. UK · US · UAE.",
+  openGraph: {
+    siteName: "Xgenious",
+    locale: "en_US",
+    type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@xgenious1",
+    creator: "@xgenious1",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${nunitoSans.variable}`}>
       <body className="flex flex-col min-h-screen antialiased font-sans text-[#0F1112] bg-white">
         <TopLoader />
         <Navbar />

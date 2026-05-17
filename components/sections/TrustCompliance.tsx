@@ -10,7 +10,6 @@ const cards: ComplianceCard[] = [
   { icon: '/images/saas-dev/tc-payment.svg',  name: 'PCI DSS',           status: 'Ready · Stripe SAQ-A' },
   { icon: '/images/saas-dev/tc-database.svg', name: 'UAE DIFC',          status: 'DIFC/ADGM-compliant' },
   { icon: '/images/saas-dev/tc-database.svg', name: 'KSA PDPL',          status: 'Data-residency in-Kingdom' },
-  { icon: '/images/saas-dev/tc-todo.svg',     name: 'GDPR',              status: 'Live · DPA available' },
   { icon: '/images/saas-dev/tc-globe.svg',    name: 'EU Data Residency', status: 'Frankfurt / Dublin regions' },
 ];
 
@@ -33,8 +32,6 @@ function ComplianceItem({ icon, name, status }: ComplianceCard) {
 }
 
 export default function TrustCompliance() {
-  const rows = [cards.slice(0, 3), cards.slice(3, 6), cards.slice(6, 9)];
-
   return (
     <section className="py-14 sm:py-20 lg:py-[120px] bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-14 lg:gap-[72px] items-center">
@@ -44,18 +41,13 @@ export default function TrustCompliance() {
             Security is Not a Phase Two Concern
           </h2>
           <p className="text-[#484848] font-normal text-[14px] leading-[21px] sm:text-[16px] sm:leading-6 max-w-[611px]">
-            Every engagement ships a DPA. Every architecture ships with a threat model — honest
-            roadmap, not marketing badges.
+            Every engagement ships a DPA. Every architecture ships with a threat model — an honest roadmap, not marketing badges.
           </p>
         </div>
 
-        <div className="flex flex-col gap-3 sm:gap-4 w-full">
-          {rows.map((row, ri) => (
-            <div key={ri} className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-              {row.map((card, ci) => (
-                <ComplianceItem key={`${ri}-${ci}`} {...card} />
-              ))}
-            </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full">
+          {cards.map((card) => (
+            <ComplianceItem key={card.name} {...card} />
           ))}
         </div>
       </div>

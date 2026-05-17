@@ -5,10 +5,10 @@ export interface DropdownItem {
 }
 
 export const servicesDropdown: DropdownItem[] = [
-  { label: 'Web App Development', href: '/services/web-app-development', description: 'B2B portals, dashboards & enterprise platforms' },
-  { label: 'Mobile App Development', href: '/services/mobile-app-development', description: 'iOS, Android & cross-platform apps' },
-  { label: 'SaaS Development', href: '/services/saas-development', description: 'End-to-end SaaS products from MVP to scale' },
-  { label: 'AI Agent Development', href: '/services/ai-agent-development', description: 'Custom AI agents & workflow automation' },
+  { label: 'Web App Development', href: '/web-app-development-company', description: 'B2B portals, dashboards & enterprise platforms' },
+  { label: 'Mobile App Development', href: '/mobile-app-development', description: 'iOS, Android & cross-platform apps' },
+  { label: 'SaaS Development', href: '/custom-saas-development-company', description: 'End-to-end SaaS products from MVP to scale' },
+  { label: 'AI Agent Development', href: '/ai-agent-development', description: 'Custom AI agents & workflow automation' },
 ];
 
 export const productsDropdown: DropdownItem[] = [
@@ -34,10 +34,10 @@ export const footerLinks = {
     { label: 'Terms Of Service', href: '/terms' },
   ],
   services: [
-    { label: 'Web App Development', href: '/services/web-app-development' },
-    { label: 'Mobile App Development', href: '/services/mobile-app-development' },
-    { label: 'SaaS Development', href: '/services/saas-development' },
-    { label: 'AI Agent Development', href: '/services/ai-agent-development' },
+    { label: 'Web App Development', href: '/web-app-development-company' },
+    { label: 'Mobile App Development', href: '/mobile-app-development' },
+    { label: 'SaaS Development', href: '/custom-saas-development-company' },
+    { label: 'AI Agent Development', href: '/ai-agent-development' },
   ],
   company: [
     { label: 'About', href: '/about' },

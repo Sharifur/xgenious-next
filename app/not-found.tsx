@@ -94,7 +94,7 @@ export default function NotFound() {
               {
                 label: 'Web App Dev',
                 desc: 'B2B portals & dashboards',
-                href: '/services/web-app-development',
+                href: '/web-app-development-company',
                 icon: (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                     <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.8"/>
@@ -105,7 +105,7 @@ export default function NotFound() {
               {
                 label: 'AI Agent Dev',
                 desc: 'Custom AI & automation',
-                href: '/services/ai-agent-development',
+                href: '/ai-agent-development',
                 icon: (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8"/>
@@ -117,7 +117,7 @@ export default function NotFound() {
               {
                 label: 'SaaS Dev',
                 desc: 'MVP to production scale',
-                href: '/services/saas-development',
+                href: '/custom-saas-development-company',
                 icon: (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                     <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>

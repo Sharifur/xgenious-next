@@ -359,12 +359,12 @@ export default function ProcessSteps() {
         <div className="text-center mb-14 max-w-[680px] mx-auto">
           <SectionBadge className="mb-5">How We Work</SectionBadge>
           <h2 className="text-[30px] sm:text-[40px] lg:text-[44px] leading-[38px] sm:leading-[52px] font-bold text-[#0F1112] tracking-[-0.01em]">
-            Clear Process,{' '}
-            <span className="italic font-bold">Consistent Results.</span>
+            Four Stages. One Team.{' '}
+            <span className="italic font-bold">Your Delivery Date.</span>
           </h2>
           <p className="mt-4 text-[#484848] text-[14px] leading-[22px] max-w-[560px] mx-auto">
-            From research to delivery, we combine strategy, design, and technology to create
-            scalable and user-focused digital experiences.
+            Same engineering team across all four stages. No handoffs to junior pods. No mid-sprint
+            surprises. A delivery date you can plan around.
           </p>
         </div>
 

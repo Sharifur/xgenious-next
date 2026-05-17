@@ -27,16 +27,34 @@ export default function FinalCTA() {
 
       <div className="container-page relative z-10 text-center px-4 sm:px-0">
         <h2 className="text-[26px] sm:text-[36px] lg:text-[44px] leading-[1.15] font-semibold text-white tracking-[-0.01em] max-w-[720px] mx-auto">
-          Ready to Build Your SaaS or{' '}
-          <span className="italic font-semibold">Marketplace?</span>
+          Book a 30-Min{' '}
+          <span className="italic font-semibold">SaaS Strategy Call.</span>
         </h2>
-        <p className="mt-4 sm:mt-5 text-[#A6A6A6] text-[14px] leading-6 max-w-[480px] mx-auto">
-          Book a free consultation — get a roadmap &amp; estimate.
+        <p className="mt-4 sm:mt-5 text-[#A6A6A6] text-[14px] leading-[22px] max-w-[520px] mx-auto">
+          No sales pitch. No obligation. Come with a problem — leave with a concrete next step,
+          a realistic budget range, and an honest read on whether we&apos;re the right fit.
         </p>
 
-        <Button href="/contact" variant="coral" icon={<ArrowIcon />} className="mt-6 sm:mt-8">
+        <Button href="#booking" variant="coral" icon={<ArrowIcon />} className="mt-6 sm:mt-8">
           Book a free consultation
         </Button>
+
+        {/* Trust signals */}
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+          {[
+            '30 minutes · video or audio',
+            'Signed mutual NDA inside 24h',
+            'Written follow-up with a scope sketch',
+          ].map((signal) => (
+            <div key={signal} className="flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <circle cx="7" cy="7" r="6.5" stroke="#F26B4E" strokeWidth="1" />
+                <path d="M4 7l2 2 4-4" stroke="#F26B4E" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="text-[13px] text-[#8A8F99]">{signal}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

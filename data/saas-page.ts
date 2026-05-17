@@ -18,8 +18,9 @@ export type Service = {
   number: string;
   title: string;
   description: string;
+  cta: string;
   bg: string;
-  illustration: 'saas' | 'web' | 'mobile' | 'ai';
+  illustration: 'saas' | 'web' | 'mobile' | 'ai' | 'mvp';
   href: string;
   /** Optional asset paths — when provided, the card uses real images
    *  instead of the inline SVG illustration. */
@@ -32,10 +33,11 @@ export const services: Service[] = [
     number: '01',
     title: 'SaaS Development',
     description:
-      'From-scratch multi-tenant SaaS products. Subscription billing, multi-region hosting, audit logs, SSO, and compliance built into the architecture — not bolted on later.',
+      'Multi-tenant architecture, subscription billing, SSO, compliance — engineered in from day one, never bolted on later.',
+    cta: 'Plan your SaaS build',
     bg: '#E1E7F3',
     illustration: 'saas',
-    href: '/services/saas-development',
+    href: '/custom-saas-development-company',
     bgImage: '/services/saas-development-service-bg.jpg',
     illustrationImage: '/services/saas-illustration.png',
   },
@@ -43,10 +45,11 @@ export const services: Service[] = [
     number: '02',
     title: 'Web App Development',
     description:
-      'Custom web platforms — internal tools, B2B portals, enterprise dashboards, custom CRMs. Single-tenant, project-shaped builds engineered for your exact workflow.',
+      'Internal tools, B2B portals, enterprise dashboards, and CRMs — built from the schema up, never retrofitted from a template.',
+    cta: 'Scope your platform',
     bg: '#CFF3E0',
     illustration: 'web',
-    href: '/services/web-app-development',
+    href: '/web-app-development-company',
     bgImage: '/services/web-app-development-bg.jpg',
     illustrationImage: '/services/web-app-development-illustration.png',
   },
@@ -54,10 +57,11 @@ export const services: Service[] = [
     number: '03',
     title: 'Mobile App Development',
     description:
-      'iOS and Android via Flutter, with native fallback when the build demands it. App Store and Play Store submission included. Push, offline, biometrics, payments — all production-grade.',
+      'iOS and Android shipped to the stores. Flutter for cross-platform speed, native where the build demands it. Push, offline, biometrics, payments — all production-grade.',
+    cta: 'Ship your mobile app',
     bg: '#F5E1CD',
     illustration: 'mobile',
-    href: '/services/mobile-app-development',
+    href: '/mobile-app-development',
     bgImage: '/services/mobile-app-development-bg.jpg',
     illustrationImage: '/services/mobile-app-development-illustration.png',
   },
@@ -65,12 +69,23 @@ export const services: Service[] = [
     number: '04',
     title: 'AI Agent Development',
     description:
-      'RAG pipelines, agentic workflows, voice agents, and LLM features built into existing or new SaaS. Production evals, observability, and a real ROI model — not demoware.',
+      'RAG pipelines, agentic workflows, and voice agents on Claude and OpenAI — with eval harnesses, observability, and a real ROI model engineered in from day one.',
+    cta: 'Deploy an AI agent',
     bg: '#EADBF5',
     illustration: 'ai',
-    href: '/services/ai-agent-development',
+    href: '/ai-agent-development',
     bgImage: '/services/ai-agent-development-bg.jpg',
     illustrationImage: '/services/ai-agent-development-illustration.png',
+  },
+  {
+    number: '05',
+    title: 'MVP Development',
+    description:
+      'Working product in 6–8 weeks. Real users, validated metrics, and a clean codebase that scales into the full SaaS — not throwaway prototype code.',
+    cta: 'Validate your idea',
+    bg: '#D6EEF8',
+    illustration: 'mvp',
+    href: '/contact',
   },
 ];
 
@@ -86,36 +101,36 @@ export type WhyChooseCard = {
 export const whyChooseCards: WhyChooseCard[] = [
   {
     icon: 'code',
-    title: 'Greenfield only, No script clones.',
+    title: 'Greenfield builds only.',
     body:
-      'Every engagement is a from-scratch build on a modern stack — React, Next.js, Node, Laravel, Flutter, AWS. No CodeCanyon forks. No copy-paste templates. No surprise "starter" code that breaks at scale.',
+      'Every engagement is a from-scratch build on a modern stack — React, Next.js, Node, Laravel, Flutter, AWS. No surprise "starter" code that breaks at scale.',
     quote:
-      'They asked me what we actually needed before quoting. Three other shops just sent a template price.',
-    quoteAttribution: 'VP Engineering, Series B Fintech',
+      'The code quality was outstanding. Clean architecture, well-documented, and built to scale. Not a template in sight.',
+    quoteAttribution: 'Founder, eCommerce SaaS',
   },
   {
     icon: 'package',
     title: 'We ship our own software.',
     body:
-      'Seven SaaS products in production with paying users — Nazmart, Xilancer, Prohandy, Fundorex, Nexelit, Helpnest, Grenmart. We know what running a real product takes because we run several. That\'s how we estimate honestly.',
+      '13,000+ active users across Nazmart, Xilancer, Prohandy, Fundorex, Nexelit, Helpnest, Grenmart. We know what running a real product takes — because we run several.',
     quote:
-      'Other agencies estimated 6 months. Xgenious finished in 14 weeks because their own products solved Problem.',
-    quoteAttribution: 'VP Engineering, Series B Fintech',
+      'Xgenious delivered in 14 weeks what two other agencies said would take 6 months. They clearly know production software.',
+    quoteAttribution: 'CTO, Marketplace Platform',
   },
   {
     icon: 'shield',
     title: 'Compliance-ready from day one.',
     body:
-      'GDPR, HIPAA, SOC 2-ready architectures by default. DPA on every engagement. UK Ltd, US Delaware C-Corp, and UAE DMCC entities so your procurement team can sign locally. The trust artefacts mid-market buyers need.',
+      'GDPR, HIPAA, SOC 2-ready architectures by default. DPA on every engagement. UK Ltd, US Delaware C-Corp, and UAE DMCC entities so your procurement team can sign locally.',
     quote:
-      'DPA inside 24 hours. Threat model on the architecture review call. That\'s what closed it for us.',
-    quoteAttribution: 'VP Engineering, Series B Fintech',
+      'DPA signed in 24 hours. Threat model reviewed on the architecture call. That level of professionalism is rare at this price point.',
+    quoteAttribution: 'VP Engineering, B2B SaaS',
   },
 ];
 
 /* ── STATS — 4 numbered stat cards under the differentiator cards ── */
 export const stats = [
-  { number: '01', value: 7000, suffix: '+', label: 'Customer Happy' },
+  { number: '01', value: 13000, suffix: '+', label: 'Happy Customers' },
   { number: '02', value: 19,   suffix: '+', label: 'Awards Achieved' },
   { number: '03', value: 25,   suffix: '+', label: 'Team Members' },
   { number: '04', value: 100,  suffix: '+', label: 'Product develop' },
@@ -244,34 +259,35 @@ export const techStack = [
 export const processSteps = [
   {
     number: '01',
-    title: 'Discovery & Requirements',
-    description: 'Understanding business needs, goals and technical requirement.',
+    title: 'Scope',
+    description:
+      'We start by understanding your business goals, users, existing systems, and what\'s broken. Discovery sprint with workflow mapping, architecture sketch, scope doc, and a fixed quote — before any commitment.',
   },
   {
     number: '02',
     title: 'Solution Architecture',
     description:
-      'A scalable, maintainable system — choosing the right stack, patterns, and deployment strategy for your use case.',
+      'Tech-spec doc, ER diagram, API contract, threat model, and a written security posture — all signed off with you before sprint one starts.',
   },
   {
     number: '03',
     title: 'Development & Customization',
     description:
-      'Agile sprints with weekly demos. You see progress every step and adjust priorities based on real feedback.',
+      'React, Next.js, TypeScript, Node or Laravel API, Flutter mobile. Weekly demos your team can click through and leave feedback on.',
   },
   {
     number: '04',
     title: 'QC & Deployment',
     description:
-      'Comprehensive testing across devices and environments, followed by a smooth production deployment.',
+      'End-to-end testing, observability wired (Datadog / Sentry / PostHog), DNS cutover, App Store and Play Store submission. We launch alongside your team.',
   },
 ];
 
 /* ── AI AGENT ── */
 export const aiFeatures = [
-  { number: '01', title: 'Custom AI Agent Development', description: 'Autonomous reasoning, tool use, multi-step workflows' },
-  { number: '02', title: 'Workflow Automation',         description: 'End-to-end orchestration across systems and teams' },
-  { number: '03', title: 'Intelligent Integrations',    description: 'LLM-native connectors for the tools you already use' },
+  { number: '01', title: 'Custom AI Agent Development', description: 'Autonomous agents with tool use, multi-step reasoning, eval harnesses — engineered for production, not demos.' },
+  { number: '02', title: 'Workflow Automation',         description: 'End-to-end orchestration across your stack — Slack, CRM, payments, ticketing — wired with idempotency, retries, and observability so nothing silently fails.' },
+  { number: '03', title: 'Intelligent Integrations',    description: 'LLM-native connectors for the tools you already use: Salesforce, HubSpot, Slack, Microsoft 365, Notion, custom APIs — agents that read, write, and act inside your workflow.' },
 ];
 
 export const aiTabs = ['Development', 'Automation', 'Integrations'];
@@ -318,38 +334,33 @@ export const testimonials: Testimonial[] = [
 /* ── FAQ ── */
 export const faqs = [
   {
-    question: 'Does webflow support custom code?',
+    question: 'How long does it take to build a SaaS from scratch?',
     answer:
-      'Webflow is a no-code visual development platform that allows you to design, build, and launch fully responsive websites without relying on traditional coding.',
+      'MVP: 12–16 weeks. Full production SaaS with mobile, AI, and compliance layers: 20–24 weeks. You receive a committed launch date in the proposal — not a rolling estimate that shifts every sprint.',
   },
   {
-    question: 'How fast can you actually ship a SaaS MVP?',
+    question: 'What\'s the best tech stack for a custom SaaS in 2026?',
     answer:
-      'Webflow is a no-code visual development platform that allows you to design, build, and launch fully responsive websites without relying on traditional coding.',
+      'React + Next.js + TypeScript on the frontend. Node.js or Laravel on the API. PostgreSQL for the database. AWS for infrastructure. Flutter for cross-platform mobile. Claude or OpenAI + LangGraph + Pinecone for AI workloads. We match the stack to the build — this is our default, not a one-size-fits-all answer.',
   },
   {
-    question: 'What does the fixed price cover — and what\'s excluded?',
+    question: 'Should I hire a SaaS agency or build in-house?',
     answer:
-      'The fixed price covers everything in the agreed scope. Out of scope items are quoted separately and only after you approve them.',
+      'Two mid-level US engineers cost roughly $260K per year — before equity, benefits, or onboarding time. Our MVP Pro engagement ships a production SaaS in 12–16 weeks. Most mid-market clients run hybrid: we ship the foundation, they hire 2 engineers to operate and extend it. We can help you structure that handoff.',
   },
   {
-    question: 'Where will my customer data be hosted?',
+    question: 'What\'s the difference between multi-tenant SaaS and a custom web app?',
     answer:
-      'You choose. We deploy to your AWS, GCP, or Azure account by default. We also offer EU and UAE residency for regulated workloads.',
+      'Multi-tenant SaaS means one codebase serving many customers on subscriptions — with tenant isolation, billing, and usage limits baked into the architecture. A custom web app is one codebase serving one customer\'s workflow. Both are browser-delivered, but the architecture, data model, and pricing are completely different. We scope accordingly.',
   },
   {
-    question: 'Do you sign GDPR DPAs? What about HIPAA?',
+    question: 'Can you add AI agents to my existing SaaS?',
     answer:
-      'Yes. DPA inside 24 hours. We architect for HIPAA technical safeguards by default and can sign BAAs with US entities.',
+      'Yes — that\'s our AI Agent service line. We build RAG pipelines, agentic workflows, voice agents, and LLM features into existing platforms. We wire in eval harnesses, observability, and a real ROI model so you can measure what the agent is actually doing.',
   },
   {
-    question: 'Can we work under NDA before sharing our idea?',
+    question: 'Who owns the code after delivery?',
     answer:
-      'Always. Mutual NDA before the first call if you ask for it. We also keep all engagements confidential by default.',
-  },
-  {
-    question: 'What happens after launch — do you offer support retainers?',
-    answer:
-      'We offer retainer-based support and maintenance plans. Most clients stay with us after launch — the team that built the product is also the best team to maintain it.',
+      'You do, 100%. IP transfers on final payment. Your GitHub repository, your cloud account, your App Store listing. No licenses, no revenue shares, no vendor lock-in of any kind.',
   },
 ];
