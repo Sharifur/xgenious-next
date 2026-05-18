@@ -46,7 +46,7 @@ const stats = [
 
 export default function FounderStats() {
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white py-[100px]">
       <div className="container-page px-4 sm:px-6 lg:px-0">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {stats.map((s) => (
