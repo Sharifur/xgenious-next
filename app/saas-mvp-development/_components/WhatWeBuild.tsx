@@ -90,7 +90,7 @@ export default function WhatWeBuild() {
         <div className="flex flex-col items-center gap-4 text-center max-w-[680px]">
           <SectionBadge>What We Build</SectionBadge>
           <h2 className="font-semibold text-[#0f1112] text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[48px] lg:leading-[56px]">
-            MVP Development Services<br className="hidden sm:block" />for Modern Startups
+            MVP Development Services{' '}<br className="hidden sm:block" />for Modern Startups
           </h2>
           <p className="text-[#484848] text-[14px] leading-[22px] sm:text-[16px] sm:leading-[24px] max-w-[560px]">
             End-to-end product capabilities, delivered by a senior team that

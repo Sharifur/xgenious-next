@@ -328,7 +328,7 @@ export default function Benefits() {
 
         <div className="flex flex-col items-center gap-4 text-center max-w-[760px]">
           <h2 className="font-semibold text-[#0f1112] text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[44px] lg:leading-[52px]">
-            Benefits of MVP Development<br />for Faster Growth
+            Benefits of MVP Development{' '}<br />for Faster Growth
           </h2>
           <p className="text-[#484848] text-[14px] leading-[22px] sm:text-[16px] sm:leading-[24px]">
             Launch faster, validate your idea early, and reduce development risk

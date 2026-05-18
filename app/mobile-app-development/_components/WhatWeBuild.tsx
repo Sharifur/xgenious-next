@@ -78,7 +78,7 @@ function FreelancerAppScreen() {
           </div>
         </div>
         <p className="text-[12px] font-bold text-white leading-[16px] mb-[10px]">
-          Find the Perfect<br/>Freelancer for<br/>Any Project
+          Find the Perfect{' '}<br/>Freelancer for{' '}<br/>Any Project
         </p>
         <button className="bg-white text-[#5b4fcf] text-[8px] font-bold px-[10px] py-[4px] rounded-full">
           Explore all
