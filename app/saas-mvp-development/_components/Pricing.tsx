@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import ServicePricing, { type PricingPlan } from '@/components/sections/ServicePricing';
 
 const plans: PricingPlan[] = [
@@ -39,10 +40,10 @@ const plans: PricingPlan[] = [
     popular: true,
   },
   {
-    name: 'MVP Scale',
+    name: 'MVP → Production Bridge',
     price: '$30,000',
     timeline: '10–16 Weeks · 3+ Sprint cycles',
-    bestFor: 'Teams building a SaaS or marketplace MVP with multi-tenancy, AI features, and compliance requirements.',
+    bestFor: 'Your MVP validated. Now build the SaaS you\'ll run for years — multi-tenant, compliant, scalable. This tier bridges the gap.',
     features: [
       'Multi-tenant SaaS or marketplace architecture',
       'AI/LLM feature integration',
@@ -51,8 +52,9 @@ const plans: PricingPlan[] = [
       'GDPR-ready data handling',
       'Full test suite + SOC 2-ready setup',
       '1-year post-launch support + SRE retainer',
+      'Hands off to full Custom SaaS build if needed',
     ],
-    cta: 'Talk to Us',
+    cta: 'Start the Bridge',
     ctaHref: '/contact',
     dark: false,
     popular: false,
@@ -61,10 +63,20 @@ const plans: PricingPlan[] = [
 
 export default function Pricing() {
   return (
-    <ServicePricing
-      plans={plans}
-      heading="Pick a Starting Point, No Discovery Tax"
-      subhead="Scope is published. Timeline is committed. If we quote outside your package, we'll tell you upfront — not mid-sprint."
-    />
+    <>
+      <ServicePricing
+        plans={plans}
+        heading="Pick a Starting Point, No Discovery Tax"
+        subhead="Scope is published. Timeline is committed. If we quote outside your package, we'll tell you upfront — not mid-sprint."
+      />
+      <div className="text-center pb-10 sm:pb-14 lg:pb-[80px]">
+        <p className="text-[#6b7280] text-[14px]">
+          Already validated? See our{' '}
+          <Link href="/custom-saas-development-company" className="text-[#3b82f6] underline underline-offset-2 hover:text-white transition-colors">
+            Custom SaaS Development →
+          </Link>
+        </p>
+      </div>
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import ServicePricing, { type PricingPlan } from '@/components/sections/ServicePricing';
 
 const plans: PricingPlan[] = [
@@ -61,9 +62,19 @@ const plans: PricingPlan[] = [
 
 export default function Pricing() {
   return (
-    <ServicePricing
-      plans={plans}
-      subhead="Scope is published. Timeline is committed. If we quote outside your package, we'll tell you upfront — not mid-sprint."
-    />
+    <>
+      <ServicePricing
+        plans={plans}
+        subhead="Scope is published. Timeline is committed. If we quote outside your package, we'll tell you upfront — not mid-sprint."
+      />
+      <div className="text-center pb-10 sm:pb-14 lg:pb-[80px]">
+        <p className="text-[#6b7280] text-[14px]">
+          Still validating? Start with our{' '}
+          <Link href="/saas-mvp-development" className="text-[#3b82f6] underline underline-offset-2 hover:text-white transition-colors">
+            SaaS MVP Development →
+          </Link>
+        </p>
+      </div>
+    </>
   );
 }

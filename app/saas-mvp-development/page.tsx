@@ -41,10 +41,72 @@ const faqItems: FaqItem[] = [
 
 const BASE_URL = 'https://xgenious.com';
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://xgenious.com/saas-mvp-development#service',
+  name: 'SaaS MVP Development',
+  serviceType: 'SaaS MVP Development',
+  description: 'Fixed-price SaaS and software MVPs — shipped in 4–16 weeks. Production-grade code that scales. Not throwaway prototype code. From $2,500.',
+  url: 'https://xgenious.com/saas-mvp-development',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://xgenious.com/#organization',
+    name: 'Xgenious',
+    url: 'https://xgenious.com',
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'United Arab Emirates' },
+    { '@type': 'Country', name: 'Bangladesh' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'SaaS MVP Development Packages',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        name: 'MVP Starter',
+        description: 'Single-use-case web app, React/Next.js, REST API, PostgreSQL, deployed to production. 2–4 weeks.',
+        price: '2500',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '2500', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'MVP Pro',
+        description: 'Multi-feature product with payments, auth, admin dashboard, CI/CD, and observability. 6–10 weeks.',
+        price: '15000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '15000', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'MVP → Production Bridge',
+        description: 'Multi-tenant SaaS or marketplace architecture, AI features, Flutter mobile app, GDPR-ready, 1-year support. 10–16 weeks.',
+        price: '30000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '30000', priceCurrency: 'USD' },
+      },
+    ],
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://xgenious.com' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://xgenious.com/#services' },
+    { '@type': 'ListItem', position: 3, name: 'SaaS MVP Development', item: 'https://xgenious.com/saas-mvp-development' },
+  ],
+};
+
 export const metadata: Metadata = {
-  title: 'SaaS MVP Development Company — Ship in 6–10 Weeks',
+  title: 'SaaS MVP Development — Ship in 6–10 Weeks',
   description:
-    'Xgenious builds SaaS and software MVPs from scratch — fixed-price from $2,500, shipped in 4–16 weeks. Real users, validated metrics, clean codebase that scales. Not throwaway prototype code.',
+    'Custom SaaS and software MVPs from scratch. Fixed-price from $2,500, shipped in 4–16 weeks. Clean codebase that scales — not throwaway prototype code.',
   metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: '/saas-mvp-development',
@@ -72,6 +134,8 @@ export const metadata: Metadata = {
 export default function MvpDevelopmentPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Hero />
       <TrustedBy title="Trusted by teams around the world" />
       <AboutSection />
