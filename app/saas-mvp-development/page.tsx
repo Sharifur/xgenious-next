@@ -6,6 +6,7 @@ import WhatWeBuild from './_components/WhatWeBuild';
 import Benefits from './_components/Benefits';
 import Process from './_components/Process';
 import Pricing from './_components/Pricing';
+import ScopingTemplate from './_components/ScopingTemplate';
 import WhyMVP from './_components/WhyMVP';
 import Testimonials from '@/components/sections/Testimonials';
 import BookingCTA from '@/components/sections/BookingCTA';
@@ -146,6 +147,7 @@ export default function MvpDevelopmentPage() {
       <WhatWeBuild />
       <Benefits />
       <Process />
+      <ScopingTemplate />
       <Pricing />
       <WhyMVP />
       <Testimonials />
