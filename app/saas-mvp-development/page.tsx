@@ -42,7 +42,7 @@ const faqItems: FaqItem[] = [
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'SaaS MVP Development Company | Ship in 6–10 Weeks | Xgenious',
+  title: 'SaaS MVP Development Company — Ship in 6–10 Weeks',
   description:
     'Xgenious builds SaaS and software MVPs from scratch — fixed-price from $2,500, shipped in 4–16 weeks. Real users, validated metrics, clean codebase that scales. Not throwaway prototype code.',
   metadataBase: new URL(BASE_URL),

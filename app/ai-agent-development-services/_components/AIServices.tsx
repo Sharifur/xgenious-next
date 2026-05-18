@@ -157,19 +157,19 @@ const services = [
   },
   {
     title: 'AI Workflow Automation',
-    desc: 'Replace fragile if-this-then-that automations with agents that handle exceptions, edge cases, and judgement calls. End-to-end orchestration across your stack — Slack, CRM, payments, ticketing — with idempotency, retries, and full observability so nothing silently fails.',
+    desc: 'Replace fragile if-this-then-that automations — Zapier flows, n8n pipelines — with agents that handle exceptions, edge cases, and judgement calls. End-to-end orchestration across your stack — Slack, CRM, payments, ticketing — with idempotency, retries, and full observability so nothing silently fails.',
     visual: <img src="/services/ai-workflow.jpg" alt="AI Workflow Automation" className="w-full h-full object-cover" />,
     tall: true,
   },
   {
     title: 'AI Customer Support',
-    desc: 'Conversational support agents with persistent memory, full context awareness, and live tool access — deployed across web chat, WhatsApp, Slack, and voice. Escalates to a human when it should. Resolves autonomously when it can.',
+    desc: 'Conversational support agents with persistent memory, full context awareness, and live tool access — deployed across web chat, WhatsApp, Slack, and voice agents. Escalates to a human when it should. Resolves autonomously when it can.',
     visual: <img src="/services/ai-customer-support.jpg" alt="AI Customer Support" className="w-full h-full object-cover" />,
     tall: false,
   },
   {
     title: 'AI Chatbot Systems',
-    desc: 'LLM-native chatbots that go beyond keyword matching — grounded in your knowledge base via RAG, integrated with your backend APIs, and capable of taking actions, not just answering questions. Built with hallucination guards and confidence thresholds.',
+    desc: 'LLM-native chatbots that go beyond keyword matching — grounded in your knowledge base via RAG — embeddings, vector database retrieval, and semantic search — integrated with your backend APIs, and capable of taking actions, not just answering questions. Built with hallucination guards and confidence thresholds.',
     visual: <img src="/services/ai-chatbot.jpg" alt="AI Chatbot Systems" className="w-full h-full object-cover" />,
     tall: false,
   },

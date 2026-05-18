@@ -62,7 +62,7 @@ export default function Hero() {
           </div>
 
           <h1 className="text-[#181818] font-semibold text-[32px] leading-[40px] sm:text-[48px] sm:leading-[56px] lg:text-[72px] lg:leading-[80px] max-w-[1050px]">
-            <span className="lg:whitespace-nowrap">Custom SaaS Development</span><br />
+            <span className="lg:whitespace-nowrap">Custom SaaS Development</span>{' '}<br />
             <em className="font-medium italic">Built to Run, Not Just to Launch</em>
           </h1>
 

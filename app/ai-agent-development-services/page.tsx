@@ -47,9 +47,9 @@ const faqItems: FaqItem[] = [
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'AI Agent Development Services | Custom AI Agents for Business | Xgenious',
+  title: 'AI Agent Development Services — Custom AI Agents for Business',
   description:
-    'Xgenious builds custom AI agents — RAG pipelines, agentic workflows, multi-agent systems, and LLM integrations. Production-grade, not demo-grade. Fixed-price from $1,500. Deployed in 2–12 weeks.',
+    'Custom AI agents — RAG pipelines, multi-agent workflows, LLM integrations. Production-grade, not demo-grade. Fixed-price from $1,500. 2–12 weeks.',
   metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: '/ai-agent-development-services',
@@ -75,9 +75,73 @@ export const metadata: Metadata = {
   },
 };
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://xgenious.com/ai-agent-development-services#service',
+  name: 'AI Agent Development Services',
+  serviceType: 'AI Agent Development',
+  description: 'Custom AI agents — RAG pipelines, agentic workflows, multi-agent systems, and LLM integrations. Production-grade, not demo-grade. Fixed-price from $1,500. Deployed in 2–12 weeks.',
+  url: 'https://xgenious.com/ai-agent-development-services',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://xgenious.com/#organization',
+    name: 'Xgenious',
+    url: 'https://xgenious.com',
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'United Arab Emirates' },
+    { '@type': 'Country', name: 'Bangladesh' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'AI Agent Development Packages',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        name: 'Agent Validation',
+        description: 'Validate your AI use case — single agent, RAG pipeline, up to 2 tool integrations, hallucination monitoring. Fee fully credited toward Agent Pro. 2–3 weeks.',
+        price: '1500',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '1500', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'Agent Pro',
+        description: 'Up to 3 coordinated agents, LangGraph orchestration, 8 integrations, eval harness. 6–8 weeks.',
+        price: '8000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '8000', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'Agent Enterprise',
+        description: 'Unlimited agents, custom connectors, fine-tuning, SOC 2-ready, SLA-backed. 12+ weeks.',
+        price: '25000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '25000', priceCurrency: 'USD', minPrice: '25000' },
+      },
+    ],
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://xgenious.com' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://xgenious.com/#services' },
+    { '@type': 'ListItem', position: 3, name: 'AI Agent Development', item: 'https://xgenious.com/ai-agent-development-services' },
+  ],
+};
+
 export default function AiAgentDevelopmentPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Hero />
       <TrustedBy title="Trusted by teams around the world" dark />
       <AIServices />

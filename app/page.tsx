@@ -15,7 +15,7 @@ import FinalCTA from '@/components/sections/FinalCTA';
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'Custom SaaS & Software Development — Fixed-Price | Xgenious',
+  title: { absolute: 'Custom SaaS & Software Development — Fixed-Price | Xgenious' },
   description:
     'Custom SaaS, web apps, mobile, and AI agents for mid-market teams. Fixed-price from $50K. UK · US · UAE.',
   metadataBase: new URL(BASE_URL),

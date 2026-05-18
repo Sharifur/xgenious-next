@@ -26,7 +26,7 @@ const features = [
   {
     num: '06',
     title: 'Custom-Trained on Your Data',
-    desc: 'Fine-tuning, RAG indexing, and continual learning loops tailored to your domain, terminology, and business rules. Your agents speak your language — not generic LLM output.',
+    desc: 'Fine-tuning, embedding pipelines, vector database indexing, and continual learning loops tailored to your domain, terminology, and business rules. Your agents speak your language — not generic LLM output.',
   },
   {
     num: '07',
