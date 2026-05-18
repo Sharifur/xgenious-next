@@ -7,28 +7,28 @@ const sections = [
     id: 'launch-faster',
     title: 'Launch Faster With Essential Features',
     content: [
-      'An MVP focuses only on the core functionality your users truly need. This lets you enter the market sooner, start collecting real feedback immediately, and improve with data rather than assumptions — without waiting 12 months for a fully complete product.',
+      'An MVP focuses only on the core functionality your users truly need. This lets you enter the market sooner, start collecting real traction data immediately, iterate based on what users actually do — not what they say — and improve with evidence rather than assumptions. No 12-month build before you know if the idea works.',
     ],
   },
   {
     id: 'save-budget',
     title: 'Save Budget and Reduce Build Risk',
     content: [
-      'Building a complete product from day one often leads to wasted investment in features users never wanted. An MVP approach keeps development lean — you spend on what matters and only expand scope once user behaviour confirms the direction.',
+      'Building a complete product from day one often burns funded runway on features users never wanted. An MVP keeps development lean — critical when you have a 6-month window to find traction. Spend on what the data confirms, not what the roadmap assumes, and only expand scope once real user behaviour points the way.',
     ],
   },
   {
     id: 'real-feedback',
     title: 'Make Decisions Based on Real User Behaviour',
     content: [
-      'Instead of assumptions, an MVP gives you actual user behaviour — activation rates, retention, drop-off points. That data shapes every future sprint, every prioritisation decision, and every investor conversation with evidence rather than speculation.',
+      'Instead of assumptions, an MVP gives you actual user behaviour — activation rates, retention, drop-off points. That data shapes every future sprint, every prioritisation decision, and every investor conversation. Product-market fit is not a feeling. It\'s a retention curve and a referral rate — and you can only measure it with real users.',
     ],
   },
   {
     id: 'reduce-risk',
     title: 'Reduce the Risk of Building the Wrong Product',
     content: [
-      'Most failed products weren\'t badly built — they solved the wrong problem. An MVP validates demand before the major investment. Test the hypothesis small, refine the concept, and scale with confidence rather than hope.',
+      'Most failed products weren\'t badly built — they solved the wrong problem. An MVP validates demand — and your path to PMF — before the major investment. Test the hypothesis, iterate on the insight, pivot if the data demands it, and scale with confidence once the signal is real rather than assumed.',
     ],
   },
 ];

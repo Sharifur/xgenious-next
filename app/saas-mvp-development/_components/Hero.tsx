@@ -31,9 +31,9 @@ export default function Hero() {
         </h1>
 
         <p className="text-[#9ca3af] text-[14px] leading-[22px] sm:text-[16px] sm:leading-[24px] lg:text-[18px] lg:leading-[28px] max-w-[640px]">
-          Greenfield MVP development for product teams testing the market. Real users in 6–10 weeks,
-          validated metrics, and a clean codebase that scales into the full SaaS — not throwaway
-          prototype code. Fixed-price from $2,500.
+          Greenfield MVP development for pre-seed and seed-stage founders testing product-market fit.
+          Real users in 6–10 weeks, validated metrics, and a clean codebase that scales into the
+          full SaaS — not throwaway prototype code. Fixed-price from $2,500.
         </p>
 
         <div className="flex items-center gap-4 flex-wrap justify-center">

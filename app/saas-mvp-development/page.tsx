@@ -37,6 +37,10 @@ const faqItems: FaqItem[] = [
     question: 'Who owns the code after delivery?',
     answer: 'You do — 100%. IP transfers to you on final payment. Your GitHub organisation, your cloud account, your App Store account. We retain no licences, no revenue shares, and no ongoing access. We keep the right to mention the engagement as a case study unless you request otherwise.',
   },
+  {
+    question: 'MVP development vs no-code (Bubble, Webflow, Glide) — when does custom code make sense?',
+    answer: 'No-code is right for two things: quick demos and internal tools with 5 users. Custom code makes sense when you need proprietary business logic, real performance at scale, custom API integrations your no-code tool can\'t replicate, or when investors and acquirers will scrutinise the technical stack. Most founders hit the ceiling of Bubble or Webflow somewhere between $0 and $500 MRR. When that happens, they rebuild from scratch — losing every timeline advantage no-code appeared to give them. We build the version you won\'t need to rewrite.',
+  },
 ];
 
 const BASE_URL = 'https://xgenious.com';
