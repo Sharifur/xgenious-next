@@ -84,12 +84,6 @@ export default function Hero() {
       {/* Bottom spacer so next section has breathing room */}
       <div className="h-14 sm:h-20" style={{ background: '#050608' }} />
 
-      <style jsx>{`
-        @keyframes mvpMarquee {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
     </section>
   );
 }
