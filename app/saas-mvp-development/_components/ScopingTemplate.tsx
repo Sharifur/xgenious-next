@@ -56,13 +56,14 @@ function DocumentCard() {
 }
 
 export default function ScopingTemplate() {
+  const [name, setName]           = useState('');
   const [email, setEmail]         = useState('');
   const [loading, setLoading]     = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!email) return;
+    if (!name || !email) return;
     setLoading(true);
     await new Promise((r) => setTimeout(r, 800));
     setLoading(false);
@@ -122,25 +123,36 @@ export default function ScopingTemplate() {
                   <path d="M8.5 14l3.5 3.5 7-7" stroke="#22c55e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <div>
-                  <p className="font-semibold text-[#22c55e] text-[14px]">Template sent to {email}</p>
+                  <p className="font-semibold text-[#22c55e] text-[14px]">Template sent to {email}, {name}</p>
                   <p className="text-[#16a34a] text-[12px] mt-0.5">Check your inbox — reply if you have questions.</p>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  required
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 px-4 py-3 rounded-[8px] text-[14px] text-white outline-none transition-all placeholder:text-[#4b5563]"
-                  style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
-                />
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <input
+                    type="text"
+                    required
+                    placeholder="Your name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="px-4 py-3 rounded-[8px] text-[14px] text-white outline-none transition-all placeholder:text-[#4b5563]"
+                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
+                  />
+                  <input
+                    type="email"
+                    required
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="px-4 py-3 rounded-[8px] text-[14px] text-white outline-none transition-all placeholder:text-[#4b5563]"
+                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
+                  />
+                </div>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex-shrink-0 flex items-center justify-center gap-2 px-5 py-3 rounded-[8px] font-semibold text-[14px] text-white transition-opacity disabled:opacity-60 whitespace-nowrap"
+                  className="flex items-center justify-center gap-2 px-5 py-3 rounded-[8px] font-semibold text-[14px] text-white transition-opacity disabled:opacity-60"
                   style={{ background: '#ec7161' }}
                 >
                   {loading ? 'Sending…' : 'Send me the template'}
