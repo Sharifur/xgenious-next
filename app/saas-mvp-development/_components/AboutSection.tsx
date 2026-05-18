@@ -1,6 +1,6 @@
 export default function AboutSection() {
   return (
-    <section className="pb-16 sm:pb-20 lg:pb-[100px] bg-white">
+    <section className="pt-16 sm:pt-20 lg:pt-[100px] pb-16 sm:pb-20 lg:pb-[100px] bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
