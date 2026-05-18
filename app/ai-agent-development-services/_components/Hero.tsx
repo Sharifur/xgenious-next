@@ -507,7 +507,7 @@ export default function Hero() {
           <br />
           <em className="font-semibold italic">Workforce</em>
         </h1>
-        <p className="text-[#9ca3af] font-normal text-[14px] leading-[21px] sm:text-[16px] sm:leading-6 lg:text-[18px] lg:leading-[27px] max-w-[560px]">
+        <p className="text-[#9ca3af] font-normal text-[14px] leading-[21px] sm:text-[16px] sm:leading-6 lg:text-[18px] lg:leading-[27px] max-w-[750px]">
           Xgenious designs and deploys custom AI agents, multi-agent systems, and workflow automation — production-grade, enterprise-secure, and trained on your business logic. Not chatbots, not Zapier flows, not n8n pipelines. Agentic AI systems that reason, retrieve, and act. Fixed-price from $1,500.
         </p>
         <div className="flex items-center gap-[17px] flex-wrap justify-center">
