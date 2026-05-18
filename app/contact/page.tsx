@@ -72,8 +72,6 @@ export default function ContactPage() {
     firstName: '',
     lastName: '',
     email: '',
-    queryType: '',
-    product: '',
     subject: '',
     message: '',
   });
@@ -133,7 +131,7 @@ export default function ContactPage() {
                   <button
                     onClick={() => {
                       setSubmitted(false);
-                      setForm({ firstName: '', lastName: '', email: '', queryType: '', product: '', subject: '', message: '' });
+                      setForm({ firstName: '', lastName: '', email: '', subject: '', message: '' });
                     }}
                     className="text-[13px] text-[#ec7161] font-medium underline underline-offset-2"
                   >
@@ -178,44 +176,6 @@ export default function ContactPage() {
                       placeholder="john@example.com"
                       className="rounded-xl border border-[#E5E7EC] px-4 py-3 text-[14px] text-[#0F1112] placeholder:text-[#9ca3af] outline-none focus:border-[#ec7161] transition-colors"
                     />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[13px] font-medium text-[#0F1112]">Query Type <span className="text-[#ec7161]">*</span></label>
-                      <div className="relative">
-                        <select
-                          name="queryType"
-                          value={form.queryType}
-                          onChange={handleChange}
-                          required
-                          className="w-full rounded-xl border border-[#E5E7EC] px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#ec7161] transition-colors appearance-none bg-white"
-                        >
-                          <option value="" disabled>Select type</option>
-                          {QUERY_TYPES.map((q) => <option key={q} value={q}>{q}</option>)}
-                        </select>
-                        <svg className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                          <path d="M2.5 4.5l3.5 3.5 3.5-3.5" stroke="#6b7280" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[13px] font-medium text-[#0F1112]">Product Name</label>
-                      <div className="relative">
-                        <select
-                          name="product"
-                          value={form.product}
-                          onChange={handleChange}
-                          className="w-full rounded-xl border border-[#E5E7EC] px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#ec7161] transition-colors appearance-none bg-white"
-                        >
-                          <option value="" disabled>Select product</option>
-                          {PRODUCTS.map((p) => <option key={p} value={p}>{p}</option>)}
-                        </select>
-                        <svg className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                          <path d="M2.5 4.5l3.5 3.5 3.5-3.5" stroke="#6b7280" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </div>
-                    </div>
                   </div>
 
                   <div className="flex flex-col gap-1.5">
