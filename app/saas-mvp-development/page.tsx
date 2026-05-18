@@ -7,6 +7,9 @@ import Benefits from './_components/Benefits';
 import Process from './_components/Process';
 import Pricing from './_components/Pricing';
 import ScopingTemplate from './_components/ScopingTemplate';
+import FounderStats from './_components/FounderStats';
+import MVPComparison from './_components/MVPComparison';
+import MVPQualifier from './_components/MVPQualifier';
 import WhyMVP from './_components/WhyMVP';
 import Testimonials from '@/components/sections/Testimonials';
 import BookingCTA from '@/components/sections/BookingCTA';
@@ -143,10 +146,13 @@ export default function MvpDevelopmentPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Hero />
       <TrustedBy title="Trusted by teams around the world" />
+      <FounderStats />
       <AboutSection />
+      <MVPComparison />
       <WhatWeBuild />
       <Benefits />
       <Process />
+      <MVPQualifier />
       <ScopingTemplate />
       <Pricing />
       <WhyMVP />
