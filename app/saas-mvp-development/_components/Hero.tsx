@@ -25,8 +25,8 @@ export default function Hero() {
 
       {/* Text content */}
       <div className="relative container-page px-4 sm:px-6 lg:px-0 pt-[120px] sm:pt-[160px] lg:pt-[200px] pb-14 sm:pb-20 flex flex-col items-center text-center gap-6 sm:gap-8">
-        <h1 className="font-semibold text-white text-[32px] leading-[40px] sm:text-[52px] sm:leading-[62px] lg:text-[72px] lg:leading-[80px] max-w-[900px]">
-          From Idea to Real Users in 6–10 Weeks.{' '}<br className="hidden sm:block" />
+        <h1 className="font-semibold text-white text-[32px] leading-[40px] sm:text-[52px] sm:leading-[62px] lg:text-[72px] lg:leading-[80px] max-w-[1050px]">
+          From Idea to Real Users in 6–10 Weeks.{' '}
           <em className="font-medium italic">Fixed-Price MVP Development.</em>
         </h1>
 
