@@ -77,7 +77,7 @@ function CalendarMock() {
 
 export default function BookingCTA() {
   return (
-    <section id="contact" className="py-16 sm:py-24 relative overflow-hidden bg-[#0C0C10]">
+    <section id="booking" className="py-16 sm:py-24 relative overflow-hidden bg-[#0C0C10]">
       {/* Background image — object-cover prevents stretching */}
       <Image
         src="/start-with-us-bg.jpg"

@@ -407,11 +407,61 @@ const AI = () => (
   </div>
 );
 
+/* ── Illustration: MVP — rocket launch with checklist ── */
+const Mvp = () => (
+  <div className="relative w-[260px] h-[160px] sm:h-[200px] flex-shrink-0 overflow-hidden">
+    <div
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[180px] h-3 rounded-full"
+      style={{ background: 'rgba(15,17,18,0.06)', filter: 'blur(6px)' }}
+    />
+    {/* Rocket */}
+    <div className="absolute left-1/2 -translate-x-1/2 top-4 flex flex-col items-center">
+      <div
+        className="w-[48px] h-[80px] rounded-t-full flex items-end justify-center pb-2"
+        style={{ background: 'linear-gradient(180deg, #1A73E8 0%, #0D47A1 100%)', boxShadow: '0 8px 20px rgba(26,115,232,0.3)' }}
+      >
+        <div className="w-5 h-5 rounded-full bg-[#D6EEF8] border-2 border-white/60" />
+      </div>
+      {/* Body */}
+      <div
+        className="w-[52px] h-[44px] flex items-center justify-center"
+        style={{ background: 'linear-gradient(180deg, #2196F3 0%, #1565C0 100%)' }}
+      >
+        <span className="text-white text-[11px] font-bold tracking-wide">MVP</span>
+      </div>
+      {/* Fins */}
+      <div className="relative w-[52px]">
+        <div className="absolute left-0 top-0 w-0 h-0" style={{ borderLeft: '12px solid transparent', borderRight: '0 solid transparent', borderTop: '18px solid #0D47A1' }} />
+        <div className="w-full h-[18px]" style={{ background: '#1565C0' }} />
+        <div className="absolute right-0 top-0 w-0 h-0" style={{ borderRight: '12px solid transparent', borderLeft: '0 solid transparent', borderTop: '18px solid #0D47A1' }} />
+      </div>
+      {/* Flame */}
+      <div className="w-6 h-8 rounded-b-full" style={{ background: 'linear-gradient(180deg, #F26B4E 0%, #FFD66B 100%)', filter: 'blur(1px)' }} />
+    </div>
+    {/* Checklist card */}
+    <div className="absolute right-1 top-6 w-[88px] bg-white rounded-xl shadow-lg p-2.5 space-y-1.5">
+      {['Schema', 'Auth', 'Billing', 'Deploy'].map((item, i) => (
+        <div key={item} className="flex items-center gap-1.5">
+          <div className={`w-3.5 h-3.5 rounded-full flex items-center justify-center flex-shrink-0 ${i < 3 ? 'bg-[#F26B4E]' : 'bg-[#E5E7EC]'}`}>
+            {i < 3 && <svg width="7" height="7" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg>}
+          </div>
+          <span className="text-[9px] font-medium text-[#2F2F2F]">{item}</span>
+        </div>
+      ))}
+    </div>
+    {/* Week badge */}
+    <div className="absolute left-2 bottom-10 bg-[#D6EEF8] rounded-lg px-2 py-1 shadow-sm">
+      <span className="text-[10px] font-bold text-[#1565C0]">6–8 weeks</span>
+    </div>
+  </div>
+);
+
 const ill: Record<string, ReactElement> = {
   saas: <Saas />,
   web: <Web />,
   mobile: <Mobile />,
   ai: <AI />,
+  mvp: <Mvp />,
 };
 
 /* ── Image with SVG fallback. If the file at `src` is missing or fails
@@ -533,7 +583,7 @@ function StackCard({
             href={s.href}
             className="mt-8 lg:mt-[120px] self-start inline-flex items-center gap-2 px-5 h-11 rounded-full bg-white text-[#0F1112] text-[13px] font-medium shadow-[0_2px_8px_rgba(15,17,18,0.08)] hover:bg-[#F26B4E] hover:text-white hover:shadow-[0_6px_16px_rgba(242,107,78,0.35)] transition-colors duration-300 ease-in-out"
           >
-            View More Details
+            {s.cta}
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path
                 d="M3.5 8.5l5-5M4.5 3.5h4v4"
@@ -577,16 +627,15 @@ export default function ServicesGrid() {
           <div className="lg:col-span-7">
             <SectionBadge className="mb-5">What We Build</SectionBadge>
             <h2 className="text-[28px] sm:text-[36px] lg:text-[40px] leading-[36px] sm:leading-[44px] font-semibold text-[#0F1112] tracking-[-0.01em]">
-              Creating the Future of Your
-              <br className="hidden lg:block" />
-              <span className="italic font-semibold">Digital Presence</span>
+              Custom-Built SaaS.{' '}
+              <span className="italic font-semibold">From Scratch to Final Delivery.</span>
             </h2>
           </div>
           <div className="lg:col-span-5 flex items-end">
             <p className="text-[#484848] text-[14px] leading-[22px] lg:text-right">
-              SaaS products, custom web platforms, mobile apps, and AI agents.
-              From-scratch builds with publicized scope, fixed pricing, and a
-              committed delivery date.
+              SaaS products, custom web platforms, mobile apps, AI agents, and
+              validation-ready MVPs. From-scratch builds with published scope and
+              a committed delivery date.
             </p>
           </div>
         </div>

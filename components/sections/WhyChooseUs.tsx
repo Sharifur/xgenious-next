@@ -69,14 +69,13 @@ export default function WhyChooseUs() {
 
       <div className="container-page relative">
         <div className="text-center mb-14 max-w-[640px] mx-auto">
-          <SectionBadge className="mb-5">Why Mid-Market Team Pick Us</SectionBadge>
+          <SectionBadge className="mb-5">Why Mid-Market Teams Pick Us</SectionBadge>
           <h2 className="text-[32px] sm:text-[44px] leading-[40px] sm:leading-[52px] font-semibold text-white tracking-[-0.01em]">
-            Built for Your{' '}
-            <span className="italic font-semibold">Digital Future</span>
+            We Don&apos;t Just Build Software.{' '}
+            <span className="italic font-semibold">We Run It.</span>
           </h2>
           <p className="mt-4 text-[#A6A6A6] text-[15px] leading-6 max-w-[460px] mx-auto">
-            We don&apos;t just build software for others — we create and operate our own digital
-            products.
+            Reasons to pick Xgenious over offshore agencies.
           </p>
         </div>
 

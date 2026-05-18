@@ -92,15 +92,17 @@ function FeatureCard({
   icon,
   title,
   tags,
+  href,
   withPointer = false,
 }: {
   icon: React.ReactNode;
   title: string;
   tags: string[];
+  href: string;
   withPointer?: boolean;
 }) {
   return (
-    <div className="relative w-full lg:w-[220px]">
+    <Link href={href} className="relative w-full lg:w-[220px] group/card">
       {/* Upward arrow pointer (sits on top edge of card) */}
       {withPointer && (
         <span
@@ -113,7 +115,7 @@ function FeatureCard({
       )}
 
       <div
-        className="relative bg-white flex flex-col gap-3 p-4"
+        className="relative bg-white flex flex-col gap-3 p-4 transition-shadow duration-200 group-hover/card:shadow-[0_8px_28px_rgba(0,0,0,0.16)]"
         style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.10)', borderRadius: 10 }}
       >
         <div className="flex items-center gap-2.5">
@@ -138,7 +140,7 @@ function FeatureCard({
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -269,9 +271,9 @@ const dots = [
 ] as const;
 
 const featureCards = [
-  { icon: I_AI,  title: 'AI Agent',         tags: ['Intelligent', 'Scalable'] },
-  { icon: I_SW,  title: 'Custom Software',  tags: ['Flexible', 'User-Centric'] },
-  { icon: I_DEV, title: 'Development',      tags: ['Secure', 'Efficient'] },
+  { icon: I_AI,  title: 'AI Agent',         tags: ['Intelligent', 'Scalable'],  href: '/ai-agent-development-services' },
+  { icon: I_SW,  title: 'Custom Software',  tags: ['Flexible', 'User-Centric'], href: '/custom-saas-development-company' },
+  { icon: I_DEV, title: 'Development',      tags: ['Secure', 'Efficient'],      href: '/web-app-development-company' },
 ];
 
 const CARD_WIDTH = 220;
@@ -289,18 +291,18 @@ type HeroProps = {
 };
 
 export default function HeroSection({
-  eyebrow = 'Custom SaaS Development',
+  eyebrow = 'Custom Software Development Company',
   title = (
     <>
-      Where Custom Solutions Meet{' '}
-      <span style={{ fontStyle: 'italic', fontWeight: 600 }}>Real Impact</span>
+      We Build Custom SaaS &amp; Software.{' '}
+      <span style={{ color: '#F26B4E' }}>13,000+</span> Users on the Products We&apos;ve Shipped.
     </>
   ),
-  subtitle = "We're an engineering-led studio building greenfield SaaS, web apps, mobile apps, and AI agents for mid-market companies. Real projects from $50K — no script clones, no copy-paste templates.",
+  subtitle = 'From-scratch SaaS, custom web platforms, mobile apps, and AI agents engineered by a team that Moves Your Business Forward.',
   primaryCtaText = 'Start Your Project',
   primaryCtaHref = '/contact',
-  secondaryCtaText = 'View Case Studies',
-  secondaryCtaHref = '/work',
+  secondaryCtaText = 'Book a Free 30-min Call',
+  secondaryCtaHref = '#booking',
 }: HeroProps = {}) {
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
   const [pinnedIdx, setPinnedIdx] = useState<number | null>(null);
@@ -499,6 +501,12 @@ export default function HeroSection({
               </span>
             </Link>
           </div>
+
+          {/* Trust bar */}
+          <p className="mt-5 text-[13px] text-[#5A5F6A] tracking-wide">
+            Custom SaaS, shipped for businesses across{' '}
+            <span className="font-semibold text-[#0F1112]">100+ countries</span>.
+          </p>
           </div>
         </div>
 
@@ -546,7 +554,7 @@ export default function HeroSection({
                   pointerEvents: visible ? 'auto' : 'none',
                 }}
               >
-                <FeatureCard icon={card.icon} title={card.title} tags={card.tags} withPointer />
+                <FeatureCard icon={card.icon} title={card.title} tags={card.tags} href={card.href} withPointer />
               </div>
             );
           })}
@@ -555,7 +563,7 @@ export default function HeroSection({
         {/* Mobile feature cards — always visible */}
         <div className="flex flex-col gap-4 mt-8 pb-6 w-full lg:hidden">
           {featureCards.map((card) => (
-            <FeatureCard key={card.title} icon={card.icon} title={card.title} tags={card.tags} />
+            <FeatureCard key={card.title} icon={card.icon} title={card.title} tags={card.tags} href={card.href} />
           ))}
         </div>
       </div>

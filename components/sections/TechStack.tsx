@@ -116,7 +116,7 @@ function SharedDefs({ prefix }: { prefix: string }) {
 
 export default function TechStack() {
   return (
-    <section id="tech-stack" className="py-16 sm:py-24 bg-white">
+    <section id="tech-stack" className="pb-16 sm:pb-24 bg-white">
       <div className="container-page">
         <div className="text-center mb-8 sm:mb-12 max-w-[680px] mx-auto px-4 sm:px-0">
           <SectionBadge className="mb-5">Tech Stack</SectionBadge>

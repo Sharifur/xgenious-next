@@ -782,18 +782,17 @@ export default function AIAgentSection() {
           <div className="rounded-[24px] bg-[#0C0C0E] border border-[#1F2127] p-6">
 
             <span className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#F26B4E]/40 text-[#F26B4E] text-[13px] font-medium mb-6">
-              Capabilities
+              Your Ultimate Agent
             </span>
 
             <h2 className="text-[28px] leading-[1.15] font-bold text-white tracking-[-0.02em] mb-4">
-              AI Agent that{' '}
-              <span className="italic font-bold">Actually do Work</span>
+              Custom AI, Built for{' '}
+              <span className="italic font-bold">What You Actually Need.</span>
             </h2>
 
             <p className="text-[#8A8F99] text-[14px] leading-[23px] mb-8">
-              We build smart, scalable, and efficient digital products by embedding intelligence
-              at every layer — from autonomous agents that reason in real time, to systems that
-              learn, adapt, and decide alongside your team.
+              Autonomous agents, workflow automation, decision systems, or LLM integrations —
+              built from scratch for your data, your tools, your team.
             </p>
 
             <ul className="border-t border-[#1F2127]">
@@ -856,24 +855,23 @@ export default function AIAgentSection() {
                       style={{ opacity: pillOpacity, y: pillY }}
                       className="inline-flex items-center self-start px-4 py-1.5 rounded-full border border-[#F26B4E]/40 text-[#F26B4E] text-[14px] font-medium mb-8"
                     >
-                      Capabilities
+                      Your Ultimate Agent
                     </motion.span>
 
                     <motion.h2
                       style={{ opacity: headingOpacity, y: headingY }}
                       className="text-[28px] sm:text-[38px] lg:text-[54px] leading-[1.1] font-bold text-white tracking-[-0.02em]"
                     >
-                      AI Agent that{' '}
-                      <span className="italic font-bold">Actually do Work</span>
+                      Custom AI, Built for{' '}
+                      <span className="italic font-bold">What You Actually Need.</span>
                     </motion.h2>
 
                     <motion.p
                       style={{ opacity: bodyOpacity, y: bodyY }}
                       className="mt-6 text-[#8A8F99] text-[15px] leading-[24px] max-w-[520px]"
                     >
-                      We build smart, scalable, and efficient digital products by embedding intelligence
-                      at every layer — from autonomous agents that reason in real time, to systems that
-                      learn, adapt, and decide alongside your team.
+                      Autonomous agents, workflow automation, decision systems, or LLM integrations —
+                      built from scratch for your data, your tools, your team.
                     </motion.p>
 
                     <motion.ul className="mt-12" style={{ opacity: listOpacity, y: listY }}>

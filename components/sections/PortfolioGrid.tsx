@@ -56,12 +56,12 @@ export default function PortfolioGrid() {
         <div className="text-center mb-12 max-w-[640px] mx-auto">
           <SectionBadge className="mb-5">Our Own Products</SectionBadge>
           <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] leading-[36px] sm:leading-[44px] lg:leading-[52px] font-semibold text-[#0F1112] tracking-[-0.01em]">
-            Built for Your{' '}
-            <span className="italic font-semibold">Digital Future</span>
+            Software We{' '}
+            <span className="italic font-semibold">Ship and Run.</span>
           </h2>
-          <p className="mt-4 text-[#484848] text-[15px] leading-6 max-w-[460px] mx-auto">
-            We don&apos;t just build software for others — we create and operate our own digital
-            products.
+          <p className="mt-4 text-[#484848] text-[15px] leading-6 max-w-[520px] mx-auto">
+            Across eCommerce, marketplaces, on-demand services, fundraising, and AI — operated by
+            the same engineering team available to build yours.
           </p>
         </div>
       </div>
