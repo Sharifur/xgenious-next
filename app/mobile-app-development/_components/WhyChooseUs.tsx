@@ -68,9 +68,9 @@ export default function WhyChooseUs() {
         <div className="flex flex-col lg:flex-row lg:items-start lg:gap-16 gap-8">
           {/* Left — title + feature cards */}
           <div className="flex flex-col gap-8 lg:gap-10 w-full lg:w-[520px] shrink-0">
-            <h2 className="font-semibold text-[#0f1112] text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]">
+            <h3 className="font-semibold text-[#0f1112] text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px]">
               Built for Performance, Security, and Scale
-            </h2>
+            </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {features.map((f) => (
                 <div key={f.title} className="group flex flex-col gap-3 rounded-[12px] p-5 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">

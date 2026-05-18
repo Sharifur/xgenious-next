@@ -170,7 +170,7 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="text-[15px] font-semibold text-white mb-5">Links</h4>
+            <h3 className="text-[15px] font-semibold text-white mb-5">Links</h3>
             <ul className="space-y-3">
               {LINKS.map((l) => (
                 <li key={l.label}>
@@ -184,7 +184,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-[15px] font-semibold text-white mb-5">Services</h4>
+            <h3 className="text-[15px] font-semibold text-white mb-5">Services</h3>
             <ul className="space-y-3">
               {SERVICES.map((l) => (
                 <li key={l.label}>
@@ -198,7 +198,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-[15px] font-semibold text-white mb-5">Company</h4>
+            <h3 className="text-[15px] font-semibold text-white mb-5">Company</h3>
             <ul className="space-y-3">
               {COMPANY.map((l) => (
                 <li key={l.label}>

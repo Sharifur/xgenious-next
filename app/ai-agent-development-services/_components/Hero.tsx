@@ -503,12 +503,12 @@ export default function Hero() {
       {/* Content */}
       <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col items-center text-center gap-6 sm:gap-8 relative z-10">
         <h1 className="text-white font-bold text-[32px] leading-[40px] sm:text-[48px] sm:leading-[58px] lg:text-[72px] lg:leading-[82px] max-w-[850px]">
-          Your AI-Powered Digital
+          Your AI-Powered Digital{' '}
           <br />
           <em className="font-semibold italic">Workforce</em>
         </h1>
-        <p className="text-[#9ca3af] font-normal text-[14px] leading-[21px] sm:text-[16px] sm:leading-6 lg:text-[18px] lg:leading-[27px] max-w-[560px]">
-          Xgenious designs and deploys custom AI agents, multi-agent systems, and workflow automation — production-grade, enterprise-secure, and trained on your business logic. Not chatbots. Autonomous systems that get work done. Fixed-price from $1,500.
+        <p className="text-[#9ca3af] font-normal text-[14px] leading-[21px] sm:text-[16px] sm:leading-6 lg:text-[18px] lg:leading-[27px] max-w-[750px]">
+          Xgenious designs and deploys custom AI agents, multi-agent systems, and workflow automation — production-grade, enterprise-secure, and trained on your business logic. Not chatbots, not Zapier flows, not n8n pipelines. Agentic AI systems that reason, retrieve, and act. Fixed-price from $1,500.
         </p>
         <div className="flex items-center gap-[17px] flex-wrap justify-center">
           <Button href="/contact" variant="coral" icon={<ArrowIcon />}>

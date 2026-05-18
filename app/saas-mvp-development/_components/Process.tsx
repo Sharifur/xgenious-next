@@ -51,8 +51,8 @@ const steps = [
   },
 ];
 
-const TRAVEL_MS = 1400;
-const PAUSE_MS  = 2200;
+const TRAVEL_MS = 900;
+const PAUSE_MS  = 1600;
 
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 

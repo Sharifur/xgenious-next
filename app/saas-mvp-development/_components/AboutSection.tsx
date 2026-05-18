@@ -1,6 +1,6 @@
 export default function AboutSection() {
   return (
-    <section className="pb-16 sm:pb-20 lg:pb-[100px] bg-white">
+    <section className="pt-16 sm:pt-20 lg:pt-[100px] pb-16 sm:pb-20 lg:pb-[100px] bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
@@ -12,7 +12,7 @@ export default function AboutSection() {
                 About MVP Development
               </span>
               <p className="text-[#484848] text-[15px] leading-[23px] sm:text-[16px] sm:leading-[25px]">
-                MVP development — the fastest path from idea to real user feedback, without the cost or risk of a full build.
+                MVP development — the fastest path from idea to real user validation, without the cost or risk of a full build.
               </p>
             </div>
 
@@ -57,7 +57,8 @@ export default function AboutSection() {
             <p className="text-[#484848] text-[14px] leading-[22px] sm:text-[15px] sm:leading-[23px]">
               We commit to a launch date in the proposal and deliver a fixed-price build with full
               IP transfer on completion. No discovery tax, no runaway costs, no junior pod handoff
-              mid-sprint.
+              mid-sprint. Whether you have funded runway or are pre-revenue, the scope is locked
+              before we start.
             </p>
           </div>
 

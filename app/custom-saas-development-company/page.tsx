@@ -53,9 +53,9 @@ import CTASection from './_components/CTASection';
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'Custom SaaS Development Company | Multi-Tenant SaaS & MVP | Xgenious',
+  title: 'Custom SaaS Development — Multi-Tenant Platforms & MVPs',
   description:
-    'Xgenious builds custom SaaS from scratch — multi-tenant architecture, subscription billing, GDPR & HIPAA-ready. Fixed-price from $3k. Shipped by a team running 7 SaaS products with 13,000+ users.',
+    'Custom SaaS built from scratch — multi-tenant, subscription billing, GDPR & HIPAA-ready. Fixed-price from $3K. Built by a team running 7 SaaS products.',
   metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: '/custom-saas-development-company',
@@ -81,9 +81,73 @@ export const metadata: Metadata = {
   },
 };
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://xgenious.com/custom-saas-development-company#service',
+  name: 'Custom SaaS Development',
+  serviceType: 'Custom SaaS Development',
+  description: 'From-scratch SaaS — multi-tenant architecture, subscription billing, GDPR & HIPAA-ready. Fixed-price from $3k. Shipped by a team running 7 SaaS products with 13,000+ users.',
+  url: 'https://xgenious.com/custom-saas-development-company',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://xgenious.com/#organization',
+    name: 'Xgenious',
+    url: 'https://xgenious.com',
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'United Arab Emirates' },
+    { '@type': 'Country', name: 'Bangladesh' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'SaaS Development Packages',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        name: 'SaaS Starter',
+        description: 'Single-tenant SaaS, up to 2 user roles, Stripe payments, GDPR DPA. 3–5 weeks.',
+        price: '3000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '3000', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'SaaS Pro',
+        description: 'Multi-tenant SaaS, subscription billing, admin dashboard, HIPAA-ready. 10–12 weeks.',
+        price: '15000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '15000', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'SaaS Scale',
+        description: 'Production SaaS with SSO, AI integration, Flutter mobile app, SOC 2-ready. 14–20 weeks.',
+        price: '35000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '35000', priceCurrency: 'USD' },
+      },
+    ],
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://xgenious.com' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://xgenious.com/#services' },
+    { '@type': 'ListItem', position: 3, name: 'Custom SaaS Development', item: 'https://xgenious.com/custom-saas-development-company' },
+  ],
+};
+
 export default function SaasDevelopmentPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Hero />
       <ProofCards />
       <WhatWeBuild />

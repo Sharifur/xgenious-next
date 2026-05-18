@@ -45,7 +45,7 @@ import CTASection from './_components/CTASection';
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'Mobile App Development Company | iOS, Android & Flutter | Xgenious',
+  title: 'Mobile App Development — iOS, Android & Flutter',
   description:
     'Xgenious builds custom iOS, Android, and Flutter apps — shipped to the App Store and Play Store, not stuck in TestFlight. Fixed-price from $2k. 4–16 weeks. GDPR-ready on day one.',
   metadataBase: new URL(BASE_URL),
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     canonical: '/mobile-app-development',
   },
   openGraph: {
-    title: 'Mobile App Development Company | iOS, Android & Flutter | Xgenious',
+    title: 'Mobile App Development — iOS, Android & Flutter | Xgenious',
     description:
       'Production-grade iOS and Android apps. Flutter cross-platform or native when it demands it. Fixed price. Committed delivery date. App Store and Play Store, shipped.',
     url: `${BASE_URL}/mobile-app-development`,
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mobile App Development Company | iOS, Android & Flutter | Xgenious',
+    title: 'Mobile App Development — iOS, Android & Flutter | Xgenious',
     description:
       'Production-grade iOS and Android apps. Flutter cross-platform or native when it demands it. Fixed price. Committed delivery date. App Store and Play Store, shipped.',
     images: ['/og-image.png'],
@@ -73,9 +73,73 @@ export const metadata: Metadata = {
   },
 };
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://xgenious.com/mobile-app-development#service',
+  name: 'Mobile App Development',
+  serviceType: 'Mobile App Development',
+  description: 'Custom iOS, Android, and Flutter apps shipped to the App Store and Play Store. Fixed-price from $2,000. 2–16 weeks. GDPR-ready on day one.',
+  url: 'https://xgenious.com/mobile-app-development',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://xgenious.com/#organization',
+    name: 'Xgenious',
+    url: 'https://xgenious.com',
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'United Arab Emirates' },
+    { '@type': 'Country', name: 'Bangladesh' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Mobile App Development Packages',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        name: 'App Starter',
+        description: 'Flutter cross-platform, up to 3 screens, App Store + Play Store submission. 2–4 weeks.',
+        price: '2000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '2000', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'App Pro',
+        description: 'Up to 12 screens, 3 user roles, custom backend, Stripe payments. 6–10 weeks.',
+        price: '10000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '10000', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'App Scale',
+        description: 'Full-featured platform, native Swift/Kotlin option, offline-first, GDPR compliance. 12–16 weeks.',
+        price: '25000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '25000', priceCurrency: 'USD' },
+      },
+    ],
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://xgenious.com' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://xgenious.com/#services' },
+    { '@type': 'ListItem', position: 3, name: 'Mobile App Development', item: 'https://xgenious.com/mobile-app-development' },
+  ],
+};
+
 export default function AppDevelopmentPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Hero />
       <TrustedBy title="Trusted by teams around the world" />
       <WhyChooseUs />

@@ -88,28 +88,34 @@ type Industry = {
   industry: string;
   useCases: string;
   image: string | null;
+  href: string;
 };
 
 const INDUSTRIES: Industry[] = [
-  { icon: <SaaSIcon />,       industry: 'SaaS',           useCases: 'Onboarding Automation • Churn Prevention',  image: '/products/helpnest.png' },
-  { icon: <RealEstateIcon />, industry: 'Real Estate',    useCases: 'Lead Nurturing • Market Insights',          image: '/products/nexelit.png' },
-  { icon: <EcommerceIcon />,  industry: 'E-Commerce',     useCases: 'Cart Recovery • Personalisation',           image: '/products/nazmart.png' },
-  { icon: <FinanceIcon />,    industry: 'Finance',        useCases: 'Fraud Detection • Customer Onboarding',     image: '/products/fundorex.png' },
-  { icon: <HealthIcon />,     industry: 'Healthcare',     useCases: 'Patient Intake • Appointment Scheduling',   image: '/products/prohandy.png' },
-  { icon: <EducationIcon />,  industry: 'Education',      useCases: 'Student Support • Content Generation',      image: '/products/xilancer.png' },
-  { icon: <LogisticsIcon />,  industry: 'Logistics',      useCases: 'Route Optimisation • Delivery Tracking',    image: null },
-  { icon: <HRIcon />,         industry: 'HR & Recruiting', useCases: 'Resume Screening • Candidate Outreach',    image: null },
+  { icon: <SaaSIcon />,       industry: 'SaaS',            useCases: 'Onboarding Automation • Churn Prevention',  image: '/products/helpnest.png', href: '/ai-agents-for-saas' },
+  { icon: <RealEstateIcon />, industry: 'Real Estate',     useCases: 'Lead Nurturing • Market Insights',          image: '/products/nexelit.png',  href: '/ai-agents-for-real-estate' },
+  { icon: <EcommerceIcon />,  industry: 'E-Commerce',      useCases: 'Cart Recovery • Personalisation',           image: '/products/nazmart.png',  href: '/ai-agents-for-ecommerce' },
+  { icon: <FinanceIcon />,    industry: 'Finance',         useCases: 'Fraud Detection • Customer Onboarding',     image: '/products/fundorex.png', href: '/ai-agents-for-finance' },
+  { icon: <HealthIcon />,     industry: 'Healthcare',      useCases: 'Patient Intake • Appointment Scheduling',   image: '/products/prohandy.png', href: '/ai-agents-for-healthcare' },
+  { icon: <EducationIcon />,  industry: 'Education',       useCases: 'Student Support • Content Generation',      image: '/products/xilancer.png', href: '/ai-agents-for-education' },
+  { icon: <LogisticsIcon />,  industry: 'Logistics',       useCases: 'Route Optimisation • Delivery Tracking',    image: null,                     href: '/ai-agents-for-logistics' },
+  { icon: <HRIcon />,         industry: 'HR & Recruiting', useCases: 'Resume Screening • Candidate Outreach',     image: null,                     href: '/ai-agents-for-hr-recruiting' },
 ];
 
-function IndustryCard({ icon, industry, useCases, image }: Industry) {
+function IndustryCard({ icon, industry, useCases, image, href, decorative }: Industry & { decorative?: boolean }) {
+  const Wrapper = decorative ? 'div' : 'a';
+  const wrapperProps = decorative ? {} : { href };
   return (
-    <div className="group relative rounded-[20px] overflow-hidden flex-shrink-0 w-[300px] h-[420px]"
+    <Wrapper
+      {...wrapperProps}
+      className="group relative rounded-[20px] overflow-hidden flex-shrink-0 w-[300px] h-[420px] block"
       style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}
+      aria-hidden={decorative ? 'true' : undefined}
     >
       {image && (
         <Image
           src={image}
-          alt={industry}
+          alt={decorative ? '' : industry}
           fill
           className="object-cover opacity-40 transition-opacity duration-500 group-hover:opacity-60"
         />
@@ -131,10 +137,13 @@ function IndustryCard({ icon, industry, useCases, image }: Industry) {
 
       {/* Bottom content */}
       <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-        <h3 className="text-white font-semibold text-[22px] leading-[28px]">{industry}</h3>
+        {decorative
+          ? <p className="text-white font-semibold text-[22px] leading-[28px]">{industry}</p>
+          : <h3 className="text-white font-semibold text-[22px] leading-[28px]">{industry}</h3>
+        }
         <p className="mt-1.5 text-[#9ca3af] text-[13px] leading-[20px]">{useCases}</p>
       </div>
-    </div>
+    </Wrapper>
   );
 }
 
@@ -151,7 +160,7 @@ export default function IndustryUseCases() {
             <span className="text-[#ec7161] text-[14px] font-medium">Use Cases</span>
           </div>
           <h2 className="font-bold text-white text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[48px] lg:leading-[58px]">
-            AI Agents Deployed<br />Across Every Industry
+            AI Agents Deployed{' '}<br />Across Every Industry
           </h2>
           <p className="text-[#9ca3af] text-[14px] sm:text-[16px] leading-6">
             From SaaS to healthcare — purpose-built AI agents that understand your domain, speak your terminology, and automate your highest-value workflows.
@@ -182,7 +191,7 @@ export default function IndustryUseCases() {
           onMouseLeave={() => setPaused(false)}
         >
           {[...INDUSTRIES, ...INDUSTRIES, ...INDUSTRIES].map((item, i) => (
-            <IndustryCard key={i} {...item} />
+            <IndustryCard key={i} {...item} decorative={i >= INDUSTRIES.length} />
           ))}
         </div>
       </div>

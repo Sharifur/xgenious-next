@@ -6,6 +6,10 @@ import WhatWeBuild from './_components/WhatWeBuild';
 import Benefits from './_components/Benefits';
 import Process from './_components/Process';
 import Pricing from './_components/Pricing';
+import ScopingTemplate from './_components/ScopingTemplate';
+import FounderStats from './_components/FounderStats';
+import MVPComparison from './_components/MVPComparison';
+import MVPQualifier from './_components/MVPQualifier';
 import WhyMVP from './_components/WhyMVP';
 import Testimonials from '@/components/sections/Testimonials';
 import BookingCTA from '@/components/sections/BookingCTA';
@@ -37,14 +41,80 @@ const faqItems: FaqItem[] = [
     question: 'Who owns the code after delivery?',
     answer: 'You do — 100%. IP transfers to you on final payment. Your GitHub organisation, your cloud account, your App Store account. We retain no licences, no revenue shares, and no ongoing access. We keep the right to mention the engagement as a case study unless you request otherwise.',
   },
+  {
+    question: 'MVP development vs no-code (Bubble, Webflow, Glide) — when does custom code make sense?',
+    answer: 'No-code is right for two things: quick demos and internal tools with 5 users. Custom code makes sense when you need proprietary business logic, real performance at scale, custom API integrations your no-code tool can\'t replicate, or when investors and acquirers will scrutinise the technical stack. Most founders hit the ceiling of Bubble or Webflow somewhere between $0 and $500 MRR. When that happens, they rebuild from scratch — losing every timeline advantage no-code appeared to give them. We build the version you won\'t need to rewrite.',
+  },
 ];
 
 const BASE_URL = 'https://xgenious.com';
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://xgenious.com/saas-mvp-development#service',
+  name: 'SaaS MVP Development',
+  serviceType: 'SaaS MVP Development',
+  description: 'Fixed-price SaaS and software MVPs — shipped in 4–16 weeks. Production-grade code that scales. Not throwaway prototype code. From $2,500.',
+  url: 'https://xgenious.com/saas-mvp-development',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://xgenious.com/#organization',
+    name: 'Xgenious',
+    url: 'https://xgenious.com',
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'United Arab Emirates' },
+    { '@type': 'Country', name: 'Bangladesh' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'SaaS MVP Development Packages',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        name: 'MVP Starter',
+        description: 'Single-use-case web app, React/Next.js, REST API, PostgreSQL, deployed to production. 2–4 weeks.',
+        price: '2500',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '2500', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'MVP Pro',
+        description: 'Multi-feature product with payments, auth, admin dashboard, CI/CD, and observability. 6–10 weeks.',
+        price: '15000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '15000', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'MVP → Production Bridge',
+        description: 'Multi-tenant SaaS or marketplace architecture, AI features, Flutter mobile app, GDPR-ready, 1-year support. Full fee credited toward Custom SaaS build. 10–16 weeks.',
+        price: '30000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '30000', priceCurrency: 'USD' },
+      },
+    ],
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://xgenious.com' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://xgenious.com/#services' },
+    { '@type': 'ListItem', position: 3, name: 'SaaS MVP Development', item: 'https://xgenious.com/saas-mvp-development' },
+  ],
+};
+
 export const metadata: Metadata = {
-  title: 'SaaS MVP Development Company | Ship in 6–10 Weeks | Xgenious',
+  title: 'SaaS MVP Development — Ship in 6–10 Weeks',
   description:
-    'Xgenious builds SaaS and software MVPs from scratch — fixed-price from $2,500, shipped in 4–16 weeks. Real users, validated metrics, clean codebase that scales. Not throwaway prototype code.',
+    'Custom SaaS and software MVPs from scratch. Fixed-price from $2,500, shipped in 4–16 weeks. Clean codebase that scales — not throwaway prototype code.',
   metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: '/saas-mvp-development',
@@ -72,12 +142,18 @@ export const metadata: Metadata = {
 export default function MvpDevelopmentPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Hero />
       <TrustedBy title="Trusted by teams around the world" />
+      <FounderStats />
       <AboutSection />
+      <MVPComparison />
       <WhatWeBuild />
       <Benefits />
       <Process />
+      <MVPQualifier />
+      <ScopingTemplate />
       <Pricing />
       <WhyMVP />
       <Testimonials />

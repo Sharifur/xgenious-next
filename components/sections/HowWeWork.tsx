@@ -37,10 +37,10 @@ export default function HowWeWork({
         <div className="container-page px-4">
           <div className="flex flex-col items-start gap-3 mb-8">
             <SectionBadge variant="dark">How We Work</SectionBadge>
-            <h2 className="text-white font-semibold text-[28px] leading-[36px]">
+            <p className="text-white font-semibold text-[28px] leading-[36px]" aria-hidden="true">
               {'From Idea to '}
               <em className="font-normal italic">Execution</em>
-            </h2>
+            </p>
             <p className="text-[#b9bac0] text-[14px] leading-[22px] mt-1">{description}</p>
           </div>
 
@@ -50,9 +50,9 @@ export default function HowWeWork({
                 <span className="text-[#ec7161] text-[11px] font-bold tracking-[0.6px] uppercase mb-2 block">
                   {step.label.split('. ')[0]}
                 </span>
-                <h3 className="text-white font-semibold text-[18px] leading-[26px] mb-2">
+                <p className="text-white font-semibold text-[18px] leading-[26px] mb-2" aria-hidden="true">
                   {step.label.split('. ')[1]}
-                </h3>
+                </p>
                 <p className="text-[#b9bac0] text-[14px] leading-[22px]">{step.desc}</p>
               </div>
             ))}

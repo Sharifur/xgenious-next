@@ -64,9 +64,9 @@ export default function Hero() {
         <div className="flex flex-col gap-6 sm:gap-8 items-center text-center">
           <div className="flex flex-col gap-4 items-center">
             <h1 className="font-semibold text-[36px] leading-[44px] sm:text-[52px] sm:leading-[60px] lg:text-[72px] lg:leading-[80px]" style={{ color: '#181818', maxWidth: 900 }}>
-              iOS &amp; Android Apps
+              iOS &amp; Android Apps{' '}
               <br />
-              <em className="font-semibold italic">Built for the App Store — Not TestFlight</em>
+              <em className="font-semibold italic">Built for the App Store,{' '}<br />Not TestFlight</em>
             </h1>
             <p className="font-normal text-[14px] sm:text-[16px] lg:text-[18px]" style={{ lineHeight: '27px', color: '#2f2f2f', maxWidth: 720 }}>
               Custom iOS, Android, and cross-platform mobile apps shipped to production in 4–16 weeks, from $2k. Flutter for speed, native where it matters — push, offline, biometrics, and payments, all production-grade.

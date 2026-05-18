@@ -835,7 +835,7 @@ export default function AIAgentSection() {
 
   /* ── Desktop layout — full scroll animation ── */
   return (
-    <div ref={containerRef} style={{ minHeight: '300vh' }}>
+    <div ref={containerRef} style={{ minHeight: '200vh' }}>
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
         <motion.div
           className="w-full"
@@ -882,7 +882,6 @@ export default function AIAgentSection() {
                             <button
                               type="button"
                               onClick={() => setActive(i)}
-                              onMouseEnter={() => setActive(i)}
                               aria-pressed={isActive}
                               className="w-full flex items-center gap-6 py-6 text-left group"
                             >
@@ -890,11 +889,19 @@ export default function AIAgentSection() {
                                 /{f.number}.
                               </span>
                               <div className="flex-1">
-                                <h3 className={`text-[22px] font-bold leading-7 mb-1.5 transition-colors ${isActive ? 'text-[#F26B4E]' : 'text-white group-hover:text-[#F26B4E]'}`}>
+                                <h3 className={`text-[22px] font-bold leading-7 transition-colors ${isActive ? 'text-[#F26B4E] mb-1.5' : 'text-white group-hover:text-[#F26B4E]'}`}>
                                   {f.title}
                                 </h3>
-                                <p className="text-[14px] text-[#8A8F99] leading-[22px]">{f.description}</p>
+                                {isActive && (
+                                  <p className="text-[14px] text-[#8A8F99] leading-[22px]">{f.description}</p>
+                                )}
                               </div>
+                              <svg
+                                width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                className={`flex-shrink-0 transition-transform duration-200 ${isActive ? 'rotate-180' : ''}`}
+                              >
+                                <path d="M4 6l4 4 4-4" stroke={isActive ? '#F26B4E' : '#8A8F99'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
                             </button>
                           </li>
                         );

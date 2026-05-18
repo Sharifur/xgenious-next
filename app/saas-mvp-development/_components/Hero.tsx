@@ -25,15 +25,15 @@ export default function Hero() {
 
       {/* Text content */}
       <div className="relative container-page px-4 sm:px-6 lg:px-0 pt-[120px] sm:pt-[160px] lg:pt-[200px] pb-14 sm:pb-20 flex flex-col items-center text-center gap-6 sm:gap-8">
-        <h1 className="font-semibold text-white text-[32px] leading-[40px] sm:text-[52px] sm:leading-[62px] lg:text-[72px] lg:leading-[80px] max-w-[900px]">
-          Validate Ideas with Smart<br />
-          <em className="font-medium italic">MVP Development</em>
+        <h1 className="font-semibold text-white text-[32px] leading-[40px] sm:text-[52px] sm:leading-[62px] lg:text-[72px] lg:leading-[80px] max-w-[1050px]">
+          From Idea to Real Users in 6–10 Weeks.{' '}
+          <em className="font-medium italic">Fixed-Price MVP Development.</em>
         </h1>
 
         <p className="text-[#9ca3af] text-[14px] leading-[22px] sm:text-[16px] sm:leading-[24px] lg:text-[18px] lg:leading-[28px] max-w-[640px]">
-          Greenfield MVP development for product teams testing the market. Real users in 6–10 weeks,
-          validated metrics, and a clean codebase that scales into the full SaaS — not throwaway
-          prototype code. Fixed-price from $2,500.
+          Greenfield MVP development for pre-seed and seed-stage founders testing product-market fit.
+          Real users in 6–10 weeks, validated metrics, and a clean codebase that scales into the
+          full SaaS — not throwaway prototype code. Fixed-price from $2,500.
         </p>
 
         <div className="flex items-center gap-4 flex-wrap justify-center">
@@ -84,12 +84,6 @@ export default function Hero() {
       {/* Bottom spacer so next section has breathing room */}
       <div className="h-14 sm:h-20" style={{ background: '#050608' }} />
 
-      <style jsx>{`
-        @keyframes mvpMarquee {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
     </section>
   );
 }

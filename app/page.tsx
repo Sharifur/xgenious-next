@@ -15,15 +15,15 @@ import FinalCTA from '@/components/sections/FinalCTA';
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'Custom Software Development Company | Xgenious',
+  title: { absolute: 'Custom SaaS & Software Development — Fixed-Price | Xgenious' },
   description:
-    'Xgenious is a custom software development company building SaaS, web apps, mobile, and AI agents for mid-market teams. Fixed-price from $50K. UK · US · UAE.',
+    'Custom SaaS, web apps, mobile, and AI agents for mid-market teams. Fixed-price from $50K. UK · US · UAE.',
   metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Custom Software Development Company | Xgenious',
+    title: 'Custom SaaS & Software Development — Fixed-Price | Xgenious',
     description:
       'From-scratch SaaS, custom web platforms, mobile apps, and AI agents. Fixed-price. Published scope. A committed delivery date.',
     url: BASE_URL,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Custom Software Development Company | Xgenious',
+    title: 'Custom SaaS & Software Development — Fixed-Price | Xgenious',
     description:
       'From-scratch SaaS, custom web platforms, mobile apps, and AI agents. Fixed-price. Published scope. A committed delivery date.',
     images: ['/og-image.png'],

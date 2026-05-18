@@ -134,7 +134,7 @@ export default function WhatWeBuild() {
           <div className="flex flex-col gap-4">
             <SectionBadge>What We Build</SectionBadge>
             <h2 className="font-semibold text-[#0f1112] text-[44px] leading-[52px]">
-              AI Agents for Every<br />Business Function
+              AI Agents for Every{' '}<br />Business Function
             </h2>
           </div>
           <p className="font-normal text-[#484848] text-[16px] leading-6 max-w-[360px] pb-1">

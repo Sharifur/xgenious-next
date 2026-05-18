@@ -27,12 +27,12 @@ function ValidationPanel() {
       {/* Header */}
       <div className="flex flex-col items-center gap-1">
         <motion.div animate={{ y: [-4, 4, -4] }} transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-          className="text-[44px] leading-none">🚀</motion.div>
-        <span className="font-bold text-[15px]" style={{ color: '#9a3412' }}>MVP is live — Week 6</span>
+          className="text-[64px] leading-none">🚀</motion.div>
+        <span className="font-bold text-[17px]" style={{ color: '#9a3412' }}>MVP is live — Week 6</span>
       </div>
 
       {/* Metric cards appearing one by one */}
-      <div className="flex flex-col gap-2 w-full max-w-[260px]">
+      <div className="flex flex-col gap-2 w-full max-w-[340px]">
         {metrics.map((m, i) => (
           <AnimatePresence key={m.label}>
             {count > i && (
@@ -51,7 +51,7 @@ function ValidationPanel() {
       </div>
 
       {/* Progress bar */}
-      <div className="w-full max-w-[260px]">
+      <div className="w-full max-w-[340px]">
         <div className="flex justify-between text-[11px] text-[#9a3412] font-medium mb-1">
           <span>Launch Progress</span><span>100%</span>
         </div>
@@ -98,7 +98,7 @@ function RiskPanel() {
 
       {/* Gauge */}
       <div className="relative flex flex-col items-center">
-        <svg width="160" height="90" viewBox="0 0 160 90">
+        <svg width="260" height="143" viewBox="0 0 160 90">
           {/* Track */}
           <path d="M 20 80 A 60 60 0 0 1 140 80" fill="none" stroke="#e5e7eb" strokeWidth="10" strokeLinecap="round"/>
           {/* Red zone */}
@@ -126,7 +126,7 @@ function RiskPanel() {
       </div>
 
       {/* Risk items */}
-      <div className="flex flex-col gap-1.5 w-full max-w-[240px]">
+      <div className="flex flex-col gap-1.5 w-full max-w-[360px]">
         {risks.map((r, i) => (
           <div key={r} className="flex items-center justify-between bg-white rounded-[8px] px-3 py-2">
             <span className="text-[12px]" style={{ color: '#374151', textDecoration: resolved > i ? 'line-through' : 'none', opacity: resolved > i ? 0.5 : 1 }}>{r}</span>
@@ -167,8 +167,8 @@ function BudgetPanel() {
   }, []);
 
   const bars = [
-    { label: 'Traditional', amount: '$120k', height: 130, color: '#fca5a5', textColor: '#dc2626' },
-    { label: 'With MVP',    amount: '$15k',  height: 24,  color: '#86efac', textColor: '#16a34a' },
+    { label: 'Traditional', amount: '$120k', height: 200, color: '#fca5a5', textColor: '#dc2626' },
+    { label: 'With MVP',    amount: '$15k',  height: 36,  color: '#86efac', textColor: '#16a34a' },
   ];
 
   return (
@@ -178,18 +178,18 @@ function BudgetPanel() {
       <span className="font-bold text-[14px]" style={{ color: '#14532d' }}>Development Cost Comparison</span>
 
       {/* Bar chart */}
-      <div className="flex items-end gap-8 h-[150px]">
+      <div className="flex items-end gap-8 h-[220px]">
         {bars.map((b) => (
           <div key={b.label} className="flex flex-col items-center gap-1.5">
             <span className="font-bold text-[12px]" style={{ color: b.textColor }}>{b.amount}</span>
             <motion.div
-              className="w-14 rounded-t-[8px]"
+              className="w-28 rounded-t-[8px]"
               style={{ background: b.color }}
               initial={{ height: 0 }}
               animate={{ height: animating ? b.height : 0 }}
               transition={{ duration: 1, ease: 'easeOut', delay: b.label === 'With MVP' ? 0.3 : 0 }}
             />
-            <span className="text-[11px] text-[#6b7280] text-center leading-tight w-14">{b.label}</span>
+            <span className="text-[11px] text-[#6b7280] text-center leading-tight w-28">{b.label}</span>
           </div>
         ))}
       </div>
@@ -236,7 +236,7 @@ function GrowthPanel() {
       <span className="font-bold text-[14px]" style={{ color: '#581c87' }}>Product Growth Curve</span>
 
       {/* Chart */}
-      <svg width="270" height="165" viewBox="0 0 270 165">
+      <svg width="360" height="220" viewBox="0 0 270 165">
         {[30, 70, 110].map((y) => (
           <line key={y} x1="10" y1={y} x2="260" y2={y} stroke="#e9d5ff" strokeWidth="1" strokeDasharray="3 4"/>
         ))}
@@ -328,7 +328,7 @@ export default function Benefits() {
 
         <div className="flex flex-col items-center gap-4 text-center max-w-[760px]">
           <h2 className="font-semibold text-[#0f1112] text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[44px] lg:leading-[52px]">
-            Benefits of MVP Development<br />for Faster Growth
+            Benefits of MVP Development{' '}<br />for Faster Growth
           </h2>
           <p className="text-[#484848] text-[14px] leading-[22px] sm:text-[16px] sm:leading-[24px]">
             Launch faster, validate your idea early, and reduce development risk
@@ -339,7 +339,7 @@ export default function Benefits() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full items-stretch">
 
           {/* Left — animated illustration */}
-          <div className="rounded-[20px] overflow-hidden relative aspect-[4/3] lg:aspect-auto lg:min-h-[460px]">
+          <div className="rounded-[20px] overflow-hidden relative aspect-[4/3] lg:aspect-auto lg:min-h-[560px]">
             <AnimatePresence mode="wait">
               <motion.div key={open} className="absolute inset-0"
                 initial={{ opacity: 0, scale: 0.96 }}
