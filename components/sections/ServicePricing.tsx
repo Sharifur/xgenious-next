@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import SectionBadge from '@/components/ui/SectionBadge';
 import Button, { ArrowIcon } from '@/components/ui/Button';
 
@@ -19,6 +20,7 @@ type Props = {
   subhead?: string;
   id?: string;
   theme?: 'light' | 'dark';
+  crossLink?: { text: string; href: string; label: string };
 };
 
 function PlanCard({ name, price, timeline, bestFor, features, cta, ctaHref, dark = false, popular = false, pageDark = false }: PricingPlan & { pageDark?: boolean }) {
@@ -104,6 +106,7 @@ export default function ServicePricing({
   subhead = "Scope is published. Price is fixed. The only variable is how fast you want to move.",
   id = 'pricing',
   theme = 'light',
+  crossLink,
 }: Props) {
   const isDark = theme === 'dark';
   return (
@@ -143,6 +146,19 @@ export default function ServicePricing({
             </div>
           ))}
         </div>
+
+        {crossLink && (
+          <p className="text-[14px]" style={{ color: isDark ? '#6b7280' : '#6b7280' }}>
+            {crossLink.text}{' '}
+            <Link
+              href={crossLink.href}
+              className="underline underline-offset-2 hover:opacity-80 transition-opacity"
+              style={{ color: '#3b82f6' }}
+            >
+              {crossLink.label} →
+            </Link>
+          </p>
+        )}
       </div>
     </section>
   );

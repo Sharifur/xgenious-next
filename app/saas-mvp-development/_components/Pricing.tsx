@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import ServicePricing, { type PricingPlan } from '@/components/sections/ServicePricing';
 
 const plans: PricingPlan[] = [
@@ -63,20 +62,11 @@ const plans: PricingPlan[] = [
 
 export default function Pricing() {
   return (
-    <>
-      <ServicePricing
-        plans={plans}
-        heading="Pick a Starting Point, No Discovery Tax"
-        subhead="Scope is published. Timeline is committed. If we quote outside your package, we'll tell you upfront — not mid-sprint."
-      />
-      <div className="text-center pb-10 sm:pb-14 lg:pb-[80px]">
-        <p className="text-[#6b7280] text-[14px]">
-          Already validated? See our{' '}
-          <Link href="/custom-saas-development-company" className="text-[#3b82f6] underline underline-offset-2 hover:text-white transition-colors">
-            Custom SaaS Development →
-          </Link>
-        </p>
-      </div>
-    </>
+    <ServicePricing
+      plans={plans}
+      heading="Pick a Starting Point, No Discovery Tax"
+      subhead="Scope is published. Timeline is committed. If we quote outside your package, we'll tell you upfront — not mid-sprint."
+      crossLink={{ text: 'Already validated? See our', href: '/custom-saas-development-company', label: 'Custom SaaS Development' }}
+    />
   );
 }
