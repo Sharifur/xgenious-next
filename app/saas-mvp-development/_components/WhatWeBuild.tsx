@@ -10,52 +10,52 @@ type Card = {
 
 const cards: Card[] = [
   {
-    bg: '#e8e2d6',
-    image: '/images/web-app-dev/card-internal.jpg',
+    bg: '#e8e5dc',
+    image: '/images/mvp/service-strategy.jpg',
     alt: 'MVP strategy planning',
     title: 'MVP Strategy & Planning',
     description:
-      'Sharpen scope, define metrics, and build a realistic 6–12 week launch roadmap.',
+      'Sharpen scope, define success metrics, map your ICP, and build a realistic 4–12 week launch roadmap — agreed in writing before a line of code is written.',
   },
   {
-    bg: '#d2d5d9',
-    image: '/images/web-app-dev/card-b2b.jpg',
+    bg: '#e0e6e2',
+    image: '/images/mvp/service-saas.png',
     alt: 'SaaS MVP development',
     title: 'SaaS MVP Development',
     description:
-      'Multi-tenant architecture, subscriptions, role-based access — everything a SaaS needs from day one.',
+      'Multi-tenant architecture, subscription billing, role-based access, and a clean data model — everything a SaaS needs from day one, built to scale without a rewrite at round A.',
   },
   {
-    bg: '#c9e8d4',
-    image: '/images/web-app-dev/card-enterprise.jpg',
+    bg: '#d4ecd8',
+    image: '/images/mvp/service-webapp.png',
     alt: 'Web app development',
     title: 'Web App Development',
     description:
-      'Modern React/Next.js frontends paired with robust APIs — fast, responsive, production-ready.',
+      'React and Next.js frontends paired with robust Node or Laravel APIs — fast, responsive, and production-ready. Schema-up builds, never retrofitted from a template.',
   },
   {
     bg: '#e8e2d6',
-    image: '/images/web-app-dev/card-third-party.jpg',
+    image: '/images/mvp/service-api.png',
     alt: 'API integration',
     title: 'API Integration',
     description:
-      'Stripe, Twilio, OpenAI, custom partner APIs — wired correctly the first time.',
+      'Stripe, Twilio, OpenAI, custom partner APIs — wired correctly the first time with idempotency, error handling, and observability so integrations don\'t silently fail in production.',
   },
   {
     bg: '#c8dce8',
-    image: '/images/web-app-dev/card-pwa.jpg',
+    image: '/images/mvp/service-ai.png',
     alt: 'AI MVP solutions',
     title: 'AI MVP Solutions',
     description:
-      'LLM-powered features, AI agents, RAG pipelines — ship intelligent products that actually work.',
+      'LLM-powered features, AI agents, and RAG pipelines shipped as part of your MVP — not bolted on later. Anthropic Claude or OpenAI, with eval harnesses and real accuracy benchmarking from launch day.',
   },
   {
-    bg: '#e8e2d6',
-    image: '/images/web-app-dev/card-legacy.jpg',
+    bg: '#ede8df',
+    image: '/images/mvp/service-scaling.png',
     alt: 'Product scaling',
     title: 'Product Scaling',
     description:
-      'Take your validated MVP to v2: performance, infrastructure, security, and growth features.',
+      'When your MVP validates, we take it to v2 — performance optimisation, infrastructure scaling, security hardening, and the growth features your users asked for. No handoff, same team.',
   },
 ];
 
@@ -88,13 +88,13 @@ export default function WhatWeBuild() {
       <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-14 lg:gap-[64px] items-center">
 
         <div className="flex flex-col items-center gap-4 text-center max-w-[680px]">
-          <SectionBadge>What we Build</SectionBadge>
+          <SectionBadge>What We Build</SectionBadge>
           <h2 className="font-semibold text-[#0f1112] text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[48px] lg:leading-[56px]">
             MVP Development Services<br className="hidden sm:block" />for Modern Startups
           </h2>
           <p className="text-[#484848] text-[14px] leading-[22px] sm:text-[16px] sm:leading-[24px] max-w-[560px]">
             End-to-end product capabilities, delivered by a senior team that
-            thinks like founders and ships like operators
+            thinks like founders and ships like operators.
           </p>
         </div>
 

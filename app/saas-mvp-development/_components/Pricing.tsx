@@ -3,8 +3,8 @@ import ServicePricing, { type PricingPlan } from '@/components/sections/ServiceP
 const plans: PricingPlan[] = [
   {
     name: 'MVP Starter',
-    price: '$5,000',
-    timeline: '4–6 Weeks · 1 Sprint cycle',
+    price: '$2,500',
+    timeline: '2–4 Weeks · 1 Sprint cycle',
     bestFor: 'Founders who need a working prototype to validate one core use case and collect real user feedback.',
     features: [
       'Single-use-case web application',
@@ -31,7 +31,7 @@ const plans: PricingPlan[] = [
       'Admin dashboard + analytics',
       'Up to 3 third-party integrations',
       'CI/CD pipeline + observability',
-      '60-day post-launch support',
+      '6-month post-launch support',
     ],
     cta: 'Start with Pro',
     ctaHref: '/contact',
@@ -50,7 +50,7 @@ const plans: PricingPlan[] = [
       'Subscription billing + usage limits',
       'GDPR-ready data handling',
       'Full test suite + SOC 2-ready setup',
-      '90-day post-launch support + SRE retainer',
+      '1-year post-launch support + SRE retainer',
     ],
     cta: 'Talk to Us',
     ctaHref: '/contact',

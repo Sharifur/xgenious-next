@@ -7,32 +7,28 @@ const sections = [
     id: 'launch-faster',
     title: 'Launch Faster With Essential Features',
     content: [
-      'An MVP focuses only on the core functionality your users truly need. This allows you to launch quickly, enter the market sooner, and start collecting real feedback without waiting for a fully complex product.',
-      'Early launches create faster learning opportunities and help you improve with confidence.',
+      'An MVP focuses only on the core functionality your users truly need. This lets you enter the market sooner, start collecting real feedback immediately, and improve with data rather than assumptions — without waiting 12 months for a fully complete product.',
     ],
   },
   {
     id: 'save-budget',
-    title: 'Save Budget and Development Resources',
+    title: 'Save Budget and Reduce Build Risk',
     content: [
-      'Building a complete product from day one often leads to unnecessary costs. An MVP approach helps you prioritise the most important features first, keeping development lean, efficient, and budget-friendly.',
-      'You invest smarter while reducing the risk of wasted resources.',
+      'Building a complete product from day one often leads to wasted investment in features users never wanted. An MVP approach keeps development lean — you spend on what matters and only expand scope once user behaviour confirms the direction.',
     ],
   },
   {
     id: 'real-feedback',
-    title: 'Make Decisions Based on Real User Feedback',
+    title: 'Make Decisions Based on Real User Behaviour',
     content: [
-      'Instead of relying on assumptions, an MVP lets you observe how real users interact with your product. Their behaviour and feedback help shape future updates, features, and product direction more effectively.',
-      'Better insights lead to stronger product decisions.',
+      'Instead of assumptions, an MVP gives you actual user behaviour — activation rates, retention, drop-off points. That data shapes every future sprint, every prioritisation decision, and every investor conversation with evidence rather than speculation.',
     ],
   },
   {
     id: 'reduce-risk',
     title: 'Reduce the Risk of Building the Wrong Product',
     content: [
-      'Many startups fail because they spend too much time building features users never actually need. An MVP helps validate your idea early, so you can test demand, refine your concept, and scale with clarity before making larger investments.',
-      'Building smaller first creates a safer path toward long-term growth.',
+      'Most failed products weren\'t badly built — they solved the wrong problem. An MVP validates demand before the major investment. Test the hypothesis small, refine the concept, and scale with confidence rather than hope.',
     ],
   },
 ];
@@ -65,9 +61,14 @@ export default function WhyMVP() {
   return (
     <section className="py-16 sm:py-20 lg:py-[100px]" style={{ background: '#0a0c10' }}>
       <div className="container-page px-4 sm:px-6 lg:px-0">
-        <h2 className="font-semibold text-white text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[48px] lg:leading-[56px] mb-8 sm:mb-12 lg:mb-16">
-          Why Build an MVP Website First
-        </h2>
+        <div className="mb-8 sm:mb-12 lg:mb-16 flex flex-col gap-4">
+          <h2 className="font-semibold text-white text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[48px] lg:leading-[56px]">
+            Why Build an MVP First
+          </h2>
+          <p className="text-[#6b7280] text-[15px] leading-[23px] sm:text-[17px] sm:leading-[26px] max-w-[600px]">
+            Building the full product first is the most expensive way to discover you built the wrong thing.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 lg:gap-16 items-start">
 

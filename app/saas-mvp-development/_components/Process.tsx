@@ -11,9 +11,9 @@ const steps = [
     position: 'below' as const,
     items: [
       'Define product goals',
-      'Target users',
+      'Target user research',
       'Scope essential features',
-      'MVP roadmap research',
+      'MVP roadmap sign-off',
     ],
   },
   {
@@ -108,8 +108,8 @@ export default function Process() {
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-[100px]" style={{ background: '#f5f6f8' }}>
-      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-14 sm:gap-16 items-center">
+    <section className="pt-16 sm:pt-20 lg:pt-[100px]" style={{ background: '#f5f6f8' }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-6 sm:gap-8 items-center">
 
         {/* Heading */}
         <div className="flex flex-col items-center gap-4 text-center max-w-[600px]">
@@ -118,15 +118,15 @@ export default function Process() {
             Our MVP Development Process
           </h2>
           <p className="text-[#484848] text-[14px] leading-[22px] sm:text-[16px] sm:leading-[24px]">
-            A four-stage process refined across 40+ launches. Transparent,
-            predictable, and built to keep momentum.
+            A four-stage process refined across 40+ launches. Transparent, predictable,
+            and built to keep momentum from week one to go-live.
           </p>
         </div>
 
         {/* ── Desktop timeline ─────────────────────────────────────────────── */}
         <div className="hidden lg:block w-full">
           {/* Outer wrapper — 200px above + dot row + 200px below */}
-          <div className="relative" style={{ paddingTop: 200, paddingBottom: 200 }}>
+          <div className="relative" style={{ paddingTop: 20, paddingBottom: 20 }}>
 
             {/* Gray baseline — from center of col 1 to center of col 4 */}
             <div
