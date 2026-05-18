@@ -53,15 +53,15 @@ const faqItems: FaqItem[] = [
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'Custom Web App Development Company | B2B Portals & Internal Tools | Xgenious',
+  title: 'Custom Web App Development — B2B Portals & Internal Tools',
   description:
-    'Xgenious builds custom web apps — B2B portals, internal tools, and enterprise platforms. Fixed-price from $2,500. 2–16 weeks. React, Next.js, Laravel. GDPR-ready on day one.',
+    'Custom web apps for B2B portals, internal tools, and enterprise platforms. Fixed-price from $2,500. 2–16 weeks. GDPR-ready on day one.',
   metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: '/web-app-development-company',
   },
   openGraph: {
-    title: 'Custom Web App Development Company | Xgenious',
+    title: 'Custom Web App Development — B2B Portals & Internal Tools | Xgenious',
     description:
       "From-scratch web apps built around your workflow, not someone else's. Published scope. Fixed price. Committed delivery date.",
     url: `${BASE_URL}/web-app-development-company`,
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Custom Web App Development Company | Xgenious',
+    title: 'Custom Web App Development — B2B Portals & Internal Tools | Xgenious',
     description:
       "From-scratch web apps built around your workflow, not someone else's. Published scope. Fixed price. Committed delivery date.",
     images: ['/og-web-app-development-company.png'],
@@ -81,9 +81,72 @@ export const metadata: Metadata = {
   },
 };
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://xgenious.com/web-app-development-company#service',
+  name: 'Custom Web App Development',
+  serviceType: 'Custom Web App Development',
+  description: 'From-scratch web apps, B2B portals, internal tools, and enterprise platforms. Fixed-price from $2,500. React, Next.js, Laravel, PostgreSQL. GDPR-ready on day one.',
+  url: 'https://xgenious.com/web-app-development-company',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://xgenious.com/#organization',
+    name: 'Xgenious',
+    url: 'https://xgenious.com',
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'United Arab Emirates' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Web App Development Packages',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        name: 'Starter',
+        description: 'Single-use-case web application. 2–4 weeks.',
+        price: '2500',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '2500', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'Pro',
+        description: 'Multi-feature app with payments, auth, and integrations. 6–10 weeks.',
+        price: '15000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '15000', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'Scale',
+        description: 'Enterprise platform with multi-tenancy, AI, and compliance. 10–16 weeks.',
+        price: '30000',
+        priceCurrency: 'USD',
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '30000', priceCurrency: 'USD' },
+      },
+    ],
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://xgenious.com' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://xgenious.com/#services' },
+    { '@type': 'ListItem', position: 3, name: 'Web App Development', item: 'https://xgenious.com/web-app-development-company' },
+  ],
+};
+
 export default function WebAppDevelopmentPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Hero />
       <TrustedBy title="Trusted by teams around the world" />
       <WhatWeBuild />

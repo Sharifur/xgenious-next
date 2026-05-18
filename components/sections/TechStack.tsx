@@ -121,7 +121,7 @@ export default function TechStack() {
         <div className="text-center mb-8 sm:mb-12 max-w-[680px] mx-auto px-4 sm:px-0">
           <SectionBadge className="mb-5">Tech Stack</SectionBadge>
           <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] leading-[36px] sm:leading-[44px] lg:leading-[52px] font-semibold text-[#0F1112] tracking-[-0.01em]">
-            Modern Stack, Optimized
+            Modern Stack, Optimized{' '}
             <br className="hidden lg:block" />
             <span className="italic font-semibold">for Speed</span>
           </h2>

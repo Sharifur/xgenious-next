@@ -79,9 +79,9 @@ export default function Hero() {
         {/* Heading */}
         <div className="flex flex-col items-center gap-4 sm:gap-6 w-full">
           <h1 className="text-[#181818] font-bold text-[36px] leading-[44px] sm:text-[52px] sm:leading-[60px] lg:text-[72px] lg:leading-[80px]">
-            Custom Web App
+            Custom Web App{' '}
             <br />
-            <em className="font-semibold italic">Development That Delivers</em>
+            <em className="font-semibold italic">Development for B2B Portals & Internal Tools</em>
           </h1>
           <p className="text-[#2f2f2f] font-normal text-[15px] sm:text-[17px] lg:text-[18px] leading-[24px] sm:leading-[26px] lg:leading-[27px] max-w-[560px] sm:max-w-[620px]">
             Ship a B2B portal, internal tool, or enterprise platform in 2–16 weeks, from $2,500. Built on React, Next.js and Laravel — audit logs and GDPR-ready on day one.

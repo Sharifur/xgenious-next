@@ -37,7 +37,7 @@ export default function HowWeWork({
         <div className="container-page px-4">
           <div className="flex flex-col items-start gap-3 mb-8">
             <SectionBadge variant="dark">How We Work</SectionBadge>
-            <h2 className="text-white font-semibold text-[28px] leading-[36px]">
+            <h2 className="text-white font-semibold text-[28px] leading-[36px]" aria-hidden="true">
               {'From Idea to '}
               <em className="font-normal italic">Execution</em>
             </h2>
