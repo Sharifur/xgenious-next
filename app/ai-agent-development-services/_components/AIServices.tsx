@@ -148,29 +148,43 @@ function ChatbotVisual() {
 
 // ── Section ───────────────────────────────────────────────────────────────────
 
+function UnsplashImg({ id, alt }: { id: string; alt: string }) {
+  return (
+    <div className="relative w-full h-full">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`https://images.unsplash.com/photo-${id}?w=800&h=500&q=80&fit=crop&auto=format`}
+        alt={alt}
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/50" />
+    </div>
+  );
+}
+
 const services = [
   {
     title: 'Custom AI Agent Development',
     desc: 'Domain-specific agents trained on your data, business rules, and tone — purpose-built from architecture to deployment. Tool use, multi-step reasoning, eval harnesses, and observability wired in from day one. Not a wrapped ChatGPT prompt.',
-    visual: <img src="/services/custom-ai-agent-development.jpg" alt="Custom AI Agent Development" className="w-full h-full object-cover" />,
+    visual: <UnsplashImg id="nGoCBxiaRO0" alt="Abstract neural network sphere representing AI agent architecture" />,
     tall: true,
   },
   {
     title: 'AI Workflow Automation',
     desc: 'Replace fragile if-this-then-that automations — Zapier flows, n8n pipelines — with agents that handle exceptions, edge cases, and judgement calls. End-to-end orchestration across your stack — Slack, CRM, payments, ticketing — with idempotency, retries, and full observability so nothing silently fails.',
-    visual: <img src="/services/ai-workflow.jpg" alt="AI Workflow Automation" className="w-full h-full object-cover" />,
+    visual: <UnsplashImg id="X6prM41CTsM" alt="Abstract geometric lines on dark background representing automated workflows" />,
     tall: true,
   },
   {
     title: 'AI Customer Support',
     desc: 'Conversational support agents with persistent memory, full context awareness, and live tool access — deployed across web chat, WhatsApp, Slack, and voice agents. Escalates to a human when it should. Resolves autonomously when it can.',
-    visual: <img src="/services/ai-customer-support.jpg" alt="AI Customer Support" className="w-full h-full object-cover" />,
+    visual: <UnsplashImg id="0ZIJbjXP454" alt="Customer support agent with headset representing AI-powered support" />,
     tall: false,
   },
   {
     title: 'AI Chatbot Systems',
     desc: 'LLM-native chatbots that go beyond keyword matching — grounded in your knowledge base via RAG — embeddings, vector database retrieval, and semantic search — integrated with your backend APIs, and capable of taking actions, not just answering questions. Built with hallucination guards and confidence thresholds.',
-    visual: <img src="/services/ai-chatbot.jpg" alt="AI Chatbot Systems" className="w-full h-full object-cover" />,
+    visual: <UnsplashImg id="8m55THEIZSA" alt="Robot holding a smartphone with chat message representing AI chatbot" />,
     tall: false,
   },
 ];

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Hero from './_components/Hero';
 import AIServices from './_components/AIServices';
 import AgentWorkflow from './_components/AgentWorkflow';
+import VSComparison from './_components/VSComparison';
 import Capabilities from './_components/Capabilities';
 import WhyXgenious from './_components/WhyXgenious';
 import IndustryUseCases from './_components/IndustryUseCases';
@@ -145,6 +146,7 @@ export default function AiAgentDevelopmentPage() {
       <Hero />
       <TrustedBy title="Trusted by teams around the world" dark />
       <AIServices />
+      <VSComparison />
       <AgentWorkflow />
       <WhyXgenious />
       <TechStack />
