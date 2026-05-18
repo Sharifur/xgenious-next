@@ -42,7 +42,7 @@ const plans: PricingPlan[] = [
     name: 'MVP → Production Bridge',
     price: '$30,000',
     timeline: '10–16 Weeks · 3+ Sprint cycles',
-    bestFor: 'Your MVP validated. Now build the SaaS you\'ll run for years — multi-tenant, compliant, scalable. This tier bridges the gap.',
+    bestFor: 'Your MVP validated. Extend it into the production SaaS you\'ll run for years. Full fee credited toward a Custom SaaS build if you continue.',
     features: [
       'Multi-tenant SaaS or marketplace architecture',
       'AI/LLM feature integration',
@@ -51,7 +51,7 @@ const plans: PricingPlan[] = [
       'GDPR-ready data handling',
       'Full test suite + SOC 2-ready setup',
       '1-year post-launch support + SRE retainer',
-      'Hands off to full Custom SaaS build if needed',
+      'Full $30K fee credited toward Custom SaaS build',
     ],
     cta: 'Start the Bridge',
     ctaHref: '/contact',

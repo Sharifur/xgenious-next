@@ -89,7 +89,7 @@ const serviceSchema = {
       {
         '@type': 'Offer',
         name: 'MVP → Production Bridge',
-        description: 'Multi-tenant SaaS or marketplace architecture, AI features, Flutter mobile app, GDPR-ready, 1-year support. 10–16 weeks.',
+        description: 'Multi-tenant SaaS or marketplace architecture, AI features, Flutter mobile app, GDPR-ready, 1-year support. Full fee credited toward Custom SaaS build. 10–16 weeks.',
         price: '30000',
         priceCurrency: 'USD',
         priceSpecification: { '@type': 'UnitPriceSpecification', price: '30000', priceCurrency: 'USD' },
