@@ -92,7 +92,7 @@ const columns = [
 
 export default function MVPComparison() {
   return (
-    <section className="py-14 sm:py-20 lg:py-[100px]" style={{ background: '#f5f6f8' }}>
+    <section className="pt-14 sm:pt-20 lg:pt-[100px] pb-0" style={{ background: '#f5f6f8' }}>
       <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col gap-10 sm:gap-14">
 
         {/* Header */}
