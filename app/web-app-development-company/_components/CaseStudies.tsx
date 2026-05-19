@@ -150,6 +150,21 @@ const CASES: CaseStudy[] = [
     imageBg: '#C8D8F0',
     imageRight: true,
   },
+  {
+    title: 'eCommerce Platform with Built-In Courier',
+    description:
+      'A complete eCommerce platform with automated courier label generation, fraud detection, dynamic variant matrix, multi-currency checkout, and multi-language storefront — no third-party logistics tools.',
+    stats: [
+      { value: 'Auto', label: 'Label Generation' },
+      { value: 'Dynamic', label: 'Variant Matrix' },
+      { value: 'Global', label: 'Multi-Currency & Language' },
+    ],
+    tags: ['eCommerce', 'Courier Integration', 'Multi-Language'],
+    href: '/case-studies/ecommerce-platform-with-courier',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#F0D8C8',
+    imageRight: false,
+  },
 ];
 
 function StatBlock({ stat }: { stat: Stat }) {
