@@ -1,6 +1,7 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
 import Button, { ArrowIcon } from '@/components/ui/Button';
+import CTASection from '@/components/sections/CTASection';
+import BookingCTA from '@/components/sections/BookingCTA';
 
 export const metadata: Metadata = {
   title: 'Beauty Room Booking App — Flutter Case Study | Xgenious',
@@ -90,14 +91,6 @@ export default function BeautyRoomBookingCaseStudy() {
 
             {/* Left — text */}
             <div className="flex flex-col gap-6">
-              <div className="flex flex-wrap items-center gap-3">
-                <Link href="/web-app-development-company" className="text-[13px] text-[#8a8f99] hover:text-[#ec7161] transition-colors">
-                  ← Web App Development
-                </Link>
-                <span className="text-[#d1d5db]">/</span>
-                <span className="text-[13px] text-[#484848]">Case Study</span>
-              </div>
-
               <div className="flex flex-wrap gap-2">
                 <Tag>Beauty &amp; Wellness</Tag>
                 <Tag>Mobile App</Tag>
@@ -414,26 +407,12 @@ export default function BeautyRoomBookingCaseStudy() {
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 lg:py-[100px] bg-white">
-        <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col items-center text-center gap-6">
-          <span className="text-[12px] font-semibold text-[#ec7161] uppercase tracking-[0.1em]">Start Your Project</span>
-          <h2 className="text-[28px] leading-[36px] sm:text-[36px] sm:leading-[44px] lg:text-[44px] lg:leading-[52px] font-semibold text-[#0F1112] max-w-[640px]">
-            Need a booking platform like this?
-          </h2>
-          <p className="text-[15px] sm:text-[16px] leading-[26px] text-[#484848] max-w-[520px]">
-            We build mobile-first platforms with real-time backends, payment integrations, and smart access infrastructure — fixed-price, shipped on schedule.
-          </p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Button href="/contact" variant="coral" icon={<ArrowIcon />}>
-              Book a Strategy Call
-            </Button>
-            <Button href="/mobile-app-development" variant="outline" icon={<ArrowIcon />}>
-              Mobile App Development
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        heading="Need a booking platform like this?"
+        description="We build mobile-first platforms with real-time backends, payment integrations, and smart access infrastructure — fixed-price, shipped on schedule."
+      />
+
+      <BookingCTA />
     </>
   );
 }
