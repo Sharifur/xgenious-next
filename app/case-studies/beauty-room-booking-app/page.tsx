@@ -434,13 +434,13 @@ export default function BeautyRoomBookingCaseStudy() {
         </div>
       </section>
 
+      <BookingCTA />
+
       <FAQ
         faqs={FAQS}
         title="Questions about building a platform like this?"
         description="Common questions from founders and operators before starting a mobile app engagement."
       />
-
-      <BookingCTA />
     </>
   );
 }
