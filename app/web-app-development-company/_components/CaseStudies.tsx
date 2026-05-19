@@ -48,14 +48,14 @@ const CASES: CaseStudy[] = [
   {
     title: 'Multi-Vendor Marketplace Built for Scale',
     description:
-      'Nazmart powers multi-tenant eCommerce stores where every seller gets their own storefront, subdomain, and dashboard — all managed from a single admin panel.',
+      'A multi-tenant eCommerce SaaS where every seller gets their own storefront, subdomain, and dashboard — 19+ payment gateways, Flutter mobile apps, and custom domain per tenant.',
     stats: [
       { value: '50+', label: 'Active Stores' },
       { value: '99.9%', label: 'Uptime SLA' },
       { value: '3×', label: 'Revenue Growth' },
     ],
     tags: ['eCommerce', 'Multi-Tenant', 'SaaS'],
-    href: 'https://xgenious.com/our-products/nazmart-multi-tenancy-ecommerce-platform-saas/',
+    href: '/case-studies/multi-tenant-ecommerce-saas',
     image: '/images/saas-dev/taskip-case-studies.jpg',
     imageBg: '#F5E8DC',
     imageRight: false,
@@ -78,16 +78,76 @@ const CASES: CaseStudy[] = [
   {
     title: 'Freelance Marketplace Platform Launched in 8 Weeks',
     description:
-      'Xilancer gave a startup a fully operational freelance platform with escrow payments, bidding, dispute resolution, and a mobile-ready UI — shipped on schedule.',
+      'A fully operational freelance platform with escrow payments, bidding, dispute resolution, real-time chat, and Flutter mobile apps — shipped on schedule in 8 weeks.',
     stats: [
       { value: '8wk', label: 'Time to Launch' },
       { value: '500+', label: 'Active Freelancers' },
       { value: '98%', label: 'Client Satisfaction' },
     ],
     tags: ['Marketplace', 'Payments', 'Freelancers'],
-    href: 'https://xgenious.com/our-products/xilancer-freelancer-marketplace-platform/',
+    href: '/case-studies/freelancer-marketplace-platform',
     image: '/images/saas-dev/taskip-case-studies.jpg',
     imageBg: '#D8E4F0',
+    imageRight: true,
+  },
+  {
+    title: 'Crowdfunding & Donation Platform with Event Ticketing',
+    description:
+      'A Laravel crowdfunding platform with drag-and-drop campaign builder, event ticket sales, 10+ payment gateways, and a configurable platform fee model — built for full operator control.',
+    stats: [
+      { value: '10+', label: 'Payment Gateways' },
+      { value: 'D&D', label: 'Campaign Builder' },
+      { value: 'Events', label: 'Ticket Module' },
+    ],
+    tags: ['Crowdfunding', 'Donations', 'Laravel'],
+    href: '/case-studies/crowdfunding-platform',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#D4E8D8',
+    imageRight: false,
+  },
+  {
+    title: 'On-Demand Home Service Marketplace',
+    description:
+      'A location-aware marketplace connecting homeowners with service providers — Google Maps matching, real-time chat, WhatsApp notifications, multi-service cart, and Flutter mobile apps.',
+    stats: [
+      { value: '20+', label: 'Payment Gateways' },
+      { value: 'Spatial', label: 'Provider Matching' },
+      { value: 'WhatsApp', label: 'Order Notifications' },
+    ],
+    tags: ['Home Services', 'Flutter', 'Marketplace'],
+    href: '/case-studies/on-demand-home-service-app',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#DDD0F0',
+    imageRight: true,
+  },
+  {
+    title: 'Car Service & Mechanic Booking Marketplace',
+    description:
+      'A vehicle-aware booking marketplace connecting car owners with mechanics — vehicle model matching, real-time order tracking, 19+ payment gateways, and an Android mobile app.',
+    stats: [
+      { value: '19+', label: 'Payment Methods' },
+      { value: 'Live', label: 'Order Tracking' },
+      { value: 'Android', label: 'Mobile App' },
+    ],
+    tags: ['Automotive', 'Marketplace', 'Android'],
+    href: '/case-studies/car-service-marketplace',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#E8E8E0',
+    imageRight: false,
+  },
+  {
+    title: 'Classified Ads Platform with Live Chat',
+    description:
+      'A full classified ads platform with location-based discovery, real-time buyer-seller chat, membership tiers, seller wallet, and a drag-and-drop CMS — trusted by 2,000+ brands.',
+    stats: [
+      { value: '2K+', label: 'Brands Onboarded' },
+      { value: 'Live', label: 'Buyer-Seller Chat' },
+      { value: 'Dual', label: 'Revenue Streams' },
+    ],
+    tags: ['Classifieds', 'Marketplace', 'Laravel'],
+    href: '/case-studies/classified-ads-platform',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#C8D8F0',
     imageRight: true,
   },
 ];
