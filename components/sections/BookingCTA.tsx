@@ -30,7 +30,7 @@ export default function BookingCTA() {
           <iframe
             src="https://crm.xgenious.com/public/meetings/book-a-30-min-saas-strategy-call"
             width="100%"
-            height="900"
+            height="700"
             frameBorder="0"
             allowFullScreen
             className="block w-full"
