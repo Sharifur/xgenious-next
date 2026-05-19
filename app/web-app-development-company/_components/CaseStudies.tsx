@@ -46,16 +46,16 @@ const CASES: CaseStudy[] = [
     imageRight: false,
   },
   {
-    title: 'Saachii — Beauty Room Booking App with Smart Access',
+    title: 'Beauty Room Booking Platform with Smart Access',
     description:
-      'A Flutter mobile platform that lets independent beauty and wellness professionals book premium treatment rooms daily, with Salto KS smart lock access, Stripe payments, and zero on-site staff required.',
+      'A Flutter mobile platform that lets independent beauty and wellness professionals book premium treatment rooms daily, with digital smart lock access, Stripe payments, and zero on-site staff required.',
     stats: [
       { value: '100%', label: 'Unmanned Operations' },
       { value: '< 3min', label: 'Avg Booking Time' },
       { value: '0', label: 'Key Handovers' },
     ],
     tags: ['Flutter', 'Smart Access', 'Beauty & Wellness'],
-    href: '/case-studies/saachii',
+    href: '/case-studies/beauty-room-booking-app',
     image: '/images/saas-dev/taskip-case-studies.jpg',
     imageBg: '#F0ECE4',
     imageRight: false,

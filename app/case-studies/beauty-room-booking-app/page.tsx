@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 import Button, { ArrowIcon } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
-  title: 'Saachii Case Study — Beauty Room Booking App | Xgenious',
+  title: 'Beauty Room Booking App — Flutter Case Study | Xgenious',
   description:
-    'How Xgenious built Saachii: a Flutter-based mobile platform for beauty and wellness professionals to book premium treatment rooms on a daily basis, with smart Salto KS access and Stripe payments.',
+    'How Xgenious built a Flutter-based mobile platform for beauty and wellness professionals to book premium treatment rooms on a daily basis, with smart access control and Stripe payments.',
 };
 
 const STATS = [
@@ -21,34 +21,34 @@ const TECH = [
   { name: 'Firebase Auth', desc: 'Secure user authentication' },
   { name: 'Cloud Functions', desc: 'Backend business logic' },
   { name: 'Stripe', desc: 'Payment processing' },
-  { name: 'Salto KS', desc: 'Smart access control' },
+  { name: 'Smart Lock API', desc: 'Digital access control' },
 ];
 
 const CHALLENGES = [
   {
     num: '01',
     title: 'Real-Time Room Availability',
-    body: 'Preventing double-booking while keeping the booking flow fast and responsive. We solved this with Firestore transactions that lock availability atomically before confirming payment.',
+    body: 'Preventing double-booking while keeping the booking flow fast and responsive. Solved with Firestore atomic transactions that lock availability before confirming payment.',
   },
   {
     num: '02',
     title: 'Smart Access Management',
-    body: 'Coordinating booking validity windows with digital room unlock permissions. The Salto KS API is called server-side via Cloud Functions — access activates at booking start and expires at the end.',
+    body: 'Coordinating booking validity windows with digital room unlock permissions. Access activates server-side at booking start time and expires automatically at checkout.',
   },
   {
     num: '03',
     title: 'Fully Unmanned Operations',
-    body: 'Removing the need for manual key exchange or on-site management entirely. Every step — booking, payment, room access, checkout — is handled inside the app without staff involvement.',
+    body: 'Removing the need for manual key exchange or on-site staff entirely. Every step — booking, payment, room access, checkout — is handled inside the app.',
   },
   {
     num: '04',
     title: 'Booking Lifecycle Management',
-    body: 'Handling booking statuses, cancellations, payment states, and future access activation across a distributed system with push notification support at every state change.',
+    body: 'Handling booking statuses, cancellations, payment states, and future access activation across a distributed system with push notifications at every state change.',
   },
   {
     num: '05',
     title: 'Mobile-First UX',
-    body: 'Creating an intuitive booking flow for non-technical beauty professionals. Zero learning curve was the goal — users go from sign-up to confirmed booking in under three minutes.',
+    body: 'Creating an intuitive booking flow for non-technical beauty professionals. Zero learning curve was the goal — sign-up to confirmed booking in under three minutes.',
   },
 ];
 
@@ -57,7 +57,7 @@ const FEATURES = [
   'Room browsing & detail pages',
   'Daily booking system',
   'Booking history & management',
-  'Smart room access (Salto KS)',
+  'Smart room access via digital lock',
   'User profile management',
   'Stripe payment integration',
   'Push notification support',
@@ -80,7 +80,7 @@ function StatCard({ value, label }: { value: string; label: string }) {
   );
 }
 
-export default function SaachiiCaseStudy() {
+export default function BeautyRoomBookingCaseStudy() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
@@ -102,7 +102,7 @@ export default function SaachiiCaseStudy() {
             </div>
 
             <h1 className="text-[36px] leading-[44px] sm:text-[52px] sm:leading-[60px] lg:text-[64px] lg:leading-[72px] font-semibold text-[#0F1112]">
-              Saachii — Premium Room Booking for Beauty Professionals
+              Premium Room Booking Platform for Beauty &amp; Wellness Professionals
             </h1>
 
             <p className="text-[16px] sm:text-[18px] leading-[28px] text-[#484848] max-w-[640px]">
@@ -115,6 +115,16 @@ export default function SaachiiCaseStudy() {
               <Button href="/contact" variant="coral" icon={<ArrowIcon />}>
                 Start a Similar Project
               </Button>
+            </div>
+          </div>
+
+          {/* Hero image placeholder — replace with actual project screenshot */}
+          <div
+            className="mt-12 w-full rounded-2xl overflow-hidden"
+            style={{ background: '#e8e4dc', aspectRatio: '16/7', minHeight: 240 }}
+          >
+            <div className="w-full h-full flex items-center justify-center">
+              <span className="text-[14px] text-[#a09a8e]">Project screenshot — replace with actual image</span>
             </div>
           </div>
         </div>
@@ -142,17 +152,17 @@ export default function SaachiiCaseStudy() {
               </h2>
               <div className="flex flex-col gap-4 text-[15px] sm:text-[16px] leading-[26px] text-[#484848]">
                 <p>
-                  Saachii is a mobile-first room booking platform designed specifically for beauty and wellness
+                  Our client needed a mobile-first room booking platform for beauty and wellness
                   professionals — aestheticians, massage therapists, nail technicians, lash artists, and makeup
                   artists who need professional workspace without the overhead of long-term studio leases.
                 </p>
                 <p>
-                  The platform combines seamless room booking, digital access control via Salto KS smart locks,
-                  and a premium mobile experience into a single Flutter application. Operators can run spaces
-                  with zero on-site staff. Professionals get instant, flexible access.
+                  We built a platform combining seamless room booking, digital smart lock access control,
+                  and a premium mobile experience into a single Flutter application. Venue operators can run
+                  spaces with zero on-site staff. Professionals get instant, flexible access.
                 </p>
                 <p>
-                  <strong className="text-[#0F1112]">Core brand message:</strong> Flexible access to premium wellness spaces without long-term commitments.
+                  <strong className="text-[#0F1112]">Core product message:</strong> Flexible access to premium wellness spaces without long-term commitments.
                 </p>
               </div>
             </div>
@@ -165,7 +175,7 @@ export default function SaachiiCaseStudy() {
                   { label: 'Platform', value: 'iOS & Android (Flutter)' },
                   { label: 'Backend', value: 'Firebase + Cloud Functions' },
                   { label: 'Payments', value: 'Stripe' },
-                  { label: 'Access Control', value: 'Salto KS Smart Locks' },
+                  { label: 'Access Control', value: 'Smart Lock Integration' },
                   { label: 'Engagement', value: 'Mobile App Development' },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex items-center justify-between px-5 py-3.5">
@@ -225,14 +235,14 @@ export default function SaachiiCaseStudy() {
               </h2>
               <div className="flex flex-col gap-4 text-[15px] sm:text-[16px] leading-[26px] text-[#484848]">
                 <p>
-                  Saachii removes every operational friction point. Professionals browse available rooms, pick
+                  We removed every operational friction point. Professionals browse available rooms, pick
                   a date, pay via Stripe, and unlock the space from their phone — no staff, no paperwork, no
                   waiting.
                 </p>
                 <p>
-                  The Salto KS smart access integration means physical keys are eliminated entirely. Access
-                  permissions are activated server-side at booking start time and automatically revoked at
-                  checkout. The system was designed for fully unmanned operation from day one.
+                  The smart lock integration eliminates physical keys entirely. Access permissions activate
+                  server-side at booking start time and are automatically revoked at checkout. The system
+                  was designed for fully unmanned operation from day one.
                 </p>
               </div>
             </div>
@@ -266,43 +276,18 @@ export default function SaachiiCaseStudy() {
             </h2>
             <p className="text-[15px] sm:text-[16px] leading-[26px] text-[#484848]">
               The client requested a minimal, elegant UI — professional but warm, black and white branding
-              with soft neutral accents. The UI was designed to feel premium while remaining simple enough
-              for any user.
+              with soft neutral accents. Designed to feel premium while remaining simple enough for any user.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              {
-                title: 'Minimal & Elegant',
-                body: 'Black and white base palette with soft neutral accents. No visual clutter — every screen serves a single intent.',
-                icon: '◆',
-              },
-              {
-                title: 'Mobile-First Journey',
-                body: 'Designed for one-handed use. The booking flow is linear, progressive, and completable in under three minutes from cold start.',
-                icon: '▲',
-              },
-              {
-                title: 'Smooth Onboarding',
-                body: 'New professionals go from sign-up to first booking without friction. Guided flows with inline validation at every step.',
-                icon: '●',
-              },
-              {
-                title: 'Real-Time Feedback',
-                body: 'Availability updates in real time. Users see live room status and get instant confirmation with access details on payment.',
-                icon: '◉',
-              },
-              {
-                title: 'Smart Access UX',
-                body: 'Room unlock is a single button in the app. No QR codes, no PIN entry — just tap and the Salto KS lock responds.',
-                icon: '■',
-              },
-              {
-                title: 'Professional Identity',
-                body: 'Profile management lets practitioners present themselves to venue operators. Built for a community that values reputation.',
-                icon: '★',
-              },
+              { title: 'Minimal & Elegant', body: 'Black and white base palette with soft neutral accents. No visual clutter — every screen serves a single intent.', icon: '◆' },
+              { title: 'Mobile-First Journey', body: 'Designed for one-handed use. The booking flow is linear, progressive, and completable in under three minutes from cold start.', icon: '▲' },
+              { title: 'Smooth Onboarding', body: 'New professionals go from sign-up to first booking without friction. Guided flows with inline validation at every step.', icon: '●' },
+              { title: 'Real-Time Feedback', body: 'Availability updates in real time. Users see live room status and get instant confirmation with access details on payment.', icon: '◉' },
+              { title: 'Smart Access UX', body: 'Room unlock is a single button in the app. No QR codes, no PIN entry — tap once, the smart lock responds.', icon: '■' },
+              { title: 'Professional Identity', body: 'Profile management lets practitioners present themselves to venue operators, building reputation within the platform.', icon: '★' },
             ].map((item) => (
               <div key={item.title} className="flex flex-col gap-3 p-6 rounded-2xl bg-white border border-[#e5e7ec]">
                 <span className="text-[20px] text-[#ec7161]">{item.icon}</span>
@@ -330,12 +315,11 @@ export default function SaachiiCaseStudy() {
                   processing, access provisioning, and notification dispatch — outside the client.
                 </p>
                 <p>
-                  Salto KS integration lives entirely server-side. The mobile app never holds access tokens
+                  Smart lock integration lives entirely server-side. The mobile app never holds access tokens
                   directly; it requests unlock via Cloud Function which validates booking validity before
-                  calling the Salto API.
+                  calling the lock API.
                 </p>
               </div>
-
               <div className="flex flex-col gap-2 pt-2">
                 {[
                   'Real-time booking synchronization via Firestore',
@@ -355,7 +339,6 @@ export default function SaachiiCaseStudy() {
               </div>
             </div>
 
-            {/* Tech stack */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {TECH.map((t) => (
                 <div key={t.name} className="flex flex-col gap-1.5 p-5 rounded-2xl border border-[#e5e7ec]" style={{ background: '#fafafa' }}>
@@ -377,7 +360,6 @@ export default function SaachiiCaseStudy() {
               Hard problems, solved cleanly
             </h2>
           </div>
-
           <div className="flex flex-col gap-5">
             {CHALLENGES.map((c) => (
               <div key={c.num} className="flex flex-col sm:flex-row gap-5 sm:gap-8 p-6 sm:p-8 rounded-2xl bg-white border border-[#e5e7ec]">
@@ -402,17 +384,16 @@ export default function SaachiiCaseStudy() {
                 A scalable, digital-first wellness infrastructure
               </h2>
               <p className="text-[15px] sm:text-[16px] leading-[26px] text-[#9ca3af]">
-                Saachii demonstrates how modern mobile technology, real-time infrastructure, and smart access
-                systems can transform the beauty and wellness rental experience into a fully digital, flexible,
-                and scalable platform.
+                The platform demonstrates how modern mobile technology, real-time infrastructure, and smart
+                access systems can transform the beauty and wellness rental experience into a fully digital,
+                flexible, and scalable business.
               </p>
               <p className="text-[15px] sm:text-[16px] leading-[26px] text-[#9ca3af]">
                 Venue operators can run multiple locations without on-site staff. Professionals get
-                professional-grade workspace on demand. The architecture supports adding new venues, new
-                room types, and new markets without engineering changes.
+                professional-grade workspace on demand. The architecture supports adding new venues, room
+                types, and markets without engineering changes.
               </p>
             </div>
-
             <div className="grid grid-cols-2 gap-4">
               {[
                 { value: 'Zero', label: 'Physical key handovers' },
@@ -435,10 +416,10 @@ export default function SaachiiCaseStudy() {
         <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col items-center text-center gap-6">
           <span className="text-[12px] font-semibold text-[#ec7161] uppercase tracking-[0.1em]">Start Your Project</span>
           <h2 className="text-[28px] leading-[36px] sm:text-[36px] sm:leading-[44px] lg:text-[44px] lg:leading-[52px] font-semibold text-[#0F1112] max-w-[640px]">
-            Ready to build something like Saachii?
+            Need a booking platform like this?
           </h2>
           <p className="text-[15px] sm:text-[16px] leading-[26px] text-[#484848] max-w-[520px]">
-            We build mobile-first platforms with real-time backends, payment integrations, and smart infrastructure — fixed-price, shipped on schedule.
+            We build mobile-first platforms with real-time backends, payment integrations, and smart access infrastructure — fixed-price, shipped on schedule.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Button href="/contact" variant="coral" icon={<ArrowIcon />}>
