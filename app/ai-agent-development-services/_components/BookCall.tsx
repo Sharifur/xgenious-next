@@ -1,6 +1,6 @@
 export default function BookCall() {
   return (
-    <section id="booking" className="bg-[#0C0C0E]">
+    <section id="booking" className="pb-16 sm:pb-20 lg:pb-[100px] bg-[#0C0C0E]">
       <div className="container-page px-4 sm:px-6 lg:px-0">
         <div className="rounded-[20px] sm:rounded-[24px] overflow-hidden">
           <iframe
