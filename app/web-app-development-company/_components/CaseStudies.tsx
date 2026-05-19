@@ -16,6 +16,21 @@ type CaseStudy = {
 
 const CASES: CaseStudy[] = [
   {
+    title: 'AI-Powered Customer Support SaaS Platform',
+    description:
+      'A self-hostable, multi-tenant Laravel platform with semantic AI chatbots, support ticketing, knowledge base builder, and Stripe billing — a full alternative to Intercom and Crisp that clients own outright.',
+    stats: [
+      { value: '40–60%', label: 'AI Deflection Rate' },
+      { value: 'Multi-tenant', label: 'Architecture' },
+      { value: 'GPT-4', label: 'AI Engine' },
+    ],
+    tags: ['Laravel', 'AI / LLM', 'SaaS'],
+    href: '/case-studies/ai-support-saas-platform',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#E8EDF8',
+    imageRight: true,
+  },
+  {
     title: 'Client Portal Software for Agencies and Freelancers',
     description:
       'Taskip is the all-in-one agency management platform and client portal software that helps freelancers and digital agencies run their entire business.',
