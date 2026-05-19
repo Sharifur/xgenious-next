@@ -86,46 +86,49 @@ export default function BeautyRoomBookingCaseStudy() {
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="pt-[120px] sm:pt-[160px] pb-16 sm:pb-20" style={{ background: 'linear-gradient(180deg, #f9f8f4 0%, #f0ece4 100%)' }}>
         <div className="container-page px-4 sm:px-6 lg:px-0">
-          <div className="flex flex-col gap-6 max-w-[820px]">
-            <div className="flex flex-wrap items-center gap-3">
-              <Link href="/web-app-development-company" className="text-[13px] text-[#8a8f99] hover:text-[#ec7161] transition-colors">
-                ← Web App Development
-              </Link>
-              <span className="text-[#d1d5db]">/</span>
-              <span className="text-[13px] text-[#484848]">Case Study</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+            {/* Left — text */}
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-wrap items-center gap-3">
+                <Link href="/web-app-development-company" className="text-[13px] text-[#8a8f99] hover:text-[#ec7161] transition-colors">
+                  ← Web App Development
+                </Link>
+                <span className="text-[#d1d5db]">/</span>
+                <span className="text-[13px] text-[#484848]">Case Study</span>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                <Tag>Beauty &amp; Wellness</Tag>
+                <Tag>Mobile App</Tag>
+                <Tag>Smart Access</Tag>
+              </div>
+
+              <h1 className="text-[36px] leading-[44px] sm:text-[52px] sm:leading-[60px] lg:text-[56px] lg:leading-[64px] font-semibold text-[#0F1112]">
+                Premium Room Booking Platform for Beauty &amp; Wellness Professionals
+              </h1>
+
+              <p className="text-[16px] sm:text-[18px] leading-[28px] text-[#484848]">
+                A mobile-first platform built on Flutter that gives independent beauty and wellness professionals
+                flexible, same-day access to premium treatment rooms — no long-term contracts, no key handovers,
+                no staff required.
+              </p>
+
+              <div className="flex flex-wrap gap-3 pt-2">
+                <Button href="/contact" variant="coral" icon={<ArrowIcon />}>
+                  Start a Similar Project
+                </Button>
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-2">
-              <Tag>Beauty &amp; Wellness</Tag>
-              <Tag>Mobile App</Tag>
-              <Tag>Smart Access</Tag>
+            {/* Right — image placeholder */}
+            <div
+              className="w-full rounded-2xl overflow-hidden flex items-center justify-center"
+              style={{ background: '#e8e4dc', aspectRatio: '3/4', minHeight: 400 }}
+            >
+              <span className="text-[13px] text-[#a09a8e]">Project screenshot</span>
             </div>
 
-            <h1 className="text-[36px] leading-[44px] sm:text-[52px] sm:leading-[60px] lg:text-[64px] lg:leading-[72px] font-semibold text-[#0F1112]">
-              Premium Room Booking Platform for Beauty &amp; Wellness Professionals
-            </h1>
-
-            <p className="text-[16px] sm:text-[18px] leading-[28px] text-[#484848] max-w-[640px]">
-              A mobile-first platform built on Flutter that gives independent beauty and wellness professionals
-              flexible, same-day access to premium treatment rooms — no long-term contracts, no key handovers,
-              no staff required.
-            </p>
-
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Button href="/contact" variant="coral" icon={<ArrowIcon />}>
-                Start a Similar Project
-              </Button>
-            </div>
-          </div>
-
-          {/* Hero image placeholder — replace with actual project screenshot */}
-          <div
-            className="mt-12 w-full rounded-2xl overflow-hidden"
-            style={{ background: '#e8e4dc', aspectRatio: '16/7', minHeight: 240 }}
-          >
-            <div className="w-full h-full flex items-center justify-center">
-              <span className="text-[14px] text-[#a09a8e]">Project screenshot — replace with actual image</span>
-            </div>
           </div>
         </div>
       </section>
