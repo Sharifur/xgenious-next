@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import SectionBadge from '@/components/ui/SectionBadge';
 
 type Stat = { value: string; label: string };
@@ -42,6 +43,21 @@ const CASES: CaseStudy[] = [
     href: 'https://xgenious.com/our-products/nazmart-multi-tenancy-ecommerce-platform-saas/',
     image: '/images/saas-dev/taskip-case-studies.jpg',
     imageBg: '#F5E8DC',
+    imageRight: false,
+  },
+  {
+    title: 'Saachii — Beauty Room Booking App with Smart Access',
+    description:
+      'A Flutter mobile platform that lets independent beauty and wellness professionals book premium treatment rooms daily, with Salto KS smart lock access, Stripe payments, and zero on-site staff required.',
+    stats: [
+      { value: '100%', label: 'Unmanned Operations' },
+      { value: '< 3min', label: 'Avg Booking Time' },
+      { value: '0', label: 'Key Handovers' },
+    ],
+    tags: ['Flutter', 'Smart Access', 'Beauty & Wellness'],
+    href: '/case-studies/saachii',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#F0ECE4',
     imageRight: false,
   },
   {
@@ -102,17 +118,17 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
         ))}
       </div>
 
-      <a
+      <Link
         href={cs.href}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={cs.href.startsWith('http') ? '_blank' : undefined}
+        rel={cs.href.startsWith('http') ? 'noopener noreferrer' : undefined}
         className="group inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-full bg-[#0F1112] text-white text-[13px] font-semibold mt-[60px] hover:bg-[#ec7161] hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(236,113,97,0.35)] transition-all duration-300"
       >
         Read Full Case Study
         <svg width="14" height="14" viewBox="0 0 15 15" fill="none" className="transition-transform duration-300 group-hover:translate-x-0.5">
           <path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-      </a>
+      </Link>
     </div>
   );
 

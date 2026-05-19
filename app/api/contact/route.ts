@@ -9,8 +9,30 @@ const ses = new SESClient({
   },
 });
 
+async function verifyRecaptcha(token: string): Promise<boolean> {
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secret) return true; // skip if not configured
+  const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `secret=${secret}&response=${token}`,
+  });
+  const data = await res.json();
+  return data.success === true;
+}
+
 export async function POST(req: NextRequest) {
-  const { firstName, lastName, email, subject, message } = await req.json();
+  const { firstName, lastName, email, subject, message, recaptchaToken } = await req.json();
+
+  if (process.env.RECAPTCHA_SECRET_KEY) {
+    if (!recaptchaToken) {
+      return NextResponse.json({ error: 'Please complete the reCAPTCHA.' }, { status: 400 });
+    }
+    const valid = await verifyRecaptcha(recaptchaToken);
+    if (!valid) {
+      return NextResponse.json({ error: 'reCAPTCHA verification failed. Please try again.' }, { status: 400 });
+    }
+  }
 
   if (!firstName || !lastName || !email || !subject || !message) {
     return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });

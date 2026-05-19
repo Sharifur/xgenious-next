@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import CTASection from '@/components/sections/CTASection';
 
 const QUERY_TYPES = [
@@ -69,6 +70,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -86,14 +88,16 @@ export default function ContactPage() {
     setLoading(true);
     setError('');
     try {
+      const recaptchaToken = recaptchaRef.current?.getValue() ?? '';
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, recaptchaToken }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? 'Something went wrong.');
       setSubmitted(true);
+      recaptchaRef.current?.reset();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong.');
     } finally {
@@ -216,6 +220,13 @@ export default function ContactPage() {
                       className="rounded-xl border border-[#E5E7EC] px-4 py-3 text-[14px] text-[#0F1112] placeholder:text-[#9ca3af] outline-none focus:border-[#ec7161] transition-colors resize-none"
                     />
                   </div>
+
+                  {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                    />
+                  )}
 
                   <button
                     type="submit"
