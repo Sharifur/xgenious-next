@@ -1,7 +1,34 @@
 import type { Metadata } from 'next';
 import Button, { ArrowIcon } from '@/components/ui/Button';
-import CTASection from '@/components/sections/CTASection';
+import FAQ from '@/components/sections/FAQ';
 import BookingCTA from '@/components/sections/BookingCTA';
+
+const FAQS = [
+  {
+    question: 'What does a project like this typically cost?',
+    answer: 'A mobile app at this scope — Flutter cross-platform, real-time Firebase backend, Stripe payments, and smart lock API integration — typically ranges from $15,000 to $40,000 depending on the number of screens, third-party integrations, and complexity of the booking logic. We work on fixed-price contracts, so you know the full cost before we start.',
+  },
+  {
+    question: 'How long does it take to build?',
+    answer: 'A platform of this scale typically ships in 10–16 weeks. Discovery and design take 2–3 weeks, development runs in weekly sprints, and QA + App Store submission takes a further 1–2 weeks. We provide a committed delivery date before the engagement starts.',
+  },
+  {
+    question: 'Do you build for both iOS and Android?',
+    answer: 'Yes. We use Flutter for cross-platform development, which produces a single codebase that runs natively on both iOS and Android. This significantly reduces cost and development time compared to building two separate native apps.',
+  },
+  {
+    question: 'Can you integrate with smart lock or access control systems?',
+    answer: 'Yes. We have experience integrating with smart access APIs where physical lock hardware is controlled server-side via Cloud Functions. Access windows are tied to confirmed bookings and automatically expire — no manual intervention required.',
+  },
+  {
+    question: 'Do you handle App Store and Google Play submission?',
+    answer: 'Yes. App Store (Apple) and Google Play submission is included in all mobile app engagements. We handle the listing setup, screenshots, metadata, and the review process.',
+  },
+  {
+    question: 'What happens after launch?',
+    answer: 'All projects include a 30-day post-launch support window. After that, we offer ongoing maintenance retainers or can hand the codebase over to your in-house team with full documentation.',
+  },
+];
 
 export const metadata: Metadata = {
   title: 'Beauty Room Booking App — Flutter Case Study | Xgenious',
@@ -407,9 +434,10 @@ export default function BeautyRoomBookingCaseStudy() {
         </div>
       </section>
 
-      <CTASection
-        heading="Need a booking platform like this?"
-        description="We build mobile-first platforms with real-time backends, payment integrations, and smart access infrastructure — fixed-price, shipped on schedule."
+      <FAQ
+        faqs={FAQS}
+        title="Questions about building a platform like this?"
+        description="Common questions from founders and operators before starting a mobile app engagement."
       />
 
       <BookingCTA />
