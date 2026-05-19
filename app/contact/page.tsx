@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import CTASection from '@/components/sections/CTASection';
 
 const QUERY_TYPES = [
@@ -68,6 +69,8 @@ const SOCIALS = [
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -83,9 +86,23 @@ export default function ContactPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 900));
-    setLoading(false);
-    setSubmitted(true);
+    setError('');
+    try {
+      const recaptchaToken = recaptchaRef.current?.getValue() ?? '';
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, recaptchaToken }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? 'Something went wrong.');
+      setSubmitted(true);
+      recaptchaRef.current?.reset();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong.');
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -132,6 +149,7 @@ export default function ContactPage() {
                     onClick={() => {
                       setSubmitted(false);
                       setForm({ firstName: '', lastName: '', email: '', subject: '', message: '' });
+                      setError('');
                     }}
                     className="text-[13px] text-[#ec7161] font-medium underline underline-offset-2"
                   >
@@ -203,6 +221,13 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                    />
+                  )}
+
                   <button
                     type="submit"
                     disabled={loading}
@@ -215,6 +240,9 @@ export default function ContactPage() {
                       </svg>
                     )}
                   </button>
+                  {error && (
+                    <p className="text-[13px] text-red-500 mt-1">{error}</p>
+                  )}
                 </form>
               )}
             </div>

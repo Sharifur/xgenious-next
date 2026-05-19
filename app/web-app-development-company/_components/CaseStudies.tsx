@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import SectionBadge from '@/components/ui/SectionBadge';
 
 type Stat = { value: string; label: string };
@@ -14,6 +15,21 @@ type CaseStudy = {
 };
 
 const CASES: CaseStudy[] = [
+  {
+    title: 'AI-Powered Customer Support SaaS Platform',
+    description:
+      'A self-hostable, multi-tenant Laravel platform with semantic AI chatbots, support ticketing, knowledge base builder, and Stripe billing — a full alternative to Intercom and Crisp that clients own outright.',
+    stats: [
+      { value: '40–60%', label: 'AI Deflection Rate' },
+      { value: 'Multi-tenant', label: 'Architecture' },
+      { value: 'GPT-4', label: 'AI Engine' },
+    ],
+    tags: ['Laravel', 'AI / LLM', 'SaaS'],
+    href: '/case-studies/ai-support-saas-platform',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#E8EDF8',
+    imageRight: true,
+  },
   {
     title: 'Client Portal Software for Agencies and Freelancers',
     description:
@@ -32,32 +48,122 @@ const CASES: CaseStudy[] = [
   {
     title: 'Multi-Vendor Marketplace Built for Scale',
     description:
-      'Nazmart powers multi-tenant eCommerce stores where every seller gets their own storefront, subdomain, and dashboard — all managed from a single admin panel.',
+      'A multi-tenant eCommerce SaaS where every seller gets their own storefront, subdomain, and dashboard — 19+ payment gateways, Flutter mobile apps, and custom domain per tenant.',
     stats: [
       { value: '50+', label: 'Active Stores' },
       { value: '99.9%', label: 'Uptime SLA' },
       { value: '3×', label: 'Revenue Growth' },
     ],
     tags: ['eCommerce', 'Multi-Tenant', 'SaaS'],
-    href: 'https://xgenious.com/our-products/nazmart-multi-tenancy-ecommerce-platform-saas/',
+    href: '/case-studies/multi-tenant-ecommerce-saas',
     image: '/images/saas-dev/taskip-case-studies.jpg',
     imageBg: '#F5E8DC',
     imageRight: false,
   },
   {
+    title: 'Beauty Room Booking Platform with Smart Access',
+    description:
+      'A Flutter mobile platform that lets independent beauty and wellness professionals book premium treatment rooms daily, with digital smart lock access, Stripe payments, and zero on-site staff required.',
+    stats: [
+      { value: '100%', label: 'Unmanned Operations' },
+      { value: '< 3min', label: 'Avg Booking Time' },
+      { value: '0', label: 'Key Handovers' },
+    ],
+    tags: ['Flutter', 'Smart Access', 'Beauty & Wellness'],
+    href: '/case-studies/beauty-room-booking-app',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#F0ECE4',
+    imageRight: false,
+  },
+  {
     title: 'Freelance Marketplace Platform Launched in 8 Weeks',
     description:
-      'Xilancer gave a startup a fully operational freelance platform with escrow payments, bidding, dispute resolution, and a mobile-ready UI — shipped on schedule.',
+      'A fully operational freelance platform with escrow payments, bidding, dispute resolution, real-time chat, and Flutter mobile apps — shipped on schedule in 8 weeks.',
     stats: [
       { value: '8wk', label: 'Time to Launch' },
       { value: '500+', label: 'Active Freelancers' },
       { value: '98%', label: 'Client Satisfaction' },
     ],
     tags: ['Marketplace', 'Payments', 'Freelancers'],
-    href: 'https://xgenious.com/our-products/xilancer-freelancer-marketplace-platform/',
+    href: '/case-studies/freelancer-marketplace-platform',
     image: '/images/saas-dev/taskip-case-studies.jpg',
     imageBg: '#D8E4F0',
     imageRight: true,
+  },
+  {
+    title: 'Crowdfunding & Donation Platform with Event Ticketing',
+    description:
+      'A Laravel crowdfunding platform with drag-and-drop campaign builder, event ticket sales, 10+ payment gateways, and a configurable platform fee model — built for full operator control.',
+    stats: [
+      { value: '10+', label: 'Payment Gateways' },
+      { value: 'D&D', label: 'Campaign Builder' },
+      { value: 'Events', label: 'Ticket Module' },
+    ],
+    tags: ['Crowdfunding', 'Donations', 'Laravel'],
+    href: '/case-studies/crowdfunding-platform',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#D4E8D8',
+    imageRight: false,
+  },
+  {
+    title: 'On-Demand Home Service Marketplace',
+    description:
+      'A location-aware marketplace connecting homeowners with service providers — Google Maps matching, real-time chat, WhatsApp notifications, multi-service cart, and Flutter mobile apps.',
+    stats: [
+      { value: '20+', label: 'Payment Gateways' },
+      { value: 'Spatial', label: 'Provider Matching' },
+      { value: 'WhatsApp', label: 'Order Notifications' },
+    ],
+    tags: ['Home Services', 'Flutter', 'Marketplace'],
+    href: '/case-studies/on-demand-home-service-app',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#DDD0F0',
+    imageRight: true,
+  },
+  {
+    title: 'Car Service & Mechanic Booking Marketplace',
+    description:
+      'A vehicle-aware booking marketplace connecting car owners with mechanics — vehicle model matching, real-time order tracking, 19+ payment gateways, and an Android mobile app.',
+    stats: [
+      { value: '19+', label: 'Payment Methods' },
+      { value: 'Live', label: 'Order Tracking' },
+      { value: 'Android', label: 'Mobile App' },
+    ],
+    tags: ['Automotive', 'Marketplace', 'Android'],
+    href: '/case-studies/car-service-marketplace',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#E8E8E0',
+    imageRight: false,
+  },
+  {
+    title: 'Classified Ads Platform with Live Chat',
+    description:
+      'A full classified ads platform with location-based discovery, real-time buyer-seller chat, membership tiers, seller wallet, and a drag-and-drop CMS — trusted by 2,000+ brands.',
+    stats: [
+      { value: '2K+', label: 'Brands Onboarded' },
+      { value: 'Live', label: 'Buyer-Seller Chat' },
+      { value: 'Dual', label: 'Revenue Streams' },
+    ],
+    tags: ['Classifieds', 'Marketplace', 'Laravel'],
+    href: '/case-studies/classified-ads-platform',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#C8D8F0',
+    imageRight: true,
+  },
+  {
+    title: 'eCommerce Platform with Built-In Courier',
+    description:
+      'A complete eCommerce platform with automated courier label generation, fraud detection, dynamic variant matrix, multi-currency checkout, and multi-language storefront — no third-party logistics tools.',
+    stats: [
+      { value: 'Auto', label: 'Label Generation' },
+      { value: 'Dynamic', label: 'Variant Matrix' },
+      { value: 'Global', label: 'Multi-Currency & Language' },
+    ],
+    tags: ['eCommerce', 'Courier Integration', 'Multi-Language'],
+    href: '/case-studies/ecommerce-platform-with-courier',
+    image: '/images/saas-dev/taskip-case-studies.jpg',
+    imageBg: '#F0D8C8',
+    imageRight: false,
   },
 ];
 
@@ -102,17 +208,17 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
         ))}
       </div>
 
-      <a
+      <Link
         href={cs.href}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={cs.href.startsWith('http') ? '_blank' : undefined}
+        rel={cs.href.startsWith('http') ? 'noopener noreferrer' : undefined}
         className="group inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-full bg-[#0F1112] text-white text-[13px] font-semibold mt-[60px] hover:bg-[#ec7161] hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(236,113,97,0.35)] transition-all duration-300"
       >
         Read Full Case Study
         <svg width="14" height="14" viewBox="0 0 15 15" fill="none" className="transition-transform duration-300 group-hover:translate-x-0.5">
           <path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-      </a>
+      </Link>
     </div>
   );
 

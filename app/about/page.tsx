@@ -245,26 +245,6 @@ export default function AboutPage() {
 
       <Testimonials />
 
-      {/* ── 8. Career ── */}
-      <section className="bg-white py-14 sm:py-20 lg:py-24">
-        <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col lg:flex-row gap-8 lg:gap-16 items-start lg:items-center">
-          <div className="flex-shrink-0 w-full lg:w-[603px] h-[220px] sm:h-[360px] lg:h-[500px] bg-[#c4c4c4] rounded-xl" />
-          <div className="flex flex-col gap-5 sm:gap-8 flex-1">
-            <h2 className="text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px] font-semibold text-[#181818]">
-              Come Build With Us
-            </h2>
-            <p className="text-[14px] leading-[22px] sm:text-[16px] sm:leading-[26px] lg:text-[18px] text-[#484848]">
-              We&apos;re a small, senior-leaning engineering team — and we intend to stay that way.
-              We hire engineers who write production code, take ownership of deliverables, and care
-              about what they ship. If that sounds like you, we&apos;d like to hear from you.
-            </p>
-            <Button href="/careers" variant="coral" icon={<ArrowIcon rotate />} className="self-start">
-              View Open Roles
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* ── 9. CTA ── */}
       <section className="bg-[#191b1c] py-14 sm:py-20 lg:py-24 relative overflow-hidden">
         <div

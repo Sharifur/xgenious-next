@@ -13,12 +13,12 @@ export const servicesDropdown: DropdownItem[] = [
 ];
 
 export const productsDropdown: DropdownItem[] = [
-  { label: 'Nazmart', description: 'Multi-Tenancy eCommerce SAAS', href: '#' },
-  { label: 'Helpnest', description: 'AI Power Support Chatbot', href: '#' },
-  { label: 'Nexelit', description: 'Multipurpose Website CMS', href: '#' },
-  { label: 'Fundorex', description: 'Crowdfunding Platform', href: '#' },
-  { label: 'Xilancer', description: 'Freelancer Marketplace Platform', href: '#' },
-  { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', href: '#' },
+  { label: 'Nazmart', description: 'Multi-Tenancy eCommerce SAAS', href: 'https://xgenious.com/our-products/nazmart-multi-tenancy-ecommerce-platform-saas/' },
+  { label: 'Helpnest', description: 'AI Power Support Chatbot', href: 'https://xgenious.com/our-products/laravel-ai-chatbot-support-script/' },
+  { label: 'Nexelit', description: 'Multipurpose Website CMS', href: 'https://xgenious.com/our-products/nexelit-multipurpose-website-business-management-system-cms/' },
+  { label: 'Fundorex', description: 'Crowdfunding Platform', href: 'https://xgenious.com/our-products/fundorex-crowdfunding-platform/' },
+  { label: 'Xilancer', description: 'Freelancer Marketplace Platform', href: 'https://xgenious.com/our-products/xilancer-freelancer-marketplace-platform/' },
+  { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', href: 'https://xgenious.com/our-products/prohandy-on-demand-home-service-marketplace-platform' },
 ];
 
 export const companyDropdown: DropdownItem[] = [
