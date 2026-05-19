@@ -1,79 +1,5 @@
 'use client';
 import Image from 'next/image';
-import { IconArrowRight, IconChevronDown } from '@tabler/icons-react';
-
-const days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-const calendar: Array<{ d: number; state: 'avail' | 'unavail' | 'selected' | '' }> = [
-  { d: 0, state: '' }, { d: 0, state: '' }, { d: 1, state: 'avail' }, { d: 2, state: 'avail' }, { d: 3, state: 'avail' }, { d: 4, state: 'avail' }, { d: 5, state: 'avail' },
-  { d: 6, state: 'avail' }, { d: 7, state: 'avail' }, { d: 8, state: 'avail' }, { d: 9, state: 'unavail' }, { d: 10, state: 'avail' }, { d: 11, state: 'avail' }, { d: 12, state: 'avail' },
-  { d: 13, state: 'avail' }, { d: 14, state: 'unavail' }, { d: 15, state: 'avail' }, { d: 16, state: 'selected' }, { d: 17, state: 'avail' }, { d: 18, state: 'avail' }, { d: 19, state: 'avail' },
-  { d: 20, state: 'avail' }, { d: 21, state: 'avail' }, { d: 22, state: 'avail' }, { d: 23, state: 'avail' }, { d: 24, state: 'avail' }, { d: 25, state: 'avail' }, { d: 26, state: 'avail' },
-  { d: 27, state: 'avail' }, { d: 28, state: 'avail' }, { d: 29, state: 'avail' }, { d: 30, state: 'avail' }, { d: 0, state: '' }, { d: 0, state: '' }, { d: 0, state: '' },
-];
-const times = ['10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM'];
-
-function CalendarMock() {
-  return (
-    <div className="rounded-2xl bg-white border border-[#E5E7EC] p-4 sm:p-6 shadow-[0_8px_28px_rgba(15,17,18,0.12)]">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-4 sm:mb-5">
-        <span className="text-[13px] sm:text-[14px] font-semibold text-[#0F1112]">Pick a time</span>
-        <button className="flex items-center gap-1.5 text-[11px] sm:text-[12px] text-[#8A8F99]">
-          April 2
-          <IconChevronDown size={10} stroke={1.4} />
-        </button>
-      </div>
-
-      {/* Day headers */}
-      <div className="grid grid-cols-7 gap-1 sm:gap-1.5 mb-1 sm:mb-1.5">
-        {days.map((d, i) => (
-          <div key={i} className="text-[9px] sm:text-[10px] text-[#8A8F99] text-center font-medium">
-            {d}
-          </div>
-        ))}
-      </div>
-
-      {/* Date grid */}
-      <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
-        {calendar.map((c, i) => {
-          if (c.state === '') return <div key={i} />;
-          const cls =
-            c.state === 'selected'
-              ? 'bg-[#F26B4E] text-white'
-              : c.state === 'unavail'
-              ? 'bg-[#F5F6F8] text-[#8A8F99]'
-              : 'bg-[#FFE8E1] text-[#0F1112] hover:bg-[#FFDEDA]';
-          return (
-            <button
-              key={i}
-              className={`h-7 sm:h-9 rounded text-[10px] sm:text-[12px] font-medium transition-colors ${cls}`}
-            >
-              {c.d}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Time slots */}
-      <div className="grid grid-cols-3 sm:grid-cols-2 gap-1 sm:gap-1.5 mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-[#F5F6F8]">
-        {times.map((t) => (
-          <button
-            key={t}
-            className="h-7 sm:h-8 rounded border border-[#E5E7EC] text-[10px] sm:text-[11px] font-medium text-[#2F2F2F] hover:border-[#F26B4E] hover:text-[#F26B4E] transition-colors"
-          >
-            {t}
-          </button>
-        ))}
-      </div>
-
-      {/* Confirm */}
-      <button className="mt-4 sm:mt-5 w-full h-10 sm:h-11 rounded-full bg-[#F26B4E] text-white text-[12px] sm:text-[13px] font-semibold flex items-center justify-center gap-2 hover:bg-[#EC7161] transition-colors">
-        Confirm 2:30 PM, April 2
-        <IconArrowRight size={12} stroke={1.5} />
-      </button>
-    </div>
-  );
-}
 
 export default function BookingCTA() {
   return (
@@ -142,8 +68,17 @@ export default function BookingCTA() {
             </ul>
           </div>
 
-          {/* Right — calendar */}
-          <CalendarMock />
+          {/* Right — booking embed */}
+          <div className="w-full rounded-2xl overflow-hidden">
+            <iframe
+              src="https://crm.xgenious.com/public/meetings/book-a-30-min-saas-strategy-call"
+              width="100%"
+              height="500"
+              frameBorder="0"
+              allowFullScreen
+              className="block w-full"
+            />
+          </div>
         </div>
       </div>
     </section>
