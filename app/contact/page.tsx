@@ -26,7 +26,7 @@ const PRODUCTS = [
 const SOCIALS = [
   {
     label: 'Twitter',
-    href: 'https://twitter.com/xgenious',
+    href: 'https://x.com/xgeniousllc',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.733-8.835L1.254 2.25H8.08l4.262 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
@@ -34,19 +34,17 @@ const SOCIALS = [
     ),
   },
   {
-    label: 'Instagram',
-    href: 'https://instagram.com/xgenious',
+    label: 'Facebook',
+    href: 'https://www.facebook.com/xgenious',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" />
-        <circle cx="12" cy="12" r="4" />
-        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
       </svg>
     ),
   },
   {
     label: 'LinkedIn',
-    href: 'https://linkedin.com/company/xgenious',
+    href: 'https://www.linkedin.com/company/xgenious/',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
         <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
@@ -55,12 +53,11 @@ const SOCIALS = [
     ),
   },
   {
-    label: 'Dribbble',
-    href: 'https://dribbble.com/xgenious',
+    label: 'YouTube',
+    href: 'https://www.youtube.com/@xgenious',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32" />
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
       </svg>
     ),
   },
@@ -344,6 +341,8 @@ export default function ContactPage() {
       <CTASection
         heading="Ready to Build Your SaaS or Marketplace?"
         description="Book a free consultation — get a clear roadmap, a realistic estimate, and a team that's shipped 50+ products like yours."
+        bgImage=""
+        bgPhoto="/cta-bg.jpg"
       />
     </>
   );

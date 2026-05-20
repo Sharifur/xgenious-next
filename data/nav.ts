@@ -31,7 +31,7 @@ export const freeToolsLink = { label: 'Free Tools', href: '/free-tools' };
 
 export const companyDropdown: DropdownItem[] = [
   { label: 'About Us', href: '/about' },
-  { label: 'Documentation', href: '#' },
+  { label: 'Documentation', href: 'https://docs.xgenious.com/' },
 ];
 
 export const footerLinks = {
