@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import DownloadButton from '@/components/ui/DownloadButton';
 import BookingCTA from '@/components/sections/BookingCTA';
@@ -557,26 +558,61 @@ export default function GeniusSchoolManagementPage() {
               Real screenshots from the application. Every screen shown is fully functional and included free.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {['Dashboard Overview', 'Student Management', 'Fee Collection', 'Exam Results', 'Timetable Builder', 'Payroll & HR'].map((label) => (
-              <div key={label} className="rounded-2xl border border-[#E5E7EC] overflow-hidden">
-                <div
-                  className="h-[200px] flex flex-col items-center justify-center gap-3"
-                  style={{ background: 'linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%)' }}
-                >
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: '#4f46e520' }}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <rect x="3" y="3" width="18" height="18" rx="3" stroke="#4f46e5" strokeWidth="1.6" />
-                      <path d="M3 9h18M9 21V9" stroke="#4f46e5" strokeWidth="1.6" strokeLinecap="round" />
-                    </svg>
-                  </div>
-                  <p className="text-[12px] font-medium text-[#4f46e5]">Screenshot coming soon</p>
-                </div>
-                <div className="px-4 py-3 bg-white border-t border-[#E5E7EC]">
-                  <p className="text-[13px] font-medium text-[#0F1112]">{label}</p>
-                </div>
+          <div className="flex flex-col gap-6">
+            {/* Super Admin Dashboard */}
+            <div className="rounded-2xl border border-[#E5E7EC] overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+              <div className="relative w-full">
+                <Image
+                  src="/images/free-software/genius-school-ms/dashboard-super-admin.png"
+                  alt="Genius School Management — Super Admin Dashboard showing platform overview with school analytics, revenue, and user growth charts"
+                  width={1440}
+                  height={900}
+                  className="w-full h-auto"
+                  priority
+                />
               </div>
-            ))}
+              <div className="px-5 py-3.5 bg-white border-t border-[#E5E7EC] flex items-center justify-between">
+                <div>
+                  <p className="text-[13px] font-semibold text-[#0F1112]">Super Admin Dashboard</p>
+                  <p className="text-[12px] text-[#6b7280] mt-0.5">Platform overview — schools, users, revenue, and subscription analytics</p>
+                </div>
+                <a
+                  href={DEMO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 inline-flex items-center gap-1.5 text-[12px] font-medium rounded-full px-4 py-1.5 border border-[#E5E7EC] text-[#484848] hover:border-[#4f46e5] hover:text-[#4f46e5] transition-colors"
+                >
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+                    <polygon points="10,8 16,12 10,16" fill="currentColor" />
+                  </svg>
+                  Open Demo
+                </a>
+              </div>
+            </div>
+
+            {/* Placeholder grid for coming screenshots */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {['Student Management', 'Fee Collection', 'Exam Results', 'Timetable Builder', 'Payroll & HR', 'Library Module'].map((label) => (
+                <div key={label} className="rounded-2xl border border-[#E5E7EC] overflow-hidden">
+                  <div
+                    className="h-[160px] flex flex-col items-center justify-center gap-3"
+                    style={{ background: 'linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%)' }}
+                  >
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: '#4f46e520' }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="3" stroke="#4f46e5" strokeWidth="1.6" />
+                        <path d="M3 9h18M9 21V9" stroke="#4f46e5" strokeWidth="1.6" strokeLinecap="round" />
+                      </svg>
+                    </div>
+                    <p className="text-[11px] font-medium text-[#4f46e5]">Coming soon</p>
+                  </div>
+                  <div className="px-4 py-3 bg-white border-t border-[#E5E7EC]">
+                    <p className="text-[13px] font-medium text-[#0F1112]">{label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
