@@ -5,6 +5,7 @@ import AboutSection from './_components/AboutSection';
 import WhatWeBuild from './_components/WhatWeBuild';
 import Benefits from './_components/Benefits';
 import Process from './_components/Process';
+import CaseStudies from './_components/CaseStudies';
 import Pricing from './_components/Pricing';
 import ScopingTemplate from './_components/ScopingTemplate';
 import FounderStats from './_components/FounderStats';
@@ -152,6 +153,7 @@ export default function MvpDevelopmentPage() {
       <WhatWeBuild />
       <Benefits />
       <Process />
+      <CaseStudies />
       <MVPQualifier />
       <ScopingTemplate />
       <Pricing />

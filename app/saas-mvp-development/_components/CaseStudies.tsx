@@ -1,0 +1,159 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import SectionBadge from '@/components/ui/SectionBadge';
+
+type Stat = { value: string; label: string };
+type CaseStudy = {
+  title: string;
+  description: string;
+  stats: Stat[];
+  tags: string[];
+  href: string;
+  image: string;
+  imageRight: boolean;
+};
+
+const CASES: CaseStudy[] = [
+  {
+    title: 'AI-Powered Customer Support SaaS Platform',
+    description:
+      'A self-hostable, multi-tenant Laravel SaaS with semantic AI chatbots, support ticketing, knowledge base builder, and Stripe billing — a full Intercom/Crisp alternative clients own outright.',
+    stats: [
+      { value: '40–60%', label: 'AI Deflection Rate' },
+      { value: 'Multi-tenant', label: 'Architecture' },
+      { value: 'GPT-4', label: 'AI Engine' },
+    ],
+    tags: ['Laravel', 'AI / LLM', 'SaaS'],
+    href: '/case-studies/ai-support-saas-platform',
+    image: '/images/case-studies/01-ai-chatbot.svg',
+    imageRight: true,
+  },
+  {
+    title: 'Multi-Tenant eCommerce SaaS',
+    description:
+      'A single Laravel instance powering 50+ independent online stores — custom domains, 19+ payment gateways, Flutter mobile apps, and per-tenant branding. Launched as MVP, scaled to production.',
+    stats: [
+      { value: '50+', label: 'Active Stores' },
+      { value: '19+', label: 'Payment Gateways' },
+      { value: 'Flutter', label: 'Mobile Apps' },
+    ],
+    tags: ['eCommerce', 'Multi-Tenant', 'SaaS'],
+    href: '/case-studies/multi-tenant-ecommerce-saas',
+    image: '/images/case-studies/04-multi-tenant-ecommerce.svg',
+    imageRight: false,
+  },
+  {
+    title: 'Freelance Marketplace Platform Launched in 8 Weeks',
+    description:
+      'Full-stack freelancer marketplace with escrow payments, bidding, dispute resolution, real-time chat, and Flutter mobile apps — scoped as MVP and shipped on schedule in 8 weeks.',
+    stats: [
+      { value: '8wk', label: 'Time to Launch' },
+      { value: '500+', label: 'Active Freelancers' },
+      { value: '98%', label: 'Client Satisfaction' },
+    ],
+    tags: ['Marketplace', 'MVP', 'Flutter'],
+    href: '/case-studies/freelancer-marketplace-platform',
+    image: '/images/case-studies/03-freelance-marketplace.svg',
+    imageRight: true,
+  },
+];
+
+function StatBlock({ stat }: { stat: Stat }) {
+  return (
+    <div className="flex flex-col gap-1">
+      <span className="text-[24px] font-medium text-[#0F1112] leading-none">{stat.value}</span>
+      <span className="text-[12px] text-[#717179] leading-none">{stat.label}</span>
+    </div>
+  );
+}
+
+function CaseCard({ cs }: { cs: CaseStudy }) {
+  const content = (
+    <div className={`flex flex-col gap-6 flex-1 p-8 lg:p-10 lg:pr-[60px]${cs.imageRight ? ' lg:order-first' : ''}`}>
+      <div>
+        <h3 className="text-[26px] font-bold text-[#0F1112] leading-[34px] mb-3">{cs.title}</h3>
+        <p className="text-[14px] text-[#484848] leading-[22px]">{cs.description}</p>
+      </div>
+      <div className="flex gap-8 mt-[20px]">
+        {cs.stats.map((s) => (
+          <StatBlock key={s.label} stat={s} />
+        ))}
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {cs.tags.map((tag, i) => (
+          <span
+            key={tag}
+            className="px-3 py-1 rounded-full text-[12px] font-medium text-[#52525b]"
+            style={{
+              border: '1.5px solid transparent',
+              background: 'linear-gradient(white, white) padding-box, linear-gradient(90deg, #D4D4D8 0%, #ec7161 30%, #D4D4D8 60%) border-box',
+              backgroundSize: 'auto, 300% 100%',
+              animation: 'tagBorderSweep 8s linear infinite',
+              animationDelay: `${i * 0.6}s`,
+            }}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+      <Link
+        href={cs.href}
+        className="group inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-full bg-[#0F1112] text-white text-[13px] font-semibold mt-[60px] hover:bg-[#ec7161] hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(236,113,97,0.35)] transition-all duration-300"
+      >
+        Read Full Case Study
+        <svg width="14" height="14" viewBox="0 0 15 15" fill="none" className="transition-transform duration-300 group-hover:translate-x-0.5">
+          <path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </Link>
+    </div>
+  );
+
+  return (
+    <div
+      className="flex flex-col lg:flex-row rounded-2xl overflow-hidden"
+      style={{ background: '#fff', boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.04)' }}
+    >
+      <div
+        className={`w-full lg:w-[45%] flex-shrink-0 flex items-center justify-center overflow-hidden p-8 lg:p-10${cs.imageRight ? ' lg:order-last' : ''}`}
+        style={{ background: '#fff' }}
+      >
+        <Image
+          src={cs.image}
+          alt={cs.title}
+          width={480}
+          height={360}
+          className="w-full h-auto rounded-lg object-contain"
+        />
+      </div>
+      {content}
+    </div>
+  );
+}
+
+export default function CaseStudies() {
+  return (
+    <section className="py-14 sm:py-20 lg:py-[120px]" style={{ background: '#F5F6F8' }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-8 mb-8 sm:mb-10 lg:mb-14">
+          <div className="flex flex-col gap-3 sm:gap-4 max-w-[480px]">
+            <SectionBadge className="self-start">Case Studies</SectionBadge>
+            <h2 className="text-[26px] leading-[34px] sm:text-[36px] sm:leading-[44px] lg:text-[52px] lg:leading-[60px] font-semibold text-[#0F1112] tracking-[-0.01em]">
+              MVPs We&apos;ve{' '}
+              <em className="font-medium italic">Shipped.</em>
+            </h2>
+          </div>
+          <div className="max-w-[380px] lg:pt-2">
+            <p className="text-[15px] leading-[24px] text-[#484848]">
+              Real SaaS products and marketplaces built from scratch — published scope, fixed pricing, and a committed delivery date.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col gap-6">
+          {CASES.map((cs) => (
+            <CaseCard key={cs.title} cs={cs} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
