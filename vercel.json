@@ -1,21 +1,21 @@
 {
   "rewrites": [
-    { "source": "/blog", "destination": "http://YOUR_VULTR_IP/blog" },
-    { "source": "/blog/:path*", "destination": "http://YOUR_VULTR_IP/blog/:path*" },
-    { "source": "/my-account", "destination": "http://YOUR_VULTR_IP/my-account" },
-    { "source": "/my-account/:path*", "destination": "http://YOUR_VULTR_IP/my-account/:path*" },
-    { "source": "/our-products", "destination": "http://YOUR_VULTR_IP/our-products" },
-    { "source": "/our-products/:path*", "destination": "http://YOUR_VULTR_IP/our-products/:path*" },
-    { "source": "/wp-admin/:path*", "destination": "http://YOUR_VULTR_IP/wp-admin/:path*" },
-    { "source": "/wp-content/:path*", "destination": "http://YOUR_VULTR_IP/wp-content/:path*" },
-    { "source": "/wp-json/:path*", "destination": "http://YOUR_VULTR_IP/wp-json/:path*" },
-    { "source": "/wp-login.php", "destination": "http://YOUR_VULTR_IP/wp-login.php" },
-    { "source": "/feed", "destination": "http://YOUR_VULTR_IP/feed" },
-    { "source": "/feed/:path*", "destination": "http://YOUR_VULTR_IP/feed/:path*" },
-    { "source": "/xmlrpc.php", "destination": "http://YOUR_VULTR_IP/xmlrpc.php" },
-    { "source": "/sitemap_index.xml", "destination": "http://YOUR_VULTR_IP/sitemap_index.xml" },
-    { "source": "/post-sitemap.xml", "destination": "http://YOUR_VULTR_IP/post-sitemap.xml" },
-    { "source": "/category-sitemap.xml", "destination": "http://YOUR_VULTR_IP/category-sitemap.xml" },
-    { "source": "/tag-sitemap.xml", "destination": "http://YOUR_VULTR_IP/tag-sitemap.xml" }
+    { "source": "/blog", "destination": "http://45.76.60.139/blog" },
+    { "source": "/blog/:path*", "destination": "http://45.76.60.139/blog/:path*" },
+    { "source": "/my-account", "destination": "http://45.76.60.139/my-account" },
+    { "source": "/my-account/:path*", "destination": "http://45.76.60.139/my-account/:path*" },
+    { "source": "/our-products", "destination": "http://45.76.60.139/our-products" },
+    { "source": "/our-products/:path*", "destination": "http://45.76.60.139/our-products/:path*" },
+    { "source": "/wp-admin/:path*", "destination": "http://45.76.60.139/wp-admin/:path*" },
+    { "source": "/wp-content/:path*", "destination": "http://45.76.60.139/wp-content/:path*" },
+    { "source": "/wp-json/:path*", "destination": "http://45.76.60.139/wp-json/:path*" },
+    { "source": "/wp-login.php", "destination": "http://45.76.60.139/wp-login.php" },
+    { "source": "/feed", "destination": "http://45.76.60.139/feed" },
+    { "source": "/feed/:path*", "destination": "http://45.76.60.139/feed/:path*" },
+    { "source": "/xmlrpc.php", "destination": "http://45.76.60.139/xmlrpc.php" },
+    { "source": "/sitemap_index.xml", "destination": "http://45.76.60.139/sitemap_index.xml" },
+    { "source": "/post-sitemap.xml", "destination": "http://45.76.60.139/post-sitemap.xml" },
+    { "source": "/category-sitemap.xml", "destination": "http://45.76.60.139/category-sitemap.xml" },
+    { "source": "/tag-sitemap.xml", "destination": "http://45.76.60.139/tag-sitemap.xml" }
   ]
 }

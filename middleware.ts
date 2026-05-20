@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const VPS = 'http://YOUR_VULTR_IP';
+const VPS = 'http://45.76.60.139';
 
 const NEXT_ROUTES = new Set([
   'about',
