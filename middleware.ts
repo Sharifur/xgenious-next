@@ -33,7 +33,8 @@ export function middleware(request: NextRequest) {
   const segments = pathname.split('/').filter(Boolean);
 
   // Single-segment paths not matching a Next.js route → WordPress blog post
-  if (segments.length === 1 && !NEXT_ROUTES.has(segments[0])) {
+  // Skip static files (anything with a file extension)
+  if (segments.length === 1 && !NEXT_ROUTES.has(segments[0]) && !segments[0].includes('.')) {
     return NextResponse.rewrite(`${VPS}${pathname}`);
   }
 }

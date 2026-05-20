@@ -10,7 +10,6 @@ import AIAgentSection from '@/components/sections/AIAgentSection';
 import Testimonials from '@/components/sections/Testimonials';
 import FAQ from '@/components/sections/FAQ';
 import BookingCTA from '@/components/sections/BookingCTA';
-import FinalCTA from '@/components/sections/FinalCTA';
 
 const BASE_URL = 'https://xgenious.com';
 
@@ -138,7 +137,6 @@ export default function HomePage() {
       <Testimonials />
       <FAQ noPaddingTop />
       <BookingCTA />
-      <FinalCTA />
     </>
   );
 }

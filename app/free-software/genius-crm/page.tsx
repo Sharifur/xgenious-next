@@ -605,28 +605,35 @@ export default function GeniusCRMPage() {
 
       {/* FAQ */}
       <section className="py-16 sm:py-20 bg-[#f9fafb]">
-        <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[720px] mx-auto">
-          <h2 className="text-[28px] sm:text-[36px] font-semibold text-[#0F1112] text-center mb-10">
-            Frequently Asked Questions
-          </h2>
-          <div className="flex flex-col gap-4">
-            {FAQ.map((item) => (
-              <div key={item.q} className="rounded-2xl border border-[#E5E7EC] bg-white p-6">
-                <h3 className="text-[15px] font-semibold text-[#0F1112] mb-2">{item.q}</h3>
-                <p className="text-[14px] text-[#484848] leading-6">{item.a}</p>
+        <div className="container-page px-4 sm:px-6 lg:px-0">
+          <div className="grid grid-cols-12">
+            <div className="col-span-12 lg:col-span-8 lg:col-start-3">
+              <h2 className="text-[28px] sm:text-[36px] font-semibold text-[#0F1112] text-center mb-10">
+                Frequently Asked Questions
+              </h2>
+              <div className="flex flex-col gap-4">
+                {FAQ.map((item) => (
+                  <div key={item.q} className="rounded-2xl border border-[#E5E7EC] bg-white p-6">
+                    <h3 className="text-[15px] font-semibold text-[#0F1112] mb-2">{item.q}</h3>
+                    <p className="text-[14px] text-[#484848] leading-6">{item.a}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 sm:py-20 bg-[#0F1112]">
-        <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col items-center text-center gap-6 max-w-[640px] mx-auto">
+      <section className="py-16 sm:py-20 relative overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/cta-bg.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col items-center text-center gap-6 max-w-[640px] mx-auto relative z-10">
           <h2 className="text-[28px] sm:text-[38px] font-semibold text-white leading-tight">
             Your CRM. Your Data. Your Server. No Subscriptions.
           </h2>
-          <p className="text-[#9ca3af] text-[15px] leading-7">
+          <p className="text-[#d1d5db] text-[15px] leading-7">
             Enter your email and get the download link sent straight to your inbox. MIT licensed. Forever free.
           </p>
           <DownloadButton
@@ -635,11 +642,12 @@ export default function GeniusCRMPage() {
             productLightColor={LIGHT_COLOR}
             githubUrl={GITHUB_URL}
             label="Get Free Download — No Credit Card"
-            className="inline-flex items-center gap-2 bg-white text-[#0F1112] font-semibold text-[15px] rounded-full px-9 py-4 transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(255,255,255,0.15)]"
+            buttonColor="#ffffff"
+            className="inline-flex items-center gap-2 text-[#0F1112] font-semibold text-[15px] rounded-full px-9 py-4 transition-all hover:-translate-y-0.5"
           />
-          <p className="text-[13px] text-[#6b7280]">
+          <p className="text-[13px] text-[#d1d5db]">
             Need help setting it up?{' '}
-            <Link href="/contact" className="text-[#9ca3af] underline underline-offset-2 hover:text-white transition-colors">
+            <Link href="/contact" className="text-white underline underline-offset-2 hover:text-[#ec7161] transition-colors">
               Contact Xgenious for installation service
             </Link>
           </p>

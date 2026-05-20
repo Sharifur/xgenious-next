@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 
 interface Props {
   productName: string;
@@ -9,6 +10,7 @@ interface Props {
   githubUrl: string;
   label?: string;
   className?: string;
+  buttonColor?: string;
 }
 
 function DownloadModal({
@@ -46,13 +48,11 @@ function DownloadModal({
     }
   }
 
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: 'rgba(15,17,18,0.6)', backdropFilter: 'blur(4px)' }}
-      onClick={(e) => e.target === e.currentTarget && onClose()}
-    >
-      <div className="bg-white rounded-2xl w-full max-w-md p-8 relative shadow-2xl">
+  return createPortal(
+    <>
+    <div className="fixed inset-0 z-[9999]" onClick={onClose} style={{ background: 'rgba(15,17,18,0.7)', backdropFilter: 'blur(4px)' }} />
+    <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 pointer-events-none">
+      <div className="bg-white rounded-2xl w-full max-w-md p-8 relative shadow-2xl pointer-events-auto">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-[#6b7280] hover:text-[#0F1112] hover:bg-[#f3f4f6] transition-colors"
@@ -135,10 +135,10 @@ function DownloadModal({
               <button
                 type="submit"
                 disabled={loading}
-                className="inline-flex items-center justify-center gap-2 text-white font-semibold text-[14px] rounded-full px-8 py-3.5 transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="inline-flex items-center justify-center gap-2 text-white font-semibold text-[14px] rounded-full px-8 py-3.5 transition-all hover:-translate-y-0.5 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                 style={{
-                  background: productColor,
-                  boxShadow: loading ? 'none' : `0 8px 24px ${productColor}40`,
+                  background: '#ec7161',
+                  boxShadow: loading ? 'none' : '0 8px 24px #ec716140',
                 }}
               >
                 {loading ? 'Sending...' : (
@@ -159,6 +159,8 @@ function DownloadModal({
         )}
       </div>
     </div>
+    </>,
+    document.body
   );
 }
 
@@ -169,8 +171,10 @@ export default function DownloadButton({
   githubUrl,
   label = 'Download Free',
   className,
+  buttonColor,
 }: Props) {
   const [open, setOpen] = useState(false);
+  const btnBg = buttonColor ?? productColor;
 
   return (
     <>
@@ -187,8 +191,8 @@ export default function DownloadButton({
         onClick={() => setOpen(true)}
         className={className ?? 'inline-flex items-center gap-2 text-white font-semibold text-[14px] rounded-full px-7 py-3.5 transition-all hover:-translate-y-0.5'}
         style={{
-          background: productColor,
-          boxShadow: `0 6px 20px ${productColor}35`,
+          background: btnBg,
+          boxShadow: `0 6px 20px ${btnBg}35`,
         }}
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">

@@ -77,11 +77,10 @@ export default function Footer() {
           <div className="flex flex-col gap-5">
             {/* Logo */}
             <div className="inline-flex bg-white rounded-xl px-3 py-2 w-fit">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/xgenious-logo.svg"
                 alt="Xgenious"
-                width={120}
-                height={30}
                 className="h-[26px] w-auto"
               />
             </div>

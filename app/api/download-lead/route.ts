@@ -10,6 +10,22 @@ const ses = new SESClient({
 });
 
 const TASKIP_API = 'https://public-api.taskip.net/api/public-v1/lead';
+const BLOCKLIST_URL = 'https://gist.githubusercontent.com/Sharifur/b40c7b54b97d43f353f1382e51c70535/raw/f6446fa378bf266cacf604f1e97f8f318e01e157/temporary-email-address-domain-list.json';
+
+let blocklist: Set<string> | null = null;
+
+async function getBlocklist(): Promise<Set<string>> {
+  if (blocklist) return blocklist;
+  try {
+    const res = await fetch(BLOCKLIST_URL, { next: { revalidate: 86400 } });
+    const json = await res.json();
+    const domains: string[] = Array.isArray(json) ? json : (json.disposable_email_domains ?? []);
+    blocklist = new Set(domains.map((d: string) => d.toLowerCase()));
+  } catch {
+    blocklist = new Set();
+  }
+  return blocklist;
+}
 
 export async function POST(req: NextRequest) {
   const { name, email, product, downloadUrl } = await req.json();
@@ -21,6 +37,12 @@ export async function POST(req: NextRequest) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 });
+  }
+
+  const domain = email.split('@')[1]?.toLowerCase();
+  const domains = await getBlocklist();
+  if (domain && domains.has(domain)) {
+    return NextResponse.json({ error: 'Temporary email addresses are not allowed. Please use your work or personal email.' }, { status: 400 });
   }
 
   const secretKey = process.env.TASKIP_SECRET_KEY;

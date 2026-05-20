@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { useState, useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
@@ -119,12 +118,10 @@ export default function Navbar() {
       >
         <div className="px-5 h-[60px] flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center flex-shrink-0">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/xgenious-logo.svg"
               alt="Xgenious"
-              width={130}
-              height={36}
-              priority
               className="h-[34px] w-auto"
             />
           </Link>

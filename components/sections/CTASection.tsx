@@ -4,23 +4,36 @@ type Props = {
   heading: string;
   description?: string;
   buttonText?: string;
+  buttonHref?: string;
   bgImage?: string;
   bgMask?: string;
+  bgPhoto?: string;
 };
 
 export default function CTASection({
   heading,
   description = 'Book a free consultation — get a roadmap & estimate.',
   buttonText = 'Book a Free Consultation',
+  buttonHref = '/contact',
   bgImage = '/images/web-app-dev/cta-bg-overlay.svg',
   bgMask,
+  bgPhoto,
 }: Props) {
   return (
     <section
       className="relative overflow-hidden py-14 sm:py-20 lg:py-[120px]"
-      style={{ background: '#191b1c' }}
+      style={{ background: bgPhoto ? 'transparent' : '#191b1c' }}
     >
-      {bgImage && (
+      {bgPhoto && (
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img
+          src={bgPhoto}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        />
+      )}
+      {!bgPhoto && bgImage && (
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -31,7 +44,7 @@ export default function CTASection({
           }}
         />
       )}
-      {bgMask && (
+      {!bgPhoto && bgMask && (
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -54,7 +67,7 @@ export default function CTASection({
         </div>
 
         <Link
-          href="/contact"
+          href={buttonHref}
           className="inline-flex items-center gap-2 font-semibold text-white rounded-[30px] px-6 py-3 text-[14px] leading-[21px] sm:px-8 sm:py-4 sm:text-[16px] sm:leading-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(236,113,97,0.5)]"
           style={{ background: '#ec7161' }}
         >

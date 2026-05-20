@@ -166,7 +166,7 @@ export default function MvpDevelopmentPage() {
         title="Real Questions. Real Answers."
         description="The questions every MVP buyer actually asks. If yours isn't here, ask it on the call — we'll answer it honestly."
       />
-      <CTASection heading="Ready to Build Your MVP?" />
+      <CTASection heading="Ready to Build Your MVP?" bgImage="" bgPhoto="/cta-bg.jpg" buttonHref="#booking" />
     </>
   );
 }
