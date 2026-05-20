@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import Button, { ArrowIcon } from '@/components/ui/Button';
 import FAQ from '@/components/sections/FAQ';
@@ -140,11 +141,15 @@ export default function CrowdfundingPlatformCaseStudy() {
               </div>
             </div>
 
-            <div
-              className="w-full rounded-2xl overflow-hidden flex items-center justify-center"
-              style={{ background: '#d4e8d8', aspectRatio: '4/3', minHeight: 340 }}
-            >
-              <span className="text-[13px] text-[#7a9e80]">Project screenshot</span>
+            <div className="w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3', minHeight: 360 }}>
+              <Image
+                src="/images/case-studies/05-crowdfunding-donation.svg"
+                alt="Project screenshot"
+                width={800}
+                height={600}
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
 
           </div>

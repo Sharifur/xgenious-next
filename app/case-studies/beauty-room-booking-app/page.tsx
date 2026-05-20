@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import Button, { ArrowIcon } from '@/components/ui/Button';
 import FAQ from '@/components/sections/FAQ';
@@ -141,12 +142,16 @@ export default function BeautyRoomBookingCaseStudy() {
               </div>
             </div>
 
-            {/* Right — image placeholder */}
-            <div
-              className="w-full rounded-2xl overflow-hidden flex items-center justify-center"
-              style={{ background: '#e8e4dc', aspectRatio: '3/4', minHeight: 400 }}
-            >
-              <span className="text-[13px] text-[#a09a8e]">Project screenshot</span>
+            {/* Right — hero image */}
+            <div className="w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3', minHeight: 360 }}>
+              <Image
+                src="/images/case-studies/02-beauty-booking.svg"
+                alt="Project screenshot"
+                width={800}
+                height={600}
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
 
           </div>
