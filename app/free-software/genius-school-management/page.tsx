@@ -7,7 +7,18 @@ const BASE_URL = 'https://xgenious.com';
 const COLOR = '#4f46e5';
 const LIGHT_COLOR = '#eef2ff';
 const GITHUB_URL = '';
-const DEMO_URL = '';
+const DEMO_URL = 'https://genius-school-ms.xgenious.com';
+const USER_MANUAL_URL = 'https://genius-school-management-system.vercel.app/';
+
+const DEMO_ROLES = [
+  { label: 'Super Admin',  color: '#6366f1', bg: '#eef2ff', email: 'superadmin@genius-sms.test' },
+  { label: 'School Admin', color: '#8b5cf6', bg: '#f5f3ff', email: 'admin@genius-sms.test'      },
+  { label: 'Principal',    color: '#3b82f6', bg: '#eff6ff', email: 'principal@genius-sms.test'  },
+  { label: 'Teacher',      color: '#0ea5e9', bg: '#f0f9ff', email: 'teacher@genius-sms.test'    },
+  { label: 'Accountant',   color: '#10b981', bg: '#f0fdf4', email: 'accountant@genius-sms.test' },
+  { label: 'Student',      color: '#f59e0b', bg: '#fffbeb', email: 'student@genius-sms.test'    },
+  { label: 'Parent',       color: '#f26b4e', bg: '#fef2ef', email: 'parent@genius-sms.test'     },
+];
 
 export const metadata: Metadata = {
   title: 'Free School Management System — Laravel 11 + React 18 | Xgenious',
@@ -294,7 +305,7 @@ export default function GeniusSchoolManagementPage() {
               A production-ready, open-source school ERP covering every aspect of school operations — student admissions, attendance, fees, exams, payroll, library, transport, and more. Self-hosted. Zero licensing fees.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
+            <div className="flex flex-col sm:flex-row items-center gap-3 mt-2 flex-wrap justify-center">
               <DownloadButton
                 productName="Genius School Management"
                 productColor={COLOR}
@@ -317,6 +328,17 @@ export default function GeniusSchoolManagementPage() {
                   Try Live Demo
                 </a>
               )}
+              <a
+                href={USER_MANUAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white border border-[#E5E7EC] text-[#484848] font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:border-[#4f46e5] hover:text-[#4f46e5]"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16v16H4zM4 9h16M9 4v16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                User Manual
+              </a>
             </div>
 
             <p className="text-[13px] text-[#6b7280]">
@@ -343,6 +365,71 @@ export default function GeniusSchoolManagementPage() {
                 <p className="text-[12px] text-[#6b7280] font-medium mt-0.5">{s.label}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Demo credentials */}
+      <section className="py-12 sm:py-16 bg-white border-b border-[#E5E7EC]">
+        <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[860px] mx-auto">
+          <div className="rounded-2xl border border-[#e0e7ff] bg-[#fafbff] p-6 sm:p-8">
+            <div className="flex items-start gap-3 mb-5">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: '#fef9c3' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="#ca8a04" strokeWidth="1.8" />
+                  <path d="M12 8v4M12 16h.01" stroke="#ca8a04" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-[13px] font-bold text-[#ca8a04] uppercase tracking-wide">Demo Mode — Click a role to explore</p>
+                <p className="text-[13px] text-[#6b7280] mt-0.5">
+                  Password for all accounts: <strong className="text-[#0F1112]">password</strong>
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
+              {DEMO_ROLES.map((role) => (
+                <a
+                  key={role.label}
+                  href={DEMO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 rounded-xl border px-3 py-2.5 transition-all hover:shadow-sm hover:-translate-y-0.5 cursor-pointer"
+                  style={{ borderColor: role.color + '40', background: role.bg }}
+                >
+                  <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: role.color }} />
+                  <span className="text-[13px] font-medium" style={{ color: role.color }}>{role.label}</span>
+                </a>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href={DEMO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[13px] font-semibold rounded-full px-5 py-2.5 text-white transition-all hover:-translate-y-0.5"
+                style={{ background: COLOR }}
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="1.8" />
+                  <polygon points="10,8 16,12 10,16" fill="white" />
+                </svg>
+                Open Demo
+              </a>
+              <a
+                href={USER_MANUAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#4f46e5] hover:underline"
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16v16H4zM4 9h16M9 4v16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Read User Manual →
+              </a>
+            </div>
           </div>
         </div>
       </section>
