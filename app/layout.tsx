@@ -77,8 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script src="https://cortex-api.xgenious.com/livechat.js" data-site="xgenious" defer />
+        <Script src="https://cortex-api.xgenious.com/livechat.js" data-site="xgenious" strategy="afterInteractive" />
       </body>
     </html>
   );
