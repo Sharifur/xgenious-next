@@ -35,6 +35,7 @@ const SERVICES = [
 ];
 
 const LINKS = [
+  { label: 'Free Tools', href: '/free-tools' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Refund Policy', href: '/refund-policy' },
   { label: 'Support Policy', href: '/support-policy' },

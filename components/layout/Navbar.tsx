@@ -9,6 +9,7 @@ import {
   servicesDropdown,
   productsDropdown,
   companyDropdown,
+  freeSoftwareDropdown,
   type DropdownItem,
 } from '@/data/nav';
 
@@ -131,6 +132,7 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center gap-7">
             <Dropdown label="Services" items={servicesDropdown} active={isServicesActive} />
             <Dropdown label="Product" items={productsDropdown} />
+            <Dropdown label="Free Software" items={freeSoftwareDropdown} active={pathname?.startsWith('/free-software')} />
             <Dropdown label="Company" items={companyDropdown} />
             <Link
               href="https://xgenious.com/blog/"
@@ -206,6 +208,7 @@ export default function Navbar() {
           {[
             { label: 'Services', items: servicesDropdown },
             { label: 'Product', items: productsDropdown },
+            { label: 'Free Software', items: freeSoftwareDropdown },
             { label: 'Company', items: companyDropdown },
           ].map((g) => (
             <details key={g.label} className="group">

@@ -21,6 +21,14 @@ export const productsDropdown: DropdownItem[] = [
   { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', href: 'https://xgenious.com/our-products/prohandy-on-demand-home-service-marketplace-platform' },
 ];
 
+export const freeSoftwareDropdown: DropdownItem[] = [
+  { label: 'Genius School Management', description: 'Free school ERP — Laravel 11 + React 18', href: '/free-software/genius-school-management' },
+  { label: 'Genius CRM', description: 'Free self-hosted CRM — Laravel 12 + React 19', href: '/free-software/genius-crm' },
+  { label: 'Genius HRM', description: 'Free HR management system — Laravel + React', href: '/free-software/genius-hrm' },
+];
+
+export const freeToolsLink = { label: 'Free Tools', href: '/free-tools' };
+
 export const companyDropdown: DropdownItem[] = [
   { label: 'About Us', href: '/about' },
   { label: 'Documentation', href: '#' },
