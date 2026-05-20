@@ -5,6 +5,7 @@ import WhyChooseUs from './_components/WhyChooseUs';
 import WhatWeBuild from './_components/WhatWeBuild';
 import Process from './_components/Process';
 import WorkShowcase from './_components/WorkShowcase';
+import CaseStudies from './_components/CaseStudies';
 import TechStack from './_components/TechStack';
 import Pricing from './_components/Pricing';
 import BookCall from './_components/BookCall';
@@ -147,6 +148,7 @@ export default function AppDevelopmentPage() {
       <Pricing />
       <Process />
       <WorkShowcase />
+      <CaseStudies />
       <TechStack />
       <BookCall />
       <FAQ faqs={faqItems} badge="Frequently Asked Questions" title="Real Questions. Real Answers." description="The questions every app buyer actually asks. If yours isn't here, ask it on the call — we'll answer it honestly." />

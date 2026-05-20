@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import SectionBadge from '@/components/ui/SectionBadge';
 import BookingCTA from '@/components/sections/BookingCTA';
@@ -15,6 +16,7 @@ type CaseStudy = {
   tags: string[];
   href: string;
   accentBg: string;
+  image: string;
 };
 
 const CASES: CaseStudy[] = [
@@ -25,6 +27,7 @@ const CASES: CaseStudy[] = [
     tags: ['Laravel', 'AI / LLM', 'SaaS'],
     href: '/case-studies/ai-support-saas-platform',
     accentBg: '#E8EDF8',
+    image: '/images/case-studies/01-ai-chatbot.svg',
   },
   {
     title: 'Beauty Room Booking App with Smart Access',
@@ -33,6 +36,7 @@ const CASES: CaseStudy[] = [
     tags: ['Flutter', 'Smart Access', 'Beauty & Wellness'],
     href: '/case-studies/beauty-room-booking-app',
     accentBg: '#F0ECE4',
+    image: '/images/case-studies/02-beauty-booking.svg',
   },
   {
     title: 'Freelance Marketplace Platform',
@@ -41,6 +45,7 @@ const CASES: CaseStudy[] = [
     tags: ['Marketplace', 'Escrow Payments', 'Flutter'],
     href: '/case-studies/freelancer-marketplace-platform',
     accentBg: '#D8E4F0',
+    image: '/images/case-studies/03-freelance-marketplace.svg',
   },
   {
     title: 'Multi-Tenant eCommerce SaaS',
@@ -49,6 +54,7 @@ const CASES: CaseStudy[] = [
     tags: ['eCommerce', 'Multi-Tenant', 'SaaS'],
     href: '/case-studies/multi-tenant-ecommerce-saas',
     accentBg: '#F5E8DC',
+    image: '/images/case-studies/04-multi-tenant-ecommerce.svg',
   },
   {
     title: 'Crowdfunding & Donation Platform',
@@ -57,6 +63,7 @@ const CASES: CaseStudy[] = [
     tags: ['Crowdfunding', 'Donations', 'Laravel'],
     href: '/case-studies/crowdfunding-platform',
     accentBg: '#D4E8D8',
+    image: '/images/case-studies/05-crowdfunding-donation.svg',
   },
   {
     title: 'On-Demand Home Service Marketplace',
@@ -65,6 +72,7 @@ const CASES: CaseStudy[] = [
     tags: ['Home Services', 'Flutter', 'Marketplace'],
     href: '/case-studies/on-demand-home-service-app',
     accentBg: '#DDD0F0',
+    image: '/images/case-studies/06-home-service.svg',
   },
   {
     title: 'Car Service & Mechanic Booking Marketplace',
@@ -73,6 +81,7 @@ const CASES: CaseStudy[] = [
     tags: ['Automotive', 'Marketplace', 'Android'],
     href: '/case-studies/car-service-marketplace',
     accentBg: '#E8E8E0',
+    image: '/images/case-studies/07-car-service.svg',
   },
   {
     title: 'Classified Ads Platform with Live Chat',
@@ -81,6 +90,7 @@ const CASES: CaseStudy[] = [
     tags: ['Classifieds', 'Marketplace', 'Laravel'],
     href: '/case-studies/classified-ads-platform',
     accentBg: '#C8D8F0',
+    image: '/images/case-studies/08-classified-ads.svg',
   },
   {
     title: 'eCommerce Platform with Built-In Courier',
@@ -89,6 +99,7 @@ const CASES: CaseStudy[] = [
     tags: ['eCommerce', 'Courier Integration', 'Multi-Language'],
     href: '/case-studies/ecommerce-platform-with-courier',
     accentBg: '#F0D8C8',
+    image: '/images/case-studies/09-ecommerce-courier.svg',
   },
 ];
 
@@ -100,10 +111,16 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
     >
       {/* Accent visual */}
       <div
-        className="w-full flex items-center justify-center"
+        className="w-full flex items-center justify-center overflow-hidden"
         style={{ background: cs.accentBg, height: 200 }}
       >
-        <span className="text-[12px] text-[#00000040]">Project screenshot</span>
+        <Image
+          src={cs.image}
+          alt={cs.title}
+          width={480}
+          height={200}
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Content */}

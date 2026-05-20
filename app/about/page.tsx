@@ -246,20 +246,9 @@ export default function AboutPage() {
       <Testimonials />
 
       {/* ── 9. CTA ── */}
-      <section className="bg-[#191b1c] py-14 sm:py-20 lg:py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'radial-gradient(ellipse 80% 120% at 50% 100%, rgba(236,113,97,0.18) 0%, transparent 60%)',
-          }}
-        />
+      <section className="py-14 sm:py-20 lg:py-24 relative overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={IMG.ctaMask}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none mix-blend-luminosity"
-        />
+        <img src="/cta-bg.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
         <div className="container-page px-4 sm:px-6 lg:px-0 relative flex flex-col items-center text-center gap-6 sm:gap-8">
           <h2 className="text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px] font-semibold text-white max-w-[665px]">
             Ready to Build Your SaaS or Marketplace?

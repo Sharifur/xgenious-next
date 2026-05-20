@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import Button, { ArrowIcon } from '@/components/ui/Button';
 import FAQ from '@/components/sections/FAQ';
@@ -140,11 +141,15 @@ export default function HomeServiceMarketplaceCaseStudy() {
               </div>
             </div>
 
-            <div
-              className="w-full rounded-2xl overflow-hidden flex items-center justify-center"
-              style={{ background: '#ddd0f0', aspectRatio: '4/3', minHeight: 340 }}
-            >
-              <span className="text-[13px] text-[#8a70a8]">Project screenshot</span>
+            <div className="w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3', minHeight: 360 }}>
+              <Image
+                src="/images/case-studies/06-home-service.svg"
+                alt="Project screenshot"
+                width={800}
+                height={600}
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
 
           </div>

@@ -5,6 +5,7 @@ import AboutSection from './_components/AboutSection';
 import WhatWeBuild from './_components/WhatWeBuild';
 import Benefits from './_components/Benefits';
 import Process from './_components/Process';
+import CaseStudies from './_components/CaseStudies';
 import Pricing from './_components/Pricing';
 import ScopingTemplate from './_components/ScopingTemplate';
 import FounderStats from './_components/FounderStats';
@@ -152,6 +153,7 @@ export default function MvpDevelopmentPage() {
       <WhatWeBuild />
       <Benefits />
       <Process />
+      <CaseStudies />
       <MVPQualifier />
       <ScopingTemplate />
       <Pricing />
@@ -164,7 +166,7 @@ export default function MvpDevelopmentPage() {
         title="Real Questions. Real Answers."
         description="The questions every MVP buyer actually asks. If yours isn't here, ask it on the call — we'll answer it honestly."
       />
-      <CTASection heading="Ready to Build Your MVP?" />
+      <CTASection heading="Ready to Build Your MVP?" bgImage="" bgPhoto="/cta-bg.jpg" buttonHref="#booking" />
     </>
   );
 }

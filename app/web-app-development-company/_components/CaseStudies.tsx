@@ -26,54 +26,9 @@ const CASES: CaseStudy[] = [
     ],
     tags: ['Laravel', 'AI / LLM', 'SaaS'],
     href: '/case-studies/ai-support-saas-platform',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
+    image: '/images/case-studies/01-ai-chatbot.svg',
     imageBg: '#E8EDF8',
     imageRight: true,
-  },
-  {
-    title: 'Client Portal Software for Agencies and Freelancers',
-    description:
-      'Taskip is the all-in-one agency management platform and client portal software that helps freelancers and digital agencies run their entire business.',
-    stats: [
-      { value: '3.4×', label: 'Faster Onboarding' },
-      { value: '1k+', label: 'Active Workspaces' },
-      { value: '62%', label: 'LCP Score' },
-    ],
-    tags: ['Client Portal', 'Agencies', 'Freelancers'],
-    href: 'https://taskip.net',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
-    imageBg: '#C8EDE6',
-    imageRight: true,
-  },
-  {
-    title: 'Multi-Vendor Marketplace Built for Scale',
-    description:
-      'A multi-tenant eCommerce SaaS where every seller gets their own storefront, subdomain, and dashboard — 19+ payment gateways, Flutter mobile apps, and custom domain per tenant.',
-    stats: [
-      { value: '50+', label: 'Active Stores' },
-      { value: '99.9%', label: 'Uptime SLA' },
-      { value: '3×', label: 'Revenue Growth' },
-    ],
-    tags: ['eCommerce', 'Multi-Tenant', 'SaaS'],
-    href: '/case-studies/multi-tenant-ecommerce-saas',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
-    imageBg: '#F5E8DC',
-    imageRight: false,
-  },
-  {
-    title: 'Beauty Room Booking Platform with Smart Access',
-    description:
-      'A Flutter mobile platform that lets independent beauty and wellness professionals book premium treatment rooms daily, with digital smart lock access, Stripe payments, and zero on-site staff required.',
-    stats: [
-      { value: '100%', label: 'Unmanned Operations' },
-      { value: '< 3min', label: 'Avg Booking Time' },
-      { value: '0', label: 'Key Handovers' },
-    ],
-    tags: ['Flutter', 'Smart Access', 'Beauty & Wellness'],
-    href: '/case-studies/beauty-room-booking-app',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
-    imageBg: '#F0ECE4',
-    imageRight: false,
   },
   {
     title: 'Freelance Marketplace Platform Launched in 8 Weeks',
@@ -86,23 +41,8 @@ const CASES: CaseStudy[] = [
     ],
     tags: ['Marketplace', 'Payments', 'Freelancers'],
     href: '/case-studies/freelancer-marketplace-platform',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
+    image: '/images/case-studies/03-freelance-marketplace.svg',
     imageBg: '#D8E4F0',
-    imageRight: true,
-  },
-  {
-    title: 'Crowdfunding & Donation Platform with Event Ticketing',
-    description:
-      'A Laravel crowdfunding platform with drag-and-drop campaign builder, event ticket sales, 10+ payment gateways, and a configurable platform fee model — built for full operator control.',
-    stats: [
-      { value: '10+', label: 'Payment Gateways' },
-      { value: 'D&D', label: 'Campaign Builder' },
-      { value: 'Events', label: 'Ticket Module' },
-    ],
-    tags: ['Crowdfunding', 'Donations', 'Laravel'],
-    href: '/case-studies/crowdfunding-platform',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
-    imageBg: '#D4E8D8',
     imageRight: false,
   },
   {
@@ -116,24 +56,9 @@ const CASES: CaseStudy[] = [
     ],
     tags: ['Home Services', 'Flutter', 'Marketplace'],
     href: '/case-studies/on-demand-home-service-app',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
+    image: '/images/case-studies/06-home-service.svg',
     imageBg: '#DDD0F0',
     imageRight: true,
-  },
-  {
-    title: 'Car Service & Mechanic Booking Marketplace',
-    description:
-      'A vehicle-aware booking marketplace connecting car owners with mechanics — vehicle model matching, real-time order tracking, 19+ payment gateways, and an Android mobile app.',
-    stats: [
-      { value: '19+', label: 'Payment Methods' },
-      { value: 'Live', label: 'Order Tracking' },
-      { value: 'Android', label: 'Mobile App' },
-    ],
-    tags: ['Automotive', 'Marketplace', 'Android'],
-    href: '/case-studies/car-service-marketplace',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
-    imageBg: '#E8E8E0',
-    imageRight: false,
   },
   {
     title: 'Classified Ads Platform with Live Chat',
@@ -146,9 +71,9 @@ const CASES: CaseStudy[] = [
     ],
     tags: ['Classifieds', 'Marketplace', 'Laravel'],
     href: '/case-studies/classified-ads-platform',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
+    image: '/images/case-studies/08-classified-ads.svg',
     imageBg: '#C8D8F0',
-    imageRight: true,
+    imageRight: false,
   },
   {
     title: 'eCommerce Platform with Built-In Courier',
@@ -161,9 +86,9 @@ const CASES: CaseStudy[] = [
     ],
     tags: ['eCommerce', 'Courier Integration', 'Multi-Language'],
     href: '/case-studies/ecommerce-platform-with-courier',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
+    image: '/images/case-studies/09-ecommerce-courier.svg',
     imageBg: '#F0D8C8',
-    imageRight: false,
+    imageRight: true,
   },
 ];
 

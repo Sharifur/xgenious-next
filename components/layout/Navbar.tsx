@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { useState, useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
@@ -9,6 +8,7 @@ import {
   servicesDropdown,
   productsDropdown,
   companyDropdown,
+  freeSoftwareDropdown,
   type DropdownItem,
 } from '@/data/nav';
 
@@ -118,12 +118,10 @@ export default function Navbar() {
       >
         <div className="px-5 h-[60px] flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center flex-shrink-0">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/xgenious-logo.svg"
               alt="Xgenious"
-              width={130}
-              height={36}
-              priority
               className="h-[34px] w-auto"
             />
           </Link>
@@ -131,6 +129,7 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center gap-7">
             <Dropdown label="Services" items={servicesDropdown} active={isServicesActive} />
             <Dropdown label="Product" items={productsDropdown} />
+            <Dropdown label="Free Software" items={freeSoftwareDropdown} active={pathname?.startsWith('/free-software')} />
             <Dropdown label="Company" items={companyDropdown} />
             <Link
               href="https://xgenious.com/blog/"
@@ -206,6 +205,7 @@ export default function Navbar() {
           {[
             { label: 'Services', items: servicesDropdown },
             { label: 'Product', items: productsDropdown },
+            { label: 'Free Software', items: freeSoftwareDropdown },
             { label: 'Company', items: companyDropdown },
           ].map((g) => (
             <details key={g.label} className="group">

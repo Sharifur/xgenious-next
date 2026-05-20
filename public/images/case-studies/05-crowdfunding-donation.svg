@@ -1,0 +1,120 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#D5E3D0"/>
+
+  <!-- Decorative blobs -->
+  <circle cx="60" cy="70" r="80" fill="#B5D0AC" opacity="0.5"/>
+  <circle cx="540" cy="340" r="100" fill="#BFD8B6" opacity="0.5"/>
+
+  <!-- Main campaign card (left) -->
+  <g transform="translate(40, 60)">
+    <rect x="4" y="6" width="280" height="280" rx="16" fill="#000" opacity="0.1"/>
+    <rect width="280" height="280" rx="16" fill="#FFFFFF"/>
+
+    <!-- Campaign image header -->
+    <rect width="280" height="100" rx="16" fill="#7AB873"/>
+    <rect y="86" width="280" height="14" fill="#7AB873"/>
+
+    <!-- Hands/heart illustration -->
+    <g transform="translate(95, 25)">
+      <!-- Heart -->
+      <path d="M45 60 C30 45 15 35 15 22 C15 12 22 7 30 7 C36 7 42 11 45 18 C48 11 54 7 60 7 C68 7 75 12 75 22 C75 35 60 45 45 60 Z" fill="#FFFFFF"/>
+      <!-- Hand cupping (left) -->
+      <path d="M5 55 Q5 45 18 45 L30 50 L18 65 Q5 65 5 55 Z" fill="#FCD9B6"/>
+      <!-- Hand cupping (right) -->
+      <path d="M85 55 Q85 45 72 45 L60 50 L72 65 Q85 65 85 55 Z" fill="#D4A574"/>
+    </g>
+
+    <!-- Campaign details -->
+    <text x="20" y="128" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" fill="#1F2937">Help Build Clean Water Wells</text>
+    <text x="20" y="146" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#6B7280">Rural Communities Foundation</text>
+
+    <!-- Progress bar -->
+    <rect x="20" y="160" width="240" height="10" rx="5" fill="#E5E7EB"/>
+    <rect x="20" y="160" width="180" height="10" rx="5" fill="#22C55E"/>
+
+    <!-- Raised amount -->
+    <text x="20" y="190" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#15803D">$36,750</text>
+    <text x="98" y="190" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280">raised of $50,000</text>
+
+    <!-- Stats row -->
+    <g transform="translate(20, 200)">
+      <text x="0" y="14" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#1F2937">73%</text>
+      <text x="0" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#6B7280">funded</text>
+
+      <text x="84" y="14" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#1F2937">428</text>
+      <text x="84" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#6B7280">backers</text>
+
+      <text x="168" y="14" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#1F2937">12</text>
+      <text x="168" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#6B7280">days left</text>
+    </g>
+
+    <!-- Donate button -->
+    <rect x="20" y="238" width="240" height="32" rx="8" fill="#15803D"/>
+    <text x="140" y="258" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">♥ Donate Now</text>
+  </g>
+
+  <!-- Donation amount cards (right side) -->
+  <g transform="translate(360, 60)">
+    <text x="0" y="14" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" fill="#15803D">DONATION TYPES</text>
+
+    <!-- One-time -->
+    <g transform="translate(0, 24)">
+      <rect x="3" y="4" width="200" height="62" rx="12" fill="#000" opacity="0.08"/>
+      <rect width="200" height="62" rx="12" fill="#FFFFFF"/>
+      <circle cx="28" cy="31" r="16" fill="#FEF3C7"/>
+      <text x="28" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16">💰</text>
+      <text x="54" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1F2937">One-Time Gift</text>
+      <text x="54" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#6B7280">$25 • $50 • $100 • custom</text>
+      <text x="54" y="53" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#15803D">Most popular →</text>
+    </g>
+
+    <!-- Monthly -->
+    <g transform="translate(0, 96)">
+      <rect x="3" y="4" width="200" height="62" rx="12" fill="#000" opacity="0.08"/>
+      <rect width="200" height="62" rx="12" fill="#FFFFFF"/>
+      <circle cx="28" cy="31" r="16" fill="#DBEAFE"/>
+      <path d="M22 25 Q22 22 25 22 L31 22 Q34 22 34 25 L34 34 L36 34 L34 38 L32 34 L34 34" fill="none" stroke="#1E40AF" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M34 37 Q34 40 31 40 L25 40 Q22 40 22 37 L22 28" fill="none" stroke="#1E40AF" stroke-width="2"/>
+      <text x="54" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1F2937">Monthly Recurring</text>
+      <text x="54" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#6B7280">Sustained impact</text>
+      <text x="54" y="53" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#1E40AF">$10/mo • cancel anytime</text>
+    </g>
+
+    <!-- Event Tickets -->
+    <g transform="translate(0, 168)">
+      <rect x="3" y="4" width="200" height="62" rx="12" fill="#000" opacity="0.08"/>
+      <rect width="200" height="62" rx="12" fill="#FFFFFF"/>
+      <circle cx="28" cy="31" r="16" fill="#FCE7F3"/>
+      <rect x="20" y="25" width="16" height="12" rx="2" fill="none" stroke="#BE185D" stroke-width="1.8"/>
+      <line x1="20" y1="29" x2="36" y2="29" stroke="#BE185D" stroke-width="1.8"/>
+      <circle cx="26" cy="33" r="0.8" fill="#BE185D"/>
+      <text x="54" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1F2937">Event Tickets</text>
+      <text x="54" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#6B7280">Gala dinners • Charity runs</text>
+      <text x="54" y="53" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#BE185D">Sell tickets directly</text>
+    </g>
+
+    <!-- Pledge -->
+    <g transform="translate(0, 240)">
+      <rect x="3" y="4" width="200" height="62" rx="12" fill="#000" opacity="0.08"/>
+      <rect width="200" height="62" rx="12" fill="#FFFFFF"/>
+      <circle cx="28" cy="31" r="16" fill="#E0E7FF"/>
+      <path d="M22 24 L34 24 L34 36 L28 40 L22 36 Z" fill="none" stroke="#4338CA" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M25 30 L27 32 L31 27" stroke="#4338CA" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="54" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1F2937">Pledge &amp; Reward</text>
+      <text x="54" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#6B7280">Backer tiers with perks</text>
+      <text x="54" y="53" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#4338CA">Kickstarter-style</text>
+    </g>
+  </g>
+
+  <!-- Floating hearts decoration -->
+  <g fill="#22C55E" opacity="0.5">
+    <path d="M20 200 C16 195 11 192 11 188 C11 185 14 184 16 184 C18 184 19 185 20 186 C21 185 22 184 24 184 C26 184 29 185 29 188 C29 192 24 195 20 200 Z"/>
+  </g>
+  <g fill="#22C55E" opacity="0.4">
+    <path d="M335 30 C331 25 326 22 326 18 C326 15 329 14 331 14 C333 14 334 15 335 16 C336 15 337 14 339 14 C341 14 344 15 344 18 C344 22 339 25 335 30 Z"/>
+  </g>
+  <g fill="#FBBF24" opacity="0.6">
+    <path d="M30 360 L33 366 L40 369 L33 372 L30 379 L27 372 L20 369 L27 366 Z"/>
+  </g>
+</svg>

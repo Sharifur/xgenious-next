@@ -1,0 +1,263 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#F0D9C7"/>
+
+  <!-- Decorative blobs -->
+  <circle cx="60" cy="70" r="80" fill="#E5C2A8" opacity="0.55"/>
+  <circle cx="540" cy="340" r="100" fill="#E8C8B0" opacity="0.5"/>
+
+  <!-- Left: Product page / storefront -->
+  <g transform="translate(35, 40)">
+    <rect x="4" y="6" width="260" height="320" rx="16" fill="#000" opacity="0.1"/>
+    <rect width="260" height="320" rx="16" fill="#FFFFFF"/>
+
+    <!-- Browser top -->
+    <rect width="260" height="30" rx="16" fill="#FEF0E2"/>
+    <rect y="14" width="260" height="16" fill="#FEF0E2"/>
+    <circle cx="14" cy="15" r="3.5" fill="#EF4444"/>
+    <circle cx="26" cy="15" r="3.5" fill="#F59E0B"/>
+    <circle cx="38" cy="15" r="3.5" fill="#10B981"/>
+    <rect x="52" y="9" width="170" height="12" rx="6" fill="#FFFFFF"/>
+    <text x="60" y="17" font-family="system-ui, -apple-system, sans-serif" font-size="7" fill="#92400E">🔒 shop.example.com</text>
+
+    <!-- Language selector -->
+    <g transform="translate(14, 40)">
+      <rect width="62" height="20" rx="10" fill="#FEF3E2"/>
+      <text x="10" y="13" font-family="system-ui, -apple-system, sans-serif" font-size="9">🌐</text>
+      <text x="26" y="13" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="700" fill="#92400E">EN ▾</text>
+    </g>
+    <!-- Currency selector -->
+    <g transform="translate(82, 40)">
+      <rect width="62" height="20" rx="10" fill="#FEF3E2"/>
+      <text x="10" y="13" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="800" fill="#92400E">$ USD ▾</text>
+    </g>
+    <!-- Cart -->
+    <g transform="translate(212, 40)">
+      <rect width="34" height="20" rx="10" fill="#92400E"/>
+      <path d="M8 7 L10 7 L11 13 L19 13 L20 9 L11 9" stroke="#FFFFFF" stroke-width="1.3" fill="none" stroke-linejoin="round"/>
+      <circle cx="13" cy="15" r="1.2" fill="#FFFFFF"/>
+      <circle cx="18" cy="15" r="1.2" fill="#FFFFFF"/>
+      <circle cx="26" cy="9" r="5" fill="#EF4444"/>
+      <text x="26" y="12" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="800" fill="#FFFFFF">3</text>
+    </g>
+
+    <!-- Product hero -->
+    <rect x="14" y="68" width="232" height="120" rx="10" fill="#FEF3E2"/>
+    <!-- Sneaker illustration -->
+    <g transform="translate(50, 100)">
+      <!-- Sole -->
+      <path d="M0 60 L0 50 Q5 42 18 42 L120 42 Q140 42 155 50 L160 60 Z" fill="#FFFFFF" stroke="#1F2937" stroke-width="1.5"/>
+      <!-- Body -->
+      <path d="M20 42 Q22 30 35 28 L75 28 Q90 30 100 35 L140 38 Q150 40 155 50 L20 50 Z" fill="#EA580C"/>
+      <!-- Stripes -->
+      <path d="M40 42 L50 30 M55 42 L65 30 M70 42 L80 30" stroke="#FFFFFF" stroke-width="2.5"/>
+      <!-- Laces -->
+      <line x1="35" y1="32" x2="85" y2="32" stroke="#1F2937" stroke-width="1.2"/>
+      <line x1="38" y1="36" x2="82" y2="36" stroke="#1F2937" stroke-width="1.2"/>
+      <!-- Heel -->
+      <path d="M20 42 Q22 30 35 28 L40 28 L40 42 Z" fill="#C2410C"/>
+    </g>
+    <!-- Discount badge -->
+    <g transform="translate(22, 76)">
+      <rect width="40" height="18" rx="9" fill="#EF4444"/>
+      <text x="20" y="12" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="800" fill="#FFFFFF">-25%</text>
+    </g>
+
+    <!-- Product info -->
+    <text x="14" y="206" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" fill="#1F2937">Urban Runner Pro</text>
+    <g transform="translate(14, 212)">
+      <text x="0" y="12" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#EA580C">$89</text>
+      <text x="38" y="12" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#9CA3AF" text-decoration="line-through">$119</text>
+    </g>
+
+    <!-- Variant matrix label -->
+    <text x="14" y="246" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="700" fill="#92400E">VARIANT MATRIX</text>
+
+    <!-- Color swatches -->
+    <g transform="translate(14, 252)">
+      <text x="0" y="10" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#6B7280">Color</text>
+      <circle cx="38" cy="7" r="8" fill="#EA580C" stroke="#1F2937" stroke-width="2"/>
+      <circle cx="58" cy="7" r="8" fill="#1E40AF"/>
+      <circle cx="78" cy="7" r="8" fill="#1F2937"/>
+      <circle cx="98" cy="7" r="8" fill="#10B981"/>
+      <circle cx="118" cy="7" r="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+    </g>
+
+    <!-- Size grid -->
+    <g transform="translate(14, 272)">
+      <text x="0" y="10" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#6B7280">Size</text>
+      <rect x="28" width="22" height="16" rx="3" fill="#FEF3E2"/>
+      <text x="39" y="11" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#92400E">7</text>
+      <rect x="54" width="22" height="16" rx="3" fill="#FEF3E2"/>
+      <text x="65" y="11" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#92400E">8</text>
+      <rect x="80" width="22" height="16" rx="3" fill="#92400E"/>
+      <text x="91" y="11" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="700" fill="#FFFFFF">9</text>
+      <rect x="106" width="22" height="16" rx="3" fill="#FEF3E2"/>
+      <text x="117" y="11" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#92400E">10</text>
+      <rect x="132" width="22" height="16" rx="3" fill="#FEF3E2"/>
+      <text x="143" y="11" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#92400E">11</text>
+      <rect x="158" width="38" height="16" rx="3" fill="#F3F4F6"/>
+      <text x="177" y="11" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="7" fill="#9CA3AF">+12 more</text>
+    </g>
+
+    <!-- Fraud detection bar -->
+    <g transform="translate(14, 298)">
+      <rect width="232" height="16" rx="8" fill="#DCFCE7"/>
+      <circle cx="14" cy="8" r="5" fill="#15803D"/>
+      <path d="M11 8 L13 10 L17 6" stroke="#FFFFFF" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="24" y="11" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="700" fill="#15803D">Fraud check passed • Order verified</text>
+    </g>
+  </g>
+
+  <!-- Right: Courier label & shipping panel -->
+  <g transform="translate(320, 40)">
+    <!-- Multi-language pill at top -->
+    <g transform="translate(0, 0)">
+      <rect width="245" height="22" rx="11" fill="#FFFFFF"/>
+      <text x="12" y="14" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="700" fill="#92400E">🌍 MULTI-LANGUAGE STOREFRONT</text>
+      <rect x="170" y="4" width="22" height="14" rx="3" fill="#FEF3E2"/>
+      <text x="181" y="13" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="700" fill="#92400E">EN</text>
+      <rect x="194" y="4" width="22" height="14" rx="3" fill="#FEF3E2"/>
+      <text x="205" y="13" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="700" fill="#92400E">ES</text>
+      <rect x="218" y="4" width="22" height="14" rx="3" fill="#FEF3E2"/>
+      <text x="229" y="13" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="700" fill="#92400E">FR</text>
+    </g>
+
+    <!-- Shipping label (the star of this card) -->
+    <g transform="translate(0, 32)">
+      <rect x="4" y="6" width="245" height="190" rx="14" fill="#000" opacity="0.12"/>
+      <rect width="245" height="190" rx="14" fill="#FFFFFF"/>
+
+      <!-- Label top: courier branding stripe -->
+      <rect width="245" height="38" rx="14" fill="#1F2937"/>
+      <rect y="24" width="245" height="14" fill="#1F2937"/>
+      <text x="14" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" fill="#FBBF24">📦 SHIP•LABEL</text>
+      <text x="14" y="33" font-family="system-ui, -apple-system, sans-serif" font-size="7" fill="#9CA3AF">Auto-generated • EXPRESS</text>
+      <rect x="190" y="11" width="45" height="18" rx="3" fill="#FBBF24"/>
+      <text x="212" y="23" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="800" fill="#1F2937">PRIORITY</text>
+
+      <!-- FROM/TO -->
+      <text x="14" y="56" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="700" fill="#9CA3AF">FROM</text>
+      <text x="14" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#1F2937">Urban Runner Store</text>
+      <text x="14" y="79" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#6B7280">123 Market St, Dhaka</text>
+
+      <text x="135" y="56" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="700" fill="#9CA3AF">TO</text>
+      <text x="135" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#1F2937">Maria Garcia</text>
+      <text x="135" y="79" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#6B7280">42 Calle Mayor, Madrid</text>
+
+      <!-- Dashed divider -->
+      <line x1="14" y1="92" x2="231" y2="92" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="3 3"/>
+
+      <!-- Barcode -->
+      <g transform="translate(14, 100)">
+        <g fill="#1F2937">
+          <rect x="0" y="0" width="2" height="40"/>
+          <rect x="4" y="0" width="1" height="40"/>
+          <rect x="7" y="0" width="3" height="40"/>
+          <rect x="12" y="0" width="1" height="40"/>
+          <rect x="15" y="0" width="2" height="40"/>
+          <rect x="19" y="0" width="3" height="40"/>
+          <rect x="24" y="0" width="1" height="40"/>
+          <rect x="27" y="0" width="2" height="40"/>
+          <rect x="31" y="0" width="1" height="40"/>
+          <rect x="34" y="0" width="3" height="40"/>
+          <rect x="39" y="0" width="2" height="40"/>
+          <rect x="43" y="0" width="1" height="40"/>
+          <rect x="46" y="0" width="2" height="40"/>
+          <rect x="50" y="0" width="3" height="40"/>
+          <rect x="55" y="0" width="1" height="40"/>
+          <rect x="58" y="0" width="2" height="40"/>
+          <rect x="62" y="0" width="3" height="40"/>
+          <rect x="67" y="0" width="1" height="40"/>
+          <rect x="70" y="0" width="2" height="40"/>
+          <rect x="74" y="0" width="1" height="40"/>
+          <rect x="77" y="0" width="3" height="40"/>
+          <rect x="82" y="0" width="2" height="40"/>
+          <rect x="86" y="0" width="1" height="40"/>
+          <rect x="89" y="0" width="3" height="40"/>
+          <rect x="94" y="0" width="1" height="40"/>
+          <rect x="97" y="0" width="2" height="40"/>
+          <rect x="101" y="0" width="3" height="40"/>
+          <rect x="106" y="0" width="1" height="40"/>
+          <rect x="109" y="0" width="2" height="40"/>
+          <rect x="113" y="0" width="1" height="40"/>
+          <rect x="116" y="0" width="3" height="40"/>
+          <rect x="121" y="0" width="2" height="40"/>
+          <rect x="125" y="0" width="1" height="40"/>
+          <rect x="128" y="0" width="2" height="40"/>
+        </g>
+        <text x="66" y="50" text-anchor="middle" font-family="ui-monospace, monospace" font-size="8" font-weight="700" fill="#1F2937">SH-2026-EX-8421</text>
+      </g>
+
+      <!-- QR code -->
+      <g transform="translate(155, 100)">
+        <rect width="50" height="50" rx="4" fill="#1F2937"/>
+        <!-- QR pattern -->
+        <g fill="#FFFFFF">
+          <rect x="4" y="4" width="12" height="12"/>
+          <rect x="34" y="4" width="12" height="12"/>
+          <rect x="4" y="34" width="12" height="12"/>
+          <rect x="22" y="22" width="6" height="6"/>
+          <rect x="20" y="14" width="4" height="4"/>
+          <rect x="28" y="20" width="4" height="4"/>
+          <rect x="14" y="22" width="4" height="4"/>
+          <rect x="32" y="32" width="4" height="4"/>
+          <rect x="38" y="24" width="4" height="4"/>
+          <rect x="24" y="34" width="4" height="4"/>
+          <rect x="32" y="40" width="4" height="4"/>
+          <rect x="40" y="36" width="4" height="4"/>
+          <rect x="20" y="40" width="4" height="4"/>
+        </g>
+        <g fill="#1F2937">
+          <rect x="7" y="7" width="6" height="6"/>
+          <rect x="37" y="7" width="6" height="6"/>
+          <rect x="7" y="37" width="6" height="6"/>
+        </g>
+      </g>
+
+      <!-- Weight + Service -->
+      <g transform="translate(155, 158)">
+        <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="7" fill="#6B7280">WEIGHT</text>
+        <text x="0" y="11" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#1F2937">1.2 kg</text>
+      </g>
+
+      <!-- Order ID footer -->
+      <text x="14" y="180" font-family="ui-monospace, monospace" font-size="7" fill="#9CA3AF">ORDER #UR-2026-08421 • Generated 2 min ago</text>
+    </g>
+
+    <!-- Courier provider chips -->
+    <g transform="translate(0, 240)">
+      <text x="0" y="10" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="700" fill="#92400E">INTEGRATED COURIERS</text>
+      <g transform="translate(0, 16)">
+        <rect width="50" height="22" rx="4" fill="#FFCC00"/>
+        <text x="25" y="15" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="900" fill="#1F2937">DHL</text>
+
+        <rect x="56" width="50" height="22" rx="4" fill="#FF6200"/>
+        <text x="81" y="15" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="900" fill="#FFFFFF">FedEx</text>
+
+        <rect x="112" width="50" height="22" rx="4" fill="#341B14"/>
+        <text x="137" y="15" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="900" fill="#FFB500">UPS</text>
+
+        <rect x="168" width="50" height="22" rx="4" fill="#004B93"/>
+        <text x="193" y="15" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="900" fill="#FFFFFF">USPS</text>
+
+        <rect x="224" width="22" height="22" rx="4" fill="#1F2937"/>
+        <text x="235" y="15" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="800" fill="#FBBF24">+8</text>
+      </g>
+    </g>
+
+    <!-- Multi-currency strip -->
+    <g transform="translate(0, 296)">
+      <rect width="246" height="32" rx="10" fill="#1F2937"/>
+      <text x="12" y="14" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="700" fill="#FBBF24">MULTI-CURRENCY CHECKOUT</text>
+      <g font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#FFFFFF">
+        <text x="12" y="27">$ USD</text>
+        <text x="54" y="27">€ EUR</text>
+        <text x="94" y="27">£ GBP</text>
+        <text x="134" y="27">¥ JPY</text>
+        <text x="172" y="27">₹ INR</text>
+        <text x="212" y="27">+22</text>
+      </g>
+    </g>
+  </g>
+</svg>

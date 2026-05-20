@@ -1,0 +1,59 @@
+'use client';
+import dynamic from 'next/dynamic';
+
+const COMPONENT_MAP: Record<string, React.ComponentType> = {
+  'json-formatter':                    dynamic(() => import('./JsonFormatter'), { ssr: false }),
+  'password-generator':                dynamic(() => import('./PasswordGenerator'), { ssr: false }),
+  'base64-encoder-decoder':            dynamic(() => import('./Base64EncoderDecoder'), { ssr: false }),
+  'jwt-decoder':                       dynamic(() => import('./JwtDecoder'), { ssr: false }),
+  'regex-tester':                      dynamic(() => import('./RegexTester'), { ssr: false }),
+  'cron-expression-builder':           dynamic(() => import('./CronExpressionBuilder'), { ssr: false }),
+  'env-file-generator':                dynamic(() => import('./EnvFileGenerator'), { ssr: false }),
+  'sql-formatter':                     dynamic(() => import('./SqlFormatter'), { ssr: false }),
+  'color-contrast-checker':            dynamic(() => import('./ColorContrastChecker'), { ssr: false }),
+  'htaccess-generator':                dynamic(() => import('./HtaccessGenerator'), { ssr: false }),
+  'ai-token-cost-calculator':          dynamic(() => import('./AiTokenCostCalculator'), { ssr: false }),
+  'payroll-breakdown-calculator':      dynamic(() => import('./PayrollBreakdownCalculator'), { ssr: false }),
+  'employee-cost-calculator':          dynamic(() => import('./EmployeeCostCalculator'), { ssr: false }),
+  'leave-accrual-calculator':          dynamic(() => import('./LeaveAccrualCalculator'), { ssr: false }),
+  'salary-hike-calculator':            dynamic(() => import('./SalaryHikeCalculator'), { ssr: false }),
+  'overtime-pay-calculator':           dynamic(() => import('./OvertimePayCalculator'), { ssr: false }),
+  'gpa-calculator':                    dynamic(() => import('./GpaCalculator'), { ssr: false }),
+  'attendance-percentage-calculator':  dynamic(() => import('./AttendancePercentageCalculator'), { ssr: false }),
+  'exam-grade-calculator':             dynamic(() => import('./ExamGradeCalculator'), { ssr: false }),
+  'school-fee-calculator':             dynamic(() => import('./SchoolFeeCalculator'), { ssr: false }),
+  'mvp-cost-estimator':                dynamic(() => import('./MvpCostEstimator'), { ssr: false }),
+  'churn-rate-calculator':             dynamic(() => import('./ChurnRateCalculator'), { ssr: false }),
+  'customer-ltv-calculator':           dynamic(() => import('./CustomerLtvCalculator'), { ssr: false }),
+  'mrr-growth-simulator':              dynamic(() => import('./MrrGrowthSimulator'), { ssr: false }),
+  'build-vs-buy-calculator':           dynamic(() => import('./BuildVsBuyCalculator'), { ssr: false }),
+  'sales-pipeline-calculator':         dynamic(() => import('./SalesPipelineCalculator'), { ssr: false }),
+  'cold-email-roi-calculator':         dynamic(() => import('./ColdEmailRoiCalculator'), { ssr: false }),
+  'meeting-cost-calculator':           dynamic(() => import('./MeetingCostCalculator'), { ssr: false }),
+  'freelance-rate-calculator':         dynamic(() => import('./FreelanceRateCalculator'), { ssr: false }),
+  'saas-pricing-calculator':           dynamic(() => import('./SaasPricingCalculator'), { ssr: false }),
+  'saas-runway-calculator':            dynamic(() => import('./SaasRunwayCalculator'), { ssr: false }),
+  'sales-commission-calculator':       dynamic(() => import('./SalesCommissionCalculator'), { ssr: false }),
+  'cac-calculator':                    dynamic(() => import('./CacCalculator'), { ssr: false }),
+  'lead-response-time-calculator':     dynamic(() => import('./LeadResponseTimeCalculator'), { ssr: false }),
+  'invoice-generator':                 dynamic(() => import('./InvoiceGenerator'), { ssr: false }),
+  'business-name-generator':           dynamic(() => import('./BusinessNameGenerator'), { ssr: false }),
+  'time-zone-meeting-planner':         dynamic(() => import('./TimeZoneMeetingPlanner'), { ssr: false }),
+  'project-timeline-estimator':        dynamic(() => import('./ProjectTimelineEstimator'), { ssr: false }),
+  'sprint-velocity-calculator':        dynamic(() => import('./SprintVelocityCalculator'), { ssr: false }),
+  'custom-software-roi-calculator':    dynamic(() => import('./CustomSoftwareRoiCalculator'), { ssr: false }),
+  'equity-dilution-calculator':        dynamic(() => import('./EquityDilutionCalculator'), { ssr: false }),
+  'job-description-generator':         dynamic(() => import('./JobDescriptionGenerator'), { ssr: false }),
+  'interview-question-generator':      dynamic(() => import('./InterviewQuestionGenerator'), { ssr: false }),
+  'tech-stack-recommender':            dynamic(() => import('./TechStackRecommender'), { ssr: false }),
+  'png-to-webp':                       dynamic(() => import('./PngToWebp'), { ssr: false }),
+  'jpg-to-webp':                       dynamic(() => import('./JpgToWebp'), { ssr: false }),
+  'png-to-avif':                       dynamic(() => import('./PngToAvif'), { ssr: false }),
+  'jpg-to-avif':                       dynamic(() => import('./JpgToAvif'), { ssr: false }),
+};
+
+export default function ToolRenderer({ slug }: { slug: string }) {
+  const Tool = COMPONENT_MAP[slug];
+  if (!Tool) return null;
+  return <Tool />;
+}

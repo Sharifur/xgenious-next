@@ -16,49 +16,34 @@ type CaseStudy = {
 
 const CASES: CaseStudy[] = [
   {
-    title: 'Client Portal Software for Agencies and Freelancers',
+    title: 'AI-Powered Customer Support SaaS Platform',
     description:
-      'Taskip is the all-in-one agency management platform and client portal software that helps freelancers and digital agencies run their entire business.',
+      'A self-hostable, multi-tenant Laravel platform with semantic AI chatbots, support ticketing, knowledge base builder, and Stripe billing — 40–60% AI deflection rate achieved in production.',
     stats: [
-      { value: '3.4×', label: 'Faster Onboarding' },
-      { value: '1k+', label: 'Active Workspaces' },
-      { value: '62%', label: 'LCP Score' },
+      { value: '40–60%', label: 'AI Deflection Rate' },
+      { value: 'Multi-tenant', label: 'Architecture' },
+      { value: 'GPT-4', label: 'AI Engine' },
     ],
-    tags: ['Client Portal', 'Agencies', 'Freelancers'],
-    href: 'https://taskip.net',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
-    imageBg: '#C8EDE6',
+    tags: ['Laravel', 'AI / LLM', 'SaaS'],
+    href: '/case-studies/ai-support-saas-platform',
+    image: '/images/case-studies/01-ai-chatbot.svg',
+    imageBg: '#E8EDF8',
     imageRight: true,
-  },
-  {
-    title: 'Multi-Vendor Marketplace Built for Scale',
-    description:
-      'Nazmart powers multi-tenant eCommerce stores where every seller gets their own storefront, subdomain, and dashboard — all managed from a single admin panel.',
-    stats: [
-      { value: '50+', label: 'Active Stores' },
-      { value: '99.9%', label: 'Uptime SLA' },
-      { value: '3×', label: 'Revenue Growth' },
-    ],
-    tags: ['eCommerce', 'Multi-Tenant', 'SaaS'],
-    href: 'https://xgenious.com/our-products/nazmart-multi-tenancy-ecommerce-platform-saas/',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
-    imageBg: '#F5E8DC',
-    imageRight: false,
   },
   {
     title: 'Freelance Marketplace Platform Launched in 8 Weeks',
     description:
-      'Xilancer gave a startup a fully operational freelance platform with escrow payments, bidding, dispute resolution, and a mobile-ready UI — shipped on schedule.',
+      'Full-stack freelancer marketplace with escrow payments, bidding, dispute resolution, real-time chat, and Flutter mobile apps — shipped on schedule in 8 weeks.',
     stats: [
       { value: '8wk', label: 'Time to Launch' },
       { value: '500+', label: 'Active Freelancers' },
       { value: '98%', label: 'Client Satisfaction' },
     ],
-    tags: ['Marketplace', 'Payments', 'Freelancers'],
-    href: 'https://xgenious.com/our-products/xilancer-freelancer-marketplace-platform/',
-    image: '/images/saas-dev/taskip-case-studies.jpg',
+    tags: ['Marketplace', 'Escrow Payments', 'Flutter'],
+    href: '/case-studies/freelancer-marketplace-platform',
+    image: '/images/case-studies/03-freelance-marketplace.svg',
     imageBg: '#D8E4F0',
-    imageRight: true,
+    imageRight: false,
   },
 ];
 
