@@ -3,11 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import DownloadButton from '@/components/ui/DownloadButton';
 import BookingCTA from '@/components/sections/BookingCTA';
+import ScreenshotGallery from '@/components/ui/ScreenshotGallery';
 
 const BASE_URL = 'https://xgenious.com';
 const COLOR = '#4f46e5';
 const LIGHT_COLOR = '#eef2ff';
-const GITHUB_URL = '';
+const GITHUB_URL = 'https://github.com/XgeniousLLC/genius-school-management-system/archive/refs/tags/v1.0.0.zip';
 const DEMO_URL = 'https://genius-school-ms.xgenious.com';
 const USER_MANUAL_URL = 'https://genius-school-management-system.vercel.app/';
 
@@ -558,62 +559,65 @@ export default function GeniusSchoolManagementPage() {
               Real screenshots from the application. Every screen shown is fully functional and included free.
             </p>
           </div>
-          <div className="flex flex-col gap-6">
-            {/* Super Admin Dashboard */}
-            <div className="rounded-2xl border border-[#E5E7EC] overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
-              <div className="relative w-full">
-                <Image
-                  src="/images/free-software/genius-school-ms/dashboard-super-admin.png"
-                  alt="Genius School Management — Super Admin Dashboard showing platform overview with school analytics, revenue, and user growth charts"
-                  width={1440}
-                  height={900}
-                  className="w-full h-auto"
-                  priority
-                />
-              </div>
-              <div className="px-5 py-3.5 bg-white border-t border-[#E5E7EC] flex items-center justify-between">
-                <div>
-                  <p className="text-[13px] font-semibold text-[#0F1112]">Super Admin Dashboard</p>
-                  <p className="text-[12px] text-[#6b7280] mt-0.5">Platform overview — schools, users, revenue, and subscription analytics</p>
-                </div>
-                <a
-                  href={DEMO_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-shrink-0 inline-flex items-center gap-1.5 text-[12px] font-medium rounded-full px-4 py-1.5 border border-[#E5E7EC] text-[#484848] hover:border-[#4f46e5] hover:text-[#4f46e5] transition-colors"
-                >
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
-                    <polygon points="10,8 16,12 10,16" fill="currentColor" />
-                  </svg>
-                  Open Demo
-                </a>
-              </div>
-            </div>
-
-            {/* Placeholder grid for coming screenshots */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {['Student Management', 'Fee Collection', 'Exam Results', 'Timetable Builder', 'Payroll & HR', 'Library Module'].map((label) => (
-                <div key={label} className="rounded-2xl border border-[#E5E7EC] overflow-hidden">
-                  <div
-                    className="h-[160px] flex flex-col items-center justify-center gap-3"
-                    style={{ background: 'linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%)' }}
-                  >
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: '#4f46e520' }}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="18" height="18" rx="3" stroke="#4f46e5" strokeWidth="1.6" />
-                        <path d="M3 9h18M9 21V9" stroke="#4f46e5" strokeWidth="1.6" strokeLinecap="round" />
-                      </svg>
-                    </div>
-                    <p className="text-[11px] font-medium text-[#4f46e5]">Coming soon</p>
-                  </div>
-                  <div className="px-4 py-3 bg-white border-t border-[#E5E7EC]">
-                    <p className="text-[13px] font-medium text-[#0F1112]">{label}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <ScreenshotGallery
+            demoUrl={DEMO_URL}
+            screenshots={[
+              {
+                src: '/images/free-software/genius-school-ms/dashboard-super-admin.png',
+                alt: 'Genius School Management — Super Admin Dashboard showing platform overview with school analytics, revenue, and user growth charts',
+                title: 'Super Admin Dashboard',
+                description: 'Platform overview — schools, users, revenue, and subscription analytics',
+              },
+              {
+                src: '/images/free-software/genius-school-ms/student-management.png',
+                alt: 'Genius School Management — Student Management page showing student list with admission numbers, class/section, guardian info, status badges and admitted dates',
+                title: 'Student Management',
+                description: 'Admission records, class assignments, guardian contacts and status tracking',
+              },
+              {
+                src: '/images/free-software/genius-school-ms/exam-results.png',
+                alt: 'Genius School Management — Exam Results page showing merit list with per-subject marks, GPA, pass/fail badges and grade scale reference',
+                title: 'Exam Results — Merit List',
+                description: 'Per-subject marks, GPA calculation, pass/fail badges and class ranking',
+              },
+              {
+                src: '/images/free-software/genius-school-ms/fee-management.png',
+                alt: 'Genius School Management — Fee Management page showing payment receipts, total collected, outstanding balance, paid receipts and payment methods',
+                title: 'Fee Management',
+                description: 'Tuition and exam fee collection, receipt generation — cash, bKash and Nagad',
+              },
+              {
+                src: '/images/free-software/genius-school-ms/library-module.png',
+                alt: 'Genius School Management — Library module showing book catalog with title, author, category, ISBN, location, copies and availability tracking',
+                title: 'Library Module',
+                description: 'Book catalog with ISBN, shelf location, availability and overdue tracking',
+              },
+              {
+                src: '/images/free-software/genius-school-ms/payroll.png',
+                alt: 'Genius School Management — Payroll page showing staff salary breakdown with basic pay, allowances, deductions, net salary, days worked and payment status',
+                title: 'Payroll',
+                description: 'Staff salary generation with allowances, deductions and pay slip export',
+              },
+              {
+                src: '/images/free-software/genius-school-ms/timetable-builder.png',
+                alt: 'Genius School Management — Timetable Builder showing weekly class schedule grid with color-coded subjects, teachers and room assignments per period',
+                title: 'Timetable Builder',
+                description: 'Weekly schedule with color-coded subjects, teacher and room assignments',
+              },
+              {
+                src: '/images/free-software/genius-school-ms/attendance.png',
+                alt: 'Genius School Management — Student Attendance page showing daily class-wise attendance with present, absent, late and half-day status per student',
+                title: 'Student Attendance',
+                description: 'Daily class-wise attendance with present, absent, late and half-day tracking — bulk mark and save',
+              },
+              {
+                src: '/images/free-software/genius-school-ms/staff-management.png',
+                alt: 'Genius School Management — Staff management page showing employee list with ID, department, designation, phone, joining date and active/on-leave status',
+                title: 'Staff Management',
+                description: 'Employee records with department, designation, contact and status — active, on leave and resigned',
+              },
+            ]}
+          />
         </div>
       </section>
 

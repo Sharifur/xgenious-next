@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import DownloadButton from '@/components/ui/DownloadButton';
 import BookingCTA from '@/components/sections/BookingCTA';
+import ScreenshotGallery from '@/components/ui/ScreenshotGallery';
 
 const BASE_URL = 'https://xgenious.com';
 const COLOR = '#7c3aed';
 const LIGHT_COLOR = '#f5f3ff';
-const GITHUB_URL = '';
-const DEMO_URL = '';
+const GITHUB_URL = 'https://github.com/XgeniousLLC/geniousHRM/archive/refs/tags/v1.0.0.zip';
+const DEMO_URL = 'https://genius-hrm.xgenious.com/login';
+const DOCS_URL = 'https://genious-hrm-whnd.vercel.app/';
 
 export const metadata: Metadata = {
   title: 'Free Open Source HRM System — Laravel 13 + React 18 | Xgenious',
@@ -320,6 +322,20 @@ export default function GeniusHRMPage() {
                   Try Live Demo
                 </a>
               )}
+              {DOCS_URL && (
+                <a
+                  href={DOCS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-white border border-[#E5E7EC] text-[#0F1112] font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:border-[#0F1112]"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  Documentation
+                </a>
+              )}
             </div>
 
             <p className="text-[13px] text-[#6b7280]">
@@ -361,44 +377,51 @@ export default function GeniusHRMPage() {
               See It in Action
             </h2>
             <p className="text-[#484848] text-[15px] mt-3 max-w-[500px] mx-auto leading-7">
-              A preview of what Genius HRM looks like. Full screenshots coming soon.
+              Real screenshots from the application. Every screen shown is fully functional and included free.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[1000px] mx-auto">
-            {[
-              { title: 'HR Dashboard', desc: 'KPI widgets — headcount, active today, pending leaves, payroll total' },
-              { title: 'Employee Directory', desc: 'Full employee profiles with employment history and document upload' },
-              { title: 'Payroll Run', desc: 'Draft → Approve → Paid workflow with printable payslip PDF' },
-              { title: 'Leave Management', desc: 'Leave calendar, balance tracking, and approval workflow' },
-              { title: 'Recruitment Pipeline', desc: 'Candidate pipeline from Applied to Hired with interview notes' },
-              { title: 'Performance Reviews', desc: 'Self-assessment, manager review, and final score trend chart' },
-            ].map((screen) => (
-              <div
-                key={screen.title}
-                className="rounded-2xl border border-[#E5E7EC] overflow-hidden"
-              >
-                <div
-                  className="h-[180px] flex items-center justify-center"
-                  style={{ background: LIGHT_COLOR }}
-                >
-                  <div className="flex flex-col items-center gap-2 text-center px-4">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${COLOR}15` }}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="18" height="18" rx="3" stroke={COLOR} strokeWidth="1.6" />
-                        <path d="M3 9h18M9 21V9" stroke={COLOR} strokeWidth="1.6" strokeLinecap="round" />
-                      </svg>
-                    </div>
-                    <p className="text-[11px] font-medium" style={{ color: COLOR }}>Screenshot coming soon</p>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <p className="text-[13px] font-semibold text-[#0F1112]">{screen.title}</p>
-                  <p className="text-[12px] text-[#6b7280] mt-1 leading-4">{screen.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ScreenshotGallery
+            demoUrl={DEMO_URL}
+            screenshots={[
+              {
+                src: '/images/free-software/genius-hrm/dashboard.png',
+                alt: 'Genius HRM — Dashboard showing KPI widgets for total employees, present today, on leave, open positions, departments, payroll net, training completion and pending approvals',
+                title: 'HR Dashboard',
+                description: 'Org-wide KPIs — headcount, attendance, payroll total, training completion and pending approvals',
+              },
+              {
+                src: '/images/free-software/genius-hrm/employees.png',
+                alt: 'Genius HRM — Employee directory showing staff list with ID, department, position, joining date and active/on-leave/inactive status',
+                title: 'Employee Directory',
+                description: 'Full employee records with department, position, joined date and status — searchable and filterable',
+              },
+              {
+                src: '/images/free-software/genius-hrm/recruitment.png',
+                alt: 'Genius HRM — Recruitment page showing job postings with department, location, type, status and applicant count',
+                title: 'Recruitment',
+                description: 'Job postings with published/draft/closed status, applicant count and deadline tracking',
+              },
+              {
+                src: '/images/free-software/genius-hrm/training.png',
+                alt: 'Genius HRM — Training and Development page showing courses with category, mode, duration, cost, sessions and status',
+                title: 'Training & Development',
+                description: 'Course catalog with active courses, sessions, enrollments and completions — online and in-person',
+              },
+              {
+                src: '/images/free-software/genius-hrm/payroll.png',
+                alt: 'Genius HRM — Payroll runs list showing monthly payroll with employee count, gross, deductions, net salary and paid/draft status',
+                title: 'Payroll Runs',
+                description: 'Monthly payroll with gross, deductions, net salary — draft to paid workflow with run history',
+              },
+              {
+                src: '/images/free-software/genius-hrm/reports.png',
+                alt: 'Genius HRM — Reports and Analytics showing headcount by department, headcount trend, employment status breakdown and payroll trend',
+                title: 'Reports & Analytics',
+                description: 'Org-wide insights — headcount by department, employment status, payroll trend and training completion',
+              },
+            ]}
+          />
         </div>
       </section>
 

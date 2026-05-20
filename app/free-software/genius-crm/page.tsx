@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import DownloadButton from '@/components/ui/DownloadButton';
 import BookingCTA from '@/components/sections/BookingCTA';
+import ScreenshotGallery from '@/components/ui/ScreenshotGallery';
 
 const BASE_URL = 'https://xgenious.com';
 const COLOR = '#ec7161';
 const LIGHT_COLOR = '#fef2ef';
-const GITHUB_URL = '';
-const DEMO_URL = '';
+const GITHUB_URL = 'https://github.com/XgeniousLLC/geniousCRM/archive/refs/tags/v1.0.0.zip';
+const DEMO_URL = 'https://crm-demo.xgenious.com/login';
+const DOCS_URL = 'https://genious-crm-9wkn.vercel.app/';
 
 export const metadata: Metadata = {
   title: 'Free CRM Software — Laravel 12 + React 19, Self-Hosted | Xgenious',
@@ -313,6 +315,20 @@ export default function GeniusCRMPage() {
                   Try Live Demo
                 </a>
               )}
+              {DOCS_URL && (
+                <a
+                  href={DOCS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-white border border-[#E5E7EC] text-[#0F1112] font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:border-[#0F1112]"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  Documentation
+                </a>
+              )}
             </div>
 
             <p className="text-[13px] text-[#6b7280]">
@@ -346,7 +362,7 @@ export default function GeniusCRMPage() {
       {/* Screenshots */}
       <section className="py-16 sm:py-20 bg-white">
         <div className="container-page px-4 sm:px-6 lg:px-0">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[12px] font-medium mb-4" style={{ background: LIGHT_COLOR, color: COLOR }}>
               Screenshots
             </span>
@@ -354,44 +370,50 @@ export default function GeniusCRMPage() {
               See It in Action
             </h2>
             <p className="text-[#484848] text-[15px] mt-3 max-w-[500px] mx-auto leading-7">
-              A preview of what Genius CRM looks like. Full screenshots coming soon.
+              Real screenshots from the application. Every screen shown is fully functional and included free.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[1000px] mx-auto">
-            {[
-              { title: 'Dashboard', desc: 'KPI widgets — deals closing this week, pipeline value, lead conversion rate' },
-              { title: 'Deal Pipeline (Kanban)', desc: 'Drag-and-drop cards across 5 stages with win probability per deal' },
-              { title: 'Contact Management', desc: 'Full contact profiles with notes, tasks, and activity timeline' },
-              { title: 'Lead Tracker', desc: 'Lead status workflow with follow-up dates and overdue badges' },
-              { title: 'Company Profiles', desc: 'Company records linked to contacts, deals, and tasks' },
-              { title: 'Reports & Analytics', desc: 'Pipeline by stage, conversion rate, weighted value, and CSV export' },
-            ].map((screen) => (
-              <div
-                key={screen.title}
-                className="rounded-2xl border border-[#E5E7EC] overflow-hidden"
-              >
-                <div
-                  className="h-[180px] flex items-center justify-center"
-                  style={{ background: LIGHT_COLOR }}
-                >
-                  <div className="flex flex-col items-center gap-2 text-center px-4">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${COLOR}15` }}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="18" height="18" rx="3" stroke={COLOR} strokeWidth="1.6" />
-                        <path d="M3 9h18M9 21V9" stroke={COLOR} strokeWidth="1.6" strokeLinecap="round" />
-                      </svg>
-                    </div>
-                    <p className="text-[11px] font-medium" style={{ color: COLOR }}>Screenshot coming soon</p>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <p className="text-[13px] font-semibold text-[#0F1112]">{screen.title}</p>
-                  <p className="text-[12px] text-[#6b7280] mt-1 leading-4">{screen.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ScreenshotGallery
+            demoUrl={DEMO_URL}
+            screenshots={[
+              {
+                src: '/images/free-software/genius-crm/dashboard.png',
+                alt: 'Genius CRM — Dashboard showing KPI widgets for total contacts, active leads, open deals, open tasks, follow-ups due and closing this week',
+                title: 'Dashboard',
+                description: 'KPI overview — contacts, active leads, open deals, tasks and follow-ups due this week',
+              },
+              {
+                src: '/images/free-software/genius-crm/deal-pipeline.png',
+                alt: 'Genius CRM — Deal Pipeline Kanban board with columns for New Deal, Proposal Sent, Negotiation, Won and Lost stages',
+                title: 'Deal Pipeline (Kanban)',
+                description: 'Drag-and-drop deal cards across 5 stages with win probability and assigned rep per deal',
+              },
+              {
+                src: '/images/free-software/genius-crm/contacts.png',
+                alt: 'Genius CRM — Contact Management page showing contact list with name, email, phone, company and tags',
+                title: 'Contact Management',
+                description: 'Contact list with email, phone, company link and custom tags — CSV import supported',
+              },
+              {
+                src: '/images/free-software/genius-crm/leads.png',
+                alt: 'Genius CRM — Lead Tracker showing leads with source, assigned rep, status badges and follow-up date alerts',
+                title: 'Lead Tracker',
+                description: 'Lead status workflow with source tracking, assignment, follow-up dates and overdue alerts',
+              },
+              {
+                src: '/images/free-software/genius-crm/company-profiles.png',
+                alt: 'Genius CRM — Company Profile page showing company details, linked contacts, deals and tasks',
+                title: 'Company Profiles',
+                description: 'Company records linked to contacts, deals and tasks — full activity in one view',
+              },
+              {
+                src: '/images/free-software/genius-crm/reports.png',
+                alt: 'Genius CRM — Reports page showing pipeline value, won/lost value, conversion rate, deals by stage and lead pipeline charts',
+                title: 'Reports & Analytics',
+                description: 'Pipeline value, won/lost breakdown, conversion rate, deals by stage — CSV export included',
+              },
+            ]}
+          />
         </div>
       </section>
 
