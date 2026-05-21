@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config';
+import { verifyRecaptcha } from '@/lib/recaptcha';
 
 const WP_BASE = process.env.WORDPRESS_BASE_URL ?? 'https://xgenious.com';
 
@@ -11,9 +12,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       credentials: {
         username: { label: 'Username or Email', type: 'text' },
         password: { label: 'Password', type: 'password' },
+        recaptchaToken: { label: 'reCAPTCHA', type: 'text' },
       },
       async authorize(credentials) {
         if (!credentials?.username || !credentials?.password) return null;
+
+        if (process.env.RECAPTCHA_SECRET_KEY) {
+          const token = (credentials.recaptchaToken as string) ?? '';
+          if (!token || !(await verifyRecaptcha(token))) return null;
+        }
+
         try {
           const res = await fetch(`${WP_BASE}/wp-json/jwt-auth/v1/token`, {
             method: 'POST',
@@ -52,7 +60,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             wpToken: data.token as string,
             wpUserId: data.user_id as number,
           };
-        } catch {
+        } catch (err) {
+          if (err instanceof Error && err.message === 'EmailNotVerified') throw err;
           return null;
         }
       },

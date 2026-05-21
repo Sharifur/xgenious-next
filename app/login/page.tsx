@@ -1,9 +1,10 @@
 'use client';
 export const dynamic = 'force-dynamic';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -14,6 +15,7 @@ export default function LoginPage() {
   const [resendLoading, setResendLoading] = useState(false);
   const [resendMsg, setResendMsg] = useState('');
   const [countdown, setCountdown] = useState(0);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const justReset = params.get('reset') === '1';
 
@@ -25,15 +27,17 @@ export default function LoginPage() {
     setLoading(true);
     const fd = new FormData(e.currentTarget);
     const username = fd.get('username') as string;
+    const recaptchaToken = recaptchaRef.current?.getValue() ?? '';
     const result = await signIn('credentials', {
       username,
       password: fd.get('password'),
+      recaptchaToken,
       redirect: false,
     });
     setLoading(false);
     if (result?.error) {
+      recaptchaRef.current?.reset();
       if (result.error === 'EmailNotVerified') {
-        // username field may be an email — pass it for resend
         setUnverifiedEmail(username.includes('@') ? username : '');
         setError('Please verify your email before signing in.');
       } else {
@@ -144,6 +148,12 @@ export default function LoginPage() {
                 className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors"
               />
             </div>
+            {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+              />
+            )}
             <button
               type="submit"
               disabled={loading}

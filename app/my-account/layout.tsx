@@ -2,6 +2,7 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import AccountSidebar from './_components/AccountSidebar';
 
+export const dynamic = 'force-dynamic';
 export const metadata = { title: 'My Account' };
 
 export default async function AccountLayout({ children }: { children: React.ReactNode }) {

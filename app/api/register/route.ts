@@ -2,13 +2,20 @@ import { NextRequest, NextResponse } from 'next/server';
 import { isDisposableEmail } from '@/lib/disposable-emails';
 import { generateVerificationToken } from '@/lib/token';
 import { sendEmail, verificationEmailHtml, BASE_URL } from '@/lib/email';
+import { verifyRecaptcha } from '@/lib/recaptcha';
 
 const WP_BASE = process.env.WORDPRESS_BASE_URL ?? 'https://xgenious.com';
 const WP_ADMIN_USER = process.env.WP_ADMIN_USERNAME!;
 const WP_ADMIN_PASS = process.env.WP_ADMIN_APP_PASSWORD!;
 
 export async function POST(req: NextRequest) {
-  const { username, email, password, firstName, lastName } = await req.json();
+  const { username, email, password, firstName, lastName, recaptchaToken } = await req.json();
+
+  if (process.env.RECAPTCHA_SECRET_KEY) {
+    if (!recaptchaToken || !(await verifyRecaptcha(recaptchaToken))) {
+      return NextResponse.json({ error: 'Please complete the reCAPTCHA.' }, { status: 400 });
+    }
+  }
 
   if (!username || !email || !password) {
     return NextResponse.json({ error: 'Username, email and password are required.' }, { status: 400 });

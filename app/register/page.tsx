@@ -1,6 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function RegisterPage() {
   const [error, setError] = useState('');
@@ -10,6 +11,7 @@ export default function RegisterPage() {
   const [countdown, setCountdown] = useState(0);
   const [resendLoading, setResendLoading] = useState(false);
   const [resendMsg, setResendMsg] = useState('');
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   useEffect(() => {
     if (countdown <= 0) return;
@@ -32,6 +34,8 @@ export default function RegisterPage() {
       return;
     }
 
+    const recaptchaToken = recaptchaRef.current?.getValue() ?? '';
+
     const res = await fetch('/api/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -41,6 +45,7 @@ export default function RegisterPage() {
         password,
         firstName: fd.get('firstName'),
         lastName: fd.get('lastName'),
+        recaptchaToken,
       }),
     });
 
@@ -48,6 +53,7 @@ export default function RegisterPage() {
     setLoading(false);
 
     if (!res.ok) {
+      recaptchaRef.current?.reset();
       setError(data.error ?? 'Registration failed.');
       return;
     }
@@ -201,6 +207,28 @@ export default function RegisterPage() {
                 className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors"
               />
             </div>
+            <div className="flex items-start gap-2.5">
+              <input
+                type="checkbox"
+                name="terms"
+                id="terms"
+                defaultChecked
+                required
+                className="mt-0.5 h-4 w-4 rounded border-gray-300 accent-[#ec7161] cursor-pointer"
+              />
+              <label htmlFor="terms" className="text-sm text-gray-600 cursor-pointer">
+                I agree to the{' '}
+                <Link href="/terms" className="text-[#ec7161] font-medium hover:underline">
+                  Terms &amp; Conditions
+                </Link>
+              </label>
+            </div>
+            {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+              />
+            )}
             <button
               type="submit"
               disabled={loading}
