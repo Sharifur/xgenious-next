@@ -1,6 +1,7 @@
 'use client';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useTicketsStore } from '@/store/useTicketsStore';
 
 const STATUS_COLORS: Record<string, string> = {
   open: 'bg-blue-50 text-blue-700',
@@ -19,44 +20,30 @@ const PRIORITY_COLORS: Record<string, string> = {
 const PAGE_SIZE = 20;
 
 export default function SupportPage() {
-  const [tickets, setTickets] = useState<any[]>([]);
-  const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const store = useTicketsStore();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('all-except-closed');
   const [searchInput, setSearchInput] = useState('');
 
-  const fetchTickets = useCallback(async () => {
-    setLoading(true);
-    const params = new URLSearchParams({ page: String(page), limit: String(PAGE_SIZE) });
-    if (search) params.set('search', search);
-    if (status === 'all-except-closed') {
-      // fetch without status filter, then filter client-side
-    } else if (status !== 'all') {
-      params.set('status', status);
-    }
+  const params = { page, search, status };
+  const entry = store.getEntry(params);
 
-    const res = await fetch(`/api/support-tickets?${params}`);
-    const data = await res.json();
-    let list = data.data ?? data ?? [];
-    if (status === 'all-except-closed') {
-      list = list.filter((t: any) => t.status !== 'closed');
-    }
-    setTickets(list);
-    setTotal(data.total ?? data.meta?.total ?? list.length);
-    setLoading(false);
+  useEffect(() => {
+    store.fetch(params);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, search, status]);
 
-  useEffect(() => { fetchTickets(); }, [fetchTickets]);
+  const tickets = entry?.tickets ?? [];
+  const total = entry?.total ?? 0;
+  const loading = !entry && store.loading;
+  const totalPages = Math.ceil(total / PAGE_SIZE);
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     setSearch(searchInput);
     setPage(1);
   }
-
-  const totalPages = Math.ceil(total / PAGE_SIZE);
 
   return (
     <div className="space-y-4">
@@ -70,7 +57,6 @@ export default function SupportPage() {
         </Link>
       </div>
 
-      {/* Filters */}
       <div className="flex flex-wrap gap-3">
         <form onSubmit={handleSearch} className="flex gap-2 flex-1 min-w-0">
           <input
@@ -109,6 +95,10 @@ export default function SupportPage() {
         </select>
       </div>
 
+      {store.error && (
+        <div className="p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100">{store.error}</div>
+      )}
+
       <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
         {loading ? (
           <div className="divide-y divide-gray-100">
@@ -130,7 +120,7 @@ export default function SupportPage() {
           </div>
         ) : (
           <div className="divide-y divide-gray-100">
-            {tickets.map((t: any) => (
+            {tickets.map((t) => (
               <Link
                 key={t.id}
                 href={`/my-account/support/${t.id}`}
@@ -152,7 +142,6 @@ export default function SupportPage() {
         )}
       </div>
 
-      {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex items-center justify-between">
           <p className="text-xs text-gray-400">

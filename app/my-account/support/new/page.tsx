@@ -1,36 +1,44 @@
 'use client';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { newTicketSchema, type NewTicketInput } from '@/lib/schemas/auth';
+import { useTicketsStore } from '@/store/useTicketsStore';
+
+const inputClass = (hasError: boolean) =>
+  `w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors ${hasError ? 'border-red-300' : 'border-gray-200'}`;
 
 export default function NewTicketPage() {
   const router = useRouter();
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState('');
+  const invalidate = useTicketsStore((s) => s.invalidate);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-    const fd = new FormData(e.currentTarget);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<NewTicketInput>({
+    resolver: zodResolver(newTicketSchema),
+    defaultValues: { priority: 'medium' },
+  });
 
+  async function onSubmit(values: NewTicketInput) {
+    setServerError('');
     const res = await fetch('/api/support-tickets', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        subject: fd.get('subject'),
-        priority: fd.get('priority'),
-        description: fd.get('description'),
-      }),
+      body: JSON.stringify(values),
     });
 
-    setLoading(false);
     if (res.ok) {
+      invalidate();
       const data = await res.json();
       router.push(`/my-account/support/${data.id ?? data.data?.id}`);
     } else {
       const d = await res.json();
-      setError(d.error ?? 'Failed to create ticket.');
+      setServerError(d.error ?? 'Failed to create ticket.');
     }
   }
 
@@ -44,51 +52,60 @@ export default function NewTicketPage() {
       </div>
 
       <div className="bg-white rounded-2xl border border-gray-200 p-6">
-        {error && (
-          <div className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100">{error}</div>
+        {serverError && (
+          <div className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100">{serverError}</div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-[#0F1112] mb-1.5">Subject</label>
+            <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
+              Subject <span className="text-red-500">*</span>
+            </label>
             <input
-              name="subject"
+              {...register('subject')}
               type="text"
-              required
               placeholder="Brief description of your issue"
-              className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors"
+              className={inputClass(!!errors.subject)}
             />
+            {errors.subject && <p className="mt-1 text-xs text-red-500">{errors.subject.message}</p>}
           </div>
+
           <div>
-            <label className="block text-sm font-medium text-[#0F1112] mb-1.5">Priority</label>
+            <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
+              Priority <span className="text-red-500">*</span>
+            </label>
             <select
-              name="priority"
-              required
-              className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors bg-white"
+              {...register('priority')}
+              className={inputClass(!!errors.priority) + ' bg-white'}
             >
               <option value="low">Low</option>
-              <option value="medium" selected>Medium</option>
+              <option value="medium">Medium</option>
               <option value="high">High</option>
               <option value="urgent">Urgent</option>
             </select>
+            {errors.priority && <p className="mt-1 text-xs text-red-500">{errors.priority.message}</p>}
           </div>
+
           <div>
-            <label className="block text-sm font-medium text-[#0F1112] mb-1.5">Description</label>
+            <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
+              Description <span className="text-red-500">*</span>
+            </label>
             <textarea
-              name="description"
-              required
+              {...register('description')}
               rows={6}
               placeholder="Describe your issue in detail…"
-              className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors resize-none"
+              className={inputClass(!!errors.description) + ' resize-none'}
             />
+            {errors.description && <p className="mt-1 text-xs text-red-500">{errors.description.message}</p>}
           </div>
+
           <div className="flex gap-3">
             <button
               type="submit"
-              disabled={loading}
-              className="px-6 py-2.5 bg-[#ec7161] text-white text-sm font-semibold rounded-lg hover:bg-[#e05e4d] transition-colors disabled:opacity-60"
+              disabled={isSubmitting}
+              className="px-6 py-2.5 bg-[#ec7161] text-white text-sm font-semibold rounded-lg hover:bg-[#e05e4d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {loading ? 'Submitting…' : 'Submit ticket'}
+              {isSubmitting ? 'Submitting…' : 'Submit ticket'}
             </button>
             <Link
               href="/my-account/support"

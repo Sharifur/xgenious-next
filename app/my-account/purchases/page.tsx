@@ -1,22 +1,11 @@
 'use client';
-import { useEffect, useState } from 'react';
-import type { PurchaseItem } from '@/lib/license-server';
+import { useEffect } from 'react';
+import { useLicensesStore } from '@/store/useLicensesStore';
 
 export default function PurchasesPage() {
-  const [items, setItems] = useState<PurchaseItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const { items, loading, error, fetch: fetchLicenses } = useLicensesStore();
 
-  useEffect(() => {
-    fetch('/api/license-server/purchases')
-      .then((r) => r.json())
-      .then((d) => {
-        if (d.data?.items) setItems(d.data.items);
-        else setError(d.error ?? 'Failed to load purchases.');
-      })
-      .catch(() => setError('Failed to load purchases.'))
-      .finally(() => setLoading(false));
-  }, []);
+  useEffect(() => { fetchLicenses(); }, [fetchLicenses]);
 
   return (
     <div className="space-y-4">

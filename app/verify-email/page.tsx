@@ -1,9 +1,12 @@
 'use client';
 export const dynamic = 'force-dynamic';
 import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import AuthPanel from '@/components/auth/AuthPanel';
+import { resendVerificationSchema, type ResendVerificationInput } from '@/lib/schemas/auth';
 
 type Mode = 'verifying' | 'success' | 'error' | 'resend';
 
@@ -12,11 +15,15 @@ export default function VerifyEmailPage() {
   const router = useRouter();
   const [mode, setMode] = useState<Mode>('verifying');
   const [errorMsg, setErrorMsg] = useState('');
-  const [resendEmail, setResendEmail] = useState('');
-  const [resendLoading, setResendLoading] = useState(false);
   const [resendMsg, setResendMsg] = useState('');
   const [resendError, setResendError] = useState('');
   const [countdown, setCountdown] = useState(0);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<ResendVerificationInput>({ resolver: zodResolver(resendVerificationSchema) });
 
   const uid = params.get('uid');
   const t = params.get('t');
@@ -42,18 +49,15 @@ export default function VerifyEmailPage() {
     return () => clearTimeout(id);
   }, [countdown]);
 
-  async function handleResend(e: React.FormEvent) {
-    e.preventDefault();
-    setResendLoading(true);
+  async function onResend(values: ResendVerificationInput) {
     setResendMsg('');
     setResendError('');
     const res = await fetch('/api/resend-verification', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: resendEmail }),
+      body: JSON.stringify({ email: values.email }),
     });
     const data = await res.json();
-    setResendLoading(false);
     if (!res.ok) {
       setResendError(data.error ?? 'Failed to resend. Please try again.');
     } else {
@@ -127,23 +131,25 @@ export default function VerifyEmailPage() {
                 <div className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100">{resendError}</div>
               )}
 
-              <form onSubmit={handleResend} className="space-y-4">
+              <form onSubmit={handleSubmit(onResend)} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-[#0F1112] mb-1.5">Email address</label>
+                  <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
+                    Email address <span className="text-red-500">*</span>
+                  </label>
                   <input
+                    {...register('email')}
                     type="email"
-                    required
-                    value={resendEmail}
-                    onChange={(e) => setResendEmail(e.target.value)}
-                    className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors"
+                    autoComplete="email"
+                    className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors ${errors.email ? 'border-red-300' : 'border-gray-200'}`}
                   />
+                  {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>}
                 </div>
                 <button
                   type="submit"
-                  disabled={resendLoading || countdown > 0}
+                  disabled={isSubmitting || countdown > 0}
                   className="w-full py-2.5 bg-[#ec7161] text-white text-sm font-semibold rounded-lg hover:bg-[#e05e4d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  {resendLoading ? 'Sending…' : countdown > 0 ? `Resend available in ${countdown}s` : (
+                  {isSubmitting ? 'Sending…' : countdown > 0 ? `Resend available in ${countdown}s` : (
                     <>
                       Send verification email
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

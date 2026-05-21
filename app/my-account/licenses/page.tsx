@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import type { PurchaseItem, LicenseActivation } from '@/lib/license-server';
+import type { LicenseActivation } from '@/lib/license-server';
+import { useLicensesStore } from '@/store/useLicensesStore';
 
 function DomainRow({ activation, licenseKey, onToggle }: {
   activation: LicenseActivation;
@@ -38,21 +39,10 @@ function DomainRow({ activation, licenseKey, onToggle }: {
 }
 
 export default function LicensesPage() {
-  const [items, setItems] = useState<PurchaseItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const { items, loading, error, fetch: fetchLicenses, updateActivations } = useLicensesStore();
   const [actionError, setActionError] = useState('');
 
-  useEffect(() => {
-    fetch('/api/license-server/purchases')
-      .then((r) => r.json())
-      .then((d) => {
-        if (d.data?.items) setItems(d.data.items);
-        else setError(d.error ?? 'Failed to load licenses.');
-      })
-      .catch(() => setError('Failed to load licenses.'))
-      .finally(() => setLoading(false));
-  }, []);
+  useEffect(() => { fetchLicenses(); }, [fetchLicenses]);
 
   async function handleDomainToggle(licenseKey: string, domain: string, action: 'activate' | 'deactivate') {
     setActionError('');
@@ -66,15 +56,8 @@ export default function LicensesPage() {
       setActionError(data.error ?? 'Domain action failed.');
       return;
     }
-    // update local state from returned all_domains
     const updatedDomains: LicenseActivation[] = data.data?.all_domains ?? [];
-    setItems((prev) =>
-      prev.map((item) =>
-        item.license_key === licenseKey
-          ? { ...item, activations: updatedDomains }
-          : item
-      )
-    );
+    updateActivations(licenseKey, updatedDomains);
   }
 
   return (

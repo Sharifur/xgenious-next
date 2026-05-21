@@ -1,28 +1,15 @@
 'use client';
 import { useEffect, useState } from 'react';
 import type { PurchaseItem } from '@/lib/license-server';
+import { useLicensesStore } from '@/store/useLicensesStore';
 
 export default function DownloadsPage() {
-  const [items, setItems] = useState<PurchaseItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const { items: allItems, loading, error, fetch: fetchLicenses } = useLicensesStore();
+  const items = allItems.filter((i) => i.license_key && i.validity !== 'blocked');
   const [downloadingKey, setDownloadingKey] = useState<string | null>(null);
   const [downloadErrors, setDownloadErrors] = useState<Record<string, string>>({});
 
-  useEffect(() => {
-    fetch('/api/license-server/purchases')
-      .then((r) => r.json())
-      .then((d) => {
-        if (d.data?.items) {
-          // only show valid (non-blocked) licenses with a license_key
-          setItems(d.data.items.filter((i: PurchaseItem) => i.license_key && i.validity !== 'blocked'));
-        } else {
-          setError(d.error ?? 'Failed to load downloads.');
-        }
-      })
-      .catch(() => setError('Failed to load downloads.'))
-      .finally(() => setLoading(false));
-  }, []);
+  useEffect(() => { fetchLicenses(); }, [fetchLicenses]);
 
   async function handleDownload(item: PurchaseItem) {
     setDownloadingKey(item.license_key);
