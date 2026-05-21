@@ -75,7 +75,9 @@ export async function POST(req: NextRequest) {
   }
 
   const fromEmail = process.env.CONTACT_FROM_EMAIL;
-  if (fromEmail && downloadUrl) {
+  const safeDownloadUrl = downloadUrl && /^https?:\/\//.test(downloadUrl) ? downloadUrl : null;
+  const safeProduct = product ? product.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '';
+  if (fromEmail && safeDownloadUrl) {
     try {
       await ses.send(
         new SendEmailCommand({
@@ -92,10 +94,10 @@ export async function POST(req: NextRequest) {
                   <div style="font-family:sans-serif;max-width:520px;margin:0 auto;padding:32px 24px;color:#0F1112;">
                     <h2 style="font-size:22px;font-weight:600;margin:0 0 12px;">Your download is ready</h2>
                     <p style="font-size:15px;color:#484848;line-height:1.6;margin:0 0 24px;">
-                      Thanks for downloading <strong>${product}</strong>. Click the button below to get the files.
+                      Thanks for downloading <strong>${safeProduct}</strong>. Click the button below to get the files.
                     </p>
-                    <a href="${downloadUrl}" style="display:inline-block;background:#ec7161;color:#fff;font-size:14px;font-weight:600;padding:12px 28px;border-radius:100px;text-decoration:none;">
-                      Download ${product}
+                    <a href="${safeDownloadUrl}" style="display:inline-block;background:#ec7161;color:#fff;font-size:14px;font-weight:600;padding:12px 28px;border-radius:100px;text-decoration:none;">
+                      Download ${safeProduct}
                     </a>
                     <p style="font-size:13px;color:#9ca3af;margin:24px 0 0;line-height:1.6;">
                       Need help setting it up? We offer a professional installation service for $300 —
@@ -110,7 +112,7 @@ export async function POST(req: NextRequest) {
                 Charset: 'UTF-8',
               },
               Text: {
-                Data: `Your download is ready: ${downloadUrl}\n\nNeed help? We offer installation service for $300: https://xgenious.com/free-software`,
+                Data: `Your download is ready: ${safeDownloadUrl}\n\nNeed help? We offer installation service for $300: https://xgenious.com/free-software`,
                 Charset: 'UTF-8',
               },
             },
