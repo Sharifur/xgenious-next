@@ -5,6 +5,7 @@ import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import ReCAPTCHA from 'react-google-recaptcha';
+import AuthPanel from '@/components/auth/AuthPanel';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -82,40 +83,11 @@ export default function LoginPage() {
     <div className="min-h-[calc(100vh-140px)] flex items-center justify-center bg-gray-50 py-8 px-4">
       <div className="w-full max-w-4xl rounded-2xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row">
 
-        {/* Left decorative panel */}
-        <div className="hidden md:flex md:w-[44%] bg-[#FDF8F3] p-10 flex-col justify-between relative overflow-hidden">
-          {/* Decorative cross */}
-          <span className="absolute top-[38%] right-10 text-[#ec7161] text-3xl font-light select-none">+</span>
-          {/* Decorative curved arrow */}
-          <svg
-            className="absolute top-[32%] right-14 w-10 h-10 text-gray-400 opacity-60"
-            viewBox="0 0 60 40"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <path d="M5 30 Q30 5 55 20" strokeLinecap="round" />
-            <path d="M48 14 L55 20 L47 26" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-
-          <div />
-
-          <div className="space-y-5">
-            <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
-              Welcome back
-            </p>
-            <h2 className="text-3xl font-bold text-[#0F1112] leading-tight">
-              Manage your purchases,{' '}
-              <em className="italic font-bold">support tickets</em>{' '}
-              &amp; file updates.
-            </h2>
-            <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
-              Your licenses, downloads and support conversations are all behind this door. Sign in to pick up where you left off.
-            </p>
-          </div>
-
-          <div />
-        </div>
+        <AuthPanel
+          badge="Welcome back"
+          headline={<>Manage your purchases, <em className="italic font-bold">support tickets</em> &amp; file updates.</>}
+          description="Your licenses, downloads and support conversations are all behind this door. Sign in to pick up where you left off."
+        />
 
         {/* Right form panel */}
         <div className="flex-1 bg-white p-8 md:p-10">

@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import AuthPanel from '@/components/auth/AuthPanel';
 
 export default function ForgotPasswordPage() {
   const [loading, setLoading] = useState(false);
@@ -27,12 +28,18 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-140px)] flex items-center justify-center bg-gray-50 py-12 px-4">
-      <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+    <div className="min-h-[calc(100vh-140px)] flex items-center justify-center bg-gray-50 py-8 px-4">
+      <div className="w-full max-w-4xl rounded-2xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row">
+        <AuthPanel
+          badge="Password reset"
+          headline={<>Locked out? We&apos;ve <em className="italic font-bold">got you.</em></>}
+          description="Enter your email and we'll send you a reset link. Check your inbox and spam folder after submitting."
+        />
+
+        <div className="flex-1 bg-white p-8 md:p-10">
           {sent ? (
-            <div className="text-center">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="flex flex-col items-center justify-center h-full py-8 text-center">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
@@ -49,16 +56,12 @@ export default function ForgotPasswordPage() {
             <>
               <h1 className="text-2xl font-bold text-[#0F1112] mb-1">Forgot password?</h1>
               <p className="text-sm text-gray-500 mb-6">
-                Enter your email and we'll send you a reset link.{' '}
-                <Link href="/login" className="text-[#ec7161] font-medium hover:underline">
-                  Back to sign in
-                </Link>
+                Enter your email and we&apos;ll send you a reset link.{' '}
+                <Link href="/login" className="text-[#ec7161] font-medium hover:underline">Back to sign in</Link>
               </p>
 
               {error && (
-                <div className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100">
-                  {error}
-                </div>
+                <div className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100">{error}</div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -75,9 +78,16 @@ export default function ForgotPasswordPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-2.5 bg-[#ec7161] text-white text-sm font-semibold rounded-lg hover:bg-[#e05e4d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full py-2.5 bg-[#ec7161] text-white text-sm font-semibold rounded-lg hover:bg-[#e05e4d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  {loading ? 'Sending…' : 'Send reset link'}
+                  {loading ? 'Sending…' : (
+                    <>
+                      Send reset link
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </>
+                  )}
                 </button>
               </form>
             </>
