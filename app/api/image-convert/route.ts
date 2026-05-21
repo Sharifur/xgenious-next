@@ -91,8 +91,9 @@ export async function POST(request: NextRequest) {
         },
       }),
     );
-  } catch (err) {
-    console.error('R2 upload error', err);
+  } catch (err: unknown) {
+    const e = err as { name?: string; message?: string; Code?: string; $metadata?: { httpStatusCode?: number } };
+    console.error('R2 upload error', e.name, e.Code, e.message, e.$metadata?.httpStatusCode);
     return NextResponse.json({ error: 'Upload to storage failed' }, { status: 500, headers: CORS_HEADERS });
   }
 
