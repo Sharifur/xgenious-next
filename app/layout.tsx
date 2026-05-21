@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TopLoader from "@/components/ui/TopLoader";
+import { Providers } from "@/components/Providers";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
@@ -74,9 +75,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </noscript>
         )}
         <TopLoader />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <Providers>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </Providers>
         <Script src="https://cortex-api.xgenious.com/livechat.js" data-site="xgenious" strategy="afterInteractive" />
       </body>
     </html>

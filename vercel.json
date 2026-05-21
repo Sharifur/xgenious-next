@@ -5,8 +5,6 @@
     { "source": "/", "has": [{ "type": "query", "key": "page_id" }], "destination": "http://origin.xgenious.com/" },
     { "source": "/blog", "destination": "http://origin.xgenious.com/blog/" },
     { "source": "/blog/:path*", "destination": "http://origin.xgenious.com/blog/:path*/" },
-    { "source": "/my-account", "destination": "http://origin.xgenious.com/my-account/" },
-    { "source": "/my-account/:path*", "destination": "http://origin.xgenious.com/my-account/:path*/" },
     { "source": "/our-products", "destination": "http://origin.xgenious.com/our-products/" },
     { "source": "/our-products/:path*", "destination": "http://origin.xgenious.com/our-products/:path*/" },
     { "source": "/author/:path*", "destination": "http://origin.xgenious.com/author/:path*/" },
