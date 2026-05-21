@@ -16,6 +16,14 @@ while IFS= read -r page_file; do
   # Skip dynamic routes ([slug], [...slug], etc.)
   [[ "$route" == *"["* ]] && continue
 
+  # Skip auth/account routes — noindex, excluded from sitemap intentionally
+  [[ "$route" == /my-account* ]] && continue
+  [[ "$route" == /login* ]] && continue
+  [[ "$route" == /register* ]] && continue
+  [[ "$route" == /verify-email* ]] && continue
+  [[ "$route" == /forgot-password* ]] && continue
+  [[ "$route" == /reset-password* ]] && continue
+
   # --- Sitemap check ---
   if [[ "$route" == "/" ]]; then
     grep_pattern="url: BASE_URL"

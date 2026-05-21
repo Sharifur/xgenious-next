@@ -37,6 +37,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             const user = await userRes.json();
             const roles: string[] = user.roles ?? [];
             if (!roles.includes('subscriber')) return null;
+
+            const emailVerified = user.meta?.email_verified;
+            // 0 means explicitly unverified (set during registration). Absent/1 = allowed.
+            if (emailVerified === 0 || emailVerified === '0') {
+              throw new Error('EmailNotVerified');
+            }
           }
 
           return {

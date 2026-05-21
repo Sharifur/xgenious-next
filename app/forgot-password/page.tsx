@@ -1,0 +1,89 @@
+'use client';
+import { useState } from 'react';
+import Link from 'next/link';
+
+export default function ForgotPasswordPage() {
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState('');
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    const fd = new FormData(e.currentTarget);
+    const res = await fetch('/api/forgot-password', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: fd.get('email') }),
+    });
+    const data = await res.json();
+    setLoading(false);
+    if (!res.ok) {
+      setError(data.error ?? 'Something went wrong. Please try again.');
+    } else {
+      setSent(true);
+    }
+  }
+
+  return (
+    <div className="min-h-[calc(100vh-140px)] flex items-center justify-center bg-gray-50 py-12 px-4">
+      <div className="w-full max-w-md">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+          {sent ? (
+            <div className="text-center">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h1 className="text-xl font-bold text-[#0F1112] mb-2">Check your email</h1>
+              <p className="text-sm text-gray-500 mb-6">
+                If an account exists for that email, we sent a password reset link. Check your inbox and spam folder.
+              </p>
+              <Link href="/login" className="text-[#ec7161] text-sm font-medium hover:underline">
+                Back to sign in
+              </Link>
+            </div>
+          ) : (
+            <>
+              <h1 className="text-2xl font-bold text-[#0F1112] mb-1">Forgot password?</h1>
+              <p className="text-sm text-gray-500 mb-6">
+                Enter your email and we'll send you a reset link.{' '}
+                <Link href="/login" className="text-[#ec7161] font-medium hover:underline">
+                  Back to sign in
+                </Link>
+              </p>
+
+              {error && (
+                <div className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100">
+                  {error}
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-[#0F1112] mb-1.5">Email address</label>
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full py-2.5 bg-[#ec7161] text-white text-sm font-semibold rounded-lg hover:bg-[#e05e4d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {loading ? 'Sending…' : 'Send reset link'}
+                </button>
+              </form>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

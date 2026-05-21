@@ -1,31 +1,74 @@
 'use client';
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import type { Metadata } from 'next';
 
 export default function LoginPage() {
   const router = useRouter();
+  const params = useSearchParams();
   const [error, setError] = useState('');
+  const [unverifiedEmail, setUnverifiedEmail] = useState('');
   const [loading, setLoading] = useState(false);
+  const [resendLoading, setResendLoading] = useState(false);
+  const [resendMsg, setResendMsg] = useState('');
+  const [countdown, setCountdown] = useState(0);
+
+  const justReset = params.get('reset') === '1';
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError('');
+    setUnverifiedEmail('');
+    setResendMsg('');
     setLoading(true);
     const fd = new FormData(e.currentTarget);
+    const username = fd.get('username') as string;
     const result = await signIn('credentials', {
-      username: fd.get('username'),
+      username,
       password: fd.get('password'),
       redirect: false,
     });
     setLoading(false);
     if (result?.error) {
-      setError('Invalid username or password.');
+      if (result.error === 'EmailNotVerified') {
+        // username field may be an email — pass it for resend
+        setUnverifiedEmail(username.includes('@') ? username : '');
+        setError('Please verify your email before signing in.');
+      } else {
+        setError('Invalid username or password.');
+      }
     } else {
       router.push('/my-account');
       router.refresh();
+    }
+  }
+
+  async function handleResend() {
+    if (!unverifiedEmail) {
+      router.push('/verify-email?resend=1');
+      return;
+    }
+    setResendLoading(true);
+    setResendMsg('');
+    const res = await fetch('/api/resend-verification', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: unverifiedEmail }),
+    });
+    const data = await res.json();
+    setResendLoading(false);
+    if (res.ok) {
+      setResendMsg('Verification email sent! Check your inbox.');
+      setCountdown(120);
+      const tick = setInterval(() => {
+        setCountdown((c) => {
+          if (c <= 1) { clearInterval(tick); return 0; }
+          return c - 1;
+        });
+      }, 1000);
+    } else {
+      setResendMsg(data.error ?? 'Failed to send. Please try again.');
     }
   }
 
@@ -41,9 +84,34 @@ export default function LoginPage() {
             </Link>
           </p>
 
+          {justReset && (
+            <div className="mb-4 p-3 bg-green-50 text-green-700 text-sm rounded-lg border border-green-100">
+              Password updated. You can now sign in.
+            </div>
+          )}
+
           {error && (
             <div className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100">
               {error}
+              {error.includes('verify') && (
+                <div className="mt-2">
+                  {resendMsg ? (
+                    <p className="text-xs text-gray-600">{resendMsg}</p>
+                  ) : (
+                    <button
+                      onClick={handleResend}
+                      disabled={resendLoading || countdown > 0}
+                      className="text-xs font-medium underline disabled:opacity-50"
+                    >
+                      {resendLoading
+                        ? 'Sending…'
+                        : countdown > 0
+                        ? `Resend in ${countdown}s`
+                        : 'Resend verification email'}
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
           )}
 
@@ -61,9 +129,12 @@ export default function LoginPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
-                Password
-              </label>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-sm font-medium text-[#0F1112]">Password</label>
+                <Link href="/forgot-password" className="text-xs text-[#ec7161] hover:underline">
+                  Forgot password?
+                </Link>
+              </div>
               <input
                 name="password"
                 type="password"
