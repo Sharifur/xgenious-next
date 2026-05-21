@@ -105,24 +105,16 @@ export default function LoginPage() {
               Welcome back
             </p>
             <h2 className="text-3xl font-bold text-[#0F1112] leading-tight">
-              Pick up where<br />you left off —{' '}
-              <em className="not-italic font-bold italic">build<br />something real.</em>
+              Manage your purchases,{' '}
+              <em className="italic font-bold">support tickets</em>{' '}
+              &amp; file updates.
             </h2>
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
-              Your projects, conversations and invoices live behind this door. We&apos;ll keep them safe while you&apos;re away.
+              Your licenses, downloads and support conversations are all behind this door. Sign in to pick up where you left off.
             </p>
           </div>
 
-          <div className="space-y-3">
-            <p className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase">
-              Trusted by teams shipping with us
-            </p>
-            <div className="flex flex-wrap gap-x-4 gap-y-1">
-              {['Taskip', 'GoCar', 'Xismcer', 'ProHandy', 'NorthFlow'].map((brand) => (
-                <span key={brand} className="text-sm font-medium text-gray-400">{brand}</span>
-              ))}
-            </div>
-          </div>
+          <div />
         </div>
 
         {/* Right form panel */}
