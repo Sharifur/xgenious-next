@@ -1,27 +1,22 @@
-const RESEND_KEY = process.env.RESEND_API_KEY;
-const FROM = process.env.EMAIL_FROM ?? 'noreply@xgenious.com';
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+
+const ses = new SESClient({ region: process.env.AWS_REGION ?? 'us-east-1' });
+const FROM = process.env.EMAIL_FROM!;
 const BASE_URL = process.env.NEXTAUTH_URL ?? 'https://xgenious.com';
 
 export { BASE_URL };
 
 export async function sendEmail(to: string, subject: string, html: string): Promise<void> {
-  if (!RESEND_KEY) {
-    console.warn('[email] RESEND_API_KEY not set — skipping send to', to);
-    return;
-  }
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${RESEND_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ from: FROM, to, subject, html }),
-    cache: 'no-store',
-  });
-  if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`Resend API error ${res.status}: ${body}`);
-  }
+  await ses.send(
+    new SendEmailCommand({
+      Source: FROM,
+      Destination: { ToAddresses: [to] },
+      Message: {
+        Subject: { Data: subject, Charset: 'UTF-8' },
+        Body: { Html: { Data: html, Charset: 'UTF-8' } },
+      },
+    }),
+  );
 }
 
 export function verificationEmailHtml(link: string): string {
