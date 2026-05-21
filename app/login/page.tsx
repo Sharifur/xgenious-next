@@ -261,9 +261,9 @@ export default function LoginPage() {
               Create one
             </Link>
             {' · '}
-            <Link href="/privacy" className="hover:underline">Privacy</Link>
+            <Link href="/privacy-policy" className="hover:underline">Privacy</Link>
             {' · '}
-            <Link href="/terms" className="hover:underline">Terms</Link>
+            <Link href="/terms-of-service" className="hover:underline">Terms</Link>
           </p>
         </div>
       </div>
