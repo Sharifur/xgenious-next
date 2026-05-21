@@ -1,11 +1,11 @@
 {
   "rewrites": [
-    { "source": "/blog", "destination": "http://origin.xgenious.com/blog" },
-    { "source": "/blog/:path*", "destination": "http://origin.xgenious.com/blog/:path*" },
-    { "source": "/my-account", "destination": "http://origin.xgenious.com/my-account" },
-    { "source": "/my-account/:path*", "destination": "http://origin.xgenious.com/my-account/:path*" },
-    { "source": "/our-products", "destination": "http://origin.xgenious.com/our-products" },
-    { "source": "/our-products/:path*", "destination": "http://origin.xgenious.com/our-products/:path*" },
+    { "source": "/blog", "destination": "http://origin.xgenious.com/blog/" },
+    { "source": "/blog/:path*", "destination": "http://origin.xgenious.com/blog/:path*/" },
+    { "source": "/my-account", "destination": "http://origin.xgenious.com/my-account/" },
+    { "source": "/my-account/:path*", "destination": "http://origin.xgenious.com/my-account/:path*/" },
+    { "source": "/our-products", "destination": "http://origin.xgenious.com/our-products/" },
+    { "source": "/our-products/:path*", "destination": "http://origin.xgenious.com/our-products/:path*/" },
     { "source": "/wp-admin/:path*", "destination": "http://origin.xgenious.com/wp-admin/:path*" },
     { "source": "/wp-content/:path*", "destination": "http://origin.xgenious.com/wp-content/:path*" },
     { "source": "/wp-json/:path*", "destination": "http://origin.xgenious.com/wp-json/:path*" },

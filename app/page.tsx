@@ -14,17 +14,17 @@ import BookingCTA from '@/components/sections/BookingCTA';
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Custom SaaS & Software Development — Fixed-Price | Xgenious' },
+  title: { absolute: 'Custom SaaS & Software Development — Built to Ship | Xgenious' },
   description:
-    'Custom SaaS, web apps, mobile, and AI agents for mid-market teams. Fixed-price from $50K. UK · US · UAE.',
+    'Custom SaaS, web apps, mobile apps, and AI agents — built to ship on time. Published scope, committed delivery date. Trusted by businesses in 100+ countries.',
   metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Custom SaaS & Software Development — Fixed-Price | Xgenious',
+    title: 'Custom SaaS & Software Development — Built to Ship | Xgenious',
     description:
-      'From-scratch SaaS, custom web platforms, mobile apps, and AI agents. Fixed-price. Published scope. A committed delivery date.',
+      'From-scratch SaaS, custom web platforms, mobile apps, and AI agents. Published scope. A committed delivery date.',
     url: BASE_URL,
     siteName: 'Xgenious',
     images: [
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Custom SaaS & Software Development — Fixed-Price | Xgenious',
+    title: 'Custom SaaS & Software Development — Built to Ship | Xgenious',
     description:
-      'From-scratch SaaS, custom web platforms, mobile apps, and AI agents. Fixed-price. Published scope. A committed delivery date.',
+      'From-scratch SaaS, custom web platforms, mobile apps, and AI agents. Published scope. A committed delivery date.',
     images: ['/og-image.png'],
     site: '@xgenious1',
     creator: '@xgenious1',
@@ -76,7 +76,7 @@ const organizationSchema = {
   url: BASE_URL,
   logo: `${BASE_URL}/xgenious-logo.svg`,
   description:
-    'Custom software development company building SaaS, web apps, mobile apps, and AI agents for mid-market teams.',
+    'Custom software development company building SaaS, web apps, mobile apps, and AI agents that ship on time.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Dhaka',

@@ -292,8 +292,8 @@ type HeroProps = {
 
 export default function HeroSection({
   eyebrow = 'Custom Software Development Company',
-  title = 'Custom SaaS & Software Development for Mid-Market Teams',
-  subtitle = 'From-scratch SaaS, custom web platforms, mobile apps, and AI agents engineered by a team that moves your business forward. 13,000+ users on the products we\'ve shipped.',
+  title = 'Custom SaaS & Software Development That Ships on Time',
+  subtitle = 'From-scratch SaaS, custom web platforms, mobile apps, and AI agents — built by a team with a track record. Published scope, a committed delivery date, and 13,000+ users on products we\'ve shipped.',
   primaryCtaText = 'Start Your Project',
   primaryCtaHref = '/contact',
   secondaryCtaText = 'Book a Free 30-min Call',
