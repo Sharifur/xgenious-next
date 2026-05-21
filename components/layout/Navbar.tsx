@@ -107,8 +107,16 @@ export default function Navbar() {
 
   const isServicesActive = pathname?.startsWith('/services');
 
+  const noSticky =
+    pathname === '/login' ||
+    pathname === '/register' ||
+    pathname === '/forgot-password' ||
+    pathname === '/verify-email' ||
+    pathname?.startsWith('/reset-password') ||
+    pathname?.startsWith('/my-account');
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pt-3 px-3 lg:pt-4 lg:px-8">
+    <header className={`${noSticky ? 'relative' : 'fixed top-0 left-0 right-0 z-50'} pt-3 px-3 lg:pt-4 lg:px-8`}>
       <div
         className={`max-w-[1320px] mx-auto bg-white rounded-full border border-[#E5E7EC] transition-shadow duration-300 ${
           scrolled
