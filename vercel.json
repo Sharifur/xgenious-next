@@ -1,5 +1,8 @@
 {
   "rewrites": [
+    { "source": "/", "has": [{ "type": "query", "key": "s" }], "destination": "http://origin.xgenious.com/" },
+    { "source": "/", "has": [{ "type": "query", "key": "p" }], "destination": "http://origin.xgenious.com/" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id" }], "destination": "http://origin.xgenious.com/" },
     { "source": "/blog", "destination": "http://origin.xgenious.com/blog/" },
     { "source": "/blog/:path*", "destination": "http://origin.xgenious.com/blog/:path*/" },
     { "source": "/my-account", "destination": "http://origin.xgenious.com/my-account/" },
