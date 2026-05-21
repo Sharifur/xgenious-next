@@ -15,6 +15,7 @@ export default function RegisterPage() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [emailValue, setEmailValue] = useState('');
 
   useEffect(() => {
     if (countdown <= 0) return;
@@ -30,6 +31,7 @@ export default function RegisterPage() {
     const password = fd.get('password') as string;
     const confirm = fd.get('confirm') as string;
     const email = fd.get('email') as string;
+    const username = email.split('@')[0].toLowerCase().replace(/[^a-z0-9_.-]/g, '');
 
     if (password !== confirm) {
       setError('Passwords do not match.');
@@ -43,7 +45,7 @@ export default function RegisterPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        username: fd.get('username'),
+        username,
         email,
         password,
         firstName: fd.get('firstName'),
@@ -144,16 +146,27 @@ export default function RegisterPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#0F1112] mb-1.5">Username</label>
-                  <input name="username" type="text" required autoComplete="username" className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#0F1112] mb-1.5">Email</label>
-                  <input name="email" type="email" required autoComplete="email" className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors" />
+                  <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
+                    Email <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    value={emailValue}
+                    onChange={(e) => setEmailValue(e.target.value)}
+                    className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors"
+                  />
+                  {emailValue.includes('@') && (
+                    <p className="mt-1.5 text-xs text-gray-400">
+                      Your username: <span className="font-medium text-gray-600">{emailValue.split('@')[0].toLowerCase().replace(/[^a-z0-9_.-]/g, '')}</span>
+                    </p>
+                  )}
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-sm font-medium text-[#0F1112] mb-1.5">Password</label>
+                    <label className="block text-sm font-medium text-[#0F1112] mb-1.5">Password <span className="text-red-500">*</span></label>
                     <div className="relative">
                       <input name="password" type={showPassword ? 'text' : 'password'} required minLength={8} autoComplete="new-password" className="w-full px-3.5 pr-10 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors" />
                       <button type="button" tabIndex={-1} onClick={() => setShowPassword((v) => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
@@ -165,7 +178,7 @@ export default function RegisterPage() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[#0F1112] mb-1.5">Confirm password</label>
+                    <label className="block text-sm font-medium text-[#0F1112] mb-1.5">Confirm password <span className="text-red-500">*</span></label>
                     <div className="relative">
                       <input name="confirm" type={showConfirm ? 'text' : 'password'} required minLength={8} autoComplete="new-password" className="w-full px-3.5 pr-10 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors" />
                       <button type="button" tabIndex={-1} onClick={() => setShowConfirm((v) => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
