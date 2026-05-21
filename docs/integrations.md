@@ -98,10 +98,54 @@ WordPress for support tickets. Taskip is the CRM. All ticket CRUD goes through `
 
 ## 3. License Server
 
-**Base URL:** `https://license.xgenious.com`
-**Status:** Stubs at `app/my-account/licenses/page.tsx`, `app/my-account/downloads/page.tsx`
-**API docs:** Pending (Postman collection to be shared)
-**Env var:** TBD once docs are shared
+**Base URL:** `https://license.xgenious.com/api/public-api`
+**Lib:** `lib/license-server.ts` — `lsFetch(path, init?)` adds auth headers automatically
+**Auth:** `X-Api-Key` + `X-Secret` headers (Method B — full access, no scope config)
+
+### Env vars required
+
+| Variable | Description |
+|---|---|
+| `LICENSE_SERVER_URL` | `https://license.xgenious.com` |
+| `LICENSE_SERVER_API_KEY` | API key from license server admin |
+| `LICENSE_SERVER_API_SECRET` | API secret from license server admin |
+
+### Next.js proxy routes (credentials stay server-side)
+
+| Route | Method | License Server endpoint |
+|---|---|---|
+| `app/api/license-server/purchases/route.ts` | GET | `GET /purchases?email=` |
+| `app/api/license-server/updates/generate/route.ts` | POST | `POST /updates/generate` |
+| `app/api/license-server/licenses/domain/route.ts` | POST | `POST /licenses/domain` |
+
+### Dashboard pages
+
+| Page | Data source |
+|---|---|
+| `app/my-account/licenses/page.tsx` | `/api/license-server/purchases` — license keys, domains, support status |
+| `app/my-account/downloads/page.tsx` | `/api/license-server/purchases` + `/api/license-server/updates/generate` |
+| `app/my-account/purchases/page.tsx` | `/api/license-server/purchases` — payment history table |
+
+### Usage
+
+```typescript
+import { lsFetch } from '@/lib/license-server';
+
+// fetch purchases for a user
+const res = await lsFetch(`/purchases?email=${encodeURIComponent(email)}&per_page=100`);
+
+// generate download URL
+const res = await lsFetch('/updates/generate', {
+  method: 'POST',
+  body: JSON.stringify({ product_uid, license_key }),
+});
+
+// domain toggle
+const res = await lsFetch('/licenses/domain', {
+  method: 'POST',
+  body: JSON.stringify({ license_key, domain, action: 'deactivate' }),
+});
+```
 
 ### Never use
 
