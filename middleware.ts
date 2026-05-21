@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const VPS = 'http://45.76.60.139';
+const VPS = 'http://origin.xgenious.com';
 
 const NEXT_ROUTES = new Set([
   'about',
