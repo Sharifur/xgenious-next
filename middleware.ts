@@ -5,6 +5,7 @@ const VPS = 'http://origin.xgenious.com';
 
 const NEXT_ROUTES = new Set([
   'about',
+  'book-a-call',
   'ai-agent-development-services',
   'ai-agents-for-ecommerce',
   'ai-agents-for-education',

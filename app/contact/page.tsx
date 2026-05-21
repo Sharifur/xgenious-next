@@ -343,6 +343,7 @@ export default function ContactPage() {
         description="Book a free consultation — get a clear roadmap, a realistic estimate, and a team that's shipped 50+ products like yours."
         bgImage=""
         bgPhoto="/cta-bg.jpg"
+        buttonHref="/book-a-call"
       />
     </>
   );
