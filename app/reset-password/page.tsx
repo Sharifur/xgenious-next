@@ -1,6 +1,5 @@
 'use client';
-export const dynamic = 'force-dynamic';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -20,7 +19,7 @@ const EyeOff = () => (
   </svg>
 );
 
-export default function ResetPasswordPage() {
+function ResetPasswordForm() {
   const params = useSearchParams();
   const router = useRouter();
   const [serverError, setServerError] = useState('');
@@ -127,5 +126,13 @@ export default function ResetPasswordPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense>
+      <ResetPasswordForm />
+    </Suspense>
   );
 }

@@ -52,6 +52,8 @@ export default function TicketDetailPage() {
   const [reply, setReply] = useState('');
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
+  const [closing, setClosing] = useState(false);
+  const [confirmClose, setConfirmClose] = useState(false);
 
   async function loadTicket() {
     const res = await fetch(`/api/support-tickets/${id}`);
@@ -64,6 +66,18 @@ export default function TicketDetailPage() {
     const interval = setInterval(loadTicket, 30_000);
     return () => clearInterval(interval);
   }, [id]);
+
+  async function handleClose() {
+    setClosing(true);
+    setConfirmClose(false);
+    await fetch(`/api/support-tickets/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: 3 }),
+    });
+    setClosing(false);
+    loadTicket();
+  }
 
   async function handleReply(e: React.FormEvent) {
     e.preventDefault();
@@ -127,6 +141,32 @@ export default function TicketDetailPage() {
           <span className={`text-xs font-medium px-2.5 py-1 rounded-full capitalize flex-shrink-0 ${stat.cls}`}>
             {stat.label}
           </span>
+          {ticket.status !== 3 && ticket.status !== 'closed' && (
+            confirmClose ? (
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                <button
+                  onClick={handleClose}
+                  disabled={closing}
+                  className="text-xs px-3 py-1.5 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors disabled:opacity-60 font-medium"
+                >
+                  {closing ? 'Closing…' : 'Confirm close'}
+                </button>
+                <button
+                  onClick={() => setConfirmClose(false)}
+                  className="text-xs px-2.5 py-1.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-gray-500"
+                >
+                  Cancel
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setConfirmClose(true)}
+                className="text-xs px-3 py-1.5 border border-red-200 text-red-500 rounded-lg hover:bg-red-50 transition-colors flex-shrink-0 font-medium cursor-pointer"
+              >
+                Close ticket
+              </button>
+            )
+          )}
         </div>
         {/* Meta bar */}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pl-1 text-xs text-gray-400">

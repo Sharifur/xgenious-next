@@ -225,7 +225,7 @@ export default function SupportPage() {
                       ) : (
                         <button
                           onClick={(e) => { e.stopPropagation(); e.preventDefault(); setConfirmClose(t.id); }}
-                          className="text-xs text-gray-400 hover:text-gray-600 px-1.5 py-1 rounded hover:bg-gray-100 transition-colors opacity-0 group-hover:opacity-100"
+                          className="text-xs text-gray-400 hover:text-gray-600 px-1.5 py-1 rounded hover:bg-gray-100 transition-colors"
                           title="Close ticket"
                         >
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

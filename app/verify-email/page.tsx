@@ -1,6 +1,5 @@
 'use client';
-export const dynamic = 'force-dynamic';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -10,7 +9,7 @@ import { resendVerificationSchema, type ResendVerificationInput } from '@/lib/sc
 
 type Mode = 'verifying' | 'success' | 'error' | 'resend';
 
-export default function VerifyEmailPage() {
+function VerifyEmailForm() {
   const params = useSearchParams();
   const router = useRouter();
   const [mode, setMode] = useState<Mode>('verifying');
@@ -168,5 +167,13 @@ export default function VerifyEmailPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense>
+      <VerifyEmailForm />
+    </Suspense>
   );
 }

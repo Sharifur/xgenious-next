@@ -1,6 +1,5 @@
 'use client';
-export const dynamic = 'force-dynamic';
-import { useState, useRef } from 'react';
+import { useState, useRef, Suspense } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn } from 'next-auth/react';
@@ -10,7 +9,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import AuthPanel from '@/components/auth/AuthPanel';
 import { loginSchema, type LoginInput } from '@/lib/schemas/auth';
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const params = useSearchParams();
   const [serverError, setServerError] = useState('');
@@ -78,6 +77,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-[calc(100vh-140px)] flex items-center justify-center bg-gray-50 py-8 px-4">
+
       <div className="w-full max-w-4xl rounded-2xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row">
         <AuthPanel
           badge="Welcome back"
@@ -196,5 +196,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense>
+      <LoginForm />
+    </Suspense>
   );
 }
