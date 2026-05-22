@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTicketsStore } from '@/store/useTicketsStore';
+import SupportNotices from '@/components/SupportNotices';
 
 const STATUS_MAP: Record<string | number, { label: string; cls: string }> = {
   0: { label: 'Open',        cls: 'bg-blue-50 text-blue-700 border-blue-100' },
@@ -105,6 +106,8 @@ export default function SupportPage() {
           New ticket
         </Link>
       </div>
+
+      <SupportNotices />
 
       {/* Filters */}
       <div className="flex flex-wrap gap-2">
