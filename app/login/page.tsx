@@ -3,14 +3,13 @@ import { useState, useRef, Suspense } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn } from 'next-auth/react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import ReCAPTCHA from 'react-google-recaptcha';
 import AuthPanel from '@/components/auth/AuthPanel';
 import { loginSchema, type LoginInput } from '@/lib/schemas/auth';
 
 function LoginForm() {
-  const router = useRouter();
   const params = useSearchParams();
   const [serverError, setServerError] = useState('');
   const [unverifiedEmail, setUnverifiedEmail] = useState('');
@@ -48,13 +47,12 @@ function LoginForm() {
         setServerError('Invalid username or password.');
       }
     } else {
-      router.push('/my-account');
-      router.refresh();
+      window.location.href = '/my-account';
     }
   }
 
   async function handleResend() {
-    if (!unverifiedEmail) { router.push('/verify-email?resend=1'); return; }
+    if (!unverifiedEmail) { window.location.href = '/verify-email?resend=1'; return; }
     setResendLoading(true);
     setResendMsg('');
     const res = await fetch('/api/resend-verification', {

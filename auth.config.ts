@@ -2,7 +2,7 @@ import type { NextAuthConfig } from 'next-auth';
 
 export const authConfig: NextAuthConfig = {
   secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
-  pages: { signIn: '/login' },
+  pages: { signIn: '/login', error: '/auth-error' },
   callbacks: {
     jwt({ token, user }) {
       if (user) {
