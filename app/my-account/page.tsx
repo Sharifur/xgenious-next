@@ -164,7 +164,7 @@ export default async function DashboardPage() {
             {tickets.slice(0, 5).map((t: any) => (
               <Link
                 key={t.id}
-                href={`/my-account/support/${t.id}`}
+                href={`/my-account/support/${t.uuid ?? t.id}`}
                 className="flex items-center gap-3 px-5 py-3.5 hover:bg-gray-50 transition-colors"
               >
                 <span className={`w-2 h-2 rounded-full flex-shrink-0 ${STATUS_DOT[t.status] ?? 'bg-gray-400'}`} />
