@@ -1,11 +1,28 @@
 'use client';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { newTicketSchema, type NewTicketInput } from '@/lib/schemas/auth';
 import { useTicketsStore } from '@/store/useTicketsStore';
+
+const RichEditor = dynamic(() => import('@/components/RichEditor'), { ssr: false });
+
+const PRODUCTS = [
+  'Nexelit',
+  'Nazmart',
+  'Multisaas',
+  'Xilancer',
+  'Fundorex',
+  'Prohandy',
+  'Qixer',
+  'Gocar',
+  'Helpnest',
+  'Botmerze',
+  'Safecart',
+];
 
 const inputClass = (hasError: boolean) =>
   `w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors ${hasError ? 'border-red-300' : 'border-gray-200'}`;
@@ -17,6 +34,7 @@ export default function NewTicketPage() {
 
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<NewTicketInput>({
@@ -57,6 +75,7 @@ export default function NewTicketPage() {
         )}
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* Subject */}
           <div>
             <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
               Subject <span className="text-red-500">*</span>
@@ -70,14 +89,40 @@ export default function NewTicketPage() {
             {errors.subject && <p className="mt-1 text-xs text-red-500">{errors.subject.message}</p>}
           </div>
 
+          {/* Product + Purchase Code on same row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
+                Product <span className="text-red-500">*</span>
+              </label>
+              <select {...register('product')} className={inputClass(!!errors.product) + ' bg-white cursor-pointer'}>
+                <option value="">Select a product…</option>
+                {PRODUCTS.map((p) => (
+                  <option key={p} value={p}>{p}</option>
+                ))}
+              </select>
+              {errors.product && <p className="mt-1 text-xs text-red-500">{errors.product.message}</p>}
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
+                Purchase Code <span className="text-red-500">*</span>
+              </label>
+              <input
+                {...register('purchaseCode')}
+                type="text"
+                placeholder="e.g. 45ca289a-48f9-47dc…"
+                className={inputClass(!!errors.purchaseCode)}
+              />
+              {errors.purchaseCode && <p className="mt-1 text-xs text-red-500">{errors.purchaseCode.message}</p>}
+            </div>
+          </div>
+
+          {/* Priority */}
           <div>
             <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
               Priority <span className="text-red-500">*</span>
             </label>
-            <select
-              {...register('priority')}
-              className={inputClass(!!errors.priority) + ' bg-white'}
-            >
+            <select {...register('priority')} className={inputClass(!!errors.priority) + ' bg-white cursor-pointer'}>
               <option value="low">Low</option>
               <option value="medium">Medium</option>
               <option value="high">High</option>
@@ -86,24 +131,32 @@ export default function NewTicketPage() {
             {errors.priority && <p className="mt-1 text-xs text-red-500">{errors.priority.message}</p>}
           </div>
 
+          {/* Description — rich editor */}
           <div>
             <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
               Description <span className="text-red-500">*</span>
             </label>
-            <textarea
-              {...register('description')}
-              rows={6}
-              placeholder="Describe your issue in detail…"
-              className={inputClass(!!errors.description) + ' resize-none'}
+            <Controller
+              name="description"
+              control={control}
+              render={({ field }) => (
+                <RichEditor
+                  value={field.value ?? ''}
+                  onChange={field.onChange}
+                  placeholder="Describe your issue in detail. You can paste or upload screenshots."
+                  hasError={!!errors.description}
+                />
+              )}
             />
             {errors.description && <p className="mt-1 text-xs text-red-500">{errors.description.message}</p>}
+            <p className="mt-1 text-xs text-gray-400">You can paste images directly into the editor.</p>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 pt-1">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-6 py-2.5 bg-[#ec7161] text-white text-sm font-semibold rounded-lg hover:bg-[#e05e4d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              className="px-6 py-2.5 bg-[#ec7161] text-white text-sm font-semibold rounded-lg hover:bg-[#e05e4d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
             >
               {isSubmitting ? 'Submitting…' : 'Submit ticket'}
             </button>

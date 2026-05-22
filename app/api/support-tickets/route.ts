@@ -32,11 +32,13 @@ export async function POST(req: NextRequest) {
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await req.json();
-  const { subject, priority, description } = body;
+  const { subject, priority, description, product, purchaseCode } = body;
 
   if (!subject || !priority || !description) {
     return NextResponse.json({ error: 'Subject, priority, and description are required.' }, { status: 400 });
   }
+
+  const fullSubject = product ? `[${product}] ${subject}` : subject;
 
   const res = await fetch(TASKIP_API, {
     method: 'POST',
@@ -45,9 +47,11 @@ export async function POST(req: NextRequest) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      subject,
+      subject: fullSubject,
       priority,
-      description,
+      description: purchaseCode
+        ? `<p><strong>Purchase Code:</strong> ${purchaseCode}</p>${description}`
+        : description,
       status: 'open',
       created_by: session.user?.name ?? session.wpEmail,
     }),
