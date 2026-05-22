@@ -44,7 +44,7 @@ export default auth(function middleware(req: NextRequest & { auth: any }) {
   const segments = pathname.split('/').filter(Boolean);
 
   // Protect /my-account/* — redirect to login if no session
-  if (segments[0] === 'my-account' && !req.auth) {
+  if (segments[0] === 'my-account' && !req.auth?.user) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
 
