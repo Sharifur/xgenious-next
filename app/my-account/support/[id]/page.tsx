@@ -279,7 +279,7 @@ export default function TicketDetailPage() {
             <RichEditor
               value={reply}
               onChange={setReply}
-              placeholder="Type your reply…"
+              placeholder=""
             />
             <button
               type="submit"
