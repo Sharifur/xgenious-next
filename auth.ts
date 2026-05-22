@@ -41,24 +41,25 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             headers: { Authorization: `Bearer ${data.token}` },
             cache: 'no-store',
           });
+          let wpUserId: number = data.user_id as number;
           if (userRes.ok) {
             const user = await userRes.json();
             const roles: string[] = user.roles ?? [];
             if (!roles.includes('subscriber')) return null;
 
             const emailVerified = user.meta?.email_verified;
-            // 0 means explicitly unverified (set during registration). Absent/1 = allowed.
             if (emailVerified === 0 || emailVerified === '0') {
               throw new Error('EmailNotVerified');
             }
+            if (user.id) wpUserId = user.id;
           }
 
           return {
-            id: String(data.user_id ?? data.user_email),
+            id: String(wpUserId ?? data.user_email),
             email: data.user_email as string,
             name: data.user_display_name as string,
             wpToken: data.token as string,
-            wpUserId: data.user_id as number,
+            wpUserId,
           };
         } catch (err) {
           if (err instanceof Error && err.message === 'EmailNotVerified') throw err;
