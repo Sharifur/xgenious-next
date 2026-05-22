@@ -107,8 +107,16 @@ export default function Navbar() {
 
   const isServicesActive = pathname?.startsWith('/services');
 
+  const noSticky =
+    pathname === '/login' ||
+    pathname === '/register' ||
+    pathname === '/forgot-password' ||
+    pathname === '/verify-email' ||
+    pathname?.startsWith('/reset-password') ||
+    pathname?.startsWith('/my-account');
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pt-3 px-3 lg:pt-4 lg:px-8">
+    <header className={`${noSticky ? 'relative' : 'fixed top-0 left-0 right-0 z-50'} pt-3 px-3 lg:pt-4 lg:px-8`}>
       <div
         className={`max-w-[1320px] mx-auto bg-white rounded-full border border-[#E5E7EC] transition-shadow duration-300 ${
           scrolled
@@ -148,9 +156,9 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
             <Button href="/contact" variant="primary" size="sm">Contact Us</Button>
 
-            {/* Icon CTA — coral with soft halo + arrow nudge */}
+            {/* My Account icon */}
             <Link
-              href="https://xgenious.com/my-account/"
+              href="/my-account"
               aria-label="My Account"
               className="group relative w-[38px] h-[38px] rounded-full bg-[#F26B4E] flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(242,107,78,0.45)] active:translate-y-0"
             >
@@ -159,18 +167,15 @@ export default function Navbar() {
                 className="absolute inset-0 rounded-full bg-[#F26B4E] opacity-0 scale-100 group-hover:scale-[1.45] group-hover:opacity-30 transition-all duration-500 ease-out"
               />
               <svg
-                width="14"
-                height="14"
-                viewBox="0 0 15 15"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
                 fill="none"
-                className="relative transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                className="relative"
               >
                 <path
-                  d="M2.5 7.5h10M8.5 3.5l4 4-4 4"
-                  stroke="white"
-                  strokeWidth="1.7"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
+                  fill="white"
                 />
               </svg>
             </Link>
@@ -236,7 +241,7 @@ export default function Navbar() {
           <Link href="/contact" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>
             Contact
           </Link>
-          <Button href="https://xgenious.com/my-account/" variant="primary" size="sm" onClick={() => setMenuOpen(false)}>
+          <Button href="/my-account" variant="primary" size="sm" onClick={() => setMenuOpen(false)}>
             My Account
           </Button>
         </div>

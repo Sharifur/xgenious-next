@@ -11,15 +11,24 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1050.0",
     "@aws-sdk/client-ses": "^3.1049.0",
+    "@hookform/resolvers": "^5.2.2",
     "@tabler/icons-react": "^3.44.0",
+    "@tiptap/extension-image": "^3.23.6",
+    "@tiptap/extension-placeholder": "^3.23.6",
+    "@tiptap/react": "^3.23.6",
+    "@tiptap/starter-kit": "^3.23.6",
     "@types/react-google-recaptcha": "^2.1.9",
     "framer-motion": "^12.38.0",
     "next": "16.2.4",
+    "next-auth": "^5.0.0-beta.31",
     "next-nprogress-bar": "^2.4.7",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-google-recaptcha": "^3.1.0",
-    "sharp": "^0.34.5"
+    "react-hook-form": "^7.76.0",
+    "sharp": "^0.34.5",
+    "zod": "^4.4.3",
+    "zustand": "^5.0.13"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

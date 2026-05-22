@@ -117,7 +117,7 @@ export default function PngToAvif() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
             Download {result.filename}
           </a>
-          <p className="text-center text-[12px] text-[#9ca3af]">File auto-deleted after 24 hours. No registration required.</p>
+          <p className="text-center text-[12px] text-[#9ca3af]">Converted in your browser. No file is uploaded. No registration required.</p>
         </div>
       )}
     </div>

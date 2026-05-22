@@ -5,8 +5,10 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TopLoader from "@/components/ui/TopLoader";
+import { Providers } from "@/components/Providers";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+const FS_STOREFRONT = process.env.NEXT_PUBLIC_FASTSPRING_STOREFRONT;
 
 const inter = Inter({
   variable: "--font-inter",
@@ -74,10 +76,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </noscript>
         )}
         <TopLoader />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <Providers>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </Providers>
         <Script src="https://cortex-api.xgenious.com/livechat.js" data-site="xgenious" strategy="afterInteractive" />
+        {FS_STOREFRONT && (
+          <Script
+            id="fsc-api"
+            src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.5/fastspring-builder.min.js"
+            data-storefront={FS_STOREFRONT}
+            data-popup-webhook-received="onFastSpringWebhookReceived"
+            data-popup-closed="onFastSpringPopupClosed"
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );

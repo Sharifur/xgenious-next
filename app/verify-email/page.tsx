@@ -1,0 +1,179 @@
+'use client';
+import { useState, useEffect, Suspense } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useSearchParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
+import AuthPanel from '@/components/auth/AuthPanel';
+import { resendVerificationSchema, type ResendVerificationInput } from '@/lib/schemas/auth';
+
+type Mode = 'verifying' | 'success' | 'error' | 'resend';
+
+function VerifyEmailForm() {
+  const params = useSearchParams();
+  const router = useRouter();
+  const [mode, setMode] = useState<Mode>('verifying');
+  const [errorMsg, setErrorMsg] = useState('');
+  const [resendMsg, setResendMsg] = useState('');
+  const [resendError, setResendError] = useState('');
+  const [countdown, setCountdown] = useState(0);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<ResendVerificationInput>({ resolver: zodResolver(resendVerificationSchema) });
+
+  const uid = params.get('uid');
+  const t = params.get('t');
+  const sig = params.get('sig');
+  const showResend = params.get('resend') === '1';
+
+  useEffect(() => {
+    if (showResend) { setMode('resend'); return; }
+    if (!uid || !t || !sig) { setMode('resend'); return; }
+
+    fetch(`/api/verify-email?uid=${uid}&t=${t}&sig=${sig}`)
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.ok) setMode('success');
+        else { setErrorMsg(d.error ?? 'Verification failed.'); setMode('error'); }
+      })
+      .catch(() => { setErrorMsg('Verification failed. Please try again.'); setMode('error'); });
+  }, [uid, t, sig, showResend]);
+
+  useEffect(() => {
+    if (countdown <= 0) return;
+    const id = setTimeout(() => setCountdown((c) => c - 1), 1000);
+    return () => clearTimeout(id);
+  }, [countdown]);
+
+  async function onResend(values: ResendVerificationInput) {
+    setResendMsg('');
+    setResendError('');
+    const res = await fetch('/api/resend-verification', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: values.email }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setResendError(data.error ?? 'Failed to resend. Please try again.');
+    } else {
+      setResendMsg('Verification email sent! Check your inbox (and spam folder).');
+      setCountdown(120);
+    }
+  }
+
+  return (
+    <div className="min-h-[calc(100vh-140px)] flex items-center justify-center bg-gray-50 py-8 px-4">
+      <div className="w-full max-w-4xl rounded-2xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row">
+        <AuthPanel
+          badge="Email verification"
+          headline={<>One last step <em className="italic font-bold">to get started.</em></>}
+          description="Click the link we sent to your email to activate your account and unlock full access."
+        />
+
+        <div className="flex-1 bg-white p-8 md:p-10">
+          {mode === 'verifying' && (
+            <div className="flex flex-col items-center justify-center h-full py-12 text-center">
+              <div className="w-10 h-10 border-2 border-[#ec7161] border-t-transparent rounded-full animate-spin mb-4" />
+              <p className="text-sm text-gray-500">Verifying your email…</p>
+            </div>
+          )}
+
+          {mode === 'success' && (
+            <div className="flex flex-col items-center justify-center h-full py-12 text-center">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h1 className="text-xl font-bold text-[#0F1112] mb-2">Email verified!</h1>
+              <p className="text-sm text-gray-500 mb-6">Your account is now active. You can sign in.</p>
+              <Link
+                href="/login"
+                className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#ec7161] text-white text-sm font-semibold rounded-lg hover:bg-[#e05e4d] transition-colors"
+              >
+                Sign in
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </Link>
+            </div>
+          )}
+
+          {mode === 'error' && (
+            <div className="flex flex-col items-center justify-center h-full py-12 text-center">
+              <div className="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </div>
+              <h1 className="text-xl font-bold text-[#0F1112] mb-2">Verification failed</h1>
+              <p className="text-sm text-red-600 mb-6">{errorMsg}</p>
+              <button onClick={() => setMode('resend')} className="text-[#ec7161] text-sm font-medium hover:underline">
+                Request a new verification email
+              </button>
+            </div>
+          )}
+
+          {mode === 'resend' && (
+            <>
+              <h1 className="text-2xl font-bold text-[#0F1112] mb-1">Resend verification email</h1>
+              <p className="text-sm text-gray-500 mb-6">Enter the email address you registered with.</p>
+
+              {resendMsg && (
+                <div className="mb-4 p-3 bg-green-50 text-green-700 text-sm rounded-lg border border-green-100">{resendMsg}</div>
+              )}
+              {resendError && (
+                <div className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100">{resendError}</div>
+              )}
+
+              <form onSubmit={handleSubmit(onResend)} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
+                    Email address <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    {...register('email')}
+                    type="email"
+                    autoComplete="email"
+                    className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors ${errors.email ? 'border-red-300' : 'border-gray-200'}`}
+                  />
+                  {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>}
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting || countdown > 0}
+                  className="w-full py-2.5 bg-[#ec7161] text-white text-sm font-semibold rounded-lg hover:bg-[#e05e4d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {isSubmitting ? 'Sending…' : countdown > 0 ? `Resend available in ${countdown}s` : (
+                    <>
+                      Send verification email
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </form>
+              <p className="mt-6 text-sm text-gray-400">
+                Already verified?{' '}
+                <Link href="/login" className="text-[#ec7161] font-medium hover:underline">Sign in</Link>
+              </p>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense>
+      <VerifyEmailForm />
+    </Suspense>
+  );
+}
