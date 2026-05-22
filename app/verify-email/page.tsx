@@ -91,7 +91,7 @@ function VerifyEmailForm() {
               </div>
               <h1 className="text-xl font-bold text-[#0F1112] mb-2">Email verified!</h1>
               <p className="text-sm text-gray-500 mb-6">Your account is now active. You can sign in.</p>
-              <Link
+              <a
                 href="/login"
                 className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#ec7161] text-white text-sm font-semibold rounded-lg hover:bg-[#e05e4d] transition-colors"
               >
@@ -99,7 +99,7 @@ function VerifyEmailForm() {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
-              </Link>
+              </a>
             </div>
           )}
 
