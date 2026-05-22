@@ -4,7 +4,7 @@ import { lsFetch } from '@/lib/license-server';
 
 export async function POST(req: NextRequest) {
   const session = await auth();
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { product_uid, license_key, version, include_database } = await req.json();
 

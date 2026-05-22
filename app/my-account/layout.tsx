@@ -7,7 +7,7 @@ export const metadata = { title: 'My Account' };
 
 export default async function AccountLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
-  if (!session) redirect('/login');
+  if (!session?.user) redirect('/login');
 
   return (
     <div className="min-h-[calc(100vh-140px)] bg-gray-50">
