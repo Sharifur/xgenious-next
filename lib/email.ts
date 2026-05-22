@@ -1,8 +1,14 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 
-const ses = new SESClient({ region: process.env.AWS_REGION ?? 'us-east-1' });
-const FROM = process.env.EMAIL_FROM!;
-const BASE_URL = process.env.NEXTAUTH_URL ?? 'https://xgenious.com';
+const ses = new SESClient({
+  region: process.env.AWS_REGION ?? 'us-east-1',
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+  },
+});
+const FROM = process.env.EMAIL_FROM ?? process.env.CONTACT_FROM_EMAIL!;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://xgenious.com';
 
 export { BASE_URL };
 
