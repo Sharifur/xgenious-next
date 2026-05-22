@@ -17,15 +17,14 @@ const STATUS_MAP: Record<string | number, { label: string; cls: string }> = {
 };
 
 const PRIORITY_MAP: Record<string, { label: string; cls: string; dot: string }> = {
-  '0': { label: 'Low',    cls: 'text-gray-500',  dot: 'bg-gray-400' },
-  '1': { label: 'Normal', cls: 'text-gray-600',  dot: 'bg-gray-500' },
-  '2': { label: 'Medium', cls: 'text-yellow-700', dot: 'bg-yellow-500' },
-  '3': { label: 'High',   cls: 'text-orange-600', dot: 'bg-orange-500' },
-  '4': { label: 'Urgent', cls: 'text-red-600',   dot: 'bg-red-500' },
-  low:    { label: 'Low',    cls: 'text-gray-500',  dot: 'bg-gray-400' },
+  '0': { label: 'Low',    cls: 'text-gray-500',   dot: 'bg-gray-400' },
+  '1': { label: 'Medium', cls: 'text-yellow-700', dot: 'bg-yellow-500' },
+  '2': { label: 'High',   cls: 'text-orange-600', dot: 'bg-orange-500' },
+  '3': { label: 'Urgent', cls: 'text-red-600',    dot: 'bg-red-500' },
+  low:    { label: 'Low',    cls: 'text-gray-500',   dot: 'bg-gray-400' },
   medium: { label: 'Medium', cls: 'text-yellow-700', dot: 'bg-yellow-500' },
   high:   { label: 'High',   cls: 'text-orange-600', dot: 'bg-orange-500' },
-  urgent: { label: 'Urgent', cls: 'text-red-600',   dot: 'bg-red-500' },
+  urgent: { label: 'Urgent', cls: 'text-red-600',    dot: 'bg-red-500' },
 };
 
 function timeAgo(dateStr?: string): string {
@@ -182,7 +181,7 @@ export default function SupportPage() {
                   <div className="flex-1 min-w-0">
                     <Link href={`/my-account/support/${t.uuid ?? t.id}`} className="block">
                       <p className="text-sm font-semibold text-[#0F1112] leading-snug group-hover:text-[#ec7161] transition-colors line-clamp-2">
-                        {t.subject}
+                        {String(t.subject ?? '').replace(/\s*\[[^\]]+\]/g, '').trim()}
                       </p>
                     </Link>
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5">

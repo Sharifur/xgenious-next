@@ -107,17 +107,48 @@ export default function TicketDetailPage() {
 
   const descFields = extractFluentForm(ticket.description ?? '');
 
+  const PRIORITY_MAP: Record<string | number, { label: string; cls: string }> = {
+    0: { label: 'Low',    cls: 'text-gray-500' },
+    1: { label: 'Medium', cls: 'text-yellow-700' },
+    2: { label: 'High',   cls: 'text-orange-600' },
+    3: { label: 'Urgent', cls: 'text-red-600' },
+  };
+  const prio = PRIORITY_MAP[ticket.priority] ?? PRIORITY_MAP[1];
+
   return (
     <div className="space-y-4">
       {/* Header */}
-      <div className="flex items-center gap-3">
-        <Link href="/my-account/support" className="text-sm text-gray-400 hover:text-[#ec7161] transition-colors flex-shrink-0">
-          ← Back
-        </Link>
-        <h1 className="text-base font-bold text-[#0F1112] flex-1 truncate">{subject}</h1>
-        <span className={`text-xs font-medium px-2.5 py-1 rounded-full capitalize flex-shrink-0 ${stat.cls}`}>
-          {stat.label}
-        </span>
+      <div className="space-y-2">
+        <div className="flex items-center gap-3">
+          <Link href="/my-account/support" className="text-sm text-gray-400 hover:text-[#ec7161] transition-colors flex-shrink-0">
+            ← Back
+          </Link>
+          <h1 className="text-base font-bold text-[#0F1112] flex-1 min-w-0">{subject}</h1>
+          <span className={`text-xs font-medium px-2.5 py-1 rounded-full capitalize flex-shrink-0 ${stat.cls}`}>
+            {stat.label}
+          </span>
+        </div>
+        {/* Meta bar */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pl-1 text-xs text-gray-400">
+          <span className="font-medium text-gray-500">#{ticket.id}</span>
+          {ticket.date && (
+            <span className="flex items-center gap-1">
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Opened {ticket.date}
+            </span>
+          )}
+          <span className={`font-medium ${prio.cls}`}>{prio.label} priority</span>
+          {ticket.user?.full_name && (
+            <span className="flex items-center gap-1">
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              {ticket.user.full_name}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Original message */}

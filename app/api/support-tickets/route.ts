@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Subject, priority, and description are required.' }, { status: 400 });
   }
 
-  const priorityMap: Record<string, number> = { low: 0, medium: 2, high: 3, urgent: 4 };
+  const priorityMap: Record<string, number> = { low: 0, medium: 1, high: 2, urgent: 3 };
   const fullSubject = product ? `[${product}] ${subject}` : subject;
 
   const emailLine = session.wpEmail ? `<p><strong>Customer Email:</strong> ${session.wpEmail}</p>` : '';
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
 
   const payload = {
     subject: fullSubject,
-    priority: priorityMap[priority] ?? 2,
+    priority: priorityMap[priority] ?? 1,
     description: fullDescription,
     status: 0,
     email: session.wpEmail,
