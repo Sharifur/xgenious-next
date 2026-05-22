@@ -4,7 +4,7 @@ import { lsFetch } from '@/lib/license-server';
 
 export async function GET() {
   const session = await auth();
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const email = session.user?.email;
   if (!email) return NextResponse.json({ error: 'No email in session' }, { status: 400 });
