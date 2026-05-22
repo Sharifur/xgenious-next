@@ -6,11 +6,14 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { id } = await params;
-  const { description } = await req.json();
+  const { description, userId } = await req.json();
 
   if (!description?.trim()) {
     return NextResponse.json({ error: 'Reply message is required.' }, { status: 400 });
   }
+
+  const payload: Record<string, unknown> = { description, status: 1 };
+  if (userId) payload.reply_by_user_id = userId;
 
   const res = await fetch(`https://public-api.taskip.net/api/public-v1/support-ticket/reply/${id}`, {
     method: 'POST',
@@ -18,7 +21,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       'X-Secret-Key': process.env.TASKIP_SECRET_KEY!,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ description, status: 'open' }),
+    body: JSON.stringify(payload),
     cache: 'no-store',
   });
 

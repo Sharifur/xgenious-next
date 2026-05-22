@@ -22,6 +22,7 @@ const PRODUCTS = [
   'Helpnest',
   'Botmerze',
   'Safecart',
+  'Other',
 ];
 
 const inputClass = (hasError: boolean) =>
@@ -56,7 +57,8 @@ export default function NewTicketPage() {
       router.push(`/my-account/support/${data.id ?? data.data?.id}`);
     } else {
       const d = await res.json();
-      setServerError(d.error ?? 'Failed to create ticket.');
+      const msg = typeof d.error === 'string' ? d.error : (d.message ?? 'Failed to create ticket.');
+      setServerError(msg);
     }
   }
 

@@ -19,6 +19,38 @@ const EyeOff = () => (
   </svg>
 );
 
+function generateStrongPassword(): string {
+  const upper = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+  const lower = 'abcdefghjkmnpqrstuvwxyz';
+  const digits = '23456789';
+  const symbols = '!@#$%^&*-_=+?';
+  const all = upper + lower + digits + symbols;
+  const rand = (s: string) => s[Math.floor(Math.random() * s.length)];
+  let pw: string;
+  do {
+    const chars = [rand(upper), rand(upper), rand(lower), rand(lower), rand(digits), rand(digits), rand(symbols)];
+    for (let i = 0; i < 7; i++) chars.push(rand(all));
+    pw = chars.sort(() => Math.random() - 0.5).join('');
+  } while (getPasswordStrength(pw).score < 4);
+  return pw;
+}
+
+function getPasswordStrength(pw: string): { score: number; label: string; color: string } {
+  if (!pw) return { score: 0, label: '', color: '' };
+  // Repeated chars (3+) or sequential runs — WordPress/zxcvbn flags these
+  if (/(.)\1{2,}/.test(pw) || /(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz|012|123|234|345|456|567|678|789)/i.test(pw)) {
+    return { score: 1, label: 'Weak — avoid repeated or sequential characters', color: 'bg-red-400' };
+  }
+  let score = 0;
+  if (pw.length >= 12) score++;
+  if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) score++;
+  if (/[0-9]/.test(pw)) score++;
+  if (/[^A-Za-z0-9]/.test(pw)) score++;
+  const labels = ['', 'Weak', 'Fair', 'Good', 'Strong'];
+  const colors = ['', 'bg-red-400', 'bg-yellow-400', 'bg-blue-400', 'bg-green-500'];
+  return { score, label: labels[score], color: colors[score] };
+}
+
 export default function RegisterPage() {
   const [serverError, setServerError] = useState('');
   const [registered, setRegistered] = useState(false);
@@ -34,6 +66,7 @@ export default function RegisterPage() {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
@@ -41,6 +74,8 @@ export default function RegisterPage() {
   });
 
   const emailValue = watch('email') ?? '';
+  const passwordValue = watch('password') ?? '';
+  const strength = getPasswordStrength(passwordValue);
   const autoUsername = emailValue.includes('@')
     ? emailValue.split('@')[0].toLowerCase().replace(/[^a-z0-9_.-]/g, '')
     : '';
@@ -137,7 +172,10 @@ export default function RegisterPage() {
               </p>
 
               {serverError && (
-                <div className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100">{serverError}</div>
+                <div
+                  className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100 [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:mt-1 [&_li]:mt-0.5"
+                  dangerouslySetInnerHTML={{ __html: serverError }}
+                />
               )}
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -167,15 +205,45 @@ export default function RegisterPage() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
-                      Password <span className="text-red-500">*</span>
-                    </label>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label className="text-sm font-medium text-[#0F1112]">
+                        Password <span className="text-red-500">*</span>
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const pw = generateStrongPassword();
+                          setValue('password', pw, { shouldValidate: true });
+                          setValue('confirm', pw, { shouldValidate: true });
+                          setShowPassword(true);
+                          setShowConfirm(true);
+                        }}
+                        className="text-xs text-[#ec7161] hover:underline font-medium"
+                      >
+                        Generate
+                      </button>
+                    </div>
                     <div className="relative">
                       <input {...register('password')} type={showPassword ? 'text' : 'password'} autoComplete="new-password" className={inputClass(!!errors.password) + ' pr-10'} />
                       <button type="button" tabIndex={-1} onClick={() => setShowPassword((v) => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
                         {showPassword ? <EyeOff /> : <EyeOn />}
                       </button>
                     </div>
+                    {passwordValue && (
+                      <div className="mt-2 space-y-1">
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4].map((i) => (
+                            <div
+                              key={i}
+                              className={`h-1 flex-1 rounded-full transition-colors ${i <= strength.score ? strength.color : 'bg-gray-200'}`}
+                            />
+                          ))}
+                        </div>
+                        <p className={`text-xs font-medium ${strength.score <= 1 ? 'text-red-500' : strength.score === 2 ? 'text-yellow-600' : strength.score === 3 ? 'text-blue-600' : 'text-green-600'}`}>
+                          {strength.label}
+                        </p>
+                      </div>
+                    )}
                     {errors.password && <p className="mt-1 text-xs text-red-500">{errors.password.message}</p>}
                   </div>
                   <div>

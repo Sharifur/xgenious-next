@@ -19,7 +19,7 @@ function CopyButton({ value }: { value: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="ml-2 text-xs text-gray-400 hover:text-[#ec7161] transition-colors flex-shrink-0"
+      className="ml-2 text-xs text-gray-400 hover:text-[#ec7161] transition-colors flex-shrink-0 cursor-pointer"
       title="Copy to clipboard"
     >
       {copied ? (
@@ -65,7 +65,7 @@ function DomainRow({
       <button
         onClick={handleToggle}
         disabled={busy}
-        className={`text-xs font-medium px-3 py-1.5 rounded-lg border transition-colors disabled:opacity-50 flex-shrink-0 ${
+        className={`text-xs font-medium px-3 py-1.5 rounded-lg border transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex-shrink-0 ${
           activation.status === 1
             ? 'border-red-200 text-red-600 hover:bg-red-50'
             : 'border-green-200 text-green-700 hover:bg-green-50'

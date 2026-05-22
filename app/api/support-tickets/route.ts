@@ -38,7 +38,22 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Subject, priority, and description are required.' }, { status: 400 });
   }
 
+  const priorityMap: Record<string, number> = { low: 0, medium: 2, high: 3, urgent: 4 };
   const fullSubject = product ? `[${product}] ${subject}` : subject;
+
+  const emailLine = session.wpEmail ? `<p><strong>Customer Email:</strong> ${session.wpEmail}</p>` : '';
+  const purchaseLine = purchaseCode ? `<p><strong>Purchase Code:</strong> ${purchaseCode}</p>` : '';
+  const fullDescription = `${emailLine}${purchaseLine}${description}`;
+
+  const payload = {
+    subject: fullSubject,
+    priority: priorityMap[priority] ?? 2,
+    description: fullDescription,
+    status: 0,
+    email: session.wpEmail,
+  };
+
+  console.log('[support-tickets POST] payload', JSON.stringify(payload));
 
   const res = await fetch(TASKIP_API, {
     method: 'POST',
@@ -46,18 +61,11 @@ export async function POST(req: NextRequest) {
       'X-Secret-Key': process.env.TASKIP_SECRET_KEY!,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      subject: fullSubject,
-      priority,
-      description: purchaseCode
-        ? `<p><strong>Purchase Code:</strong> ${purchaseCode}</p>${description}`
-        : description,
-      status: 'open',
-      created_by: session.user?.name ?? session.wpEmail,
-    }),
+    body: JSON.stringify(payload),
     cache: 'no-store',
   });
 
   const data = await res.json();
+  if (!res.ok) console.error('[support-tickets POST] Taskip error', res.status, JSON.stringify(data));
   return NextResponse.json(data, { status: res.status });
 }

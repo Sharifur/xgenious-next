@@ -51,7 +51,7 @@ export default auth(function middleware(req: NextRequest & { auth: any }) {
   // Single-segment paths not matching a Next.js route → WordPress proxy
   if (segments.length === 1 && !NEXT_ROUTES.has(segments[0]) && !segments[0].includes('.')) {
     const target = pathname.endsWith('/') ? pathname : `${pathname}/`;
-    return NextResponse.rewrite(`${VPS}${target}`);
+    return NextResponse.rewrite(`${VPS}${target}${req.nextUrl.search}`);
   }
 });
 

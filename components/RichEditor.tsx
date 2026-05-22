@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
@@ -12,9 +12,10 @@ interface Props {
   hasError?: boolean;
 }
 
-async function uploadImage(file: File): Promise<string | null> {
+async function uploadImage(file: File, onProgress: (uploading: boolean) => void): Promise<string | null> {
   const fd = new FormData();
   fd.append('file', file);
+  onProgress(true);
   try {
     const res = await fetch('/api/support-tickets/upload', { method: 'POST', body: fd });
     const data = await res.json();
@@ -23,6 +24,8 @@ async function uploadImage(file: File): Promise<string | null> {
   } catch {
     alert('Image upload failed');
     return null;
+  } finally {
+    onProgress(false);
   }
 }
 
@@ -51,6 +54,7 @@ const ToolbarButton = ({
 
 export default function RichEditor({ value, onChange, placeholder = 'Describe your issue…', hasError }: Props) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
 
   const editor = useEditor({
     extensions: [
@@ -71,7 +75,7 @@ export default function RichEditor({ value, onChange, placeholder = 'Describe yo
         event.preventDefault();
         const file = imgItem.getAsFile();
         if (!file) return true;
-        void uploadImage(file).then((url) => {
+        void uploadImage(file, setUploading).then((url) => {
           if (url) view.dispatch(view.state.tr.replaceSelectionWith(
             view.state.schema.nodes.image.create({ src: url })
           ));
@@ -89,8 +93,12 @@ export default function RichEditor({ value, onChange, placeholder = 'Describe yo
   }, [value, editor]);
 
   async function handleImageFile(file: File) {
-    const url = await uploadImage(file);
-    if (url && editor) editor.chain().focus().setImage({ src: url }).run();
+    if (!editor) return;
+    const savedSelection = editor.state.selection;
+    const url = await uploadImage(file, setUploading);
+    if (url) {
+      editor.chain().focus().setTextSelection(savedSelection.anchor).setImage({ src: url }).run();
+    }
   }
 
   function handleImageButton() {
@@ -134,6 +142,16 @@ export default function RichEditor({ value, onChange, placeholder = 'Describe yo
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
         </ToolbarButton>
+
+        {uploading && (
+          <div className="ml-auto flex items-center gap-1.5 text-xs text-gray-500 pr-1">
+            <svg className="w-3.5 h-3.5 animate-spin text-[#ec7161]" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z" />
+            </svg>
+            Uploading…
+          </div>
+        )}
       </div>
 
       {/* Editor */}

@@ -10,7 +10,7 @@ export const registerSchema = z
     firstName: z.string().optional(),
     lastName: z.string().optional(),
     email: z.string().min(1, 'Email is required').email('Enter a valid email address'),
-    password: z.string().min(8, 'Password must be at least 8 characters'),
+    password: z.string().min(12, 'Password must be at least 12 characters'),
     confirm: z.string().min(1, 'Please confirm your password'),
     terms: z.boolean().refine((v) => v === true, { message: 'You must accept the terms and conditions' }),
   })
@@ -25,7 +25,7 @@ export const forgotPasswordSchema = z.object({
 
 export const resetPasswordSchema = z
   .object({
-    password: z.string().min(8, 'Password must be at least 8 characters'),
+    password: z.string().min(12, 'Password must be at least 12 characters'),
     confirm: z.string().min(1, 'Please confirm your password'),
   })
   .refine((d) => d.password === d.confirm, {

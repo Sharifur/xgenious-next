@@ -1,18 +1,7 @@
 import { auth } from '@/auth';
-import { lsFetch } from '@/lib/license-server';
-import type { PurchaseItem } from '@/lib/license-server';
 import Link from 'next/link';
 
 export const metadata = { title: 'Dashboard — My Account' };
-
-async function getLicenses(email: string): Promise<PurchaseItem[]> {
-  try {
-    const res = await lsFetch(`/purchases?email=${encodeURIComponent(email)}&per_page=100`);
-    if (!res.ok) return [];
-    const data = await res.json();
-    return data.data?.items ?? [];
-  } catch { return []; }
-}
 
 async function getTickets(email: string) {
   try {
@@ -45,69 +34,7 @@ export default async function DashboardPage() {
   const email = session!.wpEmail ?? session!.user?.email ?? '';
   const firstName = session!.user?.name?.split(' ')[0] ?? 'there';
 
-  const [licenses, tickets] = await Promise.all([
-    getLicenses(email),
-    getTickets(email),
-  ]);
-
-  const validLicenses = licenses.filter((l) => l.validity !== 'blocked');
-  const openTickets = tickets.filter((t: any) => t.status === 'open' || t.status === 'in-progress').length;
-  const uniqueProducts = new Set(licenses.map((l) => l.product_uid)).size;
-
-  const stats = [
-    {
-      label: 'Active Licenses',
-      value: validLicenses.length,
-      sub: `${licenses.length} total`,
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-        </svg>
-      ),
-      color: 'text-violet-600',
-      bg: 'bg-violet-50',
-      border: 'border-violet-100',
-    },
-    {
-      label: 'Products Owned',
-      value: uniqueProducts,
-      sub: 'across all platforms',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-        </svg>
-      ),
-      color: 'text-blue-600',
-      bg: 'bg-blue-50',
-      border: 'border-blue-100',
-    },
-    {
-      label: 'Open Tickets',
-      value: openTickets,
-      sub: `${tickets.length} total`,
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-        </svg>
-      ),
-      color: 'text-orange-600',
-      bg: 'bg-orange-50',
-      border: 'border-orange-100',
-    },
-    {
-      label: 'Total Purchases',
-      value: licenses.length,
-      sub: validLicenses.length > 0 ? 'all time' : 'no purchases yet',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-        </svg>
-      ),
-      color: 'text-emerald-600',
-      bg: 'bg-emerald-50',
-      border: 'border-emerald-100',
-    },
-  ];
+  const tickets = await getTickets(email);
 
   const quickLinks = [
     {
@@ -187,20 +114,6 @@ export default async function DashboardPage() {
             </Link>
           </div>
         </div>
-      </div>
-
-      {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {stats.map(({ label, value, sub, icon, color, bg, border }) => (
-          <div key={label} className={`bg-white rounded-2xl border ${border} p-4`}>
-            <div className={`w-9 h-9 rounded-xl ${bg} ${color} flex items-center justify-center mb-3`}>
-              {icon}
-            </div>
-            <p className="text-2xl font-bold text-[#0F1112] leading-none mb-1">{value}</p>
-            <p className="text-xs font-medium text-[#0F1112]">{label}</p>
-            <p className="text-xs text-gray-400 mt-0.5">{sub}</p>
-          </div>
-        ))}
       </div>
 
       {/* Quick actions */}
