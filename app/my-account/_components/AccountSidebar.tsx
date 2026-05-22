@@ -79,7 +79,7 @@ export default function AccountSidebar({ name }: { name?: string | null }) {
               <p className="text-sm font-semibold text-[#0F1112] truncate">{name ?? 'Account'}</p>
             </div>
             <button
-              onClick={() => signOut({ callbackUrl: '/' })}
+              onClick={async () => { await signOut({ redirect: false }); window.location.href = '/'; }}
               className="text-xs text-gray-400 hover:text-red-500 transition-colors font-medium"
             >
               Sign out
@@ -142,7 +142,7 @@ export default function AccountSidebar({ name }: { name?: string | null }) {
 
           <div className="p-2 border-t border-gray-100">
             <button
-              onClick={() => signOut({ callbackUrl: '/' })}
+              onClick={async () => { await signOut({ redirect: false }); window.location.href = '/'; }}
               className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-gray-500 hover:bg-red-50 hover:text-red-600 transition-colors text-left"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
