@@ -2,8 +2,10 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import { useLicensesStore } from '@/store/useLicensesStore';
 import type { LicenseActivation } from '@/lib/license-server';
+import SupportRenewalButton from '@/components/SupportRenewalButton';
 
 function CopyButton({ value }: { value: string }) {
   const [copied, setCopied] = useState(false);
@@ -79,6 +81,8 @@ export default function LicenseDetailPage() {
   const { key } = useParams<{ key: string }>();
   const decodedKey = decodeURIComponent(key);
   const { items, loading, error, fetch: fetchLicenses, updateActivations } = useLicensesStore();
+  const { data: session } = useSession();
+  const userEmail = (session as any)?.wpEmail ?? session?.user?.email ?? '';
   const [actionError, setActionError] = useState('');
 
   useEffect(() => { fetchLicenses(); }, [fetchLicenses]);
@@ -191,6 +195,16 @@ export default function LicenseDetailPage() {
                 ({item.support_active ? 'active' : 'expired'})
               </span>
             </p>
+            {item.can_extend && process.env.NEXT_PUBLIC_FASTSPRING_STOREFRONT && (
+              <div className="mt-2">
+                <SupportRenewalButton
+                  licenseKey={item.license_key}
+                  productUid={item.product_uid}
+                  productPath={`${item.product_uid}-support`}
+                  userEmail={userEmail}
+                />
+              </div>
+            )}
           </div>
           <div>
             <p className="text-xs text-gray-400 mb-1">Purchased</p>
