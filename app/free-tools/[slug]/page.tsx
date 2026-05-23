@@ -265,42 +265,45 @@ export default async function FreeToolPage({ params }: PageProps) {
         <div className="container-page px-4 sm:px-6 lg:px-0">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-10 items-start">
 
-            {/* Left: summary content */}
-            <div className="flex flex-col gap-5">
+            {/* Left: how-to + features */}
+            <div className="flex flex-col gap-6">
               <div>
-                <p className="text-[11px] font-semibold tracking-widest uppercase text-[#9ca3af] mb-2">{tool.category}</p>
-                <h2 className="text-[22px] sm:text-[26px] font-semibold text-[#0F1112] leading-[1.3] tracking-[-0.01em]">{tool.title}</h2>
-              </div>
-
-              <p className="text-[14px] sm:text-[15px] leading-[1.7] text-[#484848]">{tool.intro}</p>
-
-              {tool.featureList && tool.featureList.length > 0 && (
-                <ul className="flex flex-col gap-2.5">
-                  {tool.featureList.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-[13px] text-[#484848]">
-                      <span className="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0" style={{ background: tool.lightColor }}>
-                        <svg width="9" height="9" viewBox="0 0 12 12" fill="none">
-                          <path d="M2 6l3 3 5-5" stroke={tool.color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                <p className="text-[11px] font-semibold tracking-widest uppercase text-[#9ca3af] mb-3">How to use</p>
+                <ol className="flex flex-col gap-4">
+                  {tool.howToUse.map(({ step, desc }, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <span
+                        className="w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0 mt-0.5"
+                        style={{ background: tool.color, color: '#fff' }}
+                      >
+                        {idx + 1}
                       </span>
-                      {f}
+                      <div>
+                        <p className="text-[13px] font-semibold text-[#0F1112] leading-[1.4]">{step}</p>
+                        <p className="text-[12px] text-[#6b7280] leading-[1.6] mt-0.5">{desc}</p>
+                      </div>
                     </li>
                   ))}
-                </ul>
-              )}
-
-              {/* Trust badges */}
-              <div className="flex flex-wrap gap-2 pt-1">
-                {['Free — No Signup', 'Runs in Browser', 'Data Never Uploaded'].map((label) => (
-                  <span key={label} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-white border border-[#E5E7EC] text-[#484848] shadow-[0_1px_4px_rgba(0,0,0,0.04)]">
-                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                      <circle cx="6" cy="6" r="5" stroke="#059669" strokeWidth="1.5"/>
-                      <path d="M3.5 6l2 2 3-3" stroke="#059669" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    {label}
-                  </span>
-                ))}
+                </ol>
               </div>
+
+              {tool.featureList && tool.featureList.length > 0 && (
+                <div>
+                  <p className="text-[11px] font-semibold tracking-widest uppercase text-[#9ca3af] mb-3">Features</p>
+                  <ul className="flex flex-col gap-2">
+                    {tool.featureList.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-[13px] text-[#484848]">
+                        <span className="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0" style={{ background: tool.lightColor }}>
+                          <svg width="9" height="9" viewBox="0 0 12 12" fill="none">
+                            <path d="M2 6l3 3 5-5" stroke={tool.color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </span>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             {/* Right: tool */}
