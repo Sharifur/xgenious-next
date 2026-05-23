@@ -73,10 +73,10 @@ export default function PasswordGenerator() {
   const s = password ? strengthInfo(password, charset.length || 1) : null;
 
   return (
-    <div className="flex flex-col gap-3 max-w-2xl mx-auto w-full">
+    <div className="max-w-2xl mx-auto w-full rounded-2xl border border-[#E5E7EC] overflow-hidden bg-white divide-y divide-[#F0F1F3]">
 
       {/* ── Password output ──────────────────────────────────────────── */}
-      <div className="rounded-2xl border border-[#E5E7EC] overflow-hidden bg-white">
+      <div>
         <div className="flex items-center gap-3 px-4 py-3.5">
           <code className="flex-1 text-[15px] font-mono text-[#0F1112] break-all leading-relaxed min-w-0">
             {password || <span className="text-[#9ca3af]">Click Generate…</span>}
@@ -120,7 +120,7 @@ export default function PasswordGenerator() {
       </div>
 
       {/* ── Controls ────────────────────────────────────────────────── */}
-      <div className="rounded-2xl border border-[#E5E7EC] bg-white divide-y divide-[#F0F1F3]">
+      <div className="divide-y divide-[#F0F1F3]">
 
         {/* Length */}
         <div className="px-4 py-3 flex items-center gap-3">
