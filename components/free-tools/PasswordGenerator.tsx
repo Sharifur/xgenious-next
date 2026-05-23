@@ -37,8 +37,10 @@ export default function PasswordGenerator() {
       .map(([, v]) => v)
       .join('');
     if (!charset) return;
-    const arr = Array.from({ length: count }, () =>
-      Array.from({ length }, () => charset[Math.floor(Math.random() * charset.length)]).join('')
+    const buf = new Uint32Array(count * length);
+    crypto.getRandomValues(buf);
+    const arr = Array.from({ length: count }, (_, i) =>
+      Array.from({ length }, (__, j) => charset[buf[i * length + j] % charset.length]).join('')
     );
     setPasswords(arr);
   }, [length, opts, count]);
@@ -59,11 +61,11 @@ export default function PasswordGenerator() {
             <label className="text-[13px] font-semibold text-[#0F1112]">Length: {length}</label>
           </div>
           <input
-            type="range" min={4} max={64} value={length}
+            type="range" min={8} max={128} value={length}
             onChange={(e) => setLength(+e.target.value)}
             className="w-full accent-[#8b5cf6]"
           />
-          <div className="flex justify-between text-[11px] text-[#6b7280]"><span>4</span><span>64</span></div>
+          <div className="flex justify-between text-[11px] text-[#6b7280]"><span>8</span><span>128</span></div>
         </div>
 
         <div className="flex flex-col gap-2">
