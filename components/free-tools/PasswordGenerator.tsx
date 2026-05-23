@@ -73,7 +73,7 @@ export default function PasswordGenerator() {
   const s = password ? strengthInfo(password, charset.length || 1) : null;
 
   return (
-    <div className="flex flex-col gap-3 max-w-2xl">
+    <div className="flex flex-col gap-3 max-w-2xl mx-auto w-full">
 
       {/* ── Password output ──────────────────────────────────────────── */}
       <div className="rounded-2xl border border-[#E5E7EC] overflow-hidden bg-white">
