@@ -111,7 +111,7 @@ export const TOOLS: FreeTool[] = [
       { error: 'Bad escape sequence', code: '{"path":"C:\\Users"}', fix: 'Backslashes inside strings must form a valid escape: \\n, \\", \\\\, or a Unicode escape \\uXXXX.' },
     ],
     lastUpdated: 'May 2026',
-    relatedTools: ['base64-encoder-decoder', 'jwt-decoder', 'regex-tester'],
+    relatedTools: ['base64-encoder-decoder', 'jwt-decoder', 'regex-tester', 'password-generator', 'cron-expression-builder', 'sql-formatter', 'env-file-generator', 'ai-token-cost-calculator'],
     externalLinks: [
       { label: 'JSON specification — RFC 8259 (IETF)', url: 'https://datatracker.ietf.org/doc/html/rfc8259' },
       { label: 'JSON.org — official grammar and syntax reference', url: 'https://www.json.org/json-en.html' },

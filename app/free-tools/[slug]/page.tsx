@@ -422,8 +422,8 @@ export default async function FreeToolPage({ params }: PageProps) {
                 You might also need
               </h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-[860px]">
-              {tool.relatedTools.slice(0, 3).map((relSlug) => (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {tool.relatedTools.slice(0, 8).map((relSlug) => (
                 <RelatedToolCard key={relSlug} slug={relSlug} />
               ))}
             </div>
