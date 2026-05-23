@@ -60,7 +60,7 @@ export default function PasswordGenerator() {
     setPassword(secureGenerate(cs, length));
   }, [length, opts, excludeAmbig]);
 
-  useEffect(() => { generate(); }, []);
+  useEffect(() => { generate(); }, [generate]);
 
   function copy() {
     navigator.clipboard.writeText(password);
