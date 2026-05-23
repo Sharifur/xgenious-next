@@ -375,7 +375,7 @@ export default async function FreeToolPage({ params }: PageProps) {
                 Most &ldquo;invalid JSON&rdquo; failures come from a small set of mistakes. Paste the failing JSON above, click Validate, and the tool points you at the exact line and column.
               </p>
             </div>
-            <div className="flex flex-col gap-3 max-w-[760px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {tool.commonErrors.map(({ error, code, fix }) => (
                 <div key={error} className="rounded-2xl border border-[#E5E7EC] bg-[#F5F6F8] px-6 py-5">
                   <div className="flex flex-wrap items-center gap-3 mb-2">
