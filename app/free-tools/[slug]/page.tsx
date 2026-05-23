@@ -293,28 +293,31 @@ export default async function FreeToolPage({ params }: PageProps) {
 
       {/* ── Strength tips ────────────────────────────────────────────────── */}
       {tool.strengthTips && (
-        <section className="py-12 sm:py-16 lg:py-20" style={{ background: '#F5F6F8' }}>
+        <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="container-page px-4 sm:px-6 lg:px-0">
-            <div className="mb-8 max-w-[760px]">
-              <SectionBadge className="mb-4">Best Practices</SectionBadge>
-              <h2 className="text-[24px] sm:text-[32px] lg:text-[38px] leading-[32px] sm:leading-[40px] lg:leading-[48px] font-semibold text-[#0F1112] tracking-[-0.01em]">
-                {tool.strengthTips.heading}
-              </h2>
-              <p className="text-[15px] text-[#484848] mt-4 leading-[26px]">
-                {tool.strengthTips.intro}
-              </p>
+            <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+              {/* Left: header + intro */}
+              <div className="lg:w-[340px] flex-shrink-0">
+                <SectionBadge className="mb-4">Best Practices</SectionBadge>
+                <h2 className="text-[24px] sm:text-[30px] lg:text-[34px] leading-[32px] sm:leading-[38px] lg:leading-[44px] font-semibold text-[#0F1112] tracking-[-0.01em] mb-4">
+                  {tool.strengthTips.heading}
+                </h2>
+                <p className="text-[14px] text-[#6b7280] leading-[24px]">
+                  {tool.strengthTips.intro}
+                </p>
+              </div>
+              {/* Right: numbered tips */}
+              <ul className="flex-1 flex flex-col gap-0 divide-y divide-[#F0F1F3] border border-[#E5E7EC] rounded-2xl overflow-hidden bg-[#FAFAFA]">
+                {tool.strengthTips.tips.map((tip, i) => (
+                  <li key={tip} className="flex items-start gap-4 px-6 py-5 hover:bg-white transition-colors duration-150">
+                    <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#F0FDF4] border border-[#bbf7d0] flex items-center justify-center text-[12px] font-bold text-[#16a34a] mt-0.5">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="text-[14px] text-[#374151] leading-[24px]">{tip}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="flex flex-col gap-3 max-w-[760px]">
-              {tool.strengthTips.tips.map((tip) => (
-                <li key={tip} className="flex items-start gap-3 bg-white rounded-2xl border border-[#E5E7EC] px-5 py-4">
-                  <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="flex-shrink-0 mt-0.5">
-                    <circle cx="10" cy="10" r="9" stroke="#22c55e" strokeWidth="1.5" />
-                    <path d="M6.5 10l2.5 2.5 4.5-5" stroke="#22c55e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span className="text-[14px] text-[#484848] leading-[22px]">{tip}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
       )}
