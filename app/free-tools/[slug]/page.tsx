@@ -8,41 +8,48 @@ import AccordionItem from '@/components/ui/AccordionItem';
 
 const BASE_URL = 'https://xgenious.com';
 
-const SERVICE_LINKS: Record<string, { label: string; desc: string; href: string }[]> = {
+const SERVICE_LINKS: Record<string, { label: string; desc: string; href: string; icon: string }[]> = {
   developer: [
-    { label: 'Custom SaaS Development', desc: 'End-to-end SaaS products — API, auth, billing, dashboard, deployment.', href: '/custom-saas-development-company' },
-    { label: 'MVP Development', desc: 'Working product in 6–8 weeks. Fixed price, committed timeline.', href: '/saas-mvp-development' },
-    { label: 'AI Agent Development', desc: 'Custom AI agents and workflow automation built for your stack.', href: '/ai-agent-development-services' },
+    { label: 'Custom SaaS Development', desc: 'End-to-end SaaS — API, auth, billing, dashboard, deployment.', href: '/custom-saas-development-company', icon: 'M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V9l-6-6zM9 3v6h6' },
+    { label: 'MVP Development', desc: 'Working product in 6–8 weeks. Fixed price, committed timeline.', href: '/saas-mvp-development', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+    { label: 'AI Agent Development', desc: 'Custom AI agents and workflow automation for your stack.', href: '/ai-agent-development-services', icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' },
+    { label: 'Web App Development', desc: 'Full-stack web apps built with modern frameworks and best practices.', href: '/web-app-development-company', icon: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9' },
   ],
   hr: [
-    { label: 'Genius HRM — Free HR Software', desc: 'Self-hosted HR management system: payroll, leave, attendance, appraisals.', href: '/free-software/genius-hrm' },
-    { label: 'AI Agents for HR & Recruiting', desc: 'Automate candidate screening, onboarding, and HR workflows with AI.', href: '/ai-agents-for-hr-recruiting' },
-    { label: 'Custom SaaS Development', desc: 'Need a custom HRM or workforce platform? We build it end-to-end.', href: '/custom-saas-development-company' },
+    { label: 'Genius HRM — Free HR Software', desc: 'Self-hosted HRM: payroll, leave, attendance, appraisals.', href: '/free-software/genius-hrm', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z' },
+    { label: 'AI Agents for HR & Recruiting', desc: 'Automate candidate screening, onboarding, and HR workflows.', href: '/ai-agents-for-hr-recruiting', icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' },
+    { label: 'Custom SaaS Development', desc: 'Need a custom HRM or workforce platform? We build it end-to-end.', href: '/custom-saas-development-company', icon: 'M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V9l-6-6zM9 3v6h6' },
+    { label: 'MVP Development', desc: 'Launch your HR product in 6–8 weeks. Fixed price, committed timeline.', href: '/saas-mvp-development', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
   ],
   school: [
-    { label: 'Genius School Management — Free ERP', desc: 'Free Laravel + React school ERP: fees, attendance, grades, timetable.', href: '/free-software/genius-school-management' },
-    { label: 'AI Agents for Education', desc: 'Automate admissions, grading, and student support with AI agents.', href: '/ai-agents-for-education' },
-    { label: 'Custom SaaS Development', desc: 'Need a custom EdTech platform or LMS? We build it end-to-end.', href: '/custom-saas-development-company' },
+    { label: 'Genius School ERP — Free', desc: 'Free Laravel + React school ERP: fees, attendance, grades, timetable.', href: '/free-software/genius-school-management', icon: 'M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z' },
+    { label: 'AI Agents for Education', desc: 'Automate admissions, grading, and student support with AI.', href: '/ai-agents-for-education', icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' },
+    { label: 'Custom SaaS Development', desc: 'Need a custom EdTech platform or LMS? We build it end-to-end.', href: '/custom-saas-development-company', icon: 'M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V9l-6-6zM9 3v6h6' },
+    { label: 'MVP Development', desc: 'Launch your EdTech product in 6–8 weeks. Fixed price.', href: '/saas-mvp-development', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
   ],
   saas: [
-    { label: 'Custom SaaS Development', desc: 'End-to-end SaaS products — from schema design to production deployment.', href: '/custom-saas-development-company' },
-    { label: 'MVP Development', desc: 'Working product in 6–8 weeks. Fixed price, committed timeline.', href: '/saas-mvp-development' },
-    { label: 'AI Agents for SaaS', desc: 'Add AI-powered automation to your SaaS — support, onboarding, revenue ops.', href: '/ai-agents-for-saas' },
+    { label: 'Custom SaaS Development', desc: 'End-to-end SaaS — from schema design to production deployment.', href: '/custom-saas-development-company', icon: 'M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V9l-6-6zM9 3v6h6' },
+    { label: 'MVP Development', desc: 'Working product in 6–8 weeks. Fixed price, committed timeline.', href: '/saas-mvp-development', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+    { label: 'AI Agents for SaaS', desc: 'AI-powered automation for support, onboarding, and revenue ops.', href: '/ai-agents-for-saas', icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' },
+    { label: 'Web App Development', desc: 'Full-stack web apps with modern architecture and cloud deployment.', href: '/web-app-development-company', icon: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9' },
   ],
   sales: [
-    { label: 'Genius CRM — Free CRM Software', desc: 'Self-hosted CRM: pipeline, contacts, deals, tasks, and email sequences.', href: '/free-software/genius-crm' },
-    { label: 'AI Agents for SaaS & Sales', desc: 'Automate lead qualification, follow-up, and CRM data entry with AI.', href: '/ai-agents-for-saas' },
-    { label: 'Custom SaaS Development', desc: 'Need a custom CRM or sales platform? We build it end-to-end.', href: '/custom-saas-development-company' },
+    { label: 'Genius CRM — Free CRM Software', desc: 'Self-hosted CRM: pipeline, contacts, deals, and email sequences.', href: '/free-software/genius-crm', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
+    { label: 'AI Agents for Sales', desc: 'Automate lead qualification, follow-up, and CRM data entry with AI.', href: '/ai-agents-for-saas', icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' },
+    { label: 'Custom SaaS Development', desc: 'Need a custom CRM or sales platform? We build it end-to-end.', href: '/custom-saas-development-company', icon: 'M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V9l-6-6zM9 3v6h6' },
+    { label: 'MVP Development', desc: 'Launch your sales product in 6–8 weeks. Fixed price, committed timeline.', href: '/saas-mvp-development', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
   ],
   business: [
-    { label: 'Custom SaaS Development', desc: 'End-to-end SaaS products built for your exact business workflow.', href: '/custom-saas-development-company' },
-    { label: 'MVP Development', desc: 'Launch your product idea in 6–8 weeks. Fixed price, committed timeline.', href: '/saas-mvp-development' },
-    { label: 'AI Agent Development', desc: 'Custom AI agents that automate business operations and decision-making.', href: '/ai-agent-development-services' },
+    { label: 'Custom SaaS Development', desc: 'End-to-end SaaS products built for your exact business workflow.', href: '/custom-saas-development-company', icon: 'M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V9l-6-6zM9 3v6h6' },
+    { label: 'MVP Development', desc: 'Launch your product idea in 6–8 weeks. Fixed price, committed timeline.', href: '/saas-mvp-development', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+    { label: 'AI Agent Development', desc: 'Custom AI agents that automate business operations and decisions.', href: '/ai-agent-development-services', icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' },
+    { label: 'Web App Development', desc: 'Full-stack business web apps with modern frameworks and cloud deployment.', href: '/web-app-development-company', icon: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9' },
   ],
   image: [
-    { label: 'Web App Development', desc: 'Full-stack web applications built with modern frameworks and best practices.', href: '/web-app-development-company' },
-    { label: 'Custom SaaS Development', desc: 'Need image processing or media workflows built into your product?', href: '/custom-saas-development-company' },
-    { label: 'MVP Development', desc: 'Launch your product in 6–8 weeks. Fixed price, committed timeline.', href: '/saas-mvp-development' },
+    { label: 'Web App Development', desc: 'Full-stack web applications built with modern frameworks.', href: '/web-app-development-company', icon: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9' },
+    { label: 'Custom SaaS Development', desc: 'Image processing or media workflows built into your product.', href: '/custom-saas-development-company', icon: 'M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V9l-6-6zM9 3v6h6' },
+    { label: 'MVP Development', desc: 'Launch your product in 6–8 weeks. Fixed price, committed timeline.', href: '/saas-mvp-development', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+    { label: 'AI Agent Development', desc: 'Custom AI agents for media processing, tagging, and automation.', href: '/ai-agent-development-services', icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' },
   ],
 };
 
@@ -433,7 +440,7 @@ export default async function FreeToolPage({ params }: PageProps) {
 
       {/* ── External links ───────────────────────────────────────────────── */}
       {tool.externalLinks.length > 0 && (
-        <section className="py-12 sm:py-16 bg-white">
+        <section className="py-12 sm:py-16" style={{ background: '#F5F6F8' }}>
           <div className="container-page px-4 sm:px-6 lg:px-0">
             <div className="mb-8">
               <SectionBadge className="mb-4">References</SectionBadge>
@@ -444,19 +451,21 @@ export default async function FreeToolPage({ params }: PageProps) {
                 Authority documentation and specifications behind this tool.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-[860px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {tool.externalLinks.map(({ label, url }) => (
                 <a
                   key={url}
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 rounded-2xl border border-[#E5E7EC] bg-[#F5F6F8] px-5 py-4 hover:border-[#d0d4dc] hover:bg-white hover:shadow-[0_2px_12px_rgba(0,0,0,0.05)] transition-all duration-200 group"
+                  className="group flex flex-col gap-3 rounded-2xl border border-[#E5E7EC] bg-white p-5 hover:border-[#d0d4dc] hover:shadow-[0_4px_16px_rgba(0,0,0,0.07)] transition-all duration-200"
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-[#6b7280]">
-                    <path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3M10 2h4m0 0v4m0-4L7 9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span className="text-[13px] font-medium text-[#0F1112] group-hover:text-[#ec7161] transition-colors duration-200">
+                  <div className="w-9 h-9 rounded-xl bg-[#F5F6F8] flex items-center justify-center flex-shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-[#6b7280] group-hover:text-[#ec7161] transition-colors duration-200">
+                      <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <span className="text-[13px] font-medium text-[#0F1112] group-hover:text-[#ec7161] transition-colors duration-200 leading-[20px]">
                     {label}
                   </span>
                 </a>
@@ -479,31 +488,44 @@ export default async function FreeToolPage({ params }: PageProps) {
       {SERVICE_LINKS[tool.category] && (
         <section className="py-12 sm:py-16 bg-white">
           <div className="container-page px-4 sm:px-6 lg:px-0">
-            <div className="mb-8 sm:mb-10">
-              <SectionBadge className="mb-4">Our Services</SectionBadge>
-              <h2 className="text-[22px] sm:text-[28px] font-semibold text-[#0F1112] tracking-[-0.01em]">
-                Need this built into your product?
-              </h2>
-              <p className="text-[14px] text-[#6b7280] mt-2 max-w-[480px]">
-                We design and build custom software — SaaS platforms, MVPs, AI agents, and web apps.
-              </p>
+            <div className="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+              <div>
+                <SectionBadge className="mb-4">Our Services</SectionBadge>
+                <h2 className="text-[22px] sm:text-[28px] font-semibold text-[#0F1112] tracking-[-0.01em]">
+                  Need this built into your product?
+                </h2>
+                <p className="text-[14px] text-[#6b7280] mt-2 max-w-[480px]">
+                  We design and build custom software — SaaS platforms, MVPs, AI agents, and web apps.
+                </p>
+              </div>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#ec7161] text-white text-[13px] font-semibold hover:bg-[#e05e4d] transition-colors flex-shrink-0"
+              >
+                Let&apos;s talk
+                <svg width="13" height="13" viewBox="0 0 15 15" fill="none">
+                  <path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-[920px]">
-              {SERVICE_LINKS[tool.category].map(({ label, desc, href }) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {SERVICE_LINKS[tool.category].map(({ label, desc, href, icon }) => (
                 <Link
                   key={href}
                   href={href}
-                  className="group flex flex-col gap-2 rounded-2xl border border-[#E5E7EC] bg-[#F5F6F8] px-5 py-5 hover:border-[#d0d4dc] hover:bg-white hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-200"
+                  className="group flex flex-col gap-4 rounded-2xl border border-[#E5E7EC] bg-[#F5F6F8] p-5 hover:border-[#d0d4dc] hover:bg-white hover:shadow-[0_4px_20px_rgba(0,0,0,0.07)] transition-all duration-200"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="text-[14px] font-semibold text-[#0F1112] group-hover:text-[#ec7161] transition-colors duration-200 leading-[20px]">
-                      {label}
-                    </span>
-                    <svg width="14" height="14" viewBox="0 0 15 15" fill="none" className="flex-shrink-0 text-[#9ca3af] group-hover:text-[#ec7161] transition-colors duration-200 -rotate-45">
-                      <path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                  <div className="w-10 h-10 rounded-xl bg-white border border-[#E5E7EC] flex items-center justify-center flex-shrink-0 group-hover:border-[#ec7161]/30 transition-colors duration-200">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-[#6b7280] group-hover:text-[#ec7161] transition-colors duration-200">
+                      <path d={icon} stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
-                  <p className="text-[13px] text-[#6b7280] leading-[20px]">{desc}</p>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#0F1112] group-hover:text-[#ec7161] transition-colors duration-200 leading-[20px] mb-1.5">
+                      {label}
+                    </p>
+                    <p className="text-[12px] text-[#6b7280] leading-[18px]">{desc}</p>
+                  </div>
                 </Link>
               ))}
             </div>
