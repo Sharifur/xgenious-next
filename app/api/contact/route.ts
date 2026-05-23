@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
   }
 
   const toEmail = process.env.CONTACT_TO_EMAIL!;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL!;
+  const fromEmail = `Xgenious <${process.env.CONTACT_FROM_EMAIL!}>`;
 
   try {
     await ses.send(

@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
     console.warn('TASKIP_SECRET_KEY not set — lead not forwarded to Taskip:', { email, product });
   }
 
-  const fromEmail = process.env.CONTACT_FROM_EMAIL;
+  const fromEmail = process.env.CONTACT_FROM_EMAIL ? `Xgenious <${process.env.CONTACT_FROM_EMAIL}>` : undefined;
   const safeDownloadUrl = downloadUrl && /^https?:\/\//.test(downloadUrl) ? downloadUrl : null;
   const safeProduct = product ? product.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '';
   if (fromEmail && safeDownloadUrl) {

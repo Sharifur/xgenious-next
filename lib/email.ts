@@ -7,7 +7,8 @@ const ses = new SESClient({
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
   },
 });
-const FROM = process.env.EMAIL_FROM ?? process.env.CONTACT_FROM_EMAIL!;
+const FROM_ADDR = process.env.EMAIL_FROM ?? process.env.CONTACT_FROM_EMAIL!;
+const FROM = `Xgenious <${FROM_ADDR}>`;
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://xgenious.com';
 
 export { BASE_URL };
