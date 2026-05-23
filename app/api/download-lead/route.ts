@@ -61,6 +61,7 @@ export async function POST(req: NextRequest) {
           email,
           description: `Downloaded: ${product}`,
           lead_interaction_date: new Date().toISOString().split('T')[0],
+          source_ids: [13],
         }),
       });
       if (!res.ok) {
