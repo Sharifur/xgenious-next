@@ -475,16 +475,7 @@ export default async function FreeToolPage({ params }: PageProps) {
         </section>
       )}
 
-      {/* ── Last updated ─────────────────────────────────────────────────── */}
-      {tool.lastUpdated && (
-        <div className="container-page px-4 sm:px-6 lg:px-0 py-4">
-          <p className="text-[12px] text-[#9ca3af]">
-            Built and maintained by the engineering team at Xgenious · Last updated {tool.lastUpdated}
-          </p>
-        </div>
-      )}
-
-      {/* ── Related Services ─────────────────────────────────────────────── */}
+{/* ── Related Services ─────────────────────────────────────────────── */}
       {SERVICE_LINKS[tool.category] && (
         <section className="py-12 sm:py-16 bg-white">
           <div className="container-page px-4 sm:px-6 lg:px-0">
