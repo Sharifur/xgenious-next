@@ -136,7 +136,7 @@ export default async function FreeToolPage({ params }: PageProps) {
     name: tool.title,
     description: tool.metaDescription,
     url: toolUrl,
-    applicationCategory: 'WebApplication',
+    applicationCategory: tool.applicationCategory ?? 'WebApplication',
     operatingSystem: 'Web',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     provider: { '@type': 'Organization', name: 'Xgenious', url: BASE_URL },
@@ -287,6 +287,34 @@ export default async function FreeToolPage({ params }: PageProps) {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Strength tips ────────────────────────────────────────────────── */}
+      {tool.strengthTips && (
+        <section className="py-12 sm:py-16 lg:py-20" style={{ background: '#F5F6F8' }}>
+          <div className="container-page px-4 sm:px-6 lg:px-0">
+            <div className="mb-8 max-w-[760px]">
+              <SectionBadge className="mb-4">Best Practices</SectionBadge>
+              <h2 className="text-[24px] sm:text-[32px] lg:text-[38px] leading-[32px] sm:leading-[40px] lg:leading-[48px] font-semibold text-[#0F1112] tracking-[-0.01em]">
+                {tool.strengthTips.heading}
+              </h2>
+              <p className="text-[15px] text-[#484848] mt-4 leading-[26px]">
+                {tool.strengthTips.intro}
+              </p>
+            </div>
+            <ul className="flex flex-col gap-3 max-w-[760px]">
+              {tool.strengthTips.tips.map((tip) => (
+                <li key={tip} className="flex items-start gap-3 bg-white rounded-2xl border border-[#E5E7EC] px-5 py-4">
+                  <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="flex-shrink-0 mt-0.5">
+                    <circle cx="10" cy="10" r="9" stroke="#22c55e" strokeWidth="1.5" />
+                    <path d="M6.5 10l2.5 2.5 4.5-5" stroke="#22c55e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span className="text-[14px] text-[#484848] leading-[22px]">{tip}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}

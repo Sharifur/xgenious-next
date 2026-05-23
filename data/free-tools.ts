@@ -21,7 +21,9 @@ export interface FreeTool {
   featureList?: string[];
   featureCards?: { title: string; desc: string }[];
   commonErrors?: { error: string; code: string; fix: string }[];
+  strengthTips?: { heading: string; intro: string; tips: string[] };
   lastUpdated?: string;
+  applicationCategory?: string;
   isImageTool?: boolean;
   acceptedFormats?: string[];
   outputFormat?: 'webp' | 'avif';
@@ -150,17 +152,29 @@ export const TOOLS: FreeTool[] = [
       { q: 'Are generated passwords stored anywhere?', a: 'No. Passwords are generated entirely in your browser using JavaScript — nothing is sent to a server, stored in a database, or logged anywhere. Close the tab and the password is gone permanently. You can verify this by running the tool in airplane mode: it works without any network connection.' },
       { q: 'What makes a password strong?', a: 'Length is the single most important factor. A 16-character password mixing uppercase, lowercase, numbers, and symbols has over 85 billion trillion (10²⁶) possible combinations. Character set diversity multiplies the search space: adding symbols to a numeric-only password increases it by orders of magnitude. Use a password manager so you only need to memorize one strong master password.' },
       { q: 'How long should my password be?', a: 'NIST Special Publication 800-63B recommends at least 12 characters for standard accounts and 16+ for sensitive accounts like email and financial services. For password manager master passwords, use 20+ characters since you only need to memorize one. The tool supports up to 128 characters — maximum entropy for high-value accounts.' },
-      { q: 'Can I generate multiple passwords at once?', a: 'The tool generates one password per click, each cryptographically independent from the last. Click Generate repeatedly to produce multiple fresh passwords — there is no limit on how many you can generate in a session. Copy each password immediately since the display is overwritten on the next generation.' },
+      { q: 'Are online password generators safe to use?', a: 'They are safe when the password is generated locally in your browser and never transmitted — as this tool does. Avoid generators that send data to a server. As a habit, generate the password, move it straight into a password manager, and never reuse it.' },
+      { q: 'Can I generate multiple passwords at once?', a: 'Yes. Set the quantity field to generate a batch of unique passwords in one click — useful when setting up several accounts or rotating credentials. Each password is generated independently with cryptographically secure randomness, up to 50 at once.' },
     ],
+    applicationCategory: 'SecurityApplication',
     comparisonTable: {
-      caption: 'Password entropy by length and character set',
-      headers: ['Length', 'Lowercase only', '+ Uppercase', '+ Numbers', '+ Symbols'],
+      caption: 'How long should a password be? Brute-force resistance by length',
+      headers: ['Length', 'Character mix', 'Approx. brute-force time', 'Verdict'],
       rows: [
-        ['8 chars',  '~38 bits', '~45 bits', '~48 bits', '~52 bits'],
-        ['12 chars', '~56 bits', '~68 bits', '~71 bits', '~79 bits'],
-        ['16 chars', '~75 bits', '~90 bits', '~95 bits', '~105 bits'],
-        ['20 chars', '~94 bits', '~113 bits', '~119 bits', '~131 bits'],
-        ['32 chars', '~150 bits', '~181 bits', '~190 bits', '~210 bits'],
+        ['8 chars',  'Upper + lower + numbers + symbols', 'Hours to days',           'Weak'],
+        ['12 chars', 'Upper + lower + numbers + symbols', 'Years',                   'Fair'],
+        ['16 chars', 'Upper + lower + numbers + symbols', 'Millions of years',       'Strong'],
+        ['20+ chars','Upper + lower + numbers + symbols', 'Effectively uncrackable', 'Excellent'],
+      ],
+    },
+    strengthTips: {
+      heading: 'What makes a password strong?',
+      intro: 'Password strength comes from two things: length and unpredictability. A strong password is long, random rather than based on real words, and used for only one account. Length matters most — each extra character multiplies the number of guesses an attacker needs, so a long random password resists brute-force and dictionary attacks far better than a short, clever one.',
+      tips: [
+        'Use at least 16 characters; 20 or more for email, banking, and password-manager master passwords.',
+        'Make it random — avoid names, dates, keyboard patterns, and dictionary words.',
+        'Never reuse a password across sites; one breach should not unlock everything.',
+        'Store passwords in a reputable password manager instead of memorizing or writing them down.',
+        'Turn on two-factor authentication (2FA) wherever it is offered for an extra layer of protection.',
       ],
     },
     featureList: [
