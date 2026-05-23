@@ -182,7 +182,7 @@ export const TOOLS: FreeTool[] = [
       'Password length from 8 to 128 characters',
       'Toggle uppercase, lowercase, numbers, and symbols independently',
       'Real-time strength indicator with entropy-based scoring',
-      'Generate up to 10 passwords simultaneously',
+      'One-click regenerate for a fresh password instantly',
       'One-click copy to clipboard — nothing stored or logged',
     ],
     featureCards: [
