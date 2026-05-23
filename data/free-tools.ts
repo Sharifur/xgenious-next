@@ -18,6 +18,10 @@ export interface FreeTool {
   relatedTools: string[];
   externalLinks: { label: string; url: string }[];
   comparisonTable?: { caption: string; headers: string[]; rows: string[][] };
+  featureList?: string[];
+  featureCards?: { title: string; desc: string }[];
+  commonErrors?: { error: string; code: string; fix: string }[];
+  lastUpdated?: string;
   isImageTool?: boolean;
   acceptedFormats?: string[];
   outputFormat?: 'webp' | 'avif';
@@ -84,10 +88,35 @@ export const TOOLS: FreeTool[] = [
       { q: 'What is JSON minification and when should I use it?', a: 'Minification removes all whitespace, newlines, and indentation from JSON, reducing file size by 15–30% for typical API responses. Use minification before sending JSON payloads over REST APIs, embedding JSON in HTML attributes, or storing JSON in databases where storage cost or network bandwidth matters. Do not minify JSON that humans need to read or edit directly.' },
       { q: 'Can I format deeply nested or large JSON?', a: 'Yes. The formatter handles arbitrarily deep nesting — objects inside arrays, arrays inside objects, mixed structures with hundreds of levels. Performance depends on your device: modern browsers parse and format multi-megabyte JSON files in under a second. There is no server-side size limit because no upload occurs.' },
     ],
+    featureList: [
+      'Format and beautify JSON with 2-space, 4-space, or tab indentation',
+      'Validate JSON against the RFC 8259 specification',
+      'Minify JSON to reduce REST API payload size',
+      'Pinpoint syntax errors by exact line and column',
+      'Copy formatted output to clipboard or download as .json',
+      'Client-side processing — data is never uploaded to any server',
+    ],
+    featureCards: [
+      { title: 'JSON validator', desc: 'Every input is parsed against the RFC 8259 standard. Invalid JSON is rejected with the exact line and column of the failure, so you fix the cause instead of guessing.' },
+      { title: 'JSON beautifier & pretty-printer', desc: 'Turn a single-line blob into readable, indented JSON. Choose 2-space, 4-space, or tab indentation to match your project\'s style and make nested objects easy to scan.' },
+      { title: 'JSON minifier', desc: 'Strip all non-essential whitespace to reduce REST API payload size and storage cost. The data and key-value pairs are untouched — only the formatting is removed.' },
+      { title: 'JSON syntax checker', desc: 'Catch trailing commas, single quotes, unquoted keys, and unclosed brackets before they break your code. The status bar reports the precise position of the first error.' },
+    ],
+    commonErrors: [
+      { error: 'Trailing comma', code: '{"a":1,}', fix: 'A comma after the last item in an object or array is forbidden in JSON. Remove the trailing comma.' },
+      { error: 'Single quotes', code: "{'name':'x'}", fix: 'JSON strings and keys must use double quotes. Replace single quotes with double quotes: {"name":"x"}.' },
+      { error: 'Unquoted keys', code: '{name:"x"}', fix: 'Every object key must be a quoted string. Change to {"name":"x"}.' },
+      { error: 'Unclosed bracket or brace', code: '{"a":[1,2}', fix: 'A missing ] or } usually reports an error at the end of input. Match every opening bracket with a closing one.' },
+      { error: 'Unexpected token', code: '{a: undefined}', fix: 'Comments (//), NaN, undefined, and Infinity are not valid JSON values. Remove them or replace with null.' },
+      { error: 'Bad escape sequence', code: '{"path":"C:\\Users"}', fix: 'Backslashes inside strings must form a valid escape: \\n, \\", \\\\, or a Unicode escape \\uXXXX.' },
+    ],
+    lastUpdated: 'May 2026',
     relatedTools: ['base64-encoder-decoder', 'jwt-decoder', 'regex-tester'],
     externalLinks: [
       { label: 'JSON specification — RFC 8259 (IETF)', url: 'https://datatracker.ietf.org/doc/html/rfc8259' },
       { label: 'JSON.org — official grammar and syntax reference', url: 'https://www.json.org/json-en.html' },
+      { label: 'ECMA-404 — JSON data interchange standard', url: 'https://ecma-international.org/publications-and-standards/standards/ecma-404/' },
+      { label: 'MDN — JSON.parse() reference', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse' },
     ],
   },
 

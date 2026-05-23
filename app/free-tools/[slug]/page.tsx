@@ -133,6 +133,17 @@ export default async function FreeToolPage({ params }: PageProps) {
     operatingSystem: 'Web',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     provider: { '@type': 'Organization', name: 'Xgenious', url: BASE_URL },
+    ...(tool.featureList ? { featureList: tool.featureList } : {}),
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Free Tools', item: `${BASE_URL}/free-tools` },
+      { '@type': 'ListItem', position: 2, name: tool.category.charAt(0).toUpperCase() + tool.category.slice(1), item: `${BASE_URL}/free-tools?category=${tool.category}` },
+      { '@type': 'ListItem', position: 3, name: tool.title, item: toolUrl },
+    ],
   };
 
   const faqLd = {
@@ -172,6 +183,10 @@ export default async function FreeToolPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
@@ -246,6 +261,28 @@ export default async function FreeToolPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* ── Feature cards ────────────────────────────────────────────────── */}
+      {tool.featureCards && (
+        <section className="py-12 sm:py-16 lg:py-20 bg-white">
+          <div className="container-page px-4 sm:px-6 lg:px-0">
+            <div className="mb-10 sm:mb-12">
+              <SectionBadge className="mb-4">Features</SectionBadge>
+              <h2 className="text-[24px] sm:text-[32px] lg:text-[38px] leading-[32px] sm:leading-[40px] lg:leading-[48px] font-semibold text-[#0F1112] tracking-[-0.01em]">
+                One tool — format, validate, beautify, and minify {tool.title.replace(/^Free\s+/i, '').split('&')[0].trim()}
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {tool.featureCards.map(({ title, desc }) => (
+                <div key={title} className="rounded-2xl border border-[#E5E7EC] bg-[#F5F6F8] p-6">
+                  <h3 className="text-[15px] font-semibold text-[#0F1112] mb-2">{title}</h3>
+                  <p className="text-[13px] text-[#484848] leading-[21px]">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── How to use ───────────────────────────────────────────────────── */}
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -325,6 +362,34 @@ export default async function FreeToolPage({ params }: PageProps) {
         </section>
       )}
 
+      {/* ── Common errors ────────────────────────────────────────────────── */}
+      {tool.commonErrors && (
+        <section className="py-12 sm:py-16 lg:py-20 bg-white">
+          <div className="container-page px-4 sm:px-6 lg:px-0">
+            <div className="mb-10 sm:mb-12">
+              <SectionBadge className="mb-4">Troubleshooting</SectionBadge>
+              <h2 className="text-[24px] sm:text-[32px] lg:text-[38px] leading-[32px] sm:leading-[40px] lg:leading-[48px] font-semibold text-[#0F1112] tracking-[-0.01em]">
+                How to fix common syntax errors
+              </h2>
+              <p className="text-[15px] text-[#484848] mt-3 max-w-[640px] leading-[26px]">
+                Most &ldquo;invalid JSON&rdquo; failures come from a small set of mistakes. Paste the failing JSON above, click Validate, and the tool points you at the exact line and column.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 max-w-[760px]">
+              {tool.commonErrors.map(({ error, code, fix }) => (
+                <div key={error} className="rounded-2xl border border-[#E5E7EC] bg-[#F5F6F8] px-6 py-5">
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <strong className="text-[14px] font-semibold text-[#0F1112]">{error}</strong>
+                    <code className="text-[12px] font-mono bg-white border border-[#E5E7EC] text-[#484848] px-2 py-0.5 rounded-md">{code}</code>
+                  </div>
+                  <p className="text-[13px] text-[#484848] leading-[21px]">{fix}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── FAQ ──────────────────────────────────────────────────────────── */}
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="container-page px-4 sm:px-6 lg:px-0">
@@ -399,6 +464,15 @@ export default async function FreeToolPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+      )}
+
+      {/* ── Last updated ─────────────────────────────────────────────────── */}
+      {tool.lastUpdated && (
+        <div className="container-page px-4 sm:px-6 lg:px-0 py-4">
+          <p className="text-[12px] text-[#9ca3af]">
+            Built and maintained by the engineering team at Xgenious · Last updated {tool.lastUpdated}
+          </p>
+        </div>
       )}
 
       {/* ── Related Services ─────────────────────────────────────────────── */}
