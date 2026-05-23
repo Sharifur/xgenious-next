@@ -73,7 +73,7 @@ export default function PasswordGenerator() {
   const s = password ? strengthInfo(password, charset.length || 1) : null;
 
   return (
-    <div className="max-w-2xl mx-auto w-full rounded-2xl border border-[#E5E7EC] overflow-hidden bg-white divide-y divide-[#F0F1F3]">
+    <div className="w-full rounded-2xl border border-[#E5E7EC] overflow-hidden bg-white divide-y divide-[#F0F1F3]">
 
       {/* ── Password output ──────────────────────────────────────────── */}
       <div>
