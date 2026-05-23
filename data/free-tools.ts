@@ -153,7 +153,7 @@ export const TOOLS: FreeTool[] = [
       { q: 'What makes a password strong?', a: 'Length is the single most important factor. A 16-character password mixing uppercase, lowercase, numbers, and symbols has over 85 billion trillion (10²⁶) possible combinations. Character set diversity multiplies the search space: adding symbols to a numeric-only password increases it by orders of magnitude. Use a password manager so you only need to memorize one strong master password.' },
       { q: 'How long should my password be?', a: 'NIST Special Publication 800-63B recommends at least 12 characters for standard accounts and 16+ for sensitive accounts like email and financial services. For password manager master passwords, use 20+ characters since you only need to memorize one. The tool supports up to 128 characters — maximum entropy for high-value accounts.' },
       { q: 'Are online password generators safe to use?', a: 'They are safe when the password is generated locally in your browser and never transmitted — as this tool does. Avoid generators that send data to a server. As a habit, generate the password, move it straight into a password manager, and never reuse it.' },
-      { q: 'Can I generate multiple passwords at once?', a: 'Yes. Set the quantity field to generate a batch of unique passwords in one click — useful when setting up several accounts or rotating credentials. Each password is generated independently with cryptographically secure randomness, up to 50 at once.' },
+      { q: 'Can I generate a new password without reloading the page?', a: 'Yes. Click the regenerate button or change any setting (length, character types, exclude ambiguous) and a new password is created instantly in your browser. No page reload, no server request.' },
     ],
     applicationCategory: 'SecurityApplication',
     comparisonTable: {
@@ -188,7 +188,7 @@ export const TOOLS: FreeTool[] = [
     featureCards: [
       { title: 'Crypto-secure randomness', desc: 'Uses the Web Crypto API (crypto.getRandomValues) — the same source of randomness used in TLS key generation. Not Math.random(), which is predictable.' },
       { title: 'Strength indicator', desc: 'Every generated password gets a real-time strength score based on length and character set diversity: Weak, Fair, Good, or Strong.' },
-      { title: 'Bulk generation', desc: 'Generate 1, 3, 5, or 10 unique passwords at once. Each is independently random — generate as many times as needed with no limits.' },
+      { title: 'Instant regenerate', desc: 'Click the regenerate button or adjust any setting and a new cryptographically secure password is generated immediately — no page reload needed.' },
       { title: 'Fully private', desc: 'Everything runs in your browser. No passwords are sent to any server, stored in a database, or logged anywhere. Works offline.' },
     ],
     commonErrors: [

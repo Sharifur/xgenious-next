@@ -304,7 +304,7 @@ export default async function FreeToolPage({ params }: PageProps) {
             <div className="mb-10 sm:mb-12">
               <SectionBadge className="mb-4">Features</SectionBadge>
               <h2 className="text-[24px] sm:text-[32px] lg:text-[38px] leading-[32px] sm:leading-[40px] lg:leading-[48px] font-semibold text-[#0F1112] tracking-[-0.01em]">
-                One tool — format, validate, beautify, and minify {tool.title.replace(/^Free\s+/i, '').split('&')[0].trim()}
+                Everything you need in one {tool.title.replace(/^Free\s+/i, '').split('&')[0].trim()}
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
