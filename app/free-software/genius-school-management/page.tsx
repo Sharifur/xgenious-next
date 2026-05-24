@@ -9,6 +9,7 @@ const BASE_URL = 'https://xgenious.com';
 const COLOR = '#4f46e5';
 const LIGHT_COLOR = '#eef2ff';
 const GITHUB_URL = 'https://github.com/XgeniousLLC/genius-school-management-system/archive/refs/tags/v1.0.0.zip';
+const LICENSE_UUID = '284881d5-2482-4827-85cd-90843ebcd5f6';
 const DEMO_URL = 'https://genius-school-ms.xgenious.com';
 const USER_MANUAL_URL = 'https://genius-school-management-system.vercel.app/';
 
@@ -313,6 +314,7 @@ export default function GeniusSchoolManagementPage() {
                 productColor="#ec7161"
                 productLightColor="#fde8e5"
                 githubUrl={GITHUB_URL}
+                licenseUuid={LICENSE_UUID}
                 label="Download Free — No Account Needed"
                 className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:-translate-y-0.5"
               />
@@ -738,6 +740,7 @@ export default function GeniusSchoolManagementPage() {
             productColor="#ec7161"
             productLightColor="#fde8e5"
             githubUrl={GITHUB_URL}
+            licenseUuid={LICENSE_UUID}
             label="Get Free Download — No Credit Card"
           />
           <p className="text-[13px] text-[#d1d5db]">

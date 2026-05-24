@@ -8,6 +8,7 @@ const BASE_URL = 'https://xgenious.com';
 const COLOR = '#ec7161';
 const LIGHT_COLOR = '#fef2ef';
 const GITHUB_URL = 'https://github.com/XgeniousLLC/geniousCRM/archive/refs/tags/v1.0.0.zip';
+const LICENSE_UUID = '508d9dde-9438-40b5-b44f-9756ad10d0f1';
 const DEMO_URL = 'https://crm-demo.xgenious.com/login';
 const DOCS_URL = 'https://genious-crm-9wkn.vercel.app/';
 
@@ -298,6 +299,7 @@ export default function GeniusCRMPage() {
                 productColor={COLOR}
                 productLightColor={LIGHT_COLOR}
                 githubUrl={GITHUB_URL}
+                licenseUuid={LICENSE_UUID}
                 label="Download Free — No Account Needed"
                 className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:-translate-y-0.5"
               />
@@ -641,6 +643,7 @@ export default function GeniusCRMPage() {
             productColor={COLOR}
             productLightColor={LIGHT_COLOR}
             githubUrl={GITHUB_URL}
+            licenseUuid={LICENSE_UUID}
             label="Get Free Download — No Credit Card"
             buttonColor="#ffffff"
             className="inline-flex items-center gap-2 text-[#0F1112] font-semibold text-[15px] rounded-full px-9 py-4 transition-all hover:-translate-y-0.5"
