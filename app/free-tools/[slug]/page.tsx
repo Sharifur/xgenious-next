@@ -92,7 +92,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-function RelatedToolCard({ slug }: { slug: string }) {
+function RelatedToolCard({ slug, iconColor, iconBg }: { slug: string; iconColor: string; iconBg: string }) {
   const tool = TOOLS.find((t) => t.slug === slug);
   if (!tool) return null;
 
@@ -103,11 +103,11 @@ function RelatedToolCard({ slug }: { slug: string }) {
     >
       <div
         className="w-10 h-10 rounded-xl flex items-center justify-center"
-        style={{ background: tool.lightColor }}
+        style={{ background: iconBg }}
       >
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <rect x="2" y="2" width="16" height="16" rx="3" stroke={tool.color} strokeWidth="1.5" />
-          <path d="M6.5 10l2.5 2.5 4.5-5" stroke={tool.color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <rect x="2" y="2" width="16" height="16" rx="3" stroke={iconColor} strokeWidth="1.5" />
+          <path d="M6.5 10l2.5 2.5 4.5-5" stroke={iconColor} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
       <div>
@@ -490,7 +490,7 @@ export default async function FreeToolPage({ params }: PageProps) {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {tool.relatedTools.slice(0, 8).map((relSlug) => (
-                <RelatedToolCard key={relSlug} slug={relSlug} />
+                <RelatedToolCard key={relSlug} slug={relSlug} iconColor={tool.color} iconBg={tool.lightColor} />
               ))}
             </div>
           </div>
