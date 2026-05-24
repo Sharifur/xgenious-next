@@ -284,6 +284,7 @@ export const TOOLS: FreeTool[] = [
       { label: 'RFC 4648 — Base64 encoding specification', url: 'https://datatracker.ietf.org/doc/html/rfc4648' },
       { label: 'Base64 — MDN Web Docs', url: 'https://developer.mozilla.org/en-US/docs/Glossary/Base64' },
       { label: 'btoa() and atob() — MDN reference', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa' },
+      { label: 'RFC 2045 — MIME Base64 transfer encoding', url: 'https://datatracker.ietf.org/doc/html/rfc2045#section-6.8' },
     ],
   },
 
