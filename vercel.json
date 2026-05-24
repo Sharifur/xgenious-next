@@ -16,6 +16,8 @@
     { "source": "/ispmgr", "destination": "http://origin.xgenious.com/ispmgr" },
     { "source": "/ispmgr/:path*", "destination": "http://origin.xgenious.com/ispmgr/:path*" },
     { "source": "/images/:path*", "destination": "http://origin.xgenious.com/images/:path*" },
+    { "source": "/env-links", "destination": "http://origin.xgenious.com/env-links/" },
+    { "source": "/env-links/:path*", "destination": "http://origin.xgenious.com/env-links/:path*/" },
     { "source": "/wp-admin/:path*", "destination": "http://origin.xgenious.com/wp-admin/:path*" },
     { "source": "/wp-content/:path*", "destination": "http://origin.xgenious.com/wp-content/:path*" },
     { "source": "/wp-includes/:path*", "destination": "http://origin.xgenious.com/wp-includes/:path*" },
