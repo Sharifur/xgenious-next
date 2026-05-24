@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#f59e0b';
+const COLOR = '#f26b4e';
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
 
 export default function OvertimePayCalculator() {
@@ -60,19 +60,19 @@ export default function OvertimePayCalculator() {
           <div className="flex flex-col gap-1.5">
             <label className="text-[13px] font-semibold text-[#0F1112]">Hourly Wage ($)</label>
             <input type="number" value={baseWage} onChange={(e) => setBaseWage(e.target.value)} min={0}
-              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/10 transition-colors" />
+              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
           </div>
         ) : (
           <>
             <div className="flex flex-col gap-1.5">
               <label className="text-[13px] font-semibold text-[#0F1112]">Annual Salary ($)</label>
               <input type="number" value={annualSalary} onChange={(e) => setAnnualSalary(e.target.value)} min={0}
-                className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/10 transition-colors" />
+                className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
             </div>
             <div className="flex flex-col gap-1.5">
               <label className="text-[13px] font-semibold text-[#0F1112]">Standard Hours / Week</label>
               <input type="number" value={hoursPerWeek} onChange={(e) => setHoursPerWeek(e.target.value)} min={1}
-                className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/10 transition-colors" />
+                className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
             </div>
           </>
         )}
@@ -80,13 +80,13 @@ export default function OvertimePayCalculator() {
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Regular Hours Threshold</label>
           <input type="number" value={regularHours} onChange={(e) => setRegularHours(e.target.value)} min={1}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/10 transition-colors" />
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
         </div>
 
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Total Hours Worked This Week</label>
           <input type="number" value={totalHours} onChange={(e) => setTotalHours(e.target.value)} min={0}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/10 transition-colors" />
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
         </div>
 
         <div className="flex flex-col gap-1.5 sm:col-span-2">
@@ -108,7 +108,7 @@ export default function OvertimePayCalculator() {
         {[
           { label: 'Regular Pay', val: fmt(result.regularPay), color: '#6b7280' },
           { label: 'OT Hours', val: `${result.otHours}h`, color: COLOR },
-          { label: 'OT Rate', val: `${fmt(result.otRate)}/hr`, color: '#6366f1' },
+          { label: 'OT Rate', val: `${fmt(result.otRate)}/hr`, color: '#f26b4e' },
           { label: 'Total Weekly Pay', val: fmt(result.totalPay), color: '#22c55e' },
         ].map(({ label, val, color }) => (
           <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">

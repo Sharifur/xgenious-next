@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#6366f1';
+const COLOR = '#f26b4e';
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
 export default function LeadResponseTimeCalculator() {
@@ -42,7 +42,7 @@ export default function LeadResponseTimeCalculator() {
     { time: '> 1 hour', lift: 'High risk of losing lead', status: 'bad' },
   ];
 
-  const statusColor: Record<string, string> = { best: '#22c55e', good: '#10b981', ok: '#f59e0b', warn: '#ef4444', bad: '#dc2626' };
+  const statusColor: Record<string, string> = { best: '#22c55e', good: '#f26b4e', ok: '#f26b4e', warn: '#ef4444', bad: '#dc2626' };
 
   return (
     <div className="flex flex-col gap-5">
@@ -58,7 +58,7 @@ export default function LeadResponseTimeCalculator() {
           <div key={label} className="flex flex-col gap-1.5">
             <label className="text-[13px] font-semibold text-[#0F1112]">{label}</label>
             <input type="number" value={val} onChange={(e) => set(e.target.value)} min={0}
-              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-colors" />
+              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
           </div>
         ))}
       </div>

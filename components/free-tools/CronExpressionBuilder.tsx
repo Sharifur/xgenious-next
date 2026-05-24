@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#06b6d4';
+const COLOR = '#f26b4e';
 
 const PRESETS = [
   { label: 'Every minute', expr: '* * * * *' },
@@ -92,12 +92,12 @@ export default function CronExpressionBuilder() {
       <div className="flex flex-col gap-1.5">
         <div className="flex items-center justify-between">
           <label className="text-[13px] font-semibold text-[#0F1112]">Cron Expression</label>
-          <button onClick={copy} className="text-[12px] text-[#06b6d4] hover:underline">{copied ? 'Copied!' : 'Copy'}</button>
+          <button onClick={copy} className="text-[12px] text-[#f26b4e] hover:underline">{copied ? 'Copied!' : 'Copy'}</button>
         </div>
         <input
           type="text" value={expr} onChange={(e) => setExpr(e.target.value)}
           spellCheck={false}
-          className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[16px] font-mono text-[#0F1112] outline-none focus:border-[#06b6d4] focus:ring-2 focus:ring-[#06b6d4]/10 transition-colors tracking-widest"
+          className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[16px] font-mono text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors tracking-widest"
         />
         <div className="flex gap-2 text-[11px] text-[#9ca3af]">
           {['Minute', 'Hour', 'Day', 'Month', 'Weekday'].map((f) => (
@@ -120,7 +120,7 @@ export default function CronExpressionBuilder() {
             <button
               key={p.expr}
               onClick={() => setExpr(p.expr)}
-              className="px-3 py-1.5 rounded-full border border-[#E5E7EC] text-[12px] text-[#484848] hover:border-[#06b6d4] hover:text-[#06b6d4] transition-colors font-mono"
+              className="px-3 py-1.5 rounded-full border border-[#E5E7EC] text-[12px] text-[#484848] hover:border-[#f26b4e] hover:text-[#f26b4e] transition-colors font-mono"
             >
               {p.label}
             </button>

@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef } from 'react';
 
-const COLOR = '#8b5cf6';
+const COLOR = '#f26b4e';
 const ACCEPT = 'image/png';
 const FORMAT = 'avif';
 const MAX_MB = 10;
@@ -54,7 +54,7 @@ export default function PngToAvif() {
       <div
         onDrop={onDrop} onDragOver={(e) => e.preventDefault()}
         onClick={() => inputRef.current?.click()}
-        className="border-2 border-dashed border-[#E5E7EC] rounded-2xl p-10 flex flex-col items-center gap-3 cursor-pointer hover:border-[#8b5cf6] transition-colors"
+        className="border-2 border-dashed border-[#E5E7EC] rounded-2xl p-10 flex flex-col items-center gap-3 cursor-pointer hover:border-[#f26b4e] transition-colors"
       >
         <input ref={inputRef} type="file" accept={ACCEPT} className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); }} />
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke={COLOR} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -77,7 +77,7 @@ export default function PngToAvif() {
             <label className="text-[13px] font-medium text-[#0F1112]">Quality: {quality}%</label>
             <span className="text-[12px] text-[#9ca3af]">AVIF 70% ≈ JPEG 90% visually</span>
           </div>
-          <input type="range" min={1} max={100} value={quality} onChange={(e) => setQuality(+e.target.value)} className="w-full accent-[#8b5cf6]" />
+          <input type="range" min={1} max={100} value={quality} onChange={(e) => setQuality(+e.target.value)} className="w-full accent-[#f26b4e]" />
         </div>
       )}
 

@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#3b82f6';
+const COLOR = '#f26b4e';
 
 const fmt = (n: number) => {
   if (n === 0) return '$0.00';
@@ -56,7 +56,7 @@ const PROVIDER_COLORS: Record<string, string> = {
   Mistral:      '#ef4444',
 };
 
-const inputClass = 'rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#3b82f6] focus:ring-2 focus:ring-[#3b82f6]/10 transition-colors w-full';
+const inputClass = 'rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors w-full';
 
 export default function AiTokenCostCalculator() {
   const [selectedId, setSelectedId] = useState('gpt-5');
@@ -172,8 +172,8 @@ export default function AiTokenCostCalculator() {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {[
           { label: 'Cost / Request', val: fmt(result.costPerRequest), color: COLOR },
-          { label: 'Daily Cost', val: fmt(result.dailyCost), color: '#6366f1' },
-          { label: 'Monthly (30d)', val: fmt(result.monthlyCost), color: '#10b981' },
+          { label: 'Daily Cost', val: fmt(result.dailyCost), color: '#f26b4e' },
+          { label: 'Monthly (30d)', val: fmt(result.monthlyCost), color: '#f26b4e' },
         ].map(({ label, val, color }) => (
           <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
             <span className="text-[12px] text-[#6b7280]">{label}</span>

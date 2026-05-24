@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#0ea5e9';
+const COLOR = '#f26b4e';
 
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
@@ -31,7 +31,7 @@ export default function BuildVsBuyCalculator() {
     return (
       <div className="flex flex-col gap-1">
         <label className="text-[12px] font-semibold text-[#0F1112]">{label}</label>
-        <div className="flex items-center rounded-lg border border-[#E5E7EC] bg-white overflow-hidden focus-within:border-[#0ea5e9] focus-within:ring-2 focus-within:ring-[#0ea5e9]/20 transition-colors">
+        <div className="flex items-center rounded-lg border border-[#E5E7EC] bg-white overflow-hidden focus-within:border-[#f26b4e] focus-within:ring-2 focus-within:ring-[#f26b4e]/20 transition-colors">
           <span className="px-2.5 text-[#9ca3af] text-[13px]">{prefix}</span>
           <input type="number" value={val} onChange={(e) => set(e.target.value)} min={0} className="flex-1 py-2 text-[14px] text-[#0F1112] outline-none bg-white" />
         </div>
@@ -74,8 +74,8 @@ export default function BuildVsBuyCalculator() {
 
       <div className="grid sm:grid-cols-3 gap-4">
         {[
-          { label: `Build Total (${years}yr)`, val: result.buildTotal, color: '#6366f1', winner: result.winner === 'build' },
-          { label: `Buy Total (${years}yr)`, val: result.buyTotal, color: '#0ea5e9', winner: result.winner === 'buy' },
+          { label: `Build Total (${years}yr)`, val: result.buildTotal, color: '#f26b4e', winner: result.winner === 'build' },
+          { label: `Buy Total (${years}yr)`, val: result.buyTotal, color: '#f26b4e', winner: result.winner === 'buy' },
           { label: 'You Save', val: result.savings, color: '#22c55e', winner: true },
         ].map(({ label, val, color, winner }) => (
           <div
@@ -97,8 +97,8 @@ export default function BuildVsBuyCalculator() {
       <div
         className="rounded-xl p-4 text-[14px] font-medium"
         style={result.winner === 'build'
-          ? { background: '#ede9fe', color: '#6366f1' }
-          : { background: '#e0f2fe', color: '#0ea5e9' }
+          ? { background: '#ede9fe', color: '#f26b4e' }
+          : { background: '#e0f2fe', color: '#f26b4e' }
         }
       >
         Recommendation: <strong>{result.winner === 'build' ? 'Build in-house' : 'Buy / SaaS'}</strong> saves {fmt(result.savings)} over {years} year{years !== 1 ? 's' : ''}.

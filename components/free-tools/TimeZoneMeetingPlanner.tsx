@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#06b6d4';
+const COLOR = '#f26b4e';
 
 const TIMEZONES = [
   { label: 'UTC', offset: 0 },
@@ -67,14 +67,14 @@ export default function TimeZoneMeetingPlanner() {
           <div className="flex flex-col gap-1.5">
             <label className="text-[13px] font-semibold text-[#0F1112]">Base Time Zone</label>
             <select value={baseTzIdx} onChange={(e) => setBaseTzIdx(+e.target.value)}
-              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#06b6d4] focus:ring-2 focus:ring-[#06b6d4]/20 transition-colors">
+              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors">
               {TIMEZONES.map((tz, i) => <option key={i} value={i}>{tz.label} (UTC{tz.offset >= 0 ? '+' : ''}{tz.offset})</option>)}
             </select>
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="text-[13px] font-semibold text-[#0F1112]">Meeting Time: {String(baseHour).padStart(2, '0')}:00</label>
             <input type="range" min={0} max={23} value={baseHour} onChange={(e) => setBaseHour(+e.target.value)}
-              className="w-full accent-[#06b6d4] mt-2" />
+              className="w-full accent-[#f26b4e] mt-2" />
             <div className="flex justify-between text-[11px] text-[#9ca3af]"><span>00:00</span><span>23:00</span></div>
           </div>
         </div>
@@ -83,14 +83,14 @@ export default function TimeZoneMeetingPlanner() {
       <div className="bg-[#F5F6F8] rounded-2xl p-5 sm:p-6 flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <span className="text-[13px] font-semibold text-[#0F1112]">Participants</span>
-          <button onClick={addParticipant} className="text-[12px] text-[#06b6d4] hover:underline">+ Add</button>
+          <button onClick={addParticipant} className="text-[12px] text-[#f26b4e] hover:underline">+ Add</button>
         </div>
         {participants.map((p, i) => (
           <div key={i} className="flex gap-2 items-center">
             <input type="text" value={p.name} onChange={(e) => setParticipants((ps) => ps.map((x, idx) => idx === i ? { ...x, name: e.target.value } : x))}
-              className="flex-1 rounded-xl border border-[#E5E7EC] bg-white px-4 py-2.5 text-[14px] text-[#0F1112] outline-none focus:border-[#06b6d4] focus:ring-2 focus:ring-[#06b6d4]/20 transition-colors" />
+              className="flex-1 rounded-xl border border-[#E5E7EC] bg-white px-4 py-2.5 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
             <select value={p.tzIdx} onChange={(e) => setParticipants((ps) => ps.map((x, idx) => idx === i ? { ...x, tzIdx: +e.target.value } : x))}
-              className="flex-1 rounded-xl border border-[#E5E7EC] bg-white px-3 py-2.5 text-[14px] text-[#0F1112] outline-none focus:border-[#06b6d4] focus:ring-2 focus:ring-[#06b6d4]/20 transition-colors">
+              className="flex-1 rounded-xl border border-[#E5E7EC] bg-white px-3 py-2.5 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors">
               {TIMEZONES.map((tz, j) => <option key={j} value={j}>{tz.label}</option>)}
             </select>
             {participants.length > 1 && <button onClick={() => remove(i)} className="text-[#9ca3af] hover:text-red-400 transition-colors">×</button>}

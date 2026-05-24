@@ -42,7 +42,7 @@ export default function SaasRunwayCalculator() {
     return { runway, breakeven, netBurn, projections };
   }, [cash, mrr, burn, growthRate]);
 
-  const runwayColor = (r: number) => r === Infinity ? '#22c55e' : r >= 18 ? '#22c55e' : r >= 12 ? '#f59e0b' : '#ef4444';
+  const runwayColor = (r: number) => r === Infinity ? '#22c55e' : r >= 18 ? '#22c55e' : r >= 12 ? '#f26b4e' : '#ef4444';
 
   return (
     <div className="flex flex-col gap-5">

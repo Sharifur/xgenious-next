@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#6366f1';
+const COLOR = '#f26b4e';
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
 interface Tier { name: string; price: string; users: string; }
@@ -59,15 +59,15 @@ export default function SaasPricingCalculator() {
                 <tr key={i} className="border-b border-[#F5F6F8]">
                   <td className="py-2 pr-3">
                     <input type="text" value={t.name} onChange={(e) => updateTier(i, 'name', e.target.value)}
-                      className="w-full outline-none text-[13px] text-[#0F1112] border-b border-transparent focus:border-[#6366f1]" />
+                      className="w-full outline-none text-[13px] text-[#0F1112] border-b border-transparent focus:border-[#f26b4e]" />
                   </td>
                   <td className="py-2 pr-3">
                     <input type="number" value={tiers[i].price} onChange={(e) => updateTier(i, 'price', e.target.value)} min={0}
-                      className="w-24 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#6366f1]" />
+                      className="w-24 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#f26b4e]" />
                   </td>
                   <td className="py-2 pr-3">
                     <input type="number" value={tiers[i].users} onChange={(e) => updateTier(i, 'users', e.target.value)} min={0}
-                      className="w-24 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#6366f1]" />
+                      className="w-24 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#f26b4e]" />
                   </td>
                   <td className="py-2 text-right font-medium" style={{ color: COLOR }}>{fmt(t.mrr)}</td>
                 </tr>
@@ -81,20 +81,20 @@ export default function SaasPricingCalculator() {
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Annual Plan Discount (%)</label>
           <input type="number" value={annualDiscount} onChange={(e) => setAnnualDiscount(e.target.value)} min={0} max={100}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-colors" />
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
         </div>
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Monthly Churn Rate (%)</label>
           <input type="number" value={churn} onChange={(e) => setChurn(e.target.value)} min={0}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-colors" />
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
         </div>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {[
           { label: 'Total MRR', val: fmt(result.totalMrr), color: COLOR },
-          { label: 'ARR', val: fmt(result.arr), color: '#10b981' },
-          { label: 'Total Users', val: result.totalUsers.toString(), color: '#f59e0b' },
+          { label: 'ARR', val: fmt(result.arr), color: '#f26b4e' },
+          { label: 'Total Users', val: result.totalUsers.toString(), color: '#f26b4e' },
           { label: 'Avg LTV', val: result.ltv > 0 ? fmt(result.ltv) : '—', color: '#6b7280' },
         ].map(({ label, val, color }) => (
           <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
@@ -108,7 +108,7 @@ export default function SaasPricingCalculator() {
         <span className="text-[13px] font-semibold text-[#0F1112]">Revenue by Tier</span>
         {result.tierData.map((t, i) => {
           const pct = result.totalMrr > 0 ? (t.mrr / result.totalMrr) * 100 : 0;
-          const COLORS = [COLOR, '#10b981', '#f59e0b', '#ef4444'];
+          const COLORS = [COLOR, '#f26b4e', '#f26b4e', '#ef4444'];
           return (
             <div key={i} className="flex items-center gap-3">
               <span className="text-[12px] text-[#6b7280] w-20 shrink-0">{t.name}</span>

@@ -82,10 +82,10 @@ export default function CustomSoftwareRoiCalculator() {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {[
-          { label: 'ROI', val: `${result.roi.toFixed(0)}%`, color: result.roi > 100 ? '#22c55e' : result.roi > 0 ? '#f59e0b' : '#ef4444' },
+          { label: 'ROI', val: `${result.roi.toFixed(0)}%`, color: result.roi > 100 ? '#22c55e' : result.roi > 0 ? '#f26b4e' : '#ef4444' },
           { label: 'Net Benefit', val: fmt(result.netBenefit), color: result.netBenefit > 0 ? '#22c55e' : '#ef4444' },
           { label: 'Payback Period', val: result.paybackMonths > 0 ? `${result.paybackMonths.toFixed(1)} mo` : 'Immediate', color: COLOR },
-          { label: 'Annual Time Savings', val: fmt(result.annualTimeSavings), color: '#6366f1' },
+          { label: 'Annual Time Savings', val: fmt(result.annualTimeSavings), color: '#f26b4e' },
         ].map(({ label, val, color }) => (
           <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
             <span className="text-[12px] text-[#6b7280]">{label}</span>

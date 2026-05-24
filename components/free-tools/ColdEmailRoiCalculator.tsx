@@ -32,10 +32,10 @@ export default function ColdEmailRoiCalculator() {
   }, [emailsSent, openRate, replyRate, meetingRate, closeRate, dealValue, costPerEmail, toolCost]);
 
   const funnel = [
-    { label: 'Emails Sent', val: parseFloat(emailsSent) || 0, color: '#6366f1' },
-    { label: 'Opened', val: result.opens, color: '#06b6d4' },
-    { label: 'Replied', val: result.replies, color: '#f59e0b' },
-    { label: 'Meetings Booked', val: result.meetings, color: '#10b981' },
+    { label: 'Emails Sent', val: parseFloat(emailsSent) || 0, color: '#f26b4e' },
+    { label: 'Opened', val: result.opens, color: '#f26b4e' },
+    { label: 'Replied', val: result.replies, color: '#f26b4e' },
+    { label: 'Meetings Booked', val: result.meetings, color: '#f26b4e' },
     { label: 'Deals Closed', val: result.closed, color: COLOR },
   ];
 

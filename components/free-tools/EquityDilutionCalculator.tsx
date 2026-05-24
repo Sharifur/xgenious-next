@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#6366f1';
+const COLOR = '#f26b4e';
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
 interface Round { name: string; investment: string; preMoneyVal: string; }
@@ -48,31 +48,31 @@ export default function EquityDilutionCalculator() {
       <div className="flex flex-col gap-1.5">
         <label className="text-[13px] font-semibold text-[#0F1112]">Founder Shares at Incorporation</label>
         <input type="number" value={founderShares} onChange={(e) => setFounderShares(e.target.value)} min={0}
-          className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-colors" />
+          className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
       </div>
 
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <h3 className="text-[14px] font-semibold text-[#0F1112]">Funding Rounds</h3>
-          <button onClick={addRound} className="text-[12px] text-[#6366f1] hover:underline">+ Add Round</button>
+          <button onClick={addRound} className="text-[12px] text-[#f26b4e] hover:underline">+ Add Round</button>
         </div>
         {rounds.map((r, i) => (
           <div key={i} className="grid sm:grid-cols-3 gap-3 items-end p-4 rounded-xl border border-[#E5E7EC]">
             <div className="flex flex-col gap-1">
               <label className="text-[12px] text-[#0F1112]">Round Name</label>
               <input type="text" value={r.name} onChange={(e) => update(i, 'name', e.target.value)}
-                className="rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-colors" />
+                className="rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
             </div>
             <div className="flex flex-col gap-1">
               <label className="text-[12px] text-[#0F1112]">Investment ($)</label>
               <input type="number" value={r.investment} onChange={(e) => update(i, 'investment', e.target.value)} min={0}
-                className="rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-colors" />
+                className="rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
             </div>
             <div className="flex gap-2 items-end">
               <div className="flex-1 flex flex-col gap-1">
                 <label className="text-[12px] text-[#0F1112]">Pre-Money Valuation ($)</label>
                 <input type="number" value={r.preMoneyVal} onChange={(e) => update(i, 'preMoneyVal', e.target.value)} min={0}
-                  className="rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-colors" />
+                  className="rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
               </div>
               {rounds.length > 1 && (
                 <button onClick={() => removeRound(i)} className="text-[#9ca3af] hover:text-red-400 transition-colors pb-2 text-[16px]">×</button>
@@ -85,8 +85,8 @@ export default function EquityDilutionCalculator() {
       <div className="grid sm:grid-cols-3 gap-3">
         {[
           { label: 'Founder Ownership', val: `${result.founderPct.toFixed(2)}%`, color: COLOR },
-          { label: 'Last Post-Money Valuation', val: result.lastPostMoney > 0 ? fmt(result.lastPostMoney) : '—', color: '#10b981' },
-          { label: "Founder's Share Value", val: result.founderValue > 0 ? fmt(result.founderValue) : '—', color: '#f59e0b' },
+          { label: 'Last Post-Money Valuation', val: result.lastPostMoney > 0 ? fmt(result.lastPostMoney) : '—', color: '#f26b4e' },
+          { label: "Founder's Share Value", val: result.founderValue > 0 ? fmt(result.founderValue) : '—', color: '#f26b4e' },
         ].map(({ label, val, color }) => (
           <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
             <span className="text-[12px] text-[#6b7280]">{label}</span>

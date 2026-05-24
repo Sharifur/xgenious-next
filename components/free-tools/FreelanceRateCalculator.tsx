@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#f59e0b';
+const COLOR = '#f26b4e';
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
 export default function FreelanceRateCalculator() {
@@ -50,7 +50,7 @@ export default function FreelanceRateCalculator() {
           <div key={label} className="flex flex-col gap-1.5">
             <label className="text-[13px] font-semibold text-[#0F1112]">{label}</label>
             <input type="number" value={val} onChange={(e) => set(e.target.value)} min={0}
-              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/10 transition-colors" />
+              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
           </div>
         ))}
       </div>
@@ -64,8 +64,8 @@ export default function FreelanceRateCalculator() {
       <div className="grid sm:grid-cols-3 gap-3">
         {[
           { label: 'Gross Revenue Needed', val: fmt(result.withBuffer), color: COLOR },
-          { label: 'Billable Hours / Year', val: result.totalBillableHours.toString(), color: '#6366f1' },
-          { label: 'Utilization Rate', val: `${result.utilization.toFixed(0)}%`, color: '#10b981' },
+          { label: 'Billable Hours / Year', val: result.totalBillableHours.toString(), color: '#f26b4e' },
+          { label: 'Utilization Rate', val: `${result.utilization.toFixed(0)}%`, color: '#f26b4e' },
         ].map(({ label, val, color }) => (
           <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
             <span className="text-[12px] text-[#6b7280]">{label}</span>

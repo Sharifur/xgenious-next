@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#6366f1';
+const COLOR = '#f26b4e';
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
 export default function CustomerLtvCalculator() {
@@ -52,7 +52,7 @@ export default function CustomerLtvCalculator() {
           <div key={label} className="flex flex-col gap-1.5">
             <label className="text-[13px] font-semibold text-[#0F1112]">{label}</label>
             <input type="number" value={val} onChange={(e) => set(e.target.value)} min={0} placeholder={ph}
-              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-colors" />
+              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
           </div>
         ))}
       </div>
@@ -60,11 +60,11 @@ export default function CustomerLtvCalculator() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {[
           { label: 'Simple LTV', val: fmt(result.simpleLtv), color: COLOR, note: 'ARPU / churn rate' },
-          { label: 'LTV (with margin)', val: fmt(result.marginLtv), color: '#10b981', note: `at ${grossMargin}% gross margin` },
-          ...(model === 'advanced' ? [{ label: 'Discounted LTV', val: fmt(result.discountedLtv), color: '#f59e0b', note: `${discountRate}% discount rate` }] : []),
+          { label: 'LTV (with margin)', val: fmt(result.marginLtv), color: '#f26b4e', note: `at ${grossMargin}% gross margin` },
+          ...(model === 'advanced' ? [{ label: 'Discounted LTV', val: fmt(result.discountedLtv), color: '#f26b4e', note: `${discountRate}% discount rate` }] : []),
           { label: 'Avg Customer Lifetime', val: `${result.avgLifeMonths.toFixed(1)} months`, color: '#6b7280', note: '' },
-          { label: 'LTV:CAC Ratio', val: result.ltvCacRatio.toFixed(2) + '×', color: result.ltvCacRatio >= 3 ? '#22c55e' : result.ltvCacRatio >= 1 ? '#f59e0b' : '#ef4444', note: 'target: 3×' },
-          { label: 'CAC Payback Period', val: `${result.paybackMonths.toFixed(1)} months`, color: '#0ea5e9', note: '' },
+          { label: 'LTV:CAC Ratio', val: result.ltvCacRatio.toFixed(2) + '×', color: result.ltvCacRatio >= 3 ? '#22c55e' : result.ltvCacRatio >= 1 ? '#f26b4e' : '#ef4444', note: 'target: 3×' },
+          { label: 'CAC Payback Period', val: `${result.paybackMonths.toFixed(1)} months`, color: '#f26b4e', note: '' },
         ].map(({ label, val, color, note }) => (
           <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
             <span className="text-[12px] text-[#6b7280]">{label}</span>

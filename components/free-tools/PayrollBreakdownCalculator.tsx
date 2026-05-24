@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#7c3aed';
+const COLOR = '#f26b4e';
 
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
 
@@ -45,7 +45,7 @@ export default function PayrollBreakdownCalculator() {
       <div className="grid sm:grid-cols-2 gap-4 p-5 bg-[#F5F6F8] rounded-2xl">
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Gross Salary</label>
-          <div className="flex items-center rounded-xl border border-[#E5E7EC] bg-white overflow-hidden focus-within:border-[#6366f1] focus-within:ring-2 focus-within:ring-[#6366f1]/10 transition-colors">
+          <div className="flex items-center rounded-xl border border-[#E5E7EC] bg-white overflow-hidden focus-within:border-[#f26b4e] focus-within:ring-2 focus-within:ring-[#f26b4e]/10 transition-colors">
             <span className="px-3 text-[#6b7280] text-[14px]">$</span>
             <input
               type="number" value={gross} onChange={(e) => setGross(e.target.value)}
@@ -58,7 +58,7 @@ export default function PayrollBreakdownCalculator() {
           <label className="text-[13px] font-semibold text-[#0F1112]">Pay Period</label>
           <select
             value={period} onChange={(e) => setPeriod(e.target.value as typeof period)}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/10 transition-colors"
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors"
           >
             <option value="annual">Annual</option>
             <option value="monthly">Monthly</option>
@@ -77,7 +77,7 @@ export default function PayrollBreakdownCalculator() {
             <label className="text-[13px] font-semibold text-[#0F1112]">{label}</label>
             <input
               type="number" value={val} onChange={(e) => set(e.target.value)} min={0}
-              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/10 transition-colors"
+              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors"
             />
           </div>
         ))}

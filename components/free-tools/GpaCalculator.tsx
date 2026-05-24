@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const COLOR = '#10b981';
+const COLOR = '#f26b4e';
 
 const GRADE_POINTS: Record<string, number> = {
   'A+': 4.0, 'A': 4.0, 'A-': 3.7,
@@ -14,8 +14,8 @@ interface Course { name: string; grade: string; credits: string; }
 
 function gpaColor(gpa: number) {
   if (gpa >= 3.7) return '#22c55e';
-  if (gpa >= 3.0) return '#3b82f6';
-  if (gpa >= 2.0) return '#f59e0b';
+  if (gpa >= 3.0) return '#f26b4e';
+  if (gpa >= 2.0) return '#f26b4e';
   return '#ef4444';
 }
 
@@ -55,13 +55,13 @@ export default function GpaCalculator() {
                   <input
                     type="text" value={c.name} onChange={(e) => update(i, 'name', e.target.value)}
                     placeholder={`Course ${i + 1}`}
-                    className="w-full rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] placeholder:text-[#9ca3af] outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-colors"
+                    className="w-full rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] placeholder:text-[#9ca3af] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors"
                   />
                 </td>
                 <td className="py-2 pr-3">
                   <select
                     value={c.grade} onChange={(e) => update(i, 'grade', e.target.value)}
-                    className="w-full rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-colors"
+                    className="w-full rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors"
                   >
                     {Object.keys(GRADE_POINTS).map((g) => <option key={g} value={g}>{g} ({GRADE_POINTS[g].toFixed(1)})</option>)}
                   </select>
@@ -70,7 +70,7 @@ export default function GpaCalculator() {
                   <input
                     type="number" value={c.credits} onChange={(e) => update(i, 'credits', e.target.value)}
                     min={0} max={12} step={0.5}
-                    className="w-20 rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-colors"
+                    className="w-20 rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors"
                   />
                 </td>
                 <td className="py-2">
@@ -86,7 +86,7 @@ export default function GpaCalculator() {
 
       <button
         onClick={addRow}
-        className="self-start text-[13px] font-medium border border-dashed border-[#E5E7EC] rounded-lg px-4 py-2 text-[#484848] hover:border-[#10b981] hover:text-[#10b981] transition-colors"
+        className="self-start text-[13px] font-medium border border-dashed border-[#E5E7EC] rounded-lg px-4 py-2 text-[#484848] hover:border-[#f26b4e] hover:text-[#f26b4e] transition-colors"
       >
         + Add Course
       </button>

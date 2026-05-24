@@ -9,10 +9,10 @@ const ADJECTIVES = ['Smart', 'Fast', 'Simple', 'Clean', 'Next', 'Best', 'Real', 
 const NOUNS = ['Team', 'Work', 'Task', 'Project', 'Flow', 'Data', 'Cloud', 'Loop', 'Bridge', 'Stream'];
 
 const INDUSTRIES: Record<string, { words: string[]; color: string }> = {
-  'Tech / SaaS': { words: ['Tech', 'Dev', 'Code', 'Digital', 'Byte', 'Cloud', 'Stack', 'Logic', 'Data', 'Pixel'], color: '#3b82f6' },
+  'Tech / SaaS': { words: ['Tech', 'Dev', 'Code', 'Digital', 'Byte', 'Cloud', 'Stack', 'Logic', 'Data', 'Pixel'], color: '#f26b4e' },
   'Marketing': { words: ['Media', 'Brand', 'Reach', 'Growth', 'Click', 'Social', 'Ad', 'Campaign', 'Lead', 'Funnel'], color: '#f26b4e' },
-  'HR / People': { words: ['People', 'Talent', 'Hire', 'Recruit', 'Workforce', 'Culture', 'Team', 'HR', 'Engage', 'Scout'], color: '#10b981' },
-  'Finance': { words: ['Finance', 'Capital', 'Funds', 'Invest', 'Pay', 'Wealth', 'Asset', 'Revenue', 'Profit', 'Ledger'], color: '#6366f1' },
+  'HR / People': { words: ['People', 'Talent', 'Hire', 'Recruit', 'Workforce', 'Culture', 'Team', 'HR', 'Engage', 'Scout'], color: '#f26b4e' },
+  'Finance': { words: ['Finance', 'Capital', 'Funds', 'Invest', 'Pay', 'Wealth', 'Asset', 'Revenue', 'Profit', 'Ledger'], color: '#f26b4e' },
   'Health': { words: ['Health', 'Care', 'Med', 'Vital', 'Well', 'Life', 'Clinic', 'Fit', 'Heal', 'Balance'], color: '#22c55e' },
 };
 

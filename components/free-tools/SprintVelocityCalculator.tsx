@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#6366f1';
+const COLOR = '#f26b4e';
 
 interface Sprint { label: string; planned: string; completed: string; }
 
@@ -45,7 +45,7 @@ export default function SprintVelocityCalculator() {
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <h3 className="text-[14px] font-semibold text-[#0F1112]">Sprint History</h3>
-          <button onClick={addSprint} className="text-[12px] text-[#6366f1] hover:underline">+ Add Sprint</button>
+          <button onClick={addSprint} className="text-[12px] text-[#f26b4e] hover:underline">+ Add Sprint</button>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-[13px]">
@@ -65,17 +65,17 @@ export default function SprintVelocityCalculator() {
                   <tr key={i} className="border-b border-[#F5F6F8]">
                     <td className="py-2 pr-4">
                       <input type="text" value={s.label} onChange={(e) => update(i, 'label', e.target.value)}
-                        className="outline-none text-[13px] text-[#0F1112] border-b border-transparent focus:border-[#6366f1] w-20" />
+                        className="outline-none text-[13px] text-[#0F1112] border-b border-transparent focus:border-[#f26b4e] w-20" />
                     </td>
                     <td className="py-2 pr-4">
                       <input type="number" value={s.planned} onChange={(e) => update(i, 'planned', e.target.value)} min={0}
-                        className="w-16 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#6366f1]" />
+                        className="w-16 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#f26b4e]" />
                     </td>
                     <td className="py-2 pr-4">
                       <input type="number" value={s.completed} onChange={(e) => update(i, 'completed', e.target.value)} min={0}
-                        className="w-16 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#6366f1]" />
+                        className="w-16 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#f26b4e]" />
                     </td>
-                    <td className="py-2 pr-4 text-[13px] font-medium" style={{ color: pct >= 100 ? '#22c55e' : pct >= 80 ? '#f59e0b' : '#ef4444' }}>
+                    <td className="py-2 pr-4 text-[13px] font-medium" style={{ color: pct >= 100 ? '#22c55e' : pct >= 80 ? '#f26b4e' : '#ef4444' }}>
                       {planned > 0 ? `${pct.toFixed(0)}%` : '—'}
                     </td>
                     <td className="py-2">
@@ -93,12 +93,12 @@ export default function SprintVelocityCalculator() {
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Remaining Backlog (points)</label>
           <input type="number" value={backlogPoints} onChange={(e) => setBacklogPoints(e.target.value)} min={0}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-colors" />
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
         </div>
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Sprint Duration (days)</label>
           <input type="number" value={sprintDays} onChange={(e) => setSprintDays(e.target.value)} min={1}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-colors" />
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
         </div>
       </div>
 
@@ -106,7 +106,7 @@ export default function SprintVelocityCalculator() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             { label: 'Avg Velocity', val: `${result.avg.toFixed(1)} pts/sprint`, color: COLOR },
-            { label: 'Completion Rate', val: `${result.completionRate.toFixed(0)}%`, color: result.completionRate >= 90 ? '#22c55e' : '#f59e0b' },
+            { label: 'Completion Rate', val: `${result.completionRate.toFixed(0)}%`, color: result.completionRate >= 90 ? '#22c55e' : '#f26b4e' },
             { label: 'Sprints to Clear Backlog', val: `${result.sprintsNeeded}`, color: '#f26b4e' },
             { label: 'Days to Release', val: `~${result.daysNeeded} days`, color: '#6b7280' },
           ].map(({ label, val, color }) => (

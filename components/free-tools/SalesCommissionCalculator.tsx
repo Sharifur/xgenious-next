@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#22c55e';
+const COLOR = '#f26b4e';
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
 interface Deal { name: string; value: string; closed: boolean; }
@@ -80,8 +80,8 @@ export default function SalesCommissionCalculator() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {[
           { label: 'Commission Earned', val: fmt(result.commission), color: COLOR },
-          { label: 'Total Comp', val: fmt(result.total), color: '#6366f1' },
-          { label: 'Quota Attainment', val: `${result.attainment.toFixed(0)}%`, color: result.attainment >= 100 ? '#22c55e' : result.attainment >= 80 ? '#f59e0b' : '#ef4444' },
+          { label: 'Total Comp', val: fmt(result.total), color: '#f26b4e' },
+          { label: 'Quota Attainment', val: `${result.attainment.toFixed(0)}%`, color: result.attainment >= 100 ? '#22c55e' : result.attainment >= 80 ? '#f26b4e' : '#ef4444' },
           { label: 'OTE (100% quota)', val: fmt(result.ote), color: '#6b7280' },
         ].map(({ label, val, color }) => (
           <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
@@ -94,12 +94,12 @@ export default function SalesCommissionCalculator() {
       <div className="rounded-xl border border-[#E5E7EC] bg-[#F5F6F8] p-4 flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <span className="text-[13px] font-medium text-[#0F1112]">Quota Attainment</span>
-          <span className="text-[13px]" style={{ color: result.attainment >= 100 ? '#22c55e' : '#f59e0b' }}>{result.attainment.toFixed(1)}%</span>
+          <span className="text-[13px]" style={{ color: result.attainment >= 100 ? '#22c55e' : '#f26b4e' }}>{result.attainment.toFixed(1)}%</span>
         </div>
         <div className="h-3 bg-[#E5E7EC] rounded-full overflow-hidden">
           <div className="h-full rounded-full transition-all" style={{
             width: `${Math.min(result.attainment, 100)}%`,
-            background: result.attainment >= 100 ? COLOR : '#f59e0b'
+            background: result.attainment >= 100 ? COLOR : '#f26b4e'
           }} />
         </div>
         {model === 'tiered' && (

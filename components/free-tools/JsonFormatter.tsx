@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const COLOR = '#3b82f6';
+const COLOR = '#f26b4e';
 
 export default function JsonFormatter() {
   const [input, setInput] = useState('');
@@ -74,14 +74,14 @@ export default function JsonFormatter() {
             onChange={(e) => setInput(e.target.value)}
             placeholder='{"key": "value"}'
             rows={14}
-            className="w-full rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none resize-y focus:border-[#3b82f6] focus:ring-2 focus:ring-[#3b82f6]/10 transition-colors"
+            className="w-full rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none resize-y focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors"
           />
         </div>
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center justify-between">
             <label className="text-[13px] font-semibold text-[#0F1112]">Output</label>
             {output && (
-              <button onClick={copy} className="text-[12px] text-[#3b82f6] hover:underline">
+              <button onClick={copy} className="text-[12px] text-[#f26b4e] hover:underline">
                 {copied ? 'Copied!' : 'Copy'}
               </button>
             )}

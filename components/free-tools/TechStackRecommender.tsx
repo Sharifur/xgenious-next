@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const COLOR = '#3b82f6';
+const COLOR = '#f26b4e';
 
 interface Stack {
   name: string;
@@ -67,7 +67,7 @@ export default function TechStackRecommender() {
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Project Type</label>
           <select value={projectType} onChange={(e) => setProjectType(e.target.value)}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#3b82f6] focus:ring-2 focus:ring-[#3b82f6]/20 transition-colors">
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors">
             {Object.keys(STACKS).map((k) => <option key={k}>{k}</option>)}
           </select>
         </div>

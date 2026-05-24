@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#6366f1';
+const COLOR = '#f26b4e';
 
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
@@ -56,24 +56,24 @@ export default function SalesPipelineCalculator() {
               <tr key={i} className="border-b border-[#F5F6F8]">
                 <td className="py-2 pr-3">
                   <input type="text" value={s.name} onChange={(e) => update(i, 'name', e.target.value)}
-                    className="w-full outline-none text-[13px] text-[#0F1112] border-b border-transparent focus:border-[#059669]" />
+                    className="w-full outline-none text-[13px] text-[#0F1112] border-b border-transparent focus:border-[#f26b4e]" />
                 </td>
                 <td className="py-2 pr-3 text-right">
                   {i === 0 ? (
                     <input type="number" value={stages[0].leads} onChange={(e) => update(0, 'leads', e.target.value)}
-                      className="w-20 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#059669]" />
+                      className="w-20 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#f26b4e]" />
                   ) : (
                     <span className="text-[#6b7280]">{s.computedLeads}</span>
                   )}
                 </td>
                 <td className="py-2 pr-3 text-right">
                   <input type="number" value={s.convRate} onChange={(e) => update(i, 'convRate', e.target.value)} min={0} max={100}
-                    className="w-16 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#059669]" />
+                    className="w-16 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#f26b4e]" />
                 </td>
                 <td className="py-2 pr-3 text-right">
                   <input type="number" value={s.avgDeal} onChange={(e) => update(i, 'avgDeal', e.target.value)} min={0}
                     placeholder="—"
-                    className="w-24 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#059669] placeholder:text-[#9ca3af]" />
+                    className="w-24 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#f26b4e] placeholder:text-[#9ca3af]" />
                 </td>
                 <td className="py-2 text-right text-[13px] font-medium" style={{ color: s.revenue > 0 ? COLOR : '#9ca3af' }}>
                   {s.revenue > 0 ? fmt(s.revenue) : '—'}
@@ -88,7 +88,7 @@ export default function SalesPipelineCalculator() {
         {[
           { label: 'Pipeline Revenue', val: fmt(totalRevenue), color: COLOR },
           { label: 'End-to-End Conv.', val: `${finalConv.toFixed(1)}%`, color: '#22c55e' },
-          { label: 'Closed Won', val: String(chain[chain.length - 1]?.converted ?? 0), color: '#f59e0b' },
+          { label: 'Closed Won', val: String(chain[chain.length - 1]?.converted ?? 0), color: '#f26b4e' },
         ].map(({ label, val, color }) => (
           <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
             <span className="text-[12px] text-[#6b7280]">{label}</span>

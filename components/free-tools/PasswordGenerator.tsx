@@ -1,7 +1,7 @@
 'use client';
 import { useState, useCallback, useEffect } from 'react';
 
-const COLOR = '#8b5cf6';
+const COLOR = '#f26b4e';
 
 const SETS = {
   upper:   'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -40,8 +40,8 @@ function secureGenerate(charset: string, len: number): string {
 function strengthInfo(pwd: string, poolSize: number) {
   const bits = pwd.length * Math.log2(poolSize || 1);
   if (bits < 40)  return { label: 'Weak',      color: '#ef4444', bg: '#fef2f2', pct: 20,  bits };
-  if (bits < 70)  return { label: 'Fair',       color: '#f59e0b', bg: '#fffbeb', pct: 50,  bits };
-  if (bits < 100) return { label: 'Strong',     color: '#3b82f6', bg: '#eff6ff', pct: 80,  bits };
+  if (bits < 70)  return { label: 'Fair',       color: '#f26b4e', bg: '#fffbeb', pct: 50,  bits };
+  if (bits < 100) return { label: 'Strong',     color: '#f26b4e', bg: '#eff6ff', pct: 80,  bits };
   return              { label: 'Excellent',  color: '#22c55e', bg: '#f0fdf4', pct: 100, bits };
 }
 
@@ -91,7 +91,7 @@ export default function PasswordGenerator() {
               onClick={generate}
               disabled={!charset}
               title="Regenerate"
-              className="w-8 h-8 rounded-full border border-[#E5E7EC] flex items-center justify-center text-[#6b7280] hover:border-[#8b5cf6] hover:text-[#8b5cf6] transition-colors disabled:opacity-40 cursor-pointer"
+              className="w-8 h-8 rounded-full border border-[#E5E7EC] flex items-center justify-center text-[#6b7280] hover:border-[#f26b4e] hover:text-[#f26b4e] transition-colors disabled:opacity-40 cursor-pointer"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -101,7 +101,7 @@ export default function PasswordGenerator() {
               onClick={copy}
               disabled={!password}
               className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13px] font-semibold text-white transition-all disabled:opacity-40 cursor-pointer"
-              style={copied ? { background: '#22c55e' } : { background: `linear-gradient(135deg, ${COLOR} 0%, #7c3aed 100%)` }}
+              style={copied ? { background: '#22c55e' } : { background: `linear-gradient(135deg, ${COLOR} 0%, #f26b4e 100%)` }}
             >
               {copied
                 ? <><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>Copied</>
@@ -127,9 +127,9 @@ export default function PasswordGenerator() {
           <span className="text-[13px] font-medium text-[#0F1112] shrink-0 w-[155px]">
             Password length: <strong style={{ color: COLOR }}>{length}</strong>
           </span>
-          <button onClick={() => setLength((l) => Math.max(8, l - 1))} className="w-7 h-7 rounded-full border border-[#E5E7EC] flex items-center justify-center text-[#484848] text-[16px] hover:border-[#8b5cf6] transition-colors shrink-0 cursor-pointer">−</button>
-          <input type="range" min={8} max={128} value={length} onChange={(e) => setLength(+e.target.value)} className="flex-1 accent-[#8b5cf6] h-1" />
-          <button onClick={() => setLength((l) => Math.min(128, l + 1))} className="w-7 h-7 rounded-full border border-[#E5E7EC] flex items-center justify-center text-[#484848] text-[16px] hover:border-[#8b5cf6] transition-colors shrink-0 cursor-pointer">+</button>
+          <button onClick={() => setLength((l) => Math.max(8, l - 1))} className="w-7 h-7 rounded-full border border-[#E5E7EC] flex items-center justify-center text-[#484848] text-[16px] hover:border-[#f26b4e] transition-colors shrink-0 cursor-pointer">−</button>
+          <input type="range" min={8} max={128} value={length} onChange={(e) => setLength(+e.target.value)} className="flex-1 accent-[#f26b4e] h-1" />
+          <button onClick={() => setLength((l) => Math.min(128, l + 1))} className="w-7 h-7 rounded-full border border-[#E5E7EC] flex items-center justify-center text-[#484848] text-[16px] hover:border-[#f26b4e] transition-colors shrink-0 cursor-pointer">+</button>
         </div>
 
         {/* Character types */}
@@ -176,7 +176,7 @@ export default function PasswordGenerator() {
             onClick={generate}
             disabled={!charset}
             className="flex items-center justify-center gap-2 px-8 py-2.5 rounded-xl text-white text-[13px] font-semibold transition-all hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none cursor-pointer"
-            style={{ background: `linear-gradient(135deg, ${COLOR} 0%, #7c3aed 100%)`, boxShadow: `0 4px 14px ${COLOR}40` }}
+            style={{ background: `linear-gradient(135deg, ${COLOR} 0%, #f26b4e 100%)`, boxShadow: `0 4px 14px ${COLOR}40` }}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
               <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
