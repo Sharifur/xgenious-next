@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#ef4444';
+const COLOR = '#f26b4e';
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
 interface Channel { name: string; spend: string; customers: string; }
@@ -105,8 +105,8 @@ export default function CacCalculator() {
         {[
           { label: 'Overall CAC', val: fmt(result.overallCac), color: COLOR },
           { label: 'Total Spend', val: fmt(result.totalSpend), color: '#6b7280' },
-          { label: 'LTV:CAC Ratio', val: `${result.ltvCacRatio.toFixed(1)}×`, color: result.ltvCacRatio >= 3 ? '#22c55e' : result.ltvCacRatio >= 1 ? '#f59e0b' : '#ef4444' },
-          { label: 'Payback Period', val: `${result.paybackMonths.toFixed(1)} mo`, color: '#6366f1' },
+          { label: 'LTV:CAC Ratio', val: `${result.ltvCacRatio.toFixed(1)}×`, color: result.ltvCacRatio >= 3 ? '#22c55e' : result.ltvCacRatio >= 1 ? '#f26b4e' : '#ef4444' },
+          { label: 'Payback Period', val: `${result.paybackMonths.toFixed(1)} mo`, color: '#f26b4e' },
         ].map(({ label, val, color }) => (
           <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
             <span className="text-[12px] text-[#6b7280]">{label}</span>

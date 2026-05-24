@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#3b82f6';
+const COLOR = '#f26b4e';
 
 const fmt = (n: number) => {
   if (n === 0) return '$0.00';
@@ -56,7 +56,7 @@ const PROVIDER_COLORS: Record<string, string> = {
   Mistral:      '#ef4444',
 };
 
-const inputClass = 'rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#3b82f6] focus:ring-2 focus:ring-[#3b82f6]/10 transition-colors w-full';
+const inputClass = 'rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors w-full';
 
 export default function AiTokenCostCalculator() {
   const [selectedId, setSelectedId] = useState('gpt-5');
@@ -64,6 +64,7 @@ export default function AiTokenCostCalculator() {
   const [outputTokens, setOutputTokens] = useState('500');
   const [requestsPerDay, setRequestsPerDay] = useState('1000');
   const [useCustom, setUseCustom] = useState(false);
+  const [showComparison, setShowComparison] = useState(false);
   const [customInput, setCustomInput] = useState('');
   const [customOutput, setCustomOutput] = useState('');
 
@@ -96,27 +97,29 @@ export default function AiTokenCostCalculator() {
   return (
     <div className="flex flex-col gap-5">
       {/* Model selector */}
-      <div className="flex flex-col gap-4 p-5 bg-[#F5F6F8] rounded-2xl">
-        <span className="text-[13px] font-semibold text-[#0F1112]">Select AI Model</span>
-        {PROVIDERS.map((provider) => (
-          <div key={provider} className="flex flex-col gap-1.5">
-            <span className="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider">{provider}</span>
-            <div className="flex flex-wrap gap-2">
-              {MODELS.filter((m) => m.provider === provider).map((m) => (
-                <button
-                  key={m.id}
-                  onClick={() => setSelectedId(m.id)}
-                  className="px-3 py-1.5 rounded-lg border text-[12px] font-medium transition-all active:scale-95"
-                  style={selectedId === m.id
-                    ? { borderColor: PROVIDER_COLORS[provider], background: `${PROVIDER_COLORS[provider]}18`, color: PROVIDER_COLORS[provider] }
-                    : { borderColor: '#E5E7EC', color: '#484848' }}
-                >
-                  {m.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className="flex flex-col gap-2">
+        <label className="text-[13px] font-semibold text-[#0F1112]">Select AI Model</label>
+        <div className="flex items-center gap-3">
+          <select
+            value={selectedId}
+            onChange={(e) => setSelectedId(e.target.value)}
+            className="flex-1 rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors cursor-pointer"
+          >
+            {PROVIDERS.map((provider) => (
+              <optgroup key={provider} label={provider}>
+                {MODELS.filter((m) => m.provider === provider).map((m) => (
+                  <option key={m.id} value={m.id}>{m.label}</option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+          <span
+            className="shrink-0 inline-flex items-center px-3 py-1.5 rounded-lg text-[12px] font-semibold"
+            style={{ background: `${PROVIDER_COLORS[model.provider]}18`, color: PROVIDER_COLORS[model.provider] }}
+          >
+            {model.provider}
+          </span>
+        </div>
       </div>
 
       {/* Inputs */}
@@ -138,7 +141,7 @@ export default function AiTokenCostCalculator() {
             <label className="text-[13px] font-semibold text-[#0F1112]">Custom Pricing</label>
             <button
               onClick={() => setUseCustom((v) => !v)}
-              className="text-[11px] font-medium px-2 py-1 rounded-lg border transition-colors"
+              className="text-[11px] font-medium px-2 py-1 rounded-lg border transition-colors cursor-pointer"
               style={useCustom
                 ? { borderColor: COLOR, background: `${COLOR}15`, color: COLOR }
                 : { borderColor: '#E5E7EC', color: '#9ca3af' }}
@@ -172,8 +175,8 @@ export default function AiTokenCostCalculator() {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {[
           { label: 'Cost / Request', val: fmt(result.costPerRequest), color: COLOR },
-          { label: 'Daily Cost', val: fmt(result.dailyCost), color: '#6366f1' },
-          { label: 'Monthly (30d)', val: fmt(result.monthlyCost), color: '#10b981' },
+          { label: 'Daily Cost', val: fmt(result.dailyCost), color: '#f26b4e' },
+          { label: 'Monthly (30d)', val: fmt(result.monthlyCost), color: '#f26b4e' },
         ].map(({ label, val, color }) => (
           <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
             <span className="text-[12px] text-[#6b7280]">{label}</span>
@@ -198,28 +201,40 @@ export default function AiTokenCostCalculator() {
 
       {/* Model comparison */}
       <div className="flex flex-col gap-2">
-        <span className="text-[13px] font-semibold text-[#0F1112]">Model Comparison — Same Token Count</span>
-        <div className="rounded-xl border border-[#E5E7EC] overflow-hidden text-[12px]">
-          <div className="grid grid-cols-4 px-3 py-2 bg-[#F5F6F8] border-b border-[#E5E7EC] font-semibold text-[#484848]">
-            <span className="col-span-2">Model</span>
-            <span className="text-right">Per Request</span>
-            <span className="text-right">Monthly</span>
-          </div>
-          {comparison.map((m, i) => (
-            <div
-              key={m.id}
-              className={`grid grid-cols-4 px-3 py-2 border-b border-[#E5E7EC] last:border-0 ${m.id === selectedId ? 'bg-[#eff6ff]' : i % 2 !== 0 ? 'bg-[#fafafa]' : ''}`}
-            >
-              <span className="col-span-2 flex items-center gap-1.5 text-[#484848]">
-                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: PROVIDER_COLORS[m.provider] }} />
-                <span className={m.id === selectedId ? 'font-semibold text-[#0F1112]' : ''}>{m.label}</span>
-              </span>
-              <span className="text-right text-[#0F1112] font-medium">{fmt(m.cost)}</span>
-              <span className="text-right text-[#6b7280]">{fmt(m.monthly)}</span>
+        <button
+          onClick={() => setShowComparison((v) => !v)}
+          className="flex items-center justify-between w-full text-[13px] font-semibold text-[#0F1112] cursor-pointer"
+        >
+          <span>Model Comparison — Same Token Count</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className={`transition-transform ${showComparison ? 'rotate-180' : ''}`}>
+            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        {showComparison && (
+          <>
+            <div className="rounded-xl border border-[#E5E7EC] overflow-hidden text-[12px]">
+              <div className="grid grid-cols-4 px-3 py-2 bg-[#F5F6F8] border-b border-[#E5E7EC] font-semibold text-[#484848]">
+                <span className="col-span-2">Model</span>
+                <span className="text-right">Per Request</span>
+                <span className="text-right">Monthly</span>
+              </div>
+              {comparison.map((m, i) => (
+                <div
+                  key={m.id}
+                  className={`grid grid-cols-4 px-3 py-2 border-b border-[#E5E7EC] last:border-0 ${m.id === selectedId ? 'bg-[#eff6ff]' : i % 2 !== 0 ? 'bg-[#fafafa]' : ''}`}
+                >
+                  <span className="col-span-2 flex items-center gap-1.5 text-[#484848]">
+                    <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: PROVIDER_COLORS[m.provider] }} />
+                    <span className={m.id === selectedId ? 'font-semibold text-[#0F1112]' : ''}>{m.label}</span>
+                  </span>
+                  <span className="text-right text-[#0F1112] font-medium">{fmt(m.cost)}</span>
+                  <span className="text-right text-[#6b7280]">{fmt(m.monthly)}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <p className="text-[11px] text-[#9ca3af]">Prices as of May 2026 from official provider pricing pages. DeepSeek V4 Pro has an active 75% discount until 2026-05-31. GPT-4 Turbo and GPT-4 legacy are deprecated. Verify current rates before production budgeting.</p>
+            <p className="text-[11px] text-[#9ca3af]">Prices as of May 2026 from official provider pricing pages. DeepSeek V4 Pro has an active 75% discount until 2026-05-31. GPT-4 Turbo and GPT-4 legacy are deprecated. Verify current rates before production budgeting.</p>
+          </>
+        )}
       </div>
     </div>
   );

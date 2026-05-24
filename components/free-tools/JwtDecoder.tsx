@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const COLOR = '#ef4444';
+const COLOR = '#f26b4e';
 
 function b64Decode(str: string) {
   const padded = str.replace(/-/g, '+').replace(/_/g, '/');
@@ -52,7 +52,7 @@ export default function JwtDecoder() {
           onChange={(e) => setToken(e.target.value)}
           placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
           rows={4}
-          className="w-full rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none resize-none focus:border-[#ef4444] focus:ring-2 focus:ring-[#ef4444]/10 transition-colors break-all"
+          className="w-full rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none resize-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors break-all"
         />
       </div>
 

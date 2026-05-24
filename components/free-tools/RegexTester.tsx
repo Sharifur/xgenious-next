@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#06b6d4';
+const COLOR = '#f26b4e';
 
 export default function RegexTester() {
   const [pattern, setPattern] = useState('');
@@ -29,7 +29,7 @@ export default function RegexTester() {
         if (m) ms.push(m);
       }
       const hl = testStr.replace(new RegExp(pattern, flagStr + (flags.g ? '' : '')), (match) =>
-        `<mark class="bg-[#cffafe] rounded">${match}</mark>`
+        `<mark class="bg-[#eff6ff] rounded">${match}</mark>`
       );
       return { matches: ms, error: '', highlighted: hl };
     } catch (e) {
@@ -48,7 +48,7 @@ export default function RegexTester() {
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-1.5">
         <label className="text-[13px] font-semibold text-[#0F1112]">Regular Expression</label>
-        <div className="flex items-center rounded-xl border border-[#E5E7EC] bg-white overflow-hidden focus-within:border-[#06b6d4] focus-within:ring-2 focus-within:ring-[#06b6d4]/10 transition-colors">
+        <div className="flex items-center rounded-xl border border-[#E5E7EC] bg-white overflow-hidden focus-within:border-[#f26b4e] focus-within:ring-2 focus-within:ring-[#f26b4e]/10 transition-colors">
           <span className="px-3 text-[16px] text-[#9ca3af] font-mono">/</span>
           <input
             type="text"
@@ -65,7 +65,7 @@ export default function RegexTester() {
               <input
                 type="checkbox" checked={flags[f]}
                 onChange={() => setFlags((p) => ({ ...p, [f]: !p[f] }))}
-                className="w-3.5 h-3.5 accent-[#06b6d4]"
+                className="w-3.5 h-3.5 accent-[#f26b4e]"
               />
               <span className="text-[12px] font-mono text-[#484848]">{f} — {f === 'g' ? 'global' : f === 'i' ? 'case insensitive' : 'multiline'}</span>
             </label>
@@ -80,7 +80,7 @@ export default function RegexTester() {
           onChange={(e) => setTestStr(e.target.value)}
           placeholder="Paste text to test against..."
           rows={5}
-          className="w-full rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none resize-y focus:border-[#06b6d4] focus:ring-2 focus:ring-[#06b6d4]/10 transition-colors"
+          className="w-full rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none resize-y focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors"
         />
       </div>
 
@@ -122,10 +122,10 @@ export default function RegexTester() {
               {matches.map((m, i) => (
                 <div key={i} className="rounded-xl border border-[#E5E7EC] p-3 flex flex-col gap-1">
                   <div className="flex items-center gap-3 text-[12px]">
-                    <span className="font-medium text-[#06b6d4]">Match {i + 1}</span>
+                    <span className="font-medium text-[#f26b4e]">Match {i + 1}</span>
                     <span className="text-[#6b7280]">index {m.index}–{m.index + m[0].length}</span>
                   </div>
-                  <code className="text-[13px] font-mono text-[#0F1112] bg-[#cffafe] px-2 py-0.5 rounded">{m[0]}</code>
+                  <code className="text-[13px] font-mono text-[#0F1112] bg-[#eff6ff] px-2 py-0.5 rounded">{m[0]}</code>
                   {m.slice(1).map((g, gi) => g !== undefined && (
                     <div key={gi} className="text-[12px] text-[#6b7280]">
                       Group {gi + 1}: <code className="font-mono">{g}</code>
@@ -147,7 +147,7 @@ export default function RegexTester() {
               value={replaceWith}
               onChange={(e) => setReplaceWith(e.target.value)}
               placeholder="$1 replacement"
-              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-2.5 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none focus:border-[#06b6d4] focus:ring-2 focus:ring-[#06b6d4]/10 transition-colors"
+              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-2.5 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors"
             />
           </div>
           {replaced && (

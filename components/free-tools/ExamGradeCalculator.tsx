@@ -55,7 +55,7 @@ export default function ExamGradeCalculator() {
 
   function pctColor(p: number) {
     if (p >= 80) return '#22c55e';
-    if (p >= 60) return '#f59e0b';
+    if (p >= 60) return '#f26b4e';
     return '#ef4444';
   }
 
@@ -131,12 +131,12 @@ export default function ExamGradeCalculator() {
         </div>
         <div className="rounded-2xl bg-[#F5F6F8] border border-[#E5E7EC] p-5 flex flex-col items-center gap-1">
           <span className="text-[12px] text-[#6b7280]">GPA Points</span>
-          <span className="text-[28px] font-bold text-[#6366f1]">{result.grade?.gpa.toFixed(1) ?? '—'}</span>
+          <span className="text-[28px] font-bold text-[#f26b4e]">{result.grade?.gpa.toFixed(1) ?? '—'}</span>
         </div>
       </div>
 
       {result.totalWeight !== 100 && (
-        <p className="text-[12px] text-[#f59e0b]">Weights sum to {result.totalWeight}% (should be 100% for accurate results)</p>
+        <p className="text-[12px] text-[#f26b4e]">Weights sum to {result.totalWeight}% (should be 100% for accurate results)</p>
       )}
 
       <div className="rounded-xl border border-[#E5E7EC] overflow-hidden text-[12px]">

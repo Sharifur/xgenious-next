@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const COLOR = '#8b5cf6';
+const COLOR = '#f26b4e';
 
 const TONE_OPTIONS = ['Professional', 'Friendly', 'Startup', 'Technical'];
 
@@ -121,7 +121,7 @@ ${niceToHave ? `### Nice to Have\n\n${niceToHave}` : ''}
         {Object.keys(TEMPLATES).map((k) => (
           <button
             key={k} onClick={() => applyTemplate(k)}
-            className="px-3 py-1.5 rounded-full border border-[#E5E7EC] text-[12px] text-[#484848] hover:border-[#8b5cf6] hover:text-[#8b5cf6] transition-colors"
+            className="px-3 py-1.5 rounded-full border border-[#E5E7EC] text-[12px] text-[#484848] hover:border-[#f26b4e] hover:text-[#f26b4e] transition-colors"
           >
             {k}
           </button>
@@ -138,14 +138,14 @@ ${niceToHave ? `### Nice to Have\n\n${niceToHave}` : ''}
           <div key={label} className="flex flex-col gap-1.5">
             <label className="text-[13px] font-semibold text-[#0F1112]">{label}</label>
             <input type="text" value={val} onChange={(e) => set(e.target.value)} placeholder={ph}
-              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-2.5 text-[14px] text-[#0F1112] placeholder:text-[#9ca3af] outline-none focus:border-[#8b5cf6] focus:ring-2 focus:ring-[#8b5cf6]/20 transition-colors" />
+              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-2.5 text-[14px] text-[#0F1112] placeholder:text-[#9ca3af] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
           </div>
         ))}
 
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Job Type</label>
           <select value={type} onChange={(e) => setType(e.target.value)}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-2.5 text-[14px] text-[#0F1112] outline-none focus:border-[#8b5cf6] focus:ring-2 focus:ring-[#8b5cf6]/20 transition-colors">
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-2.5 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors">
             {['Full-time', 'Part-time', 'Contract', 'Internship', 'Freelance'].map((t) => <option key={t}>{t}</option>)}
           </select>
         </div>
@@ -172,7 +172,7 @@ ${niceToHave ? `### Nice to Have\n\n${niceToHave}` : ''}
         <div key={label} className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">{label}</label>
           <textarea value={val} onChange={(e) => set(e.target.value)} placeholder={ph} rows={5}
-            className="w-full rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] placeholder:text-[#9ca3af] outline-none resize-y focus:border-[#8b5cf6] focus:ring-2 focus:ring-[#8b5cf6]/20 transition-colors" />
+            className="w-full rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] placeholder:text-[#9ca3af] outline-none resize-y focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors" />
         </div>
       ))}
 
@@ -188,7 +188,7 @@ ${niceToHave ? `### Nice to Have\n\n${niceToHave}` : ''}
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
             <label className="text-[13px] font-semibold text-[#0F1112]">Generated Job Description</label>
-            <button onClick={copy} className="text-[12px] text-[#8b5cf6] hover:underline">{copied ? 'Copied!' : 'Copy'}</button>
+            <button onClick={copy} className="text-[12px] text-[#f26b4e] hover:underline">{copied ? 'Copied!' : 'Copy'}</button>
           </div>
           <pre className="rounded-xl border border-[#E5E7EC] bg-[#F5F6F8] px-5 py-4 text-[13px] text-[#0F1112] whitespace-pre-wrap font-sans leading-6 overflow-auto min-h-[300px]">
             {generated}

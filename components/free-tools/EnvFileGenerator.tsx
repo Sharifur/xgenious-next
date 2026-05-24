@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const COLOR = '#10b981';
+const COLOR = '#f26b4e';
 
 interface EnvVar { key: string; value: string; comment: string; isSecret: boolean; }
 
@@ -77,7 +77,7 @@ export default function EnvFileGenerator() {
         <span className="text-[13px] text-[#6b7280] self-center">Add preset:</span>
         {Object.keys(PRESETS).map((k) => (
           <button key={k} onClick={() => applyPreset(k)}
-            className="px-3 py-1.5 rounded-full border border-[#E5E7EC] text-[12px] text-[#484848] hover:border-[#10b981] hover:text-[#10b981] transition-colors">
+            className="px-3 py-1.5 rounded-full border border-[#E5E7EC] text-[12px] text-[#484848] hover:border-[#f26b4e] hover:text-[#f26b4e] transition-colors">
             {k}
           </button>
         ))}
@@ -91,17 +91,17 @@ export default function EnvFileGenerator() {
           <div key={i} className="grid grid-cols-[1fr_1fr_auto_auto] gap-2 items-center">
             <input type="text" value={v.key} onChange={(e) => updateVar(i, 'key', e.target.value.toUpperCase().replace(/\s/g, '_'))}
               placeholder="VAR_NAME" spellCheck={false}
-              className="rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-colors" />
+              className="rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
             <input type={v.isSecret && !showSecrets ? 'password' : 'text'} value={v.value} onChange={(e) => updateVar(i, 'value', e.target.value)}
               placeholder="value"
-              className="rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-colors" />
+              className="rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
             <input type="checkbox" checked={v.isSecret} onChange={(e) => updateVar(i, 'isSecret', e.target.checked)}
-              className="w-4 h-4 accent-[#10b981]" title="Mark as secret" />
+              className="w-4 h-4 accent-[#f26b4e]" title="Mark as secret" />
             <button onClick={() => removeVar(i)} className="text-[#9ca3af] hover:text-red-400 transition-colors">×</button>
           </div>
         ))}
         <button onClick={addVar}
-          className="self-start text-[13px] font-medium border border-dashed border-[#E5E7EC] rounded-lg px-4 py-2 text-[#484848] hover:border-[#10b981] hover:text-[#10b981] transition-colors">
+          className="self-start text-[13px] font-medium border border-dashed border-[#E5E7EC] rounded-lg px-4 py-2 text-[#484848] hover:border-[#f26b4e] hover:text-[#f26b4e] transition-colors">
           + Add Variable
         </button>
       </div>
@@ -113,8 +113,8 @@ export default function EnvFileGenerator() {
             <button onClick={() => setShowSecrets((s) => !s)} className="text-[12px] text-[#6b7280] hover:text-[#0F1112]">
               {showSecrets ? 'Hide' : 'Show'} secrets
             </button>
-            <button onClick={copy} className="text-[12px] text-[#10b981] hover:underline">{copied ? 'Copied!' : 'Copy'}</button>
-            <button onClick={download} className="text-[12px] text-[#10b981] hover:underline">Download</button>
+            <button onClick={copy} className="text-[12px] text-[#f26b4e] hover:underline">{copied ? 'Copied!' : 'Copy'}</button>
+            <button onClick={download} className="text-[12px] text-[#f26b4e] hover:underline">Download</button>
           </div>
         </div>
         <pre className="rounded-xl border border-[#E5E7EC] bg-[#F5F6F8] px-5 py-4 text-[12px] font-mono text-[#0F1112] whitespace-pre overflow-x-auto leading-6">

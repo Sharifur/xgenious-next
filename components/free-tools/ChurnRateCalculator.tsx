@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#ef4444';
+const COLOR = '#f26b4e';
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
 export default function ChurnRateCalculator() {
@@ -28,7 +28,7 @@ export default function ChurnRateCalculator() {
 
   function churnColor(rate: number) {
     if (rate < 2) return '#22c55e';
-    if (rate < 5) return '#f59e0b';
+    if (rate < 5) return '#f26b4e';
     return '#ef4444';
   }
 
@@ -55,8 +55,8 @@ export default function ChurnRateCalculator() {
           { label: 'Retention Rate', val: `${result.retentionRate.toFixed(2)}%`, color: '#22c55e' },
           { label: 'MRR Lost', val: fmt(result.mrrLost), color: COLOR },
           { label: 'MRR Churn Rate', val: `${result.mrrChurnRate.toFixed(2)}%`, color: churnColor(result.mrrChurnRate) },
-          { label: 'Avg Customer Lifetime', val: isFinite(result.avgLifeMonths) ? `${result.avgLifeMonths.toFixed(1)} mo` : '∞', color: '#6366f1' },
-          { label: 'Customer LTV', val: result.ltv > 0 ? fmt(result.ltv) : '—', color: '#10b981' },
+          { label: 'Avg Customer Lifetime', val: isFinite(result.avgLifeMonths) ? `${result.avgLifeMonths.toFixed(1)} mo` : '∞', color: '#f26b4e' },
+          { label: 'Customer LTV', val: result.ltv > 0 ? fmt(result.ltv) : '—', color: '#f26b4e' },
         ].map(({ label, val, color }) => (
           <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
             <span className="text-[12px] text-[#6b7280]">{label}</span>

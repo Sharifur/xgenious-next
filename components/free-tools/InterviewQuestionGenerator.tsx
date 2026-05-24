@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const COLOR = '#8b5cf6';
+const COLOR = '#f26b4e';
 
 const QUESTION_BANK: Record<string, Record<string, string[]>> = {
   'Software Engineer': {
@@ -103,14 +103,14 @@ export default function InterviewQuestionGenerator() {
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Role</label>
           <select value={role} onChange={(e) => { setRole(e.target.value); setCategory(Object.keys(QUESTION_BANK[e.target.value])[0]); setQuestions([]); }}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#8b5cf6] focus:ring-2 focus:ring-[#8b5cf6]/20 transition-colors">
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors">
             {roles.map((r) => <option key={r}>{r}</option>)}
           </select>
         </div>
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Category</label>
           <select value={category} onChange={(e) => { setCategory(e.target.value); setQuestions([]); }}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#8b5cf6] focus:ring-2 focus:ring-[#8b5cf6]/20 transition-colors">
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/20 transition-colors">
             {categories.map((c) => <option key={c}>{c}</option>)}
           </select>
         </div>
@@ -118,7 +118,7 @@ export default function InterviewQuestionGenerator() {
           <label className="text-[13px] font-semibold text-[#0F1112]">Number of Questions: {count}</label>
           <input type="range" min={3} max={Math.min(10, QUESTION_BANK[role]?.[category]?.length ?? 5)}
             value={count} onChange={(e) => setCount(+e.target.value)}
-            className="w-full accent-[#8b5cf6]" />
+            className="w-full accent-[#f26b4e]" />
         </div>
       </div>
 
@@ -129,7 +129,7 @@ export default function InterviewQuestionGenerator() {
           Generate Questions
         </button>
         {questions.length > 0 && (
-          <button onClick={copy} className="text-[13px] text-[#8b5cf6] hover:underline self-center">
+          <button onClick={copy} className="text-[13px] text-[#f26b4e] hover:underline self-center">
             {copied ? 'Copied!' : 'Copy All'}
           </button>
         )}

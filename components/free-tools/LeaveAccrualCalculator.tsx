@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#10b981';
+const COLOR = '#f26b4e';
 
 export default function LeaveAccrualCalculator() {
   const [annualDays, setAnnualDays] = useState('20');
@@ -49,22 +49,22 @@ export default function LeaveAccrualCalculator() {
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Annual Leave Entitlement (days)</label>
           <input type="number" value={annualDays} onChange={(e) => setAnnualDays(e.target.value)} min={0}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-colors" />
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
         </div>
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Days Already Used</label>
           <input type="number" value={usedDays} onChange={(e) => setUsedDays(e.target.value)} min={0}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-colors" />
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
         </div>
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Accrual Period Start</label>
           <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-colors" />
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
         </div>
         <div className="flex flex-col gap-1.5">
           <label className="text-[13px] font-semibold text-[#0F1112]">Calculate As Of</label>
           <input type="date" value={asOfDate} onChange={(e) => setAsOfDate(e.target.value)}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-colors" />
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
         </div>
         <div className="flex flex-col gap-1.5 sm:col-span-2">
           <label className="text-[13px] font-semibold text-[#0F1112]">Accrual Frequency</label>
@@ -85,8 +85,8 @@ export default function LeaveAccrualCalculator() {
           <div className="grid sm:grid-cols-3 gap-3">
             {[
               { label: 'Accrued to Date', val: result.accrued.toFixed(1), unit: 'days', color: COLOR },
-              { label: 'Used', val: result.used.toFixed(1), unit: 'days', color: '#f59e0b' },
-              { label: 'Remaining Balance', val: result.remaining.toFixed(1), unit: 'days', color: '#6366f1' },
+              { label: 'Used', val: result.used.toFixed(1), unit: 'days', color: '#f26b4e' },
+              { label: 'Remaining Balance', val: result.remaining.toFixed(1), unit: 'days', color: '#f26b4e' },
             ].map(({ label, val, unit, color }) => (
               <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
                 <span className="text-[12px] text-[#6b7280]">{label}</span>

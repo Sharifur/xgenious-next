@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#6366f1';
+const COLOR = '#f26b4e';
 
 function hexToRgb(hex: string): [number, number, number] | null {
   const clean = hex.replace('#', '');
@@ -77,7 +77,7 @@ export default function ColorContrastChecker() {
               <input type="color" value={val} onChange={(e) => set(e.target.value)}
                 className="w-10 h-10 rounded-lg border border-[#E5E7EC] cursor-pointer p-0.5" />
               <input type="text" value={val} onChange={(e) => set(e.target.value)} maxLength={7}
-                className="flex-1 rounded-xl border border-[#E5E7EC] bg-white px-4 py-2.5 text-[14px] font-mono text-[#0F1112] uppercase outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/10 transition-colors" />
+                className="flex-1 rounded-xl border border-[#E5E7EC] bg-white px-4 py-2.5 text-[14px] font-mono text-[#0F1112] uppercase outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
             </div>
           </div>
         ))}
@@ -94,7 +94,7 @@ export default function ColorContrastChecker() {
 
       <button
         onClick={() => { const tmp = fg; setFg(bg); setBg(tmp); }}
-        className="self-center text-[13px] text-[#6b7280] hover:text-[#0F1112] border border-[#E5E7EC] rounded-lg px-4 py-2 transition-colors"
+        className="self-center text-[13px] text-[#6b7280] hover:text-[#0F1112] border border-[#E5E7EC] rounded-lg px-4 py-2 transition-colors cursor-pointer"
       >
         Swap Colors
       </button>

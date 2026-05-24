@@ -111,7 +111,7 @@ export default function MvpCostEstimator() {
       {selected.size > 0 && (
         <div className="grid sm:grid-cols-3 gap-4">
           {[
-            { label: 'Estimated Hours', val: `${totalHours}h`, sub: `${(totalHours / 8).toFixed(0)} working days`, color: '#6366f1' },
+            { label: 'Estimated Hours', val: `${totalHours}h`, sub: `${(totalHours / 8).toFixed(0)} working days`, color: '#f26b4e' },
             { label: 'Estimated Cost', val: fmt(cost), sub: `${fmt(cost * 0.85)}–${fmt(cost * 1.15)} range`, color: COLOR },
             { label: 'Timeline', val: `${timeline} week${timeline !== 1 ? 's' : ''}`, sub: `with ${team} developer${team !== 1 ? 's' : ''}`, color: '#22c55e' },
           ].map(({ label, val, sub, color }) => (

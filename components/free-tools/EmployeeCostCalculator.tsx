@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#10b981';
+const COLOR = '#f26b4e';
 
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
@@ -63,7 +63,7 @@ export default function EmployeeCostCalculator() {
             <label className="text-[12px] font-semibold text-[#0F1112]">{label}</label>
             <input
               type="number" value={val} onChange={(e) => set(e.target.value)} min={0}
-              className="rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-colors"
+              className="rounded-lg border border-[#E5E7EC] bg-white px-3 py-2 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors"
             />
           </div>
         ))}
@@ -74,8 +74,8 @@ export default function EmployeeCostCalculator() {
           <div className="grid sm:grid-cols-3 gap-3">
             {[
               { label: 'Total Annual Cost', val: fmt(result.total), color: COLOR },
-              { label: 'Cost Multiplier', val: `${result.multiplier.toFixed(2)}×`, color: '#6366f1' },
-              { label: 'True Hourly Rate', val: `${fmt(result.hourly)}/hr`, color: '#f59e0b' },
+              { label: 'Cost Multiplier', val: `${result.multiplier.toFixed(2)}×`, color: '#f26b4e' },
+              { label: 'True Hourly Rate', val: `${fmt(result.hourly)}/hr`, color: '#f26b4e' },
             ].map(({ label, val, color }) => (
               <div key={label} className="rounded-xl bg-[#F5F6F8] border border-[#E5E7EC] p-4 sm:p-5 flex flex-col gap-1.5">
                 <span className="text-[12px] text-[#6b7280]">{label}</span>

@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const COLOR = '#f59e0b';
+const COLOR = '#f26b4e';
 
 export default function Base64EncoderDecoder() {
   const [input, setInput] = useState('');
@@ -63,7 +63,7 @@ export default function Base64EncoderDecoder() {
             onChange={(e) => setInput(e.target.value)}
             placeholder={mode === 'encode' ? 'Hello, World!' : 'SGVsbG8sIFdvcmxkIQ=='}
             rows={10}
-            className="w-full rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none resize-y focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/10 transition-colors max-h-[240px] sm:max-h-none overflow-y-auto"
+            className="w-full rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none resize-y focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors max-h-[240px] sm:max-h-none overflow-y-auto"
           />
         </div>
         <div className="flex flex-col gap-1.5">
@@ -72,7 +72,7 @@ export default function Base64EncoderDecoder() {
               {mode === 'encode' ? 'Base64 Output' : 'Decoded Text'}
             </label>
             {output && (
-              <button onClick={copy} className="text-[12px] text-[#f59e0b] hover:underline">
+              <button onClick={copy} className="text-[12px] text-[#f26b4e] hover:underline">
                 {copied ? 'Copied!' : 'Copy'}
               </button>
             )}

@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef } from 'react';
 
-const COLOR = '#ef4444';
+const COLOR = '#f26b4e';
 const ACCEPT = 'image/jpeg,image/jpg';
 const FORMAT = 'avif';
 const MAX_MB = 10;

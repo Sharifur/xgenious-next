@@ -75,12 +75,18 @@ export async function POST(req: NextRequest) {
     console.warn('TASKIP_SECRET_KEY not set — lead not forwarded to Taskip:', { email, product });
   }
 
-  const fromEmail = process.env.CONTACT_FROM_EMAIL;
+  const fromEmail = process.env.CONTACT_FROM_EMAIL ? `Xgenious <${process.env.CONTACT_FROM_EMAIL}>` : undefined;
+  const adminEmail = process.env.CONTACT_TO_EMAIL;
   const safeDownloadUrl = downloadUrl && /^https?:\/\//.test(downloadUrl) ? downloadUrl : null;
   const safeProduct = product ? product.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '';
+  const safeName = name ? name.replace(/</g, '&lt;').replace(/>/g, '&gt;') : 'Not provided';
+  const downloadedAt = new Date().toLocaleString('en-GB', { timeZone: 'Asia/Dhaka', dateStyle: 'medium', timeStyle: 'short' });
+
+  const sends: Promise<void>[] = [];
+
   if (fromEmail && safeDownloadUrl) {
-    try {
-      await ses.send(
+    sends.push(
+      ses.send(
         new SendEmailCommand({
           Source: fromEmail,
           Destination: { ToAddresses: [email] },
@@ -119,11 +125,88 @@ export async function POST(req: NextRequest) {
             },
           },
         })
-      );
-    } catch (err) {
-      console.error('SES send error:', err);
-    }
+      ).then(() => {})
+    );
   }
+
+  if (fromEmail && adminEmail) {
+    sends.push(
+      ses.send(
+        new SendEmailCommand({
+          Source: fromEmail,
+          Destination: { ToAddresses: [adminEmail] },
+          ReplyToAddresses: [email],
+          Message: {
+            Subject: {
+              Data: `New free download: ${product}`,
+              Charset: 'UTF-8',
+            },
+            Body: {
+              Html: {
+                Data: `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>New Free Download</title></head>
+<body style="margin:0;padding:0;background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f5;padding:40px 16px;">
+    <tr><td align="center">
+      <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+        <tr>
+          <td style="background:#0F1112;padding:24px 32px;">
+            <p style="margin:0;font-size:12px;font-weight:600;color:#ec7161;letter-spacing:0.08em;text-transform:uppercase;">Free Software Download</p>
+            <h1 style="margin:6px 0 0;font-size:20px;font-weight:600;color:#ffffff;line-height:1.3;">New download lead</h1>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:28px 32px 0;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr><td style="padding:0 0 14px;">
+                <p style="margin:0 0 2px;font-size:11px;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:0.06em;">Name</p>
+                <p style="margin:0;font-size:15px;color:#0F1112;font-weight:500;">${safeName}</p>
+              </td></tr>
+              <tr><td style="padding:14px 0;border-top:1px solid #f0f0f0;">
+                <p style="margin:0 0 2px;font-size:11px;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:0.06em;">Email</p>
+                <a href="mailto:${email}" style="font-size:15px;color:#ec7161;text-decoration:none;">${email}</a>
+              </td></tr>
+              <tr><td style="padding:14px 0;border-top:1px solid #f0f0f0;">
+                <p style="margin:0 0 2px;font-size:11px;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:0.06em;">Product</p>
+                <p style="margin:0;font-size:15px;color:#0F1112;">${safeProduct}</p>
+              </td></tr>
+              <tr><td style="padding:14px 0 28px;border-top:1px solid #f0f0f0;">
+                <p style="margin:0 0 2px;font-size:11px;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:0.06em;">Downloaded at (BD time)</p>
+                <p style="margin:0;font-size:15px;color:#0F1112;">${downloadedAt}</p>
+              </td></tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0 32px 28px;">
+            <a href="mailto:${email}?subject=Re: ${encodeURIComponent(product)} download" style="display:inline-block;background:#0F1112;color:#ffffff;font-size:13px;font-weight:600;padding:10px 22px;border-radius:100px;text-decoration:none;">Reply to ${safeName}</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:16px 32px;border-top:1px solid #f0f0f0;">
+            <p style="margin:0;font-size:12px;color:#9ca3af;">Sent via xgenious.com free software download form</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`,
+                Charset: 'UTF-8',
+              },
+              Text: {
+                Data: `New free download\n\nName: ${name ?? 'Not provided'}\nEmail: ${email}\nProduct: ${product}\nDownloaded at: ${downloadedAt}`,
+                Charset: 'UTF-8',
+              },
+            },
+          },
+        })
+      ).then(() => {})
+    );
+  }
+
+  await Promise.allSettled(sends);
 
   return NextResponse.json({ ok: true });
 }

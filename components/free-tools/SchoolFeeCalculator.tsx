@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#06b6d4';
+const COLOR = '#f26b4e';
 const fmt = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
 interface FeeRow { label: string; amount: string; frequency: 'monthly' | 'annual' | 'one-time'; included: boolean; }
@@ -54,7 +54,7 @@ export default function SchoolFeeCalculator() {
           <div key={label} className="flex flex-col gap-1.5">
             <label className="text-[13px] font-semibold text-[#0F1112]">{label}</label>
             <input type="number" value={val} onChange={(e) => set(e.target.value)} min={0}
-              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#06b6d4] focus:ring-2 focus:ring-[#06b6d4]/10 transition-colors" />
+              className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
           </div>
         ))}
       </div>
@@ -72,15 +72,15 @@ export default function SchoolFeeCalculator() {
             {fees.map((f, i) => (
               <tr key={i} className={`border-b border-[#F5F6F8] ${!f.included ? 'opacity-50' : ''}`}>
                 <td className="py-2 pr-3">
-                  <input type="checkbox" checked={f.included} onChange={() => toggle(i)} className="w-4 h-4 accent-[#06b6d4]" />
+                  <input type="checkbox" checked={f.included} onChange={() => toggle(i)} className="w-4 h-4 accent-[#f26b4e]" />
                 </td>
                 <td className="py-2 pr-3">
                   <input type="text" value={f.label} onChange={(e) => update(i, 'label', e.target.value)}
-                    className="w-full outline-none text-[13px] text-[#0F1112] border-b border-transparent focus:border-[#06b6d4]" />
+                    className="w-full outline-none text-[13px] text-[#0F1112] border-b border-transparent focus:border-[#f26b4e]" />
                 </td>
                 <td className="py-2 pr-3">
                   <input type="number" value={f.amount} onChange={(e) => update(i, 'amount', e.target.value)} min={0}
-                    className="w-24 outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#06b6d4]" />
+                    className="w-24 outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#f26b4e]" />
                 </td>
                 <td className="py-2">
                   <select value={f.frequency} onChange={(e) => update(i, 'frequency', e.target.value as FeeRow['frequency'])}

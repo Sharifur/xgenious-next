@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 
-const COLOR = '#10b981';
+const COLOR = '#f26b4e';
 
 interface SubjectRow { name: string; attended: string; total: string; }
 
@@ -50,7 +50,7 @@ export default function AttendancePercentageCalculator() {
   function pctColor(p: number) {
     const req = parseFloat(required);
     if (p >= req) return '#22c55e';
-    if (p >= req - 5) return '#f59e0b';
+    if (p >= req - 5) return '#f26b4e';
     return '#ef4444';
   }
 
@@ -60,7 +60,7 @@ export default function AttendancePercentageCalculator() {
         <div className="flex flex-col gap-1.5 max-w-xs">
           <label className="text-[13px] font-semibold text-[#0F1112]">Required Attendance (%)</label>
           <input type="number" value={required} onChange={(e) => setRequired(e.target.value)} min={0} max={100}
-            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-colors" />
+            className="rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
         </div>
       </div>
 
@@ -78,15 +78,15 @@ export default function AttendancePercentageCalculator() {
               <tr key={i} className="border-b border-[#E5E7EC]">
                 <td className="py-2 pr-3">
                   <input type="text" value={d.name} onChange={(e) => update(i, 'name', e.target.value)} placeholder={`Subject ${i + 1}`}
-                    className="w-full outline-none text-[13px] text-[#0F1112] border-b border-transparent focus:border-[#10b981]" />
+                    className="w-full outline-none text-[13px] text-[#0F1112] border-b border-transparent focus:border-[#f26b4e]" />
                 </td>
                 <td className="py-2 pr-3">
                   <input type="number" value={subjects[i].attended} onChange={(e) => update(i, 'attended', e.target.value)} min={0}
-                    className="w-16 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#10b981]" />
+                    className="w-16 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#f26b4e]" />
                 </td>
                 <td className="py-2 pr-3">
                   <input type="number" value={subjects[i].total} onChange={(e) => update(i, 'total', e.target.value)} min={0}
-                    className="w-16 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#10b981]" />
+                    className="w-16 text-right outline-none text-[13px] text-[#0F1112] border-b border-[#E5E7EC] focus:border-[#f26b4e]" />
                 </td>
                 <td className="py-2 pr-3 font-medium" style={{ color: pctColor(d.pct) }}>{d.pct.toFixed(1)}%</td>
                 <td className="py-2 pr-3 text-[12px]">
@@ -105,7 +105,7 @@ export default function AttendancePercentageCalculator() {
       </div>
 
       <button onClick={addRow}
-        className="self-start text-[13px] font-medium border border-dashed border-[#E5E7EC] rounded-lg px-4 py-2 text-[#484848] hover:border-[#10b981] hover:text-[#10b981] transition-colors">
+        className="self-start text-[13px] font-medium border border-dashed border-[#E5E7EC] rounded-lg px-4 py-2 text-[#484848] hover:border-[#f26b4e] hover:text-[#f26b4e] transition-colors">
         + Add Subject
       </button>
 
