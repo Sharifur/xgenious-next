@@ -47,6 +47,8 @@ description: >
 - `commonErrors` fix text must be actionable (not "check your input")
 - External links must be real, authoritative URLs (IETF, MDN, OWASP, W3C, RFC)
 - `relatedTools` slugs must exist in TOOLS array — use `grep -n "slug:" data/free-tools.ts` to verify
+- Every `<button>` must have `cursor-pointer` class — check component file and add if missing before committing
+- Component primary color must match `color` field in `data/free-tools.ts` — fix `const COLOR` if it differs
 
 ## FreeTool interface reference
 

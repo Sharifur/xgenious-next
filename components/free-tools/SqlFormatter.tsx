@@ -67,7 +67,7 @@ export default function SqlFormatter() {
         <div className="flex rounded-xl border border-[#E5E7EC] overflow-hidden">
           {(['format', 'minify'] as const).map((m) => (
             <button key={m} onClick={() => setMode(m)}
-              className="px-5 py-2 text-[13px] font-medium capitalize transition-colors"
+              className="px-5 py-2 text-[13px] font-medium capitalize transition-colors cursor-pointer"
               style={mode === m ? { background: COLOR, color: '#fff' } : { color: '#484848' }}>
               {m}
             </button>
@@ -86,7 +86,7 @@ export default function SqlFormatter() {
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center justify-between">
             <label className="text-[13px] font-semibold text-[#0F1112]">Formatted SQL</label>
-            {output && <button onClick={copy} className="text-[12px] text-[#f26b4e] hover:underline">{copied ? 'Copied!' : 'Copy'}</button>}
+            {output && <button onClick={copy} className="text-[12px] text-[#f26b4e] hover:underline cursor-pointer">{copied ? 'Copied!' : 'Copy'}</button>}
           </div>
           <textarea value={output} readOnly rows={14}
             placeholder="Formatted SQL appears here"
@@ -96,11 +96,11 @@ export default function SqlFormatter() {
 
       <div className="flex gap-3">
         <button onClick={process}
-          className="inline-flex items-center gap-2 text-white font-semibold text-[14px] rounded-full px-7 py-3 transition-all hover:-translate-y-0.5 active:scale-95"
+          className="inline-flex items-center gap-2 text-white font-semibold text-[14px] rounded-full px-7 py-3 transition-all hover:-translate-y-0.5 active:scale-95 cursor-pointer"
           style={{ background: COLOR, boxShadow: `0 6px 20px ${COLOR}40` }}>
           {mode === 'format' ? 'Format SQL' : 'Minify SQL'}
         </button>
-        <button onClick={() => { setInput(''); setOutput(''); }} className="text-[13px] text-[#6b7280] hover:text-[#0F1112]">Clear</button>
+        <button onClick={() => { setInput(''); setOutput(''); }} className="text-[13px] text-[#6b7280] hover:text-[#0F1112] cursor-pointer">Clear</button>
       </div>
     </div>
   );
