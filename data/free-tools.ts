@@ -277,6 +277,7 @@ export const TOOLS: FreeTool[] = [
       { error: 'URL-safe characters not decoded', code: '- and _ in standard mode', fix: 'The input uses the URL-safe alphabet (- and _ instead of + and /). Enable URL-safe mode before decoding, or manually replace - → + and _ → / before pasting.' },
       { error: 'Using Base64 as encryption', code: 'base64("password") stored as secret', fix: 'Base64 provides zero security — it is instantly reversible without a key. Use AES-256 for encryption and bcrypt or Argon2 for password hashing.' },
       { error: 'Encoding already-encoded data', code: 'double Base64 encoding', fix: 'Encoding a Base64 string again produces a double-encoded result. Decode first, verify the output is the original plain text, then re-encode only if needed.' },
+      { error: 'Stray whitespace or newlines', code: 'base64 copied from email or terminal', fix: 'MIME email and many CLI tools wrap Base64 at 76 characters per line. Strip all whitespace and newlines before decoding — the string must be a single unbroken sequence of valid Base64 characters.' },
     ],
     lastUpdated: 'May 2026',
     relatedTools: ['json-formatter', 'jwt-decoder', 'password-generator', 'regex-tester', 'sql-formatter', 'cron-expression-builder', 'env-file-generator', 'htaccess-generator'],
