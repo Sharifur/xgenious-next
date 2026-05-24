@@ -106,7 +106,7 @@ export default function AiTokenCostCalculator() {
                 <button
                   key={m.id}
                   onClick={() => setSelectedId(m.id)}
-                  className="px-3 py-1.5 rounded-lg border text-[12px] font-medium transition-all active:scale-95"
+                  className="px-3 py-1.5 rounded-lg border text-[12px] font-medium transition-all active:scale-95 cursor-pointer"
                   style={selectedId === m.id
                     ? { borderColor: PROVIDER_COLORS[provider], background: `${PROVIDER_COLORS[provider]}18`, color: PROVIDER_COLORS[provider] }
                     : { borderColor: '#E5E7EC', color: '#484848' }}
@@ -138,7 +138,7 @@ export default function AiTokenCostCalculator() {
             <label className="text-[13px] font-semibold text-[#0F1112]">Custom Pricing</label>
             <button
               onClick={() => setUseCustom((v) => !v)}
-              className="text-[11px] font-medium px-2 py-1 rounded-lg border transition-colors"
+              className="text-[11px] font-medium px-2 py-1 rounded-lg border transition-colors cursor-pointer"
               style={useCustom
                 ? { borderColor: COLOR, background: `${COLOR}15`, color: COLOR }
                 : { borderColor: '#E5E7EC', color: '#9ca3af' }}
