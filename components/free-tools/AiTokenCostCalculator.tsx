@@ -96,27 +96,29 @@ export default function AiTokenCostCalculator() {
   return (
     <div className="flex flex-col gap-5">
       {/* Model selector */}
-      <div className="flex flex-col gap-4 p-5 bg-[#F5F6F8] rounded-2xl">
-        <span className="text-[13px] font-semibold text-[#0F1112]">Select AI Model</span>
-        {PROVIDERS.map((provider) => (
-          <div key={provider} className="flex flex-col gap-1.5">
-            <span className="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider">{provider}</span>
-            <div className="flex flex-wrap gap-2">
-              {MODELS.filter((m) => m.provider === provider).map((m) => (
-                <button
-                  key={m.id}
-                  onClick={() => setSelectedId(m.id)}
-                  className="px-3 py-1.5 rounded-lg border text-[12px] font-medium transition-all active:scale-95 cursor-pointer"
-                  style={selectedId === m.id
-                    ? { borderColor: PROVIDER_COLORS[provider], background: `${PROVIDER_COLORS[provider]}18`, color: PROVIDER_COLORS[provider] }
-                    : { borderColor: '#E5E7EC', color: '#484848' }}
-                >
-                  {m.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className="flex flex-col gap-2">
+        <label className="text-[13px] font-semibold text-[#0F1112]">Select AI Model</label>
+        <div className="flex items-center gap-3">
+          <select
+            value={selectedId}
+            onChange={(e) => setSelectedId(e.target.value)}
+            className="flex-1 rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] text-[#0F1112] outline-none focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors cursor-pointer"
+          >
+            {PROVIDERS.map((provider) => (
+              <optgroup key={provider} label={provider}>
+                {MODELS.filter((m) => m.provider === provider).map((m) => (
+                  <option key={m.id} value={m.id}>{m.label}</option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+          <span
+            className="shrink-0 inline-flex items-center px-3 py-1.5 rounded-lg text-[12px] font-semibold"
+            style={{ background: `${PROVIDER_COLORS[model.provider]}18`, color: PROVIDER_COLORS[model.provider] }}
+          >
+            {model.provider}
+          </span>
+        </div>
       </div>
 
       {/* Inputs */}
