@@ -8,6 +8,7 @@ const BASE_URL = 'https://xgenious.com';
 const COLOR = '#7c3aed';
 const LIGHT_COLOR = '#f5f3ff';
 const GITHUB_URL = 'https://github.com/XgeniousLLC/geniousHRM/archive/refs/tags/v1.0.0.zip';
+const LICENSE_UUID = '833e26e6-8581-4970-873e-bbf1d7ad41c9';
 const DEMO_URL = 'https://genius-hrm.xgenious.com/login';
 const DOCS_URL = 'https://genious-hrm-whnd.vercel.app/';
 
@@ -305,6 +306,7 @@ export default function GeniusHRMPage() {
                 productColor={COLOR}
                 productLightColor={LIGHT_COLOR}
                 githubUrl={GITHUB_URL}
+                licenseUuid={LICENSE_UUID}
                 label="Download Free — No Account Needed"
                 buttonColor="#ec7161"
                 className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:-translate-y-0.5"
@@ -599,6 +601,7 @@ export default function GeniusHRMPage() {
             productColor={COLOR}
             productLightColor={LIGHT_COLOR}
             githubUrl={GITHUB_URL}
+            licenseUuid={LICENSE_UUID}
             label="Get Free Download — No Credit Card"
             buttonColor="#ec7161"
           />

@@ -8,6 +8,7 @@ interface Props {
   productColor: string;
   productLightColor: string;
   githubUrl: string;
+  licenseUuid?: string;
   label?: string;
   className?: string;
   buttonColor?: string;
@@ -18,6 +19,7 @@ function DownloadModal({
   productColor,
   productLightColor,
   githubUrl,
+  licenseUuid,
   onClose,
 }: Omit<Props, 'label' | 'className'> & { onClose: () => void }) {
   const [name, setName] = useState('');
@@ -35,7 +37,7 @@ function DownloadModal({
       const res = await fetch('/api/download-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, product: productName, downloadUrl: githubUrl }),
+        body: JSON.stringify({ name, email, product: productName, downloadUrl: githubUrl, licenseUuid }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? 'Something went wrong.');
@@ -169,6 +171,7 @@ export default function DownloadButton({
   productColor,
   productLightColor,
   githubUrl,
+  licenseUuid,
   label = 'Download Free',
   className,
   buttonColor,
@@ -184,6 +187,7 @@ export default function DownloadButton({
           productColor={productColor}
           productLightColor={productLightColor}
           githubUrl={githubUrl}
+          licenseUuid={licenseUuid}
           onClose={() => setOpen(false)}
         />
       )}

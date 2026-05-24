@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+import { lsFetch } from '@/lib/license-server';
 
 const ses = new SESClient({
   region: process.env.AWS_REGION ?? 'us-east-1',
@@ -28,7 +29,7 @@ async function getBlocklist(): Promise<Set<string>> {
 }
 
 export async function POST(req: NextRequest) {
-  const { name, email, product, downloadUrl } = await req.json();
+  const { name, email, product, downloadUrl, licenseUuid } = await req.json();
 
   if (!email || !product) {
     return NextResponse.json({ error: 'Email and product are required.' }, { status: 400 });
@@ -75,9 +76,22 @@ export async function POST(req: NextRequest) {
     console.warn('TASKIP_SECRET_KEY not set — lead not forwarded to Taskip:', { email, product });
   }
 
+  let resolvedDownloadUrl = downloadUrl;
+  if (licenseUuid) {
+    try {
+      const lsRes = await lsFetch(`/free-software/${licenseUuid}/download`);
+      if (lsRes.ok) {
+        const lsData = await lsRes.json();
+        if (lsData.download_url) resolvedDownloadUrl = lsData.download_url;
+      }
+    } catch (err) {
+      console.error('License server signed URL fetch failed:', err);
+    }
+  }
+
   const fromEmail = process.env.CONTACT_FROM_EMAIL ? `Xgenious <${process.env.CONTACT_FROM_EMAIL}>` : undefined;
   const adminEmail = process.env.CONTACT_TO_EMAIL;
-  const safeDownloadUrl = downloadUrl && /^https?:\/\//.test(downloadUrl) ? downloadUrl : null;
+  const safeDownloadUrl = resolvedDownloadUrl && /^https?:\/\//.test(resolvedDownloadUrl) ? resolvedDownloadUrl : null;
   const safeProduct = product ? product.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '';
   const safeName = name ? name.replace(/</g, '&lt;').replace(/>/g, '&gt;') : 'Not provided';
   const downloadedAt = new Date().toLocaleString('en-GB', { timeZone: 'Asia/Dhaka', dateStyle: 'medium', timeStyle: 'short' });
