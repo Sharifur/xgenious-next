@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const COLOR = '#ef4444';
+const COLOR = '#f26b4e';
 
 interface Option { key: string; label: string; desc: string; snippet: string; }
 
@@ -128,9 +128,9 @@ export default function HtaccessGenerator() {
     <div className="flex flex-col gap-5">
       <div className="grid sm:grid-cols-2 gap-3">
         {OPTIONS.map((o) => (
-          <label key={o.key} className="flex items-start gap-3 cursor-pointer p-3 rounded-xl border border-[#E5E7EC] hover:border-[#ef4444] transition-colors">
+          <label key={o.key} className="flex items-start gap-3 cursor-pointer p-3 rounded-xl border border-[#E5E7EC] hover:border-[#f26b4e] transition-colors">
             <input type="checkbox" checked={selected.has(o.key)} onChange={() => toggle(o.key)}
-              className="w-4 h-4 accent-[#ef4444] mt-0.5 flex-shrink-0" />
+              className="w-4 h-4 accent-[#f26b4e] mt-0.5 flex-shrink-0" />
             <div>
               <div className="text-[13px] font-semibold text-[#0F1112]">{o.label}</div>
               <div className="text-[11px] text-[#9ca3af] mt-0.5">{o.desc}</div>
@@ -143,8 +143,8 @@ export default function HtaccessGenerator() {
         <div className="flex items-center justify-between">
           <label className="text-[13px] font-semibold text-[#0F1112]">Generated .htaccess</label>
           <div className="flex gap-3">
-            <button onClick={copy} className="text-[12px] text-[#ef4444] hover:underline">{copied ? 'Copied!' : 'Copy'}</button>
-            <button onClick={download} className="text-[12px] text-[#ef4444] hover:underline">Download</button>
+            <button onClick={copy} className="text-[12px] text-[#f26b4e] hover:underline cursor-pointer">{copied ? 'Copied!' : 'Copy'}</button>
+            <button onClick={download} className="text-[12px] text-[#f26b4e] hover:underline cursor-pointer">Download</button>
           </div>
         </div>
         <pre className="rounded-xl border border-[#E5E7EC] bg-[#F5F6F8] px-5 py-4 text-[12px] font-mono text-[#0F1112] whitespace-pre overflow-x-auto leading-5 max-h-80 overflow-y-auto">
