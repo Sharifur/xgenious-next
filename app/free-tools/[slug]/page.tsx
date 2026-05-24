@@ -478,6 +478,62 @@ export default async function FreeToolPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* ── Genius School ERP promo (School tools only) ─────────────────── */}
+      {tool.category === 'school' && (
+        <section className="py-12 sm:py-16 bg-white">
+          <div className="container-page px-4 sm:px-6 lg:px-0">
+            <div className="rounded-2xl border border-[#E5E7EC] overflow-hidden bg-[#F5F6F8]">
+              <div className="p-8 sm:p-10 flex flex-col gap-6">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: '#fff1ee' }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" stroke="#f26b4e" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <span className="text-[11px] font-bold uppercase tracking-widest" style={{ color: '#f26b4e' }}>Free Software</span>
+                </div>
+
+                <div>
+                  <h2 className="text-[22px] sm:text-[28px] font-semibold text-[#0F1112] leading-[32px] tracking-[-0.01em] mb-2">
+                    Genius School Management — Free School ERP
+                  </h2>
+                  <p className="text-[14px] text-[#484848] leading-[24px] max-w-[600px]">
+                    Beyond calculators — run your entire school with Genius School Management. Self-hosted, open source, and free forever. Fee collection, attendance tracking, grade management, timetables, exams, and parent communication all in one platform.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-x-6 gap-y-2.5">
+                  {['Fee collection & invoicing', 'Attendance tracking', 'Grade & exam management', 'Timetable scheduling', 'Self-hosted & free'].map((f) => (
+                    <span key={f} className="flex items-center gap-1.5 text-[13px] text-[#484848]">
+                      <span className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: '#fff1ee' }}>
+                        <svg width="9" height="9" viewBox="0 0 12 12" fill="none">
+                          <path d="M2 6l3 3 5-5" stroke="#f26b4e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      {f}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap items-center gap-4 pt-1">
+                  <Link
+                    href="/free-software/genius-school-management"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-[14px] font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+                    style={{ background: '#f26b4e', boxShadow: '0 4px 16px rgba(242,107,78,0.30)' }}
+                  >
+                    Download Free
+                    <svg width="13" height="13" viewBox="0 0 15 15" fill="none">
+                      <path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+                  <span className="text-[12px] text-[#9ca3af]">MIT licence · No subscription · Self-hosted</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── Genius HRM promo (HR tools only) ────────────────────────────── */}
       {tool.category === 'hr' && (
         <section className="py-12 sm:py-16 bg-white">
