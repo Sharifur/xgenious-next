@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const COLOR = '#3b82f6';
+const COLOR = '#f26b4e';
 
 const KEYWORDS = [
   'SELECT','FROM','WHERE','JOIN','LEFT','RIGHT','INNER','OUTER','CROSS','ON','AND','OR',
@@ -81,12 +81,12 @@ export default function SqlFormatter() {
           <textarea value={input} onChange={(e) => setInput(e.target.value)}
             placeholder="SELECT u.id, u.name, o.total FROM users u JOIN orders o ON u.id = o.user_id WHERE o.total > 100 ORDER BY o.total DESC LIMIT 10"
             rows={14}
-            className="w-full rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none resize-y focus:border-[#3b82f6] focus:ring-2 focus:ring-[#3b82f6]/10 transition-colors" />
+            className="w-full rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 text-[14px] font-mono text-[#0F1112] placeholder:text-[#9ca3af] outline-none resize-y focus:border-[#f26b4e] focus:ring-2 focus:ring-[#f26b4e]/10 transition-colors" />
         </div>
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center justify-between">
             <label className="text-[13px] font-semibold text-[#0F1112]">Formatted SQL</label>
-            {output && <button onClick={copy} className="text-[12px] text-[#3b82f6] hover:underline">{copied ? 'Copied!' : 'Copy'}</button>}
+            {output && <button onClick={copy} className="text-[12px] text-[#f26b4e] hover:underline">{copied ? 'Copied!' : 'Copy'}</button>}
           </div>
           <textarea value={output} readOnly rows={14}
             placeholder="Formatted SQL appears here"
