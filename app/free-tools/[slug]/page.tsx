@@ -478,6 +478,62 @@ export default async function FreeToolPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* ── Genius HRM promo (HR tools only) ────────────────────────────── */}
+      {tool.category === 'hr' && (
+        <section className="py-12 sm:py-16 bg-white">
+          <div className="container-page px-4 sm:px-6 lg:px-0">
+            <div className="rounded-2xl border border-[#E5E7EC] overflow-hidden bg-[#F5F6F8]">
+              <div className="p-8 sm:p-10 flex flex-col gap-6">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: '#fff1ee' }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" stroke="#f26b4e" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <span className="text-[11px] font-bold uppercase tracking-widest" style={{ color: '#f26b4e' }}>Free Software</span>
+                </div>
+
+                <div>
+                  <h2 className="text-[22px] sm:text-[28px] font-semibold text-[#0F1112] leading-[32px] tracking-[-0.01em] mb-2">
+                    Genius HRM — Free HR Management Software
+                  </h2>
+                  <p className="text-[14px] text-[#484848] leading-[24px] max-w-[600px]">
+                    Beyond calculators — manage your entire HR operation with Genius HRM. Self-hosted, open source, and free forever. Payroll, leave management, attendance tracking, performance appraisals, and employee records all in one platform.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-x-6 gap-y-2.5">
+                  {['Payroll processing', 'Leave & attendance', 'Performance appraisals', 'Employee records', 'Self-hosted & free'].map((f) => (
+                    <span key={f} className="flex items-center gap-1.5 text-[13px] text-[#484848]">
+                      <span className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: '#fff1ee' }}>
+                        <svg width="9" height="9" viewBox="0 0 12 12" fill="none">
+                          <path d="M2 6l3 3 5-5" stroke="#f26b4e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      {f}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap items-center gap-4 pt-1">
+                  <Link
+                    href="/free-software/genius-hrm"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-[14px] font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+                    style={{ background: '#f26b4e', boxShadow: '0 4px 16px rgba(242,107,78,0.30)' }}
+                  >
+                    Download Free
+                    <svg width="13" height="13" viewBox="0 0 15 15" fill="none">
+                      <path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+                  <span className="text-[12px] text-[#9ca3af]">MIT licence · No subscription · Self-hosted</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── Related tools ────────────────────────────────────────────────── */}
       {tool.relatedTools.length > 0 && (
         <section className="py-12 sm:py-16 lg:py-20" style={{ background: '#F5F6F8' }}>
