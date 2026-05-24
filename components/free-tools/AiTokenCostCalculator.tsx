@@ -64,6 +64,7 @@ export default function AiTokenCostCalculator() {
   const [outputTokens, setOutputTokens] = useState('500');
   const [requestsPerDay, setRequestsPerDay] = useState('1000');
   const [useCustom, setUseCustom] = useState(false);
+  const [showComparison, setShowComparison] = useState(false);
   const [customInput, setCustomInput] = useState('');
   const [customOutput, setCustomOutput] = useState('');
 
@@ -200,28 +201,40 @@ export default function AiTokenCostCalculator() {
 
       {/* Model comparison */}
       <div className="flex flex-col gap-2">
-        <span className="text-[13px] font-semibold text-[#0F1112]">Model Comparison — Same Token Count</span>
-        <div className="rounded-xl border border-[#E5E7EC] overflow-hidden text-[12px]">
-          <div className="grid grid-cols-4 px-3 py-2 bg-[#F5F6F8] border-b border-[#E5E7EC] font-semibold text-[#484848]">
-            <span className="col-span-2">Model</span>
-            <span className="text-right">Per Request</span>
-            <span className="text-right">Monthly</span>
-          </div>
-          {comparison.map((m, i) => (
-            <div
-              key={m.id}
-              className={`grid grid-cols-4 px-3 py-2 border-b border-[#E5E7EC] last:border-0 ${m.id === selectedId ? 'bg-[#eff6ff]' : i % 2 !== 0 ? 'bg-[#fafafa]' : ''}`}
-            >
-              <span className="col-span-2 flex items-center gap-1.5 text-[#484848]">
-                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: PROVIDER_COLORS[m.provider] }} />
-                <span className={m.id === selectedId ? 'font-semibold text-[#0F1112]' : ''}>{m.label}</span>
-              </span>
-              <span className="text-right text-[#0F1112] font-medium">{fmt(m.cost)}</span>
-              <span className="text-right text-[#6b7280]">{fmt(m.monthly)}</span>
+        <button
+          onClick={() => setShowComparison((v) => !v)}
+          className="flex items-center justify-between w-full text-[13px] font-semibold text-[#0F1112] cursor-pointer"
+        >
+          <span>Model Comparison — Same Token Count</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className={`transition-transform ${showComparison ? 'rotate-180' : ''}`}>
+            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        {showComparison && (
+          <>
+            <div className="rounded-xl border border-[#E5E7EC] overflow-hidden text-[12px]">
+              <div className="grid grid-cols-4 px-3 py-2 bg-[#F5F6F8] border-b border-[#E5E7EC] font-semibold text-[#484848]">
+                <span className="col-span-2">Model</span>
+                <span className="text-right">Per Request</span>
+                <span className="text-right">Monthly</span>
+              </div>
+              {comparison.map((m, i) => (
+                <div
+                  key={m.id}
+                  className={`grid grid-cols-4 px-3 py-2 border-b border-[#E5E7EC] last:border-0 ${m.id === selectedId ? 'bg-[#eff6ff]' : i % 2 !== 0 ? 'bg-[#fafafa]' : ''}`}
+                >
+                  <span className="col-span-2 flex items-center gap-1.5 text-[#484848]">
+                    <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: PROVIDER_COLORS[m.provider] }} />
+                    <span className={m.id === selectedId ? 'font-semibold text-[#0F1112]' : ''}>{m.label}</span>
+                  </span>
+                  <span className="text-right text-[#0F1112] font-medium">{fmt(m.cost)}</span>
+                  <span className="text-right text-[#6b7280]">{fmt(m.monthly)}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <p className="text-[11px] text-[#9ca3af]">Prices as of May 2026 from official provider pricing pages. DeepSeek V4 Pro has an active 75% discount until 2026-05-31. GPT-4 Turbo and GPT-4 legacy are deprecated. Verify current rates before production budgeting.</p>
+            <p className="text-[11px] text-[#9ca3af]">Prices as of May 2026 from official provider pricing pages. DeepSeek V4 Pro has an active 75% discount until 2026-05-31. GPT-4 Turbo and GPT-4 legacy are deprecated. Verify current rates before production budgeting.</p>
+          </>
+        )}
       </div>
     </div>
   );
