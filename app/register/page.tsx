@@ -104,10 +104,11 @@ export default function RegisterPage() {
       }),
     });
 
-    const data = await res.json();
+    let data: { ok?: boolean; error?: string } = {};
+    try { data = await res.json(); } catch { /* empty */ }
     if (!res.ok) {
       recaptchaRef.current?.reset();
-      setServerError(data.error ?? 'Registration failed.');
+      setServerError(data.error ?? 'Registration failed. Please try again.');
       return;
     }
 

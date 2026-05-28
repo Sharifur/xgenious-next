@@ -27,6 +27,9 @@ Violations are caught by `scripts/check-integrations.sh` (runs on pre-push and a
 | `/aws-ses` | Sending email or adding new email templates |
 | `/wp-api` | WordPress REST API — user read/write, meta, auth |
 | `/new-account-page` | Scaffolding a new page under /my-account/ |
+| `/seo-audit` | Technical + on-page SEO audit for any page |
+| `/ai-seo` | Optimize any page for AI citation (AEO) |
+| `/cro` | Conversion rate audit — increase purchases/signups |
 
 ## Hooks
 
@@ -43,6 +46,25 @@ Re-install after clone: `bash scripts/install-hooks.sh`
 - Only WordPress `subscriber` role can log in
 - `email_verified` WP user meta: `0` = blocked, `1` or absent = allowed
 - Requires mu-plugin: `wp-content/mu-plugins/xg-user-meta.php`
+
+## Page Component Structure
+
+When creating any new page:
+
+- Create a `_components/` folder inside the page directory (e.g. `app/products/my-page/_components/`)
+- Extract every logical section into its own component file in `_components/` (e.g. `Hero.tsx`, `Features.tsx`, `Pricing.tsx`, `FAQ.tsx`)
+- `page.tsx` should only import and compose those components — no inline JSX sections
+- Component files are local to the page; do not place them in `components/` unless reused across multiple pages
+
+```
+app/products/my-page/
+  page.tsx              ← imports only
+  _components/
+    Hero.tsx
+    Features.tsx
+    Pricing.tsx
+    FAQ.tsx
+```
 
 ## Routing
 

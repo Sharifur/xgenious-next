@@ -48,10 +48,8 @@ export default function InstallationPackage({
 
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-12 gap-4">
-          <span className="inline-flex items-center gap-1.5 bg-[#f97316] text-white text-[12px] font-bold uppercase tracking-widest rounded-full px-4 py-1.5">
-            <svg width="10" height="10" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M11.3 1.046A1 1 0 0110 2v.5a1 1 0 01-1 1H8a1 1 0 00-1 1v.5a1 1 0 01-1 1H5a1 1 0 010-2h.5A1 1 0 005 3V2a1 1 0 00-1-1H3a1 1 0 000 2h.5a1 1 0 011 1v1.5a1 1 0 01-1 1H3a1 1 0 000 2h.268A2 2 0 005 9.268V10a1 1 0 001 1h4a1 1 0 001-1V9.268A2 2 0 0012.732 8H13a1 1 0 000-2h-.268A2 2 0 0011 4.268V4a1 1 0 011-1h.5a1 1 0 001-1V2a1 1 0 00-1.2-.954z" />
-            </svg>
+          <span className="inline-flex items-center gap-1.5 bg-[#FA8C00] text-white text-[12px] font-bold uppercase tracking-widest rounded-full px-4 py-1.5">
+            <img src="/icons/xilancer/badge-icon.svg" alt="" width={12} height={12} />
             {badgeText}
           </span>
           <h2 className="text-[32px] sm:text-[44px] lg:text-[52px] font-bold text-[#0F1112] leading-tight max-w-[640px]">

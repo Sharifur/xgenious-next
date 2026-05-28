@@ -113,7 +113,8 @@ export default function Navbar() {
     pathname === '/forgot-password' ||
     pathname === '/verify-email' ||
     pathname?.startsWith('/reset-password') ||
-    pathname?.startsWith('/my-account');
+    pathname?.startsWith('/my-account') ||
+    pathname?.startsWith('/checkout');
 
   return (
     <header className={`${noSticky ? 'relative' : 'fixed top-0 left-0 right-0 z-50'} pt-3 px-3 lg:pt-4 lg:px-8`}>

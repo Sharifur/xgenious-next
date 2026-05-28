@@ -36,31 +36,44 @@ export async function POST(req: NextRequest) {
 
   const credentials = Buffer.from(`${WP_ADMIN_USER}:${WP_ADMIN_PASS}`).toString('base64');
 
-  const res = await fetch(`${WP_BASE}/wp-json/wp/v2/users`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Basic ${credentials}`,
-    },
-    body: JSON.stringify({
-      username,
-      email,
-      password,
-      first_name: firstName ?? '',
-      last_name: lastName ?? '',
-      roles: ['subscriber'],
-    }),
-    cache: 'no-store',
-  });
-
-  const data = await res.json();
-
-  if (!res.ok) {
-    const message = data?.message ?? 'Registration failed. Username or email may already be in use.';
-    return NextResponse.json({ error: message }, { status: res.status });
+  async function createWpUser(uname: string) {
+    const r = await fetch(`${WP_BASE}/wp-json/wp/v2/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Basic ${credentials}`,
+      },
+      body: JSON.stringify({
+        username: uname,
+        email,
+        password,
+        first_name: firstName ?? '',
+        last_name: lastName ?? '',
+        roles: ['subscriber'],
+      }),
+      cache: 'no-store',
+    });
+    let body: Record<string, unknown> = {};
+    try { body = await r.json(); } catch { /* WP returned non-JSON (PHP error page) */ }
+    return { r, body };
   }
 
-  const userId: number = data.id;
+  let { r: res, body: data } = await createWpUser(username);
+
+  if (!res.ok && (data as { code?: string })?.code === 'existing_user_login') {
+    const uniqueUsername = `${username}_${Date.now().toString(36).slice(-4)}`;
+    ({ r: res, body: data } = await createWpUser(uniqueUsername));
+  }
+
+  if (!res.ok) {
+    const wpMsg = (data as { message?: string })?.message;
+    const message = wpMsg
+      ? wpMsg.replace(/<[^>]*>/g, '')
+      : 'Registration failed. Email may already be in use.';
+    return NextResponse.json({ error: message }, { status: res.status >= 500 ? 400 : res.status });
+  }
+
+  const userId = (data as { id: number }).id;
   const sentAt = Math.floor(Date.now() / 1000);
 
   // Mark email as unverified and record send timestamp (requires WP mu-plugin for meta)
