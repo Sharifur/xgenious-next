@@ -93,7 +93,7 @@ function ResetPasswordForm() {
         <AuthPanel
           badge="Almost done"
           headline={<>Set a new <em className="italic font-bold">secure password.</em></>}
-          description="Choose a password with at least 8 characters to protect your Xgenious account."
+          description="Choose a password with at least 12 characters to protect your Xgenious account."
         />
 
         <div className="flex-1 bg-white p-8 md:p-10">
@@ -111,7 +111,7 @@ function ResetPasswordForm() {
           ) : (
             <>
               <h1 className="text-2xl font-bold text-[#0F1112] mb-1">Set new password</h1>
-              <p className="text-sm text-gray-500 mb-6">Choose a password with at least 8 characters.</p>
+              <p className="text-sm text-gray-500 mb-6">Choose a password with at least 12 characters.</p>
 
               {serverError && (
                 <div className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100">
