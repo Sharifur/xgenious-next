@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: message }, { status: res.status >= 500 ? 400 : res.status });
   }
 
-  const userId: number = data.id;
+  const userId = (data as { id: number }).id;
   const sentAt = Math.floor(Date.now() / 1000);
 
   // Mark email as unverified and record send timestamp (requires WP mu-plugin for meta)
