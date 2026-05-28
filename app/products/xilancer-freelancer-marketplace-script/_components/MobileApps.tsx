@@ -7,7 +7,6 @@ const APPS = [
     id: 'freelancer',
     name: 'Xilancer Freelancer App',
     role: 'For Freelancers',
-    roleColor: '#e8705a',
     description:
       'Manage gigs, bid on projects, track orders, chat with clients, and withdraw earnings — all from your phone.',
     icon: '/products/xilancer-app-freelancer.png',
@@ -25,7 +24,6 @@ const APPS = [
     id: 'client',
     name: 'Xilancer Client App',
     role: 'For Clients',
-    roleColor: '#6366f1',
     description:
       'Post projects, browse freelancers, place orders, release payments, and manage your entire hiring workflow on the go.',
     icon: '/products/xilancer-app-client.png',
@@ -60,80 +58,78 @@ function GooglePlayBadge() {
 
 export default function MobileApps() {
   return (
-    <section className="py-20 lg:py-28" style={{ background: '#080c14' }}>
+    <section className="py-20 lg:py-[100px] bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1100px] mx-auto">
 
         {/* Heading */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-12">
           <div
             className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[12px] font-semibold mb-4"
-            style={{ background: `${COLOR}20`, color: COLOR }}
+            style={{ background: LIGHT_COLOR, color: COLOR }}
           >
             <span className="w-1.5 h-1.5 rounded-full" style={{ background: COLOR }} />
             Available on Google Play
           </div>
-          <h2 className="text-[30px] sm:text-[38px] font-bold text-white leading-tight mb-4">
+          <h2 className="text-[28px] sm:text-[36px] font-bold text-[#0F1112] leading-tight mb-4">
             Two Native Mobile Apps<br className="hidden sm:block" /> Included in Your License
           </h2>
-          <p className="text-[15px] text-[#9ca3af] max-w-[520px] mx-auto leading-7">
-            Flutter-built Android apps for both sides of your marketplace. Separate apps for freelancers and clients — both fully branded to your platform.
+          <p className="text-[15px] text-[#6b7280] max-w-[520px] mx-auto leading-7">
+            Flutter-built Android apps for both sides of your marketplace — freelancers and clients. Fully branded to your platform.
           </p>
         </div>
 
         {/* App Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {APPS.map((app) => (
             <div
               key={app.id}
-              className="rounded-2xl overflow-hidden flex flex-col"
-              style={{ background: '#0f1520', border: '1px solid rgba(255,255,255,0.08)' }}
+              className="rounded-2xl overflow-hidden flex flex-col border"
+              style={{ borderColor: '#E5E7EC', background: '#F5F6F8' }}
             >
-              {/* Top strip */}
-              <div
-                className="h-1 w-full"
-                style={{ background: `linear-gradient(90deg, ${app.roleColor}, ${app.roleColor}60)` }}
-              />
+              {/* Top accent strip */}
+              <div className="h-1 w-full" style={{ background: COLOR }} />
 
-              <div className="p-7 flex flex-col flex-1">
+              <div className="p-6 sm:p-7 flex flex-col flex-1">
                 {/* Icon + name row */}
                 <div className="flex items-center gap-4 mb-5">
                   <div
-                    className="rounded-2xl overflow-hidden flex-shrink-0"
+                    className="rounded-2xl overflow-hidden flex-shrink-0 border"
                     style={{
-                      width: 72,
-                      height: 72,
-                      boxShadow: `0 0 0 1px rgba(255,255,255,0.1), 0 8px 24px ${app.roleColor}30`,
+                      width: 68,
+                      height: 68,
+                      borderColor: '#E5E7EC',
+                      boxShadow: `0 4px 16px ${COLOR}20`,
                     }}
                   >
                     <Image
                       src={app.icon}
                       alt={`${app.name} icon`}
-                      width={72}
-                      height={72}
+                      width={68}
+                      height={68}
                       className="object-cover w-full h-full"
                     />
                   </div>
                   <div>
                     <span
                       className="inline-block text-[10px] font-bold px-2.5 py-1 rounded-full mb-1.5"
-                      style={{ background: `${app.roleColor}20`, color: app.roleColor }}
+                      style={{ background: LIGHT_COLOR, color: COLOR }}
                     >
                       {app.role}
                     </span>
-                    <h3 className="text-[16px] font-bold text-white leading-tight">{app.name}</h3>
+                    <h3 className="text-[16px] font-bold text-[#0F1112] leading-tight">{app.name}</h3>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-[13px] text-[#9ca3af] leading-6 mb-5">{app.description}</p>
+                <p className="text-[13px] text-[#6b7280] leading-6 mb-5">{app.description}</p>
 
                 {/* Features */}
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6">
                   {app.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-[12px] text-[#d1d5db]">
+                    <li key={f} className="flex items-start gap-2 text-[12px] text-[#374151]">
                       <svg className="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 20 20" fill="none">
-                        <circle cx="10" cy="10" r="10" fill={`${app.roleColor}25`} />
-                        <path d="M6 10l3 3 5-5" stroke={app.roleColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <circle cx="10" cy="10" r="10" fill="#dcfce7" />
+                        <path d="M6 10l3 3 5-5" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                       {f}
                     </li>
@@ -145,9 +141,7 @@ export default function MobileApps() {
                   <Link href={app.playUrl} target="_blank" rel="noopener noreferrer" className="inline-block">
                     <GooglePlayBadge />
                   </Link>
-                  <p className="text-[11px] text-[#6b7280] mt-2.5">
-                    Flutter · Android · iOS build available
-                  </p>
+                  <p className="text-[11px] text-[#9ca3af] mt-2.5">Flutter · Android · iOS build available</p>
                 </div>
               </div>
             </div>
@@ -157,11 +151,11 @@ export default function MobileApps() {
         {/* Bottom note */}
         <p className="text-center text-[13px] text-[#6b7280] mt-10">
           Both apps included with{' '}
-          <Link href="#pricing" className="underline underline-offset-2" style={{ color: COLOR }}>
+          <Link href="#pricing" className="font-medium underline underline-offset-2" style={{ color: COLOR }}>
             Everything Bundle
           </Link>
           {' '}and{' '}
-          <Link href="#pricing" className="underline underline-offset-2" style={{ color: '#a78bfa' }}>
+          <Link href="#pricing" className="font-medium underline underline-offset-2" style={{ color: COLOR }}>
             Exclusive License
           </Link>
           . White-label branding supported.
