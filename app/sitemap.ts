@@ -37,6 +37,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/refund-policy`, priority: 0.3, changeFrequency: 'yearly' as const },
     { url: `${BASE_URL}/support-policy`, priority: 0.3, changeFrequency: 'yearly' as const },
     { url: `${BASE_URL}/terms-of-service`, priority: 0.3, changeFrequency: 'yearly' as const },
+    { url: `${BASE_URL}/products/nazmart-multi-tenancy-ecommerce-platform`, priority: 0.9, changeFrequency: 'monthly' as const },
+    { url: `${BASE_URL}/products/xilancer-freelancer-marketplace-script`, priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-software`, priority: 0.8, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-software/genius-school-management`, priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-software/genius-crm`, priority: 0.9, changeFrequency: 'monthly' as const },
