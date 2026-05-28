@@ -13,8 +13,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
   }
 
-  if (password.length < 8) {
-    return NextResponse.json({ error: 'Password must be at least 8 characters.' }, { status: 400 });
+  if (password.length < 12) {
+    return NextResponse.json({ error: 'Password must be at least 12 characters.' }, { status: 400 });
   }
 
   const now = Math.floor(Date.now() / 1000);
@@ -57,7 +57,24 @@ export async function POST(req: NextRequest) {
   });
 
   if (!updateRes.ok) {
+    const errBody = await updateRes.text().catch(() => '(unreadable)');
+    console.error('[reset-password] WP password update failed', { uid, status: updateRes.status, body: errBody });
     return NextResponse.json({ error: 'Password update failed. Please try again.' }, { status: 500 });
+  }
+
+  console.log('[reset-password] WP password updated OK', { uid, status: updateRes.status });
+
+  // Verify the new password actually works — WP can return 200 without persisting the change
+  const jwtTestRes = await fetch(`${WP_BASE}/wp-json/jwt-auth/v1/token`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username: user.email, password }),
+    cache: 'no-store',
+  });
+  if (!jwtTestRes.ok) {
+    const jwtBody = await jwtTestRes.text().catch(() => '(unreadable)');
+    console.error('[reset-password] JWT test failed after password update', { uid, status: jwtTestRes.status, body: jwtBody });
+    return NextResponse.json({ error: 'Password could not be updated. Please try again or contact support.' }, { status: 500 });
   }
 
   // Clear the reset token to prevent reuse

@@ -19,7 +19,11 @@ export async function POST(req: NextRequest) {
   const data = await res.json();
 
   if (!res.ok) {
-    return NextResponse.json({ error: data.message ?? 'Failed to generate download' }, { status: res.status });
+    console.error('[license-server] updates/generate error:', res.status, JSON.stringify(data));
+    const userMsg = res.status < 500
+      ? ((data as { message?: string }).message ?? 'Failed to generate download')
+      : 'Service temporarily unavailable. Please try again later.';
+    return NextResponse.json({ error: userMsg }, { status: res.status < 500 ? res.status : 503 });
   }
 
   return NextResponse.json(data);

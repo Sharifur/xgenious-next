@@ -29,13 +29,14 @@ export const FASTSPRING_SCRIPT = 'https://sbl.onfastspring.com/sbl/1.0.6/fastspr
 export function launchCheckout(productPaths: string[]): void {
   const fs = window.fastspring;
   if (!fs?.builder) return;
-  if (FASTSPRING_TEST_MODE) {
-    fs.builder.push({ mode: 'test' });
-  }
+  // Single atomic push with checkout:true avoids the mobile race condition
+  // where builder.checkout() fires before the prior push is processed.
   fs.builder.push({
+    reset: true,
+    ...(FASTSPRING_TEST_MODE ? { mode: 'test' } : {}),
     products: productPaths.map((path) => ({ path, quantity: 1 })),
+    checkout: true,
   });
-  fs.builder.checkout();
 }
 
 declare global {

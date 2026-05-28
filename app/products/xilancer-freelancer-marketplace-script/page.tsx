@@ -11,6 +11,7 @@ import LiveChat from './_components/LiveChat';
 import Reviews from './_components/Reviews';
 import MarketplaceFeatures from './_components/MarketplaceFeatures';
 import ProjectCatalogue from './_components/ProjectCatalogue';
+import MobileApps from './_components/MobileApps';
 import TechStack from './_components/TechStack';
 import ComparisonTable from './_components/ComparisonTable';
 import FAQ from './_components/FAQ';
@@ -66,6 +67,7 @@ export default function XilancerPage() {
       <MarketplaceFeatures />
       <ProjectCatalogue />
       <PlatformFeatures />
+      <MobileApps />
       <TechStack />
       <ComparisonTable />
       <Pricing />

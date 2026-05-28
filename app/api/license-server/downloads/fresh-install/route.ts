@@ -24,7 +24,11 @@ export async function GET(req: NextRequest) {
   const data = await res.json();
 
   if (!res.ok) {
-    return NextResponse.json({ error: data.message ?? 'Failed to generate download link' }, { status: res.status });
+    console.error('[license-server] fresh-install error:', res.status, JSON.stringify(data));
+    const userMsg = res.status < 500
+      ? ((data as { message?: string }).message ?? 'Failed to generate download link')
+      : 'Service temporarily unavailable. Please try again later.';
+    return NextResponse.json({ error: userMsg }, { status: res.status < 500 ? res.status : 503 });
   }
 
   const fileRes = await fetch(data.download_url);
