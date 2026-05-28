@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/our-products/xilancer-freelancer-marketplace-platform",
+      "destination": "/products/xilancer-freelancer-marketplace-script",
+      "permanent": true
+    },
+    {
+      "source": "/our-products/xilancer-freelancer-marketplace-platform/",
+      "destination": "/products/xilancer-freelancer-marketplace-script",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/", "has": [{ "type": "query", "key": "s" }], "destination": "http://origin.xgenious.com/" },
     { "source": "/", "has": [{ "type": "query", "key": "p" }], "destination": "http://origin.xgenious.com/" },
