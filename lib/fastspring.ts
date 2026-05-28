@@ -38,7 +38,13 @@ declare global {
   interface Window {
     fastspring: {
       builder: {
-        push: (config: { reset?: boolean; products?: { path: string; quantity: number }[] } | ((builder: object) => void)) => void;
+        push: (config: {
+          reset?: boolean;
+          products?: { path: string; quantity: number }[];
+          checkout?: boolean;
+          paymentContact?: { email?: string; firstName?: string; lastName?: string };
+          tags?: Record<string, string>;
+        } | ((builder: object) => void)) => void;
         checkout: () => void;
         add: (productPath: string) => void;
       };
