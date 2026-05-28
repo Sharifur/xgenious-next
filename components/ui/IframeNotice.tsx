@@ -9,10 +9,9 @@ export default function IframeNotice() {
   const [url, setUrl] = useState('');
 
   useEffect(() => {
-    const forcePreview = process.env.NODE_ENV === 'development' && new URLSearchParams(window.location.search).has('iframe_preview');
-    if (forcePreview || window.self !== window.top) {
+    if (window.self !== window.top) {
       setIsIframe(true);
-      setUrl(window.location.href.replace('?iframe_preview', '').replace('&iframe_preview', ''));
+      setUrl(window.location.href);
       const timer = setTimeout(() => setVisible(true), 4000);
       return () => clearTimeout(timer);
     }
