@@ -58,7 +58,7 @@ function GooglePlayBadge() {
 
 export default function MobileApps() {
   return (
-    <section className="py-20 lg:py-[100px] bg-white">
+    <section id="mobile-apps" className="py-20 lg:py-[100px] bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1100px] mx-auto">
 
         {/* Heading */}
