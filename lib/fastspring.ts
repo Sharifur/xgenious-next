@@ -22,13 +22,25 @@ export interface FastSpringOrderItem {
   };
 }
 
+export const FASTSPRING_STORE = 'xgenious.onfastspring.com/popup-xgenious';
+export const FASTSPRING_SCRIPT = 'https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js';
+
+export function launchCheckout(productPaths: string[]): void {
+  const fs = window.fastspring;
+  if (!fs?.builder) return;
+  fs.builder.push({
+    products: productPaths.map((path) => ({ path, quantity: 1 })),
+  });
+  fs.builder.checkout();
+}
+
 declare global {
   interface Window {
     fastspring: {
       builder: {
-        push: (config: object) => void;
+        push: (config: { reset?: boolean; products?: { path: string; quantity: number }[] } | ((builder: object) => void)) => void;
         checkout: () => void;
-        reset: () => void;
+        add: (productPath: string) => void;
       };
     };
     onFastSpringWebhookReceived: (order: FastSpringOrder) => void;

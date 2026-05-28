@@ -32,6 +32,25 @@ export default function RefundPolicyPage() {
         Once your request is reviewed and approved, the refund will be processed back to your original payment method. Please notify us promptly if you receive a defective product.
       </p>
 
+      <h2>Addon Services — Non-Refundable</h2>
+
+      <blockquote>
+        All addon services — including installation, configuration, and app store submission — are <strong>strictly non-refundable</strong> once work has begun.
+      </blockquote>
+
+      <p>Addon services include but are not limited to:</p>
+      <ul>
+        <li>Web platform installation and configuration</li>
+        <li>Web + mobile app installation and configuration</li>
+        <li>Google Play Store submission and release</li>
+        <li>Apple App Store submission and release</li>
+        <li>Any other service delivered by the Xgenious team</li>
+      </ul>
+
+      <p>
+        Because these are <strong>human-delivered services</strong>, work begins immediately after purchase. Costs are incurred regardless of whether you choose to use the delivered service. Refund requests for addon services will not be accepted.
+      </p>
+
       <h2>Products Purchased via Envato</h2>
 
       <blockquote>

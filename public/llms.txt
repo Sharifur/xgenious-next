@@ -35,6 +35,19 @@ Free open-source HR management system. Laravel 13 + React 18. 13 modules: employ
 - Stack: Laravel 13, React 18, Inertia.js, MySQL, shadcn/ui
 - Target users: SMEs, HR teams, developers, agencies
 
+## Premium Scripts & Marketplace Products
+
+### Xilancer — Freelancer Marketplace Script
+Complete self-hosted freelancer marketplace script. Build a Fiverr or Upwork clone. One-time purchase, no monthly fees, full source code.
+- Product page: https://xgenious.com/products/xilancer-freelancer-marketplace-script
+- Demo: https://xilancer.xgenious.com
+- Purchase: https://codecanyon.net/item/xilancer-all-in-one-freelancer-marketplace-platform/
+- Stack: Laravel (PHP 8.1+), Vue.js, MySQL, Flutter (mobile apps), Stripe & PayPal escrow
+- Rating: 4.36/5 on CodeCanyon · 45 reviews · 10,000+ installs
+- Pricing: Regular $59 · Bundle $149 · Complete Package $282 (all one-time)
+- Includes: Gig marketplace, project bidding, escrow payments, real-time chat, native Android/iOS apps, admin panel, multi-language + RTL support
+- Keywords: freelancing platform script, fiverr clone script, upwork clone laravel, laravel freelancer marketplace
+
 ## Company
 
 - About: https://xgenious.com/about
