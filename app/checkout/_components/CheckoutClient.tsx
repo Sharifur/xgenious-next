@@ -90,6 +90,7 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
         src={FASTSPRING_SCRIPT}
         data-storefront={FASTSPRING_STORE}
         data-popup-closed="onFastSpringPopupClosed"
+        data-continuous="true"
         strategy="afterInteractive"
         onLoad={() => setFsReady(true)}
       />
@@ -106,8 +107,8 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
         <div className="container-page px-4 sm:px-6 lg:px-0 py-10 lg:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 max-w-[980px] mx-auto">
 
-            {/* Left — Order Summary */}
-            <div>
+            {/* Left — Order Summary (order-2 on mobile, order-1 on desktop) */}
+            <div className="order-2 lg:order-1">
               <h1 className="text-[24px] font-bold text-[#0F1112] mb-6">Order Summary</h1>
 
               <div className="bg-white rounded-2xl border border-[#E5E7EC] p-6 mb-5">
@@ -265,8 +266,8 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
               )}
             </div>
 
-            {/* Right — Payment Panel */}
-            <div className="lg:sticky lg:top-8 self-start">
+            {/* Right — Payment Panel (order-1 on mobile so it shows first) */}
+            <div className="order-1 lg:order-2 lg:sticky lg:top-8 self-start">
               <div className="bg-white rounded-2xl border border-[#E5E7EC] p-6">
                 <h3 className="text-[15px] font-bold text-[#0F1112] mb-4">Order Total</h3>
 
