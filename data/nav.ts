@@ -17,7 +17,7 @@ export const productsDropdown: DropdownItem[] = [
   { label: 'Helpnest', description: 'AI Power Support Chatbot', href: 'https://xgenious.com/our-products/laravel-ai-chatbot-support-script/' },
   { label: 'Nexelit', description: 'Multipurpose Website CMS', href: 'https://xgenious.com/our-products/nexelit-multipurpose-website-business-management-system-cms/' },
   { label: 'Fundorex', description: 'Crowdfunding Platform', href: 'https://xgenious.com/our-products/fundorex-crowdfunding-platform/' },
-  { label: 'Xilancer', description: 'Freelancer Marketplace Platform', href: 'https://xgenious.com/our-products/xilancer-freelancer-marketplace-platform/' },
+  { label: 'Xilancer', description: 'Freelancer Marketplace Platform', href: '/products/xilancer-freelancer-marketplace-script' },
   { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', href: 'https://xgenious.com/our-products/prohandy-on-demand-home-service-marketplace-platform' },
 ];
 

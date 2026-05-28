@@ -158,7 +158,7 @@ export const ownProducts: OwnProduct[] = [
     description: 'Freelancer Marketplace Platform',
     badges: ['Marketplace'],
     image: '/products/xilancer.png',
-    href: 'https://xgenious.com/our-products/xilancer-freelancer-marketplace-platform/',
+    href: '/products/xilancer-freelancer-marketplace-script',
   },
   {
     name: 'Prohandy',
