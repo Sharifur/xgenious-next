@@ -29,7 +29,7 @@ export default function StickyBar() {
                 </svg>
               ))}
             </div>
-            <span className="text-[12px] text-[#6b7280]">4.5 · 80+ reviews · 1,200+ installs</span>
+            <span className="text-[12px] text-[#6b7280]">4.5 · 80+ reviews · 525+ sales</span>
           </div>
         </div>
 

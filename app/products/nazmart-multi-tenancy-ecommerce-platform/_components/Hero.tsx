@@ -14,8 +14,18 @@ export default function Hero() {
 
       <section
         className="relative overflow-hidden pt-[120px] pb-0 sm:pt-[140px]"
-        style={{ background: 'linear-gradient(135deg, #f0fde4 0%, #ecfccb 40%, #d9f99d 100%)' }}
+        style={{ background: '#F8FFEE' }}
       >
+        {/* Background gradient ball — full-width circle, top half visible */}
+        <div
+          className="pointer-events-none absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] aspect-square rounded-full opacity-[0.12]"
+          style={{ top: '150px' }}
+          style={{
+            background: 'radial-gradient(circle, #FFFFFF 0%, #154646 85%, rgba(146,231,33,0.5) 100%)',
+            zIndex: 0,
+          }}
+        />
+
         {/* Center content */}
         <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col items-center text-center gap-6 relative z-10 max-w-[860px] mx-auto">
 
@@ -49,19 +59,17 @@ export default function Hero() {
               ))}
             </div>
             <span className="text-[13px] font-semibold text-[#0F1112]">4.5/5</span>
-            <span className="text-[13px] text-[#6b7280]">· 80+ reviews · 1,200+ installs on CodeCanyon</span>
+            <span className="text-[13px] text-[#6b7280]">· 80+ reviews · 525+ sales on CodeCanyon</span>
           </div>
 
           <div className="flex items-center gap-3 flex-wrap justify-center mt-1">
-            <Link
-              href={PURCHASE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <a
+              href="#pricing"
               className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-lg"
               style={{ background: '#ec7161', boxShadow: '0 6px 20px #ec716140' }}
             >
               {`Purchase Now — from $${REGULAR_PRICE}`}
-            </Link>
+            </a>
             <Link
               href={DEMO_URL}
               target="_blank"
@@ -89,14 +97,10 @@ export default function Hero() {
           </div>
 
           {/* Hero image */}
-          <div className="mt-10 w-full max-w-[900px] relative">
-            <div
-              className="absolute inset-0 rounded-t-2xl rotate-[3deg] -translate-y-3 translate-x-3"
-              style={{ background: COLOR }}
-            />
-            <div className="relative z-10 rounded-t-2xl overflow-hidden shadow-2xl">
+          <div className="mt-10 w-full max-w-[900px]">
+            <div className="rounded-t-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/products/nazmart.png"
+                src="/products/nazmart-hero.jpg"
                 alt="Nazmart multi-tenancy eCommerce SaaS platform dashboard"
                 width={900}
                 height={540}

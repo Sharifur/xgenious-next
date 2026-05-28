@@ -20,7 +20,7 @@ export const QUICK_LINKS = [
 ];
 
 export const STATS = [
-  { value: '1,200+', label: 'Active installs' },
+  { value: '525+', label: 'Sales on CodeCanyon' },
   { value: '4.5/5', label: 'CodeCanyon rating' },
   { value: '80+', label: 'Verified reviews' },
   { value: '1-time', label: 'Purchase' },

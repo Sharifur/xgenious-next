@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { BASE_URL, CANONICAL } from './_components/constants';
 import Hero from './_components/Hero';
 import StatsBar from './_components/StatsBar';
+import HighlightCards from './_components/HighlightCards';
 import Pricing from './_components/Pricing';
 import StickyBar from './_components/StickyBar';
 
@@ -44,6 +45,7 @@ export default function NazmartPage() {
       <StickyBar />
       <Hero />
       <StatsBar />
+      <HighlightCards />
       <Pricing />
     </>
   );
