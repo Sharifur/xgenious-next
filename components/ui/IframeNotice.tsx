@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 export default function IframeNotice() {
   const [isIframe, setIsIframe] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const [url, setUrl] = useState('');
 
@@ -12,10 +13,12 @@ export default function IframeNotice() {
     if (forcePreview || window.self !== window.top) {
       setIsIframe(true);
       setUrl(window.location.href.replace('?iframe_preview', '').replace('&iframe_preview', ''));
+      const timer = setTimeout(() => setVisible(true), 4000);
+      return () => clearTimeout(timer);
     }
   }, []);
 
-  if (!isIframe || dismissed) return null;
+  if (!isIframe || !visible || dismissed) return null;
 
   return (
     <>
