@@ -39,7 +39,7 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
 
   useEffect(() => {
     window.onFastSpringPopupClosed = (order) => {
-      if (!order?.reference) return;
+      if (!order) return;
       if (sessionStatusRef.current === 'authenticated') {
         router.push('/my-account/downloads');
       } else {
