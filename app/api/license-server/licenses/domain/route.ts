@@ -22,7 +22,11 @@ export async function POST(req: NextRequest) {
   const data = await res.json();
 
   if (!res.ok) {
-    return NextResponse.json({ error: data.message ?? 'Domain action failed' }, { status: res.status });
+    console.error('[license-server] domain error:', res.status, JSON.stringify(data));
+    const userMsg = res.status < 500
+      ? ((data as { message?: string }).message ?? 'Domain action failed')
+      : 'Service temporarily unavailable. Please try again later.';
+    return NextResponse.json({ error: userMsg }, { status: res.status < 500 ? res.status : 503 });
   }
 
   return NextResponse.json(data);

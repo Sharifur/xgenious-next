@@ -13,7 +13,11 @@ export async function GET() {
   const data = await res.json();
 
   if (!res.ok) {
-    return NextResponse.json({ error: data.message ?? 'Failed to fetch purchases' }, { status: res.status });
+    console.error('[license-server] purchases error:', res.status, JSON.stringify(data));
+    const userMsg = res.status < 500
+      ? ((data as { message?: string }).message ?? 'Failed to fetch purchases')
+      : 'Service temporarily unavailable. Please try again later.';
+    return NextResponse.json({ error: userMsg }, { status: res.status < 500 ? res.status : 503 });
   }
 
   return NextResponse.json(data);
