@@ -12,7 +12,7 @@ export const REGULAR_PRICE = 59;
 export const BUNDLE_PRICE = 99;
 export const BUNDLE_PRODUCT_PATH = 'xilancer-bundle-pack';
 export const EXCLUSIVE_PRICE = 299;
-export const EXCLUSIVE_PRODUCT_PATH = 'xilancer-exclusive-license';
+export const EXCLUSIVE_PRODUCT_PATH = 'xilancer-exclusive-pack';
 
 export const QUICK_LINKS = [
   { label: 'Admin Panel', href: ADMIN_URL },

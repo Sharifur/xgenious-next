@@ -1,14 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import type { CheckoutProduct } from '@/lib/checkout-products';
-import { FASTSPRING_STORE, FASTSPRING_SCRIPT, launchCheckout } from '@/lib/fastspring';
+import { FASTSPRING_STORE, FASTSPRING_SCRIPT, FASTSPRING_TEST_MODE, launchCheckout } from '@/lib/fastspring';
 
 const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; pitch: string; accent: string }> = {
   'xilancer-bundle-pack': {
-    path: 'xilancer-exclusive-license',
+    path: 'xilancer-exclusive-pack',
     name: 'Exclusive License',
     delta: 200,
     pitch: 'Full source code rights, no license enforcement, unlimited modification.',
@@ -29,6 +31,22 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
   const [selectedAddons, setSelectedAddons] = useState<Set<string>>(new Set());
   const [expandedAddon, setExpandedAddon] = useState<string | null>(null);
   const [fsReady, setFsReady] = useState(false);
+  const router = useRouter();
+  const { status } = useSession();
+  const sessionStatusRef = useRef(status);
+
+  useEffect(() => { sessionStatusRef.current = status; }, [status]);
+
+  useEffect(() => {
+    window.onFastSpringPopupClosed = (order) => {
+      if (!order?.reference) return;
+      if (sessionStatusRef.current === 'authenticated') {
+        router.push('/my-account/downloads');
+      } else {
+        router.push('/register?redirect=/my-account/downloads');
+      }
+    };
+  }, [router]);
 
   const disabledAddons = new Set(
     product.addons
@@ -71,9 +89,18 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
         id="fsc-api"
         src={FASTSPRING_SCRIPT}
         data-storefront={FASTSPRING_STORE}
+        data-popup-closed="onFastSpringPopupClosed"
         strategy="afterInteractive"
         onLoad={() => setFsReady(true)}
       />
+
+      {FASTSPRING_TEST_MODE && (
+        <div className="bg-[#fef3c7] border-b border-[#fcd34d] py-2 px-4 text-center">
+          <span className="text-[13px] font-semibold text-[#92400e]">
+            TEST MODE — No real charges. Use test card: 4242 4242 4242 4242 · Any future expiry · Any CVV
+          </span>
+        </div>
+      )}
 
       <div className="min-h-screen bg-[#F5F6F8]">
         <div className="container-page px-4 sm:px-6 lg:px-0 py-10 lg:py-16">

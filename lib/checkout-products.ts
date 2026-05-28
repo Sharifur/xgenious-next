@@ -131,8 +131,8 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
     ],
   },
 
-  'xilancer-exclusive-license': {
-    path: 'xilancer-exclusive-license',
+  'xilancer-exclusive-pack': {
+    path: 'xilancer-exclusive-pack',
     name: 'Xilancer — Exclusive License',
     tagline: 'Full source code ownership. Modify anything. No restrictions.',
     price: 299,
