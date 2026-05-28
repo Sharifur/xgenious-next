@@ -82,7 +82,7 @@ const EXCLUSIVE_CHECKOUT_URL = `/checkout?product=${EXCLUSIVE_PRODUCT_PATH}`;
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-16 sm:py-20 lg:py-[100px]" style={{ background: '#F5F6F8' }}>
+    <section id="pricing" className="pb-16 sm:pb-20 lg:pb-[100px]" style={{ background: '#F5F6F8' }}>
 
       <div className="container-page px-4 sm:px-6 lg:px-0">
 

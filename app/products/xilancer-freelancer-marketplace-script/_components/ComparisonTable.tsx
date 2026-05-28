@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { COLOR, PURCHASE_URL, REGULAR_PRICE } from './constants';
+import { COLOR, REGULAR_PRICE } from './constants';
 
 const ROWS = [
   { label: 'Upfront Cost',         xilancer: `From $${REGULAR_PRICE} one-time`,  scratch: '$15,000–$50,000+',   saas: '$0 (platform takes 20%)' },
@@ -93,21 +92,6 @@ export default function ComparisonTable() {
               ))}
             </tbody>
           </table>
-        </div>
-
-        <div className="flex justify-center mt-8">
-          <Link
-            href={PURCHASE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-lg"
-            style={{ background: COLOR, boxShadow: `0 6px 20px ${COLOR}40` }}
-          >
-            {`Get Xilancer — from $${REGULAR_PRICE} one-time`}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
         </div>
 
       </div>
