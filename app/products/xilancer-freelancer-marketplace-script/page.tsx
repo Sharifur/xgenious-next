@@ -29,14 +29,14 @@ export const metadata: Metadata = {
       'Build a complete self-hosted freelancing marketplace. Laravel backend, Vue.js frontend, native mobile apps, Stripe & PayPal escrow. One-time purchase from $59.',
     url: CANONICAL,
     siteName: 'Xgenious',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: '/products/xilancer-hero-center.jpg', width: 1039, height: 509, alt: 'Xilancer — Freelancer Marketplace Platform' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Xilancer — Best Freelancing Platform Script',
     description: 'Build a Fiverr or Upwork clone with Xilancer. Laravel + Vue.js. Native mobile apps. From $59 one-time purchase.',
-    images: ['/og-image.png'],
+    images: ['/products/xilancer-hero-center.jpg'],
   },
   keywords: [
     'freelancing platform script',
