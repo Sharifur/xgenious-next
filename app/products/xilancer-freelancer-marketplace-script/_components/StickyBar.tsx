@@ -49,9 +49,7 @@ export default function StickyBar() {
             View Demo
           </Link>
           <Link
-            href={PURCHASE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#pricing"
             className="inline-flex items-center gap-2 text-white font-semibold text-[13px] rounded-full px-5 py-2.5 transition-all hover:opacity-90"
             style={{ background: COLOR }}
           >
