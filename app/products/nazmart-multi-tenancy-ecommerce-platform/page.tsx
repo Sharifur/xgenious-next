@@ -9,6 +9,7 @@ import PaymentGateways from './_components/PaymentGateways';
 import HowItWorks from './_components/HowItWorks';
 import MarketplaceFeatures from './_components/MarketplaceFeatures';
 import MobileApp from './_components/MobileApp';
+import POS from './_components/POS';
 import PremiumPlugins from './_components/PremiumPlugins';
 import TechStack from './_components/TechStack';
 import Comparison from './_components/Comparison';
@@ -68,6 +69,7 @@ export default function NazmartPage() {
       <HowItWorks />
       <MarketplaceFeatures />
       <MobileApp />
+      <POS />
       <PremiumPlugins />
       <TechStack />
       <Comparison />
