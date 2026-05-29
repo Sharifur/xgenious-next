@@ -20,13 +20,13 @@ import StickyBar from './_components/StickyBar';
 export const metadata: Metadata = {
   title: 'Nazmart — Multi-Tenancy eCommerce SaaS Platform | Xgenious',
   description:
-    'Launch a multi-tenancy eCommerce SaaS with Nazmart. Laravel + Vue.js, vendor subscriptions, custom domains, POS plugin, Flutter mobile apps. From $69 one-time.',
+    'Nazmart is a multi-tenancy eCommerce platform. Laravel backend, vendor subscriptions, custom domains, Flutter mobile apps. From $69 one-time.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Nazmart — Multi-Tenancy eCommerce SaaS Platform | Xgenious',
     description:
-      'Build a Shopify-like multi-vendor SaaS. Laravel + Vue.js, subscription billing, custom domains per store, Flutter mobile apps. From $69 one-time.',
+      'Build a Shopify-like multi-vendor SaaS. Vendor subscriptions, custom domains per store, Flutter mobile apps, 19+ payment gateways. From $69 one-time.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/products/nazmart.png', width: 1200, height: 630, alt: 'Nazmart — Multi-Tenancy eCommerce Platform' }],
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Nazmart — Multi-Tenancy eCommerce SaaS Platform',
-    description: 'Build a multi-tenancy eCommerce SaaS. Laravel + Vue.js. Custom domains. Subscription billing. Flutter apps. From $69 one-time.',
+    description: 'Build a multi-tenancy eCommerce SaaS. Vendor subscriptions, custom domains, Flutter apps, 19+ payment gateways. From $69 one-time.',
     images: ['/products/nazmart.png'],
   },
   keywords: [

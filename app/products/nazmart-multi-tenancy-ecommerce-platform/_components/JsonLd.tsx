@@ -14,7 +14,7 @@ export default function JsonLd() {
       availability: 'https://schema.org/InStock',
       url: PURCHASE_URL,
     },
-    description: 'Nazmart is a multi-tenancy eCommerce SaaS platform built with Laravel and Vue.js. Launch a Shopify-like marketplace with subscription billing, custom domains, Flutter mobile apps, and 19+ payment gateways. One-time purchase from $69.',
+    description: 'Nazmart is a multi-tenancy eCommerce SaaS platform built with Laravel. Launch a Shopify-like marketplace with vendor subscription billing, custom domains per store, Flutter mobile apps, and 19+ payment gateways. One-time purchase from $69.',
     url: CANONICAL,
     author: { '@type': 'Organization', name: 'Xgenious', url: BASE_URL },
     aggregateRating: {
@@ -47,9 +47,9 @@ export default function JsonLd() {
     '@type': 'HowTo',
     name: 'How to Launch a Multi-Tenancy eCommerce Platform with Nazmart',
     step: [
-      { '@type': 'HowToStep', name: 'Create your subscription plans', text: 'Purchase Nazmart, upload to your Linux VPS, configure your database, and set your vendor subscription tiers.' },
-      { '@type': 'HowToStep', name: 'Configure your marketplace branding', text: 'Set your platform domain, logo, and theme. Vendors choose their own store name and connect a custom domain.' },
-      { '@type': 'HowToStep', name: 'Go live and onboard vendors', text: 'Vendors sign up, pick a plan, build their store, and go live. Your platform earns subscription revenue automatically.' },
+      { '@type': 'HowToStep', name: 'Install & Configure', text: 'Upload Nazmart to your Linux VPS, configure your database, domain, and payment gateways in under an hour.' },
+      { '@type': 'HowToStep', name: 'Create Vendor Subscription Plans', text: 'Define monthly and yearly pricing tiers. Set storage limits, product quotas, and feature access per plan.' },
+      { '@type': 'HowToStep', name: 'Vendors Launch — You Collect Revenue', text: 'Vendors register, pick a theme, add their products, and go live. You earn recurring subscription income automatically.' },
     ],
   };
 

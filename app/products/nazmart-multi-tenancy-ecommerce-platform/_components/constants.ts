@@ -67,7 +67,7 @@ export const FEATURES = [
 
 export const TECH = [
   { name: 'Laravel', desc: 'PHP 8+ backend framework' },
-  { name: 'Vue.js', desc: 'Reactive SPA frontend' },
+  { name: 'Tailwind CSS', desc: 'Utility-first CSS framework' },
   { name: 'MySQL', desc: 'Relational database' },
   { name: 'Flutter', desc: 'Cross-platform mobile app' },
   { name: 'Stripe & PayPal', desc: 'Payment processing' },
@@ -192,7 +192,7 @@ export const FAQS = [
   },
   {
     question: 'What is Nazmart?',
-    answer: 'Nazmart is a multi-tenancy eCommerce SaaS platform built with Laravel and Vue.js. It lets you launch a Shopify-like marketplace where vendors create and manage their own stores under your domain. One installation, unlimited tenant stores, subscription billing, custom domains, and a Flutter mobile app — all included from $69 one-time.',
+    answer: 'Nazmart is a multi-tenancy eCommerce SaaS platform built with Laravel. It lets you launch a Shopify-like marketplace where vendors create and manage their own stores under your domain. One installation, unlimited tenant stores, subscription billing, custom domains, and a Flutter mobile app — all included from $69 one-time.',
   },
   {
     question: 'How is Nazmart different from Shopify or WooCommerce?',
@@ -200,7 +200,7 @@ export const FAQS = [
   },
   {
     question: 'What tech stack does Nazmart use?',
-    answer: 'Nazmart runs on Laravel (PHP 8+) for the backend, Vue.js for the frontend SPA, MySQL for the database, Redis for queuing and sessions, and Flutter for cross-platform Android/iOS mobile apps. It deploys on any standard Linux VPS or shared hosting that meets the PHP 8+ requirement.',
+    answer: 'Nazmart runs on Laravel (PHP 8+) for the backend, MySQL for the database, Redis for queuing and sessions, Tailwind CSS for the frontend, and Flutter for cross-platform Android/iOS mobile apps. It deploys on any standard Linux VPS or shared hosting that meets the PHP 8+ requirement.',
   },
   {
     question: 'Is there a monthly fee for Nazmart?',

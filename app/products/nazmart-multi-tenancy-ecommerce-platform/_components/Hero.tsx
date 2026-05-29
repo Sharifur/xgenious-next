@@ -46,7 +46,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-[#484848] text-[15px] sm:text-[17px] leading-7 max-w-[580px]">
-            <strong>Nazmart is a multi-tenancy eCommerce platform</strong> — a single Laravel + Vue.js installation where unlimited vendors create their own branded online stores, pay you a subscription, and go live with a custom domain. You own the platform, keep 100% of subscription revenue, and scale without rebuilding.
+            <strong>Nazmart is a multi-tenancy eCommerce platform</strong> — a single Laravel installation where unlimited vendors create their own branded online stores, pay you a subscription, and go live with a custom domain. You own the platform, keep 100% of subscription revenue, and scale without rebuilding.
           </p>
 
           {/* Star rating */}
