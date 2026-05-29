@@ -20,31 +20,45 @@ const steps = [
   },
 ];
 
-const STORE_NAME = 'Summer Boutique';
+const CSS = `
+  @keyframes popIn    { from{opacity:0;transform:scale(0.82)} to{opacity:1;transform:scale(1)} }
+  @keyframes slideUp  { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes typeText { from{width:0} to{width:100%} }
+  @keyframes barFill  { from{width:0%} to{width:85%} }
+  @keyframes pulseDot { 0%,100%{opacity:1} 50%{opacity:0} }
+`;
 
 function StepVisual({ step }: { step: number }) {
   const [tick, setTick] = useState(0);
+
   useEffect(() => {
-    const id = setInterval(() => setTick((t) => t + 1), 1100);
+    setTick(0);
+    const id = setInterval(() => setTick((t) => t + 1), 1800);
     return () => clearInterval(id);
   }, [step]);
 
-  /* ── Step 1: setup checklist ── */
+  /* ── Step 1: setup checklist, one item every tick ── */
   if (step === 0) {
     const checks = ['Domain configured', 'Database connected', 'SMTP ready', 'SSL active'];
     return (
       <div className="w-full flex flex-col gap-3 px-2">
+        <style>{CSS}</style>
         <div className="text-[13px] font-semibold text-[#0F1112] mb-1">Setup Checklist</div>
         {checks.map((label, i) => {
           const done = tick > i;
+          const visible = tick >= i;
           return (
             <div
               key={label}
-              className="flex items-center gap-3 bg-white rounded-xl px-4 py-2.5 border transition-all duration-300"
-              style={{ borderColor: done ? '#92E721' : '#E5E7EC', opacity: tick >= i ? 1 : 0.35 }}
+              className="flex items-center gap-3 bg-white rounded-xl px-4 py-2.5 border transition-all duration-500"
+              style={{
+                borderColor: done ? '#92E721' : '#E5E7EC',
+                opacity: visible ? 1 : 0.2,
+                animation: visible && !done ? 'slideUp 0.4s ease' : 'none',
+              }}
             >
               <div
-                className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300"
+                className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500"
                 style={{ background: done ? '#92E721' : '#F3F4F6' }}
               >
                 {done && (
@@ -53,56 +67,67 @@ function StepVisual({ step }: { step: number }) {
                   </svg>
                 )}
               </div>
-              <span className="text-[13px]" style={{ color: done ? '#0F1112' : '#9ca3af', fontWeight: done ? 600 : 400 }}>{label}</span>
+              <span className="text-[13px]" style={{ color: done ? '#0F1112' : '#9ca3af', fontWeight: done ? 600 : 400 }}>
+                {label}
+              </span>
             </div>
           );
         })}
-        <div className="mt-2 text-[11px] text-[#6b7280] text-center">Ready in under 1 hour</div>
+        {tick >= 4 && (
+          <div className="mt-1 text-center text-[11px] font-semibold text-[#2d6a00]" style={{ animation: 'popIn 0.4s ease' }}>
+            Platform is live!
+          </div>
+        )}
       </div>
     );
   }
 
   /* ── Step 2: select plan → type store name → payment → store ready ── */
   if (step === 1) {
-    // phase 0: plan cards (tick 0)
-    // phase 1: plan selected — Growth (tick 1)
-    // phase 2: type store name (tick 2-3)
-    // phase 3: payment processing (tick 4)
-    // phase 4: store ready (tick 5+)
-    const phase = Math.min(tick, 4);
-    const typedChars = phase >= 2 ? Math.min((tick - 2) * 6, STORE_NAME.length) : 0;
-    const typed = STORE_NAME.slice(0, typedChars);
+    // tick 0 : plans shown, none selected
+    // tick 1 : Growth plan selected
+    // tick 2 : store name input appears (empty, cursor blinking)
+    // tick 3 : store name typewriter completes
+    // tick 4 : payment card appears + processing
+    // tick 5+: store ready
+    const planSelected  = tick >= 1;
+    const showInput     = tick >= 2;
+    const showTyped     = tick >= 3;
+    const showPayment   = tick >= 4;
+    const showDone      = tick >= 5;
 
     const plans = [
-      { name: 'Starter', price: '$9', desc: '50 products' },
+      { name: 'Starter', price: '$9',  desc: '50 products' },
       { name: 'Growth',  price: '$29', desc: '500 products' },
       { name: 'Pro',     price: '$59', desc: 'Unlimited' },
     ];
 
     return (
       <div className="w-full flex flex-col gap-3 px-2">
-        <style>{`@keyframes popIn{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}}`}</style>
+        <style>{CSS}</style>
 
         {/* Plan cards */}
         <div className="flex gap-2">
           {plans.map((p, i) => {
-            const selected = phase >= 1 && i === 1;
+            const sel = planSelected && i === 1;
             return (
               <div
                 key={p.name}
-                className="flex-1 rounded-xl border p-2.5 text-center transition-all duration-400"
+                className="flex-1 rounded-xl border p-2.5 text-center transition-all duration-500"
                 style={{
-                  background: selected ? '#0d2b14' : '#fff',
-                  borderColor: selected ? '#92E721' : '#E5E7EC',
-                  transform: selected ? 'scale(1.05)' : 'scale(1)',
+                  background: sel ? '#0d2b14' : '#fff',
+                  borderColor: sel ? '#92E721' : '#E5E7EC',
+                  transform: sel ? 'scale(1.06)' : 'scale(1)',
                 }}
               >
-                <div className="text-[11px] font-semibold" style={{ color: selected ? '#92E721' : '#6b7280' }}>{p.name}</div>
-                <div className="text-[14px] font-bold mt-0.5" style={{ color: selected ? '#fff' : '#0F1112' }}>{p.price}</div>
-                <div className="text-[9px] mt-0.5" style={{ color: selected ? '#92E72180' : '#9ca3af' }}>{p.desc}</div>
-                {selected && (
-                  <div className="mt-1 mx-auto w-4 h-4 rounded-full flex items-center justify-center" style={{ background: '#92E721' }}>
-                    <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 4-4" stroke="#0d2b14" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <div className="text-[11px] font-semibold" style={{ color: sel ? '#92E721' : '#6b7280' }}>{p.name}</div>
+                <div className="text-[14px] font-bold mt-0.5" style={{ color: sel ? '#fff' : '#0F1112' }}>{p.price}</div>
+                <div className="text-[9px] mt-0.5" style={{ color: sel ? '#92E72170' : '#9ca3af' }}>{p.desc}</div>
+                {sel && (
+                  <div className="mt-1.5 mx-auto w-4 h-4 rounded-full flex items-center justify-center" style={{ background: '#92E721', animation: 'popIn 0.35s ease' }}>
+                    <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+                      <path d="M2 5l2.5 2.5 4-4" stroke="#0d2b14" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </div>
                 )}
               </div>
@@ -111,38 +136,61 @@ function StepVisual({ step }: { step: number }) {
         </div>
 
         {/* Store name input */}
-        <div
-          className="bg-white rounded-xl border px-3 py-2.5 transition-all duration-300"
-          style={{ borderColor: phase >= 2 ? '#F26B4E' : '#E5E7EC', opacity: phase >= 1 ? 1 : 0.3 }}
-        >
-          <div className="text-[10px] text-[#9ca3af] mb-1">Store Name</div>
-          <div className="text-[13px] font-medium text-[#0F1112] h-5 flex items-center gap-0.5">
-            {typed || (phase < 2 ? <span className="text-[#d1d5db]">e.g. Summer Boutique</span> : '')}
-            {phase >= 2 && phase < 4 && typed.length < STORE_NAME.length && (
-              <span className="inline-block w-0.5 h-4 bg-[#F26B4E] animate-pulse" />
-            )}
-          </div>
-        </div>
-
-        {/* Payment / success */}
-        {phase === 3 && (
-          <div className="bg-white rounded-xl border border-[#E5E7EC] px-4 py-3 flex items-center gap-3" style={{ animation: 'popIn 0.3s ease' }}>
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: '#F3F4F6' }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth="2" strokeLinecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-            </div>
-            <div className="flex-1">
-              <div className="text-[12px] font-semibold text-[#0F1112]">Processing payment…</div>
-              <div className="mt-1 h-1 rounded-full bg-[#F3F4F6] overflow-hidden">
-                <div className="h-full rounded-full bg-[#F26B4E]" style={{ width: '70%', animation: 'none' }} />
-              </div>
+        {showInput && (
+          <div
+            className="bg-white rounded-xl border px-3 py-2.5"
+            style={{ borderColor: '#F26B4E', animation: 'slideUp 0.35s ease' }}
+          >
+            <div className="text-[10px] text-[#9ca3af] mb-1">Store Name</div>
+            <div className="text-[13px] font-medium text-[#0F1112] h-5 overflow-hidden whitespace-nowrap flex items-center">
+              {showTyped ? (
+                <span
+                  className="overflow-hidden whitespace-nowrap"
+                  style={{ display: 'inline-block', animation: 'typeText 1.2s steps(15,end) both' }}
+                >
+                  Summer Boutique
+                </span>
+              ) : (
+                <span
+                  className="inline-block w-0.5 h-4 bg-[#F26B4E]"
+                  style={{ animation: 'pulseDot 0.8s infinite' }}
+                />
+              )}
             </div>
           </div>
         )}
 
-        {phase >= 4 && (
-          <div className="rounded-xl px-4 py-3 flex items-center gap-3" style={{ background: '#F0FDE4', animation: 'popIn 0.35s ease' }}>
+        {/* Payment */}
+        {showPayment && !showDone && (
+          <div
+            className="bg-white rounded-xl border border-[#E5E7EC] px-4 py-3"
+            style={{ animation: 'slideUp 0.35s ease' }}
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth="2" strokeLinecap="round">
+                <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+              </svg>
+              <span className="text-[12px] font-semibold text-[#0F1112]">Processing payment…</span>
+            </div>
+            <div className="h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+              <div
+                className="h-full rounded-full bg-[#F26B4E]"
+                style={{ animation: 'barFill 1.4s ease forwards' }}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Store ready */}
+        {showDone && (
+          <div
+            className="rounded-xl px-4 py-3 flex items-center gap-3"
+            style={{ background: '#F0FDE4', animation: 'popIn 0.4s ease' }}
+          >
             <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: '#92E721' }}>
-              <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="#0d2b14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10l4 4 8-8" stroke="#0d2b14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </div>
             <div>
               <div className="text-[13px] font-bold text-[#0d2b14]">Store is Ready!</div>
@@ -154,18 +202,18 @@ function StepVisual({ step }: { step: number }) {
     );
   }
 
-  /* ── Step 3: vendor store → customer places order → order success ── */
-  // phase 0: vendor store preview (tick 0-1)
-  // phase 1: customer adds to cart (tick 2)
-  // phase 2: checkout (tick 3)
-  // phase 3: order success + revenue notification (tick 4+)
-  const phase3 = Math.min(tick, 3);
+  /* ── Step 3: vendor store → add to cart → checkout → order success ── */
+  // tick 0–1 : store preview
+  // tick 2   : add to cart
+  // tick 3   : checkout screen
+  // tick 4+  : order confirmed + revenue
+  const phase = Math.min(tick, 4);
 
   return (
     <div className="w-full flex flex-col gap-3 px-2">
-      <style>{`@keyframes popIn{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}} @keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}`}</style>
+      <style>{CSS}</style>
 
-      {/* Store header */}
+      {/* Store card */}
       <div className="bg-white rounded-xl border border-[#E5E7EC] overflow-hidden">
         <div className="px-4 py-2.5 flex items-center justify-between border-b border-[#F3F4F6]">
           <div className="flex items-center gap-2">
@@ -173,14 +221,18 @@ function StepVisual({ step }: { step: number }) {
             <span className="text-[12px] font-semibold text-[#0F1112]">Summer Boutique</span>
           </div>
           <div className="relative">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2" strokeLinecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-            {phase3 >= 1 && (
-              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full text-[8px] font-bold flex items-center justify-center text-white" style={{ background: '#F26B4E', animation: 'popIn 0.2s ease' }}>1</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2" strokeLinecap="round">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            {phase >= 2 && (
+              <span
+                className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full text-[8px] font-bold flex items-center justify-center text-white"
+                style={{ background: '#F26B4E', animation: 'popIn 0.25s ease' }}
+              >1</span>
             )}
           </div>
         </div>
-
-        {/* Product row */}
         <div className="flex items-center gap-3 px-4 py-3">
           <div className="w-10 h-10 rounded-lg flex-shrink-0" style={{ background: 'linear-gradient(135deg,#fde68a,#fca5a5)' }} />
           <div className="flex-1 min-w-0">
@@ -188,28 +240,33 @@ function StepVisual({ step }: { step: number }) {
             <div className="text-[11px] text-[#6b7280]">$49.00</div>
           </div>
           <button
-            className="text-[11px] font-bold px-2.5 py-1 rounded-lg text-white transition-all"
-            style={{ background: phase3 >= 1 ? '#92E721' : '#F26B4E', color: phase3 >= 1 ? '#0d2b14' : '#fff', animation: phase3 === 1 ? 'popIn 0.25s ease' : 'none' }}
+            className="text-[11px] font-bold px-2.5 py-1 rounded-lg text-white transition-all duration-500"
+            style={{
+              background: phase >= 2 ? '#92E721' : '#F26B4E',
+              color: phase >= 2 ? '#0d2b14' : '#fff',
+            }}
           >
-            {phase3 >= 1 ? 'Added ✓' : 'Add to Cart'}
+            {phase >= 2 ? 'Added ✓' : 'Add to Cart'}
           </button>
         </div>
       </div>
 
       {/* Checkout */}
-      {phase3 >= 2 && (
-        <div className="bg-white rounded-xl border border-[#E5E7EC] px-4 py-3" style={{ animation: 'slideUp 0.3s ease' }}>
-          <div className="text-[11px] font-semibold text-[#6b7280] mb-2">CHECKOUT</div>
-          <div className="flex items-center justify-between mb-2">
+      {phase >= 3 && (
+        <div className="bg-white rounded-xl border border-[#E5E7EC] px-4 py-3" style={{ animation: 'slideUp 0.4s ease' }}>
+          <div className="text-[10px] font-semibold text-[#9ca3af] mb-2 tracking-wide">CHECKOUT</div>
+          <div className="flex items-center justify-between mb-2.5">
             <span className="text-[12px] text-[#374151]">Floral Summer Dress</span>
             <span className="text-[12px] font-semibold text-[#0F1112]">$49.00</span>
           </div>
-          <div className="flex items-center gap-2 p-2 rounded-lg" style={{ background: '#F8F9FB' }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth="2" strokeLinecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <div className="flex items-center gap-2 p-2 rounded-lg mb-2.5" style={{ background: '#F8F9FB' }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth="2" strokeLinecap="round">
+              <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
             <span className="text-[11px] text-[#374151]">•••• •••• •••• 4242</span>
           </div>
-          {phase3 === 2 && (
-            <div className="mt-2 text-center text-[11px] font-semibold py-2 rounded-lg" style={{ background: '#F26B4E', color: '#fff' }}>
+          {phase === 3 && (
+            <div className="text-center text-[11px] font-semibold py-2 rounded-lg text-white" style={{ background: '#F26B4E' }}>
               Confirm Payment
             </div>
           )}
@@ -217,19 +274,21 @@ function StepVisual({ step }: { step: number }) {
       )}
 
       {/* Order success */}
-      {phase3 >= 3 && (
-        <div className="flex flex-col gap-2" style={{ animation: 'slideUp 0.35s ease' }}>
+      {phase >= 4 && (
+        <div className="flex flex-col gap-2" style={{ animation: 'slideUp 0.4s ease' }}>
           <div className="rounded-xl px-4 py-3 flex items-center gap-3" style={{ background: '#F0FDE4' }}>
             <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: '#92E721' }}>
-              <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="#0d2b14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10l4 4 8-8" stroke="#0d2b14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </div>
             <div>
               <div className="text-[13px] font-bold text-[#0d2b14]">Order #1042 Confirmed!</div>
               <div className="text-[11px] text-[#2d6a00]">Customer notified via email</div>
             </div>
           </div>
-          <div className="rounded-xl px-4 py-2.5 flex items-center justify-between" style={{ background: '#0d2b14' }}>
-            <span className="text-[12px] text-[#92E721] font-semibold">Your revenue</span>
+          <div className="rounded-xl px-4 py-2.5 flex items-center justify-between" style={{ background: '#0d2b14', animation: 'slideUp 0.5s ease' }}>
+            <span className="text-[12px] font-semibold" style={{ color: '#92E721' }}>Your revenue</span>
             <span className="text-[14px] font-bold text-white">+$49.00</span>
           </div>
         </div>
@@ -243,10 +302,11 @@ export default function HowItWorks() {
   const [visualKey, setVisualKey] = useState(0);
 
   useEffect(() => {
+    // 5 phases × 1800ms + 1800ms hold = ~10800ms per step
     const id = setInterval(() => {
       setActive((prev) => (prev + 1) % steps.length);
       setVisualKey((k) => k + 1);
-    }, 5500);
+    }, 11000);
     return () => clearInterval(id);
   }, []);
 
