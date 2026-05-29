@@ -169,7 +169,7 @@ export default function Pricing() {
         </div>
 
         <p className="text-center text-[13px] text-[#9ca3af] mt-8">
-          All licenses include lifetime updates · CodeCanyon purchase · 6-month support included
+          All licenses include lifetime updates · CodeCanyon purchase · 6-month support included · Prices in USD
         </p>
       </div>
     </section>

@@ -10,8 +10,8 @@ export const MOBILE_URL = '#mobile-app';
 export const POS_URL = '#pos-plugin';
 export const PRICING_URL = '#pricing';
 export const REGULAR_PRICE = 69;
-export const BUNDLE_PRICE = 149;
-export const COMPLETE_PRICE = 279;
+export const BUNDLE_PRICE = 99;
+export const COMPLETE_PRICE = 299;
 export const BUNDLE_PRODUCT_PATH = 'nazmart-bundle-pack';
 export const COMPLETE_PRODUCT_PATH = 'nazmart-complete-package';
 
@@ -296,10 +296,10 @@ export const PRICING_TIERS = [
   },
   {
     name: 'Bundle Pack',
-    badge: 'Web + All Plugins',
-    price: 149,
+    badge: 'Web + Plugins + Mobile App',
+    price: 99,
     original: 199,
-    desc: 'Web panel + all 17 premium plugins. Everything except mobile apps.',
+    desc: 'Web panel + all 17 premium plugins + mobile app. Everything except domain reseller.',
     plan: [
       { label: 'Nazmart Web Panel', ok: true },
       { label: 'AI Integration', ok: true },
@@ -318,15 +318,15 @@ export const PRICING_TIERS = [
       { label: 'SMS Gateway', ok: true },
       { label: 'WooCommerce Import', ok: true },
       { label: 'Cloud Storage', ok: true },
-      { label: 'Mobile App (Vendor + Customer)', ok: false },
+      { label: 'Mobile App (Vendor + Customer)', ok: true },
       { label: 'Domain Reseller', ok: false },
     ],
   },
   {
     name: 'Complete Package',
-    badge: 'Web + App + Plugins',
-    price: 279,
-    original: 399,
+    badge: 'Web + App + Plugins + Domain Reseller',
+    price: 299,
+    original: 499,
     desc: 'Everything — web panel, all plugins, mobile apps, and domain reseller. Full platform.',
     plan: [
       { label: 'Nazmart Web Panel', ok: true },

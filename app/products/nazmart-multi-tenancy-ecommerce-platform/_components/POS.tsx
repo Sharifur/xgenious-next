@@ -3,12 +3,12 @@
 import { useEffect, useState } from 'react';
 
 const PRODUCTS = [
-  { name: 'Ratten Chair',        price: 750,  bg: '#E8DDD2' },
-  { name: 'Glass Top Table',     price: 1200, bg: '#D4E2C8' },
-  { name: 'Wooden Coffee Table', price: 7500, bg: '#D8C4B0' },
-  { name: 'Stylish Orion Sofa',  price: 4800, bg: '#E2CCBA' },
-  { name: 'Odrex Double Bed',    price: 9200, bg: '#C8D4E0' },
-  { name: 'Angle Double Bed',    price: 8600, bg: '#C4D0DE' },
+  { name: 'Rattan Chair',        price: 750,  img: 'https://images.unsplash.com/photo-1705169612592-32610774a5d0?w=120&h=80&fit=crop&auto=format' },
+  { name: 'Glass Dining Table',  price: 1200, img: 'https://images.unsplash.com/2h3oUIUFxbQ?w=120&h=80&fit=crop&auto=format' },
+  { name: 'Wooden Coffee Table', price: 7500, img: 'https://images.unsplash.com/photo-1634712282287-14ed57b9cc89?w=120&h=80&fit=crop&auto=format' },
+  { name: 'Stylish Orion Sofa',  price: 4800, img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=120&h=80&fit=crop&auto=format' },
+  { name: 'Odrex Double Bed',    price: 9200, img: 'https://images.unsplash.com/photo-1552858725-2758b5fb1286?w=120&h=80&fit=crop&auto=format' },
+  { name: 'Comfort King Bed',    price: 8600, img: 'https://images.unsplash.com/photo-1583535045024-e2479a694777?w=120&h=80&fit=crop&auto=format' },
 ];
 
 const CSS = `
@@ -24,7 +24,11 @@ function POSMockup() {
 
   useEffect(() => {
     setTick(0);
-    const id = setInterval(() => setTick(t => t + 1), 1600);
+    const id = setInterval(() => setTick(t => {
+      // hold on confirmed for 2 extra ticks then loop
+      if (t >= 9) return 0;
+      return t + 1;
+    }), 1600);
     return () => clearInterval(id);
   }, []);
 
@@ -35,7 +39,7 @@ function POSMockup() {
   // 4   : cart panel shows item
   // 5   : Walk-in Customer selected
   // 6   : Proceed button highlights
-  // 7+  : Order confirmed!
+  // 7+  : Order confirmed! (holds 2 ticks then loops)
   const phase = Math.min(tick, 7);
 
   const added     = phase >= 3;
@@ -90,8 +94,9 @@ function POSMockup() {
                     transform: isTarget && added ? 'scale(1.03)' : 'scale(1)',
                   }}
                 >
-                  <div className="h-14 flex items-center justify-center text-[18px] relative" style={{ background: p.bg }}>
-                    {['🛋','🪑','☕','🛋','🛏','🛏'][i]}
+                  <div className="h-14 flex items-center justify-center relative overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={p.img} alt={p.name} className="w-full h-full object-cover" />
                     {isTarget && added && (
                       <div className="absolute top-1 right-1 w-4 h-4 rounded-full flex items-center justify-center text-white text-[8px] font-bold" style={{ background: '#92E721', color: '#0d2b14', animation: 'posBadge 0.35s ease' }}>✓</div>
                     )}

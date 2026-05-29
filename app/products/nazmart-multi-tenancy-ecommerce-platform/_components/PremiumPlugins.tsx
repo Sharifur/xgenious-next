@@ -191,7 +191,7 @@ export default function PremiumPlugins() {
         </div>
 
         <p className="text-center text-[13px] mt-8" style={{ color: '#4b6b5a' }}>
-          All plugins included in Bundle Pack ($149) and Complete Package ($279) · Regular License gets core platform only
+          All plugins included in Bundle Pack ($99) and Complete Package ($299) · Regular License gets core platform only
         </p>
 
       </div>
