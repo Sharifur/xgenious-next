@@ -78,13 +78,13 @@ export default function Hero() {
           </div>
 
           <div className="flex items-center gap-3 flex-wrap justify-center mt-1">
-            <Link
+            <a
               href="#pricing"
               className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-lg"
               style={{ background: COLOR, boxShadow: `0 6px 20px ${COLOR}40` }}
             >
               {`Get Xilancer — from $${REGULAR_PRICE}`}
-            </Link>
+            </a>
             <Link
               href={DEMO_URL}
               target="_blank"

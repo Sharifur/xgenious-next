@@ -151,13 +151,13 @@ export default function MobileApps() {
         {/* Bottom note */}
         <p className="text-center text-[13px] text-[#6b7280] mt-10">
           Both apps included with{' '}
-          <Link href="#pricing" className="font-medium underline underline-offset-2" style={{ color: COLOR }}>
+          <a href="#pricing" className="font-medium underline underline-offset-2" style={{ color: COLOR }}>
             Everything Bundle
-          </Link>
+          </a>
           {' '}and{' '}
-          <Link href="#pricing" className="font-medium underline underline-offset-2" style={{ color: COLOR }}>
+          <a href="#pricing" className="font-medium underline underline-offset-2" style={{ color: COLOR }}>
             Exclusive License
-          </Link>
+          </a>
           . White-label branding supported.
         </p>
       </div>
