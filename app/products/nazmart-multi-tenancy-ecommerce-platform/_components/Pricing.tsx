@@ -8,10 +8,9 @@ const PURPLE = '#8b5cf6';
 const PURPLE_DARK = '#0f0f23';
 
 const BUNDLE_ITEMS = [
-  { label: 'Nazmart Web Platform',        value: 69 },
-  { label: 'Vendor Mobile App (Flutter)',  value: 49 },
-  { label: 'Customer Mobile App (Flutter)', value: 49 },
-  { label: '17 Premium Plugins',           value: 114 },
+  { label: 'Nazmart Web Platform', value: 69 },
+  { label: 'Mobile App (Flutter)', value: 79 },
+  { label: '17 Premium Plugins',   value: 114 },
 ];
 const BUNDLE_TOTAL = BUNDLE_ITEMS.reduce((s, i) => s + i.value, 0); // 281
 
@@ -115,7 +114,7 @@ export default function Pricing() {
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-[20px] font-semibold line-through" style={{ color: '#3a5e3a' }}>${BUNDLE_TOTAL}</span>
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${COLOR}25`, color: COLOR }}>
-                  65% OFF
+                  62% OFF
                 </span>
               </div>
 
