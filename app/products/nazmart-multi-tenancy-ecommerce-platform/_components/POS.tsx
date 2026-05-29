@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 
 const PRODUCTS = [
-  { name: 'Rattan Chair',        price: 750,  img: 'https://images.unsplash.com/photo-1705169612592-32610774a5d0?w=120&h=80&fit=crop&auto=format' },
-  { name: 'Glass Dining Table',  price: 1200, img: 'https://images.unsplash.com/2h3oUIUFxbQ?w=120&h=80&fit=crop&auto=format' },
+  { name: 'Rattan Chair',        price: 750,  img: 'https://images.unsplash.com/photo-1565307586367-2c27d915cc8e?w=120&h=80&fit=crop&auto=format' },
+  { name: 'Glass Dining Table',  price: 1200, img: 'https://images.unsplash.com/photo-1617638717732-a3ef01769ff2?w=120&h=80&fit=crop&auto=format' },
   { name: 'Wooden Coffee Table', price: 7500, img: 'https://images.unsplash.com/photo-1634712282287-14ed57b9cc89?w=120&h=80&fit=crop&auto=format' },
   { name: 'Stylish Orion Sofa',  price: 4800, img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=120&h=80&fit=crop&auto=format' },
   { name: 'Odrex Double Bed',    price: 9200, img: 'https://images.unsplash.com/photo-1552858725-2758b5fb1286?w=120&h=80&fit=crop&auto=format' },
