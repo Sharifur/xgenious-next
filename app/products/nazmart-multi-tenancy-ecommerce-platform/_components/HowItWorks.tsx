@@ -20,13 +20,16 @@ const steps = [
   },
 ];
 
+const STORE_NAME = 'Summer Boutique';
+
 function StepVisual({ step }: { step: number }) {
   const [tick, setTick] = useState(0);
   useEffect(() => {
-    const id = setInterval(() => setTick((t) => t + 1), 900);
+    const id = setInterval(() => setTick((t) => t + 1), 1100);
     return () => clearInterval(id);
   }, [step]);
 
+  /* ── Step 1: setup checklist ── */
   if (step === 0) {
     const checks = ['Domain configured', 'Database connected', 'SMTP ready', 'SSL active'];
     return (
@@ -59,77 +62,178 @@ function StepVisual({ step }: { step: number }) {
     );
   }
 
+  /* ── Step 2: select plan → type store name → payment → store ready ── */
   if (step === 1) {
+    // phase 0: plan cards (tick 0)
+    // phase 1: plan selected — Growth (tick 1)
+    // phase 2: type store name (tick 2-3)
+    // phase 3: payment processing (tick 4)
+    // phase 4: store ready (tick 5+)
+    const phase = Math.min(tick, 4);
+    const typedChars = phase >= 2 ? Math.min((tick - 2) * 6, STORE_NAME.length) : 0;
+    const typed = STORE_NAME.slice(0, typedChars);
+
     const plans = [
-      { name: 'Starter', price: '$9', products: '50 products', color: '#E5E7EC', text: '#374151', badge: false },
-      { name: 'Growth', price: '$29', products: '500 products', color: '#0d2b14', text: '#fff', badge: true },
-      { name: 'Pro', price: '$59', products: 'Unlimited', color: '#F3F4F6', text: '#374151', badge: false },
+      { name: 'Starter', price: '$9', desc: '50 products' },
+      { name: 'Growth',  price: '$29', desc: '500 products' },
+      { name: 'Pro',     price: '$59', desc: 'Unlimited' },
     ];
-    const highlighted = tick % 3;
+
     return (
-      <div className="w-full flex flex-col gap-2.5 px-2">
-        <div className="text-[13px] font-semibold text-[#0F1112] mb-1">Your Subscription Plans</div>
-        {plans.map((plan, i) => {
-          const active = highlighted === i;
-          return (
-            <div
-              key={plan.name}
-              className="flex items-center justify-between rounded-xl px-4 py-3 border transition-all duration-500"
-              style={{
-                background: active ? plan.color : '#fff',
-                borderColor: active ? (plan.color === '#0d2b14' ? '#0d2b14' : '#92E721') : '#E5E7EC',
-                transform: active ? 'scale(1.02)' : 'scale(1)',
-              }}
-            >
-              <div className="flex items-center gap-2.5">
-                <span className="text-[13px] font-bold" style={{ color: active && plan.color === '#0d2b14' ? '#fff' : '#0F1112' }}>{plan.name}</span>
-                {plan.badge && active && (
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: '#92E721', color: '#0d2b14' }}>Popular</span>
+      <div className="w-full flex flex-col gap-3 px-2">
+        <style>{`@keyframes popIn{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}}`}</style>
+
+        {/* Plan cards */}
+        <div className="flex gap-2">
+          {plans.map((p, i) => {
+            const selected = phase >= 1 && i === 1;
+            return (
+              <div
+                key={p.name}
+                className="flex-1 rounded-xl border p-2.5 text-center transition-all duration-400"
+                style={{
+                  background: selected ? '#0d2b14' : '#fff',
+                  borderColor: selected ? '#92E721' : '#E5E7EC',
+                  transform: selected ? 'scale(1.05)' : 'scale(1)',
+                }}
+              >
+                <div className="text-[11px] font-semibold" style={{ color: selected ? '#92E721' : '#6b7280' }}>{p.name}</div>
+                <div className="text-[14px] font-bold mt-0.5" style={{ color: selected ? '#fff' : '#0F1112' }}>{p.price}</div>
+                <div className="text-[9px] mt-0.5" style={{ color: selected ? '#92E72180' : '#9ca3af' }}>{p.desc}</div>
+                {selected && (
+                  <div className="mt-1 mx-auto w-4 h-4 rounded-full flex items-center justify-center" style={{ background: '#92E721' }}>
+                    <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 4-4" stroke="#0d2b14" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
                 )}
               </div>
-              <div className="text-right">
-                <div className="text-[14px] font-bold" style={{ color: active && plan.color === '#0d2b14' ? '#92E721' : '#0F1112' }}>{plan.price}<span className="text-[10px] font-normal opacity-60">/mo</span></div>
-                <div className="text-[10px] opacity-60" style={{ color: active && plan.color === '#0d2b14' ? '#fff' : '#6b7280' }}>{plan.products}</div>
+            );
+          })}
+        </div>
+
+        {/* Store name input */}
+        <div
+          className="bg-white rounded-xl border px-3 py-2.5 transition-all duration-300"
+          style={{ borderColor: phase >= 2 ? '#F26B4E' : '#E5E7EC', opacity: phase >= 1 ? 1 : 0.3 }}
+        >
+          <div className="text-[10px] text-[#9ca3af] mb-1">Store Name</div>
+          <div className="text-[13px] font-medium text-[#0F1112] h-5 flex items-center gap-0.5">
+            {typed || (phase < 2 ? <span className="text-[#d1d5db]">e.g. Summer Boutique</span> : '')}
+            {phase >= 2 && phase < 4 && typed.length < STORE_NAME.length && (
+              <span className="inline-block w-0.5 h-4 bg-[#F26B4E] animate-pulse" />
+            )}
+          </div>
+        </div>
+
+        {/* Payment / success */}
+        {phase === 3 && (
+          <div className="bg-white rounded-xl border border-[#E5E7EC] px-4 py-3 flex items-center gap-3" style={{ animation: 'popIn 0.3s ease' }}>
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: '#F3F4F6' }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth="2" strokeLinecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <div className="flex-1">
+              <div className="text-[12px] font-semibold text-[#0F1112]">Processing payment…</div>
+              <div className="mt-1 h-1 rounded-full bg-[#F3F4F6] overflow-hidden">
+                <div className="h-full rounded-full bg-[#F26B4E]" style={{ width: '70%', animation: 'none' }} />
               </div>
             </div>
-          );
-        })}
-        <div className="mt-1 text-[11px] text-[#6b7280] text-center">You set the price — you keep 100%</div>
+          </div>
+        )}
+
+        {phase >= 4 && (
+          <div className="rounded-xl px-4 py-3 flex items-center gap-3" style={{ background: '#F0FDE4', animation: 'popIn 0.35s ease' }}>
+            <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: '#92E721' }}>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="#0d2b14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </div>
+            <div>
+              <div className="text-[13px] font-bold text-[#0d2b14]">Store is Ready!</div>
+              <div className="text-[11px] text-[#2d6a00]">summerboutique.yourplatform.com</div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
 
-  // step 2 — vendors going live + revenue
-  const vendors = ['Summer Boutique', 'Tech Gadgets Co.', 'Fresh Organics', 'Luxe Perfumes'];
-  const visibleCount = Math.min(tick + 1, vendors.length);
-  const revenue = ['+$9', '+$29', '+$29', '+$59'];
+  /* ── Step 3: vendor store → customer places order → order success ── */
+  // phase 0: vendor store preview (tick 0-1)
+  // phase 1: customer adds to cart (tick 2)
+  // phase 2: checkout (tick 3)
+  // phase 3: order success + revenue notification (tick 4+)
+  const phase3 = Math.min(tick, 3);
+
   return (
-    <div className="w-full flex flex-col gap-2.5 px-2">
-      <div className="text-[13px] font-semibold text-[#0F1112] mb-1">New Vendors This Month</div>
-      {vendors.slice(0, visibleCount).map((name, i) => (
-        <div
-          key={name}
-          className="flex items-center justify-between bg-white rounded-xl px-4 py-2.5 border border-[#E5E7EC] transition-all duration-300"
-          style={{ animation: 'fadeSlideIn 0.4s ease' }}
-        >
-          <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg flex items-center justify-center text-white text-[11px] font-bold flex-shrink-0" style={{ background: ['#F26B4E', '#3b82f6', '#10b981', '#8b5cf6'][i] }}>
-              {name[0]}
-            </div>
-            <span className="text-[13px] font-medium text-[#0F1112]">{name}</span>
+    <div className="w-full flex flex-col gap-3 px-2">
+      <style>{`@keyframes popIn{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}} @keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}`}</style>
+
+      {/* Store header */}
+      <div className="bg-white rounded-xl border border-[#E5E7EC] overflow-hidden">
+        <div className="px-4 py-2.5 flex items-center justify-between border-b border-[#F3F4F6]">
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-5 rounded-md flex items-center justify-center text-white text-[9px] font-bold" style={{ background: '#F26B4E' }}>S</div>
+            <span className="text-[12px] font-semibold text-[#0F1112]">Summer Boutique</span>
           </div>
-          <span className="text-[13px] font-bold" style={{ color: '#2d6a00' }}>{revenue[i]}<span className="text-[10px] font-normal text-[#6b7280]">/mo</span></span>
+          <div className="relative">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2" strokeLinecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            {phase3 >= 1 && (
+              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full text-[8px] font-bold flex items-center justify-center text-white" style={{ background: '#F26B4E', animation: 'popIn 0.2s ease' }}>1</span>
+            )}
+          </div>
         </div>
-      ))}
-      {visibleCount < vendors.length && (
-        <div className="text-center text-[11px] text-[#9ca3af]">More vendors joining...</div>
-      )}
-      {visibleCount === vendors.length && (
-        <div className="mt-1 rounded-xl px-4 py-2 text-center text-[12px] font-bold" style={{ background: '#F0FDE4', color: '#2d6a00' }}>
-          Total MRR: $126 / month
+
+        {/* Product row */}
+        <div className="flex items-center gap-3 px-4 py-3">
+          <div className="w-10 h-10 rounded-lg flex-shrink-0" style={{ background: 'linear-gradient(135deg,#fde68a,#fca5a5)' }} />
+          <div className="flex-1 min-w-0">
+            <div className="text-[12px] font-semibold text-[#0F1112] truncate">Floral Summer Dress</div>
+            <div className="text-[11px] text-[#6b7280]">$49.00</div>
+          </div>
+          <button
+            className="text-[11px] font-bold px-2.5 py-1 rounded-lg text-white transition-all"
+            style={{ background: phase3 >= 1 ? '#92E721' : '#F26B4E', color: phase3 >= 1 ? '#0d2b14' : '#fff', animation: phase3 === 1 ? 'popIn 0.25s ease' : 'none' }}
+          >
+            {phase3 >= 1 ? 'Added ✓' : 'Add to Cart'}
+          </button>
+        </div>
+      </div>
+
+      {/* Checkout */}
+      {phase3 >= 2 && (
+        <div className="bg-white rounded-xl border border-[#E5E7EC] px-4 py-3" style={{ animation: 'slideUp 0.3s ease' }}>
+          <div className="text-[11px] font-semibold text-[#6b7280] mb-2">CHECKOUT</div>
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[12px] text-[#374151]">Floral Summer Dress</span>
+            <span className="text-[12px] font-semibold text-[#0F1112]">$49.00</span>
+          </div>
+          <div className="flex items-center gap-2 p-2 rounded-lg" style={{ background: '#F8F9FB' }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth="2" strokeLinecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <span className="text-[11px] text-[#374151]">•••• •••• •••• 4242</span>
+          </div>
+          {phase3 === 2 && (
+            <div className="mt-2 text-center text-[11px] font-semibold py-2 rounded-lg" style={{ background: '#F26B4E', color: '#fff' }}>
+              Confirm Payment
+            </div>
+          )}
         </div>
       )}
-      <style>{`@keyframes fadeSlideIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }`}</style>
+
+      {/* Order success */}
+      {phase3 >= 3 && (
+        <div className="flex flex-col gap-2" style={{ animation: 'slideUp 0.35s ease' }}>
+          <div className="rounded-xl px-4 py-3 flex items-center gap-3" style={{ background: '#F0FDE4' }}>
+            <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: '#92E721' }}>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="#0d2b14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </div>
+            <div>
+              <div className="text-[13px] font-bold text-[#0d2b14]">Order #1042 Confirmed!</div>
+              <div className="text-[11px] text-[#2d6a00]">Customer notified via email</div>
+            </div>
+          </div>
+          <div className="rounded-xl px-4 py-2.5 flex items-center justify-between" style={{ background: '#0d2b14' }}>
+            <span className="text-[12px] text-[#92E721] font-semibold">Your revenue</span>
+            <span className="text-[14px] font-bold text-white">+$49.00</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -142,7 +246,7 @@ export default function HowItWorks() {
     const id = setInterval(() => {
       setActive((prev) => (prev + 1) % steps.length);
       setVisualKey((k) => k + 1);
-    }, 4000);
+    }, 5500);
     return () => clearInterval(id);
   }, []);
 
