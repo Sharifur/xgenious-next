@@ -1,6 +1,16 @@
 {
   "redirects": [
     {
+      "source": "/our-products/nazmart-multi-tenancy-ecommerce-platform-saas",
+      "destination": "/products/nazmart-multi-tenancy-ecommerce-platform",
+      "permanent": true
+    },
+    {
+      "source": "/our-products/nazmart-multi-tenancy-ecommerce-platform-saas/",
+      "destination": "/products/nazmart-multi-tenancy-ecommerce-platform",
+      "permanent": true
+    },
+    {
       "source": "/our-products/xilancer-freelancer-marketplace-platform",
       "destination": "/products/xilancer-freelancer-marketplace-script",
       "permanent": true
