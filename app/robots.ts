@@ -6,14 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: [
-        '/api/',
-        '/_next/',
-        '/our-products/nazmart-multi-tenancy-ecommerce-platform-saas',
-        '/our-products/nazmart-multi-tenancy-ecommerce-platform-saas/',
-        '/our-products/xilancer-freelancer-marketplace-platform',
-        '/our-products/xilancer-freelancer-marketplace-platform/',
-      ],
+        disallow: ['/api/', '/_next/'],
       },
       { userAgent: 'GPTBot', allow: '/' },
       { userAgent: 'PerplexityBot', allow: '/' },
