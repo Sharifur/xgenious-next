@@ -186,7 +186,7 @@ export default function Pricing() {
               </div>
             </div>
 
-            <Link
+            <a
               href={BUNDLE_CHECKOUT_URL}
               className="flex items-center justify-center gap-2 text-white font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5 cursor-pointer"
               style={{ background: COLOR, boxShadow: `0 8px 24px ${COLOR}55` }}
@@ -195,7 +195,7 @@ export default function Pricing() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </a>
 
             <div className="flex flex-col gap-2.5">
               {BUNDLE_FEATURES.map((f) => (
@@ -262,7 +262,7 @@ export default function Pricing() {
               </div>
             </div>
 
-            <Link
+            <a
               href={EXCLUSIVE_CHECKOUT_URL}
               className="flex items-center justify-center gap-2 text-white font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5 cursor-pointer"
               style={{ background: ACCENT, boxShadow: `0 8px 24px ${ACCENT}45` }}
@@ -271,7 +271,7 @@ export default function Pricing() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </a>
 
             <div className="flex flex-col gap-2.5">
               {EXCLUSIVE_FEATURES.map((f) => (

@@ -13,7 +13,7 @@ export const servicesDropdown: DropdownItem[] = [
 ];
 
 export const productsDropdown: DropdownItem[] = [
-  { label: 'Nazmart', description: 'Multi-Tenancy eCommerce SAAS', href: 'https://xgenious.com/our-products/nazmart-multi-tenancy-ecommerce-platform-saas/' },
+  { label: 'Nazmart', description: 'Multi-Tenancy eCommerce SAAS', href: '/products/nazmart-multi-tenancy-ecommerce-platform' },
   { label: 'Helpnest', description: 'AI Power Support Chatbot', href: 'https://xgenious.com/our-products/laravel-ai-chatbot-support-script/' },
   { label: 'Nexelit', description: 'Multipurpose Website CMS', href: 'https://xgenious.com/our-products/nexelit-multipurpose-website-business-management-system-cms/' },
   { label: 'Fundorex', description: 'Crowdfunding Platform', href: 'https://xgenious.com/our-products/fundorex-crowdfunding-platform/' },

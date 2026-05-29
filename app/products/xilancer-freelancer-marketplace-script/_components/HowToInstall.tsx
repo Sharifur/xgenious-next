@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { COLOR, REGULAR_PRICE } from './constants';
 
 const STEPS = [
@@ -60,12 +59,12 @@ export default function HowToInstall() {
 
         <p className="text-center text-[13px] text-[#6b7280] mt-8">
           Need help? Our team offers{' '}
-          <Link
+          <a
             href="#pricing"
             className="underline underline-offset-2 font-medium hover:text-[#0F1112] transition-colors"
           >
             professional installation
-          </Link>
+          </a>
           {' '}— handled for you from start to finish.
         </p>
 

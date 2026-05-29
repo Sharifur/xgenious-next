@@ -151,7 +151,7 @@ export const ownProducts: OwnProduct[] = [
     description: 'Multi-Tenancy eCommerce Platform (SAAS)',
     badges: ['eCommerce', 'SaaS'],
     image: '/products/nazmart.png',
-    href: 'https://xgenious.com/our-products/nazmart-multi-tenancy-ecommerce-platform-saas/',
+    href: '/products/nazmart-multi-tenancy-ecommerce-platform',
   },
   {
     name: 'Xilancer',
