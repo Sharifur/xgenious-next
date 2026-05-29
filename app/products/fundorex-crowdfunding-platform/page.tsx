@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { BASE_URL, CANONICAL } from './_components/constants';
 import JsonLd from './_components/JsonLd';
 import Hero from './_components/Hero';
+import StatsDefinition from './_components/StatsDefinition';
 import Features from './_components/Features';
 import PaymentGateways from './_components/PaymentGateways';
 import MobileApp from './_components/MobileApp';
@@ -52,6 +53,7 @@ export default function FundorexPage() {
       <JsonLd />
       <StickyBar />
       <Hero />
+      <StatsDefinition />
       <Features />
       <PaymentGateways />
       <MobileApp />
