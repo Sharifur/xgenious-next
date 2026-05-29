@@ -5,7 +5,7 @@ const TIERS = [
   {
     name: 'Regular License',
     price: REGULAR_PRICE,
-    original: 69,
+    original: 0,
     badge: null,
     desc: 'Web platform only. Single domain.',
     cta: 'Buy on CodeCanyon',

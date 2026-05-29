@@ -2,11 +2,11 @@ export const BASE_URL = 'https://xgenious.com';
 export const CANONICAL = `${BASE_URL}/products/fundorex-crowdfunding-platform`;
 export const COLOR = '#F97316';
 export const LIGHT_COLOR = '#FFF7ED';
-export const PURCHASE_URL = 'https://codecanyon.net/checkout/from_item/33286096';
+export const PURCHASE_URL = 'https://codecanyon.net/item/fundorex-crowdfunding-platform/33286096';
 export const DEMO_URL = 'https://fundorex.xgenious.com';
 export const ADMIN_URL = 'https://fundorex.xgenious.com/admin';
 export const DOCS_URL = 'https://docs.xgenious.com/docs/fundorex/';
-export const REGULAR_PRICE = 49;
+export const REGULAR_PRICE = 69;
 export const COMBO_PRICE = 88;
 export const EXTENDED_PRICE = 225;
 
@@ -17,9 +17,9 @@ export const QUICK_LINKS = [
 ];
 
 export const STATS = [
-  { value: '200+', label: 'Active installs' },
-  { value: '5.0/5', label: 'Envato rating' },
-  { value: '33', label: 'Verified reviews' },
+  { value: '734+', label: 'Active installs' },
+  { value: '4.70/5', label: 'CodeCanyon rating' },
+  { value: '43', label: 'Verified reviews' },
   { value: '1-time', label: 'Purchase' },
 ];
 

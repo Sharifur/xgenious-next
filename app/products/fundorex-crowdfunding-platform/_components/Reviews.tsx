@@ -30,8 +30,8 @@ export default function Reviews() {
           </h2>
           <div className="flex items-center justify-center gap-2">
             <Stars n={5} />
-            <span className="text-[14px] font-semibold text-[#0F1112]">5.0 / 5</span>
-            <span className="text-[13px] text-[#6b7280]">· 33 reviews on Envato</span>
+            <span className="text-[14px] font-semibold text-[#0F1112]">4.70 / 5</span>
+            <span className="text-[13px] text-[#6b7280]">· 43 reviews · 734+ installs on CodeCanyon</span>
           </div>
         </div>
 

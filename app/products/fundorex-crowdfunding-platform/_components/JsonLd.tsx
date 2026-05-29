@@ -19,8 +19,8 @@ export default function JsonLd() {
     author: { '@type': 'Organization', name: 'Xgenious', url: 'https://xgenious.com' },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      reviewCount: '33',
+      ratingValue: '4.70',
+      reviewCount: '43',
     },
   };
 
