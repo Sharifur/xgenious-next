@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { PURCHASE_URL } from './constants';
+
 
 const rows = [
   { feature: 'Platform ownership',         nazmart: 'You own it 100%',  shopify: 'Rented (SaaS)',   woo: 'Partial',        custom: 'You own it' },
@@ -60,9 +60,7 @@ export default function Comparison() {
 
         <div className="text-center mt-8">
           <Link
-            href={PURCHASE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#pricing"
             className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-3.5 transition-all hover:opacity-90"
             style={{ background: '#ec7161' }}
           >
