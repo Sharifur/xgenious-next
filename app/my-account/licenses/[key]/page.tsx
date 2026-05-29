@@ -152,7 +152,7 @@ export default function LicenseDetailPage() {
             </div>
             <div>
               <h1 className="text-base font-bold text-[#0F1112]">{item.product_name}</h1>
-              <p className="text-xs text-gray-400 mt-0.5">{item.license_type} · <span className="capitalize">{item.platform}</span></p>
+              <p className="text-xs text-gray-400 mt-0.5">{item.variant?.name ?? item.license_type} · <span className="capitalize">{item.platform}</span></p>
             </div>
           </div>
           <span className={`text-xs px-2.5 py-1 rounded-full font-medium flex-shrink-0 ${

@@ -115,7 +115,8 @@ WordPress for support tickets. Taskip is the CRM. All ticket CRUD goes through `
 | Route | Method | License Server endpoint |
 |---|---|---|
 | `app/api/license-server/purchases/route.ts` | GET | `GET /purchases?email=` |
-| `app/api/license-server/updates/generate/route.ts` | POST | `POST /updates/generate` |
+| `app/api/license-server/updates/generate/route.ts` | POST | `POST /updates/generate` — body: `{ product_uid, version? }` |
+| `app/api/license-server/downloads/fresh-install/route.ts` | GET | `GET /downloads/fresh-install?product_uid=&license_key=` |
 | `app/api/license-server/licenses/domain/route.ts` | POST | `POST /licenses/domain` |
 
 ### Dashboard pages
@@ -134,11 +135,14 @@ import { lsFetch } from '@/lib/license-server';
 // fetch purchases for a user
 const res = await lsFetch(`/purchases?email=${encodeURIComponent(email)}&per_page=100`);
 
-// generate download URL
+// generate update download URL
 const res = await lsFetch('/updates/generate', {
   method: 'POST',
-  body: JSON.stringify({ product_uid, license_key }),
+  body: JSON.stringify({ product_uid, version }),  // version optional, defaults to latest
 });
+
+// generate fresh install download URL
+const res = await lsFetch(`/downloads/fresh-install?product_uid=${encodeURIComponent(product_uid)}&license_key=${encodeURIComponent(license_key)}`);
 
 // domain toggle
 const res = await lsFetch('/licenses/domain', {

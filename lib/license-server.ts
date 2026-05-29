@@ -22,6 +22,16 @@ export interface LicenseActivation {
   status: number;
 }
 
+export interface PurchaseAddon {
+  license_key: string;
+  purchase_code: string;
+  product_uid: string;
+  product_name: string;
+  license_type: string;
+  amount: string | null;
+  currency?: string;
+}
+
 export interface PurchaseItem {
   platform: string;
   purchase_code: string;
@@ -31,6 +41,8 @@ export interface PurchaseItem {
   client_name: string;
   client_email: string;
   license_type: string;
+  variant: { id: number; name: string; uuid: string } | null;
+  addons: PurchaseAddon[];
   purchased_at: string;
   supported_until: string;
   support_active: boolean;

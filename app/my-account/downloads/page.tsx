@@ -141,7 +141,7 @@ export default function DownloadsPage() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#0F1112]">{item.product_name}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{item.license_type} · <span className="capitalize">{item.platform}</span></p>
+                  <p className="text-xs text-gray-400 mt-0.5">{item.variant?.name ?? item.license_type} · <span className="capitalize">{item.platform}</span></p>
                 </div>
               </div>
 
