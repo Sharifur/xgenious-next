@@ -6,15 +6,15 @@ export async function POST(req: NextRequest) {
   const session = await auth();
   if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const { product_uid, license_key, version, include_database } = await req.json();
+  const { product_uid, version } = await req.json();
 
-  if (!product_uid || !license_key) {
-    return NextResponse.json({ error: 'product_uid and license_key are required' }, { status: 400 });
+  if (!product_uid) {
+    return NextResponse.json({ error: 'product_uid is required' }, { status: 400 });
   }
 
   const res = await lsFetch('/updates/generate', {
     method: 'POST',
-    body: JSON.stringify({ product_uid, license_key, ...(version ? { version } : {}), include_database: include_database ?? false }),
+    body: JSON.stringify({ product_uid, ...(version ? { version } : {}) }),
   });
   const data = await res.json();
 
