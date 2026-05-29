@@ -44,37 +44,54 @@ export default function PurchasesPage() {
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {items.map((item) => (
-                  <tr key={item.license_key ?? item.purchase_code} className="hover:bg-gray-50/50">
-                    <td className="px-5 py-4 font-medium text-[#0F1112]">{item.product_name}</td>
-                    <td className="px-5 py-4 font-mono text-xs text-gray-500">{item.license_key ?? '—'}</td>
-                    <td className="px-5 py-4 text-gray-600">{item.license_type}</td>
-                    <td className="px-5 py-4">
-                      <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600 capitalize">
-                        {item.platform}
-                      </span>
-                    </td>
-                    <td className="px-5 py-4 text-gray-700">
-                      {item.payment?.amount
-                        ? `${item.payment.currency} ${parseFloat(item.payment.amount).toFixed(2)}`
-                        : '—'}
-                    </td>
-                    <td className="px-5 py-4 text-gray-500">
-                      {item.purchased_at
-                        ? new Date(item.purchased_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-                        : '—'}
-                    </td>
-                    <td className="px-5 py-4">
-                      <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
-                        item.payment?.status === 'completed'
-                          ? 'bg-green-50 text-green-700'
-                          : item.payment?.status === 'refunded'
-                          ? 'bg-orange-50 text-orange-700'
-                          : 'bg-gray-100 text-gray-500'
-                      }`}>
-                        {item.payment?.status ?? 'N/A'}
-                      </span>
-                    </td>
-                  </tr>
+                  <>
+                    <tr key={item.license_key ?? item.purchase_code} className="hover:bg-gray-50/50">
+                      <td className="px-5 py-4 font-medium text-[#0F1112]">{item.product_name}</td>
+                      <td className="px-5 py-4 font-mono text-xs text-gray-500">{item.license_key ?? '—'}</td>
+                      <td className="px-5 py-4 text-gray-600">{item.variant?.name ?? item.license_type}</td>
+                      <td className="px-5 py-4">
+                        <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600 capitalize">
+                          {item.platform}
+                        </span>
+                      </td>
+                      <td className="px-5 py-4 text-gray-700">
+                        {item.payment?.amount
+                          ? `${item.payment.currency} ${parseFloat(item.payment.amount).toFixed(2)}`
+                          : '—'}
+                      </td>
+                      <td className="px-5 py-4 text-gray-500">
+                        {item.purchased_at
+                          ? new Date(item.purchased_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                          : '—'}
+                      </td>
+                      <td className="px-5 py-4">
+                        <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                          item.payment?.status === 'completed'
+                            ? 'bg-green-50 text-green-700'
+                            : item.payment?.status === 'refunded'
+                            ? 'bg-orange-50 text-orange-700'
+                            : 'bg-gray-100 text-gray-500'
+                        }`}>
+                          {item.payment?.status ?? 'N/A'}
+                        </span>
+                      </td>
+                    </tr>
+                    {item.addons?.map((addon) => (
+                      <tr key={addon.license_key ?? addon.purchase_code} className="bg-gray-50/40">
+                        <td className="px-5 py-3 text-gray-500 text-xs pl-8">↳ {addon.product_name}</td>
+                        <td className="px-5 py-3 font-mono text-xs text-gray-400">{addon.license_key ?? '—'}</td>
+                        <td className="px-5 py-3 text-xs text-gray-400">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-blue-50 text-blue-600">add-on</span>
+                        </td>
+                        <td className="px-5 py-3" />
+                        <td className="px-5 py-3 text-xs text-gray-400">
+                          {addon.amount ? `${addon.currency ?? ''} ${parseFloat(addon.amount).toFixed(2)}`.trim() : '—'}
+                        </td>
+                        <td className="px-5 py-3" />
+                        <td className="px-5 py-3" />
+                      </tr>
+                    ))}
+                  </>
                 ))}
               </tbody>
             </table>

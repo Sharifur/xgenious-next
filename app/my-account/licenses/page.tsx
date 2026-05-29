@@ -55,7 +55,7 @@ export default function LicensesPage() {
                     <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                       <span className="text-xs text-gray-400 capitalize">{item.platform}</span>
                       <span className="text-gray-200 text-xs">·</span>
-                      <span className="text-xs text-gray-400">{item.license_type}</span>
+                      <span className="text-xs text-gray-400">{item.variant?.name ?? item.license_type}</span>
                       {item.license_key && (
                         <>
                           <span className="text-gray-200 text-xs">·</span>
