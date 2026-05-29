@@ -10,6 +10,10 @@ export const MOBILE_URL = '#mobile-app';
 export const POS_URL = '#pos-plugin';
 export const PRICING_URL = '#pricing';
 export const REGULAR_PRICE = 69;
+export const BUNDLE_PRICE = 149;
+export const COMPLETE_PRICE = 279;
+export const BUNDLE_PRODUCT_PATH = 'nazmart-bundle-pack';
+export const COMPLETE_PRODUCT_PATH = 'nazmart-complete-package';
 
 export const QUICK_LINKS = [
   { label: 'Admin Panel', href: ADMIN_URL },

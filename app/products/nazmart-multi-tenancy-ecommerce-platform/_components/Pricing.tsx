@@ -1,5 +1,8 @@
 import Link from 'next/link';
-import { COLOR, PURCHASE_URL, PRICING_TIERS } from './constants';
+import { COLOR, PURCHASE_URL, PRICING_TIERS, BUNDLE_PRODUCT_PATH, COMPLETE_PRODUCT_PATH } from './constants';
+
+const BUNDLE_CHECKOUT_URL = `/checkout?product=${BUNDLE_PRODUCT_PATH}`;
+const COMPLETE_CHECKOUT_URL = `/checkout?product=${COMPLETE_PRODUCT_PATH}`;
 
 function CheckIcon({ ok }: { ok: boolean }) {
   if (ok) {
@@ -103,9 +106,7 @@ export default function Pricing() {
             </div>
 
             <Link
-              href={PURCHASE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={BUNDLE_CHECKOUT_URL}
               className="flex items-center justify-center gap-2 font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: COLOR, color: '#0d2b14', boxShadow: `0 8px 24px ${COLOR}55` }}
             >
@@ -148,9 +149,7 @@ export default function Pricing() {
             </div>
 
             <Link
-              href={PURCHASE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={COMPLETE_CHECKOUT_URL}
               className="flex items-center justify-center gap-2 text-white font-semibold text-[14px] rounded-xl py-3 mb-6 transition-all hover:opacity-90"
               style={{ background: '#ec7161' }}
             >
