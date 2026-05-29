@@ -42,13 +42,14 @@ export default function StickyBar() {
           >
             View Demo
           </Link>
-          <Link
+          <a
             href="#pricing"
-            className="inline-flex items-center gap-2 text-white font-semibold text-[13px] rounded-full px-5 py-2.5 transition-all hover:opacity-90"
+            onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); }}
+            className="inline-flex items-center gap-2 text-white font-semibold text-[13px] rounded-full px-5 py-2.5 transition-all hover:opacity-90 cursor-pointer"
             style={{ background: '#ec7161' }}
           >
             {`Purchase Now — from $${REGULAR_PRICE}`}
-          </Link>
+          </a>
         </div>
 
       </div>

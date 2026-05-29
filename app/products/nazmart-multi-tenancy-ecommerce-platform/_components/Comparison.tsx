@@ -1,6 +1,3 @@
-import Link from 'next/link';
-
-
 const rows = [
   { feature: 'Platform ownership',         nazmart: 'You own it 100%',  shopify: 'Rented (SaaS)',   woo: 'Partial',        custom: 'You own it' },
   { feature: 'Monthly SaaS fees',          nazmart: 'None',             shopify: '$39–$399/mo',      woo: 'Hosting only',   custom: '$5K–$20K/yr' },
@@ -59,13 +56,13 @@ export default function Comparison() {
         </div>
 
         <div className="text-center mt-8">
-          <Link
+          <a
             href="#pricing"
             className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-3.5 transition-all hover:opacity-90"
             style={{ background: '#ec7161' }}
           >
             Get Nazmart — from $69 one-time
-          </Link>
+          </a>
           <p className="text-[12px] text-[#9ca3af] mt-3">One-time purchase · No monthly fees · Full source code · 6 months support</p>
         </div>
 
