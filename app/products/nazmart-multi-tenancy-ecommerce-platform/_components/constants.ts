@@ -216,7 +216,7 @@ export const FAQS = [
   },
   {
     question: 'Do vendors get their own mobile app?',
-    answer: 'Yes. The Bundle Pack and Complete Package include a Flutter-based Android and iOS mobile app for tenant store owners and their customers. Push notifications, order tracking, product management, and checkout are all production-ready. Store owners can publish the app under their own brand name.',
+    answer: 'Yes. The Everything Bundle and Exclusive License include a Flutter-based Android and iOS mobile app for tenant store owners and their customers. Push notifications, order tracking, product management, and checkout are all production-ready. Store owners can publish the app under their own brand name.',
   },
   {
     question: 'Can vendors use their own domain name?',
@@ -224,7 +224,7 @@ export const FAQS = [
   },
   {
     question: 'What support is included with purchase?',
-    answer: 'Every license includes 6 months of support from the Xgenious team and lifetime updates. The Complete Package adds priority support. Full documentation is at docs.xgenious.com. Support is delivered through CodeCanyon ticketing with typical response times under 24 hours.',
+    answer: 'Every license includes 6 months of support from the Xgenious team and lifetime updates. The Exclusive License adds priority support. Full documentation is at docs.xgenious.com. Support is delivered through CodeCanyon ticketing with typical response times under 24 hours.',
   },
   {
     question: 'How long does it take to launch Nazmart?',
@@ -295,7 +295,7 @@ export const PRICING_TIERS = [
     ],
   },
   {
-    name: 'Bundle Pack',
+    name: 'Everything Bundle',
     badge: 'Web + Plugins + Mobile App',
     price: 99,
     original: 199,
@@ -323,7 +323,7 @@ export const PRICING_TIERS = [
     ],
   },
   {
-    name: 'Complete Package',
+    name: 'Exclusive License',
     badge: 'Web + App + Plugins + Domain Reseller',
     price: 299,
     original: 499,

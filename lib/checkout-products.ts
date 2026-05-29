@@ -139,7 +139,7 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
     originalPrice: 500,
     badge: 'For Businesses',
     features: [
-      'Everything in Bundle Pack',
+      'Everything in Everything Bundle',
       'Full Source Code Modification Rights',
       'Remove / Replace Any Branding',
       'No License Key Enforcement',
@@ -200,7 +200,7 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
   },
   'nazmart-bundle-pack': {
     path: 'nazmart-bundle-pack',
-    name: 'Nazmart — Bundle Pack',
+    name: 'Nazmart — Everything Bundle',
     tagline: 'Web Platform + All 17 Premium Plugins + Mobile App',
     price: 99,
     originalPrice: 199,
@@ -282,13 +282,13 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
 
   'nazmart-complete-package': {
     path: 'nazmart-complete-package',
-    name: 'Nazmart — Complete Package',
+    name: 'Nazmart — Exclusive License',
     tagline: 'Web Platform + All Plugins + Mobile App + Domain Reseller',
     price: 299,
     originalPrice: 499,
     badge: 'Web + App + Plugins + Domain Reseller',
     features: [
-      'Everything in Bundle Pack',
+      'Everything in Everything Bundle',
       'Domain Reseller Module',
       'Priority Support Included',
       'Lifetime License + Free Updates',

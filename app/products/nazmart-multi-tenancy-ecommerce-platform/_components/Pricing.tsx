@@ -110,7 +110,7 @@ export default function Pricing() {
               className="flex items-center justify-center gap-2 font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: COLOR, color: '#0d2b14', boxShadow: `0 8px 24px ${COLOR}55` }}
             >
-              Get Bundle Pack
+              Get Everything Bundle
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -126,7 +126,7 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Complete Package */}
+          {/* Exclusive License */}
           <div className="bg-white rounded-2xl border border-[#E5E7EC] p-7 flex flex-col">
             <div className="mb-6">
               <div className="flex items-center gap-2 mb-2">
@@ -153,7 +153,7 @@ export default function Pricing() {
               className="flex items-center justify-center gap-2 text-white font-semibold text-[14px] rounded-xl py-3 mb-6 transition-all hover:opacity-90"
               style={{ background: '#ec7161' }}
             >
-              Get Complete Package
+              Get Exclusive License
             </Link>
 
             <div className="flex flex-col gap-2.5">

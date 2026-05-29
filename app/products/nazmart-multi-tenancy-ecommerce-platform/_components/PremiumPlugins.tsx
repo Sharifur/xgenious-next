@@ -165,7 +165,7 @@ export default function PremiumPlugins() {
             <span style={{ color: COLOR }}>Included Free</span>
           </h2>
           <p className="text-[#8aaa98] text-[15px] leading-6">
-            Every premium add-on below is bundled at no extra cost in the Bundle Pack and Complete Package — saving you hundreds of dollars.
+            Every premium add-on below is bundled at no extra cost in the Everything Bundle and Exclusive License — saving you hundreds of dollars.
           </p>
         </div>
 
@@ -191,7 +191,7 @@ export default function PremiumPlugins() {
         </div>
 
         <p className="text-center text-[13px] mt-8" style={{ color: '#4b6b5a' }}>
-          All plugins included in Bundle Pack ($99) and Complete Package ($299) · Regular License gets core platform only
+          All plugins included in Everything Bundle ($99) and Exclusive License ($299) · Regular License gets core platform only
         </p>
 
       </div>
