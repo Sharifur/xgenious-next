@@ -74,6 +74,160 @@ export const TECH = [
   { name: 'Redis', desc: 'Session & queue management' },
 ];
 
+export const CODECANYON_REVIEWS = [
+  {
+    name: 'sunfocus',
+    category: 'Code Quality',
+    rating: 5,
+    body: 'The new update is amazing and built with clean UI/UX design. The page builder allows users to customise any page — that\'s a great deal. The support team is very good; they resolve issues instantly.',
+  },
+  {
+    name: 'patriceoulai',
+    category: 'Customer Support',
+    rating: 5,
+    body: 'I highly recommend both the excellent customer service and the high-quality code. The team goes above and beyond to make sure everything works perfectly.',
+  },
+  {
+    name: 'deyaaohip100',
+    category: 'Customer Support',
+    rating: 5,
+    body: 'Best customer support. I had errors and they helped me and resolved them all very quickly. Impressed with how fast and professional the response was.',
+  },
+  {
+    name: 'Lass46',
+    category: 'Customer Support',
+    rating: 5,
+    body: 'Personally, I am very satisfied with the customer service. They are very responsive and always ready to help with any issue I run into.',
+  },
+  {
+    name: 'sunnysaipavan3',
+    category: 'Feature Availability',
+    rating: 5,
+    body: 'Script quality is excellent and the customer support is top notch. Everything I needed for my marketplace was already included. Highly recommended.',
+  },
+  {
+    name: 'webnegaran',
+    category: 'Feature Availability',
+    rating: 5,
+    body: 'Code quality is outstanding, features are comprehensive, and the support team responds quickly — even going beyond their standard obligations to help you succeed.',
+  },
+  {
+    name: 'XDeen_LLC',
+    category: 'Customer Support',
+    rating: 5,
+    body: 'Great customer support. Every ticket was handled professionally and promptly. The product itself is feature-rich and well-structured for a multi-tenancy platform.',
+  },
+  {
+    name: 'abojoker17',
+    category: 'Flexibility',
+    rating: 5,
+    body: 'Had some initial setup issues but the team was professional and friendly throughout. They resolved everything quickly and the platform is now running smoothly.',
+  },
+  {
+    name: 'bponights',
+    category: 'Feature Availability',
+    rating: 5,
+    body: 'Script quality is very good. Multi-tenancy architecture is solid and subscription billing works flawlessly. One of the best eCommerce SaaS scripts on CodeCanyon.',
+  },
+  {
+    name: 'rumireminder',
+    category: 'Customer Support',
+    rating: 5,
+    body: 'Support team speed is impressive. Raised a ticket and got a meaningful reply within the hour. The team clearly knows their product inside out.',
+  },
+  {
+    name: 'farjanul',
+    category: 'Code Quality',
+    rating: 5,
+    body: 'Clean codebase, well-organised file structure, and easy to customise. The Laravel backend is solid and extending features is straightforward for any developer.',
+  },
+  {
+    name: 'souravdutts007',
+    category: 'Customer Support',
+    rating: 5,
+    body: 'Author\'s professionalism is top-tier. Very responsive to issues and genuinely dedicated to the product. Rare to find this level of post-sale commitment.',
+  },
+  {
+    name: 'aleksandrmasnyk01',
+    category: 'Customizability',
+    rating: 5,
+    body: 'Customising the platform to match our brand was easy. The theme system is well-thought-out and the admin panel gives full control over every tenant store.',
+  },
+  {
+    name: 'ckothari',
+    category: 'Design Quality',
+    rating: 5,
+    body: 'UI design is modern and professional. Vendors love the storefront and customers find it intuitive. Sales increased after we migrated our marketplace to Nazmart.',
+  },
+  {
+    name: 'digital_store_pro',
+    category: 'Feature Availability',
+    rating: 5,
+    body: 'The POS plugin is a game changer for our vendors who also have physical stores. Barcode scanning, receipt printing, and inventory sync all work perfectly out of the box.',
+  },
+  {
+    name: 'marketplace_founder',
+    category: 'Code Quality',
+    rating: 5,
+    body: 'Launched our multi-vendor SaaS platform in under 3 weeks. The subscription billing, custom domain support, and commission system were all ready to go. Zero unexpected blockers.',
+  },
+  {
+    name: 'saas_ventures',
+    category: 'Design Quality',
+    rating: 5,
+    body: 'Vendors onboard themselves without any help from us. The storefront builder is intuitive enough that non-technical shop owners set up and go live the same day.',
+  },
+  {
+    name: 'techlaunch_io',
+    category: 'Customer Support',
+    rating: 5,
+    body: 'Had a complex customisation requirement and the support team jumped on a call to walk me through it. That level of dedication is unheard of for a script at this price.',
+  },
+];
+
+export const FAQS = [
+  {
+    question: 'What is a multi-tenancy eCommerce platform?',
+    answer: 'A multi-tenancy eCommerce platform is a SaaS system where a single codebase serves multiple independent online stores (tenants). Each store has its own inventory, orders, customers, and branding — completely isolated — while the platform owner earns subscription revenue from every store owner. Nazmart is built on this architecture.',
+  },
+  {
+    question: 'What is Nazmart?',
+    answer: 'Nazmart is a multi-tenancy eCommerce SaaS platform built with Laravel and Vue.js. It lets you launch a Shopify-like marketplace where vendors create and manage their own stores under your domain. One installation, unlimited tenant stores, subscription billing, custom domains, and a Flutter mobile app — all included from $69 one-time.',
+  },
+  {
+    question: 'How is Nazmart different from Shopify or WooCommerce?',
+    answer: 'Shopify and WooCommerce host one store per installation. Nazmart makes you the platform owner — you sell subscriptions to vendors who build their stores on your infrastructure. You keep 100% of subscription revenue with zero per-transaction fees. You are the platform, not a tenant on someone else\'s system.',
+  },
+  {
+    question: 'What tech stack does Nazmart use?',
+    answer: 'Nazmart runs on Laravel (PHP 8+) for the backend, Vue.js for the frontend SPA, MySQL for the database, Redis for queuing and sessions, and Flutter for cross-platform Android/iOS mobile apps. It deploys on any standard Linux VPS or shared hosting that meets the PHP 8+ requirement.',
+  },
+  {
+    question: 'Is there a monthly fee for Nazmart?',
+    answer: 'No. Nazmart is a one-time purchase on CodeCanyon — from $69 for the Regular License. There are no monthly platform fees, no revenue share, and no per-transaction charges from Xgenious. Your vendor subscription revenue is 100% yours to keep.',
+  },
+  {
+    question: 'What payment gateways does Nazmart support?',
+    answer: 'Nazmart supports 19+ payment gateways including Stripe, PayPal, Razorpay, Flutterwave, Mollie, Paystack, Cashfree, Instamojo, Midtrans, Mercado Pago, Square, CinetPay, and more. New integrations are added continuously. Vendors receive automatic payouts after your platform commission is deducted.',
+  },
+  {
+    question: 'Do vendors get their own mobile app?',
+    answer: 'Yes. The Bundle Pack and Complete Package include a Flutter-based Android and iOS mobile app for tenant store owners and their customers. Push notifications, order tracking, product management, and checkout are all production-ready. Store owners can publish the app under their own brand name.',
+  },
+  {
+    question: 'Can vendors use their own domain name?',
+    answer: 'Yes. Nazmart supports custom domain mapping per tenant store. Each vendor connects their own domain or subdomain with SSL. Your platform runs hundreds of independently branded storefronts from a single installation with no extra configuration required per store.',
+  },
+  {
+    question: 'What support is included with purchase?',
+    answer: 'Every license includes 6 months of support from the Xgenious team and lifetime updates. The Complete Package adds priority support. Full documentation is at docs.xgenious.com. Support is delivered through CodeCanyon ticketing with typical response times under 24 hours.',
+  },
+  {
+    question: 'How long does it take to launch Nazmart?',
+    answer: 'Most buyers launch their platform within 48–72 hours of purchase. Upload to your Linux VPS, run the installer, configure payment gateways and subscription plans — done. Full setup documentation is included. The Xgenious support team can assist with installation if needed.',
+  },
+];
+
 export const REVIEWS = [
   {
     name: 'ecommerce_pro',

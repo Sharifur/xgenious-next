@@ -19,8 +19,8 @@ export default function Hero() {
         {/* Background gradient ball — full-width circle, top half visible */}
         <div
           className="pointer-events-none absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] aspect-square rounded-full opacity-[0.12]"
-          style={{ top: '150px' }}
           style={{
+            top: '150px',
             background: 'radial-gradient(circle, #FFFFFF 0%, #154646 85%, rgba(146,231,33,0.5) 100%)',
             zIndex: 0,
           }}
@@ -46,7 +46,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-[#484848] text-[15px] sm:text-[17px] leading-7 max-w-[580px]">
-            Empower entrepreneurs with a Multi-Tenancy eCommerce Platform. Offer SaaS subscriptions for seamless eCommerce store building — all from one installation.
+            <strong>Nazmart is a multi-tenancy eCommerce platform</strong> — a single Laravel + Vue.js installation where unlimited vendors create their own branded online stores, pay you a subscription, and go live with a custom domain. You own the platform, keep 100% of subscription revenue, and scale without rebuilding.
           </p>
 
           {/* Star rating */}
