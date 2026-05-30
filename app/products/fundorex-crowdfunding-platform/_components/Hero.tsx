@@ -46,7 +46,7 @@ export default function Hero() {
           <span className="text-[14px] text-[#6b7280]">· 43 reviews · 734+ installs on CodeCanyon</span>
         </div>
 
-        <h1 className="text-[38px] leading-[46px] sm:text-[54px] sm:leading-[62px] lg:text-[62px] lg:leading-[70px] font-bold text-[#0F1112]">
+        <h1 className="text-[38px] leading-[46px] sm:text-[54px] sm:leading-[62px] lg:text-[62px] lg:leading-[70px] font-bold text-[#0F1112] max-w-[950px]">
           Build Your Amazing{' '}
           <span style={{ color: COLOR }}>Crowdfunding Website</span>
         </h1>
