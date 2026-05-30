@@ -8,17 +8,6 @@ export default function Hero() {
       className="relative overflow-hidden pt-[120px] pb-0 sm:pt-[140px]"
       style={{ background: '#F5F6F8' }}
     >
-      {/* Left — children photo, overlaps the screenshot panel */}
-      <div className="hidden lg:block absolute bottom-0 left-0 w-[260px] xl:w-[310px] z-20">
-        <Image
-          src="/products/fundorex-hero-left.png"
-          alt="Children smiling — Fundorex crowdfunding impact"
-          width={310}
-          height={380}
-          className="object-contain object-bottom w-full"
-        />
-      </div>
-
       {/* Right — donation illustration */}
       <div className="hidden lg:block absolute right-0 top-[100px] w-[200px] xl:w-[240px] translate-x-[-20px] z-10">
         <Image
@@ -89,8 +78,18 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Platform screenshot — wider than text column so left image overlaps it */}
+      {/* Platform screenshot — left image sits on top-left of this panel */}
       <div className="container-page px-4 sm:px-6 lg:px-0 mt-10 max-w-[1200px] mx-auto relative z-10">
+        {/* Left — children photo, top-left of screenshot */}
+        <div className="hidden lg:block absolute top-0 left-0 w-[260px] xl:w-[310px] z-20">
+          <Image
+            src="/products/fundorex-hero-left.png"
+            alt="Children smiling — Fundorex crowdfunding impact"
+            width={310}
+            height={380}
+            className="object-contain object-bottom w-full"
+          />
+        </div>
         <div className="rounded-t-2xl overflow-hidden shadow-2xl">
           <Image
             src="/products/fundorex-hero-center.jpg"
