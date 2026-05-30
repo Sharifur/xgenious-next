@@ -8,8 +8,8 @@ export default function Hero() {
       className="relative overflow-hidden pt-[120px] pb-0 sm:pt-[140px]"
       style={{ background: '#F5F6F8' }}
     >
-      {/* Left — children photo */}
-      <div className="hidden lg:block absolute left-0 bottom-0 w-[260px] xl:w-[310px]">
+      {/* Left — children photo, overlaps the screenshot panel */}
+      <div className="hidden lg:block absolute bottom-0 left-0 w-[260px] xl:w-[310px] z-20">
         <Image
           src="/products/fundorex-hero-left.png"
           alt="Children smiling — Fundorex crowdfunding impact"
@@ -20,7 +20,7 @@ export default function Hero() {
       </div>
 
       {/* Right — donation illustration */}
-      <div className="hidden lg:block absolute right-0 top-[100px] w-[200px] xl:w-[240px] translate-x-[-20px]">
+      <div className="hidden lg:block absolute right-0 top-[100px] w-[200px] xl:w-[240px] translate-x-[-20px] z-10">
         <Image
           src="/products/fundorex-hero-right.png"
           alt="Donation illustration"
@@ -30,10 +30,9 @@ export default function Hero() {
         />
       </div>
 
-      {/* Center content */}
+      {/* Text content — narrow centered column */}
       <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col items-center text-center gap-5 relative z-10 max-w-[800px] mx-auto">
 
-        {/* Stars */}
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (
@@ -88,19 +87,19 @@ export default function Hero() {
             </Link>
           ))}
         </div>
+      </div>
 
-        {/* Platform screenshot */}
-        <div className="mt-10 w-full max-w-[1000px] relative">
-          <div className="rounded-t-2xl overflow-hidden shadow-2xl">
-            <Image
-              src="/products/fundorex-hero-center.jpg"
-              alt="Fundorex crowdfunding platform — web and mobile preview"
-              width={1000}
-              height={600}
-              className="w-full object-cover object-top"
-              priority
-            />
-          </div>
+      {/* Platform screenshot — wider than text column so left image overlaps it */}
+      <div className="container-page px-4 sm:px-6 lg:px-0 mt-10 max-w-[1200px] mx-auto relative z-10">
+        <div className="rounded-t-2xl overflow-hidden shadow-2xl">
+          <Image
+            src="/products/fundorex-hero-center.jpg"
+            alt="Fundorex crowdfunding platform — web and mobile preview"
+            width={1200}
+            height={720}
+            className="w-full object-cover object-top"
+            priority
+          />
         </div>
       </div>
     </section>
