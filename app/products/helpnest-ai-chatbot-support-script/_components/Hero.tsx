@@ -2,8 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { COLOR, DEMO_URL, REGULAR_PRICE } from './constants';
 
-const CIRCLE_BG = '/products/helpnest-hero-circle.png';
-
 const QUICK_LINKS = [
   { label: 'Features', href: '#features' },
   { label: 'Live Demo', href: DEMO_URL },
@@ -19,9 +17,13 @@ export default function Hero() {
         <div className="relative flex flex-col items-center text-center gap-6 max-w-[900px] mx-auto">
 
           {/* decorative circle behind text */}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center -z-0">
-            <img src={CIRCLE_BG} alt="" aria-hidden className="w-[600px] sm:w-[800px] max-w-none opacity-60 select-none" />
-          </div>
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full"
+            style={{
+              background: `radial-gradient(circle, ${COLOR}22 0%, ${COLOR}0a 50%, transparent 70%)`,
+              filter: 'blur(40px)',
+            }}
+          />
 
           <div className="relative z-10 flex items-center gap-2 flex-wrap justify-center">
             <div
