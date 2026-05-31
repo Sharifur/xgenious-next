@@ -19,7 +19,7 @@ import Pricing from './_components/Pricing';
 import StickyBar from './_components/StickyBar';
 
 export const metadata: Metadata = {
-  title: 'Xilancer — Best Freelancing Platform Script | Xgenious',
+  title: 'Xilancer — Best Freelancing Platform Script',
   description:
     'Launch a Fiverr or Upwork clone with Xilancer — the best freelancing platform script. Laravel + Vue.js, escrow payments, native mobile apps, bidding system. From $59 one-time.',
   metadataBase: new URL(BASE_URL),

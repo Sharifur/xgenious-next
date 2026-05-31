@@ -5,7 +5,7 @@ import { TOOLS, CATEGORY_COLORS, type FreeTool, type ToolCategory } from '@/data
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'Free Online Tools — 47 Developer, HR, SaaS & Business Tools | Xgenious',
+  title: 'Free Online Tools — 47 Developer, HR, SaaS & Business Tools',
   description:
     'Free online tools for developers, HR teams, schools, SaaS founders, and sales teams. 47 calculators, generators, and formatters — no login, no signup required.',
   metadataBase: new URL(BASE_URL),

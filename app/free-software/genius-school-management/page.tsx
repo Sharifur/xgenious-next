@@ -24,7 +24,7 @@ const DEMO_ROLES = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Free School Management System — Laravel 11 + React 18 | Xgenious',
+  title: 'Free School Management System — Laravel 11 + React 18',
   description:
     'Download a free, open-source school management system built with Laravel 11 and React 18. 19 modules covering attendance, fees, exams, payroll, library, and transport. Self-hosted, MIT licensed.',
   metadataBase: new URL(BASE_URL),

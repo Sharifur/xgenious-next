@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `/${data.slug}` },
   openGraph: {
-    title: `${data.metaTitle} | Xgenious`,
+    title: `${data.metaTitle}`,
     description: data.metaDescription,
     url: `${BASE_URL}/${data.slug}`,
     siteName: 'Xgenious',

@@ -13,7 +13,7 @@ const DEMO_URL = 'https://crm-demo.xgenious.com/login';
 const DOCS_URL = 'https://genious-crm-9wkn.vercel.app/';
 
 export const metadata: Metadata = {
-  title: 'Free CRM Software — Laravel 12 + React 19, Self-Hosted | Xgenious',
+  title: 'Free CRM Software — Laravel 12 + React 19, Self-Hosted',
   description:
     'Download a free, open-source CRM built with Laravel 12 and React 19. Manage contacts, leads, deals (Kanban), tasks, and companies. Self-hosted, MIT licensed, no subscription fees.',
   metadataBase: new URL(BASE_URL),

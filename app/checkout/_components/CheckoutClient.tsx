@@ -16,6 +16,20 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'Full source code rights, no license enforcement, unlimited modification.',
     accent: '#a78bfa',
   },
+  'nazmart-bundle-pack': {
+    path: 'nazmart-complete-package',
+    name: 'Exclusive License',
+    delta: 200,
+    pitch: 'Full source code rights, remove any branding, deploy across unlimited projects.',
+    accent: '#8b5cf6',
+  },
+  'fundorex-bundle-pack': {
+    path: 'fundorex-exclusive-pack',
+    name: 'Exclusive License',
+    delta: 120,
+    pitch: 'Full source code rights, remove any branding, commercial use across unlimited projects.',
+    accent: '#a78bfa',
+  },
 };
 
 function CheckIcon() {

@@ -19,7 +19,7 @@ import Pricing from './_components/Pricing';
 import StickyBar from './_components/StickyBar';
 
 export const metadata: Metadata = {
-  title: 'Nazmart — Multi-Tenancy eCommerce SaaS Platform | Xgenious',
+  title: 'Nazmart — Multi-Tenancy eCommerce SaaS Platform',
   description:
     'Nazmart is a multi-tenancy eCommerce platform. Laravel backend, vendor subscriptions, custom domains, Flutter mobile apps. From $69 one-time.',
   metadataBase: new URL(BASE_URL),

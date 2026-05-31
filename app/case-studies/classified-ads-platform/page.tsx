@@ -32,7 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Classified Ads & Listing Platform — Case Study | Xgenious',
+  title: 'Classified Ads & Listing Platform — Case Study',
   description:
     'How Xgenious built a full classified ads platform with live chat, Google Maps discovery, membership tiers, a seller wallet, and drag-and-drop page builder.',
 };
