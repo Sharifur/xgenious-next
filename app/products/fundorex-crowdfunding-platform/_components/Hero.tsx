@@ -80,13 +80,13 @@ export default function Hero() {
 
       {/* Platform screenshot — left image sits on top-left of this panel */}
       <div className="container-page px-4 sm:px-6 lg:px-0 mt-10 max-w-[1200px] mx-auto relative z-10">
-        {/* Left — children photo, top-left of screenshot */}
-        <div className="hidden lg:block absolute top-0 left-0 w-[260px] xl:w-[310px] z-20">
+        {/* Left — children photo, rises above screenshot panel */}
+        <div className="hidden lg:block absolute top-[-180px] left-0 w-[260px] xl:w-[310px] z-20">
           <Image
             src="/products/fundorex-hero-left.png"
             alt="Children smiling — Fundorex crowdfunding impact"
             width={310}
-            height={380}
+            height={420}
             className="object-contain object-bottom w-full"
           />
         </div>
