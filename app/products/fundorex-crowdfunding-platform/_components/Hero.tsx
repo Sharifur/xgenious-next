@@ -78,27 +78,30 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Platform screenshot — left image sits on top-left of this panel */}
-      <div className="container-page px-4 sm:px-6 lg:px-0 mt-10 max-w-[1200px] mx-auto relative z-10">
-        {/* Left — children photo, rises above screenshot panel */}
-        <div className="hidden lg:block absolute top-[-180px] left-0 w-[260px] xl:w-[310px] z-20">
-          <Image
-            src="/products/fundorex-hero-left.png"
-            alt="Children smiling — Fundorex crowdfunding impact"
-            width={310}
-            height={420}
-            className="object-contain object-bottom w-full"
-          />
-        </div>
-        <div className="rounded-t-2xl overflow-hidden shadow-2xl">
-          <Image
-            src="/products/fundorex-hero-center.jpg"
-            alt="Fundorex crowdfunding platform — web and mobile preview"
-            width={1200}
-            height={720}
-            className="w-full object-cover object-top"
-            priority
-          />
+      {/* Group: screenshot + left image move together */}
+      <div className="container-page px-4 sm:px-6 lg:px-0 mt-10 max-w-[1200px] mx-auto">
+        <div className="relative">
+          {/* Left image — absolute inside group, always relative to screenshot */}
+          <div className="hidden lg:block absolute top-[-28%] left-0 w-[24%] z-20">
+            <Image
+              src="/products/fundorex-hero-left.png"
+              alt="Children smiling — Fundorex crowdfunding impact"
+              width={300}
+              height={400}
+              className="w-full h-auto"
+            />
+          </div>
+          {/* Center screenshot */}
+          <div className="rounded-t-2xl overflow-hidden shadow-2xl">
+            <Image
+              src="/products/fundorex-hero-center.jpg"
+              alt="Fundorex crowdfunding platform — web and mobile preview"
+              width={1200}
+              height={720}
+              className="w-full object-cover object-top"
+              priority
+            />
+          </div>
         </div>
       </div>
     </section>
