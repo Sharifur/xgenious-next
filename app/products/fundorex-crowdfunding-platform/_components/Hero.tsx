@@ -75,9 +75,9 @@ export default function Hero() {
         >
           <Image
             src="/products/fundorex-hero-center.png"
-            alt="Fundorex crowdfunding platform — web and mobile preview"
-            width={1200}
-            height={720}
+            alt="Fundorex crowdfunding platform dashboard"
+            width={948}
+            height={474}
             className="w-full object-cover object-top"
             priority
           />

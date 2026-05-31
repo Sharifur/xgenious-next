@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { COLOR, DEMO_URL, REGULAR_PRICE } from './constants';
 
+const CIRCLE_BG = '/products/helpnest-hero-circle.png';
+
 const QUICK_LINKS = [
   { label: 'Features', href: '#features' },
   { label: 'Live Demo', href: DEMO_URL },
@@ -14,9 +16,14 @@ export default function Hero() {
     <section className="pt-16 pb-12 lg:pt-24 lg:pb-16 bg-white overflow-hidden">
       <div className="container-page px-4 sm:px-6 lg:px-0">
 
-        <div className="flex flex-col items-center text-center gap-6 max-w-[900px] mx-auto">
+        <div className="relative flex flex-col items-center text-center gap-6 max-w-[900px] mx-auto">
 
-          <div className="flex items-center gap-2 flex-wrap justify-center">
+          {/* decorative circle behind text */}
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center -z-0">
+            <img src={CIRCLE_BG} alt="" aria-hidden className="w-[600px] sm:w-[800px] max-w-none opacity-60 select-none" />
+          </div>
+
+          <div className="relative z-10 flex items-center gap-2 flex-wrap justify-center">
             <div
               className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[12px] font-semibold"
               style={{ background: '#EEF2FF', color: COLOR }}
@@ -24,19 +31,18 @@ export default function Hero() {
               <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: COLOR }} />
               AI-Powered Chatbot Script
             </div>
-            <span className="hidden sm:inline text-[14px] text-[#6b7280]">· Verified CodeCanyon buyers · 4.80 avg rating</span>
           </div>
 
-          <h1 className="text-[28px] leading-[36px] sm:text-[48px] sm:leading-[56px] lg:text-[62px] lg:leading-[70px] font-bold text-[#0F1112] max-w-[860px]">
+          <h1 className="relative z-10 text-[28px] leading-[36px] sm:text-[48px] sm:leading-[56px] lg:text-[62px] lg:leading-[70px] font-bold text-[#0F1112] max-w-[860px]">
             Launch Your Own{' '}
             <span style={{ color: COLOR }}>AI Support Platform</span>
           </h1>
 
-          <p className="text-[#484848] text-[14px] sm:text-[17px] leading-7 max-w-[580px]">
+          <p className="relative z-10 text-[#484848] text-[14px] sm:text-[17px] leading-7 max-w-[580px]">
             A complete Laravel PHP script to build your own AI-powered customer support platform like Crisp, Intercom, or Tidio. Semantic AI chatbot, multi-tenant SaaS, ticketing, and subscription billing — one-time purchase.
           </p>
 
-          <div className="flex items-center gap-3 flex-wrap justify-center mt-1">
+          <div className="relative z-10 flex items-center gap-3 flex-wrap justify-center mt-1">
             <a
               href="#pricing"
               className="inline-flex items-center gap-2 text-white font-semibold text-[14px] sm:text-[15px] rounded-full px-6 sm:px-8 py-3 sm:py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-lg"
@@ -54,7 +60,7 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
+          <div className="relative z-10 flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
             {QUICK_LINKS.map((link) => (
               <Link
                 key={link.label}
