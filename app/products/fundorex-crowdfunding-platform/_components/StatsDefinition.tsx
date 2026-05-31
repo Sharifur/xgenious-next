@@ -2,7 +2,7 @@ import { STATS } from './constants';
 
 export default function StatsDefinition() {
   return (
-    <section className="py-12 bg-white border-b border-[#E5E7EC]">
+    <section className="pt-[80px] bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {STATS.map((stat) => (

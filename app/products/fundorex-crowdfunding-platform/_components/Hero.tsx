@@ -8,17 +8,6 @@ export default function Hero() {
       className="relative overflow-hidden pt-[120px] pb-0 sm:pt-[140px]"
       style={{ background: '#F5F6F8' }}
     >
-      {/* Right — donation illustration */}
-      <div className="hidden lg:block absolute right-0 top-[100px] w-[200px] xl:w-[240px] translate-x-[-20px] z-10">
-        <Image
-          src="/products/fundorex-hero-right.png"
-          alt="Donation illustration"
-          width={240}
-          height={300}
-          className="object-contain w-full"
-        />
-      </div>
-
       {/* Text content — narrow centered column */}
       <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col items-center text-center gap-5 relative z-10 max-w-[800px] mx-auto">
 
@@ -31,7 +20,7 @@ export default function Hero() {
             ))}
           </div>
           <span className="text-[14px] font-semibold text-[#0F1112]">4.70/5</span>
-          <span className="text-[14px] text-[#6b7280]">· 43 reviews · 734+ installs on CodeCanyon</span>
+          <span className="text-[14px] text-[#6b7280]">· 43 reviews · 734+ sales on CodeCanyon</span>
         </div>
 
         <h1 className="text-[38px] leading-[46px] sm:text-[54px] sm:leading-[62px] lg:text-[62px] lg:leading-[70px] font-bold text-[#0F1112] max-w-[950px]">
@@ -78,30 +67,17 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Group: screenshot + left image move together */}
-      <div className="container-page px-4 sm:px-6 lg:px-0 mt-10 max-w-[1200px] mx-auto">
-        <div className="relative">
-          {/* Left image — absolute inside group, always relative to screenshot */}
-          <div className="hidden lg:block absolute top-[-28%] left-0 w-[24%] z-20">
-            <Image
-              src="/products/fundorex-hero-left.png"
-              alt="Children smiling — Fundorex crowdfunding impact"
-              width={300}
-              height={400}
-              className="w-full h-auto"
-            />
-          </div>
-          {/* Center screenshot */}
-          <div className="rounded-t-2xl overflow-hidden shadow-2xl">
-            <Image
-              src="/products/fundorex-hero-center.jpg"
-              alt="Fundorex crowdfunding platform — web and mobile preview"
-              width={1200}
-              height={720}
-              className="w-full object-cover object-top"
-              priority
-            />
-          </div>
+      {/* Center screenshot */}
+      <div className="mt-[80px] container-page px-4 sm:px-6 lg:px-0 max-w-[1200px] mx-auto">
+        <div className="rounded-t-2xl overflow-hidden shadow-2xl">
+          <Image
+            src="/products/fundorex-hero-center.jpg"
+            alt="Fundorex crowdfunding platform — web and mobile preview"
+            width={1200}
+            height={720}
+            className="w-full object-cover object-top"
+            priority
+          />
         </div>
       </div>
     </section>

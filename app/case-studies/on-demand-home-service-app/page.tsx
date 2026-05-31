@@ -32,7 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
-  title: 'On-Demand Home Service Marketplace — Laravel + Flutter Case Study | Xgenious',
+  title: 'On-Demand Home Service Marketplace — Laravel + Flutter Case Study',
   description:
     'How Xgenious built a full on-demand home service marketplace connecting clients with service providers — Google Maps discovery, real-time chat, WhatsApp notifications, and Flutter mobile apps.',
 };

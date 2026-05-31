@@ -13,7 +13,7 @@ import FAQ from './_components/FAQ';
 import StickyBar from './_components/StickyBar';
 
 export const metadata: Metadata = {
-  title: 'Fundorex — Crowdfunding Platform Script | Xgenious',
+  title: 'Fundorex — Crowdfunding Platform Script',
   description:
     'Launch your own crowdfunding website with Fundorex — a self-hosted Laravel script with campaign management, 20+ payment gateways, mobile app, and event ticketing. One-time purchase from $49.',
   metadataBase: new URL(BASE_URL),
@@ -54,8 +54,8 @@ export default function FundorexPage() {
       <StickyBar />
       <Hero />
       <StatsDefinition />
-      <Features />
       <PaymentGateways />
+      <Features />
       <MobileApp />
       <TechStack />
       <Reviews />

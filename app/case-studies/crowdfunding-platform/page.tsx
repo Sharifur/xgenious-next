@@ -32,7 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Crowdfunding & Donation Platform — Laravel Case Study | Xgenious',
+  title: 'Crowdfunding & Donation Platform — Laravel Case Study',
   description:
     'How Xgenious built a full-featured crowdfunding platform with donation campaigns, event ticketing, 10+ payment gateways, and drag-and-drop campaign builders.',
 };

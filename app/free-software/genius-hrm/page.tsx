@@ -13,7 +13,7 @@ const DEMO_URL = 'https://genius-hrm.xgenious.com/login';
 const DOCS_URL = 'https://genious-hrm-whnd.vercel.app/';
 
 export const metadata: Metadata = {
-  title: 'Free Open Source HRM System — Laravel 13 + React 18 | Xgenious',
+  title: 'Free Open Source HRM System — Laravel 13 + React 18',
   description:
     'Download a free, self-hosted HR management system built with Laravel 13 and React 18. 13 modules: employees, payroll, attendance, leave, recruitment, and performance management. MIT licensed.',
   metadataBase: new URL(BASE_URL),

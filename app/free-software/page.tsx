@@ -4,7 +4,7 @@ import Link from 'next/link';
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'Free Open Source Software — School ERP & CRM | Xgenious',
+  title: 'Free Open Source Software — School ERP & CRM',
   description:
     'Download free, open-source software built by Xgenious. Production-ready school management system and CRM — MIT licensed, self-hosted, no subscriptions.',
   metadataBase: new URL(BASE_URL),

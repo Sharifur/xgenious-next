@@ -32,7 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Full-Featured eCommerce Platform with Built-In Courier — Case Study | Xgenious',
+  title: 'Full-Featured eCommerce Platform with Built-In Courier — Case Study',
   description:
     'How Xgenious built a complete eCommerce platform with inventory management, built-in courier integration, fraud detection, dynamic product variants, multi-currency, and multi-language support.',
 };

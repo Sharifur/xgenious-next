@@ -5,7 +5,7 @@ import FAQ from '@/components/sections/FAQ';
 import BookingCTA from '@/components/sections/BookingCTA';
 
 export const metadata: Metadata = {
-  title: 'AI-Powered Customer Support SaaS — Laravel Case Study | Xgenious',
+  title: 'AI-Powered Customer Support SaaS — Laravel Case Study',
   description:
     'How Xgenious built a multi-tenant AI customer support platform with semantic chatbots, support ticketing, knowledge base, and Stripe billing — a self-hostable alternative to Intercom and Crisp.',
 };
