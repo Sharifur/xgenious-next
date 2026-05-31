@@ -4,7 +4,7 @@ const stack = [
   { name: 'Laravel',      desc: 'PHP 8+ backend framework',    logo: '/icons/fi_laravel.svg' },
   { name: 'Tailwind CSS', desc: 'Utility-first CSS framework', logo: '/tech/tailwind.svg' },
   { name: 'MySQL',        desc: 'Relational database',         logo: '/tech/mysql.svg' },
-  { name: 'Flutter',      desc: 'Android & iOS mobile app',    logo: '/images/app-dev/logo-flutter.svg' },
+  { name: 'Flutter',      desc: 'Android & iOS mobile app',    logo: '/site-images/app-dev/logo-flutter.svg' },
   { name: 'Redis',        desc: 'Queues & session cache',      logo: '/tech-logos/redis.svg' },
   { name: 'Linux VPS',    desc: 'Any standard hosting',        logo: '/tech/linux.svg' },
 ];

@@ -81,7 +81,7 @@ export default function AboutPage() {
         <div className="container-page px-4 sm:px-6 lg:px-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/about-hero-team.jpg"
+            src="/site-images/about-hero-team.jpg"
             alt="Xgenious annual team tour"
             className="w-full max-w-[1100px] mx-auto block h-[200px] sm:h-[360px] lg:h-[520px] object-cover rounded-xl"
           />

@@ -379,37 +379,37 @@ export default function GeniusCRMPage() {
             demoUrl={DEMO_URL}
             screenshots={[
               {
-                src: '/images/free-software/genius-crm/dashboard.png',
+                src: '/site-images/free-software/genius-crm/dashboard.png',
                 alt: 'Genius CRM — Dashboard showing KPI widgets for total contacts, active leads, open deals, open tasks, follow-ups due and closing this week',
                 title: 'Dashboard',
                 description: 'KPI overview — contacts, active leads, open deals, tasks and follow-ups due this week',
               },
               {
-                src: '/images/free-software/genius-crm/deal-pipeline.png',
+                src: '/site-images/free-software/genius-crm/deal-pipeline.png',
                 alt: 'Genius CRM — Deal Pipeline Kanban board with columns for New Deal, Proposal Sent, Negotiation, Won and Lost stages',
                 title: 'Deal Pipeline (Kanban)',
                 description: 'Drag-and-drop deal cards across 5 stages with win probability and assigned rep per deal',
               },
               {
-                src: '/images/free-software/genius-crm/contacts.png',
+                src: '/site-images/free-software/genius-crm/contacts.png',
                 alt: 'Genius CRM — Contact Management page showing contact list with name, email, phone, company and tags',
                 title: 'Contact Management',
                 description: 'Contact list with email, phone, company link and custom tags — CSV import supported',
               },
               {
-                src: '/images/free-software/genius-crm/leads.png',
+                src: '/site-images/free-software/genius-crm/leads.png',
                 alt: 'Genius CRM — Lead Tracker showing leads with source, assigned rep, status badges and follow-up date alerts',
                 title: 'Lead Tracker',
                 description: 'Lead status workflow with source tracking, assignment, follow-up dates and overdue alerts',
               },
               {
-                src: '/images/free-software/genius-crm/company-profiles.png',
+                src: '/site-images/free-software/genius-crm/company-profiles.png',
                 alt: 'Genius CRM — Company Profile page showing company details, linked contacts, deals and tasks',
                 title: 'Company Profiles',
                 description: 'Company records linked to contacts, deals and tasks — full activity in one view',
               },
               {
-                src: '/images/free-software/genius-crm/reports.png',
+                src: '/site-images/free-software/genius-crm/reports.png',
                 alt: 'Genius CRM — Reports page showing pipeline value, won/lost value, conversion rate, deals by stage and lead pipeline charts',
                 title: 'Reports & Analytics',
                 description: 'Pipeline value, won/lost breakdown, conversion rate, deals by stage — CSV export included',

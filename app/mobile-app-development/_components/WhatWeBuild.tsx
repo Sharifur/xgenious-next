@@ -7,13 +7,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 // ── Platform logos ──────────────────────────────────────────────────────────
 
 // eslint-disable-next-line @next/next/no-img-element
-const AndroidLogo = () => <img src="/images/app-dev/logo-android.svg" alt="Android" width={72} height={72} />;
+const AndroidLogo = () => <img src="/site-images/app-dev/logo-android.svg" alt="Android" width={72} height={72} />;
 // eslint-disable-next-line @next/next/no-img-element
-const iOSLogo    = () => <img src="/images/app-dev/logo-apple.svg"   alt="Apple"   width={60} height={72} style={{ filter: 'brightness(0) invert(1)' }} />;
+const iOSLogo    = () => <img src="/site-images/app-dev/logo-apple.svg"   alt="Apple"   width={60} height={72} style={{ filter: 'brightness(0) invert(1)' }} />;
 // eslint-disable-next-line @next/next/no-img-element
-const ReactNativeLogo = () => <img src="/images/app-dev/logo-react-native.png" alt="React Native" width={140} height={44} />;
+const ReactNativeLogo = () => <img src="/site-images/app-dev/logo-react-native.png" alt="React Native" width={140} height={44} />;
 // eslint-disable-next-line @next/next/no-img-element
-const FlutterLogo = () => <img src="/images/app-dev/logo-flutter.svg" alt="Flutter" width={60} height={72} />;
+const FlutterLogo = () => <img src="/site-images/app-dev/logo-flutter.svg" alt="Flutter" width={60} height={72} />;
 
 // ── App screen mockups ──────────────────────────────────────────────────────
 

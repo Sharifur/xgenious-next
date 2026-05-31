@@ -116,7 +116,7 @@ function TechCard({ title, darkTags, lightTags }: { title: string; darkTags: str
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.5 }}
         style={{
-          backgroundImage: 'url(/images/saas-dev/tech-card-bg.png)',
+          backgroundImage: 'url(/site-images/saas-dev/tech-card-bg.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

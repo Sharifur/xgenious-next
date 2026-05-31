@@ -25,7 +25,7 @@ const CASES: CaseStudy[] = [
     ],
     tags: ['Laravel', 'AI / LLM', 'SaaS'],
     href: '/case-studies/ai-support-saas-platform',
-    image: '/images/case-studies/01-ai-chatbot.svg',
+    image: '/site-images/case-studies/01-ai-chatbot.svg',
     imageRight: true,
   },
   {
@@ -39,7 +39,7 @@ const CASES: CaseStudy[] = [
     ],
     tags: ['eCommerce', 'Multi-Tenant', 'SaaS'],
     href: '/case-studies/multi-tenant-ecommerce-saas',
-    image: '/images/case-studies/04-multi-tenant-ecommerce.svg',
+    image: '/site-images/case-studies/04-multi-tenant-ecommerce.svg',
     imageRight: false,
   },
   {
@@ -53,7 +53,7 @@ const CASES: CaseStudy[] = [
     ],
     tags: ['Marketplace', 'MVP', 'Flutter'],
     href: '/case-studies/freelancer-marketplace-platform',
-    image: '/images/case-studies/03-freelance-marketplace.svg',
+    image: '/site-images/case-studies/03-freelance-marketplace.svg',
     imageRight: true,
   },
 ];

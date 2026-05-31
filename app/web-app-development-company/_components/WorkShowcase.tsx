@@ -4,22 +4,22 @@ const projects = [
   {
     name: 'Xilancer',
     description: 'Xilancer is a freelance marketplace platform that connects businesses with skilled professionals across a wide range of services. It enables seamless collaboration, secure transactions, and efficient project delivery.',
-    image: '/images/web-app-dev/showcase-xilancer.png',
+    image: '/site-images/web-app-dev/showcase-xilancer.png',
   },
   {
     name: 'Fundorex',
     description: 'Fundorex has brought an incredible change on how you build a Crowdfunding platform. It helps you to Raise money or funds for your cause quickly and easily.',
-    image: '/images/web-app-dev/showcase-fundorex.png',
+    image: '/site-images/web-app-dev/showcase-fundorex.png',
   },
   {
     name: 'Prohandy',
     description: 'Prohandy is a platform connecting customers with trusted local service providers. Find reliable professionals for home repairs, cleaning, and more, all in one place.',
-    image: '/images/web-app-dev/showcase-prohandy.png',
+    image: '/site-images/web-app-dev/showcase-prohandy.png',
   },
   {
     name: 'Nexelit',
     description: 'Nexelit Multipurpose Website & Agency Business CMS is the perfect agency business or any kind of website with this PHP Script. Nexelit is a better way to present your business and many others.',
-    image: '/images/web-app-dev/showcase-nexelit.png',
+    image: '/site-images/web-app-dev/showcase-nexelit.png',
   },
 ];
 

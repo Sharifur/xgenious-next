@@ -5,8 +5,8 @@ const TECH = [
   { name: 'MySQL',          desc: 'Relational database',            logo: '/tech/mysql.svg' },
   { name: 'Pusher',         desc: 'Real-time event broadcasting',   logo: '/tech/pusher.svg' },
   { name: 'Tailwind CSS',   desc: 'Utility-first CSS framework',    logo: '/tech/tailwind.svg' },
-  { name: 'REST API',       desc: 'Full API for mobile & integrations', logo: '/images/saas-dev/chip-api.svg' },
-  { name: 'Flutter',        desc: 'Cross-platform mobile app',      logo: '/images/app-dev/logo-flutter.svg' },
+  { name: 'REST API',       desc: 'Full API for mobile & integrations', logo: '/site-images/saas-dev/chip-api.svg' },
+  { name: 'Flutter',        desc: 'Cross-platform mobile app',      logo: '/site-images/app-dev/logo-flutter.svg' },
   { name: 'PHP 8.3',        desc: 'Modern backend runtime',         logo: '/tech/php.svg' },
   { name: 'Laravel Reverb', desc: 'Native WebSocket server',        logo: '/icons/tech/reverb.png' },
 ];

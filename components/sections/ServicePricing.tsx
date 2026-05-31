@@ -28,7 +28,7 @@ function PlanCard({ name, price, timeline, bestFor, features, cta, ctaHref, dark
   const borderColor  = (dark || isLightOnDark) ? 'rgba(255,255,255,0.1)' : '#e7e7e7';
   const subtextColor = (dark || isLightOnDark) ? '#9ca3af' : '#6b7280';
   const featureColor = (dark || isLightOnDark) ? '#d1d5db' : '#2f2f2f';
-  const checkIcon    = (dark || isLightOnDark) ? '/images/web-app-dev/check-light.svg' : '/images/web-app-dev/check-dark.svg';
+  const checkIcon    = (dark || isLightOnDark) ? '/site-images/web-app-dev/check-light.svg' : '/site-images/web-app-dev/check-dark.svg';
   const cardBg       = dark ? '#050608' : isLightOnDark ? '#111111' : '#fff';
   const cardBorder   = (dark || isLightOnDark) ? '1px solid rgba(255,255,255,0.07)' : 'none';
 
@@ -60,7 +60,7 @@ function PlanCard({ name, price, timeline, bestFor, features, cta, ctaHref, dark
 
         <div className="flex items-center gap-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/web-app-dev/dot.svg" alt="" width={6} height={6} />
+          <img src="/site-images/web-app-dev/dot.svg" alt="" width={6} height={6} />
           <span className="font-normal" style={{ fontSize: 15, lineHeight: '22px', color: subtextColor }}>{timeline}</span>
         </div>
 

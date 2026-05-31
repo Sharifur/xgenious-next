@@ -2,22 +2,22 @@ const projects = [
   {
     title: 'Taskip',
     desc: 'All-in-one agency management platform. Client portals, project tracking, invoicing, and team collaboration — built for agencies and freelancers who need everything in one place.',
-    img: '/images/app-dev/showcase-taskip.png',
+    img: '/site-images/app-dev/showcase-taskip.png',
   },
   {
     title: 'Go Car App',
     desc: 'On-demand mechanic and car service booking platform connecting vehicle owners with certified service providers. Real-time availability, booking management, and in-app payments.',
-    img: '/images/app-dev/showcase-gocar.png',
+    img: '/site-images/app-dev/showcase-gocar.png',
   },
   {
     title: 'Prohandy',
     desc: 'On-demand home services marketplace connecting customers with trusted local handymen. Location-based matching, real-time job tracking, and secure in-app payments.',
-    img: '/images/app-dev/showcase-prohandy.png',
+    img: '/site-images/app-dev/showcase-prohandy.png',
   },
   {
     title: 'Xilancer App',
     desc: 'Freelance marketplace mobile app with escrow payments, proposal bidding, dispute resolution, and real-time messaging — built and shipped in 8 weeks.',
-    img: '/images/app-dev/showcase-xilancer.png',
+    img: '/site-images/app-dev/showcase-xilancer.png',
   },
 ];
 

@@ -29,7 +29,7 @@ export default function Hero() {
         >
           <div className="bg-[#dbecf5] border-[0.5px] border-white flex gap-2 items-center px-[14px] py-[10px] rounded-[99px] shadow-[0px_1px_1.5px_rgba(0,0,0,0.04)] -rotate-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/saas-dev/chip-code.svg" alt="" width={24} height={24} />
+            <img src="/site-images/saas-dev/chip-code.svg" alt="" width={24} height={24} />
             <span className="text-[#2bb6ff] font-medium text-[17px] leading-6">Code</span>
           </div>
           <div className="ml-8">
@@ -44,7 +44,7 @@ export default function Hero() {
         >
           <div className="bg-[#e9e9e9] border-[0.6px] border-white flex gap-2 items-center px-[14px] py-[10px] rounded-[99px] shadow-[0px_1px_3px_rgba(0,0,0,0.04)] rotate-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/saas-dev/chip-server.svg" alt="" width={24} height={24} />
+            <img src="/site-images/saas-dev/chip-server.svg" alt="" width={24} height={24} />
             <span className="text-[#181818] font-normal text-[17px] leading-6">Server</span>
           </div>
           <div className="mr-8">
@@ -56,9 +56,9 @@ export default function Hero() {
         <div className="flex flex-col items-center text-center gap-6 sm:gap-8 lg:px-[180px]">
           <div className="flex items-center gap-8">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/saas-dev/badge-clutch.svg" alt="Clutch" width={90} height={40} className="object-contain sm:w-[124px] sm:h-[56px]" />
+            <img src="/site-images/saas-dev/badge-clutch.svg" alt="Clutch" width={90} height={40} className="object-contain sm:w-[124px] sm:h-[56px]" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/saas-dev/badge-google.svg" alt="Google" width={90} height={40} className="object-contain sm:w-[124px] sm:h-[56px]" />
+            <img src="/site-images/saas-dev/badge-google.svg" alt="Google" width={90} height={40} className="object-contain sm:w-[124px] sm:h-[56px]" />
           </div>
 
           <h1 className="text-[#181818] font-semibold text-[32px] leading-[40px] sm:text-[48px] sm:leading-[56px] lg:text-[72px] lg:leading-[80px] max-w-[1050px]">
@@ -92,7 +92,7 @@ export default function Hero() {
           </div>
           <div className="bg-[#e8e6f7] border-[0.6px] border-white flex gap-2 items-center px-[14px] py-[10px] rounded-[99px] shadow-[0px_1px_1.5px_rgba(0,0,0,0.04)] rotate-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/saas-dev/chip-text.svg" alt="" width={24} height={24} />
+            <img src="/site-images/saas-dev/chip-text.svg" alt="" width={24} height={24} />
             <span className="text-[#8e79ff] font-medium text-[17px] leading-6">Text</span>
           </div>
         </div>
@@ -107,7 +107,7 @@ export default function Hero() {
           </div>
           <div className="bg-[#f0fff2] border-[0.6px] border-white flex gap-2 items-center px-[14px] py-[10px] rounded-[99px] shadow-[0px_1px_3px_rgba(0,0,0,0.04)] -rotate-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/saas-dev/chip-api.svg" alt="" width={24} height={24} />
+            <img src="/site-images/saas-dev/chip-api.svg" alt="" width={24} height={24} />
             <span className="text-[#12b503] font-normal text-[17px] leading-6">API</span>
           </div>
         </div>

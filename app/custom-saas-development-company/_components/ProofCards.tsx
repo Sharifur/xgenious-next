@@ -1,27 +1,27 @@
 const CARDS = [
   {
-    icon: '/images/saas-dev/rocket-icon.svg',
+    icon: '/site-images/saas-dev/rocket-icon.svg',
     title: '8–16 weeks',
     subtitle: "Launch, don't linger",
     body: 'SaaS MVP in 8–16 weeks, not 6 months. Fixed scope means day-one progress — no discovery tax, no moving targets.',
     glowDelay: '0s',
   },
   {
-    icon: '/images/saas-dev/dollar-icon.svg',
+    icon: '/site-images/saas-dev/dollar-icon.svg',
     title: 'From $5k',
     subtitle: 'Transparent packages',
     body: 'Fixed-price SaaS builds starting at $5k. Scope published before a single line is written — no mid-sprint surprises.',
     glowDelay: '2s',
   },
   {
-    icon: '/images/saas-dev/shield-icon.svg',
+    icon: '/site-images/saas-dev/shield-icon.svg',
     title: 'SOC 2',
     subtitle: 'Compliance by default',
     body: 'GDPR and HIPAA-ready architectures on every build. DPA on every engagement. Not a checkbox — an architecture decision made on day one.',
     glowDelay: '4s',
   },
   {
-    icon: '/images/saas-dev/code-icon.svg',
+    icon: '/site-images/saas-dev/code-icon.svg',
     title: 'Modern',
     subtitle: 'Stack that scales',
     body: 'React, Next.js, TypeScript, Laravel, Node, AWS, Flutter — with AI-native integration available on every tier.',

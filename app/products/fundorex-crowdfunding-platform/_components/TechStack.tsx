@@ -6,7 +6,7 @@ const TECH: { name: string; desc: string; logo?: string; initial?: string; color
   { name: 'PHP 8+',      desc: 'Modern backend runtime',         logo: '/tech/php.svg' },
   { name: 'Tailwind CSS', desc: 'Utility-first CSS framework',    logo: '/tech/tailwind.svg' },
   { name: 'jQuery',      desc: 'Dynamic frontend interactions',  initial: 'jQ', color: '#0769ad' },
-  { name: 'Flutter',     desc: 'Cross-platform mobile app',      logo: '/images/app-dev/logo-flutter.svg' },
+  { name: 'Flutter',     desc: 'Cross-platform mobile app',      logo: '/site-images/app-dev/logo-flutter.svg' },
 ];
 
 export default function TechStack() {

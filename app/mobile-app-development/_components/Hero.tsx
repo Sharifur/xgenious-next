@@ -12,7 +12,7 @@ export default function Hero() {
         style={{ left: '50%', top: 155, transform: 'translateX(-50%)', width: 3085, height: 1619 }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/app-dev/hero-ellipse.svg" alt="" className="w-full h-full object-contain" />
+        <img src="/site-images/app-dev/hero-ellipse.svg" alt="" className="w-full h-full object-contain" />
       </div>
 
       {/* Play Store badge */}
@@ -23,7 +23,7 @@ export default function Hero() {
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/app-dev/badge-playstore.png" alt="Play Store" className="h-12 w-auto" />
+        <img src="/site-images/app-dev/badge-playstore.png" alt="Play Store" className="h-12 w-auto" />
       </motion.div>
 
       {/* Large cloud — left, floating */}
@@ -34,7 +34,7 @@ export default function Hero() {
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/app-dev/hero-cloud-left.png" alt="" className="w-full h-full object-contain" />
+        <img src="/site-images/app-dev/hero-cloud-left.png" alt="" className="w-full h-full object-contain" />
       </motion.div>
 
       {/* Small cloud — right, floating */}
@@ -45,7 +45,7 @@ export default function Hero() {
         transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/app-dev/hero-cloud-right.png" alt="" className="w-full h-full object-contain" />
+        <img src="/site-images/app-dev/hero-cloud-right.png" alt="" className="w-full h-full object-contain" />
       </motion.div>
 
       {/* Flutter badge */}
@@ -56,7 +56,7 @@ export default function Hero() {
         transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/app-dev/badge-flutter.png" alt="Flutter" className="h-12 w-auto" />
+        <img src="/site-images/app-dev/badge-flutter.png" alt="Flutter" className="h-12 w-auto" />
       </motion.div>
 
       <div className="container-page px-4 sm:px-6 lg:px-0 relative z-10 flex flex-col items-center" style={{ paddingTop: 120, paddingBottom: 0 }}>
@@ -82,7 +82,7 @@ export default function Hero() {
 
           {/* Left — Prohandy, top leans toward center (clockwise) */}
           <motion.img
-            src="/images/app-dev/mock-prohandy.png"
+            src="/site-images/app-dev/mock-prohandy.png"
             alt="Prohandy app"
             initial={{ y: 180, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -100,7 +100,7 @@ export default function Hero() {
 
           {/* Center — Go Car, upright */}
           <motion.img
-            src="/images/app-dev/mock-gocar.png"
+            src="/site-images/app-dev/mock-gocar.png"
             alt="Go Car app"
             initial={{ y: 180, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -115,7 +115,7 @@ export default function Hero() {
 
           {/* Right — Xilancer, top leans toward center (counter-clockwise) */}
           <motion.img
-            src="/images/app-dev/mock-xilancer.png"
+            src="/site-images/app-dev/mock-xilancer.png"
             alt="Xilancer app"
             initial={{ y: 180, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
