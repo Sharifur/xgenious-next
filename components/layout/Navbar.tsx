@@ -63,7 +63,7 @@ function Dropdown({
     >
       <button
         className={`flex items-center gap-1.5 text-[14px] font-medium leading-5 transition-colors py-1 cursor-pointer ${
-          active ? 'text-[#F26B4E]' : 'text-[#c8c0cc] hover:text-white'
+          active ? 'text-[#F26B4E]' : 'text-[#1a1a2e] hover:text-[#000]'
         }`}
         onClick={() => setOpen((v) => !v)}
       >
@@ -119,12 +119,12 @@ export default function Navbar() {
   return (
     <header className={`${noSticky ? 'relative' : 'fixed top-0 left-0 right-0 z-50'} pt-3 px-3 lg:pt-4 lg:px-8`}>
       <div
-        className={`max-w-[1320px] mx-auto rounded-full border border-[#1a1020] transition-shadow duration-300 ${
+        className={`max-w-[1320px] mx-auto rounded-full border border-[#3F3F3F] transition-shadow duration-300 ${
           scrolled
-            ? 'shadow-[0_12px_32px_rgba(7,2,8,0.40)]'
-            : 'shadow-[0_4px_18px_rgba(7,2,8,0.20)]'
+            ? 'shadow-[0_12px_32px_rgba(0,0,0,0.15)]'
+            : 'shadow-[0_4px_18px_rgba(0,0,0,0.08)]'
         }`}
-        style={{ background: '#070208' }}
+        style={{ background: '#CED4FF' }}
       >
         <div className="px-5 h-[60px] flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center flex-shrink-0">
@@ -143,13 +143,13 @@ export default function Navbar() {
             <Dropdown label="Company" items={companyDropdown} />
             <Link
               href="https://xgenious.com/blog/"
-              className="text-[14px] font-medium leading-5 text-[#c8c0cc] hover:text-white transition-colors"
+              className="text-[14px] font-medium leading-5 text-[#1a1a2e] hover:text-[#000] transition-colors"
             >
               Blog
             </Link>
             <Link
               href="/contact"
-              className="text-[14px] font-medium leading-5 text-[#c8c0cc] hover:text-white transition-colors"
+              className="text-[14px] font-medium leading-5 text-[#1a1a2e] hover:text-[#000] transition-colors"
             >
               Contact
             </Link>
@@ -189,17 +189,17 @@ export default function Navbar() {
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-5 h-0.5 bg-white transition-all origin-center ${
+              className={`block w-5 h-0.5 bg-[#1a1a2e] transition-all origin-center ${
                 menuOpen ? 'rotate-45 translate-y-2' : ''
               }`}
             />
             <span
-              className={`block w-5 h-0.5 bg-white transition-all ${
+              className={`block w-5 h-0.5 bg-[#1a1a2e] transition-all ${
                 menuOpen ? 'opacity-0' : ''
               }`}
             />
             <span
-              className={`block w-5 h-0.5 bg-white transition-all origin-center ${
+              className={`block w-5 h-0.5 bg-[#1a1a2e] transition-all origin-center ${
                 menuOpen ? '-rotate-45 -translate-y-2' : ''
               }`}
             />

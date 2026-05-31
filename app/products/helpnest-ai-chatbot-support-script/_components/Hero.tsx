@@ -84,10 +84,10 @@ export default function Hero() {
         <div className="mt-12 lg:mt-16 relative max-w-[1100px] mx-auto">
           <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
             <Image
-              src="/products/helpnest-hero.jpg"
+              src="/products/helpnest-dashboard.png"
               alt="HelpNest AI customer support platform dashboard"
-              width={1100}
-              height={620}
+              width={948}
+              height={474}
               className="w-full object-cover"
               priority
             />
