@@ -19,6 +19,16 @@
       "source": "/our-products/xilancer-freelancer-marketplace-platform/",
       "destination": "/products/xilancer-freelancer-marketplace-script",
       "permanent": true
+    },
+    {
+      "source": "/our-products/fundorex-crowdfunding-platform",
+      "destination": "/products/fundorex-crowdfunding-platform",
+      "permanent": true
+    },
+    {
+      "source": "/our-products/fundorex-crowdfunding-platform/",
+      "destination": "/products/fundorex-crowdfunding-platform",
+      "permanent": true
     }
   ],
   "rewrites": [

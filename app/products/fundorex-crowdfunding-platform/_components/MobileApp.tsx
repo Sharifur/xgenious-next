@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { COLOR, LIGHT_COLOR } from './constants';
 
-const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.xgenious.fundorex';
+const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.xgenious.funderox';
 
 const APP_FEATURES = [
   'Browse & donate to campaigns',
@@ -32,10 +32,48 @@ function GooglePlayBadge() {
 
 export default function MobileApp() {
   return (
-    <section id="mobile-app" className="py-20 lg:py-[100px] bg-white">
+    <section id="mobile-app" className="pb-20 lg:pb-[100px] overflow-hidden" style={{ background: '#F5F6F8' }}>
       <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1100px] mx-auto">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+          {/* 3-phone showcase */}
+          <div className="relative flex items-end justify-center h-[480px] sm:h-[540px]">
+            {/* Left phone */}
+            <div className="absolute left-0 bottom-0 w-[170px] sm:w-[190px] rounded-[28px] overflow-hidden shadow-xl border-4 border-white z-10"
+              style={{ transform: 'rotate(-6deg) translateY(24px)' }}>
+              <Image
+                src="/products/fundorex-mobile-3.jpg"
+                alt="Fundorex app events list"
+                width={190}
+                height={380}
+                className="w-full object-cover"
+              />
+            </div>
+
+            {/* Center phone — tallest, front */}
+            <div className="relative w-[200px] sm:w-[220px] rounded-[32px] overflow-hidden shadow-2xl border-4 border-white z-20">
+              <Image
+                src="/products/fundorex-mobile-1.jpg"
+                alt="Fundorex app home screen"
+                width={220}
+                height={460}
+                className="w-full object-cover"
+              />
+            </div>
+
+            {/* Right phone */}
+            <div className="absolute right-0 bottom-0 w-[170px] sm:w-[190px] rounded-[28px] overflow-hidden shadow-xl border-4 border-white z-10"
+              style={{ transform: 'rotate(6deg) translateY(24px)' }}>
+              <Image
+                src="/products/fundorex-mobile-2.jpg"
+                alt="Fundorex app event detail"
+                width={190}
+                height={380}
+                className="w-full object-cover"
+              />
+            </div>
+          </div>
 
           {/* Text side */}
           <div>
@@ -70,23 +108,6 @@ export default function MobileApp() {
                 <GooglePlayBadge />
               </Link>
               <p className="text-[11px] text-[#9ca3af]">Flutter · Android · iOS build available</p>
-            </div>
-          </div>
-
-          {/* App screenshot */}
-          <div className="flex justify-center">
-            <div
-              className="relative rounded-3xl overflow-hidden border border-[#E5E7EC] shadow-xl"
-              style={{ maxWidth: 360 }}
-            >
-              <div className="h-1.5 w-full" style={{ background: COLOR }} />
-              <Image
-                src="/products/fundorex-mobile-app.jpg"
-                alt="Fundorex mobile app screenshot"
-                width={360}
-                height={640}
-                className="w-full object-cover"
-              />
             </div>
           </div>
 

@@ -20,46 +20,44 @@ export default function Hero() {
             ))}
           </div>
           <span className="text-[14px] font-semibold text-[#0F1112]">4.70/5</span>
-          <span className="text-[14px] text-[#6b7280]">· 43 reviews · 734+ sales on CodeCanyon</span>
+          <span className="hidden sm:inline text-[14px] text-[#6b7280]">· 43 reviews · 734+ sales on CodeCanyon</span>
         </div>
 
-        <h1 className="text-[38px] leading-[46px] sm:text-[54px] sm:leading-[62px] lg:text-[62px] lg:leading-[70px] font-bold text-[#0F1112] max-w-[950px]">
-          Build Your Amazing{' '}
-          <span style={{ color: COLOR }}>Crowdfunding Website</span>
+        <h1 className="text-[28px] leading-[36px] sm:text-[48px] sm:leading-[56px] lg:text-[62px] lg:leading-[70px] font-bold text-[#0F1112] max-w-[950px]">
+          Launch Your Own{' '}
+          <span style={{ color: COLOR }}>Crowdfunding Platform</span>
         </h1>
 
-        <p className="text-[#484848] text-[15px] sm:text-[17px] leading-7 max-w-[520px]">
-          Launch a powerful crowdfunding platform designed to turn ideas into successful fundraising campaigns.
+        <p className="text-[#484848] text-[14px] sm:text-[17px] leading-7 max-w-[560px]">
+          A self-hosted Laravel crowdfunding platform script with community campaigns, donor wallet, volunteer management, event ticketing, 20+ payment gateways, and a Flutter mobile app. One-time purchase — no monthly fees.
         </p>
 
         <div className="flex items-center gap-3 flex-wrap justify-center mt-1">
-          <Link
-            href={PURCHASE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-lg"
+          <a
+            href="#pricing"
+            className="inline-flex items-center gap-2 text-white font-semibold text-[14px] sm:text-[15px] rounded-full px-6 sm:px-8 py-3 sm:py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-lg"
             style={{ background: COLOR, boxShadow: `0 6px 20px ${COLOR}40` }}
           >
             {`Purchase Now — $${REGULAR_PRICE}`}
-          </Link>
+          </a>
           <Link
             href={DEMO_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-semibold text-[15px] rounded-full px-8 py-3.5 border-2 border-[#0F1112]/20 text-[#0F1112] bg-white hover:bg-gray-50 transition-all hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 font-semibold text-[14px] sm:text-[15px] rounded-full px-6 sm:px-8 py-3 sm:py-3.5 border-2 border-[#0F1112]/20 text-[#0F1112] bg-white hover:bg-gray-50 transition-all hover:-translate-y-0.5"
           >
             Explore Demos
           </Link>
         </div>
 
-        <div className="flex items-center gap-6 flex-wrap justify-center">
+        <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
           {QUICK_LINKS.map((link) => (
             <Link
               key={link.label}
               href={link.href}
               target={link.href.startsWith('http') ? '_blank' : undefined}
               rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="text-[14px] font-medium text-[#484848] underline underline-offset-4 decoration-[#484848]/30 hover:text-[#0F1112] transition-colors"
+              className="text-[13px] sm:text-[14px] font-medium text-[#484848] underline underline-offset-4 decoration-[#484848]/30 hover:text-[#0F1112] transition-colors"
             >
               {link.label}
             </Link>

@@ -17,7 +17,7 @@ function FeatureCard({
   large?: boolean;
   bgColor?: string;
 }) {
-  const bg = bgColor ?? '#F5F6F8';
+  const bg = bgColor ?? '#FDF4EF';
 
   return (
     <div
@@ -51,9 +51,9 @@ function FeatureCard({
           </div>
         )}
       </div>
-      <div className="p-5">
-        <h3 className={`font-bold text-[#0F1112] mb-2 ${large ? 'text-[17px]' : 'text-[15px]'}`}>{title}</h3>
-        <p className="text-[13px] text-[#6b7280] leading-6">{desc}</p>
+      <div className="px-[30px] pb-[30px] pt-5">
+        <h3 className={`font-bold text-[#0F1112] mb-2 ${large ? 'text-[28px]' : 'text-[24px]'}`}>{title}</h3>
+        <p className="text-[16px] text-[#6b7280] leading-6">{desc}</p>
       </div>
     </div>
   );
@@ -73,10 +73,10 @@ export default function Features() {
             Platform Features
           </div>
           <h2 className="text-[28px] sm:text-[36px] font-bold text-[#0F1112] leading-tight mb-4">
-            Advanced Features
+            Everything You Need to Run a Successful Fundraising Platform
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
-            Access powerful tools designed to simplify campaign management, improve donor experience, and enhance the overall fundraising platform.
+            From campaign creation to payment collection — Fundorex ships with every tool your platform needs. No monthly fees, no missing modules, no surprise add-ons.
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export default function Features() {
               key={f.title}
               {...f}
               large
-              bgColor={i === 0 ? '#EFF1FE' : undefined}
+              bgColor={i === 0 ? '#EFF1FE' : '#D8F5F5'}
             />
           ))}
         </div>
