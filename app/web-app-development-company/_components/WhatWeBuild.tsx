@@ -67,51 +67,51 @@ function IntegrationIcon() {
 const cards = [
   {
     // eslint-disable-next-line @next/next/no-img-element
-    icon: <img src="/images/web-app-dev/icon-b2b-new.svg" alt="" width={28} height={28} />,
+    icon: <img src="/site-images/web-app-dev/icon-b2b-new.svg" alt="" width={28} height={28} />,
     title: 'B2B Client Portals',
     description: 'Branded portals for suppliers, partners, vendors, and clients. Role-based access, invoicing, document sharing, real-time approvals, and status tracking — built around your exact workflow, not a generic template.',
     tags: ['Supplier portal', 'Client Portal', 'Partner portal'],
-    img: '/images/web-app-dev/card-b2b.jpg',
+    img: '/site-images/web-app-dev/card-b2b.jpg',
   },
   {
     // eslint-disable-next-line @next/next/no-img-element
-    icon: <img src="/images/web-app-dev/icon-internal.svg" alt="" width={28} height={28} />,
+    icon: <img src="/site-images/web-app-dev/icon-internal.svg" alt="" width={28} height={28} />,
     title: 'Internal Tools and Dashboards',
     description: 'Custom-built ops consoles, back-office workflows, and reporting dashboards on your exact data model. Everything Retool promises — fully owned, no per-seat pricing, no vendor ceiling on what it can do.',
     tags: ['Ops consoles', 'Workflow engines', 'Reporting dashboards'],
-    img: '/images/web-app-dev/card-internal.jpg',
+    img: '/site-images/web-app-dev/card-internal.jpg',
   },
   {
     // eslint-disable-next-line @next/next/no-img-element
-    icon: <img src="/images/web-app-dev/icon-enterprise-new.svg" alt="" width={28} height={28} />,
+    icon: <img src="/site-images/web-app-dev/icon-enterprise-new.svg" alt="" width={28} height={28} />,
     title: 'Enterprise Web Platforms',
     description: 'Custom CRMs, HRIS platforms, ERP extensions, and specialised compliance tools for the processes where off-the-shelf SaaS simply doesn\'t fit. Schema-up builds, never retrofitted from a template.',
     tags: ['Custom CRM', 'Custom HRIS', 'Metered billing'],
-    img: '/images/web-app-dev/card-enterprise.jpg',
+    img: '/site-images/web-app-dev/card-enterprise.jpg',
   },
   {
     // eslint-disable-next-line @next/next/no-img-element
-    icon: <img src="/images/web-app-dev/icon-legacy.svg" alt="" width={28} height={28} />,
+    icon: <img src="/site-images/web-app-dev/icon-legacy.svg" alt="" width={28} height={28} />,
     title: 'Legacy Modernization',
     description: 'Rescue ageing PHP, ASP.NET, or Rails applications. We rebuild on a modern stack with zero feature regression, a controlled cutover plan, and a documented migration path your team can maintain long-term.',
     tags: ['PHP → React', 'ASP.NET → Next.js', 'Zero-downtime cutover'],
-    img: '/images/web-app-dev/card-legacy.jpg',
+    img: '/site-images/web-app-dev/card-legacy.jpg',
   },
   {
     // eslint-disable-next-line @next/next/no-img-element
-    icon: <img src="/images/web-app-dev/icon-pwa.svg" alt="" width={28} height={28} />,
+    icon: <img src="/site-images/web-app-dev/icon-pwa.svg" alt="" width={28} height={28} />,
     title: 'Progressive Web Apps',
     description: 'Installable, offline-capable, push-notification-ready web apps — the fastest path to a mobile-feel experience without an App Store submission cycle or a separate native codebase to maintain.',
     tags: ['Offline-first', 'Push notifications', 'Installable'],
-    img: '/images/web-app-dev/card-pwa.jpg',
+    img: '/site-images/web-app-dev/card-pwa.jpg',
   },
   {
     // eslint-disable-next-line @next/next/no-img-element
-    icon: <img src="/images/web-app-dev/icon-third-party.jpg" alt="" width={28} height={28} className="object-contain" />,
+    icon: <img src="/site-images/web-app-dev/icon-third-party.jpg" alt="" width={28} height={28} className="object-contain" />,
     title: 'Third-party Integration',
     description: 'Salesforce, HubSpot, Shopify, Xero, QuickBooks, Slack, Zapier, and custom REST/GraphQL APIs wired cleanly into your platform. Idempotent, observable, retried — integrations that don\'t silently fail at 2am.',
     tags: ['Salesforce / HubSpot', 'Stripe / Xero', 'Custom APIs'],
-    img: '/images/web-app-dev/card-third-party.jpg',
+    img: '/site-images/web-app-dev/card-third-party.jpg',
   },
 ];
 

@@ -388,37 +388,37 @@ export default function GeniusHRMPage() {
             demoUrl={DEMO_URL}
             screenshots={[
               {
-                src: '/images/free-software/genius-hrm/dashboard.png',
+                src: '/site-images/free-software/genius-hrm/dashboard.png',
                 alt: 'Genius HRM — Dashboard showing KPI widgets for total employees, present today, on leave, open positions, departments, payroll net, training completion and pending approvals',
                 title: 'HR Dashboard',
                 description: 'Org-wide KPIs — headcount, attendance, payroll total, training completion and pending approvals',
               },
               {
-                src: '/images/free-software/genius-hrm/employees.png',
+                src: '/site-images/free-software/genius-hrm/employees.png',
                 alt: 'Genius HRM — Employee directory showing staff list with ID, department, position, joining date and active/on-leave/inactive status',
                 title: 'Employee Directory',
                 description: 'Full employee records with department, position, joined date and status — searchable and filterable',
               },
               {
-                src: '/images/free-software/genius-hrm/recruitment.png',
+                src: '/site-images/free-software/genius-hrm/recruitment.png',
                 alt: 'Genius HRM — Recruitment page showing job postings with department, location, type, status and applicant count',
                 title: 'Recruitment',
                 description: 'Job postings with published/draft/closed status, applicant count and deadline tracking',
               },
               {
-                src: '/images/free-software/genius-hrm/training.png',
+                src: '/site-images/free-software/genius-hrm/training.png',
                 alt: 'Genius HRM — Training and Development page showing courses with category, mode, duration, cost, sessions and status',
                 title: 'Training & Development',
                 description: 'Course catalog with active courses, sessions, enrollments and completions — online and in-person',
               },
               {
-                src: '/images/free-software/genius-hrm/payroll.png',
+                src: '/site-images/free-software/genius-hrm/payroll.png',
                 alt: 'Genius HRM — Payroll runs list showing monthly payroll with employee count, gross, deductions, net salary and paid/draft status',
                 title: 'Payroll Runs',
                 description: 'Monthly payroll with gross, deductions, net salary — draft to paid workflow with run history',
               },
               {
-                src: '/images/free-software/genius-hrm/reports.png',
+                src: '/site-images/free-software/genius-hrm/reports.png',
                 alt: 'Genius HRM — Reports and Analytics showing headcount by department, headcount trend, employment status breakdown and payroll trend',
                 title: 'Reports & Analytics',
                 description: 'Org-wide insights — headcount by department, employment status, payroll trend and training completion',

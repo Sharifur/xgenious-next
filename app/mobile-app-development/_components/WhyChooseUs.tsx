@@ -6,22 +6,22 @@ import SectionBadge from '@/components/ui/SectionBadge';
 
 const features = [
   {
-    icon: '/images/app-dev/code-icon.svg',
+    icon: '/site-images/app-dev/code-icon.svg',
     title: 'Rapid Development',
     desc: "Flutter's single codebase ships iOS and Android simultaneously — cutting build time without cutting corners. We move fast because we've done it before, not because we're skipping steps.",
   },
   {
-    icon: '/images/app-dev/sheild-icon.svg',
+    icon: '/site-images/app-dev/sheild-icon.svg',
     title: 'Enterprise Security',
     desc: 'Biometric auth, encrypted local storage, certificate pinning, and OWASP Mobile Top 10 practices built into every build — not added as an afterthought in the final sprint.',
   },
   {
-    icon: '/images/app-dev/support-icon.svg',
+    icon: '/site-images/app-dev/support-icon.svg',
     title: 'Ongoing Support',
     desc: "Every engagement includes post-launch warranty, App Store update management, and OS compatibility patches. We don't disappear on launch day — we're on call through the first month.",
   },
   {
-    icon: '/images/app-dev/brain-icon.svg',
+    icon: '/site-images/app-dev/brain-icon.svg',
     title: 'User-Centered Design',
     desc: "Every screen starts from user flows, not Dribbble trends. We prototype, test with real users, and iterate before a line of code is written — so the build reflects how people actually use the app.",
   },
@@ -89,7 +89,7 @@ export default function WhyChooseUs() {
           <div className="flex-1 flex items-start justify-center overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/app-dev/crafted-illustration.png"
+              src="/site-images/app-dev/crafted-illustration.png"
               alt="App performance illustration"
               className="w-full max-w-[600px] xl:max-w-none"
             />
@@ -120,7 +120,7 @@ export default function WhyChooseUs() {
               animate={leftInView ? 'visible' : 'hidden'}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/app-dev/user-first-experience.png" alt="User-First App" className="absolute left-0 top-0" />
+              <img src="/site-images/app-dev/user-first-experience.png" alt="User-First App" className="absolute left-0 top-0" />
             </motion.div>
             <div className="absolute left-6 top-6 flex flex-col gap-2 w-[265px]">
               <p className="font-semibold text-[#181818] text-[24px] leading-8">User-First App Experience</p>
@@ -128,7 +128,7 @@ export default function WhyChooseUs() {
             </div>
             <div className="absolute flex items-center justify-center w-[47px] h-[47px] rounded-[23.5px] right-6 top-[33px] bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/app-dev/why-icon-user.svg" alt="" width={24} height={24} />
+              <img src="/site-images/app-dev/why-icon-user.svg" alt="" width={24} height={24} />
             </div>
           </div>
 
@@ -156,7 +156,7 @@ export default function WhyChooseUs() {
               animate={rightInView ? 'visible' : 'hidden'}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/app-dev/why-man-phone.png" alt="Built Together" className="absolute inset-0 w-full h-full object-cover" />
+              <img src="/site-images/app-dev/why-man-phone.png" alt="Built Together" className="absolute inset-0 w-full h-full object-cover" />
             </motion.div>
             <div className="absolute left-[23px] top-[23px] flex flex-col gap-2 w-[265px]">
               <p className="font-semibold text-[#181818] text-[24px] leading-8">Built Together, Built Better</p>
@@ -164,7 +164,7 @@ export default function WhyChooseUs() {
             </div>
             <div className="absolute flex items-center justify-center w-[47px] h-[47px] rounded-[23.5px] right-6 top-8 bg-[#f3dccf]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/app-dev/why-icon-built.svg" alt="" width={24} height={24} />
+              <img src="/site-images/app-dev/why-icon-built.svg" alt="" width={24} height={24} />
             </div>
           </div>
         </div>

@@ -3,10 +3,10 @@
 import Button, { ArrowIcon } from '@/components/ui/Button';
 
 const previews = [
-  { src: '/images/mvp/preview-1.png', alt: 'Botmerce — AI eCommerce automation platform' },
-  { src: '/images/mvp/preview-2.png', alt: 'Nexelit — crowdfunding donation platform'     },
-  { src: '/images/mvp/preview-3.png', alt: 'Prohandy — on-demand home service platform'   },
-  { src: '/images/mvp/preview-4.png', alt: 'Prohandy — mobile app'                        },
+  { src: '/site-images/mvp/preview-1.png', alt: 'Botmerce — AI eCommerce automation platform' },
+  { src: '/site-images/mvp/preview-2.png', alt: 'Nexelit — crowdfunding donation platform'     },
+  { src: '/site-images/mvp/preview-3.png', alt: 'Prohandy — on-demand home service platform'   },
+  { src: '/site-images/mvp/preview-4.png', alt: 'Prohandy — mobile app'                        },
 ];
 
 const track = [...previews, ...previews];

@@ -15,7 +15,7 @@ export default function CTASection({
   description = 'Book a free consultation — get a roadmap & estimate.',
   buttonText = 'Book a Free Consultation',
   buttonHref = '/contact',
-  bgImage = '/images/web-app-dev/cta-bg-overlay.svg',
+  bgImage = '/site-images/web-app-dev/cta-bg-overlay.svg',
   bgMask,
   bgPhoto,
 }: Props) {

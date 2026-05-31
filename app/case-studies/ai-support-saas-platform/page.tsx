@@ -148,7 +148,7 @@ export default function AISupportSaaSCaseStudy() {
             {/* Right — hero image */}
             <div className="w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3', minHeight: 360 }}>
               <Image
-                src="/images/case-studies/01-ai-chatbot.svg"
+                src="/site-images/case-studies/01-ai-chatbot.svg"
                 alt="Project screenshot"
                 width={800}
                 height={600}

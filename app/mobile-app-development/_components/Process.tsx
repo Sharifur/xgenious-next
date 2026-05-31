@@ -6,22 +6,22 @@ const steps = [
   {
     title: 'Ideation',
     desc: "Problem validation, ICP definition, competitive mapping, and feature prioritisation. We define what the app must do, what it shouldn't do, and why — before wireframes or code touch the project.",
-    iconSrc: '/images/app-dev/process-icon-ideation.svg',
+    iconSrc: '/site-images/app-dev/process-icon-ideation.svg',
   },
   {
     title: 'Wireframing',
     desc: 'Low-fidelity user flows and screen maps that validate navigation logic and user journeys. Every wireframe is reviewed and signed off by you before design begins — no rework surprises downstream.',
-    iconSrc: '/images/app-dev/process-icon-wireframe.svg',
+    iconSrc: '/site-images/app-dev/process-icon-wireframe.svg',
   },
   {
     title: 'UI Design',
     desc: 'High-fidelity Figma screens built to your brand system, with a component library that maps 1:1 to the production build. Every interaction and transition approved before a single line is written.',
-    iconSrc: '/images/app-dev/process-icon-ui-design.svg',
+    iconSrc: '/site-images/app-dev/process-icon-ui-design.svg',
   },
   {
     title: 'Development',
     desc: 'Sprint-based builds with weekly demo access on TestFlight and an Android test track. Full test coverage, CI/CD pipeline, and a staging environment your team can use any time. App Store and Play Store submission handled end-to-end.',
-    iconSrc: '/images/app-dev/process-icon-development.svg',
+    iconSrc: '/site-images/app-dev/process-icon-development.svg',
   },
 ];
 
@@ -31,7 +31,7 @@ export default function Process() {
 
       {/* Cloud — top-left, overlapping phone */}
       <motion.img
-        src="/images/app-dev/cloud-sm.png"
+        src="/site-images/app-dev/cloud-sm.png"
         alt=""
         className="hidden lg:block absolute top-[340px] left-[4%] w-[220px] pointer-events-none z-[3]"
         animate={{ y: [0, -12, 0], x: [0, 7, 0] }}
@@ -40,7 +40,7 @@ export default function Process() {
 
       {/* Cloud — bottom-left, lower area */}
       <motion.img
-        src="/images/app-dev/cloud-lg.png"
+        src="/site-images/app-dev/cloud-lg.png"
         alt=""
         className="hidden lg:block absolute top-[680px] left-[2%] w-[280px] pointer-events-none z-[3]"
         animate={{ y: [0, -16, 0], x: [0, 9, 0] }}
@@ -49,7 +49,7 @@ export default function Process() {
 
       {/* Cloud — right side, mid height */}
       <motion.img
-        src="/images/app-dev/cloud-wide.png"
+        src="/site-images/app-dev/cloud-wide.png"
         alt=""
         className="hidden lg:block absolute top-[500px] right-[3%] w-[260px] pointer-events-none z-[3]"
         animate={{ y: [0, -10, 0], x: [0, -7, 0] }}
@@ -65,7 +65,7 @@ export default function Process() {
       <div className="hidden lg:flex absolute overflow-hidden left-1/2 -translate-x-1/2 top-[296px] w-[618px] h-[751px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/app-dev/process-phone.png"
+          src="/site-images/app-dev/process-phone.png"
           alt="App process"
           className="w-full h-full object-cover"
         />
@@ -74,7 +74,7 @@ export default function Process() {
       {/* Blur overlay */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/app-dev/process-blur.svg"
+        src="/site-images/app-dev/process-blur.svg"
         alt=""
         className="hidden lg:block absolute top-[590px] left-1/2 -translate-x-1/2 w-[1399px] pointer-events-none z-[2]"
       />

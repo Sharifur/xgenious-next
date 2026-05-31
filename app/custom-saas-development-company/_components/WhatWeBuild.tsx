@@ -44,42 +44,42 @@ function BuildCard({
 
 const cards = [
   {
-    icon: '/images/saas-dev/icon-multi.svg',
+    icon: '/site-images/saas-dev/icon-multi.svg',
     title: 'Multi-Tenant SaaS Architecture',
     description:
       'Row-level or schema-level tenancy, per-tenant billing, isolated data stores, role-based access, and admin consoles — designed from the schema up, never retrofitted from a single-tenant codebase.',
     tags: ['PostgreSQL RLS', 'Tenant isolation', 'Admin portals'],
   },
   {
-    icon: '/images/saas-dev/icon-saas.svg',
+    icon: '/site-images/saas-dev/icon-saas.svg',
     title: 'SaaS MVP Engineering',
     description:
       'Fixed-scope MVPs in 8–12 weeks. React + Node or Laravel + Flutter. Purpose-built foundations for eCommerce, marketplaces, on-demand services, and B2B platforms — real code that scales, not throwaway prototypes.',
     tags: ['Fixed price', 'Weekly demos', 'App Store ready'],
   },
   {
-    icon: '/images/saas-dev/icon-payment.svg',
+    icon: '/site-images/saas-dev/icon-payment.svg',
     title: 'Payments, Billing & Subscriptions',
     description:
       'Stripe, Paddle, and Lemon Squeezy for global billing — Tabby, Tamara, Mada, and STC Pay for GCC markets. Usage metering, free trials, dunning workflows, refunds, and revenue recognition, all wired from day one.',
     tags: ['Stripe Connect', 'Mada / Tabby', 'Metered billing'],
   },
   {
-    icon: '/images/saas-dev/icon-compliance.svg',
+    icon: '/site-images/saas-dev/icon-compliance.svg',
     title: 'Compliance-Ready Builds',
     description:
       'GDPR, HIPAA, and SOC 2-ready architectures with audit logs, data-residency options, threat models, and a signed DPA on every engagement. UK Ltd, US Delaware C-Corp, and UAE DMCC entities available for local procurement.',
     tags: ['HIPAA-ready', 'GDPR DPA', 'Audit logs'],
   },
   {
-    icon: '/images/saas-dev/icon-ai.svg',
+    icon: '/site-images/saas-dev/icon-ai.svg',
     title: 'AI & LLM Integration',
     description:
       'RAG pipelines, agentic workflows, eval harnesses, and LLM retrofits for existing SaaS platforms. Anthropic Claude, OpenAI, LangChain, Pinecone, pgvector — with observability and a real ROI model, not just a chatbot bolted on.',
     tags: ['Claude & GPT', 'RAG + evals', 'LangGraph agents'],
   },
   {
-    icon: '/images/saas-dev/icon-devops.svg',
+    icon: '/site-images/saas-dev/icon-devops.svg',
     title: 'DevOps & Managed Hosting',
     description:
       'AWS, Azure, and GCP infrastructure as code, CI/CD pipelines, observability dashboards, cost optimisation, and post-launch SRE retainers. Your SaaS stays up, performant, and cost-efficient after we hand it over.',

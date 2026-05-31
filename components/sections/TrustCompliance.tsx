@@ -3,14 +3,14 @@ import SectionBadge from '@/components/ui/SectionBadge';
 type ComplianceCard = { icon: string; name: string; status: string };
 
 const cards: ComplianceCard[] = [
-  { icon: '/images/saas-dev/tc-shield.svg',   name: 'GDPR',              status: 'Live · DPA available' },
-  { icon: '/images/saas-dev/tc-heart.svg',    name: 'HIPAA',             status: 'Ready · BAA on request' },
-  { icon: '/images/saas-dev/tc-clock.svg',    name: 'SOC 2 Type I',      status: 'In progress · Q3 2026' },
-  { icon: '/images/saas-dev/tc-badge.svg',    name: 'ISO 27001',         status: 'Roadmap · 2026' },
-  { icon: '/images/saas-dev/tc-payment.svg',  name: 'PCI DSS',           status: 'Ready · Stripe SAQ-A' },
-  { icon: '/images/saas-dev/tc-database.svg', name: 'UAE DIFC',          status: 'DIFC/ADGM-compliant' },
-  { icon: '/images/saas-dev/tc-database.svg', name: 'KSA PDPL',          status: 'Data-residency in-Kingdom' },
-  { icon: '/images/saas-dev/tc-globe.svg',    name: 'EU Data Residency', status: 'Frankfurt / Dublin regions' },
+  { icon: '/site-images/saas-dev/tc-shield.svg',   name: 'GDPR',              status: 'Live · DPA available' },
+  { icon: '/site-images/saas-dev/tc-heart.svg',    name: 'HIPAA',             status: 'Ready · BAA on request' },
+  { icon: '/site-images/saas-dev/tc-clock.svg',    name: 'SOC 2 Type I',      status: 'In progress · Q3 2026' },
+  { icon: '/site-images/saas-dev/tc-badge.svg',    name: 'ISO 27001',         status: 'Roadmap · 2026' },
+  { icon: '/site-images/saas-dev/tc-payment.svg',  name: 'PCI DSS',           status: 'Ready · Stripe SAQ-A' },
+  { icon: '/site-images/saas-dev/tc-database.svg', name: 'UAE DIFC',          status: 'DIFC/ADGM-compliant' },
+  { icon: '/site-images/saas-dev/tc-database.svg', name: 'KSA PDPL',          status: 'Data-residency in-Kingdom' },
+  { icon: '/site-images/saas-dev/tc-globe.svg',    name: 'EU Data Residency', status: 'Frankfurt / Dublin regions' },
 ];
 
 function ComplianceItem({ icon, name, status }: ComplianceCard) {

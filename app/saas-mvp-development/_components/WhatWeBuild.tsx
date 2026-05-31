@@ -11,7 +11,7 @@ type Card = {
 const cards: Card[] = [
   {
     bg: '#e8e5dc',
-    image: '/images/mvp/service-strategy.jpg',
+    image: '/site-images/mvp/service-strategy.jpg',
     alt: 'MVP strategy planning',
     title: 'MVP Strategy & Planning',
     description:
@@ -19,7 +19,7 @@ const cards: Card[] = [
   },
   {
     bg: '#e0e6e2',
-    image: '/images/mvp/service-saas.png',
+    image: '/site-images/mvp/service-saas.png',
     alt: 'SaaS MVP development',
     title: 'SaaS MVP Development',
     description:
@@ -27,7 +27,7 @@ const cards: Card[] = [
   },
   {
     bg: '#d4ecd8',
-    image: '/images/mvp/service-webapp.png',
+    image: '/site-images/mvp/service-webapp.png',
     alt: 'Web app development',
     title: 'Web App Development',
     description:
@@ -35,7 +35,7 @@ const cards: Card[] = [
   },
   {
     bg: '#e8e2d6',
-    image: '/images/mvp/service-api.png',
+    image: '/site-images/mvp/service-api.png',
     alt: 'API integration',
     title: 'API Integration',
     description:
@@ -43,7 +43,7 @@ const cards: Card[] = [
   },
   {
     bg: '#c8dce8',
-    image: '/images/mvp/service-ai.png',
+    image: '/site-images/mvp/service-ai.png',
     alt: 'AI MVP solutions',
     title: 'AI MVP Solutions',
     description:
@@ -51,7 +51,7 @@ const cards: Card[] = [
   },
   {
     bg: '#ede8df',
-    image: '/images/mvp/service-scaling.png',
+    image: '/site-images/mvp/service-scaling.png',
     alt: 'Product scaling',
     title: 'Product Scaling',
     description:

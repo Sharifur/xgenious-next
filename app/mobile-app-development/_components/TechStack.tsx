@@ -34,12 +34,12 @@ function TechBadge({ name, icon, style, borderColor, bg, duration = 6, delay = 0
 }
 
 const techItems = [
-  { name: 'Flutter',    icon: '/images/app-dev/tech-flutter.svg',   borderColor: '#41d0fd', bg: 'rgba(64,208,253,0.1)' },
-  { name: 'iOS',        icon: '/images/app-dev/tech-ios.svg',        borderColor: '#141414', bg: 'white' },
-  { name: 'App Store',  icon: '/images/app-dev/tech-ios.svg',        borderColor: '#d0d0d0', bg: 'white' },
-  { name: 'Kotlin',     icon: '/images/app-dev/tech-kotlin.svg',     borderColor: '#d86685', bg: 'rgba(255,137,1,0.1)' },
-  { name: 'Android',    icon: '/images/app-dev/tech-android.svg',    borderColor: '#5c8c32', bg: 'white' },
-  { name: 'Play Store', icon: '/images/app-dev/tech-playstore.svg',  borderColor: '#d0d0d0', bg: 'white' },
+  { name: 'Flutter',    icon: '/site-images/app-dev/tech-flutter.svg',   borderColor: '#41d0fd', bg: 'rgba(64,208,253,0.1)' },
+  { name: 'iOS',        icon: '/site-images/app-dev/tech-ios.svg',        borderColor: '#141414', bg: 'white' },
+  { name: 'App Store',  icon: '/site-images/app-dev/tech-ios.svg',        borderColor: '#d0d0d0', bg: 'white' },
+  { name: 'Kotlin',     icon: '/site-images/app-dev/tech-kotlin.svg',     borderColor: '#d86685', bg: 'rgba(255,137,1,0.1)' },
+  { name: 'Android',    icon: '/site-images/app-dev/tech-android.svg',    borderColor: '#5c8c32', bg: 'white' },
+  { name: 'Play Store', icon: '/site-images/app-dev/tech-playstore.svg',  borderColor: '#d0d0d0', bg: 'white' },
 ];
 
 const SectionHeader = () => (
@@ -73,7 +73,7 @@ export default function TechStack() {
           {/* Phone — full width, capped */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/app-dev/tech-phone.png"
+            src="/site-images/app-dev/tech-phone.png"
             alt="Tech stack phone"
             className="w-full max-w-[260px] mx-auto"
           />
@@ -108,14 +108,14 @@ export default function TechStack() {
         <div className="relative flex items-center justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/app-dev/tech-phone.png"
+            src="/site-images/app-dev/tech-phone.png"
             alt="Tech stack phone"
             className="relative z-[5] max-w-none"
           />
 
           <TechBadge
             name="Flutter"
-            icon="/images/app-dev/tech-flutter.svg"
+            icon="/site-images/app-dev/tech-flutter.svg"
             borderColor="#41d0fd"
             bg="rgba(64,208,253,0.1)"
             style={{ left: 0, top: '30%' }}
@@ -127,7 +127,7 @@ export default function TechStack() {
 
           <TechBadge
             name="iOS"
-            icon="/images/app-dev/tech-ios.svg"
+            icon="/site-images/app-dev/tech-ios.svg"
             borderColor="#141414"
             bg="white"
             style={{ left: 60, bottom: '18%' }}
@@ -144,7 +144,7 @@ export default function TechStack() {
             transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/app-dev/tech-ios.svg" alt="App Store" width={24} height={24} />
+            <img src="/site-images/app-dev/tech-ios.svg" alt="App Store" width={24} height={24} />
             <span className="font-medium text-[#181818]" style={{ fontSize: 16, lineHeight: '24px' }}>
               App Store
             </span>
@@ -152,7 +152,7 @@ export default function TechStack() {
 
           <TechBadge
             name="Kotlin"
-            icon="/images/app-dev/tech-kotlin.svg"
+            icon="/site-images/app-dev/tech-kotlin.svg"
             borderColor="#d86685"
             bg="rgba(255,137,1,0.1)"
             style={{ right: 0, top: '30%' }}
@@ -164,7 +164,7 @@ export default function TechStack() {
 
           <TechBadge
             name="Android"
-            icon="/images/app-dev/tech-android.svg"
+            icon="/site-images/app-dev/tech-android.svg"
             borderColor="#5c8c32"
             bg="white"
             style={{ right: 60, bottom: '18%' }}
@@ -181,7 +181,7 @@ export default function TechStack() {
             transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut', delay: 2.4 }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/app-dev/tech-playstore.svg" alt="Play Store" width={24} height={24} />
+            <img src="/site-images/app-dev/tech-playstore.svg" alt="Play Store" width={24} height={24} />
             <span className="font-medium text-[#181818]" style={{ fontSize: 16, lineHeight: '24px' }}>
               Play Store
             </span>
