@@ -1,0 +1,105 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#E8E8F5"/>
+
+  <!-- Decorative blurred circles -->
+  <circle cx="540" cy="60" r="70" fill="#C7C9F0" opacity="0.5"/>
+  <circle cx="70" cy="350" r="90" fill="#D4D6F2" opacity="0.6"/>
+
+  <!-- Floating tag: AI Agent -->
+  <g transform="translate(40, 50)">
+    <rect width="110" height="34" rx="17" fill="#FFFFFF" stroke="#C7C9F0" stroke-width="1"/>
+    <circle cx="18" cy="17" r="5" fill="#6366F1"/>
+    <text x="32" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3730A3">AI Agent</text>
+  </g>
+
+  <!-- Floating tag: Ticketing -->
+  <g transform="translate(440, 320)">
+    <rect width="115" height="34" rx="17" fill="#FFFFFF" stroke="#C7C9F0" stroke-width="1"/>
+    <circle cx="18" cy="17" r="5" fill="#10B981"/>
+    <text x="32" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#065F46">Ticketing</text>
+  </g>
+
+  <!-- Chat window -->
+  <g transform="translate(150, 60)">
+    <!-- Window shadow -->
+    <rect x="4" y="6" width="300" height="290" rx="20" fill="#000" opacity="0.08"/>
+    <!-- Window body -->
+    <rect width="300" height="290" rx="20" fill="#FFFFFF"/>
+
+    <!-- Header -->
+    <rect width="300" height="56" rx="20" fill="#4F46E5"/>
+    <rect y="36" width="300" height="20" fill="#4F46E5"/>
+    <!-- Avatar circle with sparkle -->
+    <circle cx="28" cy="28" r="14" fill="#FFFFFF" opacity="0.2"/>
+    <circle cx="28" cy="28" r="11" fill="#FFFFFF"/>
+    <path d="M28 21 L29.5 26 L34 27.5 L29.5 29 L28 34 L26.5 29 L22 27.5 L26.5 26 Z" fill="#4F46E5"/>
+    <text x="50" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">Support Assistant</text>
+    <circle cx="51" cy="38" r="3" fill="#34D399"/>
+    <text x="59" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C7D2FE">Online</text>
+
+    <!-- Window dots -->
+    <circle cx="272" cy="28" r="3" fill="#FFFFFF" opacity="0.7"/>
+    <circle cx="282" cy="28" r="3" fill="#FFFFFF" opacity="0.7"/>
+
+    <!-- Message: user bubble -->
+    <g transform="translate(120, 76)">
+      <rect width="160" height="36" rx="14" fill="#EEF2FF"/>
+      <text x="14" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#1E1B4B">How do I reset my password?</text>
+    </g>
+
+    <!-- Message: AI bubble with typing -->
+    <g transform="translate(16, 124)">
+      <!-- Mini avatar -->
+      <circle cx="12" cy="14" r="10" fill="#4F46E5"/>
+      <path d="M12 9 L13 12.5 L16.5 13.5 L13 14.5 L12 18 L11 14.5 L7.5 13.5 L11 12.5 Z" fill="#FFFFFF"/>
+      <rect x="28" width="200" height="56" rx="14" fill="#F3F4F6"/>
+      <text x="42" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#111827">Sure! I'll guide you through it.</text>
+      <text x="42" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#111827">Step 1: Open Settings →</text>
+    </g>
+
+    <!-- Message: user bubble 2 -->
+    <g transform="translate(140, 198)">
+      <rect width="140" height="32" rx="14" fill="#EEF2FF"/>
+      <text x="14" y="20" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#1E1B4B">Thanks, that worked!</text>
+    </g>
+
+    <!-- Typing indicator -->
+    <g transform="translate(16, 244)">
+      <circle cx="12" cy="12" r="10" fill="#4F46E5"/>
+      <path d="M12 7 L13 10.5 L16.5 11.5 L13 12.5 L12 16 L11 12.5 L7.5 11.5 L11 10.5 Z" fill="#FFFFFF"/>
+      <rect x="28" width="62" height="24" rx="12" fill="#F3F4F6"/>
+      <circle cx="42" cy="12" r="3" fill="#9CA3AF">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="54" cy="12" r="3" fill="#9CA3AF">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="66" cy="12" r="3" fill="#9CA3AF">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.4s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+
+  <!-- Floating tag: Knowledge Base -->
+  <g transform="translate(20, 220)">
+    <rect width="135" height="34" rx="17" fill="#FFFFFF" stroke="#C7C9F0" stroke-width="1"/>
+    <path d="M14 12 L14 23 L26 23 L26 14 L21 14 L19 12 Z" fill="none" stroke="#F59E0B" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="34" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#92400E">Knowledge Base</text>
+  </g>
+
+  <!-- Floating tag: Stripe Billing -->
+  <g transform="translate(465, 110)">
+    <rect width="115" height="34" rx="17" fill="#FFFFFF" stroke="#C7C9F0" stroke-width="1"/>
+    <rect x="13" y="11" width="14" height="12" rx="2" fill="none" stroke="#8B5CF6" stroke-width="1.8"/>
+    <text x="34" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#5B21B6">Stripe Billing</text>
+  </g>
+
+  <!-- Sparkle decorations -->
+  <g fill="#6366F1" opacity="0.55">
+    <path d="M85 130 L88 137 L95 140 L88 143 L85 150 L82 143 L75 140 L82 137 Z"/>
+  </g>
+  <g fill="#8B5CF6" opacity="0.5">
+    <path d="M510 250 L513 256 L519 258.5 L513 261 L510 267 L507 261 L501 258.5 L507 256 Z"/>
+  </g>
+</svg>
