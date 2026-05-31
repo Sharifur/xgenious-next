@@ -16,12 +16,15 @@ export default function Hero() {
 
         <div className="relative flex flex-col items-center text-center gap-6 max-w-[900px] mx-auto">
 
-          {/* decorative circle behind text */}
+          {/* decorative circle — dark navy fill with indigo top arc border */}
           <div
-            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full"
+            className="pointer-events-none absolute left-1/2 -translate-x-1/2 rounded-full"
             style={{
-              background: `radial-gradient(circle, ${COLOR}22 0%, ${COLOR}0a 50%, transparent 70%)`,
-              filter: 'blur(40px)',
+              width: '860px',
+              height: '860px',
+              bottom: '-560px',
+              background: '#020c1e',
+              border: '2.5px solid #4f6af0',
             }}
           />
 
