@@ -11,7 +11,7 @@ const QUICK_LINKS = [
 
 export default function Hero() {
   return (
-    <section className="pt-16 pb-12 lg:pt-24 lg:pb-16 bg-white overflow-hidden">
+    <section className="pt-16 pb-12 lg:pt-24 lg:pb-16 overflow-hidden" style={{ background: '#070208' }}>
       <div className="container-page px-4 sm:px-6 lg:px-0">
 
         <div className="relative flex flex-col items-center text-center gap-6 max-w-[900px] mx-auto">
@@ -35,12 +35,12 @@ export default function Hero() {
             </div>
           </div>
 
-          <h1 className="relative z-10 text-[28px] leading-[36px] sm:text-[48px] sm:leading-[56px] lg:text-[62px] lg:leading-[70px] font-bold text-[#0F1112] max-w-[860px]">
+          <h1 className="relative z-10 text-[28px] leading-[36px] sm:text-[48px] sm:leading-[56px] lg:text-[62px] lg:leading-[70px] font-bold text-white max-w-[860px]">
             Launch Your Own{' '}
             <span style={{ color: COLOR }}>AI Support Platform</span>
           </h1>
 
-          <p className="relative z-10 text-[#484848] text-[14px] sm:text-[17px] leading-7 max-w-[580px]">
+          <p className="relative z-10 text-[#a89bb5] text-[14px] sm:text-[17px] leading-7 max-w-[580px]">
             A complete Laravel PHP script to build your own AI-powered customer support platform like Crisp, Intercom, or Tidio. Semantic AI chatbot, multi-tenant SaaS, ticketing, and subscription billing — one-time purchase.
           </p>
 
@@ -56,7 +56,7 @@ export default function Hero() {
               href={DEMO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-semibold text-[14px] sm:text-[15px] rounded-full px-6 sm:px-8 py-3 sm:py-3.5 border-2 border-[#0F1112]/20 text-[#0F1112] bg-white hover:bg-gray-50 transition-all hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 font-semibold text-[14px] sm:text-[15px] rounded-full px-6 sm:px-8 py-3 sm:py-3.5 border border-white/20 text-white bg-white/10 hover:bg-white/15 transition-all hover:-translate-y-0.5"
             >
               Explore Demo
             </Link>
@@ -69,7 +69,7 @@ export default function Hero() {
                 href={link.href}
                 target={link.href.startsWith('http') ? '_blank' : undefined}
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="text-[13px] sm:text-[14px] font-medium text-[#484848] underline underline-offset-4 decoration-[#484848]/30 hover:text-[#0F1112] transition-colors"
+                className="text-[13px] sm:text-[14px] font-medium text-[#7a6e85] underline underline-offset-4 decoration-white/20 hover:text-white transition-colors"
               >
                 {link.label}
               </Link>
@@ -79,7 +79,7 @@ export default function Hero() {
         </div>
 
         <div className="mt-12 lg:mt-16 relative max-w-[1100px] mx-auto">
-          <div className="rounded-2xl overflow-hidden border border-[#E5E7EC] shadow-2xl">
+          <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
             <Image
               src="/products/helpnest-hero.jpg"
               alt="HelpNest AI customer support platform dashboard"
@@ -90,7 +90,8 @@ export default function Hero() {
             />
           </div>
           <div
-            className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-white rounded-2xl border border-[#E5E7EC] shadow-lg px-6 py-3"
+            className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 rounded-2xl border border-white/10 shadow-lg px-6 py-3"
+            style={{ background: '#13101a' }}
           >
             {[
               { label: 'AI Model', value: 'GPT-4 + Claude' },
@@ -98,8 +99,8 @@ export default function Hero() {
               { label: 'License', value: 'One-time' },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col items-center gap-0.5">
-                <span className="text-[13px] font-bold text-[#0F1112]">{stat.value}</span>
-                <span className="text-[11px] text-[#9ca3af]">{stat.label}</span>
+                <span className="text-[13px] font-bold text-white">{stat.value}</span>
+                <span className="text-[11px] text-[#6b6074]">{stat.label}</span>
               </div>
             ))}
           </div>
