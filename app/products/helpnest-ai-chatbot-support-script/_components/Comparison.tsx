@@ -19,7 +19,7 @@ const ROWS = [
 
 export default function Comparison() {
   return (
-    <section className="pb-10 lg:pb-14 bg-white">
+    <section className="pt-16 pb-10 lg:pt-[120px] lg:pb-14 bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1200px] mx-auto">
 
         <div className="text-center mb-12 max-w-[680px] mx-auto">

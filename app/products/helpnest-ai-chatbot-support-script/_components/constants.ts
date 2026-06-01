@@ -9,21 +9,21 @@ export const EXTENDED_PRICE = 199;
 
 export const REVIEWS = [
   {
-    name: 'icanhelpyourbusiness',
+    name: 'vpanos',
     rating: 5,
     category: 'Regular License',
-    body: 'Easy to install and get running. The support team were very quick in helping with an issue. Highly recommend.',
+    body: "I couldn't be happier. The v1.4.0 update is exceptional — super fast, reliable. The support team is top-notch.",
   },
   {
-    name: 'abunowmankalim53',
-    rating: 5,
-    category: 'Extended License',
-    body: 'The support team is absolutely outstanding! Really impressed with their dedication and willingness to help. Best purchase I made this year.',
-  },
-  {
-    name: 'Aofn75',
+    name: 'Diwio',
     rating: 5,
     category: 'Regular License',
-    body: 'One of the best and fastest customer support experiences I have had. The scripts are amazing. Highly recommended without hesitation.',
+    body: 'I initially faced some serious technical issues after the latest update. However, the support team was very patient, professional, and genuinely helpful throughout the entire process.',
+  },
+  {
+    name: 'armgroup',
+    rating: 5,
+    category: 'Regular License',
+    body: 'I had a bit of trouble during the initial setup, but once I contacted support they sorted everything out pretty quickly. Great product + great support.',
   },
 ];

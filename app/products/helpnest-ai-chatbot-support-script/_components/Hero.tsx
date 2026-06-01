@@ -11,20 +11,21 @@ const QUICK_LINKS = [
 
 export default function Hero() {
   return (
-    <section className="pt-16 pb-12 lg:pt-24 lg:pb-16 overflow-hidden" style={{ background: '#070208' }}>
+    <section className="overflow-hidden" style={{ background: '#070208', paddingTop: '250px' }}>
       <div className="container-page px-4 sm:px-6 lg:px-0">
 
         <div className="relative flex flex-col items-center text-center gap-6 max-w-[900px] mx-auto">
 
           {/* decorative circle — dark navy fill with indigo top arc border */}
           <div
-            className="pointer-events-none absolute left-1/2 -translate-x-1/2 rounded-full"
+            className="pointer-events-none absolute left-1/2 rounded-full z-0"
             style={{
-              width: '860px',
-              height: '860px',
-              bottom: '-560px',
-              background: '#020c1e',
-              border: '2.5px solid #4f6af0',
+              width: '1400px',
+              height: '1400px',
+              bottom: '-840px',
+              background: 'linear-gradient(#00142B, #00142B) padding-box, linear-gradient(to right, #586BF1 0%, #020B15 64%) border-box',
+              border: '20px solid transparent',
+              transform: 'translateX(-50%) rotate(90deg)',
             }}
           />
 
@@ -81,7 +82,7 @@ export default function Hero() {
 
         </div>
 
-        <div className="mt-12 lg:mt-16 relative max-w-[1100px] mx-auto">
+        <div className="relative z-10 mt-12 lg:mt-16 max-w-[1100px] mx-auto">
           <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
             <Image
               src="/products/helpnest-dashboard.png"
@@ -92,23 +93,63 @@ export default function Hero() {
               priority
             />
           </div>
-          <div
-            className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 rounded-2xl border border-white/10 shadow-lg px-6 py-3"
-            style={{ background: '#13101a' }}
-          >
+        </div>
+
+      </div>
+
+      {/* Feature strip */}
+      <div className="relative z-20 -mt-16 w-full border-t border-white/10" style={{ background: '#050D1A' }}>
+        <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1200px] mx-auto">
+          <div className="flex items-center justify-center flex-wrap gap-10 py-4">
             {[
-              { label: 'AI Model', value: 'GPT-4 + Claude' },
-              { label: 'Framework', value: 'Laravel 12' },
-              { label: 'License', value: 'One-time' },
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center gap-0.5">
-                <span className="text-[13px] font-bold text-white">{stat.value}</span>
-                <span className="text-[11px] text-[#6b6074]">{stat.label}</span>
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                  </svg>
+                ),
+                label: 'AI Powered Customer Service',
+              },
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                  </svg>
+                ),
+                label: 'Instant AI chatbot setup',
+              },
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                ),
+                label: 'Advanced AI training',
+              },
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                  </svg>
+                ),
+                label: 'Performance tracking',
+              },
+              {
+                icon: (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                  </svg>
+                ),
+                label: 'Smarter Support',
+              },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center gap-2 text-[#EBECEE]">
+                {item.icon}
+                <span className="text-[13px] font-medium whitespace-nowrap">{item.label}</span>
               </div>
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

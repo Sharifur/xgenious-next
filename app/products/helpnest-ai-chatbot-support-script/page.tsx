@@ -3,9 +3,13 @@ import { BASE_URL, CANONICAL } from './_components/constants';
 import JsonLd from './_components/JsonLd';
 import StickyBar from './_components/StickyBar';
 import Hero from './_components/Hero';
+import PaymentGateways from './_components/PaymentGateways';
 import Features from './_components/Features';
 import HowItWorks from './_components/HowItWorks';
 import TechStack from './_components/TechStack';
+import FeaturesShowcase from './_components/FeaturesShowcase';
+import WhyHelpNest from './_components/WhyHelpNest';
+import MobileApp from './_components/MobileApp';
 import Comparison from './_components/Comparison';
 import Reviews from './_components/Reviews';
 import Pricing from './_components/Pricing';
@@ -55,9 +59,13 @@ export default function HelpNestPage() {
       <JsonLd />
       <StickyBar />
       <Hero />
+      <PaymentGateways />
       <Features />
       <HowItWorks />
       <TechStack />
+      <FeaturesShowcase />
+      <WhyHelpNest />
+      <MobileApp />
       <Comparison />
       <Reviews />
       <Pricing />

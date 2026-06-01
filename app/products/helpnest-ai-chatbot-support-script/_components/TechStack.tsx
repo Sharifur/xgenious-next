@@ -1,26 +1,19 @@
+import Image from 'next/image';
 import { COLOR, LIGHT_COLOR } from './constants';
 
 const STACK = [
-  { name: 'Laravel 12', role: 'Backend Framework', icon: '⚡' },
-  { name: 'PHP 8.4+', role: 'Server Language', icon: '🐘' },
-  { name: 'PostgreSQL 14+', role: 'Database', icon: '🗄️' },
-  { name: 'OpenAI GPT-4', role: 'AI Engine', icon: '🤖' },
-  { name: 'Anthropic Claude', role: 'AI Engine', icon: '🧠' },
-  { name: 'Redis', role: 'Cache & Queues', icon: '⚡' },
-  { name: 'Pusher', role: 'Realtime Events', icon: '📡' },
-  { name: 'Tailwind CSS', role: 'Frontend', icon: '🎨' },
-  { name: 'Stripe', role: 'Subscription Billing', icon: '💳' },
-  { name: 'PayPal', role: 'Payment Gateway', icon: '💰' },
+  { name: 'Laravel 12', role: 'Backend Framework', logo: '/tech/laravel.svg' },
+  { name: 'PHP 8.4+', role: 'Server Language', logo: '/tech/php.svg' },
+  { name: 'PostgreSQL 14+', role: 'Database', logo: '/tech/postgresql.svg' },
+  { name: 'OpenAI GPT-4', role: 'AI Engine', logo: '/tech/openai.svg' },
+  { name: 'Redis', role: 'Cache & Queues', logo: '/tech-logos/redis.svg' },
+  { name: 'Laravel Reverb', role: 'Realtime Events', logo: '/icons/tech/reverb.png' },
+  { name: 'Tailwind CSS', role: 'Frontend', logo: '/tech/tailwind.svg' },
+  { name: 'Linux', role: 'Server OS', logo: '/tech/linux.svg' },
+  { name: 'Stripe', role: 'Subscription Billing', logo: '/integrations/stripe.svg' },
+  { name: 'OpenStreetMap', role: 'Visitor Mapping', logo: '/tech/openstreetmap.svg' },
 ];
 
-const REQUIREMENTS = [
-  { label: 'PHP', value: '8.4+' },
-  { label: 'Database', value: 'PostgreSQL 14+' },
-  { label: 'Cache', value: 'Redis' },
-  { label: 'Realtime', value: 'Pusher' },
-  { label: 'RAM', value: '4 GB min' },
-  { label: 'Server', value: 'Any Linux VPS' },
-];
 
 export default function TechStack() {
   return (
@@ -49,27 +42,29 @@ export default function TechStack() {
               key={item.name}
               className="bg-white rounded-2xl border border-[#E5E7EC] p-4 flex flex-col items-center text-center gap-2"
             >
-              <span className="text-[28px]">{item.icon}</span>
+              <div className="w-10 h-10 flex items-center justify-center">
+                <Image src={item.logo} alt={item.name} width={40} height={40} className="object-contain" />
+              </div>
               <p className="text-[14px] font-bold text-[#0F1112]">{item.name}</p>
               <p className="text-[11px] text-[#9ca3af]">{item.role}</p>
             </div>
           ))}
         </div>
 
-        <div
-          className="rounded-2xl border border-[#E5E7EC] bg-white overflow-hidden"
-        >
-          <div className="px-6 py-4 border-b border-[#E5E7EC]">
-            <p className="text-[14px] font-bold text-[#0F1112]">Server Requirements</p>
+        <div className="rounded-2xl border border-[#E5E7EC] bg-white px-6 py-5 flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <p className="text-[15px] font-bold text-[#0F1112] mb-1">Server Requirements</p>
+            <p className="text-[13px] text-[#6b7280]">PHP 8.4+, PostgreSQL 14+, Redis, Laravel Reverb — full details in our documentation.</p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-y sm:divide-y-0 divide-[#E5E7EC]">
-            {REQUIREMENTS.map((req) => (
-              <div key={req.label} className="px-5 py-4 flex flex-col gap-1">
-                <p className="text-[12px] text-[#9ca3af] font-medium uppercase tracking-wide">{req.label}</p>
-                <p className="text-[14px] font-bold text-[#0F1112]">{req.value}</p>
-              </div>
-            ))}
-          </div>
+          <a
+            href="https://docs.xgenious.com/docs/helpnest-ai-based-support-chatbot-system/instruction/server-requirement/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[13px] font-semibold rounded-full px-5 py-2.5 border-2 flex-shrink-0 transition-all hover:-translate-y-0.5"
+            style={{ color: COLOR, borderColor: COLOR }}
+          >
+            View Requirements →
+          </a>
         </div>
 
       </div>

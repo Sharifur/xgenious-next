@@ -12,6 +12,10 @@ import {
   type DropdownItem,
 } from '@/data/nav';
 
+const DARK_PAGES = [
+  '/products/helpnest-ai-chatbot-support-script',
+];
+
 function Chevron({ open }: { open: boolean }) {
   return (
     <svg
@@ -37,10 +41,12 @@ function Dropdown({
   label,
   items,
   active,
+  dark,
 }: {
   label: string;
   items: DropdownItem[];
   active?: boolean;
+  dark?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -63,7 +69,11 @@ function Dropdown({
     >
       <button
         className={`flex items-center gap-1.5 text-[14px] font-medium leading-5 transition-colors py-1 cursor-pointer ${
-          active ? 'text-[#F26B4E]' : 'text-[#1a1a2e] hover:text-[#000]'
+          active
+            ? 'text-[#F26B4E]'
+            : dark
+            ? 'text-[#EBECEE] hover:text-white'
+            : 'text-[#1a1a2e] hover:text-[#000]'
         }`}
         onClick={() => setOpen((v) => !v)}
       >
@@ -105,6 +115,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const isDark = DARK_PAGES.some((p) => pathname?.startsWith(p));
   const isServicesActive = pathname?.startsWith('/services');
 
   const noSticky =
@@ -116,49 +127,44 @@ export default function Navbar() {
     pathname?.startsWith('/my-account') ||
     pathname?.startsWith('/checkout');
 
+  const linkClass = isDark
+    ? 'text-[14px] font-medium leading-5 text-[#EBECEE] hover:text-white transition-colors'
+    : 'text-[14px] font-medium leading-5 text-[#1a1a2e] hover:text-[#000] transition-colors';
+
+  const hamburgerClass = isDark ? 'bg-[#EBECEE]' : 'bg-[#1a1a2e]';
+
   return (
-    <header className={`${noSticky ? 'relative' : 'fixed top-0 left-0 right-0 z-50'} pt-3 px-3 lg:pt-4 lg:px-8`}>
+    <header className={`${noSticky && !isDark ? 'relative' : isDark ? 'absolute top-0 left-0 right-0 z-50' : 'fixed top-0 left-0 right-0 z-50'} pt-3 px-3 lg:pt-4 lg:px-8`}>
       <div
-        className={`max-w-[1320px] mx-auto rounded-full border border-[#3F3F3F] transition-shadow duration-300 ${
+        className={`max-w-[1320px] mx-auto rounded-full transition-shadow duration-300 ${isDark ? 'border border-[#3F3F3F]' : 'border-0'} ${
           scrolled
             ? 'shadow-[0_12px_32px_rgba(0,0,0,0.15)]'
             : 'shadow-[0_4px_18px_rgba(0,0,0,0.08)]'
         }`}
-        style={{ background: '#CED4FF' }}
+        style={{ background: isDark ? 'rgba(206,212,255,0.12)' : '#ffffff' }}
       >
         <div className="px-5 h-[60px] flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center flex-shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/xgenious-logo.svg"
+              src={isDark ? '/xgenious-logo-white.png' : '/xgenious-logo.svg'}
               alt="Xgenious"
               className="h-[34px] w-auto"
             />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-7">
-            <Dropdown label="Services" items={servicesDropdown} active={isServicesActive} />
-            <Dropdown label="Product" items={productsDropdown} />
-            <Dropdown label="Free Software" items={freeSoftwareDropdown} active={pathname?.startsWith('/free-software')} />
-            <Dropdown label="Company" items={companyDropdown} />
-            <Link
-              href="https://xgenious.com/blog/"
-              className="text-[14px] font-medium leading-5 text-[#1a1a2e] hover:text-[#000] transition-colors"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/contact"
-              className="text-[14px] font-medium leading-5 text-[#1a1a2e] hover:text-[#000] transition-colors"
-            >
-              Contact
-            </Link>
+            <Dropdown label="Services" items={servicesDropdown} active={isServicesActive} dark={isDark} />
+            <Dropdown label="Product" items={productsDropdown} dark={isDark} />
+            <Dropdown label="Free Software" items={freeSoftwareDropdown} active={pathname?.startsWith('/free-software')} dark={isDark} />
+            <Dropdown label="Company" items={companyDropdown} dark={isDark} />
+            <Link href="https://xgenious.com/blog/" className={linkClass}>Blog</Link>
+            <Link href="/contact" className={linkClass}>Contact</Link>
           </nav>
 
           <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
             <Button href="/contact" variant="primary" size="sm">Contact Us</Button>
 
-            {/* My Account icon */}
             <Link
               href="/my-account"
               aria-label="My Account"
@@ -168,13 +174,7 @@ export default function Navbar() {
                 aria-hidden
                 className="absolute inset-0 rounded-full bg-[#F26B4E] opacity-0 scale-100 group-hover:scale-[1.45] group-hover:opacity-30 transition-all duration-500 ease-out"
               />
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="relative"
-              >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="relative">
                 <path
                   d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
                   fill="white"
@@ -188,21 +188,9 @@ export default function Navbar() {
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
           >
-            <span
-              className={`block w-5 h-0.5 bg-[#1a1a2e] transition-all origin-center ${
-                menuOpen ? 'rotate-45 translate-y-2' : ''
-              }`}
-            />
-            <span
-              className={`block w-5 h-0.5 bg-[#1a1a2e] transition-all ${
-                menuOpen ? 'opacity-0' : ''
-              }`}
-            />
-            <span
-              className={`block w-5 h-0.5 bg-[#1a1a2e] transition-all origin-center ${
-                menuOpen ? '-rotate-45 -translate-y-2' : ''
-              }`}
-            />
+            <span className={`block w-5 h-0.5 ${hamburgerClass} transition-all origin-center ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`block w-5 h-0.5 ${hamburgerClass} transition-all ${menuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-5 h-0.5 ${hamburgerClass} transition-all origin-center ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
           </button>
         </div>
       </div>

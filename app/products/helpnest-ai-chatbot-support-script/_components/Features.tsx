@@ -46,20 +46,52 @@ const FEATURES = [
   },
 ];
 
-function FeatureCard({ title, desc, img, large }: { title: string; desc: string; img: string; large?: boolean }) {
+function FeatureCard({
+  title,
+  desc,
+  img,
+  large = false,
+  bgColor,
+}: {
+  title: string;
+  desc: string;
+  img?: string;
+  large?: boolean;
+  bgColor?: string;
+}) {
+  const bg = bgColor ?? '#F5F6F8';
+
   return (
     <div
-      className={`rounded-2xl overflow-hidden flex flex-col ${large ? 'md:col-span-2' : ''}`}
-      style={{ background: '#F5F6F8' }}
+      className="rounded-2xl border border-[#E5E7EC] overflow-hidden flex flex-col hover:shadow-lg transition-shadow"
+      style={{ background: bg }}
     >
-      <div className="relative overflow-hidden" style={{ aspectRatio: large ? '16/7' : '4/3' }}>
-        <Image
-          src={img}
-          alt={title}
-          fill
-          className="object-cover object-top"
-          sizes={large ? '(max-width: 768px) 100vw, 66vw' : '(max-width: 768px) 100vw, 33vw'}
-        />
+      <div
+        className={`relative w-full overflow-hidden ${large ? 'h-[260px] sm:h-[300px]' : 'h-[190px] sm:h-[220px]'}`}
+        style={{ padding: '30px 30px 0 30px' }}
+      >
+        {img ? (
+          <>
+            <Image
+              src={img}
+              alt={title}
+              width={large ? 640 : 420}
+              height={large ? 300 : 220}
+              className="w-full h-full object-cover object-top rounded-t-xl"
+            />
+            <div
+              className="absolute bottom-0 left-0 w-full h-[80px] pointer-events-none"
+              style={{ background: `linear-gradient(to bottom, transparent, ${bg})` }}
+            />
+          </>
+        ) : (
+          <div className="w-full h-full flex items-center justify-center rounded-t-xl" style={{ background: bg }}>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="3" stroke={COLOR} strokeWidth="1.5" />
+              <path d="M3 15l5-5 4 4 3-3 6 6" stroke={COLOR} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+        )}
       </div>
       <div className="px-[30px] pb-[30px] pt-5">
         <h3 className={`font-bold text-[#0F1112] mb-2 ${large ? 'text-[28px]' : 'text-[24px]'}`}>{title}</h3>
@@ -70,12 +102,12 @@ function FeatureCard({ title, desc, img, large }: { title: string; desc: string;
 }
 
 export default function Features() {
-  const large = FEATURES.filter((f) => f.large);
-  const grid = FEATURES.filter((f) => !f.large);
+  const topFeatures = FEATURES.slice(0, 2);
+  const gridFeatures = FEATURES.slice(2);
 
   return (
-    <section id="features" className="py-20 lg:py-[100px]" style={{ background: '#fff' }}>
-      <div className="container-page px-4 sm:px-6 lg:px-0">
+    <section id="features" className="py-20 lg:py-[100px]" style={{ background: '#F5F6F8' }}>
+      <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1100px] mx-auto">
 
         <div className="text-center mb-12 max-w-[640px] mx-auto">
           <div
@@ -93,14 +125,19 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-          {large.map((f) => (
-            <FeatureCard key={f.title} {...f} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+          {topFeatures.map((f, i) => (
+            <FeatureCard
+              key={f.title}
+              {...f}
+              large
+              bgColor={i === 0 ? '#EFF1FE' : '#D8F5F5'}
+            />
           ))}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {grid.map((f) => (
+          {gridFeatures.map((f) => (
             <FeatureCard key={f.title} {...f} />
           ))}
         </div>

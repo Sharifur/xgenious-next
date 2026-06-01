@@ -20,7 +20,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section className="pb-20 pt-8 lg:pb-[100px] lg:pt-10 bg-white">
+    <section className="pt-16 pb-20 lg:pt-[120px] lg:pb-[100px] bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1100px] mx-auto">
 
         <div className="text-center mb-14 max-w-[600px] mx-auto">
