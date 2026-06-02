@@ -107,6 +107,7 @@ function Dropdown({
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [forceWhite, setForceWhite] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -115,7 +116,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const isDark = DARK_PAGES.some((p) => pathname?.startsWith(p));
+  useEffect(() => {
+    const check = () => setForceWhite('navWhite' in document.documentElement.dataset);
+    check();
+    const obs = new MutationObserver(check);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-nav-white'] });
+    return () => obs.disconnect();
+  }, []);
+
+  const isDark = !forceWhite && DARK_PAGES.some((p) => pathname?.startsWith(p));
   const isServicesActive = pathname?.startsWith('/services');
 
   const noSticky =

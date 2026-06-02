@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import ForceWhiteNav from '@/components/layout/ForceWhiteNav';
 
 export default function GlobalError({
   reset,
@@ -8,6 +9,8 @@ export default function GlobalError({
   reset: () => void;
 }) {
   return (
+    <>
+    <ForceWhiteNav />
     <section
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-[80px] pb-[80px]"
       style={{ background: 'linear-gradient(180deg, #f5f6ea 0%, #f3dacd 60%, #fff 100%)' }}
@@ -155,5 +158,6 @@ export default function GlobalError({
         </div>
       </div>
     </section>
+    </>
   );
 }
