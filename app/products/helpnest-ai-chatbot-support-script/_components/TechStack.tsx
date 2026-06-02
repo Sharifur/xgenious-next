@@ -32,7 +32,7 @@ export default function TechStack() {
             Production-Ready Technology
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
-            HelpNest is built on Laravel 12, PostgreSQL, and dual AI providers — OpenAI and Anthropic Claude — for maximum reliability.
+            Helpnest is built on Laravel 12, PostgreSQL, and dual AI providers — OpenAI and Anthropic Claude — for maximum reliability.
           </p>
         </div>
 

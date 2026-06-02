@@ -1,15 +1,16 @@
 import { COLOR, LIGHT_COLOR } from './constants';
+import ScrollToPricing from './ScrollToPricing';
 
 const STEPS = [
   {
     n: '01',
-    title: 'Purchase & Install',
-    desc: 'Purchase HelpNest with a one-time payment. Upload to any PHP 8.4+ VPS with PostgreSQL 14+, Redis, and Pusher. Run the guided installer and configure your domain in under 30 minutes.',
+    title: 'Install in Under 30 Minutes',
+    desc: 'Purchase Helpnest with a one-time payment. Upload to any PHP 8.4+ VPS with PostgreSQL 14+, Redis, and Pusher. Run the guided installer and configure your domain — live in under 30 minutes.',
   },
   {
     n: '02',
     title: 'Train Your AI Chatbot',
-    desc: 'Add knowledge base articles and product documentation. HelpNest uses semantic vector search — the AI learns from your content and understands customer questions in context, not just by keyword.',
+    desc: 'Add knowledge base articles and product documentation. Helpnest uses semantic vector search — the AI learns from your content and understands customer questions in context, not just by keyword.',
   },
   {
     n: '03',
@@ -35,7 +36,7 @@ export default function HowItWorks() {
             Launch Your AI Support Platform in 3 Steps
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
-            No DevOps expertise required. HelpNest installs on any standard VPS in under 30 minutes.
+            No DevOps expertise required. Helpnest installs on any standard VPS in under 30 minutes.
           </p>
         </div>
 
@@ -62,13 +63,12 @@ export default function HowItWorks() {
         </div>
 
         <div className="flex justify-center">
-          <a
-            href="#pricing"
+          <ScrollToPricing
             className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-lg"
             style={{ background: COLOR, boxShadow: `0 6px 20px ${COLOR}40` }}
           >
             See Pricing — One-Time Purchase
-          </a>
+          </ScrollToPricing>
         </div>
 
       </div>

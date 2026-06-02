@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { COLOR, REGULAR_PRICE, EXTENDED_PRICE } from './constants';
+import { COLOR, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE, CODECANYON_URL } from './constants';
 
-const ACCENT = '#7C3AED';
+const ACCENT = '#a78bfa';
 
 const REGULAR_FEATURES = [
-  { label: 'HelpNest Web Platform', ok: true },
+  { label: 'Helpnest Web Platform', ok: true },
   { label: 'Admin Panel & Analytics', ok: true },
   { label: 'AI Chatbot (OpenAI + Claude)', ok: true },
   { label: 'Support Ticketing System', ok: true },
@@ -14,18 +14,26 @@ const REGULAR_FEATURES = [
   { label: 'Stripe + PayPal Billing', ok: true },
   { label: 'Lifetime License + Updates', ok: true },
   { label: '6 Months Support', ok: true },
-  { label: 'Use as a SaaS for clients', ok: false },
-  { label: 'White-label Branding Rights', ok: false },
+  { label: 'Flutter Mobile App', ok: false },
+  { label: 'SaaS / White-label Rights', ok: false },
 ];
 
-const EXTENDED_FEATURES = [
+const BUNDLE_FEATURES = [
   { label: 'Everything in Regular License', ok: true },
+  { label: 'Flutter Mobile App (Coming Soon)', ok: true },
+  { label: 'Lifetime License + Updates', ok: true },
+  { label: '6 Months Support', ok: true },
+  { label: 'SaaS / White-label Rights', ok: false },
+];
+
+const EXCLUSIVE_FEATURES = [
+  { label: 'Everything in Bundle Pack', ok: true },
   { label: 'Build & Sell as a SaaS Business', ok: true },
   { label: 'Unlimited Client Workspaces', ok: true },
   { label: 'White-label — Remove All Branding', ok: true },
   { label: 'Source Code Modification Rights', ok: true },
+  { label: 'Priority Support — 12 Months', ok: true },
   { label: 'Lifetime License + Free Updates', ok: true },
-  { label: '6 Months Support', ok: true },
   { label: 'Cannot be resold or redistributed as-is', ok: 'note' as const },
 ];
 
@@ -33,7 +41,7 @@ function CheckIcon({ ok }: { ok: boolean | 'note' }) {
   if (ok === 'note') {
     return (
       <svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 20 20" fill="none">
-        <circle cx="10" cy="10" r="10" fill="rgba(124,58,237,0.15)" />
+        <circle cx="10" cy="10" r="10" fill="rgba(167,139,250,0.15)" />
         <path d="M10 6v4M10 13v1" stroke={ACCENT} strokeWidth="2" strokeLinecap="round" />
       </svg>
     );
@@ -64,36 +72,32 @@ export default function Pricing() {
             Simple, Honest Pricing
           </h2>
           <p className="text-[#484848] text-[15px] sm:text-[17px] leading-7">
-            One-time purchase. No monthly fees. No per-agent charges. You own the platform.
+            One-time purchase. No monthly fees. No per-agent charges. You own the platform forever.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[860px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-[1240px] mx-auto">
 
           {/* Regular License */}
           <div className="bg-white rounded-2xl border border-[#E5E7EC] p-7 flex flex-col">
             <div className="mb-6">
               <p className="text-[13px] font-semibold text-[#6b7280] uppercase tracking-widest mb-2">Regular License</p>
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-[20px] font-semibold line-through text-[#9ca3af]">$89</span>
-                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-green-100 text-green-700">
-                  34% OFF
-                </span>
-              </div>
               <div className="flex items-baseline gap-2 mb-1">
                 <span className="text-[48px] font-bold text-[#0F1112] leading-none">${REGULAR_PRICE}</span>
                 <span className="text-[15px] text-[#9ca3af]">one-time</span>
               </div>
-              <p className="text-[13px] text-[#6b7280] leading-5">Single domain. Lifetime license, no monthly fees.</p>
+              <p className="text-[13px] text-[#6b7280] leading-5">Web platform only. One-time purchase, no monthly fees.</p>
             </div>
 
             <Link
-              href="/checkout?product=helpnest-regular"
+              href={CODECANYON_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
             >
-              Get Regular License
+              Purchase on CodeCanyon
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
 
@@ -107,14 +111,82 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Extended License */}
+          {/* Everything Bundle */}
+          <div
+            className="rounded-2xl p-7 flex flex-col relative overflow-hidden"
+            style={{ background: '#0f2620', border: `2px solid ${COLOR}` }}
+          >
+            <div className="flex items-center gap-2 flex-wrap mb-6">
+              <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: COLOR, color: '#fff' }}>
+                BEST VALUE
+              </span>
+              <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#16a34a] text-white">
+                MOBILE APP
+              </span>
+            </div>
+
+            <div className="mb-5">
+              <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${COLOR}cc` }}>Everything Bundle</p>
+
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-[20px] font-semibold line-through" style={{ color: '#4b6b5a' }}>${REGULAR_PRICE + 49}</span>
+                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${COLOR}25`, color: COLOR }}>
+                  17% OFF
+                </span>
+              </div>
+
+              <div className="flex items-baseline gap-2 mb-3">
+                <span className="text-[44px] sm:text-[56px] font-bold text-white leading-none">${COMBO_PRICE}</span>
+                <span className="text-[15px] text-[#6b8a7a]">one-time</span>
+              </div>
+
+              <div className="rounded-xl p-3 flex flex-col gap-1.5" style={{ background: 'rgba(255,255,255,0.05)' }}>
+                <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: `${COLOR}99` }}>What you&apos;re getting</p>
+                {[
+                  ['Web Platform', `$${REGULAR_PRICE}`],
+                  ['Flutter Mobile App', '$49'],
+                ].map(([item, price]) => (
+                  <div key={item} className="flex items-center justify-between">
+                    <span className="text-[12px]" style={{ color: '#8aaa98' }}>{item}</span>
+                    <span className="text-[12px] font-semibold line-through" style={{ color: '#4b6b5a' }}>{price}</span>
+                  </div>
+                ))}
+                <div className="border-t mt-1 pt-1.5 flex items-center justify-between" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+                  <span className="text-[12px] font-bold text-white">Total value</span>
+                  <span className="text-[12px] font-bold" style={{ color: COLOR }}>${REGULAR_PRICE + 49} → ${COMBO_PRICE}</span>
+                </div>
+              </div>
+            </div>
+
+            <Link
+              href="/checkout?product=helpnest-everything-bundle"
+              className="flex items-center justify-center gap-2 text-white font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5"
+              style={{ background: COLOR, boxShadow: `0 8px 24px ${COLOR}55` }}
+            >
+              Get Everything Bundle — ${COMBO_PRICE}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+
+            <div className="flex flex-col gap-2.5">
+              {BUNDLE_FEATURES.map((f) => (
+                <div key={f.label} className="flex items-start gap-2.5 text-[13px]" style={{ color: f.ok ? '#d1fae5' : '#4b6b5a' }}>
+                  <CheckIcon ok={f.ok} />
+                  {f.label}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Exclusive License */}
           <div
             className="rounded-2xl p-7 flex flex-col relative overflow-hidden"
             style={{ background: '#0d0f14', border: `2px solid ${ACCENT}` }}
           >
             <div className="flex items-center gap-2 flex-wrap mb-6">
               <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: ACCENT, color: '#fff' }}>
-                BEST VALUE
+                EXCLUSIVE
               </span>
               <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#1d4ed8] text-white">
                 SAAS RIGHTS
@@ -122,7 +194,7 @@ export default function Pricing() {
             </div>
 
             <div className="mb-5">
-              <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${ACCENT}cc` }}>Extended License</p>
+              <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${ACCENT}cc` }}>Exclusive License</p>
 
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-[20px] font-semibold line-through" style={{ color: '#3d3a52' }}>$299</span>
@@ -132,12 +204,12 @@ export default function Pricing() {
               </div>
 
               <div className="flex items-baseline gap-2 mb-3">
-                <span className="text-[56px] font-bold text-white leading-none">${EXTENDED_PRICE}</span>
+                <span className="text-[44px] sm:text-[56px] font-bold text-white leading-none">${EXTENDED_PRICE}</span>
                 <span className="text-[15px]" style={{ color: '#6b6880' }}>one-time</span>
               </div>
 
-              <div className="rounded-xl p-3 flex flex-col gap-1.5" style={{ background: 'rgba(124,58,237,0.08)' }}>
-                <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: `${ACCENT}80` }}>Built to run a SaaS business</p>
+              <div className="rounded-xl p-3 flex flex-col gap-1.5" style={{ background: 'rgba(167,139,250,0.07)' }}>
+                <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: `${ACCENT}80` }}>Built for SaaS businesses</p>
                 {[
                   'Sell chatbot access to unlimited clients',
                   'White-label — remove all Xgenious branding',
@@ -146,7 +218,7 @@ export default function Pricing() {
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <svg width="12" height="12" viewBox="0 0 20 20" fill="none" className="flex-shrink-0">
-                      <circle cx="10" cy="10" r="10" fill="rgba(124,58,237,0.15)" />
+                      <circle cx="10" cy="10" r="10" fill="rgba(167,139,250,0.15)" />
                       <path d="M6 10l3 3 5-5" stroke={ACCENT} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                     <span className="text-[12px]" style={{ color: '#9d99b8' }}>{item}</span>
@@ -156,7 +228,7 @@ export default function Pricing() {
             </div>
 
             <Link
-              href="/checkout?product=helpnest-extended"
+              href="/checkout?product=helpnest-exclusive-pack"
               className="flex items-center justify-center gap-2 text-white font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: ACCENT, boxShadow: `0 8px 24px ${ACCENT}45` }}
             >
@@ -167,7 +239,7 @@ export default function Pricing() {
             </Link>
 
             <div className="flex flex-col gap-2.5">
-              {EXTENDED_FEATURES.map((f) => (
+              {EXCLUSIVE_FEATURES.map((f) => (
                 <div
                   key={f.label}
                   className="flex items-start gap-2.5 text-[13px]"

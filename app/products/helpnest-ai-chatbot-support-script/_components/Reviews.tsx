@@ -19,7 +19,7 @@ export default function Reviews() {
 
         <div className="text-center mb-12 max-w-[600px] mx-auto">
           <h2 className="text-[32px] sm:text-[44px] font-bold text-[#0F1112] leading-tight mb-4">
-            What Our Customers Say<br className="hidden sm:block" /> About HelpNest
+            What Our Customers Say<br className="hidden sm:block" /> About Helpnest
           </h2>
           <p className="text-[#484848] text-[15px] sm:text-[17px] leading-7">
             Real reviews from verified CodeCanyon buyers.

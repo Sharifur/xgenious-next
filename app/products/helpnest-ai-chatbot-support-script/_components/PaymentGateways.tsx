@@ -48,7 +48,7 @@ export default function PaymentGateways() {
       <div className="container-page px-4 sm:px-6 lg:px-0 mb-10 text-center">
         <h2 className="text-[28px] sm:text-[36px] font-bold text-[#0F1112] mb-3">20+ Payment Gateways</h2>
         <p className="text-[#6b7280] text-[15px] max-w-[560px] mx-auto leading-6">
-          Collect subscription revenue globally — Stripe, PayPal, Razorpay, Flutterwave, Mollie, Paystack, and more — built into HelpNest billing out of the box.
+          Collect subscription revenue globally — Stripe, PayPal, Razorpay, Flutterwave, Mollie, Paystack, and more — built into Helpnest billing out of the box.
         </p>
       </div>
 

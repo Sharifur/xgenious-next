@@ -1,4 +1,5 @@
 import { COLOR, LIGHT_COLOR, REGULAR_PRICE } from './constants';
+import ScrollToPricing from './ScrollToPricing';
 
 const ROWS = [
   { feature: 'Pricing model',          helpnest: `One-time $${REGULAR_PRICE}`,    crisp: 'From $45/month',    intercom: 'From $29/month',    tidio: 'From $29/month' },
@@ -19,7 +20,7 @@ const ROWS = [
 
 export default function Comparison() {
   return (
-    <section className="pt-16 pb-10 lg:pt-[120px] lg:pb-14 bg-white">
+    <section className="pb-10 lg:pb-14 bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1200px] mx-auto">
 
         <div className="text-center mb-12 max-w-[680px] mx-auto">
@@ -28,10 +29,10 @@ export default function Comparison() {
             style={{ background: LIGHT_COLOR, color: COLOR }}
           >
             <span className="w-1.5 h-1.5 rounded-full" style={{ background: COLOR }} />
-            HelpNest vs Alternatives
+            Helpnest vs Alternatives
           </div>
           <h2 className="text-[28px] sm:text-[36px] font-bold text-[#0F1112] leading-tight mb-4">
-            HelpNest vs Crisp vs Intercom vs Tidio
+            Helpnest vs Crisp vs Intercom vs Tidio
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
             Why pay $29–$45 per month forever when a one-time $59 purchase gives you full source code and no ongoing fees?
@@ -47,7 +48,7 @@ export default function Comparison() {
                 </th>
                 <th className="px-4 py-4 font-bold text-white text-center border-b border-[#E5E7EC] w-[18%]"
                   style={{ background: COLOR }}>
-                  HelpNest Script
+                  Helpnest Script
                 </th>
                 <th className="px-4 py-4 font-semibold text-[#0F1112] text-center bg-[#F8F9FB] border-b border-[#E5E7EC] w-[18%]">
                   Crisp
@@ -80,13 +81,12 @@ export default function Comparison() {
         </div>
 
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#pricing"
+          <ScrollToPricing
             className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-lg"
             style={{ background: COLOR, boxShadow: `0 6px 20px ${COLOR}40` }}
           >
             See Pricing — One-Time Purchase
-          </a>
+          </ScrollToPricing>
           <p className="text-[13px] text-[#9ca3af]">
             No monthly fees · Full source code · White-label rights
           </p>

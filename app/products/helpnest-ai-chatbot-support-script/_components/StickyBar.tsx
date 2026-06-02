@@ -23,7 +23,7 @@ export default function StickyBar() {
       <div className="container-page px-4 sm:px-6 lg:px-0 py-3 flex items-center justify-between gap-4 flex-wrap">
 
         <div className="flex items-center gap-3 min-w-0">
-          <span className="text-[15px] font-bold text-[#0F1112]">HelpNest</span>
+          <span className="text-[15px] font-bold text-[#0F1112]">Helpnest</span>
           <div className="flex items-center gap-1.5">
             <div className="flex items-center gap-0.5">
               {Array.from({ length: 5 }).map((_, i) => (
@@ -32,7 +32,7 @@ export default function StickyBar() {
                 </svg>
               ))}
             </div>
-            <span className="text-[12px] text-[#6b7280]">4.80 · Verified CodeCanyon buyers</span>
+            <span className="hidden sm:inline text-[12px] text-[#6b7280]">4.80 · Verified CodeCanyon buyers</span>
           </div>
         </div>
 
@@ -51,7 +51,7 @@ export default function StickyBar() {
             className="inline-flex items-center gap-2 text-white font-semibold text-[13px] rounded-full px-5 py-2.5 transition-all hover:opacity-90 cursor-pointer"
             style={{ background: COLOR }}
           >
-            {`Get HelpNest — from $${REGULAR_PRICE}`}
+            {`Get Helpnest — from $${REGULAR_PRICE}`}
           </a>
         </div>
 

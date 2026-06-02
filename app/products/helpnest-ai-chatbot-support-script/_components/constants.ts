@@ -4,7 +4,9 @@ export const BASE_URL = 'https://xgenious.com';
 export const CANONICAL = `${BASE_URL}/products/helpnest-ai-chatbot-support-script`;
 export const DEMO_URL = 'https://helpnest.xgenious.com/';
 export const DOCS_URL = 'https://docs.xgenious.com/docs/helpnest/';
+export const CODECANYON_URL = 'https://codecanyon.net/item/helpnest-ai-powered-chatbot-and-support-ticketing-system-saas/60825518';
 export const REGULAR_PRICE = 59;
+export const COMBO_PRICE = 89;
 export const EXTENDED_PRICE = 199;
 
 export const REVIEWS = [

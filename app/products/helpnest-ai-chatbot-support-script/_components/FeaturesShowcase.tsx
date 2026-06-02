@@ -12,6 +12,7 @@ const ITEMS = [
       'Role-based access control for team members',
     ],
     img: '/products/helpnest-feature-ai.jpg',
+    imgBg: '#F9EEF6',
     reverse: false,
   },
   {
@@ -24,6 +25,7 @@ const ITEMS = [
       'Role-based access control for team members',
     ],
     img: '/products/helpnest-feature-tickets.jpg',
+    imgBg: '#D8F5F5',
     reverse: true,
   },
   {
@@ -35,7 +37,8 @@ const ITEMS = [
       'Global settings and platform customisation',
       'Role-based access control for team members',
     ],
-    img: '/products/helpnest-feature-billing.jpg',
+    img: '/products/helpnest-feature-admin.png',
+    imgBg: '#EAE9EF',
     reverse: false,
   },
   {
@@ -47,7 +50,8 @@ const ITEMS = [
       'Flexible plan creation and platform customisation',
       'Role-based access control for team members',
     ],
-    img: '/products/helpnest-feature-kb.jpg',
+    img: '/products/helpnest-feature-client.jpg',
+    imgBg: '#F6F4EF',
     reverse: true,
   },
 ];
@@ -63,7 +67,7 @@ function Check() {
 
 export default function FeaturesShowcase() {
   return (
-    <section className="py-16 lg:py-[100px]" style={{ background: '#F5F6F8' }}>
+    <section className="py-16 lg:py-[100px] bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1100px] mx-auto">
 
         <div className="text-center mb-16 max-w-[600px] mx-auto">
@@ -86,7 +90,8 @@ export default function FeaturesShowcase() {
           {ITEMS.map((item) => (
             <div
               key={item.title}
-              className={`flex flex-col ${item.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-10`}
+              className={`flex flex-col ${item.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-8 lg:gap-10 rounded-2xl p-4 sm:p-6 lg:p-[30px]`}
+              style={{ background: '#F5F6F8' }}
             >
               <div className="flex-1 flex flex-col gap-5">
                 <h3 className="text-[22px] sm:text-[26px] font-bold text-[#0F1112] leading-tight">{item.title}</h3>
@@ -100,13 +105,16 @@ export default function FeaturesShowcase() {
                   ))}
                 </ul>
               </div>
-              <div className="flex-1 w-full rounded-2xl overflow-hidden border border-[#E5E7EC] shadow-sm">
+              <div
+                className="flex-1 w-full rounded-2xl overflow-hidden border border-[#E5E7EC] shadow-sm flex items-center justify-center"
+                style={item.imgBg ? { background: item.imgBg, padding: '30px' } : {}}
+              >
                 <Image
                   src={item.img}
                   alt={item.title}
                   width={520}
                   height={340}
-                  className="w-full object-cover object-top"
+                  className="w-full object-cover object-top rounded-xl"
                 />
               </div>
             </div>

@@ -30,6 +30,20 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'Full source code rights, remove any branding, commercial use across unlimited projects.',
     accent: '#a78bfa',
   },
+  'helpnest-regular': {
+    path: 'helpnest-exclusive-pack',
+    name: 'Exclusive License',
+    delta: 140,
+    pitch: 'SaaS rights, white-label, source code modification — build and sell to unlimited clients.',
+    accent: '#4F46E5',
+  },
+  'helpnest-everything-bundle': {
+    path: 'helpnest-exclusive-pack',
+    name: 'Exclusive License',
+    delta: 110,
+    pitch: 'SaaS rights, white-label, source code modification — build and sell to unlimited clients.',
+    accent: '#4F46E5',
+  },
 };
 
 function CheckIcon() {

@@ -39,6 +39,16 @@
       "source": "/our-products/laravel-ai-chatbot-support-script/",
       "destination": "/products/helpnest-ai-chatbot-support-script",
       "permanent": true
+    },
+    {
+      "source": "/our-products/helpnest-ai-chatbot-support-script",
+      "destination": "/products/helpnest-ai-chatbot-support-script",
+      "permanent": true
+    },
+    {
+      "source": "/our-products/helpnest-ai-chatbot-support-script/",
+      "destination": "/products/helpnest-ai-chatbot-support-script",
+      "permanent": true
     }
   ],
   "rewrites": [

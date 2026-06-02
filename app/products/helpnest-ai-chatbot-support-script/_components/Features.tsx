@@ -4,7 +4,7 @@ import { COLOR, LIGHT_COLOR } from './constants';
 const FEATURES = [
   {
     title: 'AI That Understands — Not Just Matches',
-    desc: 'HelpNest uses semantic vector similarity search powered by OpenAI and Anthropic Claude. The chatbot understands intent and context, not just keywords — resolving queries your FAQ never could.',
+    desc: 'Helpnest uses semantic vector similarity search powered by OpenAI and Anthropic Claude. The chatbot understands intent and context, not just keywords — resolving queries your FAQ never could.',
     img: '/products/helpnest-feature-ai.jpg',
     large: true,
   },
@@ -18,31 +18,37 @@ const FEATURES = [
     title: 'Full Ticketing System Built In',
     desc: 'Ticket routing, priority management, SLA tracking, and team collaboration — everything a real help desk needs.',
     img: '/products/helpnest-feature-tickets.jpg',
+    bgColor: '#FDF4EF',
   },
   {
     title: 'Knowledge Base Your AI Learns From',
     desc: 'Create searchable documentation for customers and your AI simultaneously. Train the chatbot on your own product content.',
-    img: '/products/helpnest-feature-kb.jpg',
+    img: '/products/helpnest-feature-client.jpg',
+    bgColor: '#F9EEF6',
   },
   {
     title: 'Widget Embeds in 2 Lines of Code',
     desc: 'Lightweight chat widget via CDN or npm. Copy, paste, done. Fully customisable — colours, position, triggers, and branding.',
     img: '/products/helpnest-feature-widget.jpg',
+    bgColor: '#F6F4EF',
   },
   {
     title: 'Subscription Billing Already Wired',
     desc: 'Stripe and PayPal recurring billing, plan limits, invoices — ready to run your own SaaS chatbot business out of the box.',
-    img: '/products/helpnest-feature-billing.jpg',
+    img: '/products/helpnest-feature-admin.png',
+    bgColor: '#EDF7F0',
   },
   {
     title: 'Multi-Tenant From Day One',
     desc: 'Each client gets their own isolated workspace with separate knowledge bases, agents, and billing. True SaaS architecture.',
     img: '/products/helpnest-feature-multitenant.jpg',
+    bgColor: '#FFF4E6',
   },
   {
     title: 'Unified Inbox for All Conversations',
     desc: 'Tickets, live chats, and email threads in one place. Assign to agents, add internal notes, and track SLA breaches.',
     img: '/products/helpnest-feature-inbox.jpg',
+    bgColor: '#EEF2FF',
   },
 ];
 
@@ -67,8 +73,8 @@ function FeatureCard({
       style={{ background: bg }}
     >
       <div
-        className={`relative w-full overflow-hidden ${large ? 'h-[260px] sm:h-[300px]' : 'h-[190px] sm:h-[220px]'}`}
-        style={{ padding: '30px 30px 0 30px' }}
+        className={`relative w-full overflow-hidden ${large ? 'h-[200px] sm:h-[260px] lg:h-[300px]' : 'h-[160px] sm:h-[190px] lg:h-[220px]'}`}
+        style={{ padding: '16px 16px 0 16px' }}
       >
         {img ? (
           <>
@@ -93,9 +99,9 @@ function FeatureCard({
           </div>
         )}
       </div>
-      <div className="px-[30px] pb-[30px] pt-5">
-        <h3 className={`font-bold text-[#0F1112] mb-2 ${large ? 'text-[28px]' : 'text-[24px]'}`}>{title}</h3>
-        <p className="text-[16px] text-[#6b7280] leading-6">{desc}</p>
+      <div className="px-4 pb-4 sm:px-6 sm:pb-6 pt-4">
+        <h3 className={`font-bold text-[#0F1112] mb-2 ${large ? 'text-[20px] sm:text-[24px] lg:text-[28px]' : 'text-[17px] sm:text-[20px] lg:text-[22px]'}`}>{title}</h3>
+        <p className="text-[13px] sm:text-[14px] lg:text-[15px] text-[#6b7280] leading-6">{desc}</p>
       </div>
     </div>
   );
@@ -121,7 +127,7 @@ export default function Features() {
             Everything You Need to Run an AI Support Business
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
-            From AI chatbot training to subscription billing — HelpNest ships every module your SaaS platform needs. No monthly fees, no hidden add-ons.
+            From AI chatbot training to subscription billing — Helpnest ships every module your SaaS platform needs. No monthly fees, no hidden add-ons.
           </p>
         </div>
 
