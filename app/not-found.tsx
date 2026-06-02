@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import ForceWhiteNav from '@/components/layout/ForceWhiteNav';
 
 export const metadata: Metadata = {
   title: '404 — Page Not Found',
@@ -7,6 +8,8 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
+    <>
+    <ForceWhiteNav />
     <section
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-[80px] pb-[80px]"
       style={{ background: 'linear-gradient(180deg, #f5f6ea 0%, #f3dacd 60%, #fff 100%)' }}
@@ -156,5 +159,6 @@ export default function NotFound() {
         </div>
       </div>
     </section>
+    </>
   );
 }

@@ -67,12 +67,17 @@ export default function Hero() {
 
       {/* Center screenshot */}
       <div className="mt-[80px] container-page px-4 sm:px-6 lg:px-0 max-w-[1200px] mx-auto">
-        <div className="rounded-t-2xl overflow-hidden shadow-2xl">
+        <div
+          className="rounded-t-2xl overflow-hidden"
+          style={{
+            boxShadow: '0 0 0 1px rgba(88,107,241,0.08), 0 8px 32px rgba(88,107,241,0.12), 0 32px 80px rgba(88,107,241,0.20)',
+          }}
+        >
           <Image
-            src="/products/fundorex-hero-center.jpg"
-            alt="Fundorex crowdfunding platform — web and mobile preview"
-            width={1200}
-            height={720}
+            src="/products/fundorex-hero-center.png"
+            alt="Fundorex crowdfunding platform dashboard"
+            width={948}
+            height={474}
             className="w-full object-cover object-top"
             priority
           />

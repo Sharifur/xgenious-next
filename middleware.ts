@@ -31,6 +31,7 @@ const NEXT_ROUTES = new Set([
   'reset-password',
   'verify-email',
   'privacy-policy',
+  'products',
   'refund-policy',
   'register',
   'saas-mvp-development',
