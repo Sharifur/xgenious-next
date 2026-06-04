@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { COLOR } from './constants';
+import { COLOR, REGULAR_PRICE, EXTENDED_PRICE } from './constants';
 
 const FAQS = [
   {
@@ -11,11 +11,11 @@ const FAQS = [
   },
   {
     q: 'What is included with the Regular License?',
-    a: 'The Regular License ($59) includes the client Flutter mobile app, provider Flutter mobile app, web frontend, and Laravel admin panel. It covers a single project deployment — one domain — with a lifetime license, 6 months of technical support, lifetime free updates, and free cPanel installation. You cannot charge end users or resell the platform under the Regular License.',
+    a: `The Regular License ($${REGULAR_PRICE}) includes the client Flutter mobile app, provider Flutter mobile app, web frontend, and Laravel admin panel. It covers a single project deployment — one domain — with a lifetime license, 6 months of technical support, lifetime free updates, and free cPanel installation. You cannot charge end users or resell the platform under the Regular License.`,
   },
   {
     q: 'What does the Extended License allow?',
-    a: 'The Extended License ($169) includes everything in the Regular License plus commercial SaaS rights — you can build your own branded service marketplace, charge clients for bookings, white-label the platform by removing all Xgenious branding, and modify the source code freely. It cannot be resold or redistributed as-is.',
+    a: `The Extended License ($${EXTENDED_PRICE}) includes everything in the Regular License plus commercial SaaS rights — you can build your own branded service marketplace, charge clients for bookings, white-label the platform by removing all Xgenious branding, and modify the source code freely. It cannot be resold or redistributed as-is.`,
   },
   {
     q: 'Does Prohandy include Flutter mobile apps?',

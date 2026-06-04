@@ -2,7 +2,7 @@ import { COLOR, LIGHT_COLOR, REGULAR_PRICE } from './constants';
 import ScrollToPricing from './ScrollToPricing';
 
 const ROWS = [
-  { feature: 'Pricing model',         prohandy: 'One-time $59',           taskrabbit: '$29–$99/mo',        urbancompany: 'Enterprise quote',  handy: '$29/mo per provider' },
+  { feature: 'Pricing model',         prohandy: `One-time $${REGULAR_PRICE}`,  taskrabbit: '$29–$99/mo',        urbancompany: 'Enterprise quote',  handy: '$29/mo per provider' },
   { feature: 'Source code ownership', prohandy: 'Full source code',       taskrabbit: 'None (SaaS)',        urbancompany: 'None (SaaS)',        handy: 'None (SaaS)' },
   { feature: 'Self-hosted',           prohandy: 'Yes — your server',      taskrabbit: 'No',                 urbancompany: 'No',                 handy: 'No' },
   { feature: 'White-label rights',    prohandy: 'Extended license',       taskrabbit: 'No',                 urbancompany: 'No',                 handy: 'No' },
@@ -57,7 +57,7 @@ export default function Comparison() {
             Why Build With Prohandy Instead of SaaS Platforms?
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
-            TaskRabbit, UrbanClap, and Handy charge monthly fees indefinitely and give you no source code. Prohandy is a one-time $59 purchase — full ownership, self-hosted, white-label rights.
+            TaskRabbit, UrbanClap, and Handy charge monthly fees indefinitely and give you no source code. Prohandy is a one-time ${REGULAR_PRICE} purchase — full ownership, self-hosted, white-label rights.
           </p>
         </div>
 

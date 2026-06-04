@@ -20,13 +20,13 @@ import FAQ from './_components/FAQ';
 export const metadata: Metadata = {
   title: 'Prohandy — On-Demand Home Service Marketplace Script',
   description:
-    'Laravel + Flutter script to build your own on-demand home service marketplace. Dual-sided platform for clients and providers — cart booking, job posting, live chat, Google Maps, 20+ payment gateways. From $59.',
+    'Laravel + Flutter script to build your own on-demand home service marketplace. Dual-sided platform for clients and providers — cart booking, job posting, live chat, Google Maps, 20+ payment gateways. From $39.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Prohandy — On-Demand Home Service Marketplace Platform | Xgenious',
     description:
-      'Build your own Uber for home services. Laravel + Flutter marketplace script with cart booking, job posting, real-time chat, Google Maps, and 20+ payment gateways. One-time $59 purchase.',
+      'Build your own Uber for home services. Laravel + Flutter marketplace script with cart booking, job posting, real-time chat, Google Maps, and 20+ payment gateways. One-time $39 purchase.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/products/prohandy-hero.png', width: 1200, height: 630, alt: 'Prohandy On-Demand Home Service Marketplace Platform' }],
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Prohandy — Home Service Marketplace Script',
-    description: 'Laravel + Flutter marketplace. Cart booking, job posting, live chat, Google Maps, 20+ gateways. One-time $59.',
+    description: 'Laravel + Flutter marketplace. Cart booking, job posting, live chat, Google Maps, 20+ gateways. One-time $39.',
     images: ['/products/prohandy-hero.png'],
   },
   keywords: [
