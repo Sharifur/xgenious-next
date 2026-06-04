@@ -46,13 +46,13 @@ export default function ScreenshotGallery({ screenshots, demoUrl }: Props) {
             onClick={() => setActive(i)}
             className="group text-left rounded-2xl border border-[#E5E7EC] overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_6px_24px_rgba(79,70,229,0.12)] hover:border-[#c7d2fe] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4f46e5]"
           >
-            <div className="relative overflow-hidden bg-[#f8f9fc]">
+            <div className="relative overflow-hidden bg-[#f8f9fc] h-[220px]">
               <Image
                 src={shot.src}
                 alt={shot.alt}
-                width={720}
-                height={450}
-                className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
               />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#0f111220]">
                 <span className="inline-flex items-center gap-1.5 bg-white text-[#0F1112] text-[12px] font-semibold px-4 py-2 rounded-full shadow-lg">

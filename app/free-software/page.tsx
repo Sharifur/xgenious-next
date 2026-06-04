@@ -124,6 +124,36 @@ const PRODUCTS = [
       'REST API + 2FA + Docker',
     ],
   },
+  {
+    id: 'genius-support',
+    href: '/free-software/genius-support',
+    name: 'Genius Support',
+    tagline: 'Free Self-Hosted Support Portal — Laravel · Reverb WebSocket',
+    description:
+      'A complete support portal with ticketing, customer portal, agent dashboard, knowledge base, and email-to-ticket automation via IMAP. Real-time updates using Laravel Reverb — no Pusher required. MIT licensed.',
+    badge: 'Laravel · PHP 8.2+ · MIT',
+    stats: [
+      { label: 'Modules', value: '6' },
+      { label: 'Roles', value: '3' },
+      { label: 'License', value: 'MIT' },
+      { label: 'Free Forever', value: '' },
+    ],
+    color: '#0284c7',
+    lightColor: '#e0f2fe',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      </svg>
+    ),
+    highlights: [
+      'Customer portal — submit, track, and rate tickets',
+      'Agent dashboard — queue, replies, internal notes, bulk actions',
+      'Email-to-ticket via IMAP — any inbox becomes a support queue',
+      'Knowledge base — self-service articles reduce ticket volume',
+      'Real-time WebSocket updates via Laravel Reverb (no Pusher)',
+      'Admin panel — departments, branding, templates, analytics',
+    ],
+  },
 ];
 
 export default function FreeSoftwarePage() {
@@ -163,7 +193,7 @@ export default function FreeSoftwarePage() {
       <section className="py-16 sm:py-20 lg:py-[100px] bg-white">
         <div className="container-page px-4 sm:px-6 lg:px-0">
           <p className="text-[13px] font-medium text-[#6b7280] uppercase tracking-wider mb-10 text-center">
-            3 Free Products Available
+            4 Free Products Available
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {PRODUCTS.map((product) => (
