@@ -18,7 +18,7 @@ export const productsDropdown: DropdownItem[] = [
   { label: 'Nexelit', description: 'Multipurpose Website CMS', href: 'https://xgenious.com/our-products/nexelit-multipurpose-website-business-management-system-cms/' },
   { label: 'Fundorex', description: 'Crowdfunding Platform', href: '/products/fundorex-crowdfunding-platform' },
   { label: 'Xilancer', description: 'Freelancer Marketplace Platform', href: '/products/xilancer-freelancer-marketplace-script' },
-  { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', href: 'https://xgenious.com/our-products/prohandy-on-demand-home-service-marketplace-platform' },
+  { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', href: '/products/prohandy-on-demand-home-service-marketplace' },
 ];
 
 export const freeSoftwareDropdown: DropdownItem[] = [

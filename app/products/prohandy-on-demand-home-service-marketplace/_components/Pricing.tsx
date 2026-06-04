@@ -1,37 +1,40 @@
 import Link from 'next/link';
-import { COLOR, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE } from './constants';
+import { COLOR, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE, CODECANYON_URL } from './constants';
 
 const ACCENT = '#a78bfa';
 
 const REGULAR_FEATURES = [
-  { label: 'Fundorex Web Platform', ok: true },
-  { label: 'Admin Panel & Analytics', ok: true },
-  { label: 'All Platform Features', ok: true },
-  { label: '20+ Payment Gateways', ok: true },
-  { label: 'Event Ticketing Module', ok: true },
-  { label: 'Lifetime License + Updates', ok: true },
+  { label: 'Web Frontend', ok: true },
+  { label: 'Laravel Admin Panel', ok: true },
+  { label: 'Cart-Based Service Booking', ok: true },
+  { label: 'Job Posting and Hiring Flow', ok: true },
+  { label: 'Real-Time Live Chat', ok: true },
+  { label: 'Google Maps Integration', ok: true },
+  { label: '19 Payment Gateways', ok: true },
+  { label: 'Lifetime License + Free Updates', ok: true },
   { label: '6 Months Support', ok: true },
-  { label: 'Flutter Mobile App', ok: false },
-  { label: 'Source Code Modification Rights', ok: false },
+  { label: 'Client Flutter Mobile App', ok: false },
+  { label: 'Provider Flutter Mobile App', ok: false },
+  { label: 'WhatsApp Order Plugin', ok: false },
+  { label: 'SaaS / White-label Rights', ok: false },
 ];
 
 const BUNDLE_FEATURES = [
-  { label: 'Fundorex Web Platform', ok: true },
-  { label: 'Admin Panel & Analytics', ok: true },
-  { label: 'All Platform Features', ok: true },
-  { label: '20+ Payment Gateways', ok: true },
-  { label: 'Event Ticketing Module', ok: true },
-  { label: 'Lifetime License + Updates', ok: true },
+  { label: 'Everything in Regular License', ok: true },
+  { label: 'Client Flutter Mobile App', ok: true },
+  { label: 'Provider Flutter Mobile App', ok: true },
+  { label: 'WhatsApp Order Plugin', ok: true },
+  { label: 'Lifetime License + Free Updates', ok: true },
   { label: '6 Months Support', ok: true },
-  { label: 'Flutter Mobile App', ok: true },
-  { label: 'Source Code Modification Rights', ok: false },
+  { label: 'SaaS / White-label Rights', ok: false },
 ];
 
 const EXCLUSIVE_FEATURES = [
-  { label: 'Everything in Bundle Pack', ok: true },
-  { label: 'Full Source Code Modification Rights', ok: true },
-  { label: 'Remove / Replace Any Branding', ok: true },
-  { label: 'Commercial Use — Unlimited Projects', ok: true },
+  { label: 'Everything in Everything Bundle', ok: true },
+  { label: 'Build & Sell as a SaaS Business', ok: true },
+  { label: 'Unlimited Service Marketplaces', ok: true },
+  { label: 'White-label — Remove All Branding', ok: true },
+  { label: 'Source Code Modification Rights', ok: true },
   { label: 'Priority Support — 12 Months', ok: true },
   { label: 'Lifetime License + Free Updates', ok: true },
   { label: 'Cannot be resold or redistributed as-is', ok: 'note' as const },
@@ -72,7 +75,7 @@ export default function Pricing() {
             Simple, Honest Pricing
           </h2>
           <p className="text-[#484848] text-[15px] sm:text-[17px] leading-7">
-            One-time purchase. No monthly fees. No platform commission. You keep 100% of what your campaigns raise.
+            One-time purchase. No monthly fees. Full source code. You own the platform forever.
           </p>
         </div>
 
@@ -86,16 +89,18 @@ export default function Pricing() {
                 <span className="text-[48px] font-bold text-[#0F1112] leading-none">${REGULAR_PRICE}</span>
                 <span className="text-[15px] text-[#9ca3af]">one-time</span>
               </div>
-              <p className="text-[13px] text-[#6b7280] leading-5">Web platform only. One-time purchase, no monthly fees.</p>
+              <p className="text-[13px] text-[#6b7280] leading-5">Full platform. Client + provider apps included. Single project, no monthly fees.</p>
             </div>
 
             <Link
-              href="https://codecanyon.net/item/fundorex-crowdfunding-platform/33286096"
+              href={CODECANYON_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
             >
-              Get Regular License
+              Purchase on CodeCanyon
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
 
@@ -119,7 +124,7 @@ export default function Pricing() {
                 BEST VALUE
               </span>
               <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#16a34a] text-white">
-                MOBILE APP
+                WHATSAPP
               </span>
             </div>
 
@@ -127,22 +132,24 @@ export default function Pricing() {
               <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${COLOR}cc` }}>Everything Bundle</p>
 
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[20px] font-semibold line-through" style={{ color: '#4b6b5a' }}>$118</span>
+                <span className="text-[20px] font-semibold line-through" style={{ color: '#4b6b5a' }}>$166</span>
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${COLOR}25`, color: COLOR }}>
-                  33% OFF
+                  58% OFF
                 </span>
               </div>
 
               <div className="flex items-baseline gap-2 mb-3">
-                <span className="text-[56px] font-bold text-white leading-none">${COMBO_PRICE}</span>
+                <span className="text-[44px] sm:text-[56px] font-bold text-white leading-none">${COMBO_PRICE}</span>
                 <span className="text-[15px] text-[#6b8a7a]">one-time</span>
               </div>
 
               <div className="rounded-xl p-3 flex flex-col gap-1.5" style={{ background: 'rgba(255,255,255,0.05)' }}>
                 <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: `${COLOR}99` }}>What you&apos;re getting</p>
                 {[
-                  ['Web Platform', `$${REGULAR_PRICE}`],
-                  ['Flutter Mobile App', '$49'],
+                  ['Web Platform (Regular)', `$${REGULAR_PRICE}`],
+                  ['Client Flutter App', '$49'],
+                  ['Provider Flutter App', '$49'],
+                  ['WhatsApp Order Plugin', '$29'],
                 ].map(([item, price]) => (
                   <div key={item} className="flex items-center justify-between">
                     <span className="text-[12px]" style={{ color: '#8aaa98' }}>{item}</span>
@@ -151,17 +158,17 @@ export default function Pricing() {
                 ))}
                 <div className="border-t mt-1 pt-1.5 flex items-center justify-between" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
                   <span className="text-[12px] font-bold text-white">Total value</span>
-                  <span className="text-[12px] font-bold" style={{ color: COLOR }}>${REGULAR_PRICE + 49} → ${COMBO_PRICE}</span>
+                  <span className="text-[12px] font-bold" style={{ color: COLOR }}>$166 → ${COMBO_PRICE}</span>
                 </div>
               </div>
             </div>
 
             <Link
-              href="/checkout?product=fundorex-bundle-pack"
+              href="/checkout?product=prohandy-everything-bundle"
               className="flex items-center justify-center gap-2 text-white font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: COLOR, boxShadow: `0 8px 24px ${COLOR}55` }}
             >
-              Get Everything — ${COMBO_PRICE} one-time
+              Get Everything Bundle — ${COMBO_PRICE}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -177,42 +184,42 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Extended License */}
+          {/* Exclusive License */}
           <div
             className="rounded-2xl p-7 flex flex-col relative overflow-hidden"
             style={{ background: '#0d0f14', border: `2px solid ${ACCENT}` }}
           >
             <div className="flex items-center gap-2 flex-wrap mb-6">
               <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: ACCENT, color: '#fff' }}>
-                EXTENDED
+                EXCLUSIVE
               </span>
               <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#1d4ed8] text-white">
-                FOR BUSINESS
+                SAAS RIGHTS
               </span>
             </div>
 
             <div className="mb-5">
-              <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${ACCENT}cc` }}>Extended License</p>
+              <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${ACCENT}cc` }}>Exclusive License</p>
 
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-[20px] font-semibold line-through" style={{ color: '#3d3a52' }}>$299</span>
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${ACCENT}25`, color: ACCENT }}>
-                  33% OFF
+                  50% OFF
                 </span>
               </div>
 
               <div className="flex items-baseline gap-2 mb-3">
-                <span className="text-[56px] font-bold text-white leading-none">${EXTENDED_PRICE}</span>
+                <span className="text-[44px] sm:text-[56px] font-bold text-white leading-none">${EXTENDED_PRICE}</span>
                 <span className="text-[15px]" style={{ color: '#6b6880' }}>one-time</span>
               </div>
 
               <div className="rounded-xl p-3 flex flex-col gap-1.5" style={{ background: 'rgba(167,139,250,0.07)' }}>
-                <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: `${ACCENT}80` }}>Built for organisations</p>
+                <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: `${ACCENT}80` }}>Built for SaaS businesses</p>
                 {[
+                  'Sell booking access to unlimited clients',
+                  'White-label — remove all Xgenious branding',
                   'Modify source code freely',
-                  'Remove or replace all branding',
-                  'Commercial use — unlimited projects',
-                  'Priority support — 12 months',
+                  'Launch multiple service marketplaces',
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <svg width="12" height="12" viewBox="0 0 20 20" fill="none" className="flex-shrink-0">
@@ -226,11 +233,11 @@ export default function Pricing() {
             </div>
 
             <Link
-              href="/checkout?product=fundorex-exclusive-pack"
+              href="/checkout?product=prohandy-exclusive-pack"
               className="flex items-center justify-center gap-2 text-white font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: ACCENT, boxShadow: `0 8px 24px ${ACCENT}45` }}
             >
-              Get Extended — ${EXTENDED_PRICE}
+              Get Exclusive — ${EXTENDED_PRICE}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

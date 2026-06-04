@@ -44,6 +44,13 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'SaaS rights, white-label, source code modification — build and sell to unlimited clients.',
     accent: '#4F46E5',
   },
+  'prohandy-everything-bundle': {
+    path: 'prohandy-exclusive-pack',
+    name: 'Exclusive License',
+    delta: 80,
+    pitch: 'SaaS rights, white-label, source code modification — launch unlimited service marketplaces.',
+    accent: '#059669',
+  },
 };
 
 function CheckIcon() {
