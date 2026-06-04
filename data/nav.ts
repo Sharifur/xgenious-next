@@ -18,13 +18,14 @@ export const productsDropdown: DropdownItem[] = [
   { label: 'Nexelit', description: 'Multipurpose Website CMS', href: 'https://xgenious.com/our-products/nexelit-multipurpose-website-business-management-system-cms/' },
   { label: 'Fundorex', description: 'Crowdfunding Platform', href: '/products/fundorex-crowdfunding-platform' },
   { label: 'Xilancer', description: 'Freelancer Marketplace Platform', href: '/products/xilancer-freelancer-marketplace-script' },
-  { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', href: 'https://xgenious.com/our-products/prohandy-on-demand-home-service-marketplace-platform' },
+  { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', href: '/products/prohandy-on-demand-home-service-marketplace' },
 ];
 
 export const freeSoftwareDropdown: DropdownItem[] = [
   { label: 'Genius School Management', description: 'Free school ERP — Laravel 11 + React 18', href: '/free-software/genius-school-management' },
   { label: 'Genius CRM', description: 'Free self-hosted CRM — Laravel 12 + React 19', href: '/free-software/genius-crm' },
   { label: 'Genius HRM', description: 'Free HR management system — Laravel + React', href: '/free-software/genius-hrm' },
+  { label: 'Genius Support', description: 'Free self-hosted support portal — Laravel + Reverb', href: '/free-software/genius-support' },
 ];
 
 export const freeToolsLink = { label: 'Free Tools', href: '/free-tools' };
