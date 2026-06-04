@@ -8,7 +8,7 @@ export default function JsonLd() {
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web, Android',
     description:
-      'Prohandy is a Laravel and Flutter script for building an on-demand home service marketplace. Features dual-sided marketplace for clients and service providers, cart-based booking, job posting and hiring flow, real-time live chat, Google Maps integration, push notifications, and 20+ payment gateways. One-time purchase from $59.',
+      `Prohandy is a Laravel and Flutter script for building an on-demand home service marketplace. Features dual-sided marketplace for clients and service providers, cart-based booking, job posting and hiring flow, real-time live chat, Google Maps integration, push notifications, and 20+ payment gateways. One-time purchase from $${REGULAR_PRICE}.`,
     url: CANONICAL,
     author: { '@type': 'Organization', name: 'Xgenious', url: 'https://xgenious.com' },
     offers: [
@@ -72,7 +72,7 @@ export default function JsonLd() {
         name: 'What is Prohandy?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Prohandy is a complete Laravel and Flutter script for building an on-demand home service marketplace. It connects clients with service providers through cart-based booking, job posting, real-time live chat, Google Maps integration, push notifications, and 20+ payment gateways. Flutter mobile apps for both clients and providers are included. One-time purchase from $59.',
+          text: `Prohandy is a complete Laravel and Flutter script for building an on-demand home service marketplace. It connects clients with service providers through cart-based booking, job posting, real-time live chat, Google Maps integration, push notifications, and 20+ payment gateways. Flutter mobile apps for both clients and providers are included. One-time purchase from $${REGULAR_PRICE}.`,
         },
       },
       {
@@ -80,7 +80,7 @@ export default function JsonLd() {
         name: 'Does Prohandy include mobile apps?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes. Both the client Flutter app and provider Flutter app are included with every Prohandy license — Regular ($59) and Extended ($169). No extra charge. Both apps are available on Android via Google Play.',
+          text: `Yes. Both the client Flutter app and provider Flutter app are included with every Prohandy license — Regular ($${REGULAR_PRICE}) and Extended ($${EXTENDED_PRICE}). No extra charge. Both apps are available on Android via Google Play.`,
         },
       },
       {
@@ -120,7 +120,7 @@ export default function JsonLd() {
         name: 'What is the difference between Regular and Extended license?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'The Regular License ($59) is for a single project deployment — one domain, personal or commercial use, but you cannot charge end users for the platform itself. The Extended License ($169) grants SaaS rights — you can build your own branded marketplace, charge clients, white-label by removing all Xgenious branding, and modify the source code freely.',
+          text: `The Regular License ($${REGULAR_PRICE}) is for a single project deployment — one domain, personal or commercial use, but you cannot charge end users for the platform itself. The Extended License ($${EXTENDED_PRICE}) grants SaaS rights — you can build your own branded marketplace, charge clients, white-label by removing all Xgenious branding, and modify the source code freely.`,
         },
       },
       {
