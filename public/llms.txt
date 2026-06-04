@@ -48,6 +48,17 @@ Complete self-hosted freelancer marketplace script. Build a Fiverr or Upwork clo
 - Includes: Gig marketplace, project bidding, escrow payments, real-time chat, native Android/iOS apps, admin panel, multi-language + RTL support
 - Keywords: freelancing platform script, fiverr clone script, upwork clone laravel, laravel freelancer marketplace
 
+### Prohandy — On-Demand Service Marketplace Platform
+Complete self-hosted on-demand service marketplace. Build a TaskRabbit, UrbanClap, or Handy clone. Works for any service vertical: home services, beauty, automotive, pet care, fitness, events, home improvement, personal assistance. One-time purchase, no monthly fees, full source code.
+- Product page: https://xgenious.com/products/prohandy-on-demand-home-service-marketplace
+- Demo: https://prohandy.xgenious.com
+- Purchase: https://codecanyon.net/item/prohandy-on-demand-home-service-marketplace-platform/55091770
+- Stack: Laravel 12, Flutter 3.32, MySQL, Google Maps, Firebase push notifications
+- Rating: 5.0/5 on CodeCanyon · 6 reviews · 73+ sales
+- Pricing: Regular $39 (one-time) · Extended $149 (one-time, SaaS rights)
+- Includes: Client Flutter app, Provider Flutter app, Laravel admin panel, real-time live chat, cart-based booking, job posting + hiring flow, identity verification, coupon system, provider wallet + withdrawals, 19 payment gateways (PayPal, Stripe, Razorpay, Paystack, Flutterwave, Mollie, Midtrans, Cashfree, Instamojo, Mercado Pago, Zitopay, Square, CinetPay, PayTabs, Billplz, Toyyibpay, PayFast, Paytm, Manual), social login (Google, Facebook, Apple), multilingual, dark/light theme
+- Keywords: on demand home service marketplace script, laravel flutter marketplace, taskrabbit clone script, urbanclap clone, handy clone script, service booking platform
+
 ## Company
 
 - About: https://xgenious.com/about
