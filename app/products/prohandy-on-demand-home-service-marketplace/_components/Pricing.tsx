@@ -89,7 +89,7 @@ export default function Pricing() {
                 <span className="text-[48px] font-bold text-[#0F1112] leading-none">${REGULAR_PRICE}</span>
                 <span className="text-[15px] text-[#9ca3af]">one-time</span>
               </div>
-              <p className="text-[13px] text-[#6b7280] leading-5">Full platform. Client + provider apps included. Single project, no monthly fees.</p>
+              <p className="text-[13px] text-[#6b7280] leading-5">Web platform + admin panel. Single project, no monthly fees. Flutter apps in Bundle.</p>
             </div>
 
             <Link

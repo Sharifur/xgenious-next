@@ -11,7 +11,7 @@ const FAQS = [
   },
   {
     q: 'What is included with the Regular License?',
-    a: `The Regular License ($${REGULAR_PRICE}) includes the client Flutter mobile app, provider Flutter mobile app, web frontend, and Laravel admin panel. It covers a single project deployment — one domain — with a lifetime license, 6 months of technical support, lifetime free updates, and free cPanel installation. You cannot charge end users or resell the platform under the Regular License.`,
+    a: `The Regular License ($${REGULAR_PRICE}) includes the web frontend and Laravel admin panel. It covers a single project deployment — one domain — with a lifetime license, 6 months of technical support, lifetime free updates, and free cPanel installation. Flutter mobile apps (client and provider) are not included — they come with the Everything Bundle. You cannot charge end users or resell the platform under the Regular License.`,
   },
   {
     q: 'What does the Extended License allow?',
@@ -19,7 +19,7 @@ const FAQS = [
   },
   {
     q: 'Does Prohandy include Flutter mobile apps?',
-    a: 'Yes. Both the client app and provider app are built with Flutter and are included with both Regular and Extended licenses. The client app handles service browsing, cart-based booking, job posting, live chat, and push notifications. The provider app handles job listings, service management, staff management, order tracking, and live chat.',
+    a: 'Yes. Both the client app and provider app are built with Flutter and are included with the Everything Bundle ($69) and Exclusive License ($149) — not the Regular License. The client app handles service browsing, cart-based booking, job posting, live chat, and push notifications. The provider app handles job listings, service management, staff management, order tracking, and live chat.',
   },
   {
     q: 'What are the server requirements for Prohandy?',
