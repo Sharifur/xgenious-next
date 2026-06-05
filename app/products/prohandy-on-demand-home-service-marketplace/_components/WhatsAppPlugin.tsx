@@ -276,7 +276,7 @@ export default function WhatsAppPlugin() {
   }, [visibleCount]);
 
   return (
-    <section className="py-20 lg:py-[100px] bg-white">
+    <section id="whatsapp-plugin" className="py-20 lg:py-[100px] bg-white">
       <style>{`
         @keyframes waMsgPop {
           from { opacity: 0; transform: translateY(6px) scale(0.97); }
