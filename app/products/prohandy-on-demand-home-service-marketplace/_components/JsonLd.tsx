@@ -17,7 +17,7 @@ export default function JsonLd() {
         name: 'Regular License',
         price: String(REGULAR_PRICE),
         priceCurrency: 'USD',
-        description: 'Single domain. Client + provider Flutter apps included. Lifetime license and free updates. 6 months support.',
+        description: 'Single domain. Web platform and admin panel. Lifetime license and free updates. 6 months support. Flutter apps available in Everything Bundle.',
       },
       {
         '@type': 'Offer',
@@ -80,7 +80,7 @@ export default function JsonLd() {
         name: 'Does Prohandy include mobile apps?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Yes. Both the client Flutter app and provider Flutter app are included with every Prohandy license — Regular ($${REGULAR_PRICE}) and Extended ($${EXTENDED_PRICE}). No extra charge. Both apps are available on Android via Google Play.`,
+          text: `Yes. Both the client Flutter app and provider Flutter app are built with Flutter and available on Android via Google Play. They are included with the Everything Bundle ($69) and Exclusive License ($${EXTENDED_PRICE}) — not the Regular License ($${REGULAR_PRICE}).`,
         },
       },
       {
