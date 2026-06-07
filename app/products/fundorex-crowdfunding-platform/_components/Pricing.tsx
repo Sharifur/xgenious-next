@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { COLOR, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE } from './constants';
+import { COLOR, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE, PURCHASE_URL } from './constants';
+import CodeCanyonUpsellButton from '@/components/ui/CodeCanyonUpsellButton';
 
 const ACCENT = '#a78bfa';
 
@@ -89,15 +90,21 @@ export default function Pricing() {
               <p className="text-[13px] text-[#6b7280] leading-5">Web platform only. One-time purchase, no monthly fees.</p>
             </div>
 
-            <Link
-              href="https://codecanyon.net/item/fundorex-crowdfunding-platform/33286096"
+            <CodeCanyonUpsellButton
+              codecanyonUrl={PURCHASE_URL}
+              regularPrice={REGULAR_PRICE}
+              bundlePrice={COMBO_PRICE}
+              bundleCheckoutUrl="/checkout?product=fundorex-bundle-pack"
+              bundleItems={['Flutter Mobile App']}
+              bundleLabel="Bundle Pack"
+              accentColor={COLOR}
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
             >
               Get Regular License
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </CodeCanyonUpsellButton>
 
             <div className="flex flex-col gap-2.5">
               {REGULAR_FEATURES.map((f) => (

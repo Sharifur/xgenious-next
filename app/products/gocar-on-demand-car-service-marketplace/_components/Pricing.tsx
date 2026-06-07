@@ -5,32 +5,33 @@ import CodeCanyonUpsellButton from '@/components/ui/CodeCanyonUpsellButton';
 const ACCENT = '#a78bfa';
 
 const REGULAR_FEATURES = [
-  { label: 'Helpnest Web Platform', ok: true },
-  { label: 'Admin Panel & Analytics', ok: true },
-  { label: 'AI Chatbot (OpenAI + Claude)', ok: true },
-  { label: 'Support Ticketing System', ok: true },
-  { label: 'Knowledge Base Builder', ok: true },
-  { label: 'Visitor Tracking', ok: true },
-  { label: 'Embeddable Chat Widget', ok: true },
-  { label: 'Stripe + PayPal Billing', ok: true },
-  { label: 'Lifetime License + Updates', ok: true },
+  { label: 'Web Frontend', ok: true },
+  { label: 'Laravel Admin Panel', ok: true },
+  { label: 'Vehicle-Specific Booking', ok: true },
+  { label: 'Real-Time Order Tracking', ok: true },
+  { label: 'Branch Location Management', ok: true },
+  { label: '19+ Payment Gateways', ok: true },
+  { label: 'Push and Email Notifications', ok: true },
+  { label: 'Coupon and Discount System', ok: true },
+  { label: 'Lifetime License + Free Updates', ok: true },
   { label: '6 Months Support', ok: true },
-  { label: 'Flutter Mobile App', ok: false },
+  { label: 'Customer Flutter Mobile App', ok: false },
   { label: 'SaaS / White-label Rights', ok: false },
 ];
 
 const BUNDLE_FEATURES = [
   { label: 'Everything in Regular License', ok: true },
-  { label: 'Flutter Mobile App (Coming Soon)', ok: true },
-  { label: 'Lifetime License + Updates', ok: true },
+  { label: 'Customer Flutter Mobile App', ok: true },
+  { label: 'Google Play Store App', ok: true },
+  { label: 'Lifetime License + Free Updates', ok: true },
   { label: '6 Months Support', ok: true },
   { label: 'SaaS / White-label Rights', ok: false },
 ];
 
 const EXCLUSIVE_FEATURES = [
-  { label: 'Everything in Bundle Pack', ok: true },
+  { label: 'Everything in Everything Bundle', ok: true },
   { label: 'Build & Sell as a SaaS Business', ok: true },
-  { label: 'Unlimited Client Workspaces', ok: true },
+  { label: 'Unlimited Car Service Marketplaces', ok: true },
   { label: 'White-label — Remove All Branding', ok: true },
   { label: 'Source Code Modification Rights', ok: true },
   { label: 'Priority Support — 12 Months', ok: true },
@@ -73,7 +74,7 @@ export default function Pricing() {
             Simple, Honest Pricing
           </h2>
           <p className="text-[#484848] text-[15px] sm:text-[17px] leading-7">
-            One-time purchase. No monthly fees. No per-agent charges. You own the platform forever.
+            One-time purchase. No monthly fees. Full source code. You own the platform forever.
           </p>
         </div>
 
@@ -87,15 +88,15 @@ export default function Pricing() {
                 <span className="text-[48px] font-bold text-[#0F1112] leading-none">${REGULAR_PRICE}</span>
                 <span className="text-[15px] text-[#9ca3af]">one-time</span>
               </div>
-              <p className="text-[13px] text-[#6b7280] leading-5">Web platform only. One-time purchase, no monthly fees.</p>
+              <p className="text-[13px] text-[#6b7280] leading-5">Web platform + admin panel. Single project, no monthly fees. Flutter app in Bundle.</p>
             </div>
 
             <CodeCanyonUpsellButton
               codecanyonUrl={CODECANYON_URL}
               regularPrice={REGULAR_PRICE}
               bundlePrice={COMBO_PRICE}
-              bundleCheckoutUrl="/checkout?product=helpnest-everything-bundle"
-              bundleItems={['Flutter Mobile App (Coming Soon)']}
+              bundleCheckoutUrl="/checkout?product=gocar-everything-bundle"
+              bundleItems={['Customer Flutter Mobile App', 'Google Play Store App']}
               bundleLabel="Everything Bundle"
               accentColor={COLOR}
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
@@ -119,14 +120,14 @@ export default function Pricing() {
           {/* Everything Bundle */}
           <div
             className="rounded-2xl p-7 flex flex-col relative overflow-hidden"
-            style={{ background: '#0f2620', border: `2px solid ${COLOR}` }}
+            style={{ background: '#1a0808', border: `2px solid ${COLOR}` }}
           >
             <div className="flex items-center gap-2 flex-wrap mb-6">
               <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: COLOR, color: '#fff' }}>
                 BEST VALUE
               </span>
-              <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#16a34a] text-white">
-                MOBILE APP
+              <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#1d4ed8] text-white">
+                FLUTTER APP
               </span>
             </div>
 
@@ -134,26 +135,26 @@ export default function Pricing() {
               <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${COLOR}cc` }}>Everything Bundle</p>
 
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[20px] font-semibold line-through" style={{ color: '#4b6b5a' }}>${REGULAR_PRICE + 49}</span>
+                <span className="text-[20px] font-semibold line-through" style={{ color: '#6b3535' }}>${REGULAR_PRICE + 49}</span>
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${COLOR}25`, color: COLOR }}>
-                  17% OFF
+                  SAVE ${REGULAR_PRICE + 49 - COMBO_PRICE}
                 </span>
               </div>
 
               <div className="flex items-baseline gap-2 mb-3">
                 <span className="text-[44px] sm:text-[56px] font-bold text-white leading-none">${COMBO_PRICE}</span>
-                <span className="text-[15px] text-[#6b8a7a]">one-time</span>
+                <span className="text-[15px]" style={{ color: '#8a6a6a' }}>one-time</span>
               </div>
 
               <div className="rounded-xl p-3 flex flex-col gap-1.5" style={{ background: 'rgba(255,255,255,0.05)' }}>
                 <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: `${COLOR}99` }}>What you&apos;re getting</p>
                 {[
-                  ['Web Platform', `$${REGULAR_PRICE}`],
-                  ['Flutter Mobile App', '$49'],
+                  ['Web Platform (Regular)', `$${REGULAR_PRICE}`],
+                  ['Customer Flutter App', '$49'],
                 ].map(([item, price]) => (
                   <div key={item} className="flex items-center justify-between">
-                    <span className="text-[12px]" style={{ color: '#8aaa98' }}>{item}</span>
-                    <span className="text-[12px] font-semibold line-through" style={{ color: '#4b6b5a' }}>{price}</span>
+                    <span className="text-[12px]" style={{ color: '#aa8888' }}>{item}</span>
+                    <span className="text-[12px] font-semibold line-through" style={{ color: '#6b3535' }}>{price}</span>
                   </div>
                 ))}
                 <div className="border-t mt-1 pt-1.5 flex items-center justify-between" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
@@ -164,7 +165,7 @@ export default function Pricing() {
             </div>
 
             <Link
-              href="/checkout?product=helpnest-everything-bundle"
+              href="/checkout?product=gocar-everything-bundle"
               className="flex items-center justify-center gap-2 text-white font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: COLOR, boxShadow: `0 8px 24px ${COLOR}55` }}
             >
@@ -176,7 +177,7 @@ export default function Pricing() {
 
             <div className="flex flex-col gap-2.5">
               {BUNDLE_FEATURES.map((f) => (
-                <div key={f.label} className="flex items-start gap-2.5 text-[13px]" style={{ color: f.ok ? '#d1fae5' : '#4b6b5a' }}>
+                <div key={f.label} className="flex items-start gap-2.5 text-[13px]" style={{ color: f.ok ? '#fecaca' : '#6b3535' }}>
                   <CheckIcon ok={f.ok} />
                   {f.label}
                 </div>
@@ -201,13 +202,6 @@ export default function Pricing() {
             <div className="mb-5">
               <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${ACCENT}cc` }}>Exclusive License</p>
 
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-[20px] font-semibold line-through" style={{ color: '#3d3a52' }}>$299</span>
-                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${ACCENT}25`, color: ACCENT }}>
-                  33% OFF
-                </span>
-              </div>
-
               <div className="flex items-baseline gap-2 mb-3">
                 <span className="text-[44px] sm:text-[56px] font-bold text-white leading-none">${EXTENDED_PRICE}</span>
                 <span className="text-[15px]" style={{ color: '#6b6880' }}>one-time</span>
@@ -216,10 +210,10 @@ export default function Pricing() {
               <div className="rounded-xl p-3 flex flex-col gap-1.5" style={{ background: 'rgba(167,139,250,0.07)' }}>
                 <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: `${ACCENT}80` }}>Built for SaaS businesses</p>
                 {[
-                  'Sell chatbot access to unlimited clients',
+                  'Sell booking access to unlimited customers',
                   'White-label — remove all Xgenious branding',
                   'Modify source code freely',
-                  'Recurring revenue from day one',
+                  'Launch multiple car service marketplaces',
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <svg width="12" height="12" viewBox="0 0 20 20" fill="none" className="flex-shrink-0">
@@ -233,11 +227,11 @@ export default function Pricing() {
             </div>
 
             <Link
-              href="/checkout?product=helpnest-exclusive-pack"
+              href="/checkout?product=gocar-exclusive-pack"
               className="flex items-center justify-center gap-2 text-white font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: ACCENT, boxShadow: `0 8px 24px ${ACCENT}45` }}
             >
-              Get Extended — ${EXTENDED_PRICE}
+              Get Exclusive — ${EXTENDED_PRICE}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

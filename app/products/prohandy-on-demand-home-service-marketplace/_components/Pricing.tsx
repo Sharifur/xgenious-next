@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { COLOR, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE, CODECANYON_URL } from './constants';
+import { COLOR, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE } from './constants';
+import CodeCanyonButton from './CodeCanyonButton';
 
 const ACCENT = '#a78bfa';
 
@@ -92,17 +93,12 @@ export default function Pricing() {
               <p className="text-[13px] text-[#6b7280] leading-5">Web platform + admin panel. Single project, no monthly fees. Flutter apps in Bundle.</p>
             </div>
 
-            <Link
-              href={CODECANYON_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
-            >
+            <CodeCanyonButton className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]">
               Purchase on CodeCanyon
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </CodeCanyonButton>
 
             <div className="flex flex-col gap-2.5">
               {REGULAR_FEATURES.map((f) => (

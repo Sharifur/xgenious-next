@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { COLOR, PURCHASE_URL, REGULAR_PRICE, BUNDLE_PRICE, BUNDLE_PRODUCT_PATH, EXCLUSIVE_PRICE, EXCLUSIVE_PRODUCT_PATH } from './constants';
+import CodeCanyonUpsellButton from '@/components/ui/CodeCanyonUpsellButton';
 
 const REGULAR_FEATURES = [
   { label: 'Xilancer Web Platform', ok: true },
@@ -108,17 +109,21 @@ export default function Pricing() {
               <p className="text-[13px] text-[#6b7280] leading-5">Web platform only. Buy directly on CodeCanyon.</p>
             </div>
 
-            <Link
-              href={PURCHASE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <CodeCanyonUpsellButton
+              codecanyonUrl={PURCHASE_URL}
+              regularPrice={REGULAR_PRICE}
+              bundlePrice={BUNDLE_PRICE}
+              bundleCheckoutUrl="/checkout?product=xilancer-bundle-pack"
+              bundleItems={['Freelancer Mobile App (Flutter)', 'Client Mobile App (Flutter)', 'Freelancer Level Plugin', 'Promotional Ads Plugin', 'Security Plugin', 'Cloud Storage Plugin', 'Hourly Hiring Plugin', 'Community Plugin']}
+              bundleLabel="Bundle Pack"
+              accentColor={COLOR}
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
             >
               Buy on CodeCanyon
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </CodeCanyonUpsellButton>
 
             <div className="flex flex-col gap-2.5">
               {REGULAR_FEATURES.map((f) => (
