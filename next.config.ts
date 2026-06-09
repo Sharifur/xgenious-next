@@ -18,6 +18,34 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: "frame-ancestors 'self' https://preview.codecanyon.net",
           },
+          {
+            key: 'Link',
+            value: '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby"; type="text/markdown"',
+          },
+        ],
+      },
+      {
+        source: '/llms.txt',
+        headers: [
+          { key: 'Content-Type', value: 'text/markdown; charset=utf-8' },
+        ],
+      },
+      {
+        source: '/.well-known/api-catalog',
+        headers: [
+          { key: 'Content-Type', value: 'application/json; charset=utf-8' },
+        ],
+      },
+      {
+        source: '/.well-known/oauth-authorization-server',
+        headers: [
+          { key: 'Content-Type', value: 'application/json; charset=utf-8' },
+        ],
+      },
+      {
+        source: '/.well-known/oauth-protected-resource',
+        headers: [
+          { key: 'Content-Type', value: 'application/json; charset=utf-8' },
         ],
       },
     ];

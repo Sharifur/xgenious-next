@@ -1,0 +1,21 @@
+{
+  "apis": [
+    {
+      "id": "https://xgenious.com",
+      "title": "Xgenious Platform API",
+      "description": "Account, license, support ticket, and download endpoints for Xgenious customers.",
+      "links": [
+        {
+          "rel": "service-doc",
+          "href": "https://xgenious.com/llms.txt",
+          "type": "text/markdown"
+        },
+        {
+          "rel": "describedby",
+          "href": "https://public-api-doc.taskip.net/",
+          "type": "text/html"
+        }
+      ]
+    }
+  ]
+}

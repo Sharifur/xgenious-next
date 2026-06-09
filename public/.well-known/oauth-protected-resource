@@ -1,0 +1,6 @@
+{
+  "resource": "https://xgenious.com",
+  "authorization_servers": [],
+  "bearer_methods_supported": ["header"],
+  "resource_documentation": "https://xgenious.com/llms.txt"
+}
