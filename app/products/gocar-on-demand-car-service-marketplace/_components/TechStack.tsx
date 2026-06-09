@@ -38,21 +38,13 @@ const STACK: StackItem[] = [
       </svg>
     ),
   },
+  { name: 'Pusher', role: 'Real-Time Events', logo: '/tech/pusher.svg' },
   {
     name: 'Google Maps',
     role: 'Location Services',
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#EA4335"/>
-      </svg>
-    ),
-  },
-  {
-    name: 'cPanel',
-    role: 'Free Installation',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={COLOR} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
       </svg>
     ),
   },

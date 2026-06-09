@@ -5,6 +5,7 @@ import StickyBar from './_components/StickyBar';
 import Hero from './_components/Hero';
 import PaymentGateways from './_components/PaymentGateways';
 import Features from './_components/Features';
+import CustomerApp from './_components/CustomerApp';
 import HowItWorks from './_components/HowItWorks';
 import TechStack from './_components/TechStack';
 import Comparison from './_components/Comparison';
@@ -53,6 +54,7 @@ export default function GoCarPage() {
       <Hero />
       <PaymentGateways />
       <Features />
+      <CustomerApp />
       <HowItWorks />
       <TechStack />
       <Comparison />

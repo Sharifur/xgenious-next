@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { COLOR, LIGHT_COLOR } from './constants';
 
 const FEATURES = [
@@ -6,22 +7,26 @@ const FEATURES = [
     desc: 'Customers select their car make, model, and year to get matched with the right services and mechanics. Tailored service recommendations eliminate guesswork and increase booking confidence.',
     large: true,
     bgColor: '#FEF2F2',
+    image: '/products/gocar-vehicle-booking.png',
   },
   {
     title: 'Real-Time Order Tracking',
     desc: 'Customers track their service order status in real time — from acceptance through diagnostics, service completion, and payment. Push notifications keep customers informed at every stage without needing to call the garage.',
     large: true,
     bgColor: '#FFF7ED',
+    image: '/products/gocar-order-tracking.png',
   },
   {
     title: 'Full-Control Admin Panel',
     desc: 'Manage services, categories, mechanics, customers, taxes, refunds, and branch locations from one Laravel admin panel. Role-based access control lets you assign responsibilities to staff.',
     bgColor: '#FEF2F2',
+    image: '/products/gocar-admin-panel.png',
   },
   {
     title: 'Branch and Location Management',
     desc: 'Define serviceable areas and manage multiple branch locations. Customers see available service centers near them and book at a convenient location.',
     bgColor: '#F0FDF4',
+    image: '/products/gocar-branch-management.png',
   },
   {
     title: 'Push and Email Notifications',
@@ -44,6 +49,16 @@ const FEATURES = [
     bgColor: '#FFF0F3',
   },
   {
+    title: '3 Flexible Service Delivery Modes',
+    desc: 'Home service (mechanic visits the customer), car pickup (provider collects and returns the vehicle), and physical outlet visit. Customers choose at checkout — more options means fewer drop-offs.',
+    bgColor: '#FEF2F2',
+  },
+  {
+    title: 'Cart-Based Multi-Service Booking',
+    desc: 'Customers add multiple services to a cart and complete them in one transaction. Oil change, tire rotation, and brake inspection — booked together, paid once.',
+    bgColor: '#F0FDF4',
+  },
+  {
     title: 'REST API with Postman Collection',
     desc: 'Full REST API documented with a Postman collection. Build custom integrations, connect third-party tools, or extend GoCar with your own modules without reverse engineering.',
     bgColor: '#F0F9FF',
@@ -59,9 +74,9 @@ const FEATURES = [
     bgColor: '#FDF4EF',
   },
   {
-    title: 'cPanel Installation Included',
-    desc: 'Free admin panel cPanel installation is included with every purchase. No DevOps expertise required. GoCar runs on any standard PHP 8.0+ shared hosting environment.',
-    bgColor: '#F0FDF4',
+    title: 'Multi-Language Support',
+    desc: 'GoCar ships with a built-in translation layer. Add or switch languages from the admin panel without touching code — making the platform ready for any market from day one.',
+    bgColor: '#EFF6FF',
   },
 ];
 
@@ -70,11 +85,13 @@ function FeatureCard({
   desc,
   large = false,
   bgColor,
+  image,
 }: {
   title: string;
   desc: string;
   large?: boolean;
   bgColor?: string;
+  image?: string;
 }) {
   const bg = bgColor ?? '#F5F6F8';
 
@@ -84,13 +101,23 @@ function FeatureCard({
       style={{ background: bg }}
     >
       <div
-        className={`relative w-full overflow-hidden flex items-center justify-center ${large ? 'h-[160px] sm:h-[200px]' : 'h-[100px] sm:h-[120px]'}`}
-        style={{ padding: '16px' }}
+        className={`relative w-full overflow-hidden flex items-center justify-center ${large ? 'h-[160px] sm:h-[220px]' : 'h-[100px] sm:h-[120px]'}`}
+        style={{ padding: image ? '0' : '16px' }}
       >
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={COLOR} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" className="opacity-40">
-          <path d="M19 17H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2z"/>
-          <path d="M7 17v2M17 17v2M9 11l2 2 4-4"/>
-        </svg>
+        {image ? (
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 640px) 100vw, 50vw"
+          />
+        ) : (
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={COLOR} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" className="opacity-40">
+            <path d="M19 17H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2z"/>
+            <path d="M7 17v2M17 17v2M9 11l2 2 4-4"/>
+          </svg>
+        )}
       </div>
       <div className="px-4 pb-4 sm:px-6 sm:pb-6 pt-2">
         <h3 className={`font-bold text-[#0F1112] mb-2 ${large ? 'text-[20px] sm:text-[24px]' : 'text-[17px] sm:text-[20px]'}`}>{title}</h3>
