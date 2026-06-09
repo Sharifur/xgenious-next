@@ -6,7 +6,7 @@ export const DEMO_URL = 'https://car-service.bytesed.com/';
 export const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.xgenious.car_service';
 export const CODECANYON_URL = 'https://codecanyon.net/item/gocar-mechanic-and-car-service-provider/57643970';
 export const REGULAR_PRICE = 39;
-export const COMBO_PRICE = 79;
+export const COMBO_PRICE = 69;
 export const EXTENDED_PRICE = 149;
 
 export const REVIEWS = [

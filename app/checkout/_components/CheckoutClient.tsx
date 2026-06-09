@@ -51,6 +51,13 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'SaaS rights, white-label, source code modification — launch unlimited service marketplaces.',
     accent: '#059669',
   },
+  'gocar-everything-bundle': {
+    path: 'gocar-exclusive-pack',
+    name: 'Exclusive License',
+    delta: 80,
+    pitch: 'SaaS rights, white-label, source code modification — launch unlimited car service marketplaces.',
+    accent: '#DC2626',
+  },
 };
 
 function CheckIcon() {
