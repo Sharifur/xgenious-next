@@ -8,8 +8,8 @@ import ScrollToPricing from './ScrollToPricing';
 const QUICK_LINKS = [
   { label: 'Admin Demo', href: DEMO_URL, external: true },
   { label: 'Customer Demo', href: DEMO_URL, external: true },
-  { label: 'Play Store', href: PLAY_STORE_URL, external: true },
-  { label: 'Documentation', href: 'https://docs.xgenious.com/docs/gocar/', external: true },
+  { label: 'Mobile App', href: '#mobile-app', external: false },
+  { label: 'Documentation', href: 'https://docs.bytesed.com/docs/gocar-on-demand-mechanic-and-car-service-provider-marketplace-platform/', external: true },
   { label: 'Pricing', href: '#pricing', external: false },
 ];
 

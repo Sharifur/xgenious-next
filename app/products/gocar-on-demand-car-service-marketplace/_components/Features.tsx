@@ -32,51 +32,61 @@ const FEATURES = [
     title: 'Push and Email Notifications',
     desc: 'Real-time alerts for booking confirmations, order status updates, promotional offers, and payment receipts keep customers and mechanics engaged throughout the service lifecycle.',
     bgColor: '#EFF6FF',
+    image: '/products/gocar-notifications.png',
   },
   {
     title: 'Discount and Promotion Tools',
     desc: 'Launch fixed-amount or percentage-based coupons for acquisition campaigns, seasonal promotions, and loyalty rewards. Admins create and manage promotions directly from the admin panel.',
     bgColor: '#F5F3FF',
+    image: '/products/gocar-promotions.png',
   },
   {
     title: 'Refund Processing',
     desc: 'Handle customer refund requests efficiently from the admin panel. Full refund history gives customers and admins visibility over all processed returns.',
     bgColor: '#ECFDF5',
+    image: '/products/gocar-refund.png',
   },
   {
     title: 'Role-Based Access Control',
     desc: 'Assign admin, manager, and mechanic roles with granular permissions. Control who can manage services, process refunds, or configure payment gateways without exposing the full admin.',
     bgColor: '#FFF0F3',
+    image: '/products/gocar-role-access.png',
   },
   {
     title: '3 Flexible Service Delivery Modes',
     desc: 'Home service (mechanic visits the customer), car pickup (provider collects and returns the vehicle), and physical outlet visit. Customers choose at checkout — more options means fewer drop-offs.',
     bgColor: '#FEF2F2',
+    image: '/products/gocar-service-delivery.png',
   },
   {
     title: 'Cart-Based Multi-Service Booking',
     desc: 'Customers add multiple services to a cart and complete them in one transaction. Oil change, tire rotation, and brake inspection — booked together, paid once.',
     bgColor: '#F0FDF4',
+    image: '/products/gocar-cart.png',
   },
   {
     title: 'REST API with Postman Collection',
     desc: 'Full REST API documented with a Postman collection. Build custom integrations, connect third-party tools, or extend GoCar with your own modules without reverse engineering.',
     bgColor: '#F0F9FF',
+    image: '/products/gocar-postman.png',
   },
   {
     title: 'Earnings and Revenue Reports',
     desc: 'Track revenue, order volume, and mechanic performance across daily, weekly, and monthly views. Full earnings breakdown by service category and location.',
     bgColor: '#EFF1FE',
+    image: '/products/gocar-earnings.png',
   },
   {
     title: 'Social Login Support',
     desc: 'Customers and mechanics log in with email, phone OTP, or Google and Facebook sign-in. Reduced signup friction increases platform onboarding rates.',
     bgColor: '#FDF4EF',
+    image: '/products/gocar-social-login.png',
   },
   {
     title: 'Multi-Language Support',
     desc: 'GoCar ships with a built-in translation layer. Add or switch languages from the admin panel without touching code — making the platform ready for any market from day one.',
     bgColor: '#EFF6FF',
+    image: '/products/gocar-multilang.png',
   },
 ];
 
@@ -101,17 +111,28 @@ function FeatureCard({
       style={{ background: bg }}
     >
       <div
-        className={`relative w-full overflow-hidden flex items-center justify-center ${large ? 'h-[160px] sm:h-[220px]' : 'h-[100px] sm:h-[120px]'}`}
-        style={{ padding: image ? '0' : '16px' }}
+        className={`relative w-full overflow-hidden flex items-center justify-center ${large ? 'h-[200px] sm:h-[260px]' : 'h-[160px] sm:h-[200px]'}`}
+        style={{
+          padding: image ? '12px' : '16px',
+          background: 'rgba(255,255,255,0.45)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+        }}
       >
         {image ? (
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover object-top"
-            sizes="(max-width: 640px) 100vw, 50vw"
-          />
+          <>
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-contain"
+              sizes="(max-width: 640px) 100vw, 50vw"
+            />
+            <div
+              className="absolute inset-x-0 bottom-0 h-16 z-10 pointer-events-none"
+              style={{ background: `linear-gradient(to bottom, transparent, ${bg})` }}
+            />
+          </>
         ) : (
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={COLOR} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" className="opacity-40">
             <path d="M19 17H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2z"/>

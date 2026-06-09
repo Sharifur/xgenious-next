@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { COLOR, LIGHT_COLOR, PLAY_STORE_URL } from './constants';
 
@@ -10,6 +11,7 @@ const BOOKING_MODES = [
     ),
     title: 'Home Service',
     desc: 'Mechanic comes to the customer\'s location. No towing, no waiting at a garage. Customer selects address from their saved address book or drops a pin on the map.',
+    image: '/products/gocar-app-home.png',
   },
   {
     icon: (
@@ -19,6 +21,7 @@ const BOOKING_MODES = [
     ),
     title: 'Car Pickup',
     desc: 'Service provider collects the car from the customer\'s location, services it at the outlet, and returns it. Customer tracks status in real time throughout the process.',
+    image: '/products/gocar-app-pickup.png',
   },
   {
     icon: (
@@ -28,6 +31,7 @@ const BOOKING_MODES = [
     ),
     title: 'Physical Outlet Visit',
     desc: 'Customer selects a branch outlet and visits directly. Outlet selection is shown during checkout so the customer picks the most convenient location.',
+    image: '/products/gocar-app-outlet.png',
   },
 ];
 
@@ -80,18 +84,25 @@ export default function CustomerApp() {
           {BOOKING_MODES.map((mode, i) => (
             <div
               key={mode.title}
-              className="rounded-2xl border border-[#E5E7EC] p-6 flex flex-col gap-4 hover:shadow-md transition-shadow"
+              className="rounded-2xl border border-[#E5E7EC] overflow-hidden flex flex-col hover:shadow-md transition-shadow"
               style={{ background: i === 0 ? LIGHT_COLOR : i === 1 ? '#F0F9FF' : '#F0FDF4' }}
             >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: '#fff', color: COLOR, boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}
-              >
-                {mode.icon}
-              </div>
-              <div>
-                <h3 className="text-[18px] font-bold text-[#0F1112] mb-2">{mode.title}</h3>
-                <p className="text-[14px] text-[#6b7280] leading-6">{mode.desc}</p>
+              {'image' in mode && mode.image ? (
+                <div className="relative w-full h-[200px] overflow-hidden">
+                  <Image src={mode.image} alt={mode.title} fill className="object-cover object-top" sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+              ) : null}
+              <div className="p-6 flex flex-col gap-4">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: '#fff', color: COLOR, boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}
+                >
+                  {mode.icon}
+                </div>
+                <div>
+                  <h3 className="text-[18px] font-bold text-[#0F1112] mb-2">{mode.title}</h3>
+                  <p className="text-[14px] text-[#6b7280] leading-6">{mode.desc}</p>
+                </div>
               </div>
             </div>
           ))}
