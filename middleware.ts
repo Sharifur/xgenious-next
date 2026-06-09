@@ -46,6 +46,17 @@ export default auth(function middleware(req: NextRequest & { auth: any }) {
   const { pathname } = req.nextUrl;
   const segments = pathname.split('/').filter(Boolean);
 
+  // Markdown content negotiation — AI agents requesting text/markdown get llms.txt
+  const accept = req.headers.get('accept') ?? '';
+  if (
+    accept.includes('text/markdown') &&
+    !pathname.startsWith('/api') &&
+    !pathname.startsWith('/_next') &&
+    !pathname.includes('.')
+  ) {
+    return NextResponse.rewrite(new URL('/llms.txt', req.url));
+  }
+
   // Protect /my-account/* — redirect to login if no session
   if (segments[0] === 'my-account' && !req.auth?.user) {
     return NextResponse.redirect(new URL('/login', req.url));

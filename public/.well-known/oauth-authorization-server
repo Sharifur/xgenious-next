@@ -1,0 +1,8 @@
+{
+  "issuer": "https://xgenious.com",
+  "token_endpoint": "https://xgenious.com/api/auth/callback/credentials",
+  "token_endpoint_auth_methods_supported": ["client_secret_post"],
+  "response_types_supported": [],
+  "grant_types_supported": ["password"],
+  "service_documentation": "https://xgenious.com/llms.txt"
+}
