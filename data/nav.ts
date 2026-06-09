@@ -20,6 +20,7 @@ export const productsDropdown: DropdownItem[] = [
   { label: 'Xilancer', description: 'Freelancer Marketplace Platform', href: '/products/xilancer-freelancer-marketplace-script' },
   { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', href: '/products/prohandy-on-demand-home-service-marketplace' },
   { label: 'GoCar', description: 'On-Demand Car Service Marketplace', href: '/products/gocar-on-demand-car-service-marketplace' },
+  { label: 'Qixer', description: 'Multi-Vendor On-Demand Service Marketplace', href: '/products/qixer-on-demand-service-marketplace' },
 ];
 
 export const freeSoftwareDropdown: DropdownItem[] = [
