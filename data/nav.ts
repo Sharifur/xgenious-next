@@ -19,6 +19,7 @@ export const productsDropdown: DropdownItem[] = [
   { label: 'Fundorex', description: 'Crowdfunding Platform', href: '/products/fundorex-crowdfunding-platform' },
   { label: 'Xilancer', description: 'Freelancer Marketplace Platform', href: '/products/xilancer-freelancer-marketplace-script' },
   { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', href: '/products/prohandy-on-demand-home-service-marketplace' },
+  { label: 'GoCar', description: 'On-Demand Car Service Marketplace', href: '/products/gocar-on-demand-car-service-marketplace' },
 ];
 
 export const freeSoftwareDropdown: DropdownItem[] = [
