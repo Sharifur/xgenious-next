@@ -424,7 +424,11 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
                   </svg>
                 </button>
 
-                <div className="mt-4 flex flex-col gap-2 text-[11px] text-[#9ca3af]">
+                <p className="mt-2 text-center text-[11px] text-[#9ca3af]">
+                  VAT / tax not included — may be added at checkout depending on your country.
+                </p>
+
+                <div className="mt-3 flex flex-col gap-2 text-[11px] text-[#9ca3af]">
                   <span className="flex items-center gap-1.5">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="#9ca3af" strokeWidth="2" /><path d="M7 11V7a5 5 0 0110 0v4" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" /></svg>
                     Payment secured by FastSpring
