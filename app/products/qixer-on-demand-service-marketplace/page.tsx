@@ -5,6 +5,9 @@ import StickyBar from './_components/StickyBar';
 import Hero from './_components/Hero';
 import PaymentGateways from './_components/PaymentGateways';
 import Features from './_components/Features';
+import ProfitModel from './_components/ProfitModel';
+import UseCases from './_components/UseCases';
+import MarketplaceOwner from './_components/MarketplaceOwner';
 import CustomerApp from './_components/CustomerApp';
 import HowItWorks from './_components/HowItWorks';
 import TechStack from './_components/TechStack';
@@ -51,7 +54,10 @@ export default function QixerPage() {
       <StickyBar />
       <Hero />
       <PaymentGateways />
+      <UseCases />
       <Features />
+      <ProfitModel />
+      <MarketplaceOwner />
       <CustomerApp />
       <HowItWorks />
       <TechStack />
