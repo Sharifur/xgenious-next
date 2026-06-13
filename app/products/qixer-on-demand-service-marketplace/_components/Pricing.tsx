@@ -5,17 +5,26 @@ import CodeCanyonUpsellButton from '@/components/ui/CodeCanyonUpsellButton';
 const ACCENT = '#a78bfa';
 
 const REGULAR_FEATURES = [
-  { label: 'Web Frontend', ok: true },
-  { label: 'Laravel Admin Panel', ok: true },
+  { label: 'Web Frontend + Admin Panel', ok: true },
   { label: 'Multi-Vendor Service Marketplace', ok: true },
   { label: 'GPS Service Discovery', ok: true },
   { label: 'Commission Revenue Model', ok: true },
   { label: '20+ Payment Gateways', ok: true },
-  { label: 'Push and Email Notifications', ok: true },
-  { label: 'Coupon and Discount System', ok: true },
+  { label: 'Push & Email Notifications', ok: true },
+  { label: 'Coupon & Discount System', ok: true },
+  { label: 'Review & Rating System', ok: true },
+  { label: 'Service Area & Radius Control', ok: true },
+  { label: 'Provider Availability & Booking Slots', ok: true },
+  { label: 'Role-Based Admin Permissions', ok: true },
+  { label: 'Multi-Language + RTL Support', ok: true },
   { label: 'Lifetime License + Free Updates', ok: true },
   { label: '6 Months Support', ok: true },
-  { label: 'Buyer + Seller Flutter Apps', ok: false },
+  { label: 'Buyer Wallet System — add-on $19', ok: false },
+  { label: 'Job Posting Module — add-on $29', ok: false },
+  { label: 'Seller Subscription Plans — add-on $29', ok: false },
+  { label: 'Live Chat Addon — add-on $29', ok: false },
+  { label: 'Buyer Flutter App — add-on $49', ok: false },
+  { label: 'Seller / Provider App — add-on $49', ok: false },
   { label: 'SaaS / White-label Rights', ok: false },
 ];
 
@@ -100,7 +109,7 @@ export default function Pricing() {
               regularPrice={REGULAR_PRICE}
               bundlePrice={COMBO_PRICE}
               bundleCheckoutUrl="/checkout?product=qixer-everything-bundle"
-              bundleItems={['Buyer Flutter Mobile App', 'Seller Flutter Mobile App', 'Google Play + App Store']}
+              bundleItems={['Buyer Flutter Mobile App', 'Seller / Provider App', 'Buyer Wallet System', 'Job Posting Module', 'Seller Subscription Plans', 'Live Chat Addon']}
               bundleLabel="Everything Bundle"
               accentColor={COLOR}
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
@@ -138,9 +147,9 @@ export default function Pricing() {
               <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${COLOR}cc` }}>Everything Bundle</p>
 
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[20px] font-semibold line-through" style={{ color: '#4a4480' }}>${REGULAR_PRICE + 79}</span>
+                <span className="text-[20px] font-semibold line-through" style={{ color: '#4a4480' }}>$263</span>
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${COLOR}25`, color: COLOR }}>
-                  SAVE ${REGULAR_PRICE + 79 - COMBO_PRICE}
+                  SAVE $164
                 </span>
               </div>
 
@@ -153,8 +162,12 @@ export default function Pricing() {
                 <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: `${COLOR}99` }}>What you&apos;re getting</p>
                 {[
                   ['Web Platform (Regular)', `$${REGULAR_PRICE}`],
+                  ['Wallet System', '$19'],
+                  ['Job Posting Module', '$29'],
+                  ['Seller Subscription', '$29'],
+                  ['Live Chat Addon', '$29'],
                   ['Buyer Flutter App', '$49'],
-                  ['Seller Flutter App', '$29'],
+                  ['Seller / Provider App', '$49'],
                 ].map(([item, price]) => (
                   <div key={item} className="flex items-center justify-between">
                     <span className="text-[12px]" style={{ color: '#8a88b8' }}>{item}</span>
@@ -163,7 +176,7 @@ export default function Pricing() {
                 ))}
                 <div className="border-t mt-1 pt-1.5 flex items-center justify-between" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
                   <span className="text-[12px] font-bold text-white">Total value</span>
-                  <span className="text-[12px] font-bold" style={{ color: COLOR }}>${REGULAR_PRICE + 79} → ${COMBO_PRICE}</span>
+                  <span className="text-[12px] font-bold" style={{ color: COLOR }}>$263 → ${COMBO_PRICE}</span>
                 </div>
               </div>
             </div>

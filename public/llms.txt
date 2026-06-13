@@ -66,7 +66,7 @@ Complete self-hosted multi-vendor on-demand service marketplace script and app. 
 - Purchase: https://codecanyon.net/item/qixer-multivendor-on-demand-service-marketplace-and-service-finder/36475708
 - Stack: Laravel 12, PHP 8.3+, Flutter 3.x, MySQL 8+, Firebase push notifications, GPS service discovery
 - Rating: 4.5/5 on CodeCanyon · 46 reviews · 712 sales
-- Pricing: Regular $49 (web platform, one-time) · Everything Bundle $139 (web + buyer & seller Flutter apps) · Exclusive License $199 (SaaS rights, white-label, unlimited marketplaces)
+- Pricing: Regular $59 (web platform, one-time) · Everything Bundle $99 (web + wallet + job posting + seller subscription + live chat + buyer & seller Flutter apps — total value $263, save $164) · Exclusive License $199 (SaaS rights, white-label, unlimited marketplaces)
 - Revenue models: Commission on completed orders + recurring subscription fees for providers (run both simultaneously)
 - Mobile apps: Buyer Flutter app (iOS & Android) + Seller/Provider Flutter app (iOS & Android) — Play Store links on product page
 - Includes: GPS service search & discovery, drag-and-drop page/menu/form builders (30+ widgets), 20+ payment gateways (PayPal, Stripe, Razorpay, Paytm, Flutterwave, and more), live buyer–seller chat, provider availability & booking slots, service area radius control, coupon system, buyer wallet, review & rating system, payout & withdrawal system, job posting module, email templates & automation, role-based admin permissions, multi-language + RTL support, real-time push notifications, free cPanel installation

@@ -58,6 +58,13 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'SaaS rights, white-label, source code modification — launch unlimited car service marketplaces.',
     accent: '#DC2626',
   },
+  'qixer-everything-bundle': {
+    path: 'qixer-exclusive-pack',
+    name: 'Exclusive License',
+    delta: 100,
+    pitch: 'SaaS rights, white-label, source code modification — launch unlimited on-demand service marketplaces.',
+    accent: '#6369F1',
+  },
 };
 
 function CheckIcon() {

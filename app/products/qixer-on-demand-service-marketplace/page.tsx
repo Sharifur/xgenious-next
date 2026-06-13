@@ -17,7 +17,7 @@ import FAQ from './_components/FAQ';
 
 export const metadata: Metadata = {
   title: 'Qixer: On-Demand Service App & Marketplace Script',
-  description: 'Multi-vendor on-demand service app & marketplace script. Laravel 12 + Flutter, buyer & seller apps, 20+ payment gateways, dual revenue models. One-time $49.',
+  description: 'Multi-vendor on-demand service app & marketplace script. Laravel 12 + Flutter, buyer & seller apps, 20+ payment gateways, dual revenue models. One-time $59.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
