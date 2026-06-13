@@ -1,4 +1,4 @@
-import { CANONICAL, REGULAR_PRICE, EXTENDED_PRICE, COMBO_PRICE } from './constants';
+import { CANONICAL, CODECANYON_URL, REGULAR_PRICE, EXTENDED_PRICE, COMBO_PRICE } from './constants';
 
 export default function JsonLd() {
   const product = {
@@ -41,6 +41,43 @@ export default function JsonLd() {
       bestRating: '5',
       worstRating: '1',
     },
+    review: [
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'rhinocreativeagencyweb' },
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        reviewBody: 'At first we tried other scripts — too buggy. After two months we found Qixer. It\'s high quality, infinitely flexible, and full of every feature you could want for a service provider marketplace. Customer support is always helpful through the dedicated ticket system.',
+        url: CODECANYON_URL,
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Brandicon' },
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        reviewBody: 'This has everything you can dream of — design, code, documentation, and support. Built like WordPress with pages and widgets so you can customize quickly. Updating is automated with excellent instructions.',
+        url: CODECANYON_URL,
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'DUNAMIS-888' },
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        reviewBody: 'The response time from the support ticket was about 10 minutes. Coming from a strong IT background, I can without a shadow of a doubt recommend this script for true internet entrepreneurs.',
+        url: CODECANYON_URL,
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'MyKodezone' },
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        reviewBody: 'The Qixer Application\'s code quality and support are excellent. The team is highly responsive and resolves issues quickly. I highly recommend them for anyone looking for a reliable service marketplace solution.',
+        url: CODECANYON_URL,
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'ddakser' },
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        reviewBody: 'Best in CodeCanyon, in every aspect. The script, the documentation, the support — all top tier. Nothing else comes close in this category.',
+        url: CODECANYON_URL,
+      },
+    ],
   };
 
   const howTo = {
@@ -120,6 +157,46 @@ export default function JsonLd() {
         acceptedAnswer: {
           '@type': 'Answer',
           text: `White-labeling requires the Exclusive License ($${EXTENDED_PRICE}). It grants SaaS rights — you can operate the platform as a subscription business, launch unlimited marketplaces, remove all branding, and modify source code freely.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How does the drag-and-drop builder work in Qixer?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Qixer ships with a WordPress-style builder system including a page builder with 30+ widgets, a menu builder with mega menu support, a form builder, and a widget builder. Admins create and edit pages, navigation, and widgets without writing code.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Does Qixer support multiple languages and RTL?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. Qixer includes multi-language support with RTL (right-to-left) capability for Arabic, Hebrew, and other RTL languages. Languages are managed from the admin panel without touching code, making it ready for any regional market.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How many sales has Qixer made on CodeCanyon?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Qixer has 712 sales and a 4.5/5 rating from 46 verified reviews on CodeCanyon. It is sold by an Elite Author on CodeCanyon with consistent support quality over its 4-year history.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is there a live demo for Qixer?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. A full live demo is available at qixer.bytesed.com. Admin login: super_admin / 12345678. Seller login: test_seller / 12345678. Buyer login: test_buyer / 12345678. The Flutter mobile app is available on Google Play Store.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What support is included with Qixer?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Every license includes 6 months of ticket-based support with an average 10-minute response time. Support can be extended to 12 months at checkout. Documentation is at docs.bytesed.com and a YouTube tutorial playlist covers installation and configuration.',
         },
       },
     ],

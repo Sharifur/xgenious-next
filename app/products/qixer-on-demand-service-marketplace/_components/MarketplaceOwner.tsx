@@ -63,7 +63,7 @@ function Arrow({ flip = false }: { flip?: boolean }) {
 
 export default function MarketplaceOwner() {
   return (
-    <section className="py-20 lg:py-[100px] bg-white">
+    <section className="pb-20 lg:pb-[100px] bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1100px] mx-auto">
 
         <div className="text-center mb-14 max-w-[600px] mx-auto">

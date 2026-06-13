@@ -65,24 +65,27 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 flex-wrap justify-center mt-1">
-              <Link
-                href={CODECANYON_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-bold text-[15px] rounded-full px-8 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-lg text-white"
-                style={{ background: '#6369F1', boxShadow: '0 6px 20px rgba(99,105,241,0.4)' }}
-              >
-                {`Get Qixer — from $${REGULAR_PRICE}`}
-              </Link>
-              <Link
-                href={DEMO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-semibold text-[15px] rounded-full px-8 py-3.5 border-2 border-[#0F1112]/20 text-[#0F1112] bg-white/40 hover:bg-white/70 transition-all hover:-translate-y-0.5 backdrop-blur-sm"
-              >
-                Explore Demo
-              </Link>
+            <div className="flex flex-col items-center gap-2 mt-1">
+              <div className="flex items-center gap-4 flex-wrap justify-center">
+                <Link
+                  href={CODECANYON_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-bold text-[15px] rounded-full px-8 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-lg text-white"
+                  style={{ background: '#6369F1', boxShadow: '0 6px 20px rgba(99,105,241,0.4)' }}
+                >
+                  {`Get Qixer — from $${REGULAR_PRICE}`}
+                </Link>
+                <Link
+                  href={DEMO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-semibold text-[15px] rounded-full px-8 py-3.5 border-2 border-[#0F1112]/20 text-[#0F1112] bg-white/40 hover:bg-white/70 transition-all hover:-translate-y-0.5 backdrop-blur-sm"
+                >
+                  Explore Demo
+                </Link>
+              </div>
+              <p className="text-[12px] text-[#6b7280]">One-time purchase · No monthly fees · Lifetime updates</p>
             </div>
 
             <div className="flex items-center gap-5 flex-wrap justify-center">

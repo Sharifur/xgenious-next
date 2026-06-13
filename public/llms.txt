@@ -59,6 +59,19 @@ Complete self-hosted on-demand service marketplace. Build a TaskRabbit, UrbanCla
 - Includes: Client Flutter app, Provider Flutter app, Laravel admin panel, real-time live chat, cart-based booking, job posting + hiring flow, identity verification, coupon system, provider wallet + withdrawals, 19 payment gateways (PayPal, Stripe, Razorpay, Paystack, Flutterwave, Mollie, Midtrans, Cashfree, Instamojo, Mercado Pago, Zitopay, Square, CinetPay, PayTabs, Billplz, Toyyibpay, PayFast, Paytm, Manual), social login (Google, Facebook, Apple), multilingual, dark/light theme
 - Keywords: on demand home service marketplace script, laravel flutter marketplace, taskrabbit clone script, urbanclap clone, handy clone script, service booking platform
 
+### Qixer — On-Demand Service App & Marketplace Script
+Complete self-hosted multi-vendor on-demand service marketplace script and app. Build a TaskRabbit, UrbanClap, or Handy-style platform for any service vertical: home services, beauty, cleaning, car repair, pest control, event management, or custom niches. One-time purchase, no monthly fees, full source code.
+- Product page: https://xgenious.com/products/qixer-on-demand-service-marketplace
+- Demo: https://qixer.bytesed.com (admin: super_admin / 12345678)
+- Purchase: https://codecanyon.net/item/qixer-multivendor-on-demand-service-marketplace-and-service-finder/36475708
+- Stack: Laravel 12, PHP 8.3+, Flutter 3.x, MySQL 8+, Firebase push notifications, GPS service discovery
+- Rating: 4.5/5 on CodeCanyon · 46 reviews · 712 sales
+- Pricing: Regular $49 (web platform, one-time) · Everything Bundle $139 (web + buyer & seller Flutter apps) · Exclusive License $199 (SaaS rights, white-label, unlimited marketplaces)
+- Revenue models: Commission on completed orders + recurring subscription fees for providers (run both simultaneously)
+- Mobile apps: Buyer Flutter app (iOS & Android) + Seller/Provider Flutter app (iOS & Android) — Play Store links on product page
+- Includes: GPS service search & discovery, drag-and-drop page/menu/form builders (30+ widgets), 20+ payment gateways (PayPal, Stripe, Razorpay, Paytm, Flutterwave, and more), live buyer–seller chat, provider availability & booking slots, service area radius control, coupon system, buyer wallet, review & rating system, payout & withdrawal system, job posting module, email templates & automation, role-based admin permissions, multi-language + RTL support, real-time push notifications, free cPanel installation
+- Keywords: on demand service app, on demand service script, on demand service marketplace script, multivendor service marketplace, taskrabbit clone script, laravel flutter marketplace, service finder script, service booking app
+
 ## Company
 
 - About: https://xgenious.com/about
