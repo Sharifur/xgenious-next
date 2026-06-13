@@ -121,6 +121,7 @@ export default function Footer() {
                 <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
               </svg>
               Company Profile
+              <span className="text-[10px] text-[#6b7280]">49 MB</span>
             </a>
 
             {/* Badges */}

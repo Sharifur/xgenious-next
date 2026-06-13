@@ -4,7 +4,7 @@ import { getCheckoutProduct } from '@/lib/checkout-products';
 import CheckoutClient from './_components/CheckoutClient';
 
 export const metadata: Metadata = {
-  title: 'Checkout — Xgenious',
+  title: 'Checkout',
   robots: { index: false, follow: false },
 };
 
