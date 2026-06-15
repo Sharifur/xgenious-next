@@ -65,6 +65,13 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'SaaS rights, white-label, source code modification — launch unlimited on-demand service marketplaces.',
     accent: '#6369F1',
   },
+  'botmerze-everyting-bundle': {
+    path: 'botmerze-exclusive-pack',
+    name: 'Exclusive License',
+    delta: 130,
+    pitch: 'White-label, source code modification, multiple deployments — build and sell unlimited AI chatbot SaaS businesses.',
+    accent: '#007066',
+  },
 };
 
 function CheckIcon() {

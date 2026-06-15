@@ -72,6 +72,21 @@ Complete self-hosted multi-vendor on-demand service marketplace script and app. 
 - Includes: GPS service search & discovery, drag-and-drop page/menu/form builders (30+ widgets), 20+ payment gateways (PayPal, Stripe, Razorpay, Paytm, Flutterwave, and more), live buyer–seller chat, provider availability & booking slots, service area radius control, coupon system, buyer wallet, review & rating system, payout & withdrawal system, job posting module, email templates & automation, role-based admin permissions, multi-language + RTL support, real-time push notifications, free cPanel installation
 - Keywords: on demand service app, on demand service script, on demand service marketplace script, multivendor service marketplace, taskrabbit clone script, laravel flutter marketplace, service finder script, service booking app
 
+### Botmerze — AI Chatbot SaaS Script for WooCommerce & Shopify
+
+- URL: https://xgenious.com/products/botmerze-ai-chatbot-saas-ecommerce
+- Demo: https://botmerze.bytesed.com
+- CodeCanyon: https://codecanyon.net/item/botmerze-ai-chatbot-saas-for-ecommerce-with-woocommerce-shopify-api-integration/63267734
+- Type: Self-hosted SaaS script (PHP/Laravel)
+- Stack: Laravel 12, PHP 8.3+, PostgreSQL 16+ + pgvector (RAG), OpenAI GPT (your API key), Redis, Tesseract OCR
+- Pricing: Regular $49 (one-time) / Everything Bundle $69 (one-time, SaaS rights) / Exclusive $199 (one-time, white-label + source code) — no monthly fees, use your own OpenAI API key
+- License: Regular (1 domain, sell SaaS subscriptions to clients) / Everything Bundle (SaaS rights included) / Exclusive (white-label, source code modification, multiple deployments)
+- What it does: RAG-powered AI chatbot that trains on your store's knowledge base (PDFs, URLs, WooCommerce/Shopify live sync, YouTube transcripts, images via OCR). Answers product questions, order status, returns policies, and captures leads 24/7. Reduces support tickets by 80%.
+- Key features: RAG with pgvector embeddings, WooCommerce & Shopify real-time sync, multi-client SaaS management, drag-and-drop widget builder, lead capture (name/email/phone), 18+ payment gateways for SaaS billing (Stripe, PayPal, Razorpay, Paytm, Flutterwave+), built-in support ticket system with human handoff, product recommendations & cross-sell, Tesseract OCR for image-based training data, YouTube transcript ingestion
+- Comparison: vs Tidio ($29–$499/mo), vs Intercom ($74+/mo), vs Gorgias ($50+/mo) — Botmerze is one-time purchase, self-hosted, no per-seat pricing
+- Server requirements: PHP 8.3+, PostgreSQL 12+ with pgvector, Redis 6+, Composer 2.x, Linux VPS or cPanel
+- Keywords: AI chatbot SaaS, WooCommerce chatbot, Shopify chatbot, self-hosted chatbot script, RAG chatbot, Laravel chatbot, ecommerce AI chatbot, chatbot SaaS script
+
 ## Company
 
 - About: https://xgenious.com/about
