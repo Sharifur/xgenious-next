@@ -32,3 +32,41 @@ All prices are one-time payments. No subscriptions. No monthly fees.
 
 ## Purchase
 https://codecanyon.net/item/xilancer-all-in-one-freelancer-marketplace-platform/
+
+
+---
+
+# Botmerze — AI Chatbot SaaS for WooCommerce & Shopify
+
+Self-hosted AI chatbot SaaS script. RAG-powered via pgvector, WooCommerce & Shopify sync, 18+ payment gateways. No monthly fees.
+
+## Regular License — $49
+- Complete Laravel 12 source code
+- RAG-powered AI with pgvector
+- WooCommerce & Shopify integration
+- Knowledge base (PDF, URL, web pages)
+- Lead generation & contact capture
+- Multi-client SaaS management panel
+- Drag-and-drop widget builder
+- 18+ payment gateways
+- Built-in support ticket system
+- Product recommendations & cross-sell
+- Lifetime updates
+- 6 months support
+
+## Everything Bundle — $69
+- Everything in Regular License
+- SaaS rights — sell chatbot subscriptions to clients
+- Lifetime updates
+- 6 months support
+
+## Exclusive License — $199
+- Everything in Everything Bundle
+- White-label — remove all Botmerze branding
+- Multiple production deployments
+- Source code modification rights
+- Priority support — 12 months
+- Lifetime updates
+
+## Purchase
+https://codecanyon.net/item/botmerze-ai-chatbot-saas-for-ecommerce-with-woocommerce-shopify-api-integration/63267734
