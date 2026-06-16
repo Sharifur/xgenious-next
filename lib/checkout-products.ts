@@ -1374,6 +1374,54 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
     ],
   },
 
+  'multisaas-bundle-pack': {
+    path: 'multisaas-bundle-pack',
+    name: 'MultiSaas — Bundle Pack',
+    tagline: 'Multi-tenant website builder SaaS + 5 premium plugins. Launch your platform.',
+    price: 199,
+    originalPrice: 245,
+    badge: 'Best Value',
+    features: [
+      'MultiSaas Web Panel',
+      'Hotel Booking Plugin',
+      'Restaurant Plugin',
+      'Domain Reseller Plugin',
+      'Cloud Storage Plugin',
+      'Site Analytics Plugin',
+      'Custom domain per tenant',
+      '19+ payment gateways',
+      '15+ multipurpose themes',
+      '10+ business modules',
+      '200+ languages supported',
+      'Lifetime license validity',
+      'Lifetime free updates',
+      '6 months support',
+      'Personal & commercial use',
+      'Installation support',
+    ],
+    addons: [
+      {
+        path: 'multisaas-install-web',
+        label: 'We Install & Launch It For You',
+        description: 'Skip the setup. We configure your VPS with CloudPanel, install MultiSaas + all plugins, and connect your payment gateways. Ready in 48 hours.',
+        price: 299,
+        originalPrice: 499,
+        includes: [
+          'VPS server setup with CloudPanel',
+          'MultiSaas web panel install',
+          '5 plugins installed and configured',
+          '2 themes installed',
+          'Payment gateway configuration',
+          'Domain & SSL setup',
+        ],
+        excludes: [
+          'Domain, hosting, or VPS cost',
+          'Payment gateway account fees',
+        ],
+      },
+    ],
+  },
+
 };
 
 export function getCheckoutProduct(path: string | undefined | null): CheckoutProduct | null {

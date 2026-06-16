@@ -49,6 +49,8 @@ export interface PurchaseItem {
   can_extend: boolean;
   validity: 'valid' | 'blocked';
   activations: LicenseActivation[];
+  latest_version: string | null;
+  version_updated_at: string | null;
   payment: {
     gateway: string | null;
     transaction_id: string | null;

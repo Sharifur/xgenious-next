@@ -139,9 +139,14 @@ export default function DownloadsPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                   </svg>
                 </div>
-                <div>
+                <div className="flex-1">
                   <p className="text-sm font-semibold text-[#0F1112]">{item.product_name}</p>
                   <p className="text-xs text-gray-400 mt-0.5">{item.variant?.name ?? item.license_type} · <span className="capitalize">{item.platform}</span></p>
+                  {item.latest_version && item.version_updated_at && (
+                    <p className="text-xs text-gray-500 mt-1">
+                      Current version: <span className="font-medium">{item.latest_version}</span> · Updated {new Date(item.version_updated_at).toLocaleDateString()}
+                    </p>
+                  )}
                 </div>
               </div>
 
