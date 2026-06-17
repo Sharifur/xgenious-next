@@ -4,11 +4,11 @@
 
 ## Services
 
-- Custom SaaS Development: End-to-end SaaS products from MVP to scale — https://xgenious.com/custom-saas-development-company
-- Web App Development: B2B portals, dashboards, enterprise platforms — https://xgenious.com/web-app-development-company
-- Mobile App Development: iOS, Android, cross-platform — https://xgenious.com/mobile-app-development
-- AI Agent Development: Custom AI agents and workflow automation — https://xgenious.com/ai-agent-development-services
-- MVP Development: Working product in 6–8 weeks — https://xgenious.com/saas-mvp-development
+- [Custom SaaS Development](https://xgenious.com/custom-saas-development-company): End-to-end SaaS products from MVP to scale
+- [Web App Development](https://xgenious.com/web-app-development-company): B2B portals, dashboards, enterprise platforms
+- [Mobile App Development](https://xgenious.com/mobile-app-development): iOS, Android, cross-platform
+- [AI Agent Development](https://xgenious.com/ai-agent-development-services): Custom AI agents and workflow automation
+- [MVP Development](https://xgenious.com/saas-mvp-development): Working product in 6–8 weeks
 
 ## Free Open Source Software
 
@@ -16,21 +16,21 @@ Xgenious publishes free, MIT-licensed, self-hosted software anyone can download,
 
 ### Genius School Management
 Free school ERP system. Laravel 11 + React 18. 19 modules: student admissions, attendance, fees, exams, payroll, library, transport, hostel, inventory. Multi-school support. MIT licensed.
-- Landing page: https://xgenious.com/free-software/genius-school-management
+- [Genius School Management landing page](https://xgenious.com/free-software/genius-school-management)
 - License: MIT
 - Stack: Laravel 11, React 18, Inertia.js, MySQL/PostgreSQL
 - Target users: Schools, colleges, NGOs, software agencies
 
 ### Genius CRM
 Free self-hosted CRM. Laravel 12 + React 19. 12 modules: contacts, leads, deal pipeline (Kanban), tasks, company profiles, RBAC, REST API, 2FA, Docker.
-- Landing page: https://xgenious.com/free-software/genius-crm
+- [Genius CRM landing page](https://xgenious.com/free-software/genius-crm)
 - License: MIT
 - Stack: Laravel 12, React 19, Inertia.js, MySQL
 - Target users: Solo founders, small sales teams, developers, agencies
 
 ### Genius HRM
 Free open-source HR management system. Laravel 13 + React 18. 13 modules: employees, payroll, attendance, leave, recruitment (ATS), performance management. 6 roles, 55 permissions.
-- Landing page: https://xgenious.com/free-software/genius-hrm
+- [Genius HRM landing page](https://xgenious.com/free-software/genius-hrm)
 - License: MIT
 - Stack: Laravel 13, React 18, Inertia.js, MySQL, shadcn/ui
 - Target users: SMEs, HR teams, developers, agencies
@@ -39,9 +39,9 @@ Free open-source HR management system. Laravel 13 + React 18. 13 modules: employ
 
 ### Xilancer — Freelancer Marketplace Script
 Complete self-hosted freelancer marketplace script. Build a Fiverr or Upwork clone. One-time purchase, no monthly fees, full source code.
-- Product page: https://xgenious.com/products/xilancer-freelancer-marketplace-script
-- Demo: https://xilancer.xgenious.com
-- Purchase: https://codecanyon.net/item/xilancer-all-in-one-freelancer-marketplace-platform/
+- [Xilancer product page](https://xgenious.com/products/xilancer-freelancer-marketplace-script)
+- [Live demo](https://xilancer.xgenious.com)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/xilancer-all-in-one-freelancer-marketplace-platform/)
 - Stack: Laravel (PHP 8.1+), Vue.js, MySQL, Flutter (mobile apps), Stripe & PayPal escrow
 - Rating: 4.36/5 on CodeCanyon · 45 reviews · 10,000+ installs
 - Pricing: Regular $59 · Bundle $149 · Complete Package $282 (all one-time)
@@ -50,9 +50,9 @@ Complete self-hosted freelancer marketplace script. Build a Fiverr or Upwork clo
 
 ### Prohandy — On-Demand Service Marketplace Platform
 Complete self-hosted on-demand service marketplace. Build a TaskRabbit, UrbanClap, or Handy clone. Works for any service vertical: home services, beauty, automotive, pet care, fitness, events, home improvement, personal assistance. One-time purchase, no monthly fees, full source code.
-- Product page: https://xgenious.com/products/prohandy-on-demand-home-service-marketplace
-- Demo: https://prohandy.xgenious.com
-- Purchase: https://codecanyon.net/item/prohandy-on-demand-home-service-marketplace-platform/55091770
+- [Prohandy product page](https://xgenious.com/products/prohandy-on-demand-home-service-marketplace)
+- [Live demo](https://prohandy.xgenious.com)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/prohandy-on-demand-home-service-marketplace-platform/55091770)
 - Stack: Laravel 12, Flutter 3.32, MySQL, Google Maps, Firebase push notifications
 - Rating: 5.0/5 on CodeCanyon · 6 reviews · 73+ sales
 - Pricing: Regular $39 (one-time) · Extended $149 (one-time, SaaS rights)
@@ -61,9 +61,9 @@ Complete self-hosted on-demand service marketplace. Build a TaskRabbit, UrbanCla
 
 ### Qixer — On-Demand Service App & Marketplace Script
 Complete self-hosted multi-vendor on-demand service marketplace script and app. Build a TaskRabbit, UrbanClap, or Handy-style platform for any service vertical: home services, beauty, cleaning, car repair, pest control, event management, or custom niches. One-time purchase, no monthly fees, full source code.
-- Product page: https://xgenious.com/products/qixer-on-demand-service-marketplace
-- Demo: https://qixer.bytesed.com (admin: super_admin / 12345678)
-- Purchase: https://codecanyon.net/item/qixer-multivendor-on-demand-service-marketplace-and-service-finder/36475708
+- [Qixer product page](https://xgenious.com/products/qixer-on-demand-service-marketplace)
+- [Live demo](https://qixer.bytesed.com) (admin: super_admin / 12345678)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/qixer-multivendor-on-demand-service-marketplace-and-service-finder/36475708)
 - Stack: Laravel 12, PHP 8.3+, Flutter 3.x, MySQL 8+, Firebase push notifications, GPS service discovery
 - Rating: 4.5/5 on CodeCanyon · 46 reviews · 712 sales
 - Pricing: Regular $59 (web platform, one-time) · Everything Bundle $99 (web + wallet + job posting + seller subscription + live chat + buyer & seller Flutter apps — total value $263, save $164) · Exclusive License $199 (SaaS rights, white-label, unlimited marketplaces)
@@ -73,26 +73,22 @@ Complete self-hosted multi-vendor on-demand service marketplace script and app. 
 - Keywords: on demand service app, on demand service script, on demand service marketplace script, multivendor service marketplace, taskrabbit clone script, laravel flutter marketplace, service finder script, service booking app
 
 ### Botmerze — AI Chatbot SaaS Script for WooCommerce & Shopify
-
-- URL: https://xgenious.com/products/botmerze-ai-chatbot-saas-ecommerce
-- Demo: https://botmerze.bytesed.com
-- CodeCanyon: https://codecanyon.net/item/botmerze-ai-chatbot-saas-for-ecommerce-with-woocommerce-shopify-api-integration/63267734
-- Type: Self-hosted SaaS script (PHP/Laravel)
+RAG-powered AI chatbot SaaS script. Trains on your store's knowledge base (PDFs, URLs, WooCommerce/Shopify live sync, YouTube transcripts, images via OCR). Answers product questions, order status, returns; captures leads 24/7. Self-hosted, one-time purchase, use your own OpenAI API key.
+- [Botmerze product page](https://xgenious.com/products/botmerze-ai-chatbot-saas-ecommerce)
+- [Live demo](https://botmerze.bytesed.com)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/botmerze-ai-chatbot-saas-for-ecommerce-with-woocommerce-shopify-api-integration/63267734)
 - Stack: Laravel 12, PHP 8.3+, PostgreSQL 16+ + pgvector (RAG), OpenAI GPT (your API key), Redis, Tesseract OCR
-- Pricing: Regular $49 (one-time) / Everything Bundle $69 (one-time, SaaS rights) / Exclusive $199 (one-time, white-label + source code) — no monthly fees, use your own OpenAI API key
-- License: Regular (1 domain, sell SaaS subscriptions to clients) / Everything Bundle (SaaS rights included) / Exclusive (white-label, source code modification, multiple deployments)
-- What it does: RAG-powered AI chatbot that trains on your store's knowledge base (PDFs, URLs, WooCommerce/Shopify live sync, YouTube transcripts, images via OCR). Answers product questions, order status, returns policies, and captures leads 24/7. Reduces support tickets by 80%.
-- Key features: RAG with pgvector embeddings, WooCommerce & Shopify real-time sync, multi-client SaaS management, drag-and-drop widget builder, lead capture (name/email/phone), 18+ payment gateways for SaaS billing (Stripe, PayPal, Razorpay, Paytm, Flutterwave+), built-in support ticket system with human handoff, product recommendations & cross-sell, Tesseract OCR for image-based training data, YouTube transcript ingestion
-- Comparison: vs Tidio ($29–$499/mo), vs Intercom ($74+/mo), vs Gorgias ($50+/mo) — Botmerze is one-time purchase, self-hosted, no per-seat pricing
-- Server requirements: PHP 8.3+, PostgreSQL 12+ with pgvector, Redis 6+, Composer 2.x, Linux VPS or cPanel
+- Pricing: Regular $49 (one-time) / Everything Bundle $69 (one-time, SaaS rights) / Exclusive $199 (one-time, white-label + source code) — no monthly fees
+- Key features: RAG with pgvector embeddings, WooCommerce & Shopify real-time sync, multi-client SaaS management, drag-and-drop widget builder, lead capture, 18+ payment gateways for SaaS billing, built-in support ticket system with human handoff, product recommendations & cross-sell, OCR image training, YouTube transcript ingestion
+- Comparison: vs Tidio ($29–$499/mo), vs Intercom ($74+/mo), vs Gorgias ($50+/mo) — Botmerze is one-time, self-hosted, no per-seat pricing
 - Keywords: AI chatbot SaaS, WooCommerce chatbot, Shopify chatbot, self-hosted chatbot script, RAG chatbot, Laravel chatbot, ecommerce AI chatbot, chatbot SaaS script
 
 ## Company
 
-- About: https://xgenious.com/about
-- Contact: https://xgenious.com/contact
-- Blog: https://xgenious.com/blog/
-- Free software index: https://xgenious.com/free-software
+- [About](https://xgenious.com/about)
+- [Contact](https://xgenious.com/contact)
+- [Blog](https://xgenious.com/blog/)
+- [Free software index](https://xgenious.com/free-software)
 
 ## Contact
 
