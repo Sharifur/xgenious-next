@@ -100,11 +100,11 @@ export default function Hero() {
           <div className="mt-10 w-full max-w-[900px]">
             <div className="rounded-t-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/products/multisaas-hero.jpg"
-                alt="MultiSaas multi-tenant website builder SaaS platform admin dashboard"
-                width={900}
-                height={540}
-                className="w-full object-cover object-top"
+                src="/products/multisaas-hero.png"
+                alt="MultiSaas multi-tenant website builder SaaS platform landing page"
+                width={1763}
+                height={2000}
+                className="w-full h-auto"
                 priority
               />
             </div>
