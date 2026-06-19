@@ -143,7 +143,7 @@ export default function Navbar() {
   const hamburgerClass = isDark ? 'bg-[#EBECEE]' : 'bg-[#1a1a2e]';
 
   return (
-    <header className={`${noSticky && !isDark ? 'relative' : isDark ? 'absolute top-0 left-0 right-0 z-50' : 'fixed top-0 left-0 right-0 z-50'} pt-3 px-3 lg:pt-4 lg:px-8`}>
+    <header className={`${noSticky && !isDark ? 'relative' : isDark ? 'absolute top-[var(--promo-h,0px)] left-0 right-0 z-50' : 'fixed top-[var(--promo-h,0px)] left-0 right-0 z-50'} pt-3 px-3 lg:pt-4 lg:px-8`}>
       <div
         className={`max-w-[1320px] mx-auto rounded-full transition-shadow duration-300 ${isDark ? 'border border-[#3F3F3F]' : 'border-0'} ${
           scrolled

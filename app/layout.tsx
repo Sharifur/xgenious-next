@@ -6,6 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TopLoader from "@/components/ui/TopLoader";
 import IframeNotice from "@/components/ui/IframeNotice";
+import PromoBanner from "@/components/ui/PromoBanner";
 import { Providers } from "@/components/Providers";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
@@ -65,7 +66,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </Script>
         )}
       </head>
-      <body className="flex flex-col min-h-screen antialiased font-sans text-[#0F1112] bg-white">
+      <body
+        className="flex flex-col min-h-screen antialiased font-sans text-[#0F1112] bg-white"
+        style={{ paddingTop: 'var(--promo-h, 0px)' }}
+      >
         {GTM_ID && (
           <noscript>
             <iframe
@@ -79,6 +83,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <TopLoader />
         <IframeNotice />
         <Providers>
+          <PromoBanner />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
