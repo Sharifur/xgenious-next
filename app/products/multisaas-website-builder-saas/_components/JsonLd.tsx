@@ -21,11 +21,12 @@ export default function JsonLd() {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '5',
-      reviewCount: '550',
+      ratingCount: '550',
+      reviewCount: REVIEWS.length.toString(),
       bestRating: '5',
       worstRating: '1',
     },
-    review: REVIEWS.slice(0, 5).map((r) => ({
+    review: REVIEWS.map((r) => ({
       '@type': 'Review',
       author: { '@type': 'Person', name: r.name },
       reviewRating: { '@type': 'Rating', ratingValue: r.rating.toString(), bestRating: '5' },
@@ -71,11 +72,21 @@ export default function JsonLd() {
     ],
   };
 
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: 'MultiSaas — Website Builder SaaS', item: CANONICAL },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApp) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPage) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
     </>
   );
 }
