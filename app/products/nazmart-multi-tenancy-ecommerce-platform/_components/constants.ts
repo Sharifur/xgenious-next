@@ -13,7 +13,7 @@ export const REGULAR_PRICE = 69;
 export const BUNDLE_PRICE = 99;
 export const COMPLETE_PRICE = 299;
 export const BUNDLE_PRODUCT_PATH = 'nazmart-bundle-pack';
-export const COMPLETE_PRODUCT_PATH = 'nazmart-complete-package';
+export const COMPLETE_PRODUCT_PATH = 'nazmart-exclusive-pack';
 
 export const QUICK_LINKS = [
   { label: 'Admin Panel', href: ADMIN_URL },

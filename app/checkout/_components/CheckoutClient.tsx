@@ -17,7 +17,7 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     accent: '#a78bfa',
   },
   'nazmart-bundle-pack': {
-    path: 'nazmart-complete-package',
+    path: 'nazmart-exclusive-pack',
     name: 'Exclusive License',
     delta: 200,
     pitch: 'Full source code rights, remove any branding, deploy across unlimited projects.',

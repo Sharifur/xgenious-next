@@ -820,8 +820,8 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
     ],
   },
 
-  'nazmart-complete-package': {
-    path: 'nazmart-complete-package',
+  'nazmart-exclusive-pack': {
+    path: 'nazmart-exclusive-pack',
     name: 'Nazmart — Exclusive License',
     tagline: 'Web Platform + All Plugins + Mobile App + Domain Reseller',
     price: 299,
