@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { useState, useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
@@ -104,6 +105,103 @@ function Dropdown({
   );
 }
 
+function ProductsMega({ items, dark }: { items: DropdownItem[]; dark?: boolean }) {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function cancelClose() {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  }
+  function scheduleClose() {
+    closeTimer.current = setTimeout(() => setOpen(false), 300);
+  }
+  useEffect(() => () => { if (closeTimer.current) clearTimeout(closeTimer.current); }, []);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => { cancelClose(); setOpen(true); }}
+      onMouseLeave={scheduleClose}
+    >
+      <button
+        className={`flex items-center gap-1.5 text-[14px] font-medium leading-5 transition-colors py-1 cursor-pointer ${
+          dark ? 'text-[#EBECEE] hover:text-white' : 'text-[#1a1a2e] hover:text-[#000]'
+        }`}
+        onClick={() => setOpen((v) => !v)}
+      >
+        Product
+        <Chevron open={open} />
+      </button>
+
+      {open && (
+        <div className="absolute top-[calc(100%+12px)] left-0 -ml-8 w-[680px] max-w-[calc(100vw-2rem)] bg-white border border-[#E5E7EC] rounded-2xl shadow-[0_24px_60px_rgba(15,17,18,0.16)] p-3 z-50">
+          <div className="flex items-center justify-between px-3 pt-1 pb-2.5">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[#8A8F99]">Our Products</span>
+            <span className="text-[11px] text-[#B0B4BD]">{items.length} ready-to-launch platforms</span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-1">
+            {items.map((item) => {
+              const accent = item.accent ?? '#F26B4E';
+              const external = item.href.startsWith('http');
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  target={external ? '_blank' : undefined}
+                  rel={external ? 'noopener noreferrer' : undefined}
+                  className="group flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-[#F5F6F8] transition-colors"
+                  onClick={() => setOpen(false)}
+                >
+                  <span
+                    className="w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center flex-shrink-0 text-[15px] font-bold transition-transform group-hover:scale-105"
+                    style={{ background: `${accent}18`, color: accent }}
+                  >
+                    {item.image ? (
+                      <Image src={item.image} alt={`${item.label} logo`} width={36} height={36} className="w-full h-full object-cover" />
+                    ) : (
+                      item.label[0]
+                    )}
+                  </span>
+                  <span className="min-w-0">
+                    <span className="flex items-center gap-1.5">
+                      <span className="text-[13px] font-semibold text-[#0F1112]">{item.label}</span>
+                      {item.category && (
+                        <span
+                          className="text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wide"
+                          style={{ background: `${accent}14`, color: accent }}
+                        >
+                          {item.category}
+                        </span>
+                      )}
+                    </span>
+                    {item.description && (
+                      <span className="block text-[11px] text-[#8A8F99] mt-0.5 leading-tight truncate">
+                        {item.description}
+                      </span>
+                    )}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="mt-2 pt-2.5 border-t border-[#F0F1F3] flex items-center justify-between px-3">
+            <span className="text-[12px] text-[#8A8F99]">Need something custom-built?</span>
+            <Link
+              href="/custom-saas-development-company"
+              className="text-[12px] font-semibold text-[#F26B4E] hover:underline"
+              onClick={() => setOpen(false)}
+            >
+              Custom SaaS Development →
+            </Link>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -164,7 +262,7 @@ export default function Navbar() {
 
           <nav className="hidden lg:flex items-center gap-7">
             <Dropdown label="Services" items={servicesDropdown} active={isServicesActive} dark={isDark} />
-            <Dropdown label="Product" items={productsDropdown} dark={isDark} />
+            <ProductsMega items={productsDropdown} dark={isDark} />
             <Dropdown label="Free Software" items={freeSoftwareDropdown} active={pathname?.startsWith('/free-software')} dark={isDark} />
             <Dropdown label="Company" items={companyDropdown} dark={isDark} />
             <Link href="https://xgenious.com/blog/" className={linkClass}>Blog</Link>
@@ -219,15 +317,18 @@ export default function Navbar() {
                   <Chevron open={false} />
                 </span>
               </summary>
-              <div className="mt-2 pl-3 flex flex-col gap-2">
+              <div className="mt-2 pl-3 flex flex-col gap-2.5">
                 {g.items.map((item) => (
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="text-[13px] text-[#484848] hover:text-[#0F1112]"
+                    className="flex flex-col"
                     onClick={() => setMenuOpen(false)}
                   >
-                    {item.label}
+                    <span className="text-[13px] font-medium text-[#2F2F2F] hover:text-[#0F1112]">{item.label}</span>
+                    {item.description && (
+                      <span className="text-[11px] text-[#8A8F99] leading-tight">{item.description}</span>
+                    )}
                   </Link>
                 ))}
               </div>

@@ -2,6 +2,9 @@ export interface DropdownItem {
   label: string;
   href: string;
   description?: string;
+  category?: string;
+  accent?: string;
+  image?: string;
 }
 
 export const servicesDropdown: DropdownItem[] = [
@@ -13,16 +16,16 @@ export const servicesDropdown: DropdownItem[] = [
 ];
 
 export const productsDropdown: DropdownItem[] = [
-  { label: 'Nazmart', description: 'Multi-Tenancy eCommerce SAAS', href: '/products/nazmart-multi-tenancy-ecommerce-platform' },
-  { label: 'Helpnest', description: 'AI Power Support Chatbot', href: '/products/helpnest-ai-chatbot-support-script' },
-  { label: 'Botmerze', description: 'AI Chatbot SaaS for WooCommerce & Shopify', href: '/products/botmerze-ai-chatbot-saas-ecommerce' },
-  { label: 'MultiSaas', description: 'Multi-Tenant Website Builder SaaS', href: '/products/multisaas-website-builder-saas' },
-  { label: 'Nexelit', description: 'Multipurpose Website CMS', href: 'https://xgenious.com/our-products/nexelit-multipurpose-website-business-management-system-cms/' },
-  { label: 'Fundorex', description: 'Crowdfunding Platform', href: '/products/fundorex-crowdfunding-platform' },
-  { label: 'Xilancer', description: 'Freelancer Marketplace Platform', href: '/products/xilancer-freelancer-marketplace-script' },
-  { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', href: '/products/prohandy-on-demand-home-service-marketplace' },
-  { label: 'GoCar', description: 'On-Demand Car Service Marketplace', href: '/products/gocar-on-demand-car-service-marketplace' },
-  { label: 'Qixer', description: 'Multi-Vendor On-Demand Service Marketplace', href: '/products/qixer-on-demand-service-marketplace' },
+  { label: 'Nazmart', description: 'Multi-Tenancy eCommerce SAAS', category: 'eCommerce SaaS', accent: '#16a34a', image: '/products/menu/nazmart.png', href: '/products/nazmart-multi-tenancy-ecommerce-platform' },
+  { label: 'Helpnest', description: 'AI Power Support Chatbot', category: 'AI Support', accent: '#4F46E5', image: '/products/menu/helpnest.png', href: '/products/helpnest-ai-chatbot-support-script' },
+  { label: 'Botmerze', description: 'AI Chatbot SaaS for WooCommerce & Shopify', category: 'AI Chatbot', accent: '#007066', image: '/products/menu/botmerze.png', href: '/products/botmerze-ai-chatbot-saas-ecommerce' },
+  { label: 'MultiSaas', description: 'Multi-Tenant Website Builder SaaS', category: 'Website Builder', accent: '#eb6149', image: '/products/menu/multisaas.png', href: '/products/multisaas-website-builder-saas' },
+  { label: 'Nexelit', description: 'Multipurpose Website CMS', category: 'CMS', accent: '#6366f1', image: '/products/menu/nexelit.png', href: 'https://xgenious.com/our-products/nexelit-multipurpose-website-business-management-system-cms/' },
+  { label: 'Fundorex', description: 'Crowdfunding Platform', category: 'Crowdfunding', accent: '#f59e0b', image: '/products/menu/fundorex.png', href: '/products/fundorex-crowdfunding-platform' },
+  { label: 'Xilancer', description: 'Freelancer Marketplace Platform', category: 'Freelance', accent: '#a855f7', image: '/products/menu/xilancer.png', href: '/products/xilancer-freelancer-marketplace-script' },
+  { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', category: 'Home Services', accent: '#059669', image: '/products/menu/prohandy.png', href: '/products/prohandy-on-demand-home-service-marketplace' },
+  { label: 'GoCar', description: 'On-Demand Car Service Marketplace', category: 'Car Service', accent: '#DC2626', image: '/products/menu/gocar.png', href: '/products/gocar-on-demand-car-service-marketplace' },
+  { label: 'Qixer', description: 'Multi-Vendor On-Demand Service Marketplace', category: 'Marketplace', accent: '#0ea5e9', image: '/products/menu/qixer.png', href: '/products/qixer-on-demand-service-marketplace' },
 ];
 
 export const freeSoftwareDropdown: DropdownItem[] = [
