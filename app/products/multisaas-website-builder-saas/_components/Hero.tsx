@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { COLOR, PURCHASE_URL, DEMO_URL, ADMIN_DEMO_URL, DOCS_URL, REGULAR_PRICE } from './constants';
+import { COLOR, PURCHASE_URL, DEMO_URL, ADMIN_DEMO_URL, DOCS_URL, REGULAR_PRICE, REGULAR_ORIGINAL } from './constants';
 
 export default function Hero() {
   return (
@@ -59,7 +59,15 @@ export default function Hero() {
             <span className="text-[13px] text-[#6b7280]">· 550+ clients using the platform</span>
           </div>
 
-          <div className="flex items-center gap-3 flex-wrap justify-center mt-1">
+          <div className="inline-flex items-center gap-2 text-[13px] mt-1">
+            <span className="line-through text-[#9ca3af]">${REGULAR_ORIGINAL}</span>
+            <span className="font-bold text-[#0F1112] text-[15px]">${REGULAR_PRICE}</span>
+            <span className="font-semibold px-2.5 py-0.5 rounded-full" style={{ background: `${COLOR}18`, color: '#b83a2b' }}>
+              Launch offer — save ${REGULAR_ORIGINAL - REGULAR_PRICE}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3 flex-wrap justify-center">
             <a
               href="#pricing"
               className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-lg"

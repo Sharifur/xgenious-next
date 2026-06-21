@@ -168,6 +168,14 @@ When adding a single-segment route (e.g. `/free-tools`): add it to `NEXT_ROUTES`
 |--------|-------|--------|----------|--------|-------------|
 | XG-001 | Top promo banner (WELCOME_10 10% off) | DONE | MED | ~9k | Dismissible site-wide announcement bar above Navbar advertising WELCOME_10 for 10% off all products; copy-to-clipboard code |
 | XG-002 | Promo banner bright color + CRO audit | DONE | MED | ~6k | Bright coral gradient restyle; CRO pass — outcome-led copy, prominent copy-code chip, contrast/scannability improvements |
+| XG-003 | Fix nazmart exclusive license FastSpring slug | DONE | HIGH | ~8k | Rename nazmart-complete-package → nazmart-exclusive-pack across checkout config, upgrade map, and product constants |
+| XG-004 | MultiSaas landing — CRO/SEO/bug audit | DONE | HIGH | ~30k | Fixed broken OG/Twitter image, JSON-LD aggregateRating semantics + BreadcrumbList, FAQ answer clipping, hero discount anchor. Flagged: Launch Bundle math + identical tier checklists |
+| XG-005 | MultiSaas themes section redesign | DONE | MED | ~25k | Added Hotel/Restaurant as premium (Bundle) themes; descriptive cards; real CodeCanyon/bytesed theme thumbnails (13 downloaded to public/) with SVG mockup fallback for premium |
+| XG-006 | MultiSaas How-It-Works visual refresh | DONE | LOW | ~6k | Icon-driven step tiles (login/package/domain/rocket) with number badges, hover lift, polished connector |
+| XG-007 | MultiSaas reviews — expand to 12+ | DONE | MED | ~8k | Expanded REVIEWS 5→13 using real CodeCanyon reviewers + faithful sentiment; JSON-LD review nodes + reviewCount synced |
+| XG-008 | Hotel/Restaurant real screenshots + Envato badge | DONE | MED | ~10k | Saved provided Hotel & Restaurant theme screenshots as thumbnails (all 15 themes now real images); added Envato Market verified badge to each review card + header trust link to CodeCanyon |
+| XG-009 | MultiSaas premium plugins section | DONE | MED | ~8k | New section showcasing 5 premium plugins (Cloud Storage, Site Analytics, Domain Reseller, Restaurant, Hotel) marked Bundle & Exclusive only |
+| XG-010 | MultiSaas pricing → nazmart format | DONE | HIGH | ~20k | Removed Complete Launch Bundle; rebuilt 3-card nazmart-style pricing: Regular $59 (plugins ✗) / Bundle $99 BEST VALUE / Exclusive $299 (purple). Gated premium plugins; added multisaas-exclusive-pack checkout product ($299) + Bundle→Exclusive upgrade nudge; Bundle checkout price 199→99 |
 
 ### Sprint Stats
-- Total: 2  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 2  /  BLOCKED: 0
+- Total: 10  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 10  /  BLOCKED: 0

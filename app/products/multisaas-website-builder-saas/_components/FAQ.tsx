@@ -46,7 +46,7 @@ export default function FAQ() {
 
                 <div
                   className="overflow-hidden transition-all duration-300"
-                  style={{ maxHeight: open === i ? '400px' : '0px' }}
+                  style={{ maxHeight: open === i ? '1000px' : '0px' }}
                 >
                   <p className="px-6 pb-5 text-[14px] text-[#484848] leading-7">{faq.answer}</p>
                 </div>

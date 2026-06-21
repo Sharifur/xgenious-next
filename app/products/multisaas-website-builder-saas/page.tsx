@@ -9,6 +9,7 @@ import Themes from './_components/Themes';
 import TenantFlow from './_components/TenantFlow';
 import WhoIsItFor from './_components/WhoIsItFor';
 import Integrations from './_components/Integrations';
+import PremiumPlugins from './_components/PremiumPlugins';
 import Comparison from './_components/Comparison';
 import Reviews from './_components/Reviews';
 import Pricing from './_components/Pricing';
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
       'Build and operate your own website builder SaaS. Multi-tenancy, 10+ modules, 15+ themes, custom domains, 19+ payment gateways. One-time $59 — no monthly fees.',
     url: CANONICAL,
     siteName: 'Xgenious',
-    images: [{ url: '/products/multisaas-hero.jpg', width: 1200, height: 630, alt: 'MultiSaas — Multi-Tenant Website Builder SaaS' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'MultiSaas — Multi-Tenant Website Builder SaaS' }],
     type: 'website',
   },
   twitter: {
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     title: 'MultiSaas: Multi-Tenant Website Builder SaaS Script | Xgenious',
     description:
       'Launch your own website builder SaaS. 10+ modules, 15+ themes, custom domains, 19+ gateways. One-time $59.',
-    images: ['/products/multisaas-hero.jpg'],
+    images: ['/og-image.png'],
   },
   keywords: [
     'website builder saas',
@@ -64,6 +65,7 @@ export default function MultisaasPage() {
         <TenantFlow />
         <WhoIsItFor />
         <Integrations />
+        <PremiumPlugins />
         <Comparison />
         <Reviews />
         <Pricing />

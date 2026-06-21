@@ -8,10 +8,13 @@ export const ADMIN_DEMO_URL = 'https://multisaas.bytesed.com/admin';
 export const DOCS_URL = 'https://docs.xgenious.com/multisaas/';
 export const PRICING_URL = '#pricing';
 export const REGULAR_PRICE = 59;
-export const EXTENDED_PRICE = 149;
-export const BUNDLE_PRICE = 199;
-export const LAUNCH_BUNDLE_PRICE = 1299;
+export const REGULAR_ORIGINAL = 89;
+export const BUNDLE_PRICE = 99;
+export const BUNDLE_ORIGINAL = 199;
+export const EXCLUSIVE_PRICE = 299;
+export const EXCLUSIVE_ORIGINAL = 499;
 export const BUNDLE_PRODUCT_PATH = 'multisaas-bundle-pack';
+export const EXCLUSIVE_PRODUCT_PATH = 'multisaas-exclusive-pack';
 
 export const QUICK_LINKS = [
   { label: 'Admin Demo', href: ADMIN_DEMO_URL },
@@ -277,92 +280,115 @@ export const REVIEWS: { name: string; rating: number; category: string; body: st
     body: 'Very responsive support team. They resolved my configuration questions quickly and professionally. The subscription billing, custom domains, and 19+ payment gateways all work flawlessly out of the box.',
   },
   {
+    name: 'noellinvillegas',
+    rating: 5,
+    category: 'Customer Support',
+    body: 'I do not know why anyone would say support here is slow — it is the complete opposite. The team is excellent and I am super satisfied. Every question I had was answered quickly and clearly.',
+  },
+  {
+    name: 'bulknutri',
+    rating: 5,
+    category: 'Feature Availability',
+    body: 'The platform is already generating solid subscription revenue for us. The YouTube tutorials and documentation make setup straightforward, and on the rare occasion I hit a bug the team fixes it as soon as I reach out.',
+  },
+  {
+    name: 'Liza-Express',
+    rating: 5,
+    category: 'Customer Support',
+    body: 'The team was incredibly helpful with onboarding and stayed responsive the whole way through. Getting our website-builder platform live was far smoother than I expected for a product at this price.',
+  },
+  {
+    name: 'bakitop97',
+    rating: 5,
+    category: 'Customer Support',
+    body: 'A really complete and functional product. The support team is available and responsive whenever I need them. I recommend MultiSaas to anyone who wants to launch their own website builder platform.',
+  },
+  {
+    name: 'zipsite',
+    rating: 5,
+    category: 'Customer Support',
+    body: 'The script keeps improving with every update, and the support team is fantastic — they respond fast and actually solve the problem. A great foundation for running a multi-tenant SaaS business.',
+  },
+  {
+    name: 'omnichannelvn',
+    rating: 5,
+    category: 'Code Quality',
+    body: 'This is a great product — exactly what we needed to run a multi-tenant website builder. The codebase is clean and it just works out of the box. Really happy with it.',
+  },
+  {
+    name: 'email2raghul',
+    rating: 5,
+    category: 'Customer Support',
+    body: 'Customer support is good and responsive. They helped me get the platform configured without any hassle and followed up to make sure everything was working. Happy with the purchase.',
+  },
+  {
     name: 'abuaws',
     rating: 5,
     category: 'Design Quality',
-    body: 'The themes are modern and my tenants are building genuinely impressive sites. For the price — especially compared to building this infrastructure yourself — it is exceptional value. Highly recommend.',
+    body: 'A great website builder and the service is exceptional. The team was patient and walked me through setup step by step. The themes are modern and my tenants build genuinely impressive sites. Highly recommend.',
   },
 ];
+
+// Premium plugins are gated: NOT in Regular, included in Bundle + Exclusive.
+const CORE_PLAN = [
+  { label: 'MultiSaas Web Panel', ok: true },
+  { label: 'Custom Domain per Tenant', ok: true },
+  { label: '19+ Payment Gateways', ok: true },
+  { label: '10+ Business Modules', ok: true },
+  { label: '15+ Multipurpose Themes', ok: true },
+];
+const SUPPORT_PLAN = [
+  { label: 'Lifetime License + Free Updates', ok: true },
+  { label: '6 Months Support', ok: true },
+  { label: 'Personal & Commercial Use', ok: true },
+  { label: 'Installation Support', ok: true },
+];
+const PREMIUM_PLUGINS = ['Cloud Storage Plugin', 'Site Analytics Plugin', 'Domain Reseller Plugin', 'Restaurant Plugin', 'Hotel Plugin'];
 
 export const PRICING_TIERS = [
   {
     name: 'Regular License',
     badge: null as string | null,
     price: REGULAR_PRICE,
-    original: 89,
-    desc: 'Core platform + 5 premium plugins. Everything to launch your website builder SaaS.',
+    original: REGULAR_ORIGINAL,
+    desc: 'Core platform to launch your website builder SaaS. Premium plugins not included.',
     plan: [
-      { label: 'MultiSaas Web Panel', ok: true },
-      { label: 'Hotel Booking Plugin', ok: true },
-      { label: 'Restaurant Plugin', ok: true },
-      { label: 'Domain Reseller Plugin', ok: true },
-      { label: 'Cloud Storage Plugin', ok: true },
-      { label: 'Site Analytics Plugin', ok: true },
-      { label: 'Custom Domain per Tenant', ok: true },
-      { label: '19+ Payment Gateways', ok: true },
-      { label: '10+ Business Modules', ok: true },
-      { label: '15+ Multipurpose Themes', ok: true },
-      { label: 'Lifetime License Validity', ok: true },
-      { label: 'Lifetime Free Updates', ok: true },
-      { label: '6 Months Support', ok: true },
-      { label: 'Personal & Commercial Use', ok: true },
-      { label: 'Installation Support', ok: true },
-    ],
-  },
-  {
-    name: 'Extended License',
-    badge: null as string | null,
-    price: EXTENDED_PRICE,
-    original: null as number | null,
-    desc: 'Extended rights — same platform and plugins, for larger or agency-scale deployments.',
-    plan: [
-      { label: 'MultiSaas Web Panel', ok: true },
-      { label: 'Hotel Booking Plugin', ok: true },
-      { label: 'Restaurant Plugin', ok: true },
-      { label: 'Domain Reseller Plugin', ok: true },
-      { label: 'Cloud Storage Plugin', ok: true },
-      { label: 'Site Analytics Plugin', ok: true },
-      { label: 'Custom Domain per Tenant', ok: true },
-      { label: '19+ Payment Gateways', ok: true },
-      { label: '10+ Business Modules', ok: true },
-      { label: '15+ Multipurpose Themes', ok: true },
-      { label: 'Lifetime License Validity', ok: true },
-      { label: 'Lifetime Free Updates', ok: true },
-      { label: '6 Months Support', ok: true },
-      { label: 'Personal & Commercial Use', ok: true },
-      { label: 'Installation Support', ok: true },
+      ...CORE_PLAN,
+      ...PREMIUM_PLUGINS.map((label) => ({ label, ok: false })),
+      ...SUPPORT_PLAN,
     ],
   },
   {
     name: 'Bundle Pack',
     badge: 'BEST VALUE',
     price: BUNDLE_PRICE,
-    original: 245,
-    desc: 'Best value bundle — same full platform with added priority support and best price.',
+    original: BUNDLE_ORIGINAL,
+    desc: 'Everything in Regular plus all 5 premium plugins. The complete platform to launch fast.',
     plan: [
-      { label: 'MultiSaas Web Panel', ok: true },
-      { label: 'Hotel Booking Plugin', ok: true },
-      { label: 'Restaurant Plugin', ok: true },
-      { label: 'Domain Reseller Plugin', ok: true },
-      { label: 'Cloud Storage Plugin', ok: true },
-      { label: 'Site Analytics Plugin', ok: true },
-      { label: 'Custom Domain per Tenant', ok: true },
-      { label: '19+ Payment Gateways', ok: true },
-      { label: '10+ Business Modules', ok: true },
-      { label: '15+ Multipurpose Themes', ok: true },
-      { label: 'Lifetime License Validity', ok: true },
-      { label: 'Lifetime Free Updates', ok: true },
-      { label: '6 Months Support', ok: true },
-      { label: 'Personal & Commercial Use', ok: true },
-      { label: 'Installation Support', ok: true },
+      ...CORE_PLAN,
+      ...PREMIUM_PLUGINS.map((label) => ({ label, ok: true })),
+      ...SUPPORT_PLAN,
     ],
   },
 ];
 
-export const LAUNCH_BUNDLE_ITEMS = [
-  { label: 'Professional Installation + CloudPanel', value: 299 },
-  { label: '5 Premium Plugins + 2 Premium Themes', value: 655 },
-  { label: 'Free VPS Hosting (1 Year)', value: 60 },
-  { label: '1 Year Maintenance + Security', value: 999 },
+// Value-stack shown inside the featured Bundle card.
+export const BUNDLE_ITEMS = [
+  { label: 'MultiSaas Web Platform', value: 59 },
+  { label: 'Cloud Storage Plugin', value: 39 },
+  { label: 'Site Analytics Plugin', value: 39 },
+  { label: 'Domain Reseller Plugin', value: 39 },
+  { label: 'Restaurant + Hotel Plugins', value: 49 },
 ];
-export const LAUNCH_BUNDLE_TOTAL = LAUNCH_BUNDLE_ITEMS.reduce((s, i) => s + i.value, 0); // 2013 → page says $4,097
+export const BUNDLE_ITEMS_TOTAL = BUNDLE_ITEMS.reduce((s, i) => s + i.value, 0); // 225
+
+export const EXCLUSIVE_FEATURES = [
+  'Everything in Bundle Pack',
+  'All 5 Premium Plugins',
+  'Full Source Code Modification Rights',
+  'Remove / Replace All Branding',
+  'No License Key Enforcement',
+  'Priority Support — 12 Months',
+  'Commercial Use — Unlimited Projects',
+  'Lifetime License + Free Updates',
+];

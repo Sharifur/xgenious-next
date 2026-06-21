@@ -23,6 +23,13 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'Full source code rights, remove any branding, deploy across unlimited projects.',
     accent: '#8b5cf6',
   },
+  'multisaas-bundle-pack': {
+    path: 'multisaas-exclusive-pack',
+    name: 'Exclusive Bundle Pack',
+    delta: 200,
+    pitch: 'Full source code rights, remove all branding, and deploy across unlimited commercial projects.',
+    accent: '#8b5cf6',
+  },
   'fundorex-bundle-pack': {
     path: 'fundorex-exclusive-pack',
     name: 'Exclusive License',
