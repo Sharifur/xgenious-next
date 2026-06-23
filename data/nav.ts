@@ -17,6 +17,7 @@ export const servicesDropdown: DropdownItem[] = [
 
 export const productsDropdown: DropdownItem[] = [
   { label: 'Nazmart', description: 'Multi-Tenancy eCommerce SAAS', category: 'eCommerce SaaS', accent: '#16a34a', image: '/products/menu/nazmart.png', href: '/products/nazmart-multi-tenancy-ecommerce-platform' },
+  { label: 'Grenmart', description: 'Organic Grocery eCommerce Platform', category: 'Grocery eCommerce', accent: '#2f9e44', image: '/products/menu/grenmart.png', href: '/products/grenmart-organic-grocery-ecommerce' },
   { label: 'Helpnest', description: 'AI Power Support Chatbot', category: 'AI Support', accent: '#4F46E5', image: '/products/menu/helpnest.png', href: '/products/helpnest-ai-chatbot-support-script' },
   { label: 'Botmerze', description: 'AI Chatbot SaaS for WooCommerce & Shopify', category: 'AI Chatbot', accent: '#007066', image: '/products/menu/botmerze.png', href: '/products/botmerze-ai-chatbot-saas-ecommerce' },
   { label: 'MultiSaas', description: 'Multi-Tenant Website Builder SaaS', category: 'Website Builder', accent: '#eb6149', image: '/products/menu/multisaas.png', href: '/products/multisaas-website-builder-saas' },
