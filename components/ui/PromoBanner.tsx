@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { PROMO_CODE } from '@/lib/fastspring';
 
 const STORAGE_KEY = 'xg-promo-welcome10-dismissed';
 
@@ -41,7 +42,7 @@ export default function PromoBanner() {
 
   const copyCode = async () => {
     try {
-      await navigator.clipboard.writeText('WELCOME_10');
+      await navigator.clipboard.writeText(PROMO_CODE);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -62,18 +63,18 @@ export default function PromoBanner() {
           </svg>
           <span className="font-bold">Save 10% on every Xgenious product</span>
         </span>
-        <span className="hidden sm:inline text-white/90">— apply</span>
+        <span className="hidden sm:inline text-white/90">— auto-applied with code</span>
         <button
           onClick={copyCode}
           className="group inline-flex items-center gap-1.5 font-mono font-bold tracking-wide rounded-md bg-white text-[#D83A1A] hover:bg-white/90 transition-colors px-2 py-0.5 cursor-pointer shadow-sm"
-          aria-label="Copy coupon code WELCOME_10"
+          aria-label={`Copy coupon code ${PROMO_CODE}`}
         >
-          WELCOME_10
+          {PROMO_CODE}
           {copied && (
             <span className="text-[11px] font-sans font-semibold text-[#D83A1A]/70">✓ Copied</span>
           )}
         </button>
-        <span className="hidden sm:inline text-white/90">at checkout</span>
+        <span className="hidden sm:inline text-white/90">— no code needed at checkout</span>
       </div>
       <button
         onClick={dismiss}
