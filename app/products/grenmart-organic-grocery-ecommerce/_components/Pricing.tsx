@@ -3,18 +3,18 @@ import {
   COLOR,
   COLOR_DARK,
   PURCHASE_URL,
-  EXTENDED_PRODUCT_PATH,
+  BUNDLE_PRODUCT_PATH,
   EXCLUSIVE_PRODUCT_PATH,
   REGULAR_PRICE,
   REGULAR_ORIGINAL,
-  EXTENDED_PRICE,
-  EXTENDED_ORIGINAL,
+  BUNDLE_PRICE,
+  BUNDLE_ORIGINAL,
   EXCLUSIVE_PRICE,
   EXCLUSIVE_ORIGINAL,
 } from './constants';
 import CodeCanyonUpsellButton from '@/components/ui/CodeCanyonUpsellButton';
 
-const EXTENDED_CHECKOUT_URL = `/checkout?product=${EXTENDED_PRODUCT_PATH}`;
+const BUNDLE_CHECKOUT_URL = `/checkout?product=${BUNDLE_PRODUCT_PATH}`;
 const EXCLUSIVE_CHECKOUT_URL = `/checkout?product=${EXCLUSIVE_PRODUCT_PATH}`;
 
 const TEAL = '#0d9488';
@@ -29,29 +29,31 @@ const CORE = [
   'Advanced inventory, shipping & tax',
   'Coupons, campaigns & autocomplete search',
   'SEO tools + sitemap generation',
-  'RTL + 200+ languages',
+  'Admin-set language + RTL support',
 ];
 
 const REGULAR_PLAN = [
   ...CORE.map((label) => ({ label, ok: true })),
-  { label: 'Charge your own end users', ok: false },
+  { label: 'Grenmart Flutter app (Android & iOS)', ok: false },
+  { label: 'Full source modification rights', ok: false },
   { label: 'Remove / replace branding', ok: false },
   { label: '6 months support + lifetime updates', ok: true },
 ];
 
-const EXTENDED_PLAN = [
+const BUNDLE_PLAN = [
   ...CORE.map((label) => ({ label, ok: true })),
-  { label: 'Charge your own end users (SaaS/paid)', ok: true },
+  { label: 'Grenmart Flutter app (Android & iOS)', ok: true },
+  { label: 'Full source modification rights', ok: false },
   { label: 'Remove / replace branding', ok: false },
   { label: '6 months support + lifetime updates', ok: true },
 ];
 
 const EXCLUSIVE_PLAN = [
-  'Everything in Extended License',
+  'Everything in the Everything Bundle',
+  'Grenmart Flutter app — Android & iOS',
   'Full source modification rights',
   'Remove / replace all branding',
   'Unlimited commercial projects',
-  'Free installation on your server',
   'Priority support — 12 months',
   'Lifetime license + free updates',
 ];
@@ -105,16 +107,16 @@ export default function Pricing() {
                 <span className="text-[48px] font-bold text-[#0F1112] leading-none">${REGULAR_PRICE}</span>
                 <span className="text-[15px] text-[#9ca3af]">one-time</span>
               </div>
-              <p className="text-[13px] text-[#6b7280] leading-5">For a single store where your end users are not charged.</p>
+              <p className="text-[13px] text-[#6b7280] leading-5">The Grenmart web store. Mobile app and full rights not included.</p>
             </div>
 
             <CodeCanyonUpsellButton
               codecanyonUrl={PURCHASE_URL}
               regularPrice={REGULAR_PRICE}
-              bundlePrice={EXTENDED_PRICE}
-              bundleCheckoutUrl={EXTENDED_CHECKOUT_URL}
-              bundleItems={['Charge your own end users', 'SaaS / paid-access stores', 'Lifetime updates', '6 months support']}
-              bundleLabel="Extended License"
+              bundlePrice={BUNDLE_PRICE}
+              bundleCheckoutUrl={BUNDLE_CHECKOUT_URL}
+              bundleItems={['Grenmart Flutter app (Android & iOS)', 'Web + mobile in one bundle', 'Lifetime updates', '6 months support']}
+              bundleLabel="Everything Bundle"
               accentColor={COLOR}
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
             >
@@ -134,47 +136,47 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Extended License — featured */}
+          {/* Everything Bundle — featured */}
           <div className="rounded-2xl p-7 flex flex-col relative overflow-hidden" style={{ background: '#08210f', border: `2px solid ${COLOR}` }}>
             <div className="flex items-center gap-2 flex-wrap mb-5">
               <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: COLOR, color: '#fff' }}>
                 BEST VALUE
               </span>
               <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#16a34a] text-white">
-                CHARGE YOUR USERS
+                WEB + APP
               </span>
             </div>
 
             <div className="mb-4">
-              <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${COLOR}cc` }}>Extended License</p>
+              <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${COLOR}cc` }}>Everything Bundle</p>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[20px] font-semibold line-through" style={{ color: '#3a6b48' }}>${EXTENDED_ORIGINAL}</span>
+                <span className="text-[20px] font-semibold line-through" style={{ color: '#3a6b48' }}>${BUNDLE_ORIGINAL}</span>
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${COLOR}25`, color: '#7ee29a' }}>
-                  {Math.round((1 - EXTENDED_PRICE / EXTENDED_ORIGINAL) * 100)}% OFF
+                  {Math.round((1 - BUNDLE_PRICE / BUNDLE_ORIGINAL) * 100)}% OFF
                 </span>
               </div>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-[56px] font-bold text-white leading-none">${EXTENDED_PRICE}</span>
+                <span className="text-[56px] font-bold text-white leading-none">${BUNDLE_PRICE}</span>
                 <span className="text-[15px]" style={{ color: '#7ea98b' }}>one-time</span>
               </div>
               <p className="text-[13px] leading-5 mb-1" style={{ color: '#bfe0c8' }}>
-                For stores that charge end users — SaaS, memberships, or paid-access shops.
+                The web store <strong className="text-white">plus the Grenmart Flutter app</strong> — sell on web, Android &amp; iOS.
               </p>
             </div>
 
             <Link
-              href={EXTENDED_CHECKOUT_URL}
+              href={BUNDLE_CHECKOUT_URL}
               className="flex items-center justify-center gap-2 font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: COLOR, color: '#fff', boxShadow: `0 8px 24px ${COLOR}55` }}
             >
-              Get Extended License
+              Get the Everything Bundle
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
 
             <div className="flex flex-col gap-2.5">
-              {EXTENDED_PLAN.map((f) => (
+              {BUNDLE_PLAN.map((f) => (
                 <div key={f.label} className="flex items-start gap-2.5 text-[13px]" style={{ color: f.ok ? '#d6efdd' : '#5a8568' }}>
                   {f.ok ? <CheckIcon color={COLOR} /> : <XIcon />}
                   {f.label}
@@ -205,7 +207,7 @@ export default function Pricing() {
                   Done-For-You &amp; Full Rights
                 </p>
                 <div className="flex flex-col gap-2.5">
-                  {['Free installation on your server', 'Modify source code freely', 'Remove or replace all branding', 'Unlimited commercial projects'].map((item) => (
+                  {['Grenmart Flutter app — Android & iOS', 'Modify source code freely', 'Remove or replace all branding', 'Unlimited commercial projects'].map((item) => (
                     <div key={item} className="flex items-start gap-2 text-[12px]" style={{ color: '#99f6e4' }}>
                       <svg className="flex-shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 20 20" fill="none">
                         <circle cx="10" cy="10" r="10" fill={`${TEAL}25`} />

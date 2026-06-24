@@ -63,7 +63,7 @@ export default function Hero() {
             View Live Demo
           </Link>
         </div>
-        <p className="text-[12px] text-[#5a6b5e]">One-time purchase · No monthly fees · Full Laravel source code · 200+ languages</p>
+        <p className="text-[12px] text-[#5a6b5e]">One-time purchase · No monthly fees · Full Laravel source code · RTL support</p>
 
         <div className="flex items-center gap-6 flex-wrap justify-center mt-1">
           {[

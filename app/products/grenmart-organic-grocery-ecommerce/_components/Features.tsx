@@ -1,55 +1,597 @@
 import { COLOR, FEATURES } from './constants';
+import './features-animations.css';
 
-function Icon({ name }: { name: string }) {
-  const common = { width: 22, height: 22, viewBox: '0 0 24 24', fill: 'none' } as const;
+/* Palette for the illustrations */
+const G = '#2f9e44';      // primary green
+const GD = '#247536';     // dark green
+const GL = '#8ed3a4';     // light green
+const GL2 = '#d6f0de';    // pale green
+const AM = '#f59e0b';     // amber accent
+const AML = '#fcd34d';    // light amber
+const INK = '#1f2937';    // ink
+const GRAY = '#e5e7eb';   // card stroke
+const SOFT = '#eef7f0';   // soft fill
+const SALE = '#e2574c';   // sale / urgency red
+
+const VB = '0 0 200 130';
+
+/* Shared illustration glyphs (declared at module scope, not inside render) */
+function Apple({ cx, cy, r = 9 }: { cx: number; cy: number; r?: number }) {
+  return (
+    <>
+      <rect x={cx - 0.8} y={cy - r - 2.5} width="1.6" height="5" rx="0.8" fill="#7a5230" />
+      <path d={`M${cx + 1} ${cy - r} q4 -3 7 0 q-4 3 -7 0 z`} fill={G} />
+      <circle cx={cx - r * 0.45} cy={cy} r={r} fill={SALE} />
+      <circle cx={cx + r * 0.45} cy={cy} r={r} fill={SALE} />
+      <ellipse cx={cx - r * 0.5} cy={cy - r * 0.4} rx={r * 0.25} ry={r * 0.38} fill="#fff" opacity="0.35" />
+    </>
+  );
+}
+function Veg({ type, tx, ty }: { type: string; tx: number; ty: number }) {
+  if (type === 'cuke')
+    return (
+      <g transform={`rotate(-22 ${tx} ${ty})`}>
+        <rect x={tx - 8} y={ty - 3} width="16" height="6.5" rx="3.25" fill="#4a9e3f" />
+        <rect x={tx - 5} y={ty - 1.6} width="7" height="1.6" rx="0.8" fill="#fff" opacity="0.4" />
+      </g>
+    );
+  if (type === 'pepper')
+    return (
+      <>
+        <rect x={tx - 1} y={ty - 7} width="2" height="3" rx="1" fill={GD} />
+        <path d={`M${tx - 5} ${ty - 3} q5 -5 10 0 q1.5 9 -5 9 q-6.5 0 -5 -9 z`} fill={SALE} />
+      </>
+    );
+  return (
+    <>
+      <path d={`M${tx - 4} ${ty - 5} q4 -3 8 0`} fill="none" stroke={GD} strokeWidth="1.6" strokeLinecap="round" />
+      <path d={`M${tx} ${ty - 4} l-4 11 h8 z`} fill="#e8852b" />
+    </>
+  );
+}
+function Heart({ cx, cy, fill, stroke }: { cx: number; cy: number; fill: string; stroke?: string }) {
+  return (
+    <path
+      d={`M${cx} ${cy + 3.2} c-3 -2 -4.6 -3.5 -4.6 -5.4 a2.2 2.2 0 0 1 4 -1.3 a2.2 2.2 0 0 1 4 1.3 c0 1.9 -1.6 3.4 -4.6 5.4 z`}
+      fill={fill}
+      stroke={stroke}
+      strokeWidth={stroke ? 1.5 : 0}
+      strokeLinejoin="round"
+    />
+  );
+}
+function CartIcon({ cx, cy }: { cx: number; cy: number }) {
+  return (
+    <>
+      <path d={`M${cx - 5.5} ${cy - 4} h2 l1.5 7.2 a1 1 0 0 0 1 .8 h5.2 a1 1 0 0 0 1 -.8 l1 -4.8 h-8.2`} fill="none" stroke={GD} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx={cx - 1} cy={cy + 6} r="1" fill={GD} />
+      <circle cx={cx + 4} cy={cy + 6} r="1" fill={GD} />
+    </>
+  );
+}
+function CompareIcon({ cx, cy }: { cx: number; cy: number }) {
+  return (
+    <>
+      <path d={`M${cx - 5} ${cy - 2} h9 m-2.5 -2.5 l2.5 2.5 -2.5 2.5`} fill="none" stroke={GD} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d={`M${cx + 5} ${cy + 3} h-9 m2.5 -2.5 l-2.5 2.5 2.5 2.5`} fill="none" stroke={GD} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  );
+}
+function CheckBadge({ cx, cy, fill }: { cx: number; cy: number; fill: string }) {
+  return (
+    <>
+      <circle cx={cx} cy={cy} r="5.5" fill={fill} />
+      <path d={`M${cx - 2.4} ${cy} l1.7 1.7 l3.2 -3.6`} fill="none" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  );
+}
+function TriVal({ x, y, vals, fill, size = 9, weight = 700, anchor = 'end' }: { x: number; y: number; vals: [string, string, string]; fill: string; size?: number; weight?: number; anchor?: 'start' | 'middle' | 'end' }) {
+  const cls = ['a-q1', 'a-q2', 'a-q3'];
+  return (
+    <>
+      {vals.map((v, i) => (
+        <text key={i} className={cls[i]} x={x} y={y} textAnchor={anchor} fontSize={size} fontWeight={weight} fill={fill} fontFamily="sans-serif">{v}</text>
+      ))}
+    </>
+  );
+}
+function EyeBadge({ cx, cy, active }: { cx: number; cy: number; active?: boolean }) {
+  const stroke = active ? '#fff' : GD;
+  return (
+    <>
+      <circle cx={cx} cy={cy} r="6.5" fill={active ? G : '#fff'} stroke={GRAY} strokeWidth="1.2" />
+      <path d={`M${cx - 4} ${cy} q4 -4 8 0 q-4 4 -8 0 z`} fill="none" stroke={stroke} strokeWidth="1.2" />
+      <circle cx={cx} cy={cy} r="1.4" fill={stroke} />
+    </>
+  );
+}
+function ShareGlyph({ cx, cy, kind }: { cx: number; cy: number; kind: string }) {
+  const bg = kind === 'fb' ? '#1877F2' : kind === 'wa' ? '#25D366' : '#0b1f12';
+  return (
+    <>
+      <circle cx={cx} cy={cy} r="8" fill={bg} />
+      {kind === 'fb' && <text x={cx} y={cy + 3} textAnchor="middle" fontSize="11" fontWeight="800" fill="#fff" fontFamily="Georgia, serif">f</text>}
+      {kind === 'x' && <text x={cx} y={cy + 3} textAnchor="middle" fontSize="9.5" fontWeight="800" fill="#fff" fontFamily="sans-serif">X</text>}
+      {kind === 'wa' && (
+        <path d={`M${cx - 3.4} ${cy - 3.4} a4.8 4.8 0 1 0 -1.4 8 l3 .8 -.8 -2.9 a4.8 4.8 0 0 0 -0.8 -5.9 z`} fill="#fff" />
+      )}
+    </>
+  );
+}
+
+function Scene({ name }: { name: string }) {
+  const common = { viewBox: VB, className: 'i-scene w-full h-auto block' } as const;
   switch (name) {
+    /* ---------- Page Builder ---------- */
     case 'builder':
       return (
-        <svg {...common}><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2" /><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2" /><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2" /><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2" /></svg>
+        <svg {...common}>
+          <circle cx="36" cy="28" r="24" fill={GL2} opacity="0.6" />
+          {/* editor window */}
+          <rect x="18" y="16" width="164" height="100" rx="9" fill="#fff" stroke={GRAY} strokeWidth="2" />
+          <rect x="18" y="16" width="164" height="15" rx="9" fill={SOFT} />
+          <circle cx="29" cy="23.5" r="2.2" fill="#f87171" /><circle cx="37" cy="23.5" r="2.2" fill={AML} /><circle cx="45" cy="23.5" r="2.2" fill={GL} />
+          {/* widget palette */}
+          <rect x="26" y="38" width="34" height="70" rx="5" fill={GL2} />
+          <text x="43" y="47" textAnchor="middle" fontSize="6" fontWeight="700" fill={GD} fontFamily="sans-serif">WIDGETS</text>
+          {[52, 70, 88].map((y) => (
+            <g key={y}>
+              <rect x="31" y={y} width="24" height="13" rx="3" fill="#fff" stroke={GL} strokeWidth="1.2" />
+              <circle cx="36" cy={y + 6.5} r="1" fill={G} /><circle cx="39" cy={y + 6.5} r="1" fill={G} />
+              <rect x="43" y={y + 5} width="9" height="3" rx="1.5" fill={GL} />
+            </g>
+          ))}
+          {/* canvas: a placed block + a highlighted drop zone */}
+          <rect x="68" y="38" width="106" height="16" rx="4" fill={GL} />
+          <rect x="74" y="44" width="46" height="4" rx="2" fill="#fff" opacity="0.85" />
+          <rect className="a-zone" x="68" y="84" width="106" height="22" rx="5" fill={`${G}12`} stroke={G} strokeWidth="2" strokeDasharray="5 4" />
+          {/* widget being dragged from palette into the drop zone, then released */}
+          <g className="a-dragw">
+            <rect x="30" y="60" width="34" height="18" rx="4" fill={G} />
+            <circle cx="36" cy="66" r="1.3" fill="#fff" /><circle cx="40" cy="66" r="1.3" fill="#fff" /><circle cx="36" cy="70" r="1.3" fill="#fff" /><circle cx="40" cy="70" r="1.3" fill="#fff" />
+            <rect x="45" y="64" width="14" height="3.5" rx="1.75" fill="#fff" opacity="0.9" />
+            <rect x="45" y="70" width="10" height="3.5" rx="1.75" fill="#fff" opacity="0.6" />
+          </g>
+          {/* cursor: follows the widget, then releases & fades once it lands */}
+          <g className="a-curs">
+            <path d="M58 76l5 14 3-6 6-1z" fill={INK} stroke="#fff" strokeWidth="1.5" strokeLinejoin="round" />
+          </g>
+        </svg>
       );
+    /* ---------- Advance Inventory ---------- */
     case 'inventory':
       return (
-        <svg {...common}><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        <svg {...common}>
+          <circle cx="166" cy="28" r="24" fill={GL2} opacity="0.55" />
+          {/* admin panel */}
+          <rect x="22" y="18" width="156" height="96" rx="10" fill="#fff" stroke={GRAY} strokeWidth="2" />
+          {/* product header: thumbnail + name lines */}
+          <rect x="32" y="28" width="30" height="30" rx="6" fill={GL2} />
+          <path d="M37 38l10-4 10 4-10 4z" fill={GD} opacity="0.55" />
+          <path d="M37 38v9l10 4 10-4v-9" fill="none" stroke={GD} strokeWidth="1.6" strokeLinejoin="round" opacity="0.7" />
+          <rect x="70" y="33" width="72" height="6" rx="3" fill="#e2e8e4" />
+          <rect x="70" y="45" width="48" height="5" rx="2.5" fill="#eef2ef" />
+          {/* field label */}
+          <text x="32" y="71" fontSize="6.5" fontWeight="700" fill="#9aa6a1" fontFamily="sans-serif" letterSpacing="0.5">STOCK QTY</text>
+          {/* active input field */}
+          <rect x="32" y="75" width="92" height="24" rx="7" fill="#fff" stroke={G} strokeWidth="2" />
+          <text className="a-d1" x="46" y="92" fontSize="15" fontWeight="800" fill={INK} fontFamily="sans-serif">24</text>
+          <text className="a-d2" x="46" y="92" fontSize="15" fontWeight="800" fill={INK} fontFamily="sans-serif">25</text>
+          <text className="a-d3" x="46" y="92" fontSize="15" fontWeight="800" fill={INK} fontFamily="sans-serif">26</text>
+          <text className="a-d4" x="46" y="92" fontSize="15" fontWeight="800" fill={INK} fontFamily="sans-serif">27</text>
+          <rect className="a-caret" x="70" y="80" width="2" height="14" rx="1" fill={G} />
+          {/* stepper buttons */}
+          <rect x="130" y="75" width="18" height="24" rx="6" fill={SOFT} stroke={GRAY} strokeWidth="1.4" />
+          <line x1="135" y1="87" x2="143" y2="87" stroke={GD} strokeWidth="2" strokeLinecap="round" />
+          <g className="a-press">
+            <rect x="152" y="75" width="18" height="24" rx="6" fill={G} />
+            <line x1="161" y1="82" x2="161" y2="92" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+            <line x1="156" y1="87" x2="166" y2="87" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+          </g>
+          {/* stock-level bar filling up */}
+          <rect x="32" y="106" width="138" height="5" rx="2.5" fill={GL2} />
+          <rect className="a-fill" x="32" y="106" width="138" height="5" rx="2.5" fill={G} style={{ transformOrigin: 'left center' }} />
+        </svg>
       );
-    case 'variants':
+    /* ---------- Variants & Attributes ---------- */
+    case 'variants': {
+      const SHIRT = 'M90 30 L96 30 C97 34 103 34 104 30 L110 30 L126 40 L119 51 L114 47.5 L114 70 L86 70 L86 47.5 L81 51 L74 40 Z';
+      const SWATCH = [G, AM, '#e2574c', '#475569'];
+      const cx = [64, 84, 104, 124];
       return (
-        <svg {...common}><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 16.5 6.5 19.5l1-6.3L3 8.9 9 8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        <svg {...common}>
+          <circle cx="36" cy="28" r="22" fill={GL2} opacity="0.5" />
+          {/* product card */}
+          <rect x="46" y="16" width="108" height="100" rx="10" fill="#fff" stroke={GRAY} strokeWidth="2" />
+          {/* image area */}
+          <rect x="52" y="22" width="96" height="52" rx="6" fill={GL2} />
+          {/* shirt — four colours stacked, each shown while its swatch is active */}
+          <path className="a-v1" d={SHIRT} fill={SWATCH[0]} />
+          <path className="a-v2" d={SHIRT} fill={SWATCH[1]} />
+          <path className="a-v3" d={SHIRT} fill={SWATCH[2]} />
+          <path className="a-v4" d={SHIRT} fill={SWATCH[3]} />
+          {/* colour-agnostic shading for realism */}
+          <path d={SHIRT} fill="none" stroke="rgba(15,23,42,0.16)" strokeWidth="1.5" strokeLinejoin="round" />
+          <path d="M96 30 C97 34 103 34 104 30" fill="none" stroke="rgba(15,23,42,0.22)" strokeWidth="2" strokeLinecap="round" />
+          <path d="M92 41 q-3 12 1 27" fill="none" stroke="rgba(255,255,255,0.28)" strokeWidth="3" strokeLinecap="round" />
+          {/* size attribute pills */}
+          {['S', 'M', 'L'].map((sz, i) => {
+            const active = i === 1;
+            return (
+              <g key={sz}>
+                <rect x={62 + i * 22} y="98" width="18" height="12" rx="3" fill={active ? G : '#fff'} stroke={active ? G : GRAY} strokeWidth="1.4" />
+                <text x={71 + i * 22} y="107" textAnchor="middle" fontSize="8" fontWeight="700" fill={active ? '#fff' : '#6b7280'} fontFamily="sans-serif">{sz}</text>
+              </g>
+            );
+          })}
+          {/* colour swatches with active ring + tap ripple */}
+          {cx.map((x, i) => (
+            <g key={x}>
+              <circle className={`a-tap${i + 1}`} cx={x} cy="84" r="6" fill={SWATCH[i]} />
+              <circle cx={x} cy="84" r="6" fill={SWATCH[i]} />
+              <circle className={`a-v${i + 1}`} cx={x} cy="84" r="9" fill="none" stroke={SWATCH[i]} strokeWidth="2" />
+            </g>
+          ))}
+          {/* tapping cursor */}
+          <g className="a-vcur">
+            <path d="M64 90l4.5 12 2.6-5.2 5.4-1z" fill={INK} stroke="#fff" strokeWidth="1.4" strokeLinejoin="round" />
+          </g>
+        </svg>
       );
+    }
+    /* ---------- Advance Shipping ---------- */
     case 'shipping':
       return (
-        <svg {...common}><rect x="1" y="3" width="15" height="13" stroke="currentColor" strokeWidth="2" /><path d="M16 8h4l3 3v5h-7z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /><circle cx="5.5" cy="18.5" r="2" stroke="currentColor" strokeWidth="2" /><circle cx="18.5" cy="18.5" r="2" stroke="currentColor" strokeWidth="2" /></svg>
+        <svg {...common}>
+          {/* map panel */}
+          <rect x="14" y="14" width="172" height="78" rx="10" fill="#eef6f0" stroke={GRAY} strokeWidth="2" />
+          <path d="M22 38 C58 28 92 58 122 46 S170 38 178 50" fill="none" stroke="#d4e7da" strokeWidth="2" opacity="0.8" />
+          <path d="M34 74 C66 64 108 82 152 68" fill="none" stroke="#d4e7da" strokeWidth="2" opacity="0.55" />
+          {/* origin warehouse */}
+          <path d="M24 46 L36 38 L48 46 Z" fill={GD} />
+          <rect x="26" y="46" width="20" height="17" rx="1.5" fill="#fff" stroke={GD} strokeWidth="1.6" />
+          <rect x="33" y="53" width="6" height="10" fill={GL2} />
+          {/* drawn delivery route */}
+          <path className="a-route" d="M48 50 C82 32 118 64 150 44" fill="none" stroke={G} strokeWidth="2.5" strokeLinecap="round" />
+          <circle cx="48" cy="50" r="3" fill={G} />
+          {/* destination pin */}
+          <g className="a-bob">
+            <path d="M150 24 a11 11 0 0 1 11 11 c0 8 -11 17 -11 17 s-11 -9 -11 -17 a11 11 0 0 1 11 -11 z" fill={AM} />
+            <circle cx="150" cy="35" r="4.5" fill="#fff" />
+          </g>
+          {/* road */}
+          <rect x="8" y="94" width="184" height="14" fill="#d6e2da" />
+          <line className="a-road" x1="8" y1="101" x2="192" y2="101" stroke="#fff" strokeWidth="2" strokeDasharray="10 8" />
+          {/* delivery truck */}
+          <g className="a-drive">
+            <ellipse cx="62" cy="107" rx="30" ry="3" fill="rgba(0,0,0,0.12)" />
+            <line x1="28" y1="86" x2="36" y2="86" stroke={GL} strokeWidth="2" strokeLinecap="round" />
+            <line x1="26" y1="91" x2="34" y2="91" stroke={GL} strokeWidth="2" strokeLinecap="round" />
+            <line x1="28" y1="96" x2="36" y2="96" stroke={GL} strokeWidth="2" strokeLinecap="round" />
+            <rect x="40" y="82" width="36" height="20" rx="3" fill="#fff" stroke={GD} strokeWidth="2" />
+            <line x1="46" y1="89" x2="70" y2="89" stroke={GL} strokeWidth="2" strokeLinecap="round" />
+            <line x1="46" y1="94" x2="64" y2="94" stroke={GL} strokeWidth="2" strokeLinecap="round" />
+            <path d="M76 86 h10 l6 8 v8 h-16 z" fill={GD} />
+            <rect x="78" y="88" width="8" height="6" rx="1" fill={GL2} />
+            <circle className="a-pulse" cx="92" cy="100" r="2" fill={AML} />
+            <g>
+              <circle cx="50" cy="104" r="5.5" fill={INK} />
+              <g className="a-wheel"><path d="M50 99.5 V108.5 M45.5 104 H54.5" stroke="#fff" strokeWidth="1.4" /></g>
+              <circle cx="50" cy="104" r="1.6" fill="#fff" />
+            </g>
+            <g>
+              <circle cx="68" cy="104" r="5.5" fill={INK} />
+              <g className="a-wheel"><path d="M68 99.5 V108.5 M63.5 104 H72.5" stroke="#fff" strokeWidth="1.4" /></g>
+              <circle cx="68" cy="104" r="1.6" fill="#fff" />
+            </g>
+          </g>
+        </svg>
       );
+    /* ---------- Advance Coupon ---------- */
     case 'coupon':
       return (
-        <svg {...common}><path d="M3 8a2 2 0 012-2h14a2 2 0 012 2v2a2 2 0 000 4v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 000-4z" stroke="currentColor" strokeWidth="2" /><path d="M14 7v10" stroke="currentColor" strokeWidth="2" strokeDasharray="2 2" /></svg>
+        <svg {...common}>
+          {/* checkout summary card */}
+          <rect x="24" y="13" width="152" height="104" rx="10" fill="#fff" stroke={GRAY} strokeWidth="2" />
+          <text x="34" y="29" fontSize="6.5" fontWeight="700" fill="#9aa6a1" fontFamily="sans-serif" letterSpacing="0.5">ORDER SUMMARY</text>
+          {/* subtotal */}
+          <text x="34" y="44" fontSize="9" fill="#6b7280" fontFamily="sans-serif">Subtotal</text>
+          <text x="166" y="44" textAnchor="end" fontSize="9" fontWeight="700" fill={INK} fontFamily="sans-serif">$40.00</text>
+          {/* coupon input */}
+          <rect x="34" y="52" width="80" height="22" rx="6" fill="#fff" stroke={G} strokeWidth="2" />
+          <path d="M41 58h7l5 5-5 5h-7z" fill="none" stroke={G} strokeWidth="1.4" strokeLinejoin="round" />
+          <text className="a-tt1" x="58" y="67" fontSize="10" fontWeight="700" fill={INK} fontFamily="monospace">SA</text>
+          <text className="a-tt2" x="58" y="67" fontSize="10" fontWeight="700" fill={INK} fontFamily="monospace">SAVE</text>
+          <text className="a-tt3" x="58" y="67" fontSize="10" fontWeight="700" fill={INK} fontFamily="monospace">SAVE3</text>
+          <text className="a-tt4" x="58" y="67" fontSize="10" fontWeight="700" fill={INK} fontFamily="monospace">SAVE30</text>
+          <g className="a-applied"><circle cx="106" cy="63" r="6" fill={G} /><path d="M103 63l2 2 4-4" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" /></g>
+          {/* apply button */}
+          <g className="a-applybtn">
+            <rect x="120" y="52" width="46" height="22" rx="6" fill={G} />
+            <text x="143" y="67" textAnchor="middle" fontSize="9" fontWeight="800" fill="#fff" fontFamily="sans-serif">Apply</text>
+          </g>
+          {/* divider */}
+          <line x1="34" y1="84" x2="166" y2="84" stroke={GRAY} strokeWidth="1.5" />
+          {/* discount row */}
+          <text x="34" y="98" fontSize="9" fill="#6b7280" fontFamily="sans-serif">Discount</text>
+          <g className="a-applied">
+            <rect x="120" y="90" width="46" height="13" rx="6.5" fill={GL2} />
+            <text x="143" y="99.5" textAnchor="middle" fontSize="8.5" fontWeight="800" fill={GD} fontFamily="sans-serif">− 30%</text>
+          </g>
+          {/* total row */}
+          <text x="34" y="112" fontSize="10" fontWeight="800" fill={INK} fontFamily="sans-serif">Total</text>
+          <text x="118" y="112" textAnchor="end" fontSize="9" fill="#9aa6a1" fontFamily="sans-serif">$40.00</text>
+          <rect className="a-strike" x="98" y="108.5" width="20" height="1.6" rx="0.8" fill="#9aa6a1" style={{ transformOrigin: 'left center' }} />
+          <g className="a-applied"><text x="166" y="112" textAnchor="end" fontSize="12" fontWeight="800" fill={G} fontFamily="sans-serif">$28.00</text></g>
+        </svg>
       );
-    case 'campaign':
+    /* ---------- Campaign ---------- */
+    case 'campaign': {
+      const SALE = '#e2574c';
       return (
-        <svg {...common}><path d="M3 11l18-5v12L3 13v-2z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /><path d="M11.6 16.8a3 3 0 01-5.8-1.6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+        <svg {...common}>
+          {/* campaign banner with countdown */}
+          <rect x="16" y="14" width="168" height="26" rx="8" fill={GD} />
+          <circle cx="30" cy="27" r="7" fill="none" stroke="#fff" strokeWidth="2" />
+          <path d="M30 23v4l3 2" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <text x="42" y="31" fontSize="10" fontWeight="800" fill="#fff" fontFamily="sans-serif">FLASH SALE</text>
+          {/* countdown boxes: HH : MM : SS (seconds tick down) */}
+          <rect x="116" y="19" width="16" height="16" rx="3" fill="#fff" />
+          <text x="124" y="31" textAnchor="middle" fontSize="9" fontWeight="800" fill={GD} fontFamily="monospace">02</text>
+          <text x="135" y="31" textAnchor="middle" fontSize="9" fontWeight="800" fill="#fff">:</text>
+          <rect x="138" y="19" width="16" height="16" rx="3" fill="#fff" />
+          <text x="146" y="31" textAnchor="middle" fontSize="9" fontWeight="800" fill={GD} fontFamily="monospace">45</text>
+          <text x="157" y="31" textAnchor="middle" fontSize="9" fontWeight="800" fill="#fff">:</text>
+          <rect x="160" y="19" width="16" height="16" rx="3" fill="#fff" />
+          <text className="a-d1" x="168" y="31" textAnchor="middle" fontSize="9" fontWeight="800" fill={SALE} fontFamily="monospace">30</text>
+          <text className="a-d2" x="168" y="31" textAnchor="middle" fontSize="9" fontWeight="800" fill={SALE} fontFamily="monospace">29</text>
+          <text className="a-d3" x="168" y="31" textAnchor="middle" fontSize="9" fontWeight="800" fill={SALE} fontFamily="monospace">28</text>
+          <text className="a-d4" x="168" y="31" textAnchor="middle" fontSize="9" fontWeight="800" fill={SALE} fontFamily="monospace">27</text>
+
+          {/* ---- Product 1: Red Apples ---- */}
+          <rect x="16" y="46" width="80" height="66" rx="7" fill="#fff" stroke={GRAY} strokeWidth="1.5" />
+          <rect x="22" y="52" width="68" height="34" rx="5" fill={GL2} />
+          <rect x="20" y="50" width="24" height="12" rx="6" fill={SALE} />
+          <text x="32" y="59" textAnchor="middle" fontSize="7.5" fontWeight="800" fill="#fff" fontFamily="sans-serif">-30%</text>
+          {/* apple */}
+          <rect x="55.2" y="56" width="1.6" height="6" rx="0.8" fill="#7a5230" />
+          <path d="M57 58 q5 -4 9 0 q-5 4 -9 0 z" fill={G} />
+          <circle cx="52" cy="71" r="9" fill={SALE} />
+          <circle cx="61" cy="71" r="9" fill={SALE} />
+          <ellipse cx="51" cy="67" rx="2.4" ry="3.4" fill="#fff" opacity="0.35" />
+          <text x="22" y="97" fontSize="8.5" fontWeight="700" fill={INK} fontFamily="sans-serif">Red Apples</text>
+          <text x="22" y="108" fontSize="8" fill="#9aa6a1" fontFamily="sans-serif" style={{ textDecoration: 'line-through' }}>$5.00</text>
+          <text x="90" y="108" textAnchor="end" fontSize="11.5" fontWeight="800" fill={G} fontFamily="sans-serif">$3.50</text>
+
+          {/* ---- Product 2: Broccoli ---- */}
+          <rect x="104" y="46" width="80" height="66" rx="7" fill="#fff" stroke={GRAY} strokeWidth="1.5" />
+          <rect x="110" y="52" width="68" height="34" rx="5" fill={GL2} />
+          <rect x="108" y="50" width="24" height="12" rx="6" fill={SALE} />
+          <text x="120" y="59" textAnchor="middle" fontSize="7.5" fontWeight="800" fill="#fff" fontFamily="sans-serif">-40%</text>
+          {/* broccoli */}
+          <path d="M141 71 h6 l-1.4 11 h-3.2 z" fill="#bcd9c2" />
+          <circle cx="138" cy="69" r="5.5" fill={GD} />
+          <circle cx="150" cy="69" r="5.5" fill={GD} />
+          <circle cx="144" cy="65" r="6.5" fill={G} />
+          <circle cx="139" cy="64" r="4.5" fill={G} />
+          <circle cx="149" cy="64" r="4.5" fill={G} />
+          <text x="110" y="97" fontSize="8.5" fontWeight="700" fill={INK} fontFamily="sans-serif">Broccoli</text>
+          <text x="110" y="108" fontSize="8" fill="#9aa6a1" fontFamily="sans-serif" style={{ textDecoration: 'line-through' }}>$4.00</text>
+          <text x="178" y="108" textAnchor="end" fontSize="11.5" fontWeight="800" fill={G} fontFamily="sans-serif">$2.40</text>
+        </svg>
       );
-    case 'search':
+    }
+    /* ---------- Autocomplete Search ---------- */
+    case 'search': {
+      const sugg = [
+        { cls: 'a-sug1', y: 56, name: 'Apple', price: '$3.50' },
+        { cls: 'a-sug2', y: 76, name: 'Apple Juice', price: '$2.00' },
+        { cls: 'a-sug3', y: 96, name: 'Green Apple', price: '$4.00' },
+      ];
       return (
-        <svg {...common}><circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" /><path d="M21 21l-4.3-4.3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+        <svg {...common}>
+          {/* search input */}
+          <rect x="18" y="20" width="164" height="26" rx="13" fill="#fff" stroke={G} strokeWidth="2.5" />
+          <circle cx="34" cy="33" r="6" fill="none" stroke={G} strokeWidth="2.5" />
+          <line x1="39" y1="38" x2="44" y2="43" stroke={G} strokeWidth="2.5" strokeLinecap="round" />
+          <text className="a-tt1" x="50" y="37" fontSize="12" fontWeight="600" fill={INK} fontFamily="sans-serif">A</text>
+          <text className="a-tt2" x="50" y="37" fontSize="12" fontWeight="600" fill={INK} fontFamily="sans-serif">Ap</text>
+          <text className="a-tt3" x="50" y="37" fontSize="12" fontWeight="600" fill={INK} fontFamily="sans-serif">App</text>
+          <text className="a-tt4" x="50" y="37" fontSize="12" fontWeight="600" fill={INK} fontFamily="sans-serif">Apple</text>
+          <rect className="a-caret" x="83" y="27" width="2" height="13" rx="1" fill={G} />
+          {/* suggestion dropdown */}
+          <rect x="18" y="50" width="164" height="66" rx="10" fill="#fff" stroke={GRAY} strokeWidth="2" />
+          {sugg.map((s) => (
+            <g key={s.name} className={s.cls}>
+              <rect x="26" y={s.y} width="16" height="16" rx="4" fill={GL2} />
+              <Apple cx={34} cy={s.y + 8} r={3.6} />
+              <text x="50" y={s.y + 11} fontSize="9.5" fontWeight="600" fill={INK} fontFamily="sans-serif">{s.name}</text>
+              <text x="174" y={s.y + 11} textAnchor="end" fontSize="8.5" fontWeight="700" fill={G} fontFamily="sans-serif">{s.price}</text>
+            </g>
+          ))}
+        </svg>
       );
-    case 'related':
+    }
+    /* ---------- Related Products ---------- */
+    case 'related': {
+      const rel = [
+        { cls: 'a-draw1', cy: 32, name: 'Cucumber', price: '$2.00', type: 'cuke', path: 'M68 60 C88 48 98 32 112 32' },
+        { cls: 'a-draw2', cy: 65, name: 'Bell Pepper', price: '$4.00', type: 'pepper', path: 'M70 70 C90 67 98 65 112 65' },
+        { cls: 'a-draw3', cy: 98, name: 'Carrots', price: '$1.50', type: 'carrot', path: 'M68 80 C88 92 98 98 112 98' },
+      ];
       return (
-        <svg {...common}><circle cx="6" cy="6" r="3" stroke="currentColor" strokeWidth="2" /><circle cx="18" cy="18" r="3" stroke="currentColor" strokeWidth="2" /><path d="M9 6h6a3 3 0 013 3v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        <svg {...common}>
+          {/* current product (highlighted) */}
+          <rect x="14" y="46" width="56" height="46" rx="9" fill="#fff" stroke={G} strokeWidth="2.5" />
+          <rect x="18" y="40" width="34" height="12" rx="6" fill={G} />
+          <text x="35" y="49" textAnchor="middle" fontSize="7" fontWeight="800" fill="#fff" fontFamily="sans-serif">VIEWING</text>
+          <circle cx="36" cy="64" r="10" fill={SALE} />
+          <rect x="35.2" y="53" width="1.6" height="4" rx="0.8" fill="#7a5230" />
+          <path d="M37 55 q4 -3 7 0 q-4 3 -7 0 z" fill={G} />
+          <text x="42" y="86" textAnchor="middle" fontSize="8.5" fontWeight="700" fill={INK} fontFamily="sans-serif">Tomato</text>
+          {/* connectors + related product cards */}
+          {rel.map((r) => (
+            <g key={r.name}>
+              <path className={r.cls} d={r.path} fill="none" stroke={GL} strokeWidth="2.5" strokeLinecap="round" strokeDasharray="60" />
+              <rect x="112" y={r.cy - 14} width="72" height="28" rx="7" fill="#fff" stroke={GRAY} strokeWidth="1.5" />
+              <rect x="117" y={r.cy - 9} width="18" height="18" rx="4" fill={GL2} />
+              <Veg type={r.type} tx={126} ty={r.cy} />
+              <text x="140" y={r.cy - 1} fontSize="8.5" fontWeight="700" fill={INK} fontFamily="sans-serif">{r.name}</text>
+              <text x="140" y={r.cy + 9} fontSize="7.5" fontWeight="700" fill={G} fontFamily="sans-serif">{r.price}</text>
+            </g>
+          ))}
+          {/* hub node on current product */}
+          <circle className="a-pulse" cx="69" cy="69" r="3.5" fill={G} />
+        </svg>
       );
-    case 'cart':
+    }
+    /* ---------- Wishlist / Cart / Compare ---------- */
+    case 'cart': {
       return (
-        <svg {...common}><circle cx="9" cy="21" r="1.5" stroke="currentColor" strokeWidth="2" /><circle cx="18" cy="21" r="1.5" stroke="currentColor" strokeWidth="2" /><path d="M2 3h3l2.6 13.4a1 1 0 001 .8h9.8a1 1 0 001-.8L22 7H6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        <svg {...common}>
+          {/* top counters */}
+          <Heart cx={26} cy={22} fill="none" stroke={SALE} />
+          <g className="a-actA"><circle cx="32" cy="16" r="5.5" fill={SALE} /><text x="32" y="18.6" textAnchor="middle" fontSize="7" fontWeight="800" fill="#fff" fontFamily="sans-serif">1</text></g>
+          <g className="a-actC"><CompareIcon cx={100} cy={22} /><text x="111" y="25" fontSize="8" fontWeight="800" fill={GD} fontFamily="sans-serif">2</text></g>
+          <CartIcon cx={172} cy={22} />
+          <g className="a-actB"><circle cx="180" cy="15" r="5.5" fill={G} /><text x="180" y="17.6" textAnchor="middle" fontSize="7" fontWeight="800" fill="#fff" fontFamily="sans-serif">1</text></g>
+
+          {/* product card */}
+          <rect x="40" y="34" width="120" height="52" rx="10" fill="#fff" stroke={GRAY} strokeWidth="2" />
+          <rect x="46" y="40" width="40" height="40" rx="6" fill={GL2} />
+          <rect x="65.2" y="48" width="1.6" height="5" rx="0.8" fill="#7a5230" />
+          <path d="M67 50 q4 -3 7 0 q-4 3 -7 0 z" fill={G} />
+          <circle cx="62" cy="61" r="9" fill={SALE} /><circle cx="70" cy="61" r="9" fill={SALE} />
+          <ellipse cx="61" cy="57" rx="2.2" ry="3" fill="#fff" opacity="0.35" />
+          <text x="94" y="56" fontSize="10" fontWeight="700" fill={INK} fontFamily="sans-serif">Fresh Apple</text>
+          <text x="94" y="72" fontSize="11" fontWeight="800" fill={G} fontFamily="sans-serif">$3.50</text>
+
+          {/* action buttons */}
+          <rect x="16" y="96" width="52" height="22" rx="7" fill="#f3f6f3" stroke={GRAY} strokeWidth="1.4" />
+          <Heart cx={27} cy={106} fill="none" stroke={SALE} />
+          <g className="a-actA"><Heart cx={27} cy={106} fill={SALE} /></g>
+          <text x="36" y="110" fontSize="6.5" fontWeight="700" fill="#4b5563" fontFamily="sans-serif">Wishlist</text>
+
+          <rect x="74" y="96" width="52" height="22" rx="7" fill="#f3f6f3" stroke={GRAY} strokeWidth="1.4" />
+          <CartIcon cx={85} cy={106} />
+          <text x="94" y="110" fontSize="6.5" fontWeight="700" fill="#4b5563" fontFamily="sans-serif">Cart</text>
+          <g className="a-actB"><CheckBadge cx={122} cy={98} fill={G} /></g>
+
+          <rect x="132" y="96" width="52" height="22" rx="7" fill="#f3f6f3" stroke={GRAY} strokeWidth="1.4" />
+          <CompareIcon cx={143} cy={106} />
+          <text x="152" y="110" fontSize="6.5" fontWeight="700" fill="#4b5563" fontFamily="sans-serif">Compare</text>
+          <g className="a-actC"><CheckBadge cx={180} cy={98} fill={G} /></g>
+
+          {/* tapping cursor */}
+          <g className="a-vcur3">
+            <path d="M40 101l4.5 12 2.6-5.2 5.4-1z" fill={INK} stroke="#fff" strokeWidth="1.4" strokeLinejoin="round" />
+          </g>
+        </svg>
       );
-    case 'quickview':
+    }
+    /* ---------- Quick View & Share ---------- */
+    case 'quickview': {
+      const grid = [
+        { x: 16, y: 16, prod: 'apple' }, { x: 104, y: 16, prod: 'pepper' },
+        { x: 16, y: 68, prod: 'carrot' }, { x: 104, y: 68, prod: 'cuke' },
+      ];
       return (
-        <svg {...common}><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /><circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" /></svg>
+        <svg {...common}>
+          {/* product grid */}
+          {grid.map((c, i) => (
+            <g key={`${c.x}-${c.y}`}>
+              <rect x={c.x} y={c.y} width="80" height="46" rx="7" fill="#fff" stroke={GRAY} strokeWidth="1.5" />
+              <rect x={c.x + 6} y={c.y + 6} width="68" height="24" rx="4" fill={GL2} />
+              {c.prod === 'apple' ? <Apple cx={c.x + 30} cy={c.y + 18} r={7} /> : <Veg type={c.prod} tx={c.x + 30} ty={c.y + 18} />}
+              <rect x={c.x + 6} y={c.y + 35} width="30" height="4" rx="2" fill="#e6ece8" />
+              <text x={c.x + 70} y={c.y + 40} textAnchor="end" fontSize="7.5" fontWeight="700" fill={G} fontFamily="sans-serif">$3.50</text>
+              <EyeBadge cx={c.x + 70} cy={c.y + 12} active={i === 0} />
+            </g>
+          ))}
+
+          {/* dim backdrop */}
+          <rect className="a-dim" x="6" y="6" width="188" height="118" rx="8" fill="#0b1f12" />
+
+          {/* quick view modal */}
+          <g className="a-modal">
+            <rect x="42" y="22" width="116" height="86" rx="12" fill="#fff" stroke={GRAY} strokeWidth="1.5" />
+            <text x="52" y="37" fontSize="8" fontWeight="800" fill={GD} fontFamily="sans-serif">QUICK VIEW</text>
+            <circle cx="149" cy="34" r="7" fill={SOFT} /><path d="M146 31l6 6M152 31l-6 6" stroke="#6b7280" strokeWidth="1.4" strokeLinecap="round" />
+            <rect x="50" y="44" width="42" height="42" rx="8" fill={GL2} />
+            <Apple cx={71} cy={66} r={13} />
+            <text x="100" y="52" fontSize="10" fontWeight="700" fill={INK} fontFamily="sans-serif">Fresh Apple</text>
+            <text x="100" y="66" fontSize="8" fill="#9aa6a1" fontFamily="sans-serif" style={{ textDecoration: 'line-through' }}>$5.00</text>
+            <text x="132" y="66" fontSize="11" fontWeight="800" fill={G} fontFamily="sans-serif">$3.50</text>
+            <rect x="50" y="92" width="42" height="13" rx="4" fill={G} />
+            <text x="71" y="101" textAnchor="middle" fontSize="7.5" fontWeight="800" fill="#fff" fontFamily="sans-serif">Add</text>
+            <text x="100" y="80" fontSize="7" fontWeight="700" fill="#9aa6a1" fontFamily="sans-serif" letterSpacing="0.4">QUICK SHARE</text>
+            <g className="a-sug1"><ShareGlyph cx={108} cy={98} kind="fb" /></g>
+            <g className="a-sug2"><ShareGlyph cx={128} cy={98} kind="wa" /></g>
+            <g className="a-sug3"><ShareGlyph cx={148} cy={98} kind="x" /></g>
+          </g>
+
+          {/* cursor: clicks the eye, then a share button */}
+          <g className="a-qcur">
+            <path d="M0 0l4.5 12 2.6-5.2 5.4-1z" fill={INK} stroke="#fff" strokeWidth="1.4" strokeLinejoin="round" />
+          </g>
+        </svg>
       );
+    }
+    /* ---------- Advance Tax ---------- */
     case 'tax':
       return (
-        <svg {...common}><rect x="4" y="2" width="16" height="20" rx="2" stroke="currentColor" strokeWidth="2" /><path d="M9 8l6 8M9.5 8.5h.01M14.5 15.5h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+        <svg {...common}>
+          {/* cart summary card */}
+          <rect x="18" y="14" width="164" height="102" rx="10" fill="#fff" stroke={GRAY} strokeWidth="2" />
+          <text x="30" y="29" fontSize="6.5" fontWeight="700" fill="#9aa6a1" fontFamily="sans-serif" letterSpacing="0.5">CART SUMMARY</text>
+          {/* line item */}
+          <rect x="30" y="34" width="20" height="20" rx="4" fill={GL2} />
+          <Apple cx={40} cy={44} r={7} />
+          <text x="56" y="42" fontSize="9" fontWeight="700" fill={INK} fontFamily="sans-serif">Apples</text>
+          <text x="56" y="52" fontSize="7" fill="#9aa6a1" fontFamily="sans-serif">$20.00 / kg</text>
+          {/* qty stepper */}
+          <rect x="116" y="36" width="14" height="16" rx="4" fill={SOFT} stroke={GRAY} strokeWidth="1.2" />
+          <line x1="120" y1="44" x2="126" y2="44" stroke={GD} strokeWidth="1.8" strokeLinecap="round" />
+          <TriVal x={143} y={48} vals={['1', '2', '3']} fill={INK} size={11} weight={800} anchor="middle" />
+          <g className="a-qtap">
+            <rect x="150" y="36" width="14" height="16" rx="4" fill={G} />
+            <line x1="157" y1="40" x2="157" y2="48" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="153" y1="44" x2="161" y2="44" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" />
+          </g>
+          {/* divider */}
+          <line x1="30" y1="60" x2="170" y2="60" stroke={GRAY} strokeWidth="1.4" />
+          {/* subtotal */}
+          <text x="30" y="73" fontSize="8.5" fill="#6b7280" fontFamily="sans-serif">Subtotal</text>
+          <TriVal x={170} y={73} vals={['$20.00', '$40.00', '$60.00']} fill={INK} size={9} />
+          {/* tax (highlighted) */}
+          <rect x="24" y="79" width="152" height="15" rx="4" fill={`${G}12`} />
+          <text x="30" y="89" fontSize="8.5" fontWeight="700" fill={GD} fontFamily="sans-serif">Tax (10%)</text>
+          <TriVal x={170} y={89} vals={['$2.00', '$4.00', '$6.00']} fill={GD} size={9} weight={800} />
+          {/* total */}
+          <text x="30" y="108" fontSize="10" fontWeight="800" fill={INK} fontFamily="sans-serif">Total</text>
+          <TriVal x={170} y={108} vals={['$22.00', '$44.00', '$66.00']} fill={G} size={12} weight={800} />
+        </svg>
       );
+    /* ---------- Facebook / Google Login ---------- */
     case 'login':
       return (
-        <svg {...common}><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><polyline points="10 17 15 12 10 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><line x1="15" y1="12" x2="3" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+        <svg {...common}>
+          <circle cx="40" cy="36" r="22" fill={GL2} opacity="0.6" />
+          <rect x="50" y="22" width="100" height="90" rx="10" fill="#fff" stroke={GRAY} strokeWidth="2" />
+          <circle cx="100" cy="44" r="13" fill={GL2} /><circle cx="100" cy="40" r="5" fill={G} /><path d="M91 53a9 9 0 0118 0z" fill={G} />
+          <rect x="66" y="64" width="68" height="9" rx="4.5" fill={SOFT} />
+          <rect x="66" y="78" width="68" height="9" rx="4.5" fill={SOFT} />
+          <g className="a-bob">
+            <rect x="66" y="94" width="31" height="12" rx="3" fill="#fff" stroke={GRAY} strokeWidth="1.6" />
+            <text x="81" y="103" textAnchor="middle" fontSize="9" fontWeight="800" fill="#4285F4" fontFamily="sans-serif">G</text>
+            <rect x="103" y="94" width="31" height="12" rx="3" fill="#1877F2" />
+            <text x="118" y="103" textAnchor="middle" fontSize="9" fontWeight="800" fill="#fff" fontFamily="sans-serif">f</text>
+          </g>
+          <g className="a-pulse">
+            <circle cx="150" cy="100" r="11" fill={G} />
+            <path d="M145 100l3.5 3.5 6-6" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </g>
+        </svg>
       );
     default:
       return null;
@@ -58,7 +600,7 @@ function Icon({ name }: { name: string }) {
 
 export default function Features() {
   return (
-    <section id="features" className="py-16 sm:py-20 lg:py-[100px] bg-white">
+    <section id="features" className="pt-16 sm:pt-20 lg:pt-[100px] pb-0 bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0">
 
         <div className="text-center mb-12 max-w-[640px] mx-auto">
@@ -74,26 +616,30 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {FEATURES.map((f) => (
             <div
               key={f.name}
-              className="group bg-white rounded-2xl border border-[#E5E7EC] p-6 hover:border-transparent hover:shadow-lg transition-all"
+              className="group bg-white rounded-2xl border border-[#E5E7EC] overflow-hidden hover:border-transparent hover:shadow-xl transition-all"
             >
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-                style={{ background: `${COLOR}15`, color: COLOR }}
+                className="px-5 pt-5"
+                style={{ background: `linear-gradient(135deg, ${COLOR}14, #ffffff 80%)` }}
               >
-                <Icon name={f.icon} />
+                <div className="rounded-xl overflow-hidden">
+                  <Scene name={f.icon} />
+                </div>
               </div>
-              <h3 className="text-[16px] font-semibold text-[#0F1112] mb-2">{f.name}</h3>
-              <p className="text-[13px] text-[#6b7280] leading-6">{f.desc}</p>
+              <div className="p-6">
+                <h3 className="text-[16px] font-semibold text-[#0F1112] mb-2">{f.name}</h3>
+                <p className="text-[13px] text-[#6b7280] leading-6">{f.desc}</p>
+              </div>
             </div>
           ))}
         </div>
 
         <p className="text-center text-[13px] text-[#9ca3af] mt-8">
-          Plus user profiles with reorder, newsletter, color settings, email notifications & more — all included.
+          Plus user profiles with reorder, newsletter, color settings, email notifications &amp; more — all included.
         </p>
       </div>
     </section>

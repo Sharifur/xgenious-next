@@ -37,6 +37,13 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'Full source code rights, remove any branding, commercial use across unlimited projects.',
     accent: '#a78bfa',
   },
+  'greenmart-bundle-pack': {
+    path: 'greenmart-exclusive-pack',
+    name: 'Exclusive License',
+    delta: 150,
+    pitch: 'Full source code rights, remove any branding, commercial use across unlimited projects.',
+    accent: '#8b5cf6',
+  },
   'helpnest-regular': {
     path: 'helpnest-exclusive-pack',
     name: 'Exclusive License',

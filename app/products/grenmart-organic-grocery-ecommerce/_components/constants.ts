@@ -13,46 +13,21 @@ export const ADMIN_DEMO_URL = 'https://grenmart.xgenious.com/login/admin';
 export const DOCS_URL = 'https://docs.xgenious.com/docs/grenmart-organic-grocery-laravel-ecommerce/';
 export const PRICING_URL = '#pricing';
 
-// Pricing — tiered, internal checkout for Extended + Exclusive
+// Pricing — tiered, internal checkout for Everything Bundle + Exclusive
 export const REGULAR_PRICE = 39;
 export const REGULAR_ORIGINAL = 59;
-export const EXTENDED_PRICE = 129;
-export const EXTENDED_ORIGINAL = 199;
-export const EXCLUSIVE_PRICE = 249;
+export const BUNDLE_PRICE = 49;
+export const BUNDLE_ORIGINAL = 89;
+export const EXCLUSIVE_PRICE = 199;
 export const EXCLUSIVE_ORIGINAL = 399;
-export const EXTENDED_PRODUCT_PATH = 'grenmart-extended-pack';
-export const EXCLUSIVE_PRODUCT_PATH = 'grenmart-exclusive-pack';
+export const BUNDLE_PRODUCT_PATH = 'greenmart-bundle-pack';
+export const EXCLUSIVE_PRODUCT_PATH = 'greenmart-exclusive-pack';
 
 export const QUICK_LINKS = [
   { label: 'Frontend Demo', href: DEMO_URL },
   { label: 'Admin Demo', href: ADMIN_DEMO_URL },
   { label: 'Documentation', href: DOCS_URL },
   { label: 'Pricing', href: PRICING_URL },
-];
-
-// Home page variants + shop layouts (real demos)
-export const HOME_VARIANTS = [
-  {
-    name: 'Home Style 01',
-    tag: 'Organic & Grocery',
-    desc: 'Fresh produce storefront with deal countdowns, category grids, and featured product rails — built for everyday grocery shopping.',
-    img: '/products/grenmart/home-01.png',
-    href: DEMO_URL,
-  },
-  {
-    name: 'Home Style 02',
-    tag: 'Marketplace',
-    desc: 'A bolder, banner-led layout for promotions and seasonal campaigns. Ideal for medium and large catalogs.',
-    img: '/products/grenmart/home-02.webp',
-    href: HOME2_URL,
-  },
-  {
-    name: 'Home Style 03',
-    tag: 'Minimal Shop',
-    desc: 'A clean, conversion-focused homepage that puts products front and center for niche and boutique stores.',
-    img: '/products/grenmart/home-03.png',
-    href: HOME3_URL,
-  },
 ];
 
 // Commerce features (faithful to the source page)
@@ -119,6 +94,19 @@ export const FEATURES = [
   },
 ];
 
+// Flutter mobile app (sold separately on CodeCanyon)
+export const MOBILE_APP_URL = 'https://codecanyon.net/item/grenmart-laravel-ecommerce-shop-flutter-app/40188895';
+// Android demo build (APK) — Google Drive
+export const ANDROID_DEMO_URL = 'https://drive.google.com/file/d/1qIglCBHTHwvmfSC9IUPi0wU9iWuYJk4I/view';
+export const MOBILE_FEATURES = [
+  { name: 'One Codebase, Android & iOS', desc: 'A single Flutter app builds to both Google Play and the App Store from the same source.' },
+  { name: 'Connects to Your Grenmart Backend', desc: 'The app talks to your existing Grenmart Laravel store over API — products, orders, and customers stay in sync.' },
+  { name: '15+ Payment Gateways', desc: 'PayPal, Stripe, Razorpay, Paytm, Flutterwave, Paystack, Mollie, Midtrans, PayFast, Cash on Delivery & more.' },
+  { name: 'Facebook Login & OTP Reset', desc: 'One-tap Facebook sign-in plus secure OTP-based password reset for fast, trusted onboarding.' },
+  { name: 'Home Slider & Category Browse', desc: 'A dynamic homepage header slider, category browsing, wishlist, cart, and full checkout in-app.' },
+  { name: 'Default Language + RTL', desc: 'Set the app language from the admin panel and switch layout direction — full right-to-left (RTL) support built in.' },
+];
+
 // No-code builders — the standout selling point
 export const BUILDERS = [
   {
@@ -166,16 +154,22 @@ export const LAUNCH_STEPS = [
 // Who it's for
 export const WHO_FOR = [
   {
+    tag: 'Grocery & Organic',
     title: 'Grocery & Organic Stores',
-    desc: 'Sell fresh produce, organic goods, and daily essentials online with a storefront built for grocery — variants, campaigns, advanced inventory, and fast search out of the box.',
+    desc: 'Built for fresh produce, organic goods, and daily essentials. Weight-based variants, time-boxed campaigns, advanced inventory, and 3-character autocomplete search help shoppers fill their cart faster.',
+    fits: ['Fresh produce & dairy', 'Organic & health foods', 'Daily-needs supermarkets'],
   },
   {
+    tag: 'Any Catalog',
     title: 'Retailers of Any Niche',
-    desc: 'Grenmart is not grocery-only. Use it for fashion, electronics, digital goods, or any catalog. Custom attributes and variants adapt the store to whatever you sell.',
+    desc: 'Grenmart is not grocery-only. Unlimited custom attributes and product variants adapt the store to whatever you sell — physical, digital, affiliate, or licensed products.',
+    fits: ['Fashion & accessories', 'Electronics & gadgets', 'Digital & downloadable goods'],
   },
   {
+    tag: 'Build for Clients',
     title: 'Agencies & Founders',
-    desc: 'Ship a polished, SEO-ready eCommerce site for clients in days, not months. One-time license, full Laravel source code, and no monthly platform fees to eat your margin.',
+    desc: 'Ship a polished, SEO-ready store in days, not months. One-time license, full Laravel source code, and zero monthly platform fees or sales commission eating your margin.',
+    fits: ['Client eCommerce projects', 'MVPs & startups', 'White-label resale'],
   },
 ];
 
@@ -190,7 +184,7 @@ export const GATEWAYS = [
 export const STORE_TOOLS = [
   { name: 'Advanced SEO', desc: 'Per-page and per-product meta title, description, and image. Canonical URLs included.' },
   { name: 'Sitemap Generation', desc: 'Generate an XML sitemap from the admin panel to boost crawlability and SEO score.' },
-  { name: 'RTL + 200+ Languages', desc: 'Fully translate-ready with per-language direction. Build the store in any language.' },
+  { name: 'RTL + Language Control', desc: 'Run the store in one default language and change it from the admin panel — with full right-to-left (RTL) layout support.' },
   { name: 'Newsletter Module', desc: 'Collect verified subscribers and email them from the admin — single send or to all subscribers.' },
   { name: 'Color Settings', desc: 'Restyle the entire storefront from the admin panel without editing any CSS.' },
   { name: 'Email Notifications', desc: 'Automatic order and payment emails to both you and your customer on every order.' },
@@ -225,12 +219,12 @@ export const FAQS = [
   {
     question: 'Is Grenmart good for SEO?',
     answer:
-      'Yes. Grenmart is built SEO-friendly with per-page and per-product meta titles, descriptions, and images, canonical URLs, and one-click XML sitemap generation from the admin panel. It is also fully translate-ready with RTL support, so you can rank in multiple languages and regions.',
+      'Yes. Grenmart is built SEO-friendly with per-page and per-product meta titles, descriptions, and images, canonical URLs, and one-click XML sitemap generation from the admin panel. It runs in a single default language that you set from the admin panel, with full RTL (right-to-left) layout support for languages like Arabic and Hebrew.',
   },
   {
     question: 'What is the difference between the license tiers?',
     answer:
-      'The Regular License ($39) covers a single end product where your end users are not charged. The Extended License ($129) lets you charge your end users — ideal for SaaS or paid-access stores. The Exclusive License ($249) adds full source modification rights, branding removal, unlimited projects, free installation, and 12 months of priority support.',
+      'The Regular License ($39) is the Grenmart web store on its own. The Everything Bundle ($49) adds the Grenmart Flutter mobile app (Android & iOS) so you can sell on web and mobile from one purchase. The Exclusive License ($199) includes everything in the bundle plus full source modification rights, branding removal, unlimited commercial projects, and 12 months of priority support. The Flutter mobile app is included only with the Everything Bundle and the Exclusive License. Done-for-you installation is available as an optional add-on at checkout.',
   },
   {
     question: 'Do I pay any monthly or recurring fees?',
@@ -240,7 +234,7 @@ export const FAQS = [
   {
     question: 'What is included and how is support handled?',
     answer:
-      'Every license includes the full Grenmart source code, lifetime free updates, and product documentation. Regular and Extended licenses include 6 months of support; the Exclusive License includes 12 months of priority support plus free installation. You can extend support at any time from checkout.',
+      'Every license includes the full Grenmart source code, lifetime free updates, and product documentation. The Regular License and Everything Bundle include 6 months of support; the Exclusive License includes 12 months of priority support. You can extend support, or add done-for-you installation, at any time from checkout.',
   },
   {
     question: 'Can I see a live demo before buying?',
@@ -266,7 +260,7 @@ export const COMPARISON_ROWS = [
   { feature: 'Payment gateways',        grenmart: '✓ 20+ built-in',    shopify: 'Limited + fees',  woo: 'Plugins (extra)',     custom: 'Custom build' },
   { feature: 'Advanced inventory',      grenmart: '✓ Included',        shopify: 'Apps (extra)',    woo: 'Plugins (extra)',     custom: 'Custom build' },
   { feature: 'Variants & attributes',   grenmart: '✓ Unlimited',       shopify: 'Limited',         woo: '✓',                   custom: 'Custom build' },
-  { feature: 'Multi-language + RTL',    grenmart: '✓ 200+ languages',  shopify: 'Paid apps',       woo: 'Plugins (extra)',     custom: 'Custom build' },
+  { feature: 'Default language + RTL',  grenmart: '✓ Admin-set + RTL',  shopify: 'Paid apps',       woo: 'Plugins (extra)',     custom: 'Custom build' },
   { feature: 'SEO + sitemap tools',     grenmart: '✓ Built-in',        shopify: 'Basic',           woo: 'Plugins (extra)',     custom: 'Custom build' },
   { feature: 'Time to launch',          grenmart: 'Same day',          shopify: 'Hours',           woo: 'Days',                custom: '3–6 months' },
 ];

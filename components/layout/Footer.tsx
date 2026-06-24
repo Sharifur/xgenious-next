@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 const SOCIAL_LINKS = [
   { label: 'Facebook', href: 'https://www.facebook.com/xgenious', icon: (
@@ -76,14 +75,12 @@ export default function Footer() {
           {/* Say Hello */}
           <div className="flex flex-col gap-5">
             {/* Logo */}
-            <div className="inline-flex bg-white rounded-xl px-3 py-2 w-fit">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/xgenious-logo.svg"
-                alt="Xgenious"
-                className="h-[26px] w-auto"
-              />
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/xgenious-logo-footer.png"
+              alt="Xgenious"
+              className="h-9 w-auto"
+            />
 
             <p className="text-[13px] text-[#A6A6A6] leading-6">
               Let&apos;s grow your brand together with effective solutions to make your vision a reality.

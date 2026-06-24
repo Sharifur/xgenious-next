@@ -13,7 +13,7 @@ const ICONS: React.ReactNode[] = [
 
 export default function LaunchSteps() {
   return (
-    <section className="py-16 sm:py-20 lg:py-[100px]" style={{ background: '#F8FBF8' }}>
+    <section className="pt-16 sm:pt-20 lg:pt-[100px] pb-0" style={{ background: '#F8FBF8' }}>
       <div className="container-page px-4 sm:px-6 lg:px-0">
 
         <div className="text-center mb-14 max-w-[640px] mx-auto">

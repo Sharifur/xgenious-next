@@ -83,6 +83,20 @@ RAG-powered AI chatbot SaaS script. Trains on your store's knowledge base (PDFs,
 - Comparison: vs Tidio ($29–$499/mo), vs Intercom ($74+/mo), vs Gorgias ($50+/mo) — Botmerze is one-time, self-hosted, no per-seat pricing
 - Keywords: AI chatbot SaaS, WooCommerce chatbot, Shopify chatbot, self-hosted chatbot script, RAG chatbot, Laravel chatbot, ecommerce AI chatbot, chatbot SaaS script
 
+### Grenmart — Organic & Grocery Laravel eCommerce Script
+Organic grocery and multipurpose eCommerce platform built on Laravel. No-code drag & drop page builder with 50+ widgets, 3 home page variants, and 20+ payment gateways, plus advanced inventory, shipping, tax, coupon, and campaign systems. Sell on web and on native Android & iOS via the Grenmart Flutter app. One-time purchase, full source code, no monthly fees.
+- [Grenmart product page](https://xgenious.com/products/grenmart-organic-grocery-ecommerce)
+- [Live demo](https://grenmart.xgenious.com/)
+- [Admin demo](https://grenmart.xgenious.com/login/admin)
+- [Documentation](https://docs.xgenious.com/docs/grenmart-organic-grocery-laravel-ecommerce/)
+- [Pricing](https://xgenious.com/products/grenmart-organic-grocery-ecommerce#pricing)
+- Stack: Laravel, PHP 8+, MySQL
+- Pricing: Regular $39 (web store) / Everything Bundle $49 (web + Flutter mobile app) / Exclusive $199 (white-label + full source rights + free install) — one-time, no monthly fees
+- Key features: no-code drag & drop page/menu/form/widget builders (50+ widgets), 3 home variants + grid/list shop, advanced inventory, advanced shipping by zone/country/state, advance tax, coupons & time-boxed campaigns with countdown, autocomplete search, related product suggestions, wishlist/cart/compare, quick view & quick share, Facebook/Google login, default language (admin-set) + RTL support, SEO meta + one-click XML sitemap
+- Mobile: Grenmart Flutter app (Android & iOS) included from the $49 Everything Bundle — single codebase connecting to the Laravel backend over API, 15+ payment gateways, Facebook login + OTP password reset
+- Comparison: vs Shopify ($39–$399/mo), vs WooCommerce (free + paid plugins), vs custom build ($15K–$40K) — Grenmart is one-time, you own the Laravel source, no platform commission on sales
+- Keywords: organic grocery ecommerce, grocery laravel ecommerce, laravel ecommerce script, grocery store php script, drag and drop ecommerce builder, online grocery store software
+
 ## Company
 
 - [About](https://xgenious.com/about)

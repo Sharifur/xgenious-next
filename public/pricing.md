@@ -70,3 +70,40 @@ Self-hosted AI chatbot SaaS script. RAG-powered via pgvector, WooCommerce & Shop
 
 ## Purchase
 https://codecanyon.net/item/botmerze-ai-chatbot-saas-for-ecommerce-with-woocommerce-shopify-api-integration/63267734
+
+---
+
+# Grenmart Pricing
+
+Organic & Grocery Laravel eCommerce script. All prices are one-time payments. No subscriptions. No monthly fees.
+
+## Regular License — $39
+- Grenmart web store (full Laravel source code)
+- No-code drag & drop page builder (50+ widgets)
+- 3 home page variants + grid/list shop
+- 20+ payment gateways
+- Advanced inventory, shipping, tax, coupons, campaigns
+- Autocomplete search + related product suggestions
+- SEO meta + one-click XML sitemap
+- Default language (admin-set) + RTL support
+- 6 months support
+- Lifetime updates
+
+## Everything Bundle — $49
+- Everything in Regular License
+- Grenmart Flutter mobile app (Android & iOS)
+- 6 months support
+- Lifetime updates
+- Personal & commercial use
+
+## Exclusive License — $199
+- Everything in the Everything Bundle
+- Full source code modification rights
+- Remove / replace all branding
+- Unlimited commercial projects
+- Free installation on your server
+- Priority support — 12 months
+- Lifetime updates
+
+## Purchase
+https://xgenious.com/products/grenmart-organic-grocery-ecommerce#pricing

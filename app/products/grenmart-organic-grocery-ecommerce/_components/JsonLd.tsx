@@ -1,4 +1,4 @@
-import { FAQS, PURCHASE_URL, CANONICAL, BASE_URL, REGULAR_PRICE, EXCLUSIVE_PRICE } from './constants';
+import { FAQS, CANONICAL, BASE_URL, REGULAR_PRICE, EXCLUSIVE_PRICE } from './constants';
 
 export default function JsonLd() {
   const softwareApp = {
@@ -14,11 +14,14 @@ export default function JsonLd() {
       priceCurrency: 'USD',
       offerCount: '3',
       availability: 'https://schema.org/InStock',
-      url: PURCHASE_URL,
+      url: `${CANONICAL}#pricing`,
     },
     description:
       'Grenmart is an organic grocery and multipurpose eCommerce platform built on Laravel. It ships with a no-code drag & drop page builder, 50+ widgets, 3 home page variants, 20+ payment gateways, and advanced inventory, shipping, tax, coupon, and campaign systems. One-time purchase with full source code from $39.',
     url: CANONICAL,
+    image: `${BASE_URL}/products/grenmart/hero-landing.png`,
+    screenshot: `${BASE_URL}/products/grenmart/hero-landing.png`,
+    softwareVersion: '1.0',
     author: { '@type': 'Organization', name: 'Xgenious', url: BASE_URL },
   };
 

@@ -3,11 +3,13 @@ import { BASE_URL, CANONICAL } from './_components/constants';
 import JsonLd from './_components/JsonLd';
 import StickyBar from './_components/StickyBar';
 import Hero from './_components/Hero';
+import Definition from './_components/Definition';
 import Features from './_components/Features';
 import NoCode from './_components/NoCode';
 import LaunchSteps from './_components/LaunchSteps';
 import WhoIsItFor from './_components/WhoIsItFor';
 import Gateways from './_components/Gateways';
+import MobileApp from './_components/MobileApp';
 import Comparison from './_components/Comparison';
 import TrustBand from './_components/TrustBand';
 import Pricing from './_components/Pricing';
@@ -17,7 +19,7 @@ import ClosingCta from './_components/ClosingCta';
 export const metadata: Metadata = {
   title: 'Grenmart — Organic & Grocery Laravel eCommerce Script',
   description:
-    'Grenmart is an organic grocery & multipurpose Laravel eCommerce platform. No-code drag & drop builder, 50+ widgets, 3 home variants, 20+ payment gateways. One-time from $39.',
+    'Grenmart is an organic grocery & multipurpose Laravel eCommerce script — no-code builder, 50+ widgets, 20+ payment gateways. One-time from $39.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
@@ -57,11 +59,13 @@ export default function GrenmartPage() {
       <StickyBar />
       <main>
         <Hero />
+        <Definition />
         <Features />
         <NoCode />
         <LaunchSteps />
         <WhoIsItFor />
         <Gateways />
+        <MobileApp />
         <Comparison />
         <TrustBand />
         <Pricing />

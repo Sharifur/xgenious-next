@@ -1,17 +1,5 @@
 import Image from 'next/image';
-import { COLOR, COLOR_DARK, PURCHASE_URL, TRUST_SIGNALS } from './constants';
-
-const ENVATO_GREEN = '#82B541';
-
-function EnvatoIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className="flex-shrink-0" aria-hidden>
-      <rect width="24" height="24" rx="5" fill={ENVATO_GREEN} />
-      <path d="M5.6 16.6c0-5.5 4.3-9.9 11-9.9 0 5.7-4.5 9.9-11 9.9z" fill="#fff" />
-      <path d="M8.6 14.7c2-3 4.7-5 7.9-5.9" stroke={ENVATO_GREEN} strokeWidth="1.1" strokeLinecap="round" />
-    </svg>
-  );
-}
+import { COLOR, COLOR_DARK, TRUST_SIGNALS } from './constants';
 
 export default function TrustBand() {
   return (
@@ -24,9 +12,9 @@ export default function TrustBand() {
               A Real Product You Can Inspect Before You Buy
             </h2>
             <p className="text-[#6b7280] text-[15px] leading-7 mb-8">
-              Grenmart is published on CodeCanyon (Envato Market) and runs a full live demo with admin access. Test the
-              storefront, the page builder, and the checkout yourself — then read genuine buyer reviews on the Envato
-              listing before you decide.
+              Grenmart runs a full live demo with admin access. Test the storefront, the page builder, and the checkout
+              yourself, and buy with confidence — every license ships with the full Laravel source code and lifetime
+              updates.
             </p>
 
             <div className="grid grid-cols-2 gap-4 mb-8">
@@ -46,16 +34,13 @@ export default function TrustBand() {
             </div>
 
             <a
-              href={PURCHASE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[14px] font-semibold rounded-full px-5 py-3 border transition-colors hover:bg-[#f7faf2]"
-              style={{ borderColor: `${ENVATO_GREEN}55`, color: '#4d7a28' }}
+              href="#pricing"
+              className="inline-flex items-center gap-2 text-[14px] font-semibold rounded-full px-6 py-3 text-white transition-all hover:-translate-y-0.5"
+              style={{ background: COLOR, boxShadow: `0 8px 24px ${COLOR}40` }}
             >
-              <EnvatoIcon size={18} />
-              See reviews &amp; ratings on CodeCanyon (Envato Market)
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              View pricing &amp; licenses
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
           </div>

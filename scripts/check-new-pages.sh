@@ -23,6 +23,8 @@ while IFS= read -r page_file; do
   [[ "$route" == /verify-email* ]] && continue
   [[ "$route" == /forgot-password* ]] && continue
   [[ "$route" == /reset-password* ]] && continue
+  [[ "$route" == /auth-error* ]] && continue
+  [[ "$route" == /checkout* ]] && continue
 
   # --- Sitemap check ---
   if [[ "$route" == "/" ]]; then
