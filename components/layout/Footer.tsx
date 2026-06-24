@@ -79,7 +79,7 @@ export default function Footer() {
             <img
               src="/xgenious-logo-footer.png"
               alt="Xgenious"
-              className="h-9 w-auto"
+              className="h-9 w-auto flex-shrink-0 max-w-fit"
             />
 
             <p className="text-[13px] text-[#A6A6A6] leading-6">
