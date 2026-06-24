@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.0.102'],
   images: {
+    // AVIF first (≈30% smaller than WebP) → fewer LCP bytes for hero images on mobile
+    formats: ['image/avif', 'image/webp'],
+    // Cache optimized images for 31 days (Next default is 60s) — avoids re-optimizing
+    minimumCacheTTL: 2678400,
     remotePatterns: [
       {
         protocol: 'https',
