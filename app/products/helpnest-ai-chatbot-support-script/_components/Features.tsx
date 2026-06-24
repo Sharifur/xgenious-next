@@ -11,19 +11,19 @@ const FEATURES = [
   {
     title: 'See Every Visitor in Real Time',
     desc: 'Live visitor maps show browsing history, current page, country, and address. Reach out proactively before they leave.',
-    img: '/products/helpnest-feature-visitor.jpg',
+    img: '/products/helpnest-feature-visitor-v2.jpg',
     large: true,
   },
   {
     title: 'Full Ticketing System Built In',
     desc: 'Ticket routing, priority management, SLA tracking, and team collaboration — everything a real help desk needs.',
-    img: '/products/helpnest-feature-tickets.jpg',
+    img: '/products/helpnest-feature-tickets-v2.jpg',
     bgColor: '#FDF4EF',
   },
   {
     title: 'Knowledge Base Your AI Learns From',
     desc: 'Create searchable documentation for customers and your AI simultaneously. Train the chatbot on your own product content.',
-    img: '/products/helpnest-feature-client.jpg',
+    img: '/products/helpnest-feature-client-v2.jpg',
     bgColor: '#F9EEF6',
   },
   {
@@ -35,19 +35,19 @@ const FEATURES = [
   {
     title: 'Subscription Billing Already Wired',
     desc: 'Stripe and PayPal recurring billing, plan limits, invoices — ready to run your own SaaS chatbot business out of the box.',
-    img: '/products/helpnest-feature-admin.png',
+    img: '/products/helpnest-feature-admin-v2.png',
     bgColor: '#EDF7F0',
   },
   {
     title: 'Multi-Tenant From Day One',
     desc: 'Each client gets their own isolated workspace with separate knowledge bases, agents, and billing. True SaaS architecture.',
-    img: '/products/helpnest-feature-multitenant.jpg',
+    img: '/products/helpnest-feature-multitenant-v2.jpg',
     bgColor: '#FFF4E6',
   },
   {
     title: 'Unified Inbox for All Conversations',
     desc: 'Tickets, live chats, and email threads in one place. Assign to agents, add internal notes, and track SLA breaches.',
-    img: '/products/helpnest-feature-inbox.jpg',
+    img: '/products/helpnest-feature-inbox-v2.jpg',
     bgColor: '#EEF2FF',
   },
 ];
