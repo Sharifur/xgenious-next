@@ -26,6 +26,11 @@ export const FASTSPRING_TEST_MODE = process.env.NEXT_PUBLIC_FASTSPRING_TEST_MODE
 export const FASTSPRING_STORE = 'xgenious.onfastspring.com/popup-xgenious';
 export const FASTSPRING_SCRIPT = 'https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js';
 
+// Site-wide promo coupon, auto-applied at checkout so users never have to type
+// it. Must match the code configured in the FastSpring dashboard and the one
+// advertised by the PromoBanner. Set to '' to disable auto-apply.
+export const PROMO_CODE = 'WELCOME_10';
+
 export function launchCheckout(productPaths: string[]): void {
   const fs = window.fastspring;
   if (!fs?.builder) return;
@@ -34,6 +39,7 @@ export function launchCheckout(productPaths: string[]): void {
   fs.builder.push({
     reset: true,
     ...(FASTSPRING_TEST_MODE ? { mode: 'test' } : {}),
+    ...(PROMO_CODE ? { coupon: PROMO_CODE } : {}),
     products: productPaths.map((path) => ({ path, quantity: 1 })),
     checkout: true,
   });
@@ -46,6 +52,7 @@ declare global {
         push: (config: {
           reset?: boolean;
           mode?: 'test' | 'live';
+          coupon?: string;
           products?: { path: string; quantity: number }[];
           checkout?: boolean;
           paymentContact?: { email?: string; firstName?: string; lastName?: string };

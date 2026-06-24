@@ -1,0 +1,8 @@
+/* Grenmart app — floating screenshot phones.
+   Gated behind prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes gm-floatA { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+  @keyframes gm-floatB { 0%,100% { transform: translateY(0) } 50% { transform: translateY(10px) } }
+  .gm-shot-a { animation: gm-floatA 5.5s ease-in-out infinite }
+  .gm-shot-b { animation: gm-floatB 5.5s ease-in-out infinite }
+}
