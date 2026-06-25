@@ -33,6 +33,7 @@ export default function BookingCTA() {
             height="700"
             frameBorder="0"
             allowFullScreen
+            loading="lazy"
             className="block w-full"
           />
         </div>
