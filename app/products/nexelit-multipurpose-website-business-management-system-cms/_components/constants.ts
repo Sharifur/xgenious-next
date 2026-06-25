@@ -180,7 +180,7 @@ export const LAUNCH_STEPS = [
   {
     step: '03',
     title: 'Design with the Builders',
-    desc: 'Pick one of 4 homepage variants, then drag & drop widgets to build your pages. Set fonts, colors, and menus without touching code.',
+    desc: 'Pick from 21 homepage variants, then drag & drop widgets to build your pages. Set fonts, colors, and menus without touching code.',
   },
   {
     step: '04',
@@ -252,12 +252,12 @@ export const FAQS = [
   {
     question: 'Does Nexelit have a full eCommerce module?',
     answer:
-      'Yes. The Products module includes physical and digital product selling, custom attributes and variants with their own pricing, stock management, product ratings and reviews, multiple filter options, coupon codes, tax rules (exclusive or inclusive), related product suggestions, and a full order management system. It supports all 9 built-in payment gateways.',
+      'Yes. The Products module includes physical and digital product selling, custom attributes and variants with their own pricing, stock management, product ratings and reviews, multiple filter options, coupon codes, tax rules (exclusive or inclusive), related product suggestions, and a full order management system. It supports all 20+ built-in payment gateways.',
   },
   {
     question: 'Can I sell courses or run appointment bookings?',
     answer:
-      'Yes to both. The Course module supports online and offline courses with lesson preview options, maximum applicant limits, and multi-gateway payments. The Appointment module offers dynamic date and time selection, doctor and service provider management, full appointment status tracking, and 8 payment gateway integrations. Both modules are enabled from the admin panel — no additional plugins needed.',
+      'Yes to both. The Course module supports online and offline courses with lesson preview options, maximum applicant limits, and multi-gateway payments. The Appointment module offers dynamic date and time selection, doctor and service provider management, full appointment status tracking, and 20+ payment gateway integrations. Both modules are enabled from the admin panel — no additional plugins needed.',
   },
   {
     question: 'How many payment gateways does Nexelit support?',
@@ -277,12 +277,17 @@ export const FAQS = [
   {
     question: 'What is the difference between the license tiers?',
     answer:
-      'The Regular License ($39) is the full Nexelit CMS for a single project where end users are not charged for access to the site itself. The Extended License ($79) allows you to use Nexelit in projects where you charge end users, includes 12 months of priority support, and is the right choice for client projects or agencies. The Exclusive License ($199) adds full source code modification rights, branding removal, and unlimited commercial projects — the best option for agencies building multiple client sites or developers who want to extend the platform.',
+      'There are three license options. The Regular License ($39) is available on CodeCanyon for single-site use — no installation included. The Regular + Installation ($49) adds one-time professional installation on your server. The Exclusive License ($99, regularly $199) includes full source code modification rights, branding removal, professional installation, and 12 months priority support — the right choice for agencies or developers who want to customise or white-label the platform.',
   },
   {
     question: 'Do I pay any monthly or recurring fees?',
     answer:
       'No. Nexelit is a one-time purchase and you own the full Laravel source code. There are no monthly subscription fees, no platform commissions taken on your sales or bookings, and no per-module fees. The only recurring cost is your own hosting, which starts at around $5–$20 per month depending on your provider.',
+  },
+  {
+    question: 'What are the server requirements for Nexelit?',
+    answer:
+      'Nexelit requires PHP 8.1 or higher, MySQL 5.7 or higher (MySQL 8 recommended), Composer 2, and mod_rewrite enabled. It runs on any standard PHP/Laravel-compatible hosting — including shared cPanel hosting, VPS, or cloud servers like DigitalOcean, AWS, or Vultr. Minimum 512 MB RAM is recommended; 1 GB+ for production sites with active traffic.',
   },
   {
     question: 'Can I see a live demo before buying?',

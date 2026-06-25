@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { COLOR, TRUST_SIGNALS } from './constants';
+import Link from 'next/link';
+import { COLOR, PURCHASE_URL, TRUST_SIGNALS } from './constants';
 
 const STATS = [
   { value: '1,971+', label: 'Sales on CodeCanyon' },
@@ -66,7 +67,9 @@ export default function TrustBand() {
               <Image src="/icons/elite-author.svg" alt="Envato Elite Author" width={40} height={40} className="flex-shrink-0" />
               <div>
                 <p className="text-[13px] font-semibold text-[#0F1112]">Verified Elite Author</p>
-                <p className="text-[12px] text-[#6b7280]">Sold on CodeCanyon · 1,971+ customers</p>
+                <Link href={PURCHASE_URL} target="_blank" rel="noopener noreferrer" className="text-[12px] text-[#6b7280] hover:underline">
+                  Sold on CodeCanyon · 1,971+ customers
+                </Link>
               </div>
             </div>
           </div>

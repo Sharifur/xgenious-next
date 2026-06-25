@@ -35,7 +35,7 @@ export default function Hero() {
             className="font-bold underline underline-offset-4 decoration-2"
             style={{ color: COLOR_DARK, textDecorationColor: COLOR }}
           >
-            Seven Business Models.
+            Every Business Model.
           </strong>{' '}
           Zero Monthly Fees.
         </h1>

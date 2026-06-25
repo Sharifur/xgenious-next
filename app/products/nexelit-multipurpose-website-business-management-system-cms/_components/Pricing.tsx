@@ -173,6 +173,9 @@ export default function Pricing() {
                   {Math.round((1 - EXCLUSIVE_PRICE / EXCLUSIVE_ORIGINAL) * 100)}% OFF
                 </span>
               </div>
+              <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: '#7c3aed80' }}>
+                Introductory price — limited time
+              </p>
               <div className="flex items-baseline gap-2 mb-4">
                 <span className="text-[56px] font-bold text-white leading-none">${EXCLUSIVE_PRICE}</span>
                 <span className="text-[15px]" style={{ color: '#7c3aed80' }}>one-time</span>

@@ -3,21 +3,21 @@ import Image from 'next/image';
 const BASE = '/products/payment-logos';
 
 const logos = [
-  { src: `${BASE}/02.webp`,  alt: 'Payment Gateway'  },
-  { src: `${BASE}/15.png`,   alt: 'Payment Gateway'  },
-  { src: `${BASE}/08.png`,   alt: 'Razorpay'         },
-  { src: `${BASE}/11.png`,   alt: 'Payment Gateway'  },
-  { src: `${BASE}/14.png`,   alt: 'Payment Gateway'  },
-  { src: `${BASE}/13.png`,   alt: 'Payment Gateway'  },
-  { src: `${BASE}/12.png`,   alt: 'Payment Gateway'  },
-  { src: `${BASE}/09.png`,   alt: 'Payment Gateway'  },
-  { src: `${BASE}/03.png`,   alt: 'Stripe'           },
-  { src: `${BASE}/04.webp`,  alt: 'Payment Gateway'  },
-  { src: `${BASE}/05.png`,   alt: 'PayPal'           },
-  { src: `${BASE}/07.png`,   alt: 'Payment Gateway'  },
-  { src: `${BASE}/01.png`,   alt: 'Payment Gateway'  },
-  { src: `${BASE}/06.png`,   alt: 'Payment Gateway'  },
-  { src: `${BASE}/sqaure1656825943.png`, alt: 'Square' },
+  { src: `${BASE}/02.webp`,  alt: 'Flutterwave payment gateway'  },
+  { src: `${BASE}/15.png`,   alt: 'Mollie payment gateway'       },
+  { src: `${BASE}/08.png`,   alt: 'Razorpay payment gateway'     },
+  { src: `${BASE}/11.png`,   alt: 'Paystack payment gateway'     },
+  { src: `${BASE}/14.png`,   alt: 'Paytm payment gateway'        },
+  { src: `${BASE}/13.png`,   alt: 'Instamojo payment gateway'    },
+  { src: `${BASE}/12.png`,   alt: 'PayU payment gateway'         },
+  { src: `${BASE}/09.png`,   alt: 'SSLCommerz payment gateway'   },
+  { src: `${BASE}/03.png`,   alt: 'Stripe payment gateway'       },
+  { src: `${BASE}/04.webp`,  alt: '2Checkout payment gateway'    },
+  { src: `${BASE}/05.png`,   alt: 'PayPal payment gateway'       },
+  { src: `${BASE}/07.png`,   alt: 'Authorize.Net payment gateway'},
+  { src: `${BASE}/01.png`,   alt: 'BrainTree payment gateway'    },
+  { src: `${BASE}/06.png`,   alt: 'Xendit payment gateway'       },
+  { src: `${BASE}/sqaure1656825943.png`, alt: 'Square payment gateway' },
 ];
 
 const row1 = logos.slice(0, 8);

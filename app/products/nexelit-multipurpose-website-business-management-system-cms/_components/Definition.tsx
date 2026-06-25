@@ -48,7 +48,8 @@ export default function Definition() {
             </h2>
 
             <p className="text-[#484848] text-[15px] sm:text-[16px] leading-8 mb-7">
-              <strong className="text-[#0F1112]">Nexelit is a self-hosted multipurpose CMS and business management system built on Laravel.</strong>{' '}
+              <strong className="text-[#0F1112]">Nexelit is a self-hosted multipurpose CMS and business management system built on{' '}
+              <a href="https://laravel.com" target="_blank" rel="noopener noreferrer" style={{ color: COLOR, textDecoration: 'underline' }}>Laravel</a>.</strong>{' '}
               It ships with 9 built-in modules — including eCommerce, events, appointments, courses, donations, job
               posting, service packages, a support ticket system, and a knowledgebase — plus 4 drag &amp; drop builders,
               20+ payment gateways, and RTL support, all for a one-time price. Enable only what you need and go live

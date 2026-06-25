@@ -29,7 +29,7 @@ export default function JsonLd() {
       url: BASE_URL,
     },
     softwareVersion: '4.1.0',
-    dateModified: '2025-09-22',
+    dateModified: '2026-06-25',
   };
 
   const faqPage = {
@@ -64,7 +64,7 @@ export default function JsonLd() {
       {
         '@type': 'HowToStep',
         name: 'Design with the Builders',
-        text: 'Pick one of 4 homepage variants, then drag & drop widgets to build your pages. Set fonts, colors, and menus without code.',
+        text: 'Pick from 21 homepage variants, then drag & drop widgets to build your pages. Set fonts, colors, and menus without code.',
       },
       {
         '@type': 'HowToStep',

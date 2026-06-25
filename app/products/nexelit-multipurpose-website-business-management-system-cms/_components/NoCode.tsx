@@ -46,7 +46,7 @@ export default function NoCode() {
               className="inline-flex items-center gap-2 text-white font-semibold text-[14px] rounded-full px-6 py-3 transition-all hover:-translate-y-0.5"
               style={{ background: COLOR, boxShadow: `0 8px 24px ${COLOR}40` }}
             >
-              Get started
+              Start Building — from $39
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
