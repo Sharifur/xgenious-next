@@ -186,7 +186,7 @@ export const ownProducts: OwnProduct[] = [
     description: 'Multipurpose Website CMS & Business CMS',
     badges: ['Drag & Drop Page Builder', '21+ Home Page'],
     image: '/products/nexelit.png',
-    href: 'https://xgenious.com/our-products/nexelit-multipurpose-website-business-management-system-cms/',
+    href: '/products/nexelit-multipurpose-website-business-management-system-cms',
   },
 ];
 
