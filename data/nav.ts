@@ -22,6 +22,7 @@ export const productsDropdown: DropdownItem[] = [
   { label: 'Botmerze', description: 'AI Chatbot SaaS for WooCommerce & Shopify', category: 'AI Chatbot', accent: '#007066', image: '/products/menu/botmerze.png', href: '/products/botmerze-ai-chatbot-saas-ecommerce' },
   { label: 'MultiSaas', description: 'Multi-Tenant Website Builder SaaS', category: 'Website Builder', accent: '#eb6149', image: '/products/menu/multisaas.png', href: '/products/multisaas-website-builder-saas' },
   { label: 'Nexelit', description: 'Multipurpose Website CMS', category: 'CMS', accent: '#6366f1', image: '/products/menu/nexelit.png', href: '/products/nexelit-multipurpose-website-business-management-system-cms' },
+  { label: 'ListOcean', description: 'Classified Ads & Listing Platform', category: 'Classifieds', accent: '#0891b2', image: '/products/menu/listocean-thumb.png', href: '/products/listocean-classified-ads-listing-platform' },
   { label: 'Fundorex', description: 'Crowdfunding Platform', category: 'Crowdfunding', accent: '#f59e0b', image: '/products/menu/fundorex.png', href: '/products/fundorex-crowdfunding-platform' },
   { label: 'Xilancer', description: 'Freelancer Marketplace Platform', category: 'Freelance', accent: '#a855f7', image: '/products/menu/xilancer.png', href: '/products/xilancer-freelancer-marketplace-script' },
   { label: 'Prohandy', description: 'On-Demand Service Provider Marketplace', category: 'Home Services', accent: '#059669', image: '/products/menu/prohandy.png', href: '/products/prohandy-on-demand-home-service-marketplace' },

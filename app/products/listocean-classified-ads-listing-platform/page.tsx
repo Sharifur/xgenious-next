@@ -16,15 +16,15 @@ import FAQ from './_components/FAQ';
 import ClosingCta from './_components/ClosingCta';
 
 export const metadata: Metadata = {
-  title: 'ListOcean — Classified Ads & Listing Platform on Laravel | Xgenious',
+  title: 'ListOcean — Classified Ads Script on Laravel | Xgenious',
   description:
-    'ListOcean is a Laravel classified ads platform with live chat, Google Maps, membership plans, a digital wallet, 4 drag & drop builders, and GDPR compliance. One-time from $29.',
+    'Laravel classified ads script with live chat, Google Maps, membership plans, wallet, and 4 no-code builders. Buy once from $29 — full source code, no monthly fees.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'ListOcean — Classified Ads & Listing Platform Script | Xgenious',
+    title: 'ListOcean — Classified Ads Script on Laravel | Xgenious',
     description:
-      'Launch a classified ads marketplace with ListOcean: real-time live chat, Google Maps location listings, tiered memberships, digital wallet, SMS notifications, 4 no-code builders, and GDPR compliance — one-time purchase from $29.',
+      'Launch a classified ads marketplace with ListOcean — live chat, Google Maps, memberships, digital wallet, 4 no-code builders, GDPR compliance. One-time from $29, full source code.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/products/listocean/preview.jpg', width: 1200, height: 630, alt: 'ListOcean — Classified Ads & Listing Platform' }],
@@ -32,22 +32,23 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ListOcean — Classified Ads Listing Platform | Xgenious',
+    title: 'ListOcean — Classified Ads Script on Laravel | Xgenious',
     description:
-      'ListOcean — Laravel classified ads script with live chat, maps, memberships, wallet & 4 no-code builders. One-time from $29.',
+      'Laravel classified ads script with live chat, Google Maps, memberships, wallet & 4 no-code builders. One-time from $29 — full source code.',
     images: ['/products/listocean/preview.jpg'],
   },
   keywords: [
-    'listocean classified ads',
     'classified ads script',
+    'classified ads laravel',
+    'listocean classified ads',
     'classified listing platform',
     'local marketplace script',
-    'classified ads laravel',
     'buy sell platform script',
     'classified website script',
     'php classified script',
     'olx clone script',
-    'classified ads codecanyon',
+    'classified ads platform codecanyon',
+    'self-hosted classified ads',
   ],
 };
 

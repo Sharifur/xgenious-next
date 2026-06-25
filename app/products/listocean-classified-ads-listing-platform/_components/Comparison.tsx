@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { COLOR, COMPARISON_ROWS } from './constants';
 
 const COLS = ['ListOcean', 'Osclass', 'WordPress Classifieds', 'Custom Dev'];
@@ -33,7 +34,7 @@ export default function Comparison() {
           </p>
         </div>
 
-        <div className="overflow-x-auto max-w-[1100px] mx-auto rounded-2xl border border-[#E5E7EC] shadow-sm">
+        <div className="overflow-x-auto max-w-[1100px] mx-auto rounded-2xl border border-[#E5E7EC] shadow-sm" role="region" aria-label="Classified ads platform comparison table">
           <table className="w-full min-w-[640px] border-collapse">
             <thead>
               <tr>
@@ -72,6 +73,26 @@ export default function Comparison() {
             </tbody>
           </table>
         </div>
+
+        <p className="max-w-[1100px] mx-auto mt-4 text-[12px] text-[#9ca3af] leading-5">
+          ListOcean is built on{' '}
+          <a href="https://laravel.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#6b7280] transition-colors">
+            Laravel
+          </a>
+          {' '}— the most-starred PHP framework on GitHub. Osclass comparison based on{' '}
+          <a href="https://osclass-classifieds.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#6b7280] transition-colors">
+            osclass-classifieds.com
+          </a>
+          {' '}public feature list.
+          Also see:{' '}
+          <Link href="/products/multisaas-website-builder-saas" className="underline hover:text-[#6b7280] transition-colors">
+            MultiSaas website builder
+          </Link>
+          {' '}·{' '}
+          <Link href="/products/grenmart-organic-grocery-ecommerce" className="underline hover:text-[#6b7280] transition-colors">
+            Grenmart ecommerce script
+          </Link>
+        </p>
 
       </div>
     </section>

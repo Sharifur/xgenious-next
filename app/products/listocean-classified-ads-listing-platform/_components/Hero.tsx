@@ -49,13 +49,13 @@ export default function Hero() {
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (
-              <svg key={i} width="15" height="15" viewBox="0 0 20 20" fill={i < 5 ? '#F59E0B' : '#E5E7EB'}>
+              <svg key={i} width="15" height="15" viewBox="0 0 20 20" fill={i < 4 ? '#F59E0B' : '#E5E7EB'}>
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
             ))}
           </div>
-          <span className="text-[13px] font-semibold text-[#0F1112]">4.8/5</span>
-          <span className="text-[13px] text-[#6b7280]">· Verified reviews · 2,000+ brands launched</span>
+          <span className="text-[13px] font-semibold text-[#0F1112]">3.7/5</span>
+          <span className="text-[13px] text-[#6b7280]">· 3 reviews · 96 sales on CodeCanyon</span>
         </div>
 
         <div className="flex items-center gap-3 flex-wrap justify-center">
@@ -99,10 +99,10 @@ export default function Hero() {
         <div className="mt-10 w-full max-w-[900px]">
           <div className="rounded-t-2xl overflow-hidden shadow-2xl border border-black/5">
             <Image
-              src="/products/listocean/hero.png"
+              src="/products/listocean/hero-landing.png"
               alt="ListOcean classified ads platform — homepage with listing grid, categories, and search"
-              width={1920}
-              height={1080}
+              width={928}
+              height={1330}
               className="w-full h-auto"
               priority
             />

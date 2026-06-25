@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { COLOR, PURCHASE_URL, TRUST_SIGNALS } from './constants';
 
 const STATS = [
-  { value: '2,000+', label: 'Brands launched' },
-  { value: '700+',   label: 'Google Fonts available' },
-  { value: '25+',    label: 'Built-in features' },
-  { value: 'Laravel', label: 'PHP 8.1+ · MySQL 8' },
+  { value: '96',     label: 'Sales on CodeCanyon' },
+  { value: '3.7/5',  label: '3 verified reviews' },
+  { value: '30+',    label: 'Page builder widgets' },
+  { value: 'Laravel 10', label: 'PHP 8.1+ · MySQL 8' },
 ];
 
 export default function TrustBand() {
@@ -68,7 +68,7 @@ export default function TrustBand() {
               <div>
                 <p className="text-[13px] font-semibold text-[#0F1112]">Verified Elite Author</p>
                 <Link href={PURCHASE_URL} target="_blank" rel="noopener noreferrer" className="text-[12px] text-[#6b7280] hover:underline">
-                  Sold on CodeCanyon · 2,000+ customers
+                  Sold on CodeCanyon · 100+ customers
                 </Link>
               </div>
             </div>
