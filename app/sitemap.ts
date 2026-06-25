@@ -48,6 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/products/multisaas-website-builder-saas`, priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/products/grenmart-organic-grocery-ecommerce`, priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/products/nexelit-multipurpose-website-business-management-system-cms`, priority: 0.9, changeFrequency: 'monthly' as const },
+    { url: `${BASE_URL}/products/listocean-classified-ads-listing-platform`, priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-software`, priority: 0.8, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-software/genius-school-management`, priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-software/genius-crm`, priority: 0.9, changeFrequency: 'monthly' as const },
