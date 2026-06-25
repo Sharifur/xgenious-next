@@ -1,15 +1,19 @@
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import HeroSection from '@/components/sections/HeroSection';
 import TrustedBy from '@/components/sections/TrustedBy';
-import ServicesGrid from '@/components/sections/ServicesGrid';
-import WhyChooseUs from '@/components/sections/WhyChooseUs';
-import PortfolioGrid from '@/components/sections/PortfolioGrid';
 import TechStack from '@/components/sections/TechStack';
-import ProcessSteps from '@/components/sections/ProcessSteps';
-import AIAgentSection from '@/components/sections/AIAgentSection';
-import Testimonials from '@/components/sections/Testimonials';
 import FAQ from '@/components/sections/FAQ';
-import BookingCTA from '@/components/sections/BookingCTA';
+
+// Below-fold 'use client' sections — dynamic imports create separate JS chunks so
+// the browser can parse/hydrate the hero before touching framer-motion code
+const ServicesGrid  = dynamic(() => import('@/components/sections/ServicesGrid'));
+const WhyChooseUs   = dynamic(() => import('@/components/sections/WhyChooseUs'));
+const PortfolioGrid = dynamic(() => import('@/components/sections/PortfolioGrid'));
+const ProcessSteps  = dynamic(() => import('@/components/sections/ProcessSteps'));
+const AIAgentSection = dynamic(() => import('@/components/sections/AIAgentSection'));
+const Testimonials  = dynamic(() => import('@/components/sections/Testimonials'));
+const BookingCTA    = dynamic(() => import('@/components/sections/BookingCTA'));
 
 const BASE_URL = 'https://xgenious.com';
 

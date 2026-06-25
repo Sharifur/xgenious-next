@@ -1,12 +1,11 @@
-'use client';
-
 import Link from 'next/link';
-import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { useState, useEffect, useRef } from 'react';
 import { IconArrowRight } from '@tabler/icons-react';
+import type { ReactNode } from 'react';
 
 const HeroBackground = dynamic(() => import('@/components/ui/HeroBackground'), { ssr: false });
+// Desktop-only interactive dots — ssr:false so mobile loads zero JS for this chunk
+const HeroDotsSection = dynamic(() => import('./HeroDotsSection'), { ssr: false });
 
 /* ── Corner stack-icon block with cursor arrow ── */
 type Corner = 'tl' | 'tr' | 'bl' | 'br';
@@ -42,7 +41,6 @@ function StackBlock({
   corner: Corner;
   bg?: string;
 }) {
-  // Box sits opposite the cursor corner
   const boxPos: Record<Corner, React.CSSProperties> = {
     tl: { bottom: 0, right: 0 },
     tr: { bottom: 0, left: 0 },
@@ -59,8 +57,7 @@ function StackBlock({
           background: bg,
           border: `1px solid ${borderColor}`,
           borderRadius: RADIUS[corner],
-          boxShadow:
-            '0 0 0 1px rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.04)',
+          boxShadow: '0 0 0 1px rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.04)',
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -93,27 +90,14 @@ function FeatureCard({
   title,
   tags,
   href,
-  withPointer = false,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   title: string;
   tags: string[];
   href: string;
-  withPointer?: boolean;
 }) {
   return (
     <Link href={href} className="relative w-full lg:w-[220px] group/card">
-      {/* Upward arrow pointer (sits on top edge of card) */}
-      {withPointer && (
-        <span
-          aria-hidden
-          className="absolute left-1/2 -translate-x-1/2 -top-2 w-4 h-4 bg-white rotate-45"
-          style={{
-            boxShadow: '-1px -1px 1px rgba(0,0,0,0.04)',
-          }}
-        />
-      )}
-
       <div
         className="relative bg-white flex flex-col gap-3 p-4 transition-shadow duration-200 group-hover/card:shadow-[0_8px_28px_rgba(0,0,0,0.16)]"
         style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.10)', borderRadius: 10 }}
@@ -176,113 +160,15 @@ const I_DEV = (
   </svg>
 );
 
-function PulseDot({
-  active,
-  delay = 0,
-  onActivate,
-  onDeactivate,
-  onClick,
-  ariaLabel,
-}: {
-  active: boolean;
-  delay?: number;
-  onActivate: () => void;
-  onDeactivate: () => void;
-  onClick: () => void;
-  ariaLabel: string;
-}) {
-  // Always coral — primary brand colour so the pulsing dots draw the eye
-  const ringColor = active ? 'rgba(242,107,78,0.75)' : 'rgba(242,107,78,0.55)';
-  const coreColor = '#F26B4E';
-
-  return (
-    <button
-      type="button"
-      aria-label={ariaLabel}
-      aria-pressed={active}
-      onMouseEnter={onActivate}
-      onMouseLeave={onDeactivate}
-      onFocus={onActivate}
-      onBlur={onDeactivate}
-      onClick={onClick}
-      className="relative w-[44px] h-[44px] cursor-pointer focus:outline-none flex items-center justify-center"
-    >
-      {/* Two staggered expanding pulse rings — slow, always-on */}
-      <span
-        aria-hidden
-        className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full pointer-events-none"
-        style={{
-          background: ringColor,
-          animation: `blinkPulse 3.6s cubic-bezier(0.4,0,0.6,1) ${delay}ms infinite`,
-          transformOrigin: 'center',
-        }}
-      />
-      <span
-        aria-hidden
-        className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full pointer-events-none"
-        style={{
-          background: ringColor,
-          animation: `blinkPulse 3.6s cubic-bezier(0.4,0,0.6,1) ${delay + 1800}ms infinite`,
-          transformOrigin: 'center',
-        }}
-      />
-
-      {/* Static halo (visible base) — soft coral tint always */}
-      <span
-        aria-hidden
-        className="absolute inset-0 rounded-full transition-colors duration-200"
-        style={{
-          background: active ? 'rgba(242,107,78,0.22)' : 'rgba(242,107,78,0.12)',
-        }}
-      />
-      {/* Inner white ring */}
-      <span
-        aria-hidden
-        className="absolute rounded-full transition-colors duration-200"
-        style={{
-          width: 26,
-          height: 26,
-          background: 'rgba(255,255,255,0.92)',
-        }}
-      />
-      {/* Core dot — coral, gently breathing on top */}
-      <span
-        aria-hidden
-        className="relative rounded-full transition-colors duration-200"
-        style={{
-          width: 12,
-          height: 12,
-          background: coreColor,
-          animation: `blinkCore 1.8s ease-in-out ${delay}ms infinite`,
-          boxShadow: '0 0 0 2px rgba(242,107,78,0.25)',
-        }}
-      />
-    </button>
-  );
-}
-
-/* Dot positions correspond to marked points on the globe map —
-   placed on actual landmasses (Africa, Eurasia, East Asia) to convey
-   "we work globally". Each card appears below its dot with an upward arrow. */
-const dots = [
-  { x: '27%', y: 140, delay: 0,    label: 'Show AI Agent capabilities',         card: 0 }, // Africa
-  { x: '46%', y: 50,  delay: 700,  label: 'Show Custom Software capabilities',  card: 1 }, // Eurasia
-  { x: '75%', y: 90,  delay: 1400, label: 'Show Development capabilities',      card: 2 }, // East Asia
-] as const;
-
 const featureCards = [
-  { icon: I_AI,  title: 'AI Agent',         tags: ['Intelligent', 'Scalable'],  href: '/ai-agent-development-services' },
-  { icon: I_SW,  title: 'Custom Software',  tags: ['Flexible', 'User-Centric'], href: '/custom-saas-development-company' },
-  { icon: I_DEV, title: 'Development',      tags: ['Secure', 'Efficient'],      href: '/web-app-development-company' },
+  { icon: I_AI,  title: 'AI Agent',        tags: ['Intelligent', 'Scalable'],  href: '/ai-agent-development-services' },
+  { icon: I_SW,  title: 'Custom Software', tags: ['Flexible', 'User-Centric'], href: '/custom-saas-development-company' },
+  { icon: I_DEV, title: 'Development',     tags: ['Secure', 'Efficient'],      href: '/web-app-development-company' },
 ];
-
-const CARD_WIDTH = 220;
-const DOT_SIZE = 44;
-const ARROW_GAP = 22; // space below dot for the arrow + breathing room
 
 type HeroProps = {
   eyebrow?: string;
-  title?: React.ReactNode;
+  title?: ReactNode;
   subtitle?: string;
   primaryCtaText?: string;
   primaryCtaHref?: string;
@@ -293,32 +179,12 @@ type HeroProps = {
 export default function HeroSection({
   eyebrow = 'Custom Software Development Company',
   title = 'Custom SaaS & Software Development That Ships on Time',
-  subtitle = 'From-scratch SaaS, custom web platforms, mobile apps, and AI agents — built by a team with a track record. Published scope, a committed delivery date, and 13,000+ users on products we\'ve shipped.',
+  subtitle = "From-scratch SaaS, custom web platforms, mobile apps, and AI agents — built by a team with a track record. Published scope, a committed delivery date, and 13,000+ users on products we've shipped.",
   primaryCtaText = 'Start Your Project',
   primaryCtaHref = '/contact',
   secondaryCtaText = 'Book a Free 30-min Call',
   secondaryCtaHref = '#booking',
 }: HeroProps = {}) {
-  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
-  const [pinnedIdx, setPinnedIdx] = useState<number | null>(null);
-  const [autoIdx, setAutoIdx] = useState<number>(0);
-  const autoRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  // Auto-cycle through dots every 2.5 s; pause while user is hovering or has pinned
-  useEffect(() => {
-    autoRef.current = setInterval(() => {
-      if (hoverIdx === null && pinnedIdx === null) {
-        setAutoIdx((i) => (i + 1) % dots.length);
-      }
-    }, 2500);
-    return () => { if (autoRef.current) clearInterval(autoRef.current); };
-  }, [hoverIdx, pinnedIdx]);
-
-  const activeIdx = hoverIdx ?? pinnedIdx ?? autoIdx;
-
-  const setHover = (i: number | null) => setHoverIdx(i);
-  const togglePin = (i: number) => setPinnedIdx((p) => (p === i ? null : i));
-
   return (
     <section
       className="relative overflow-hidden pt-[80px] sm:pt-[120px] lg:pt-[160px] pb-[40px]"
@@ -360,15 +226,14 @@ export default function HeroSection({
         />
       </div>
 
-
-      {/* Globe at bottom — top 27% visible, slides up on load */}
+      {/* Globe — desktop only; loading=lazy so mobile never fetches the 167KB SVG */}
       <div
         className="absolute bottom-0 left-0 right-0 pointer-events-none hidden lg:flex justify-center"
         style={{ animation: 'globeRise 1s cubic-bezier(0.22,1,0.36,1) both' }}
       >
         <div className="w-[80%] max-w-[1203px] overflow-hidden" style={{ aspectRatio: '1203 / 330' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/World.svg" alt="" className="w-full h-auto select-none block" fetchPriority="high" />
+          <img src="/World.svg" alt="" className="w-full h-auto select-none block" loading="lazy" />
         </div>
       </div>
 
@@ -383,179 +248,102 @@ export default function HeroSection({
               '0 1px 0 0 rgba(255,255,255,0.7) inset, 0 -1px 0 0 rgba(255,255,255,0.15) inset',
           }}
         >
-          {/* Corner stack blocks — icon-box midpoint anchored exactly on each panel corner */}
+          {/* Corner stack blocks — desktop only */}
           <div className="absolute hidden lg:block z-20" style={{ left: -25, top: -25 }}>
-            <StackBlock
-              icon="/icons/fi_laravel.svg"
-              borderColor="rgba(242,78,30,0.16)"
-              cursorColor="#F24E1E"
-              corner="br"
-            />
+            <StackBlock icon="/icons/fi_laravel.svg" borderColor="rgba(242,78,30,0.16)" cursorColor="#F24E1E" corner="br" />
           </div>
           <div className="absolute hidden lg:block z-20" style={{ right: -25, top: -25 }}>
-            <StackBlock
-              icon="/icons/fi_nodejs.svg"
-              borderColor="rgba(10,207,131,0.16)"
-              cursorColor="#0ACF83"
-              corner="bl"
-            />
+            <StackBlock icon="/icons/fi_nodejs.svg" borderColor="rgba(10,207,131,0.16)" cursorColor="#0ACF83" corner="bl" />
           </div>
           <div className="absolute hidden lg:block z-20" style={{ left: -25, bottom: -25 }}>
-            <StackBlock
-              icon="/icons/fi_openai.svg"
-              borderColor="rgba(0,0,0,0.16)"
-              cursorColor="#0F1112"
-              corner="tr"
-            />
+            <StackBlock icon="/icons/fi_openai.svg" borderColor="rgba(0,0,0,0.16)" cursorColor="#0F1112" corner="tr" />
           </div>
           <div className="absolute hidden lg:block z-20" style={{ right: -25, bottom: -25 }}>
-            <StackBlock
-              icon="/icons/fi_react.svg"
-              borderColor="rgba(20,110,245,0.16)"
-              cursorColor="#146EF5"
-              corner="tl"
-            />
+            <StackBlock icon="/icons/fi_react.svg" borderColor="rgba(20,110,245,0.16)" cursorColor="#146EF5" corner="tl" />
           </div>
 
           <div className="relative">
-          {/* Pill eyebrow */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-sm border border-white/80 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F26B4E]" />
-            <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#2F2F2F]">
-              {eyebrow}
-            </span>
-          </div>
-
-          <h1
-            className="text-[#0F1112]"
-            style={{
-              fontWeight: 600,
-              fontSize: 'clamp(40px, 5.4vw, 70px)',
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              marginBottom: 22,
-            }}
-          >
-            {title}
-          </h1>
-
-          <p
-            className="text-[#2F2F2F] mx-auto text-[15px] sm:text-[17px] leading-[24px] sm:leading-[27px]"
-            style={{
-              fontWeight: 400,
-              maxWidth: 676,
-              marginBottom: 32,
-            }}
-          >
-            {subtitle}
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
-            {/* Primary — coral pill */}
-            <Link
-              href={primaryCtaHref}
-              className="group relative inline-flex items-center justify-center gap-2 font-semibold text-white text-[14px] sm:text-[15px] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(242,107,78,0.45)] active:translate-y-0 active:shadow-[0_4px_12px_rgba(242,107,78,0.35)] w-[80%] sm:w-auto px-6"
-              style={{ height: 44, background: '#F26B4E', borderRadius: 30, minWidth: 160 }}
-            >
-              {/* Shimmer sweep */}
-              <span
-                aria-hidden
-                className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 bg-white/25 opacity-0 transition-all duration-700 ease-out group-hover:left-[120%] group-hover:opacity-100"
-              />
-              {/* Background tint shift on hover */}
-              <span
-                aria-hidden
-                className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                style={{
-                  background:
-                    'linear-gradient(135deg, #F26B4E 0%, #EC7161 50%, #E85B41 100%)',
-                }}
-              />
-              <span className="relative">{primaryCtaText}</span>
-              <IconArrowRight
-                size={14}
-                stroke={1.6}
-                className="relative transition-transform duration-300 ease-out group-hover:translate-x-1"
-              />
-            </Link>
-
-            {/* Secondary — white pill */}
-            <Link
-              href={secondaryCtaHref}
-              className="group relative inline-flex items-center justify-center font-semibold text-[14px] sm:text-[15px] bg-white border border-[#D8D8D8] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#0F1112] hover:shadow-[0_12px_28px_rgba(15,17,18,0.18)] active:translate-y-0 w-[80%] sm:w-auto px-6"
-              style={{ height: 44, borderRadius: 30, minWidth: 160 }}
-            >
-              {/* Dark fill that rises from the bottom on hover */}
-              <span
-                aria-hidden
-                className="absolute inset-x-0 bottom-0 h-0 bg-[#0F1112] transition-[height] duration-300 ease-out group-hover:h-full"
-                style={{ borderRadius: 30 }}
-              />
-              <span className="relative text-[#0F1112] transition-colors duration-300 group-hover:text-white">
-                {secondaryCtaText}
+            {/* Pill eyebrow */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-sm border border-white/80 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#F26B4E]" />
+              <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#2F2F2F]">
+                {eyebrow}
               </span>
-            </Link>
-          </div>
+            </div>
 
-          {/* Trust bar */}
-          <p className="mt-5 text-[13px] text-[#5A5F6A] tracking-wide">
-            Custom SaaS, shipped for businesses across{' '}
-            <span className="font-semibold text-[#0F1112]">100+ countries</span>.
-          </p>
-          </div>
-        </div>
-
-        {/* Dots + cards — each dot has its own (x,y) on the globe;
-            its card sits directly below it with an upward arrow */}
-        <div className="relative w-full mt-16 hidden lg:block max-w-[1040px]" style={{ height: 280 }}>
-          {/* Dots — staggered vertically so they sit on different points of the globe */}
-          {dots.map((d, i) => (
-            <div
-              key={`dot-${i}`}
-              className="absolute"
+            <h1
+              className="text-[#0F1112]"
               style={{
-                left: d.x,
-                top: d.y,
-                transform: 'translateX(-50%)', // centre the 44px dot on its x coordinate
+                fontWeight: 600,
+                fontSize: 'clamp(40px, 5.4vw, 70px)',
+                lineHeight: 1.1,
+                letterSpacing: '-0.02em',
+                marginBottom: 22,
               }}
             >
-              <PulseDot
-                active={activeIdx === d.card}
-                delay={d.delay}
-                ariaLabel={d.label}
-                onActivate={() => setHover(d.card)}
-                onDeactivate={() => setHover(null)}
-                onClick={() => togglePin(d.card)}
-              />
-            </div>
-          ))}
+              {title}
+            </h1>
 
-          {/* Cards — each anchored under its own dot's (x,y) */}
-          {featureCards.map((card, i) => {
-            const dot = dots.find((d) => d.card === i)!;
-            const visible = activeIdx === i;
-            const cardTop = dot.y + DOT_SIZE + ARROW_GAP;
+            <p
+              className="text-[#2F2F2F] mx-auto text-[15px] sm:text-[17px] leading-[24px] sm:leading-[27px]"
+              style={{ fontWeight: 400, maxWidth: 676, marginBottom: 32 }}
+            >
+              {subtitle}
+            </p>
 
-            return (
-              <div
-                key={card.title}
-                className="absolute transition-all duration-300 ease-out"
-                style={{
-                  left: dot.x,
-                  top: cardTop,
-                  marginLeft: -CARD_WIDTH / 2, // shift left by half card width so it's centered on the dot's x
-                  opacity: visible ? 1 : 0,
-                  transform: `translateY(${visible ? 0 : 8}px)`,
-                  pointerEvents: visible ? 'auto' : 'none',
-                }}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
+              {/* Primary — coral pill */}
+              <Link
+                href={primaryCtaHref}
+                className="group relative inline-flex items-center justify-center gap-2 font-semibold text-white text-[14px] sm:text-[15px] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(242,107,78,0.45)] active:translate-y-0 active:shadow-[0_4px_12px_rgba(242,107,78,0.35)] w-[80%] sm:w-auto px-6"
+                style={{ height: 44, background: '#F26B4E', borderRadius: 30, minWidth: 160 }}
               >
-                <FeatureCard icon={card.icon} title={card.title} tags={card.tags} href={card.href} withPointer />
-              </div>
-            );
-          })}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 bg-white/25 opacity-0 transition-all duration-700 ease-out group-hover:left-[120%] group-hover:opacity-100"
+                />
+                <span
+                  aria-hidden
+                  className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  style={{ background: 'linear-gradient(135deg, #F26B4E 0%, #EC7161 50%, #E85B41 100%)' }}
+                />
+                <span className="relative">{primaryCtaText}</span>
+                <IconArrowRight
+                  size={14}
+                  stroke={1.6}
+                  className="relative transition-transform duration-300 ease-out group-hover:translate-x-1"
+                />
+              </Link>
+
+              {/* Secondary — white pill */}
+              <Link
+                href={secondaryCtaHref}
+                className="group relative inline-flex items-center justify-center font-semibold text-[14px] sm:text-[15px] bg-white border border-[#D8D8D8] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#0F1112] hover:shadow-[0_12px_28px_rgba(15,17,18,0.18)] active:translate-y-0 w-[80%] sm:w-auto px-6"
+                style={{ height: 44, borderRadius: 30, minWidth: 160 }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-0 h-0 bg-[#0F1112] transition-[height] duration-300 ease-out group-hover:h-full"
+                  style={{ borderRadius: 30 }}
+                />
+                <span className="relative text-[#0F1112] transition-colors duration-300 group-hover:text-white">
+                  {secondaryCtaText}
+                </span>
+              </Link>
+            </div>
+
+            {/* Trust bar */}
+            <p className="mt-5 text-[13px] text-[#5A5F6A] tracking-wide">
+              Custom SaaS, shipped for businesses across{' '}
+              <span className="font-semibold text-[#0F1112]">100+ countries</span>.
+            </p>
+          </div>
         </div>
 
-        {/* Mobile feature cards — always visible */}
+        {/* Interactive dots + cards — desktop only, zero JS on mobile */}
+        <HeroDotsSection />
+
+        {/* Mobile feature cards — server-rendered, always visible */}
         <div className="flex flex-col gap-4 mt-8 pb-6 w-full lg:hidden">
           {featureCards.map((card) => (
             <FeatureCard key={card.title} icon={card.icon} title={card.title} tags={card.tags} href={card.href} />
