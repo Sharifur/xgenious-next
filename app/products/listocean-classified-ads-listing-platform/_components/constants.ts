@@ -13,13 +13,15 @@ export const DOCS_URL = 'https://docs.xgenious.com/docs/listocean/';
 export const PRICING_URL = '#pricing';
 
 export const REGULAR_PRICE = 29;
-export const FULL_PRICE = 95;
-export const FULL_ORIGINAL = 249;
-export const EXCLUSIVE_PRICE = 179;
+export const FULL_PRICE = 59;
+export const FULL_ORIGINAL = 99;
+export const EXCLUSIVE_PRICE = 149;
 export const EXCLUSIVE_ORIGINAL = 249;
 
-export const FULL_PRODUCT_PATH = 'listocean-full-pack';
+export const FULL_PRODUCT_PATH = 'listocean-bundle-pack';
 export const EXCLUSIVE_PRODUCT_PATH = 'listocean-exclusive-pack';
+export const INSTALL_PRODUCT_PATH = 'listocean-install-web';
+export const SUPPORT_PRODUCT_PATH = 'listocean-support-6m';
 
 export const QUICK_LINKS = [
   { label: 'Frontend Demo', href: DEMO_URL },
@@ -36,7 +38,7 @@ export const FEATURES = [
   },
   {
     name: 'Google Maps Integration',
-    desc: 'Location-aware listing discovery with interactive maps. Buyers see exactly where a deal is and filter results by proximity.',
+    desc: 'Location-aware listing discovery with interactive maps. Buyers filter results by city, neighbourhood, or radius — location built in from day one.',
     icon: 'map',
   },
   {
@@ -50,18 +52,28 @@ export const FEATURES = [
     icon: 'wallet',
   },
   {
-    name: 'Multiple Ad Formats',
-    desc: 'Monetize with image banners, custom script ads, and Google Ads. Track views, countries, and devices in the admin panel.',
+    name: 'Image, Script & Google Ads',
+    desc: 'Monetize with image banners, custom script embeds, and Google AdSense. Admin panel tracks impressions, clicks, countries, and devices per ad.',
     icon: 'ads',
   },
   {
-    name: 'SMS Gateway Plugin',
-    desc: 'Send SMS notifications for user registration, listing alerts, and account verification via any major SMS provider.',
-    icon: 'sms',
+    name: 'RTL + Multilingual Support',
+    desc: 'Full right-to-left layout for Arabic, Hebrew, and Urdu. Edit language files from the admin panel. 700+ Google Fonts across all scripts.',
+    icon: 'rtl',
   },
   {
-    name: 'Listing Reports & Analytics',
-    desc: 'Track which listings perform best. Admin dashboard shows views, click-through rates, and detailed per-ad performance data.',
+    name: 'Guest Listing — No Signup',
+    desc: 'Allow visitors to post ads without creating an account. Lower friction means more listings, which means more value for every visitor.',
+    icon: 'guest',
+  },
+  {
+    name: 'Blog Module',
+    desc: 'Built-in blog with category management, SEO meta tags, and OG images. Publish guides and market news to drive organic traffic to your platform.',
+    icon: 'blog',
+  },
+  {
+    name: 'Google Analytics & SEO',
+    desc: 'Native Google Analytics integration, per-page meta titles and descriptions, OG images, sitemap generation, and Google Captcha V3 — all built in.',
     icon: 'analytics',
   },
   {
@@ -75,19 +87,9 @@ export const FEATURES = [
     icon: 'roles',
   },
   {
-    name: 'GDPR Cookie Compliance',
-    desc: 'Built-in GDPR cookie consent banner with configurable preferences. Keep your platform compliant with EU regulations from day one.',
+    name: 'GDPR, Security & Compliance',
+    desc: 'CSRF, XSS, and SQL injection prevention. Password hashing, Google Captcha V3, GDPR cookie consent, and force-SSL — security baked in by default.',
     icon: 'gdpr',
-  },
-  {
-    name: 'Newsletter Module',
-    desc: 'Grow and re-engage your audience. Send newsletters to subscribers directly from the admin panel to promote featured listings.',
-    icon: 'newsletter',
-  },
-  {
-    name: 'Custom JS / CSS Support',
-    desc: 'Inject custom JavaScript or CSS from the admin panel without editing source files — add tracking pixels, widgets, or any third-party script.',
-    icon: 'code',
   },
 ];
 
@@ -121,7 +123,7 @@ export const PLUGINS = [
 export const BUILDERS = [
   {
     name: 'Page Builder',
-    desc: 'Drag pre-built widgets onto any page — hero, listings grid, categories, testimonials, FAQ, and more. Compose full layouts without touching code.',
+    desc: 'Drag 30+ pre-built widgets onto any page — hero, listings grid, categories, testimonials, FAQ, and more. 3 homepage variants included.',
   },
   {
     name: 'Menu Builder',
@@ -129,11 +131,11 @@ export const BUILDERS = [
   },
   {
     name: 'Form Builder',
-    desc: 'Create custom listing forms with text, number, email, select, checkbox, textarea, and file fields. Set required rules from the admin panel.',
+    desc: 'Create custom listing submission forms per category with text, number, email, select, checkbox, textarea, and file fields.',
   },
   {
     name: 'Widget Builder',
-    desc: 'Pre-made footer widget areas plus raw-HTML zones for newsletter signup, image blocks, or any custom content you need in footers and sidebars.',
+    desc: 'Drag-and-drop footer widget areas plus raw-HTML zones for newsletter signup, image blocks, or any custom content in footers and sidebars.',
   },
 ];
 
@@ -195,7 +197,7 @@ export const COMPARISON_ROWS = [
 ];
 
 export const TRUST_SIGNALS = [
-  { label: 'Built on Laravel', detail: 'Modern, secure PHP framework' },
+  { label: 'Built on Laravel 10', detail: 'PHP 8.1+ · MySQL 8 · Bootstrap 5' },
   { label: 'Full Source Code', detail: 'You own and can modify it' },
   { label: 'Lifetime Updates', detail: 'Free on every license' },
   { label: 'One-Time Price', detail: 'No monthly platform fees' },
@@ -213,9 +215,9 @@ export const FAQS = [
       'ListOcean supports unlimited categories and subcategories, all configurable from the admin panel. Common setups include: property listings (rent, sale, commercial), vehicle classifieds (cars, bikes, trucks), job boards, electronics buy/sell, services, pets, and general merchandise. You define the taxonomy, and each category can have custom listing fields created with the form builder.',
   },
   {
-    question: 'What premium plugins are included in the Full Package?',
+    question: 'What premium plugins are included in the Everything Bundle and Exclusive Pack?',
     answer:
-      'The Full Package includes four premium plugins: Live Chat Plugin ($19 value) — real-time buyer-to-seller messaging on listing pages; Membership Plugin ($19 value) — tiered plans with featured placement and benefits; Wallet Plugin ($19 value) — digital wallet for featured listing payments; and SMS Gateway Plugin ($19 value) — SMS notifications for registration and alerts. Individually these cost $76; the Full Package bundles all four at $95.',
+      'Both the Everything Bundle ($59) and Exclusive Pack ($149) include all four premium plugins: Live Chat Plugin ($19 value) — real-time buyer-to-seller messaging on listing pages; Membership Plugin ($19 value) — tiered plans with featured placement and benefits; Wallet Plugin ($19 value) — digital wallet for featured listing payments; and SMS Gateway Plugin ($19 value) — SMS notifications for registration and alerts. Individually these cost $76. The Regular License does not include any plugins.',
   },
   {
     question: 'How does the live chat system work?',
@@ -230,7 +232,7 @@ export const FAQS = [
   {
     question: 'What are the drag & drop builders and what can I build with them?',
     answer:
-      'ListOcean includes four no-code builders. The Page Builder lets you drag pre-built widgets — hero sections, listing grids, category blocks, testimonials, FAQs — onto any page. The Menu Builder creates dropdowns and mega menus visually. The Form Builder adds custom fields (text, select, checkbox, file upload) to listing submission forms by category. The Widget Builder manages footer zones and sidebar widgets. All changes publish instantly from the admin panel.',
+      'ListOcean includes four no-code builders: a Page Builder with 30+ pre-built widgets (hero, listing grid, categories, testimonials, FAQ), a Menu Builder for dropdowns and mega menus, a Form Builder for per-category listing fields, and a Widget Builder for footer zones. All changes publish instantly — no code or FTP access required.',
   },
   {
     question: 'Is ListOcean GDPR compliant?',
@@ -245,11 +247,16 @@ export const FAQS = [
   {
     question: 'What is the difference between the Regular, Full Package, and Exclusive licenses?',
     answer:
-      'The Regular License ($29) on CodeCanyon gives you the base ListOcean script for one domain — no premium plugins included. The Full Package ($95) bundles all four premium plugins (Live Chat, Membership, Wallet, SMS Gateway — a $76 combined value) plus 6 months support and lifetime updates. The Exclusive License ($179, normally $249) adds full source code modification rights, branding removal, professional installation on your server, and 12 months priority support — the right choice for agencies building classified platforms for clients.',
+      'Regular ($29 on CodeCanyon) — base script, one domain, no plugins. Everything Bundle ($59) — all four premium plugins included, 6 months support. Exclusive Pack ($149, normally $249) — all plugins plus full source code modification rights, branding removal, professional installation, and 6 months priority support. Agencies and developers who need to customise or white-label the platform should choose the Exclusive Pack.',
+  },
+  {
+    question: 'Is ListOcean a good choice for building a classified ads platform in 2025?',
+    answer:
+      'ListOcean is one of the most feature-complete self-hosted classified ads scripts available. It runs on Laravel 10 — the most-starred PHP framework on GitHub — and ships production-ready with live chat, Google Maps, memberships, a digital wallet, Google Ads support, RTL multilingual support, GDPR compliance, and 4 drag-and-drop builders. Pricing starts at $29 for the base script, with full source code included on every license.',
   },
   {
     question: 'Can I see a live demo before buying?',
     answer:
-      'Yes. A full live frontend demo is available at listocean.bytesed.com where you can browse listings, test search and filtering, and explore the user experience. You can also log in to the admin panel at listocean.bytesed.com/admin to test the drag & drop builders, category management, plugin settings, and ad performance analytics. Documentation is available at docs.xgenious.com.',
+      'Yes. A full live frontend demo is at listocean.bytesed.com. Log in to the admin panel at listocean.bytesed.com/admin with username super_admin and password 12345678 to test the page builder, category management, plugin settings, and ad performance analytics. A user account is also available: username test_user, password 12345678. Documentation is available at docs.xgenious.com.',
   },
 ];

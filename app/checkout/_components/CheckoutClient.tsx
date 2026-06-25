@@ -93,6 +93,13 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'Full source code modification rights + remove any branding — unlock the full developer license.',
     accent: '#6366f1',
   },
+  'listocean-bundle-pack': {
+    path: 'listocean-exclusive-pack',
+    name: 'Exclusive Pack',
+    delta: 90,
+    pitch: 'Source code modification rights, professional installation included, remove any branding — the complete developer license.',
+    accent: '#7c3aed',
+  },
 };
 
 function CheckIcon() {

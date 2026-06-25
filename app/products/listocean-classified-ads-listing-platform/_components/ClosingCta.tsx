@@ -43,6 +43,30 @@ export default function ClosingCta() {
             One-time purchase · Full source code · Lifetime updates · No monthly fees
           </p>
 
+          <div className="mt-10 pt-8 border-t border-white/10">
+            <p className="text-[12px] text-[#4b5563] mb-3">Also built by Xgenious:</p>
+            <div className="flex items-center justify-center gap-5 flex-wrap">
+              <Link
+                href="/products/multisaas-website-builder-saas"
+                className="text-[13px] text-[#6b7280] underline underline-offset-4 decoration-[#4b5563]/30 hover:text-[#9ca3af] transition-colors"
+              >
+                MultiSaas — Website Builder SaaS
+              </Link>
+              <Link
+                href="/products/grenmart-organic-grocery-ecommerce"
+                className="text-[13px] text-[#6b7280] underline underline-offset-4 decoration-[#4b5563]/30 hover:text-[#9ca3af] transition-colors"
+              >
+                Grenmart — Grocery Ecommerce Script
+              </Link>
+              <Link
+                href="/products/nexelit-multipurpose-website-business-management-system-cms"
+                className="text-[13px] text-[#6b7280] underline underline-offset-4 decoration-[#4b5563]/30 hover:text-[#9ca3af] transition-colors"
+              >
+                Nexelit — CMS &amp; Business Management
+              </Link>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

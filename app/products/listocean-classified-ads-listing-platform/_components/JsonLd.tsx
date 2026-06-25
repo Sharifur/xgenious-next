@@ -6,23 +6,45 @@ export default function JsonLd() {
     '@type': 'SoftwareApplication',
     name: 'ListOcean',
     applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Web',
+    applicationSubCategory: 'ClassifiedAds',
+    operatingSystem: 'Web, Linux, macOS',
     url: CANONICAL,
     description:
-      'ListOcean is a classified ads and listing platform built on Laravel with real-time live chat, Google Maps location filtering, tiered membership plans, a digital wallet, multiple ad formats, SMS notifications, 4 drag & drop builders, and GDPR compliance. One-time purchase with full source code.',
+      'ListOcean is a self-hosted classified ads script built on Laravel 10. It ships with real-time live chat, Google Maps location filtering, tiered membership plans, a digital wallet, Google Ads support, 4 drag & drop builders (page, menu, form, widget), RTL/multilingual support, and GDPR compliance. One-time purchase with full PHP source code — no monthly fees.',
     offers: {
-      '@type': 'Offer',
-      price: String(REGULAR_PRICE),
+      '@type': 'AggregateOffer',
+      lowPrice: String(REGULAR_PRICE),
+      highPrice: '149',
       priceCurrency: 'USD',
-      url: PURCHASE_URL,
+      offerCount: '3',
+      offers: [
+        { '@type': 'Offer', name: 'Regular License', price: String(REGULAR_PRICE), priceCurrency: 'USD', url: PURCHASE_URL },
+        { '@type': 'Offer', name: 'Everything Bundle', price: '59', priceCurrency: 'USD', url: `${BASE_URL}/checkout?product=listocean-bundle-pack` },
+        { '@type': 'Offer', name: 'Exclusive Pack', price: '149', priceCurrency: 'USD', url: `${BASE_URL}/checkout?product=listocean-exclusive-pack` },
+      ],
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '3.7',
+      reviewCount: '3',
+      bestRating: '5',
+      worstRating: '1',
     },
     author: {
       '@type': 'Organization',
       name: 'Xgenious',
       url: BASE_URL,
     },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Xgenious',
+      url: BASE_URL,
+    },
     softwareVersion: '2.0',
+    softwareRequirements: 'PHP 8.1+, MySQL 8, Composer 2, Laravel 10, mod_rewrite',
+    programmingLanguage: 'PHP',
     dateModified: '2026-06-25',
+    datePublished: '2024-01-01',
   };
 
   const faqPage = {

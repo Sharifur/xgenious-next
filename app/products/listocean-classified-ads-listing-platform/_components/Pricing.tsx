@@ -13,8 +13,8 @@ import {
 } from './constants';
 import CodeCanyonUpsellButton from '@/components/ui/CodeCanyonUpsellButton';
 
-const FULL_CHECKOUT_URL = `/checkout?product=${FULL_PRODUCT_PATH}`;
-const EXCLUSIVE_CHECKOUT_URL = `/checkout?product=${EXCLUSIVE_PRODUCT_PATH}`;
+const BUNDLE_CHECKOUT_URL = `/checkout?product=${FULL_PRODUCT_PATH}`;
+const EVERYTHING_CHECKOUT_URL = `/checkout?product=${EXCLUSIVE_PRODUCT_PATH}`;
 
 const PURPLE = '#7c3aed';
 const PURPLE_DARK = '#1e0d40';
@@ -62,6 +62,9 @@ export default function Pricing() {
           <p className="text-[#4b5563] text-[15px] sm:text-[17px] leading-7">
             Buy once and own the full source code. Lifetime updates on every license — no monthly fees, no per-plugin charges.
           </p>
+          <p className="mt-3 text-[13px] font-medium" style={{ color: COLOR }}>
+            Everything Bundle saves $76 vs. buying plugins separately · Exclusive Pack saves $100 vs. custom setup
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-[1100px] mx-auto items-stretch">
@@ -81,9 +84,9 @@ export default function Pricing() {
               codecanyonUrl={PURCHASE_URL}
               regularPrice={REGULAR_PRICE}
               bundlePrice={FULL_PRICE}
-              bundleCheckoutUrl={FULL_CHECKOUT_URL}
+              bundleCheckoutUrl={BUNDLE_CHECKOUT_URL}
               bundleItems={['All 4 premium plugins included', 'Live Chat, Membership, Wallet & SMS', 'Saves $181 vs separate purchases']}
-              bundleLabel="Full Package (recommended)"
+              bundleLabel="Everything Bundle (recommended)"
               accentColor={COLOR}
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
             >
@@ -111,21 +114,21 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Full Package — featured */}
+          {/* Everything Bundle — featured */}
           <div className="rounded-2xl p-7 flex flex-col relative overflow-hidden" style={{ background: COLOR_DARK, border: `2px solid ${COLOR}` }}>
             <div className="flex items-center gap-2 flex-wrap mb-5">
               <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: COLOR, color: '#fff' }}>
                 BEST VALUE
               </span>
               <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: '#0e7490', color: '#fff' }}>
-                ALL PLUGINS
+                ALL 4 PLUGINS
               </span>
             </div>
 
             <div className="mb-4">
-              <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${COLOR}cc` }}>Full Package</p>
+              <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${COLOR}cc` }}>Everything Bundle</p>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[20px] font-semibold line-through" style={{ color: '#0e4a5a' }}>${FULL_ORIGINAL}</span>
+                <span className="text-[20px] font-semibold line-through" style={{ color: '#4a9bb5' }}>${FULL_ORIGINAL}</span>
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${COLOR}30`, color: '#a5f3fc' }}>
                   {Math.round((1 - FULL_PRICE / FULL_ORIGINAL) * 100)}% OFF
                 </span>
@@ -140,11 +143,11 @@ export default function Pricing() {
             </div>
 
             <Link
-              href={FULL_CHECKOUT_URL}
+              href={BUNDLE_CHECKOUT_URL}
               className="flex items-center justify-center gap-2 font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: COLOR, color: '#fff', boxShadow: `0 8px 24px ${COLOR}55` }}
             >
-              Get Full Package
+              Get Everything Bundle
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -170,24 +173,21 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Exclusive License */}
+          {/* Exclusive Pack */}
           <div className="rounded-2xl p-7 flex flex-col" style={{ background: PURPLE_DARK, border: `1px solid ${PURPLE}40` }}>
             <div className="mb-5">
               <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${PURPLE}cc` }}>
-                Exclusive License
+                Exclusive Pack
               </p>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[20px] font-semibold line-through" style={{ color: '#2e1065' }}>${EXCLUSIVE_ORIGINAL}</span>
+                <span className="text-[20px] font-semibold line-through" style={{ color: '#8b6fc5' }}>${EXCLUSIVE_ORIGINAL}</span>
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${PURPLE}30`, color: '#c4b5fd' }}>
                   {Math.round((1 - EXCLUSIVE_PRICE / EXCLUSIVE_ORIGINAL) * 100)}% OFF
                 </span>
               </div>
-              <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: '#7c3aed80' }}>
-                Introductory price — limited time
-              </p>
               <div className="flex items-baseline gap-2 mb-4">
                 <span className="text-[56px] font-bold text-white leading-none">${EXCLUSIVE_PRICE}</span>
-                <span className="text-[15px]" style={{ color: '#7c3aed80' }}>one-time</span>
+                <span className="text-[15px]" style={{ color: '#a78bfa' }}>one-time</span>
               </div>
 
               <div className="rounded-xl p-3.5 mb-5" style={{ background: '#150a2e', border: `1px solid ${PURPLE}30` }}>
@@ -199,7 +199,7 @@ export default function Pricing() {
                     'Modify source code freely',
                     'Remove or replace all branding',
                     'Professional installation included',
-                    'Priority support — 12 months',
+                    'Priority support — 6 months',
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-2 text-[12px]" style={{ color: '#ede9fe' }}>
                       <svg className="flex-shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 20 20" fill="none">
@@ -214,18 +214,18 @@ export default function Pricing() {
             </div>
 
             <Link
-              href={EXCLUSIVE_CHECKOUT_URL}
+              href={EVERYTHING_CHECKOUT_URL}
               className="flex items-center justify-center gap-2 font-bold text-[15px] rounded-xl py-3.5 mb-6 text-white transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: PURPLE, boxShadow: `0 8px 24px ${PURPLE}55` }}
             >
-              Get Exclusive — ${EXCLUSIVE_PRICE}
+              Get Exclusive Pack — ${EXCLUSIVE_PRICE}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
 
             <div className="flex flex-col gap-2.5">
-              {[...CORE, 'All 4 premium plugins — included', 'Professional installation on your server', 'Full source code modification rights', 'Remove / replace all branding', 'Priority support — 12 months'].map((f) => (
+              {[...CORE, 'All 4 premium plugins — included', 'Professional installation on your server', 'Full source code modification rights', 'Remove / replace all branding', 'Priority support — 6 months'].map((f) => (
                 <div key={f} className="flex items-start gap-2.5 text-[13px] text-white">
                   <CheckIcon color="#c4b5fd" />
                   {f}

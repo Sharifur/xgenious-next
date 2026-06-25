@@ -1714,12 +1714,12 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
     ],
   },
 
-  'listocean-full-pack': {
-    path: 'listocean-full-pack',
-    name: 'ListOcean — Full Package',
+  'listocean-bundle-pack': {
+    path: 'listocean-bundle-pack',
+    name: 'ListOcean — Everything Bundle',
     tagline: 'Complete classified ads script with all 4 premium plugins included.',
-    price: 95,
-    originalPrice: 249,
+    price: 59,
+    originalPrice: 99,
     badge: 'All Plugins',
     features: [
       'Full ListOcean Classified Ads Source Code',
@@ -1737,14 +1737,47 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       'SMS Gateway Plugin ($19 value)',
       '6 Months Support + Lifetime Updates',
     ],
-    addons: [],
+    addons: [
+      {
+        path: 'listocean-support-6m',
+        label: 'Extend Support — 6 More Months',
+        description: 'Keep your platform covered. Priority bug fixes, update assistance & configuration help for 6 additional months.',
+        price: 49,
+        originalPrice: 49,
+        sidebarUpsell: true,
+        includes: [
+          'Priority bug fix & troubleshooting tickets',
+          'Update & version upgrade assistance',
+          'Server configuration help',
+          '6 months from original purchase date',
+        ],
+      },
+      {
+        path: 'listocean-install-web',
+        label: 'Professional Installation',
+        description: 'Skip the setup. We install & configure ListOcean on your server — DB, env file, cron jobs, storage permissions, and post-install health check.',
+        price: 99,
+        originalPrice: 99,
+        bestValue: true,
+        includes: [
+          'Installation on your VPS or shared host',
+          'Database creation & configuration',
+          'Environment file & storage setup',
+          'Cron job & file permissions',
+          'Post-install health check',
+        ],
+        excludes: [
+          'Domain, hosting, or VPS provisioning',
+        ],
+      },
+    ],
   },
 
   'listocean-exclusive-pack': {
     path: 'listocean-exclusive-pack',
-    name: 'ListOcean — Exclusive License',
-    tagline: 'Full source code modification rights, all plugins, and professional installation included.',
-    price: 179,
+    name: 'ListOcean — Exclusive Pack',
+    tagline: 'All 4 plugins, full source code rights, and professional installation included.',
+    price: 149,
     originalPrice: 249,
     badge: 'Source Code Rights',
     features: [
@@ -1764,6 +1797,52 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       'Server & Database Configuration',
       'Priority Support — 12 Months',
       'Lifetime License + Free Updates',
+    ],
+    addons: [
+      {
+        path: 'listocean-support-6m',
+        label: 'Support Renewal — 6 Months',
+        description: 'Extend support for 6 more months after your 12-month period ends.',
+        price: 49,
+        originalPrice: 49,
+        includes: [
+          'Bug fixes & troubleshooting',
+          'Update & upgrade assistance',
+          'Configuration help',
+          '6 additional months from purchase',
+        ],
+      },
+    ],
+  },
+
+  'listocean-install-web': {
+    path: 'listocean-install-web',
+    name: 'ListOcean — Professional Installation',
+    tagline: 'We install and configure ListOcean on your server for you.',
+    price: 99,
+    originalPrice: 99,
+    features: [
+      'Installation on your VPS or shared host',
+      'Database creation & configuration',
+      'Environment file setup',
+      'Storage & permission setup',
+      'Cron job configuration',
+      'Post-install health check',
+    ],
+    addons: [],
+  },
+
+  'listocean-support-6m': {
+    path: 'listocean-support-6m',
+    name: 'ListOcean — Support Renewal (6 Months)',
+    tagline: 'Extend your support period for another 6 months.',
+    price: 49,
+    originalPrice: 49,
+    features: [
+      'Bug fixes & troubleshooting',
+      'Update assistance',
+      'Configuration help',
+      '6-month coverage',
     ],
     addons: [],
   },
