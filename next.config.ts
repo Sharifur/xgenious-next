@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.0.102'],
+  experimental: {
+    // Tree-shake these packages to only the specific exports that are imported
+    optimizePackageImports: ['@tabler/icons-react', 'framer-motion'],
+  },
   images: {
     // AVIF first (≈30% smaller than WebP) → fewer LCP bytes for hero images on mobile
     formats: ['image/avif', 'image/webp'],
