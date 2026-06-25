@@ -86,6 +86,13 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'White-label, source code modification, multiple deployments — build and sell unlimited AI chatbot SaaS businesses.',
     accent: '#007066',
   },
+  'nexelit-regular-and-installation': {
+    path: 'nexelit-exclusive-pack',
+    name: 'Exclusive License',
+    delta: 50,
+    pitch: 'Full source code modification rights + remove any branding — unlock the full developer license.',
+    accent: '#6366f1',
+  },
 };
 
 function CheckIcon() {
@@ -196,8 +203,12 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
                   </div>
                   <div className="text-right flex-shrink-0">
                     <p className="text-[22px] font-bold text-[#0F1112] leading-none">${product.price}</p>
-                    <p className="text-[12px] text-[#9ca3af] line-through">${product.originalPrice}</p>
-                    <p className="text-[11px] font-semibold text-[#16a34a]">Save ${savings}</p>
+                    {product.originalPrice > product.price && (
+                      <>
+                        <p className="text-[12px] text-[#9ca3af] line-through">${product.originalPrice}</p>
+                        <p className="text-[11px] font-semibold text-[#16a34a]">Save ${savings}</p>
+                      </>
+                    )}
                   </div>
                 </div>
 
