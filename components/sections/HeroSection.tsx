@@ -368,7 +368,7 @@ export default function HeroSection({
       >
         <div className="w-[80%] max-w-[1203px] overflow-hidden" style={{ aspectRatio: '1203 / 330' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/World.svg" alt="" className="w-full h-auto select-none block" />
+          <img src="/World.svg" alt="" className="w-full h-auto select-none block" fetchPriority="high" />
         </div>
       </div>
 
