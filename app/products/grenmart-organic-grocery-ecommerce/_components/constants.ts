@@ -234,7 +234,7 @@ export const FAQS = [
   {
     question: 'What is included and how is support handled?',
     answer:
-      'Every license includes the full Grenmart source code, lifetime free updates, and product documentation. The Regular License and Everything Bundle include 6 months of support; the Exclusive License includes 12 months of priority support. You can extend support, or add done-for-you installation, at any time from checkout.',
+      'Every license includes the full Grenmart source code, lifetime free updates, and product documentation. The Regular License and Everything Bundle include 6 months of support; the Exclusive License includes 6 months of priority support. You can extend support, or add done-for-you installation, at any time from checkout.',
   },
   {
     question: 'Can I see a live demo before buying?',

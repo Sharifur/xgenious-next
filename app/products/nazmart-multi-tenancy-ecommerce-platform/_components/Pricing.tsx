@@ -21,7 +21,7 @@ const EXCLUSIVE_FEATURES = [
   'Full Source Code Modification Rights',
   'Remove / Replace Any Branding',
   'No License Key Enforcement',
-  'Priority Support — 12 Months',
+  'Priority Support — 6 Months',
   'Commercial Use — Unlimited Projects',
   'Lifetime License + Free Updates',
 ];

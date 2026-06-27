@@ -54,7 +54,7 @@ const EXCLUSIVE_PLAN = [
   'Full source modification rights',
   'Remove / replace all branding',
   'Unlimited commercial projects',
-  'Priority support — 12 months',
+  'Priority support — 6 months',
   'Lifetime license + free updates',
 ];
 

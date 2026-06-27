@@ -3,30 +3,32 @@ import {
   COLOR,
   COLOR_DARK,
   PURCHASE_URL,
-  INSTALL_PRODUCT_PATH,
+  FULL_PRODUCT_PATH,
   EXCLUSIVE_PRODUCT_PATH,
   REGULAR_PRICE,
-  INSTALL_PRICE,
+  FULL_PRICE,
+  FULL_ORIGINAL,
   EXCLUSIVE_PRICE,
   EXCLUSIVE_ORIGINAL,
 } from './constants';
 import CodeCanyonUpsellButton from '@/components/ui/CodeCanyonUpsellButton';
 
-const INSTALL_CHECKOUT_URL = `/checkout?product=${INSTALL_PRODUCT_PATH}`;
+const BUNDLE_CHECKOUT_URL = `/checkout?product=${FULL_PRODUCT_PATH}`;
 const EXCLUSIVE_CHECKOUT_URL = `/checkout?product=${EXCLUSIVE_PRODUCT_PATH}`;
 
 const PURPLE = '#7c3aed';
 const PURPLE_DARK = '#1e0d40';
 
 const CORE = [
-  'Full Nexelit CMS source code',
-  '9 business modules (enable/disable)',
-  'Drag & drop page, menu, form & widget builders',
-  '21 homepage variants',
-  '20+ payment gateways',
-  'RTL + multilingual support',
-  'Support ticket system built-in',
+  'Full SafeCart multi-vendor source code',
+  'Admin, vendor & customer dashboards',
+  'Advanced product variants & inventory',
+  '26+ payment gateways built-in',
+  'Campaign & countdown timer system',
+  'Wallet system for all user roles',
+  '4 drag & drop no-code builders',
   'Role-based admin permissions',
+  'Newsletter & GDPR compliance',
   '6 months support + lifetime updates',
 ];
 
@@ -39,18 +41,18 @@ function CheckIcon({ color = '#16a34a' }: { color?: string }) {
   );
 }
 
-function XIcon() {
+function XIcon({ dark = false }: { dark?: boolean }) {
   return (
     <svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 20 20" fill="none">
-      <circle cx="10" cy="10" r="10" fill="#F3F4F6" />
-      <path d="M7 7l6 6M13 7l-6 6" stroke="#9ca3af" strokeWidth="1.8" strokeLinecap="round" />
+      <circle cx="10" cy="10" r="10" fill={dark ? 'rgba(255,255,255,0.12)' : '#F3F4F6'} />
+      <path d="M7 7l6 6M13 7l-6 6" stroke={dark ? 'rgba(255,255,255,0.6)' : '#9ca3af'} strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   );
 }
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-16 sm:py-20 lg:py-[100px]" style={{ background: '#eef2ff' }}>
+    <section id="pricing" className="py-16 sm:py-20 lg:py-[100px]" style={{ background: '#f0fdf4' }}>
       <div className="container-page px-4 sm:px-6 lg:px-0">
 
         <div className="text-center mb-12 max-w-[620px] mx-auto">
@@ -58,8 +60,10 @@ export default function Pricing() {
             Simple, One-Time Pricing
           </h2>
           <p className="text-[#4b5563] text-[15px] sm:text-[17px] leading-7">
-            Buy once and own the full source code. Lifetime updates on every license — no monthly fees, no per-module
-            charges.
+            Buy once and own the full source code. Lifetime updates on every license — no monthly fees, no per-plugin charges.
+          </p>
+          <p className="mt-3 text-[13px] font-medium" style={{ color: COLOR }}>
+            Vendor Bundle saves $96 vs. buying plugins separately · Exclusive Pack includes installation + source code rights
           </p>
         </div>
 
@@ -73,16 +77,16 @@ export default function Pricing() {
                 <span className="text-[48px] font-bold text-[#0F1112] leading-none">${REGULAR_PRICE}</span>
                 <span className="text-[15px] text-[#9ca3af]">one-time</span>
               </div>
-              <p className="text-[13px] text-[#6b7280] leading-5">Single-site use. Purchase directly on CodeCanyon.</p>
+              <p className="text-[13px] text-[#6b7280] leading-5">Base script only. Purchase directly on CodeCanyon.</p>
             </div>
 
             <CodeCanyonUpsellButton
               codecanyonUrl={PURCHASE_URL}
               regularPrice={REGULAR_PRICE}
-              bundlePrice={INSTALL_PRICE}
-              bundleCheckoutUrl={INSTALL_CHECKOUT_URL}
-              bundleItems={['Professional installation on your server', 'Server & database configuration', 'Ready in 48 hours']}
-              bundleLabel="Regular + Installation"
+              bundlePrice={FULL_PRICE}
+              bundleCheckoutUrl={BUNDLE_CHECKOUT_URL}
+              bundleItems={['All 4 premium plugins included', 'Live Chat, Delivery Man, Refund & POS', 'Saves $96 vs separate purchases']}
+              bundleLabel="Vendor Bundle (recommended)"
               accentColor={COLOR}
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
             >
@@ -101,7 +105,11 @@ export default function Pricing() {
               ))}
               <div className="flex items-start gap-2.5 text-[13px] text-[#9ca3af]">
                 <XIcon />
-                Installation support
+                Premium plugins (Live Chat, Delivery, Refund, POS)
+              </div>
+              <div className="flex items-start gap-2.5 text-[13px] text-[#9ca3af]">
+                <XIcon />
+                Flutter mobile apps (Customer, Vendor, Delivery Man)
               </div>
               <div className="flex items-start gap-2.5 text-[13px] text-[#9ca3af]">
                 <XIcon />
@@ -110,34 +118,40 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Regular + Installation — featured */}
+          {/* Vendor Bundle — featured */}
           <div className="rounded-2xl p-7 flex flex-col relative overflow-hidden" style={{ background: COLOR_DARK, border: `2px solid ${COLOR}` }}>
             <div className="flex items-center gap-2 flex-wrap mb-5">
               <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: COLOR, color: '#fff' }}>
                 BEST VALUE
               </span>
-              <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#4338ca] text-white">
-                INSTALL INCLUDED
+              <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: '#0d5c38', color: '#fff' }}>
+                ALL 4 PLUGINS
               </span>
             </div>
 
             <div className="mb-4">
-              <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${COLOR}cc` }}>Regular + Installation</p>
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-[56px] font-bold text-white leading-none">${INSTALL_PRICE}</span>
-                <span className="text-[15px]" style={{ color: '#818cf8' }}>one-time</span>
+              <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${COLOR}cc` }}>Vendor Bundle</p>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-[20px] font-semibold line-through" style={{ color: '#1a6b45' }}>${FULL_ORIGINAL}</span>
+                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${COLOR}30`, color: '#a7f3d0' }}>
+                  {Math.round((1 - FULL_PRICE / FULL_ORIGINAL) * 100)}% OFF
+                </span>
               </div>
-              <p className="text-[13px] leading-5 mb-1" style={{ color: '#c7d2fe' }}>
-                Full CMS license with <strong className="text-white">professional installation on your server</strong> — skip the setup entirely.
+              <div className="flex items-baseline gap-2 mb-4">
+                <span className="text-[56px] font-bold text-white leading-none">${FULL_PRICE}</span>
+                <span className="text-[15px]" style={{ color: '#6ee7b7' }}>one-time</span>
+              </div>
+              <p className="text-[13px] leading-5 mb-1" style={{ color: '#a7f3d0' }}>
+                Full script plus <strong className="text-white">all 4 premium plugins</strong> — Live Chat, Delivery Man, Refund &amp; POS included.
               </p>
             </div>
 
             <Link
-              href={INSTALL_CHECKOUT_URL}
+              href={BUNDLE_CHECKOUT_URL}
               className="flex items-center justify-center gap-2 font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: COLOR, color: '#fff', boxShadow: `0 8px 24px ${COLOR}55` }}
             >
-              Get Regular + Installation
+              Get Vendor Bundle
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -145,40 +159,39 @@ export default function Pricing() {
 
             <div className="flex flex-col gap-2.5">
               {CORE.map((f) => (
-                <div key={f} className="flex items-start gap-2.5 text-[13px]" style={{ color: '#c7d2fe' }}>
+                <div key={f} className="flex items-start gap-2.5 text-[13px]" style={{ color: '#a7f3d0' }}>
                   <CheckIcon color={COLOR} />
                   {f}
                 </div>
               ))}
-              <div className="flex items-start gap-2.5 text-[13px]" style={{ color: '#c7d2fe' }}>
-                <CheckIcon color={COLOR} />
-                <span><strong className="text-white">Professional installation</strong> on your server</span>
-              </div>
-              <div className="flex items-start gap-2.5 text-[13px] text-[#4338ca]">
-                <XIcon />
-                Source code modification rights
+              {['Live Chat Plugin ($19 value)', 'Delivery Man Plugin ($19 value)', 'Refund Plugin ($19 value)', 'POS Plugin ($39 value)', '3 Flutter mobile apps (Customer, Vendor, Delivery Man)'].map((f) => (
+                <div key={f} className="flex items-start gap-2.5 text-[13px]" style={{ color: '#a7f3d0' }}>
+                  <CheckIcon color={COLOR} />
+                  <span><strong className="text-white">{f}</strong></span>
+                </div>
+              ))}
+              <div className="flex items-start gap-2.5 text-[13px]" style={{ color: 'rgba(167,243,208,0.55)' }}>
+                <XIcon dark />
+                <span className="line-through">Source code modification rights</span>
               </div>
             </div>
           </div>
 
-          {/* Exclusive License */}
+          {/* Exclusive Pack */}
           <div className="rounded-2xl p-7 flex flex-col" style={{ background: PURPLE_DARK, border: `1px solid ${PURPLE}40` }}>
             <div className="mb-5">
               <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${PURPLE}cc` }}>
-                Exclusive License
+                Exclusive Pack
               </p>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[20px] font-semibold line-through" style={{ color: '#2e1065' }}>${EXCLUSIVE_ORIGINAL}</span>
+                <span className="text-[20px] font-semibold line-through" style={{ color: '#8b6fc5' }}>${EXCLUSIVE_ORIGINAL}</span>
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${PURPLE}30`, color: '#c4b5fd' }}>
                   {Math.round((1 - EXCLUSIVE_PRICE / EXCLUSIVE_ORIGINAL) * 100)}% OFF
                 </span>
               </div>
-              <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: '#7c3aed80' }}>
-                Introductory price — limited time
-              </p>
               <div className="flex items-baseline gap-2 mb-4">
                 <span className="text-[56px] font-bold text-white leading-none">${EXCLUSIVE_PRICE}</span>
-                <span className="text-[15px]" style={{ color: '#7c3aed80' }}>one-time</span>
+                <span className="text-[15px]" style={{ color: '#a78bfa' }}>one-time</span>
               </div>
 
               <div className="rounded-xl p-3.5 mb-5" style={{ background: '#150a2e', border: `1px solid ${PURPLE}30` }}>
@@ -189,7 +202,7 @@ export default function Pricing() {
                   {[
                     'Modify source code freely',
                     'Remove or replace all branding',
-                    'Installation included ($99 value)',
+                    'Professional installation included',
                     'Priority support — 6 months',
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-2 text-[12px]" style={{ color: '#ede9fe' }}>
@@ -209,14 +222,14 @@ export default function Pricing() {
               className="flex items-center justify-center gap-2 font-bold text-[15px] rounded-xl py-3.5 mb-6 text-white transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: PURPLE, boxShadow: `0 8px 24px ${PURPLE}55` }}
             >
-              Get Exclusive — ${EXCLUSIVE_PRICE}
+              Get Exclusive Pack — ${EXCLUSIVE_PRICE}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
 
             <div className="flex flex-col gap-2.5">
-              {[...CORE, 'Professional installation — included ($99 value)', 'Full source code modification rights', 'Remove / replace all branding', 'Priority support — 6 months'].map((f) => (
+              {[...CORE, 'All 4 premium plugins — included', '3 Flutter mobile apps — included', 'Professional installation on your server', 'Full source code modification rights', 'Remove / replace all branding', 'Priority support — 6 months'].map((f) => (
                 <div key={f} className="flex items-start gap-2.5 text-[13px] text-white">
                   <CheckIcon color="#c4b5fd" />
                   {f}

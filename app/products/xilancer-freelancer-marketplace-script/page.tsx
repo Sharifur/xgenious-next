@@ -7,6 +7,7 @@ import FeaturePills from './_components/FeaturePills';
 import HowToInstall from './_components/HowToInstall';
 import FreelanceFeatures from './_components/FreelanceFeatures';
 import PlatformFeatures from './_components/PlatformFeatures';
+import PremiumPlugins from './_components/PremiumPlugins';
 import LiveChat from './_components/LiveChat';
 import Reviews from './_components/Reviews';
 import MarketplaceFeatures from './_components/MarketplaceFeatures';
@@ -67,6 +68,7 @@ export default function XilancerPage() {
       <MarketplaceFeatures />
       <ProjectCatalogue />
       <PlatformFeatures />
+      <PremiumPlugins />
       <MobileApps />
       <TechStack />
       <ComparisonTable />

@@ -33,7 +33,7 @@ const EXCLUSIVE_FEATURES = [
   { label: 'White-label — remove all Botmerze branding', ok: true },
   { label: 'Multiple production deployments', ok: true },
   { label: 'Source code modification rights', ok: true },
-  { label: 'Priority support — 12 months', ok: true },
+  { label: 'Priority support — 6 months', ok: true },
   { label: 'Lifetime updates', ok: true },
   { label: 'Cannot be resold or redistributed as-is', ok: 'note' as const },
 ];

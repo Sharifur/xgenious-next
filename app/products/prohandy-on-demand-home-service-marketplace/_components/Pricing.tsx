@@ -36,7 +36,7 @@ const EXCLUSIVE_FEATURES = [
   { label: 'Unlimited Service Marketplaces', ok: true },
   { label: 'White-label — Remove All Branding', ok: true },
   { label: 'Source Code Modification Rights', ok: true },
-  { label: 'Priority Support — 12 Months', ok: true },
+  { label: 'Priority Support — 6 Months', ok: true },
   { label: 'Lifetime License + Free Updates', ok: true },
   { label: 'Cannot be resold or redistributed as-is', ok: 'note' as const },
 ];

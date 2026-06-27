@@ -45,7 +45,7 @@ const EXCLUSIVE_FEATURES = [
   { label: 'Full Source Code Modification Rights', ok: true },
   { label: 'Remove / Replace Any Branding', ok: true },
   { label: 'No License Key Enforcement', ok: true },
-  { label: 'Priority Support — 12 Months', ok: true },
+  { label: 'Priority Support — 6 Months', ok: true },
   { label: 'Commercial Use — Unlimited Projects', ok: true },
   { label: 'Lifetime License + Free Updates', ok: true },
   { label: 'Cannot be resold or redistributed as-is', ok: 'note' as const },

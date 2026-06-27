@@ -277,7 +277,7 @@ export const FAQS = [
   {
     question: 'What is the difference between the license tiers?',
     answer:
-      'There are three license options. The Regular License ($39) is available on CodeCanyon for single-site use — no installation included. The Regular + Installation ($49) adds one-time professional installation on your server. The Exclusive License ($99, regularly $199) includes full source code modification rights, branding removal, professional installation, and 12 months priority support — the right choice for agencies or developers who want to customise or white-label the platform.',
+      'There are three license options. The Regular License ($39) is available on CodeCanyon for single-site use — no installation included. The Regular + Installation ($49) adds one-time professional installation on your server. The Exclusive License ($99, regularly $199) includes full source code modification rights, branding removal, professional installation, and 6 months priority support — the right choice for agencies or developers who want to customise or white-label the platform.',
   },
   {
     question: 'Do I pay any monthly or recurring fees?',

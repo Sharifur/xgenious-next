@@ -97,6 +97,23 @@ Organic grocery and multipurpose eCommerce platform built on Laravel. No-code dr
 - Comparison: vs Shopify ($39–$399/mo), vs WooCommerce (free + paid plugins), vs custom build ($15K–$40K) — Grenmart is one-time, you own the Laravel source, no platform commission on sales
 - Keywords: organic grocery ecommerce, grocery laravel ecommerce, laravel ecommerce script, grocery store php script, drag and drop ecommerce builder, online grocery store software
 
+### SafeCart — Multi-Vendor Laravel eCommerce Platform
+Self-hosted multi-vendor eCommerce marketplace built on Laravel 10. Run a single-vendor store or a full multi-vendor marketplace (Amazon/Daraz/Etsy style) from one codebase — flip on vendor registration without rebuilding. Ships with three Flutter mobile apps (Customer, Vendor, Delivery Man), a POS system with barcode scanner, live delivery tracking on a map, 26+ payment gateways, a digital wallet, campaign countdown timers, and advanced inventory. One-time purchase, full PHP source code, no monthly fees, and zero commission on your sales.
+- [SafeCart product page](https://xgenious.com/products/safecart-multi-vendor-laravel-ecommerce-platform)
+- [Live demo](https://safecart.bytesed.com)
+- [Admin demo](https://safecart.bytesed.com/admin)
+- [Vendor demo](https://safecart.bytesed.com/vendor/login)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/safecart-multivendor-laravel-ecommerce-platform/49428309)
+- Stack: Laravel 10, PHP 8.1+, MySQL 8.x, Bootstrap 4, Flutter (3 mobile apps)
+- Rating: 3.36/5 on CodeCanyon · 22 reviews · 402+ sales
+- Pricing: Regular $39 (CodeCanyon, base script) / Vendor Bundle $99 (all 4 premium plugins + 3 Flutter apps, normally $149) / Exclusive Pack $199 (source code rights + branding removal + professional installation, normally $399) — one-time, no monthly fees
+- Mobile apps: Customer Flutter app, Vendor Flutter app, Delivery Man Flutter app (all Android & iOS, included from the Vendor Bundle) — Google Play IDs: com.xgenious.safecart, com.xgenious.safecart_vendor_app, com.xgenious.safecart_delivery_app
+- Premium plugins: Live Chat ($19), Delivery Man ($19), Refund ($19), POS ($39) — $96 value, all included in Vendor Bundle & Exclusive Pack
+- Key features: separate admin/vendor/customer dashboards, per-vendor commission (flat or percentage), POS with barcode scanner + walk-in orders + dedicated POS gateway, live delivery tracking, 26+ payment gateways (Stripe, PayPal, Razorpay, Flutterwave, Paystack, Mollie, and more), digital wallet for all roles, campaign countdown timers, advanced product variants & inventory, structured refund workflow, support ticket system, wishlist & quick view, 4 no-code drag & drop builders
+- Comparison: vs Shopify ($29–$299/mo + transaction fees), vs WooCommerce multi-vendor (free + paid plugins), vs custom build ($20K–$60K) — SafeCart is one-time from $39, you own the Laravel source code, and SafeCart takes zero commission on your sales
+- Best for: multi-vendor marketplace founders, brick-and-mortar + online retailers (omnichannel POS), agencies building marketplaces for clients
+- Keywords: multi vendor ecommerce, multi vendor ecommerce platform, multi vendor marketplace laravel, laravel ecommerce script, ecommerce marketplace script, amazon clone script laravel, multi seller shopping cart, self-hosted marketplace software
+
 ## Company
 
 - [About](https://xgenious.com/about)

@@ -33,7 +33,7 @@ const EXCLUSIVE_FEATURES = [
   { label: 'Full Source Code Modification Rights', ok: true },
   { label: 'Remove / Replace Any Branding', ok: true },
   { label: 'Commercial Use — Unlimited Projects', ok: true },
-  { label: 'Priority Support — 12 Months', ok: true },
+  { label: 'Priority Support — 6 Months', ok: true },
   { label: 'Lifetime License + Free Updates', ok: true },
   { label: 'Cannot be resold or redistributed as-is', ok: 'note' as const },
 ];
@@ -219,7 +219,7 @@ export default function Pricing() {
                   'Modify source code freely',
                   'Remove or replace all branding',
                   'Commercial use — unlimited projects',
-                  'Priority support — 12 months',
+                  'Priority support — 6 months',
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <svg width="12" height="12" viewBox="0 0 20 20" fill="none" className="flex-shrink-0">
