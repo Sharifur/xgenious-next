@@ -30,6 +30,13 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'Full source code rights, remove all branding, and deploy across unlimited commercial projects.',
     accent: '#8b5cf6',
   },
+  'safecart-bundle-pack': {
+    path: 'safecart-exclusive-pack',
+    name: 'Exclusive Pack',
+    delta: 100,
+    pitch: 'Full source code modification rights, remove all branding, and professional installation included.',
+    accent: '#8b5cf6',
+  },
   'fundorex-bundle-pack': {
     path: 'fundorex-exclusive-pack',
     name: 'Exclusive License',

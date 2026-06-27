@@ -65,7 +65,7 @@ Self-hosted AI chatbot SaaS script. RAG-powered via pgvector, WooCommerce & Shop
 - White-label — remove all Botmerze branding
 - Multiple production deployments
 - Source code modification rights
-- Priority support — 12 months
+- Priority support — 6 months
 - Lifetime updates
 
 ## Purchase
@@ -102,8 +102,42 @@ Organic & Grocery Laravel eCommerce script. All prices are one-time payments. No
 - Remove / replace all branding
 - Unlimited commercial projects
 - Free installation on your server
-- Priority support — 12 months
+- Priority support — 6 months
 - Lifetime updates
 
 ## Purchase
 https://xgenious.com/products/grenmart-organic-grocery-ecommerce#pricing
+
+---
+
+# SafeCart Pricing
+
+Multi-vendor Laravel eCommerce platform. All prices are one-time payments. No subscriptions. No monthly fees. Zero commission on your sales.
+
+## Regular License — $39 (CodeCanyon)
+- Full SafeCart multi-vendor source code (Laravel 10)
+- Admin, vendor & customer dashboards
+- Advanced product variants & inventory
+- 26+ payment gateways
+- Campaign & countdown timer system
+- Wallet system for all user roles
+- 4 drag & drop no-code builders
+- 6 months support + lifetime updates
+- Does NOT include: premium plugins, Flutter mobile apps, source code modification rights
+
+## Vendor Bundle — $99 (best value, normally $149)
+- Everything in Regular License
+- All 4 premium plugins: Live Chat, Delivery Man, Refund, POS ($96 value)
+- 3 Flutter mobile apps: Customer, Vendor, Delivery Man (Android & iOS)
+- 6 months support + lifetime updates
+
+## Exclusive Pack — $199 (normally $399)
+- Everything in Vendor Bundle
+- Full source code modification rights
+- Remove / replace all branding (white-label)
+- Professional installation on your server
+- Priority support — 6 months
+- Lifetime updates
+
+## Purchase
+https://xgenious.com/products/safecart-multi-vendor-laravel-ecommerce-platform#pricing

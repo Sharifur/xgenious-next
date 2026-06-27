@@ -46,7 +46,7 @@ const FAQS = [
   },
   {
     q: 'What is the difference between Regular License, Everything Bundle, and Exclusive License?',
-    a: 'The Regular License ($49) lets you use Botmerze on one domain and sell chatbot subscriptions to clients. The Everything Bundle ($69) adds SaaS rights — charge end-user subscriptions at a lower entry price. The Exclusive License ($199) adds white-label branding removal, source code modification rights, multiple production deployments, and 12 months priority support. All licenses include lifetime updates.',
+    a: 'The Regular License ($49) lets you use Botmerze on one domain and sell chatbot subscriptions to clients. The Everything Bundle ($69) adds SaaS rights — charge end-user subscriptions at a lower entry price. The Exclusive License ($199) adds white-label branding removal, source code modification rights, multiple production deployments, and 6 months priority support. All licenses include lifetime updates.',
   },
   {
     q: 'Does Botmerze include human handoff or live chat support?',

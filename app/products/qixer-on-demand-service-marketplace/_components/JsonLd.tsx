@@ -31,7 +31,7 @@ export default function JsonLd() {
         name: 'Exclusive License',
         price: String(EXTENDED_PRICE),
         priceCurrency: 'USD',
-        description: 'Build and sell as a SaaS business. White-label rights. Lifetime license and free updates. 12 months priority support.',
+        description: 'Build and sell as a SaaS business. White-label rights. Lifetime license and free updates. 6 months priority support.',
       },
     ],
     aggregateRating: {
