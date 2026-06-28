@@ -6,17 +6,21 @@ import dynamic from 'next/dynamic';
 
 const RichEditor = dynamic(() => import('@/components/RichEditor'), { ssr: false });
 
+// Backend SupportTicketStatusEum: 0=Open 1=In Progress 2=Close 3=Replied 4=Waiting For Reply 5=Queue
 const STATUS_MAP: Record<string | number, { label: string; cls: string }> = {
-  0: { label: 'Open',        cls: 'bg-blue-50 text-blue-700' },
-  1: { label: 'In Progress', cls: 'bg-yellow-50 text-yellow-700' },
-  2: { label: 'Resolved',    cls: 'bg-green-50 text-green-700' },
-  3: { label: 'Closed',      cls: 'bg-gray-100 text-gray-500' },
-  4: { label: 'Pending',     cls: 'bg-purple-50 text-purple-700' },
-  open:          { label: 'Open',        cls: 'bg-blue-50 text-blue-700' },
-  'in-progress': { label: 'In Progress', cls: 'bg-yellow-50 text-yellow-700' },
-  resolved:      { label: 'Resolved',    cls: 'bg-green-50 text-green-700' },
-  closed:        { label: 'Closed',      cls: 'bg-gray-100 text-gray-500' },
-  pending:       { label: 'Pending',     cls: 'bg-purple-50 text-purple-700' },
+  0: { label: 'Open',              cls: 'bg-blue-50 text-blue-700' },
+  1: { label: 'In Progress',       cls: 'bg-yellow-50 text-yellow-700' },
+  2: { label: 'Closed',            cls: 'bg-gray-100 text-gray-500' },
+  3: { label: 'Replied',           cls: 'bg-green-50 text-green-700' },
+  4: { label: 'Waiting For Reply', cls: 'bg-purple-50 text-purple-700' },
+  5: { label: 'Queue',             cls: 'bg-indigo-50 text-indigo-700' },
+  open:                { label: 'Open',              cls: 'bg-blue-50 text-blue-700' },
+  'in-progress':       { label: 'In Progress',       cls: 'bg-yellow-50 text-yellow-700' },
+  close:               { label: 'Closed',            cls: 'bg-gray-100 text-gray-500' },
+  closed:              { label: 'Closed',            cls: 'bg-gray-100 text-gray-500' },
+  replied:             { label: 'Replied',           cls: 'bg-green-50 text-green-700' },
+  'waiting-for-reply': { label: 'Waiting For Reply', cls: 'bg-purple-50 text-purple-700' },
+  queue:               { label: 'Queue',             cls: 'bg-indigo-50 text-indigo-700' },
 };
 
 function cleanSubject(subject: string): string {
@@ -73,7 +77,7 @@ export default function TicketDetailPage() {
     await fetch(`/api/support-tickets/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status: 3 }),
+      body: JSON.stringify({ status: 2 }),
     });
     setClosing(false);
     loadTicket();
@@ -141,7 +145,7 @@ export default function TicketDetailPage() {
           <span className={`text-xs font-medium px-2.5 py-1 rounded-full capitalize flex-shrink-0 ${stat.cls}`}>
             {stat.label}
           </span>
-          {ticket.status !== 3 && ticket.status !== 'closed' && (
+          {ticket.status !== 2 && ticket.status !== 'close' && ticket.status !== 'closed' && (
             confirmClose ? (
               <div className="flex items-center gap-1.5 flex-shrink-0">
                 <button
