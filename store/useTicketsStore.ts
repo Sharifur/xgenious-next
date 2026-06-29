@@ -74,14 +74,14 @@ export const useTicketsStore = create<TicketsStore>((set, get) => ({
         return;
       }
 
+      // Backend SupportTicketStatusEum: 2 = Close (closed/terminal)
+      const isClosedT = (t: Ticket) => t.status === 2 || t.status === 'close' || t.status === 'closed';
       let tickets: Ticket[] = data.data ?? data ?? [];
       if (params.status === 'all-except-closed') {
-        tickets = tickets.filter((t) => t.status !== 'closed' && t.status !== 3);
+        tickets = tickets.filter((t) => !isClosedT(t));
       } else if (params.status === 'active') {
-        tickets = tickets.filter((t) =>
-          t.status !== 'closed' && t.status !== 3 &&
-          t.status !== 'resolved' && t.status !== 2
-        );
+        // open (0) or in progress (1) only
+        tickets = tickets.filter((t) => t.status === 0 || t.status === 1 || t.status === 'open' || t.status === 'in-progress');
       }
       const total = data.total ?? data.meta?.total ?? tickets.length;
 

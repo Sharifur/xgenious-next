@@ -37,6 +37,13 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'Full source code modification rights, remove all branding, and professional installation included.',
     accent: '#8b5cf6',
   },
+  'infustar-bundle-pack': {
+    path: 'infustar-exclusive-pack',
+    name: 'Exclusive License',
+    delta: 50,
+    pitch: 'Full source code modification rights + remove any branding — unlock the full developer license.',
+    accent: '#7c3aed',
+  },
   'fundorex-bundle-pack': {
     path: 'fundorex-exclusive-pack',
     name: 'Exclusive License',

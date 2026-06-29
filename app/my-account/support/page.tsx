@@ -4,17 +4,21 @@ import Link from 'next/link';
 import { useTicketsStore } from '@/store/useTicketsStore';
 import SupportNotices from '@/components/SupportNotices';
 
+// Backend SupportTicketStatusEum: 0=Open 1=In Progress 2=Close 3=Replied 4=Waiting For Reply 5=Queue
 const STATUS_MAP: Record<string | number, { label: string; cls: string }> = {
-  0: { label: 'Open',        cls: 'bg-blue-50 text-blue-700 border-blue-100' },
-  1: { label: 'In Progress', cls: 'bg-yellow-50 text-yellow-700 border-yellow-100' },
-  2: { label: 'Resolved',    cls: 'bg-green-50 text-green-700 border-green-100' },
-  3: { label: 'Closed',      cls: 'bg-gray-100 text-gray-500 border-gray-200' },
-  4: { label: 'Pending',     cls: 'bg-purple-50 text-purple-700 border-purple-100' },
-  open:          { label: 'Open',        cls: 'bg-blue-50 text-blue-700 border-blue-100' },
-  'in-progress': { label: 'In Progress', cls: 'bg-yellow-50 text-yellow-700 border-yellow-100' },
-  resolved:      { label: 'Resolved',    cls: 'bg-green-50 text-green-700 border-green-100' },
-  closed:        { label: 'Closed',      cls: 'bg-gray-100 text-gray-500 border-gray-200' },
-  pending:       { label: 'Pending',     cls: 'bg-purple-50 text-purple-700 border-purple-100' },
+  0: { label: 'Open',              cls: 'bg-blue-50 text-blue-700 border-blue-100' },
+  1: { label: 'In Progress',       cls: 'bg-yellow-50 text-yellow-700 border-yellow-100' },
+  2: { label: 'Closed',            cls: 'bg-gray-100 text-gray-500 border-gray-200' },
+  3: { label: 'Replied',           cls: 'bg-green-50 text-green-700 border-green-100' },
+  4: { label: 'Waiting For Reply', cls: 'bg-purple-50 text-purple-700 border-purple-100' },
+  5: { label: 'Queue',             cls: 'bg-indigo-50 text-indigo-700 border-indigo-100' },
+  open:                { label: 'Open',              cls: 'bg-blue-50 text-blue-700 border-blue-100' },
+  'in-progress':       { label: 'In Progress',       cls: 'bg-yellow-50 text-yellow-700 border-yellow-100' },
+  close:               { label: 'Closed',            cls: 'bg-gray-100 text-gray-500 border-gray-200' },
+  closed:              { label: 'Closed',            cls: 'bg-gray-100 text-gray-500 border-gray-200' },
+  replied:             { label: 'Replied',           cls: 'bg-green-50 text-green-700 border-green-100' },
+  'waiting-for-reply': { label: 'Waiting For Reply', cls: 'bg-purple-50 text-purple-700 border-purple-100' },
+  queue:               { label: 'Queue',             cls: 'bg-indigo-50 text-indigo-700 border-indigo-100' },
 };
 
 const PRIORITY_MAP: Record<string, { label: string; cls: string; dot: string }> = {
@@ -79,7 +83,7 @@ export default function SupportPage() {
       await fetch(`/api/support-tickets/${key}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: 3 }),
+        body: JSON.stringify({ status: 2 }),
       });
       store.invalidate();
       store.fetch(params);
@@ -135,10 +139,12 @@ export default function SupportPage() {
           <option value="active">Active (open &amp; in progress)</option>
           <option value="all-except-closed">All (except closed)</option>
           <option value="all">All tickets</option>
-          <option value="open">Open</option>
-          <option value="in-progress">In Progress</option>
-          <option value="resolved">Resolved</option>
-          <option value="closed">Closed</option>
+          <option value="0">Open</option>
+          <option value="1">In Progress</option>
+          <option value="3">Replied</option>
+          <option value="4">Waiting For Reply</option>
+          <option value="5">Queue</option>
+          <option value="2">Closed</option>
         </select>
       </div>
 
@@ -169,7 +175,7 @@ export default function SupportPage() {
           tickets.map((t) => {
             const prio = PRIORITY_MAP[String(t.priority)] ?? PRIORITY_MAP['medium'];
             const stat = STATUS_MAP[t.status] ?? STATUS_MAP['open'];
-            const isClosed = t.status === 3 || t.status === 'closed';
+            const isClosed = t.status === 2 || t.status === 'close' || t.status === 'closed';
             const isClosing = closingId === t.id;
             const isConfirming = confirmClose === t.id;
             const lastActivity = (t.last_replied_at as string | undefined) ?? t.updated_at;
