@@ -114,6 +114,22 @@ Self-hosted multi-vendor eCommerce marketplace built on Laravel 10. Run a single
 - Best for: multi-vendor marketplace founders, brick-and-mortar + online retailers (omnichannel POS), agencies building marketplaces for clients
 - Keywords: multi vendor ecommerce, multi vendor ecommerce platform, multi vendor marketplace laravel, laravel ecommerce script, ecommerce marketplace script, amazon clone script laravel, multi seller shopping cart, self-hosted marketplace software
 
+### Influstar — Influencer Hiring Marketplace Platform
+Self-hosted influencer hiring marketplace script built on Laravel 12. Launch your own platform where brands discover, hire, and pay influencers and content creators — a Collabstr / Influencer.club style marketplace. Built-in escrow with milestone payments, real-time chat, service packages, custom offers, an influencer subscription system, wallet & withdrawals, identity verification & 2FA, reviews & ratings, 20+ payment gateways, and no-code drag & drop builders. One-time purchase, full PHP source code, no monthly fees, zero commission on your sales. Web platform (responsive) — no native mobile apps.
+- [Influstar product page](https://xgenious.com/products/influstar-influencer-hiring-marketplace-platform)
+- [Live demo](https://influencer.bytesed.com)
+- [Admin demo](https://influencer.bytesed.com/admin) (super_admin / 12345678)
+- [Influencer / client login](https://influencer.bytesed.com/login)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/influstar-influencer-hiring-marketplace-platform/59095296)
+- Stack: Laravel 12, PHP 8.3+, MySQL 8, drag & drop builders
+- Rating: 5.0/5 on CodeCanyon · 56+ sales · version 1.3.0 (Jan 2026)
+- Pricing: Regular $39 (CodeCanyon, one project) / Regular + Installation $49 (full script with one-time professional installation on your server) / Exclusive License $99 (introductory, normally $199 — source code modification rights + branding removal + professional installation included) — one-time, no monthly fees
+- Revenue models: commission on every booking + recurring influencer subscription fees (run both at once); you keep 100%, no platform commission
+- Key features: escrow & milestone payments, real-time live chat with word filtering & moderation, influencer service packages & custom offers, subscription system, promoted/featured influencer listings (paid profile & gig boosting), brand campaign & job posting with proposals, wallet & multiple withdrawal methods, identity verification & 2FA, reviews & ratings, user moderation & account ban, analytics dashboard, social login (Google/Facebook), 20+ payment gateways (Stripe, PayPal, Razorpay, Mollie, Flutterwave, Paystack, SSLCommerz, Xendit, Iyzico, Authorize.Net, and more), 4 no-code drag & drop builders
+- Comparison: vs hosted SaaS ($99–$499/mo + fees), vs custom build ($15K–$45K) — Influstar is one-time from $39, you own the Laravel 12 source, zero commission on your revenue
+- Best for: influencer marketplace founders, marketing & influencer agencies, freelancers/dev studios white-labelling for clients
+- Keywords: influencer marketplace script, influencer hiring platform, creator marketplace script, influencer booking platform, collabstr clone script, influencer marketing platform script, laravel influencer marketplace, ugc marketplace script
+
 ## Company
 
 - [About](https://xgenious.com/about)

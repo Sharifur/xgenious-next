@@ -141,3 +141,40 @@ Multi-vendor Laravel eCommerce platform. All prices are one-time payments. No su
 
 ## Purchase
 https://xgenious.com/products/safecart-multi-vendor-laravel-ecommerce-platform#pricing
+
+---
+
+# Influstar Pricing
+
+Influencer hiring marketplace script on Laravel 12. All prices are one-time payments. No subscriptions. No monthly fees. Zero commission on your sales.
+
+## Regular License — $39 (CodeCanyon)
+- Full Influstar source code (Laravel 12)
+- Admin, influencer & brand dashboards
+- Escrow & milestone payments
+- 20+ payment gateways
+- Real-time live chat & custom offers
+- Influencer subscription system
+- Wallet & withdrawal system
+- Identity verification & 2FA
+- Reviews, ratings & analytics
+- 4 drag & drop no-code builders
+- 6 months support + lifetime updates
+- Single project; does NOT include installation or source modification rights
+
+## Regular + Installation — $49 (best value)
+- Everything in Regular License
+- One-time professional installation on your server
+- Server & database configuration
+- 6 months support + lifetime updates
+
+## Exclusive License — $99 (introductory, normally $199)
+- Everything in Regular License
+- Full source code modification rights
+- Remove / replace all branding (white-label)
+- Professional installation included ($99 value)
+- Priority support — 6 months
+- Lifetime updates
+
+## Purchase
+https://xgenious.com/products/influstar-influencer-hiring-marketplace-platform#pricing
