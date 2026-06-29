@@ -6,6 +6,7 @@ export interface CheckoutAddon {
   originalPrice: number;
   bestValue?: boolean;
   sidebarUpsell?: boolean;
+  accentColor?: string;
   disables?: string[];
   includes?: string[];
   excludes?: string[];
@@ -2192,6 +2193,203 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
     tagline: 'Extend your support period for another 6 months.',
     price: 49,
     originalPrice: 49,
+    features: [
+      'Bug fixes & troubleshooting',
+      'Update assistance',
+      'Configuration help',
+      '6-month coverage',
+    ],
+    addons: [],
+  },
+
+  'zaika-bundle-pack': {
+    path: 'zaika-bundle-pack',
+    name: 'Zaika — Everything Bundle',
+    tagline: 'The Zaika web store plus the Zaika Flutter mobile app — sell on web, Android & iOS.',
+    price: 59,
+    originalPrice: 99,
+    badge: 'Web + App',
+    features: [
+      'Full Zaika single-vendor Laravel source code',
+      'Drag & drop page builder (30+ widgets)',
+      '15+ payment gateways built-in',
+      'Advanced inventory, shipping & tax',
+      'Coupons, campaigns & autocomplete search',
+      'SEO tools + sitemap generation',
+      'Admin-set language + RTL support',
+      'Zaika Flutter mobile app (Android & iOS)',
+      '6 Months Support + Lifetime Updates',
+    ],
+    addons: [
+      {
+        path: 'zaika-install-web',
+        label: 'Professional Installation',
+        description: 'Skip the setup. We install & configure Zaika on your server — DB, env file, cron jobs, storage permissions, and post-install health check.',
+        price: 99,
+        originalPrice: 99,
+        includes: [
+          'Installation on your VPS or shared host',
+          'Database creation & configuration',
+          'Environment file & storage setup',
+          'Cron job & file permissions',
+          'Post-install health check',
+        ],
+        excludes: [
+          'Domain, hosting, or VPS provisioning',
+        ],
+      },
+      {
+        path: 'zaika-install-web-mobile',
+        label: 'Web + Mobile App Installation',
+        description: 'We install Zaika on your server AND build, configure & publish the Zaika Flutter app to Google Play & the App Store.',
+        price: 399,
+        originalPrice: 399,
+        bestValue: true,
+        includes: [
+          'Web platform installation & configuration',
+          'Build & configure the Zaika Flutter app',
+          'Firebase, push notifications & API setup',
+          'Publish to Google Play & Apple App Store',
+          'Post-install health check',
+        ],
+        excludes: [
+          'Apple / Google developer account fees',
+        ],
+      },
+      {
+        path: 'zaika-support-6m',
+        label: 'Extend Support — 6 More Months',
+        description: 'Keep your store covered. Priority bug fixes, update assistance & configuration help for 6 additional months.',
+        price: 39,
+        originalPrice: 39,
+        sidebarUpsell: true,
+        accentColor: '#0ea5e9',
+        includes: [
+          'Priority bug fix & troubleshooting tickets',
+          'Update & version upgrade assistance',
+          'Server configuration help',
+          '6 months from original purchase date',
+        ],
+      },
+    ],
+  },
+
+  'zaika-exclusive-pack': {
+    path: 'zaika-exclusive-pack',
+    name: 'Zaika — Exclusive Pack',
+    tagline: 'Web + Flutter app, full source rights, branding removal, and professional installation included.',
+    price: 149,
+    originalPrice: 299,
+    badge: 'Source Code Rights',
+    features: [
+      'Full Zaika single-vendor Laravel source code',
+      'Drag & drop page builder (30+ widgets)',
+      '15+ payment gateways built-in',
+      'Advanced inventory, shipping, tax & campaigns',
+      'SEO tools + sitemap generation',
+      'Admin-set language + RTL support',
+      'Zaika Flutter mobile app (Android & iOS)',
+      'Full Source Code Modification Rights',
+      'Remove / Replace All Branding',
+      'Unlimited Commercial Projects',
+      'One-Time Professional Installation — Included',
+      'Server & Database Configuration',
+      'Priority Support — 6 Months',
+      'Lifetime License + Free Updates',
+    ],
+    addons: [
+      {
+        path: 'zaika-install-web-mobile',
+        label: 'Add Mobile App Publishing — Web + Mobile',
+        description: 'Web installation is already included. Upgrade so we also build, configure & publish your Zaika Flutter app to Google Play & the App Store.',
+        price: 399,
+        originalPrice: 399,
+        bestValue: true,
+        includes: [
+          'Build & configure the Zaika Flutter app',
+          'Firebase, push notifications & API setup',
+          'Publish to Google Play & Apple App Store',
+          'App store listing assistance',
+        ],
+        excludes: [
+          'Apple / Google developer account fees',
+        ],
+      },
+      {
+        path: 'zaika-install-web',
+        label: 'Professional Installation — Web',
+        description: 'Prefer a hands-off setup? We install & configure Zaika on your server — DB, env file, cron jobs, storage permissions, and a post-install health check.',
+        price: 99,
+        originalPrice: 99,
+        includes: [
+          'Installation on your VPS or shared host',
+          'Database creation & configuration',
+          'Environment file & storage setup',
+          'Cron job & file permissions',
+          'Post-install health check',
+        ],
+        excludes: [
+          'Domain, hosting, or VPS provisioning',
+        ],
+      },
+      {
+        path: 'zaika-support-6m',
+        label: 'Support Renewal — 6 Months',
+        description: 'Extend support for 6 more months after your 6-month period ends.',
+        price: 39,
+        originalPrice: 39,
+        sidebarUpsell: true,
+        accentColor: '#0ea5e9',
+        includes: [
+          'Bug fixes & troubleshooting',
+          'Update & upgrade assistance',
+          'Configuration help',
+          '6 additional months from purchase',
+        ],
+      },
+    ],
+  },
+
+  'zaika-install-web': {
+    path: 'zaika-install-web',
+    name: 'Zaika — Professional Installation',
+    tagline: 'We install and configure Zaika on your server for you.',
+    price: 99,
+    originalPrice: 99,
+    features: [
+      'Installation on your VPS or shared host',
+      'Database creation & configuration',
+      'Environment file setup',
+      'Storage & permission setup',
+      'Cron job configuration',
+      'Post-install health check',
+    ],
+    addons: [],
+  },
+
+  'zaika-install-web-mobile': {
+    path: 'zaika-install-web-mobile',
+    name: 'Zaika — Web + Mobile App Installation',
+    tagline: 'We install the web platform and publish the Zaika Flutter app for you.',
+    price: 399,
+    originalPrice: 399,
+    features: [
+      'Web platform installation & configuration on your server',
+      'Build & configure the Zaika Flutter app',
+      'Firebase setup, push notifications & API connection',
+      'Publish to Google Play & Apple App Store',
+      'App store assets & listing assistance',
+      'Post-install health check',
+    ],
+    addons: [],
+  },
+
+  'zaika-support-6m': {
+    path: 'zaika-support-6m',
+    name: 'Zaika — Support Renewal (6 Months)',
+    tagline: 'Extend your support period for another 6 months.',
+    price: 39,
+    originalPrice: 39,
     features: [
       'Bug fixes & troubleshooting',
       'Update assistance',

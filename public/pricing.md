@@ -178,3 +178,35 @@ Influencer hiring marketplace script on Laravel 12. All prices are one-time paym
 
 ## Purchase
 https://xgenious.com/products/influstar-influencer-hiring-marketplace-platform#pricing
+
+# Zaika Pricing
+
+Single vendor eCommerce CMS & shopping platform on Laravel. All prices are one-time payments. No subscriptions. No monthly fees. Zero platform commission on your sales. The Zaika Flutter mobile app (Android & iOS) is included with the Everything Bundle and the Exclusive License.
+
+## Regular License — $39 (CodeCanyon)
+- Full Zaika single-vendor Laravel source code
+- Drag & drop page builder (30+ widgets)
+- 15+ payment gateways built-in
+- Advanced inventory, product variants, shipping & tax
+- Coupons, flash-sale campaigns & autocomplete search
+- SEO tools + sitemap generation, admin-set language + RTL
+- 6 months support + lifetime updates
+- Web store only; mobile app, installation, and source modification rights NOT included
+
+## Everything Bundle — $59 (best value, web + app)
+- Everything in Regular License
+- Zaika Flutter mobile app (Android & iOS) — sell on web and mobile
+- 6 months support + lifetime updates
+- Optional add-ons at checkout: professional installation ($99), web + mobile app installation ($399)
+
+## Exclusive License — $149 (normally $299)
+- Everything in the Everything Bundle (web store + Flutter mobile app)
+- Full source code modification rights
+- Remove / replace all branding (white-label)
+- Unlimited commercial projects
+- Professional installation included
+- Priority support — 6 months
+- Lifetime updates
+
+## Purchase
+https://xgenious.com/products/zaika-ecommerce-shopping-laravel-platform#pricing
