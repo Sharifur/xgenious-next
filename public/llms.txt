@@ -130,6 +130,93 @@ Self-hosted influencer hiring marketplace script built on Laravel 12. Launch you
 - Best for: influencer marketplace founders, marketing & influencer agencies, freelancers/dev studios white-labelling for clients
 - Keywords: influencer marketplace script, influencer hiring platform, creator marketplace script, influencer booking platform, collabstr clone script, influencer marketing platform script, laravel influencer marketplace, ugc marketplace script
 
+### Zaika — Single Vendor eCommerce Laravel Platform
+Self-hosted single-vendor eCommerce CMS and shopping platform built on Laravel. Single vendor eCommerce means one seller owns the store, the catalog, the checkout, and 100% of every sale — unlike a multi-vendor marketplace that hosts many sellers and splits commission. Zaika ships with a no-code drag & drop page builder (30+ widgets), grid/list shop layouts, 15+ payment gateways, and advanced inventory, product variants, shipping, tax, coupon, and time-boxed campaign systems. One-time purchase, full PHP/Laravel source code, no monthly fees, zero platform commission. Responsive web platform; a Zaika Flutter mobile app (Android & iOS) is included from the Everything Bundle and the Exclusive License. For a multi-vendor marketplace instead, see SafeCart.
+- [Zaika product page](https://xgenious.com/products/zaika-ecommerce-shopping-laravel-platform)
+- [Live demo](https://zaika.bytesed.com/land)
+- [Admin demo](https://zaika.bytesed.com/login/admin) (super_admin / 12345678)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/zaika-ecommerce-shopping-laravel-platform/35059777)
+- Stack: Laravel 9, PHP 8.1+, MySQL 5.7+, Bootstrap 4, 4 drag & drop builders (page/menu/form/widget)
+- Rating: 4.4/5 on CodeCanyon · 350+ sales · version 2.1.0
+- Pricing: Regular $39 (CodeCanyon, web store, one store) / Everything Bundle $59 (web store + Zaika Flutter mobile app for Android & iOS) / Exclusive License $149 (web + Flutter app + source code modification rights + branding removal + unlimited projects + professional installation included) — one-time, no monthly fees; the Flutter mobile app is included with the Everything Bundle and the Exclusive License. Optional add-ons: professional installation $99, web + mobile app installation $399, support renewal $39
+- Key features: drag & drop page builder (30+ widgets), grid/list shop layouts, advanced inventory, unlimited product variants & attributes, advanced shipping & tax, coupons, flash-sale campaigns, autocomplete search, wishlist/cart/compare, quick view & quick share, Facebook/Google login, GDPR cookie consent, Google reCAPTCHA v3, newsletter, 700+ Google fonts, SEO + sitemap, admin-set language + RTL, 15+ payment gateways (PayPal, Stripe, Razorpay, Paytm, Mollie, Flutterwave, Paystack, Cashfree, Instamojo, Midtrans, Mercado Pago, PayFast, CinetPay, Bank Transfer, Check)
+- Comparison: vs Shopify ($39–$399/mo + fees), vs WooCommerce (free + paid plugins), vs custom build ($15K–$40K) — Zaika is one-time from $39, you own the Laravel source code, and takes zero commission on your sales
+- Best for: single-brand fashion & retail stores, D2C sellers, agencies & founders building one-store shops for clients
+- Keywords: single vendor ecommerce, single vendor ecommerce platform, laravel ecommerce script, online shopping cms, readymade ecommerce website, ecommerce website builder php, single store ecommerce, php shopping cart script
+
+### Nazmart — Multi-Tenancy eCommerce SaaS Platform
+Self-hosted multi-tenancy eCommerce SaaS on Laravel — launch a Shopify-style platform where each vendor gets their own store on a subdomain or custom domain, and you charge recurring subscriptions. Vendor subscriptions, custom domains per store, and Flutter mobile apps. One-time purchase, full source code, no monthly fees.
+- [Nazmart product page](https://xgenious.com/products/nazmart-multi-tenancy-ecommerce-platform)
+- [Live demo](https://nazmart.net/)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/nazmart-multitenancy-ecommerce-platform-saas/42802410)
+- Stack: Laravel, PHP, MySQL, Flutter (mobile apps), multi-tenant architecture
+- Pricing: Regular $69 / Bundle $99 / Complete $299 — one-time, no monthly fees
+- Key features: multi-tenant store provisioning, vendor subscription billing, custom domain mapping per store, themes, 20+ payment gateways, Flutter customer mobile apps, admin SaaS management
+- Keywords: multi tenancy ecommerce platform, ecommerce saas script, shopify clone script, laravel multi tenant ecommerce, white label ecommerce platform, saas ecommerce builder
+
+### MultiSaas — Multi-Tenant Website Builder SaaS
+Self-hosted multi-tenant website-builder SaaS on Laravel — launch your own Wix/Webflow-style platform where each client builds and hosts a site on their own subdomain or custom domain, billed by subscription. 550+ clients worldwide. One-time purchase, full source code, no monthly fees.
+- [MultiSaas product page](https://xgenious.com/products/multisaas-website-builder-saas)
+- [Live demo](https://multisaas.bytesed.com)
+- [Admin demo](https://multisaas.bytesed.com/admin)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/multisass-multitenancy-multipurpose-website-builder-sass/41892997)
+- Stack: Laravel, PHP, MySQL, multi-tenant architecture
+- Pricing: Regular $59 (normally $89) / Bundle $99 (normally $199) / Exclusive $299 (normally $499) — one-time
+- Key features: 10+ modules, 15+ themes, drag & drop builder, custom domain per tenant, subscription billing, 19+ payment gateways, white-label
+- Keywords: website builder saas, multi-tenant website builder, white label website builder, saas website builder script, build your own website builder, wix clone script
+
+### Nexelit — Multipurpose Business CMS (Laravel)
+Self-hosted multipurpose business CMS on Laravel — 9 enable/disable business modules (blog, portfolio, services, events, appointments, eCommerce, and more), drag & drop builders, and 21 homepage variants. One-time purchase, full source code, no monthly fees.
+- [Nexelit product page](https://xgenious.com/products/nexelit-multipurpose-website-business-management-system-cms)
+- [Live demo](https://nexelit.xgenious.com)
+- [Admin demo](https://nexelit.xgenious.com/login)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/nexelit-multipurpose-website-business-management-system-cms/27936384)
+- Stack: Laravel, PHP, MySQL
+- Pricing: Regular $39 (CodeCanyon) / Regular + Installation $49 / Exclusive $99 (introductory, normally $199 — source code rights + branding removal + installation) — one-time
+- Key features: 9 business modules (enable/disable), drag & drop page/menu/form/widget builders, 21 homepage variants, 20+ payment gateways, RTL + multilingual, built-in support ticket system, role-based admin permissions
+- Keywords: multipurpose website cms, laravel cms script, business management system cms, cms with page builder, ecommerce cms laravel, event booking cms, appointment booking laravel
+
+### ListOcean — Classified Ads & Listing Platform
+Self-hosted classified ads / listing platform on Laravel — launch an OLX or Craigslist-style local marketplace where users post, browse, and chat about listings. Live chat, Google Maps, membership plans, wallet, and 4 no-code builders. One-time purchase, full source code, no monthly fees.
+- [ListOcean product page](https://xgenious.com/products/listocean-classified-ads-listing-platform)
+- [Live demo](https://listocean.bytesed.com)
+- [Admin demo](https://listocean.bytesed.com/admin)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/listocean-classified-ads-listing-platform/53068796)
+- Stack: Laravel, PHP, MySQL
+- Pricing: Regular $29 (CodeCanyon) / Full Pack $59 (normally $99) / Exclusive $149 (normally $249) — one-time, no monthly fees
+- Key features: post/browse classified listings, real-time live chat, Google Maps location, membership & promotion plans, wallet, reviews, 4 drag & drop no-code builders, multiple payment gateways
+- Keywords: classified ads script, classified ads laravel, olx clone script, craigslist clone script, local marketplace script, php classified script, classified listing platform
+
+### Fundorex — Crowdfunding Platform Script (Laravel)
+Self-hosted crowdfunding / fundraising platform on Laravel — launch a Kickstarter or GoFundMe-style site for donation and community campaigns. Donor wallet, volunteer management, event ticketing, 20+ payment gateways, and a Flutter mobile app. One-time purchase, full source code, no monthly fees.
+- [Fundorex product page](https://xgenious.com/products/fundorex-crowdfunding-platform)
+- [Live demo](https://fundorex.xgenious.com)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/fundorex-crowdfunding-platform/33286096)
+- Stack: Laravel, PHP, MySQL, Flutter (mobile app)
+- Pricing: Regular $69 / Combo $79 / Extended $199 — one-time, no monthly fees
+- Key features: donation & community campaigns, donor wallet, volunteer management, event ticketing, 20+ payment gateways, Flutter mobile app, admin dashboard
+- Keywords: crowdfunding platform script, laravel crowdfunding script, kickstarter clone script, gofundme clone script, fundraising platform script, donation website script
+
+### GoCar — On-Demand Car Service Marketplace
+Self-hosted on-demand car service marketplace on Laravel + Flutter — connect car owners with mechanics and service providers (an "Uber for car services"). Vehicle-specific booking, real-time tracking, and 19+ payment gateways. One-time purchase, full source code, no monthly fees.
+- [GoCar product page](https://xgenious.com/products/gocar-on-demand-car-service-marketplace)
+- [Live demo](https://car-service.bytesed.com/)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/gocar-mechanic-and-car-service-provider/57643970)
+- Stack: Laravel, Flutter, MySQL
+- Pricing: Regular $39 / Combo $69 / Extended $149 — one-time, no monthly fees
+- Key features: car owner & mechanic apps, vehicle-specific service booking, real-time tracking, provider wallet & payouts, 19+ payment gateways, admin dashboard
+- Keywords: on demand car service marketplace script, mechanic booking marketplace script, uber for car services script, car repair booking platform, car service booking app script
+
+### Helpnest — AI Chatbot & Support Ticketing SaaS
+Self-hosted AI chatbot + support ticketing SaaS on Laravel — build a Crisp or Intercom alternative with semantic AI replies, multi-tenant SaaS management, and subscription billing. One-time purchase, full source code, no monthly fees.
+- [Helpnest product page](https://xgenious.com/products/helpnest-ai-chatbot-support-script)
+- [Live demo](https://helpnest.xgenious.com/)
+- [Purchase on CodeCanyon](https://codecanyon.net/item/helpnest-ai-powered-chatbot-and-support-ticketing-system-saas/60825518)
+- Stack: Laravel, PHP, MySQL, semantic AI
+- Pricing: Regular $59 / Combo $89 / Extended $199 — one-time, no monthly fees
+- Key features: semantic AI chatbot, support ticketing with human handoff, multi-tenant SaaS management, subscription billing, white-label, knowledge base
+- Keywords: ai chatbot script, laravel chatbot script, customer support chatbot script, intercom alternative self-hosted, crisp alternative script, helpdesk script laravel, white label chatbot software
+
 ## Company
 
 - [About](https://xgenious.com/about)

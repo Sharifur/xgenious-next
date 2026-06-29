@@ -114,6 +114,13 @@ const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; p
     pitch: 'Source code modification rights, professional installation included, remove any branding — the complete developer license.',
     accent: '#7c3aed',
   },
+  'zaika-bundle-pack': {
+    path: 'zaika-exclusive-pack',
+    name: 'Exclusive License',
+    delta: 90,
+    pitch: 'Full source code modification rights, remove all branding, unlimited commercial projects, and professional installation included.',
+    accent: '#7c3aed',
+  },
 };
 
 function CheckIcon() {
@@ -429,21 +436,22 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
                 {/* Sidebar upsell — extended support */}
                 {product.addons.filter((a) => a.sidebarUpsell).map((addon) => {
                   const selected = selectedAddons.has(addon.path);
+                  const accent = addon.accentColor ?? '#e8705a';
                   return (
                     <button
                       key={addon.path}
                       onClick={() => toggleAddon(addon.path)}
                       className="w-full text-left rounded-xl border-2 p-3.5 mb-4 flex items-start gap-3 transition-all cursor-pointer"
                       style={{
-                        borderColor: selected ? '#16a34a' : '#e8705a40',
-                        background: selected ? '#f0fdf4' : '#fff8f6',
+                        borderColor: selected ? accent : `${accent}55`,
+                        background: selected ? `${accent}12` : `${accent}0a`,
                       }}
                     >
                       <div
                         className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5 border-2 transition-colors"
                         style={{
-                          borderColor: selected ? '#16a34a' : '#e8705a',
-                          background: selected ? '#16a34a' : 'transparent',
+                          borderColor: accent,
+                          background: selected ? accent : 'transparent',
                         }}
                       >
                         {selected && (
@@ -464,7 +472,7 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
                             )}
                           </div>
                           <div className="text-right flex-shrink-0">
-                            <p className="text-[14px] font-bold text-[#e8705a]">+${addon.price}</p>
+                            <p className="text-[14px] font-bold" style={{ color: accent }}>+${addon.price}</p>
                             <p className="text-[11px] text-[#9ca3af] line-through">${addon.originalPrice}</p>
                           </div>
                         </div>
