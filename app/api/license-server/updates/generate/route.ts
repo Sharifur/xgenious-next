@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
   const session = await auth();
   if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const { product_uid, version } = await req.json();
+  const { product_uid, license_key, version } = await req.json();
 
   if (!product_uid) {
     return NextResponse.json({ error: 'product_uid is required' }, { status: 400 });
@@ -14,7 +14,11 @@ export async function POST(req: NextRequest) {
 
   const res = await lsFetch('/updates/generate', {
     method: 'POST',
-    body: JSON.stringify({ product_uid, ...(version ? { version } : {}) }),
+    body: JSON.stringify({
+      product_uid,
+      ...(license_key ? { license_key } : {}),
+      ...(version ? { version } : {}),
+    }),
   });
   const data = await res.json();
 
