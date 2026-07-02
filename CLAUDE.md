@@ -191,5 +191,7 @@ When adding a single-segment route (e.g. `/free-tools`): add it to `NEXT_ROUTES`
 
 | XG-021 | Genius School software page — keyword gap + AEO fill | DONE | HIGH | ~25k | Fill gaps vs eskooly/zoho/timeline/ourschoolsoftware: fixed title/H1 "Software" vs "System"; added KWs (free school software, school management platforms, free student management software, school resources management software); expanded FAQ 6→11 with 40-80 word AI-citation answers; added HowTo + BreadcrumbList JSON-LD; new "Why Free?" 3-card section; new "Get Started in 3 Steps" install section; new "School Resources Management" callout section; rewrote definition block to answer "what is free school management software?"; expanded comparison table 3-col with named platforms; updated llms.txt with full keyword signals. next build + tsc clean. |
 
+| XG-022 | SQA checkout audit + fsReady guard + crash reporter | DONE | HIGH | ~30k | Full SQA pass: 30/30 non-regular checkout plans verified (page load, price, FastSpring popup). Root cause of customer "crash": button clickable before FS script loads → silent no-op. Fix: `disabled={!fsReady}` + Loading… spinner on Confirm & Pay button (`CheckoutClient.tsx`). Also built crash-email system: `CrashReporter` (window.onerror + unhandledrejection), `error.tsx` + `global-error.tsx` report on mount, `/api/crash-report` POST → AWS SES → dvrobin4@gmail.com. tsc clean. |
+
 ### Sprint Stats
-- Total: 21  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 21  /  BLOCKED: 0
+- Total: 22  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 22  /  BLOCKED: 0

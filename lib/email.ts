@@ -36,6 +36,39 @@ export function verificationEmailHtml(link: string): string {
     </div>`;
 }
 
+export function crashReportEmailHtml(data: {
+  message?: string;
+  stack?: string;
+  url?: string;
+  userAgent?: string;
+  digest?: string;
+  source?: string;
+  type?: string;
+}): string {
+  const ts = new Date().toUTCString();
+  const row = (label: string, value: string) =>
+    value
+      ? `<tr><td style="padding:6px 12px;font-weight:600;color:#555;white-space:nowrap;vertical-align:top;border-bottom:1px solid #f0f0f0">${label}</td><td style="padding:6px 12px;color:#0F1112;word-break:break-word;border-bottom:1px solid #f0f0f0">${value}</td></tr>`
+      : '';
+  return `
+    <div style="font-family:monospace;max-width:700px;margin:0 auto;padding:24px">
+      <div style="background:#ec7161;color:#fff;padding:16px 20px;border-radius:8px 8px 0 0">
+        <strong style="font-size:16px">🚨 Xgenious Site Crash Report</strong>
+        <div style="font-size:12px;opacity:0.85;margin-top:4px">${ts}</div>
+      </div>
+      <table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #e5e7ec;border-top:none;border-radius:0 0 8px 8px">
+        ${row('Type', data.type ?? 'React render error')}
+        ${row('Page URL', data.url ?? '')}
+        ${row('Error', data.message ?? '')}
+        ${row('Digest', data.digest ?? '')}
+        ${row('Source', data.source ?? '')}
+        ${row('User Agent', data.userAgent ?? '')}
+      </table>
+      ${data.stack ? `<pre style="margin-top:16px;padding:16px;background:#1e1e1e;color:#d4d4d4;border-radius:8px;font-size:12px;overflow-x:auto;white-space:pre-wrap;word-break:break-word">${data.stack.replace(/</g, '&lt;')}</pre>` : ''}
+      <p style="margin-top:16px;font-size:12px;color:#9ca3af;font-family:sans-serif">Sent automatically by xgenious.com crash reporter.</p>
+    </div>`;
+}
+
 export function resetEmailHtml(link: string): string {
   return `
     <div style="font-family:sans-serif;max-width:500px;margin:0 auto;padding:32px">
