@@ -483,13 +483,26 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
 
                 <button
                   onClick={handleConfirm}
-                  className="w-full flex items-center justify-center gap-2 text-white font-bold text-[15px] rounded-xl py-3.5 transition-all hover:opacity-90 hover:-translate-y-0.5 cursor-pointer"
+                  disabled={!fsReady}
+                  className="w-full flex items-center justify-center gap-2 text-white font-bold text-[15px] rounded-xl py-3.5 transition-all hover:opacity-90 hover:-translate-y-0.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:opacity-50 disabled:hover:translate-y-0"
                   style={{ background: '#e8705a', boxShadow: '0 8px 24px rgba(232,112,90,0.35)' }}
                 >
-                  Confirm &amp; Pay
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  {fsReady ? (
+                    <>
+                      Confirm &amp; Pay
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="animate-spin">
+                        <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="2" strokeOpacity="0.3" />
+                        <path d="M12 2a10 10 0 0110 10" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                      Loading...
+                    </>
+                  )}
                 </button>
 
                 <p className="mt-2 text-center text-[11px] text-[#9ca3af]">

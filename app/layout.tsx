@@ -8,6 +8,7 @@ import TopLoader from "@/components/ui/TopLoader";
 import IframeNotice from "@/components/ui/IframeNotice";
 import PromoBanner from "@/components/ui/PromoBanner";
 import { Providers } from "@/components/Providers";
+import CrashReporter from "@/components/CrashReporter";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
@@ -79,6 +80,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
           </noscript>
         )}
+        <CrashReporter />
         <TopLoader />
         <IframeNotice />
         <Providers>

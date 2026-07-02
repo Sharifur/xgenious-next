@@ -1,13 +1,29 @@
 'use client';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import ForceWhiteNav from '@/components/layout/ForceWhiteNav';
 
 export default function GlobalError({
+  error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  useEffect(() => {
+    fetch('/api/crash-report', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'React render error',
+        message: error.message,
+        stack: error.stack ?? '',
+        url: typeof window !== 'undefined' ? window.location.href : '',
+        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+        digest: error.digest ?? '',
+      }),
+    }).catch(() => {});
+  }, [error]);
   return (
     <>
     <ForceWhiteNav />
