@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import type { CheckoutProduct } from '@/lib/checkout-products';
 import { FASTSPRING_STORE, FASTSPRING_SCRIPT, FASTSPRING_TEST_MODE, launchCheckout } from '@/lib/fastspring';
+import { reportCrash } from '@/lib/crash';
 
 const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; pitch: string; accent: string }> = {
   'xilancer-bundle-pack': {
@@ -151,6 +152,16 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
         router.push('/register?redirect=/my-account/downloads');
       }
     };
+
+    window.onFastSpringError = (code, details) => {
+      reportCrash({
+        type: 'FastSpring error callback',
+        message: `FS error ${code ?? 'unknown'}${details ? ` — ${JSON.stringify(details).slice(0, 200)}` : ''}`,
+        operation: 'fastspring-error-callback',
+        apiEndpoint: `${FASTSPRING_STORE}`,
+        httpStatus: String(code ?? ''),
+      });
+    };
   }, [router]);
 
   const disabledAddons = new Set(
@@ -183,6 +194,15 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
 
   const handleConfirm = () => {
     const items = [product.path, ...Array.from(selectedAddons)];
+    if (!window.fastspring?.builder) {
+      reportCrash({
+        type: 'FastSpring builder missing',
+        message: 'launchCheckout called but window.fastspring.builder is undefined despite fsReady=true',
+        operation: 'launchCheckout',
+        apiEndpoint: FASTSPRING_STORE,
+      });
+      return;
+    }
     launchCheckout(items);
   };
 
@@ -195,9 +215,18 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
         src={FASTSPRING_SCRIPT}
         data-storefront={FASTSPRING_STORE}
         data-popup-closed="onFastSpringPopupClosed"
+        data-error-callback="onFastSpringError"
         data-continuous="true"
         strategy="afterInteractive"
         onLoad={() => setFsReady(true)}
+        onError={() =>
+          reportCrash({
+            type: 'FastSpring script load failure',
+            message: `Failed to load FastSpring SBL: ${FASTSPRING_SCRIPT}`,
+            operation: 'fastspring-script-load',
+            apiEndpoint: FASTSPRING_SCRIPT,
+          })
+        }
       />
 
       {FASTSPRING_TEST_MODE && (

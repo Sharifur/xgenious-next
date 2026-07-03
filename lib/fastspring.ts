@@ -64,5 +64,6 @@ declare global {
     };
     onFastSpringWebhookReceived: (order: FastSpringOrder) => void;
     onFastSpringPopupClosed: (order: FastSpringOrder | null) => void;
+    onFastSpringError: (code: string | number | undefined, details?: unknown) => void;
   }
 }
