@@ -9,6 +9,7 @@ import IframeNotice from "@/components/ui/IframeNotice";
 import PromoBanner from "@/components/ui/PromoBanner";
 import { Providers } from "@/components/Providers";
 import CrashReporter from "@/components/CrashReporter";
+import MetaPixel from "@/components/MetaPixel";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
@@ -80,6 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
           </noscript>
         )}
+        <MetaPixel />
         <CrashReporter />
         <TopLoader />
         <IframeNotice />

@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import CTASection from '@/components/sections/CTASection';
+import { trackContact } from '@/lib/meta-events';
 
 const QUERY_TYPES = [
   'Customisation Work',
@@ -94,6 +95,7 @@ export default function ContactPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? 'Something went wrong.');
       setSubmitted(true);
+      trackContact(window.location.href, form.email);
       recaptchaRef.current?.reset();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong.');

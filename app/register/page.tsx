@@ -6,6 +6,7 @@ import Link from 'next/link';
 import ReCAPTCHA from 'react-google-recaptcha';
 import AuthPanel from '@/components/auth/AuthPanel';
 import { registerSchema, type RegisterInput } from '@/lib/schemas/auth';
+import { trackCompleteRegistration } from '@/lib/meta-events';
 
 const EyeOn = () => (
   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,6 +116,7 @@ export default function RegisterPage() {
     setRegEmail(values.email);
     setRegistered(true);
     setCountdown(120);
+    trackCompleteRegistration(window.location.href, values.email);
   }
 
   async function handleResend() {

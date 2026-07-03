@@ -8,6 +8,7 @@ import { useSession } from 'next-auth/react';
 import type { CheckoutProduct } from '@/lib/checkout-products';
 import { FASTSPRING_STORE, FASTSPRING_SCRIPT, FASTSPRING_TEST_MODE, launchCheckout } from '@/lib/fastspring';
 import { reportCrash } from '@/lib/crash';
+import { trackInitiateCheckout, trackPurchase } from '@/lib/meta-events';
 
 const UPGRADE_MAP: Record<string, { path: string; name: string; delta: number; pitch: string; accent: string }> = {
   'xilancer-bundle-pack': {
@@ -146,6 +147,9 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
   useEffect(() => {
     window.onFastSpringPopupClosed = (order) => {
       if (!order) return;
+      const sourceUrl = window.location.href;
+      const productIds = order.items.map((i) => i.product);
+      trackPurchase(sourceUrl, order.total, order.currency, productIds);
       if (sessionStatusRef.current === 'authenticated') {
         router.push('/my-account/downloads');
       } else {
@@ -203,6 +207,7 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
       });
       return;
     }
+    trackInitiateCheckout(window.location.href, items, orderTotal);
     launchCheckout(items);
   };
 
