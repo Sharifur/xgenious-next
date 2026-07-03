@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
+import { reportCrash } from '@/lib/crash';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -60,9 +61,29 @@ export default function TicketDetailPage() {
   const [confirmClose, setConfirmClose] = useState(false);
 
   async function loadTicket() {
-    const res = await fetch(`/api/support-tickets/${id}`);
-    const data = await res.json();
-    setTicket(data.data ?? data);
+    try {
+      const res = await fetch(`/api/support-tickets/${id}`);
+      if (!res.ok) {
+        reportCrash({
+          type: 'API error response',
+          message: `HTTP ${res.status} from support ticket API`,
+          apiEndpoint: `/api/support-tickets/${id}`,
+          operation: 'loadTicket',
+          httpStatus: String(res.status),
+        });
+        return;
+      }
+      const data = await res.json();
+      setTicket(data.data ?? data);
+    } catch (err) {
+      reportCrash({
+        type: 'API fetch failure',
+        message: err instanceof Error ? err.message : 'Failed to fetch',
+        stack: err instanceof Error ? (err.stack ?? '') : '',
+        apiEndpoint: `/api/support-tickets/${id}`,
+        operation: 'loadTicket',
+      });
+    }
   }
 
   useEffect(() => {
@@ -74,11 +95,30 @@ export default function TicketDetailPage() {
   async function handleClose() {
     setClosing(true);
     setConfirmClose(false);
-    await fetch(`/api/support-tickets/${id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status: 2 }),
-    });
+    try {
+      const res = await fetch(`/api/support-tickets/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: 2 }),
+      });
+      if (!res.ok) {
+        reportCrash({
+          type: 'API error response',
+          message: `HTTP ${res.status} closing ticket`,
+          apiEndpoint: `/api/support-tickets/${id}`,
+          operation: 'closeTicket',
+          httpStatus: String(res.status),
+        });
+      }
+    } catch (err) {
+      reportCrash({
+        type: 'API fetch failure',
+        message: err instanceof Error ? err.message : 'Failed to fetch',
+        stack: err instanceof Error ? (err.stack ?? '') : '',
+        apiEndpoint: `/api/support-tickets/${id}`,
+        operation: 'closeTicket',
+      });
+    }
     setClosing(false);
     loadTicket();
   }
@@ -89,19 +129,37 @@ export default function TicketDetailPage() {
     if (!text) return;
     setSending(true);
     setError('');
-    const res = await fetch(`/api/support-tickets/${id}/reply`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ description: reply, userId: ticket?.created_by?.id }),
-    });
-    setSending(false);
-    if (res.ok) {
-      setReply('');
-      loadTicket();
-    } else {
-      const d = await res.json();
-      setError(d.error ?? 'Failed to send reply.');
+    try {
+      const res = await fetch(`/api/support-tickets/${id}/reply`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ description: reply, userId: ticket?.created_by?.id }),
+      });
+      if (res.ok) {
+        setReply('');
+        loadTicket();
+      } else {
+        const d = await res.json().catch(() => ({}));
+        reportCrash({
+          type: 'API error response',
+          message: `HTTP ${res.status} posting reply — ${d.error ?? 'no detail'}`,
+          apiEndpoint: `/api/support-tickets/${id}/reply`,
+          operation: 'submitReply',
+          httpStatus: String(res.status),
+        });
+        setError(d.error ?? 'Failed to send reply.');
+      }
+    } catch (err) {
+      reportCrash({
+        type: 'API fetch failure',
+        message: err instanceof Error ? err.message : 'Failed to fetch',
+        stack: err instanceof Error ? (err.stack ?? '') : '',
+        apiEndpoint: `/api/support-tickets/${id}/reply`,
+        operation: 'submitReply',
+      });
+      setError('Network error — please try again.');
     }
+    setSending(false);
   }
 
   if (!ticket) {
