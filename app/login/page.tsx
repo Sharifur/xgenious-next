@@ -128,6 +128,7 @@ function LoginForm() {
                   type="text"
                   autoComplete="username"
                   placeholder="you@example.com"
+                  suppressHydrationWarning
                   className={`w-full pl-10 pr-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors ${errors.username ? 'border-red-300' : 'border-gray-200'}`}
                 />
               </div>
@@ -151,6 +152,7 @@ function LoginForm() {
                   {...register('password')}
                   type={showPassword ? 'text' : 'password'}
                   autoComplete="current-password"
+                  suppressHydrationWarning
                   className={`w-full pl-10 pr-10 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors ${errors.password ? 'border-red-300' : 'border-gray-200'}`}
                 />
                 <button type="button" onClick={() => setShowPassword((v) => !v)} tabIndex={-1} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">

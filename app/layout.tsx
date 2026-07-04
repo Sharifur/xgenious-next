@@ -55,7 +55,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${nunitoSans.variable}`}>
+    <html lang="en" translate="no" className={`${inter.variable} ${nunitoSans.variable}`}>
       <head>
         {GTM_ID && (
           <Script id="gtm-script" strategy="afterInteractive">
