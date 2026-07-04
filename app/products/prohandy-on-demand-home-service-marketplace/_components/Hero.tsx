@@ -9,7 +9,7 @@ const QUICK_LINKS = [
   { label: 'Admin Demo', href: DEMO_URL, external: true },
   { label: 'Website Demo', href: DEMO_URL, external: true },
   { label: 'Mobile App', href: '#mobile-app', external: false },
-  { label: 'Documentation', href: 'https://docs.xgenious.com/docs/prohandy/', external: true },
+  { label: 'Documentation', href: 'https://docs.xgenious.com/docs/prohandy-admin-panel/', external: true },
   { label: 'Pricing', href: '#pricing', external: false },
 ];
 

@@ -51,7 +51,7 @@ const FAQS = [
   },
   {
     q: 'What support is included?',
-    a: 'Every license includes 6 months of ticket-based support with an average 10-minute response time. You can extend to 12 months at checkout. Documentation is available at docs.bytesed.com and a full YouTube tutorial playlist covers installation and configuration.',
+    a: 'Every license includes 6 months of ticket-based support with an average 10-minute response time. You can extend to 12 months at checkout. Documentation is available at docs.xgenious.com and a full YouTube tutorial playlist covers installation and configuration.',
   },
 ];
 
@@ -115,7 +115,7 @@ export default function FAQ() {
             </div>
             <div className="flex items-center gap-3 flex-shrink-0">
               <a
-                href="https://docs.bytesed.com/docs/qixer-service-marketplace-and-service-finder/"
+                href="https://docs.xgenious.com/docs/qixer-service-marketplace-and-service-finder/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[13px] font-semibold px-4 py-2 rounded-full border transition-colors"

@@ -10,7 +10,7 @@ export const DARK_BG = '#2b0a17';
 export const PURCHASE_URL = 'https://codecanyon.net/item/zaika-ecommerce-shopping-laravel-platform/35059777';
 export const DEMO_URL = 'https://zaika.bytesed.com/land';
 export const ADMIN_DEMO_URL = 'https://zaika.bytesed.com/login/admin';
-export const DOCS_URL = 'https://docs.xgenious.com/docs/zaika-ecommerce-cms/';
+export const DOCS_URL = 'https://docs.xgenious.com/docs/zaika-ecommerce-cms-laravel-ecommerce-shopping-platform/';
 export const PRICING_URL = '#pricing';
 
 // Pricing — tiered, internal checkout for Everything Bundle + Exclusive

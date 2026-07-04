@@ -60,7 +60,7 @@ export default function FAQ() {
             <p className="text-[#6b8a7a] text-[14px]">Check the documentation or open a pre-sale ticket.</p>
           </div>
           <div className="flex items-center gap-3 flex-shrink-0">
-            <a href="https://docs.xgenious.com/nazmart/" target="_blank" rel="noopener noreferrer"
+            <a href="https://docs.xgenious.com/docs/nazmart-multi-tenancy-ecommerce-platform-saas/" target="_blank" rel="noopener noreferrer"
               className="text-[13px] font-semibold px-4 py-2 rounded-full border border-[#2a5a2a] text-[#92E721] hover:bg-[#1a3d20] transition-colors">
               Documentation
             </a>

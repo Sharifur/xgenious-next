@@ -10,7 +10,7 @@ export const PURCHASE_URL = 'https://codecanyon.net/item/safecart-multivendor-la
 export const DEMO_URL = 'https://safecart.bytesed.com';
 export const ADMIN_DEMO_URL = 'https://safecart.bytesed.com/admin';
 export const VENDOR_DEMO_URL = 'https://safecart.bytesed.com/vendor/login';
-export const DOCS_URL = 'https://docs.xgenious.com/docs/safecart/';
+export const DOCS_URL = 'https://docs.xgenious.com/docs/safecart-multi-vendor-ecommerce-solution/';
 export const PRICING_URL = '#pricing';
 
 export const REGULAR_PRICE = 39;

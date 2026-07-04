@@ -127,7 +127,7 @@ export default function FAQ() {
             </div>
             <div className="flex items-center gap-3 flex-shrink-0">
               <a
-                href="https://docs.xgenious.com/docs/prohandy/"
+                href="https://docs.xgenious.com/docs/prohandy-admin-panel/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[13px] font-semibold px-4 py-2 rounded-full border transition-colors"

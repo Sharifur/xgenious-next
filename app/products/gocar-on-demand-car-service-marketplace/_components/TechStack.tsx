@@ -96,7 +96,7 @@ export default function TechStack() {
             <p className="text-[13px] text-[#6b7280]">PHP 8.0+, MySQL, cPanel compatible — free admin panel cPanel installation included with purchase.</p>
           </div>
           <a
-            href="https://docs.bytesed.com/docs/gocar-on-demand-mechanic-and-car-service-provider-marketplace-platform/"
+            href="https://docs.xgenious.com/docs/gocar-on-demand-mechanic-and-car-service-provider-marketplace-platform/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-[13px] font-semibold rounded-full px-5 py-2.5 border-2 flex-shrink-0 transition-all hover:-translate-y-0.5"

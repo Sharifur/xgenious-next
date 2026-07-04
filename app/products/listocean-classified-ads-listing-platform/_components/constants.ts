@@ -9,7 +9,7 @@ export const DARK_BG = '#061a2a';
 export const PURCHASE_URL = 'https://codecanyon.net/item/listocean-classified-ads-listing-platform/53068796';
 export const DEMO_URL = 'https://listocean.bytesed.com';
 export const ADMIN_DEMO_URL = 'https://listocean.bytesed.com/admin';
-export const DOCS_URL = 'https://docs.xgenious.com/docs/listocean/';
+export const DOCS_URL = 'https://docs.xgenious.com/docs/listocean-classified-ads-listing-platform/';
 export const PRICING_URL = '#pricing';
 
 export const REGULAR_PRICE = 29;
