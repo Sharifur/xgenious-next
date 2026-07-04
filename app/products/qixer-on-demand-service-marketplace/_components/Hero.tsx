@@ -9,7 +9,7 @@ const QUICK_LINKS = [
   { label: 'Admin Demo', href: `${DEMO_URL}login/admin`, external: true },
   { label: 'Buyer Demo', href: DEMO_URL, external: true },
   { label: 'Seller Demo', href: `${DEMO_URL}login`, external: true },
-  { label: 'Documentation', href: 'https://docs.bytesed.com/docs/qixer-service-marketplace-and-service-finder/', external: true },
+  { label: 'Documentation', href: 'https://docs.xgenious.com/docs/qixer-service-marketplace-and-service-finder/', external: true },
   { label: 'Pricing', href: '#pricing', external: false },
 ];
 

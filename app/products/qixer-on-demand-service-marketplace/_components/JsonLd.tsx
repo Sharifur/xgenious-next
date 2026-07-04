@@ -196,7 +196,7 @@ export default function JsonLd() {
         name: 'What support is included with Qixer?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Every license includes 6 months of ticket-based support with an average 10-minute response time. Support can be extended to 12 months at checkout. Documentation is at docs.bytesed.com and a YouTube tutorial playlist covers installation and configuration.',
+          text: 'Every license includes 6 months of ticket-based support with an average 10-minute response time. Support can be extended to 12 months at checkout. Documentation is at docs.xgenious.com and a YouTube tutorial playlist covers installation and configuration.',
         },
       },
     ],

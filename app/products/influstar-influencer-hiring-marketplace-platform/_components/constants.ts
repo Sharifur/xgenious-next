@@ -10,7 +10,7 @@ export const PURCHASE_URL = 'https://codecanyon.net/item/influstar-influencer-hi
 export const DEMO_URL = 'https://influencer.bytesed.com';
 export const ADMIN_DEMO_URL = 'https://influencer.bytesed.com/admin';
 export const LOGIN_DEMO_URL = 'https://influencer.bytesed.com/login';
-export const DOCS_URL = 'https://docs.bytesed.com/docs/influstar/';
+export const DOCS_URL = 'https://docs.xgenious.com/docs/influstar-influencer-marketing-service-marketplace/';
 export const PRICING_URL = '#pricing';
 
 export const REGULAR_PRICE = 39;
