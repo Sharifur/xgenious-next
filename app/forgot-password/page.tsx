@@ -72,6 +72,7 @@ export default function ForgotPasswordPage() {
                     {...register('email')}
                     type="email"
                     autoComplete="email"
+                    suppressHydrationWarning
                     className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161] transition-colors ${errors.email ? 'border-red-300' : 'border-gray-200'}`}
                   />
                   {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>}

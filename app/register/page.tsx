@@ -185,11 +185,11 @@ export default function RegisterPage() {
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="block text-sm font-medium text-[#0F1112] mb-1.5">First name</label>
-                    <input {...register('firstName')} type="text" className={inputClass(false)} />
+                    <input {...register('firstName')} type="text" suppressHydrationWarning className={inputClass(false)} />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-[#0F1112] mb-1.5">Last name</label>
-                    <input {...register('lastName')} type="text" className={inputClass(false)} />
+                    <input {...register('lastName')} type="text" suppressHydrationWarning className={inputClass(false)} />
                   </div>
                 </div>
 
@@ -197,7 +197,7 @@ export default function RegisterPage() {
                   <label className="block text-sm font-medium text-[#0F1112] mb-1.5">
                     Email <span className="text-red-500">*</span>
                   </label>
-                  <input {...register('email')} type="email" autoComplete="email" className={inputClass(!!errors.email)} />
+                  <input {...register('email')} type="email" autoComplete="email" suppressHydrationWarning className={inputClass(!!errors.email)} />
                   {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>}
                   {autoUsername && !errors.email && (
                     <p className="mt-1.5 text-xs text-gray-400">
@@ -227,7 +227,7 @@ export default function RegisterPage() {
                       </button>
                     </div>
                     <div className="relative">
-                      <input {...register('password')} type={showPassword ? 'text' : 'password'} autoComplete="new-password" className={inputClass(!!errors.password) + ' pr-10'} />
+                      <input {...register('password')} type={showPassword ? 'text' : 'password'} autoComplete="new-password" suppressHydrationWarning className={inputClass(!!errors.password) + ' pr-10'} />
                       <button type="button" tabIndex={-1} onClick={() => setShowPassword((v) => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
                         {showPassword ? <EyeOff /> : <EyeOn />}
                       </button>
@@ -254,7 +254,7 @@ export default function RegisterPage() {
                       Confirm password <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
-                      <input {...register('confirm')} type={showConfirm ? 'text' : 'password'} autoComplete="new-password" className={inputClass(!!errors.confirm) + ' pr-10'} />
+                      <input {...register('confirm')} type={showConfirm ? 'text' : 'password'} autoComplete="new-password" suppressHydrationWarning className={inputClass(!!errors.confirm) + ' pr-10'} />
                       <button type="button" tabIndex={-1} onClick={() => setShowConfirm((v) => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
                         {showConfirm ? <EyeOff /> : <EyeOn />}
                       </button>
@@ -269,6 +269,7 @@ export default function RegisterPage() {
                     type="checkbox"
                     id="terms"
                     defaultChecked
+                    suppressHydrationWarning
                     className="mt-0.5 h-4 w-4 rounded border-gray-300 accent-[#ec7161] cursor-pointer"
                   />
                   <div>

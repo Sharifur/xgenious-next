@@ -196,5 +196,7 @@ When adding a single-segment route (e.g. `/free-tools`): add it to `NEXT_ROUTES`
 | XG-023 | Meta Pixel + Conversions API (CAPI) | DONE | HIGH | ~8k | Browser pixel + server-side CAPI for 5 events: PageView (all pages), InitiateCheckout (Confirm & Pay click), Purchase (FastSpring popup closed with order), CompleteRegistration (register success), Contact (contact form submit). Pixel ID 78345310. Dedup via event_id. PII hashed SHA-256 server-side. |
 | XG-024 | Fix /support/undefined crash | DONE | HIGH | ~3k | Guard ticket ID in 3 places: new/page.tsx navigates to list if API returns no id; page.tsx link skips if t.uuid??t.id is falsy; [id]/page.tsx loadTicket early-returns if id==='undefined' |
 
+| XG-025 | Fix /login removeChild crash on Android Chrome | DONE | HIGH | ~3k | Added suppressHydrationWarning to all inputs in login/register/forgot-password — Chrome password manager injects DOM nodes React can't reconcile |
+
 ### Sprint Stats
-- Total: 24  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 24  /  BLOCKED: 0
+- Total: 25  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 25  /  BLOCKED: 0
