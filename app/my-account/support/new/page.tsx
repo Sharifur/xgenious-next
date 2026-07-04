@@ -54,7 +54,8 @@ export default function NewTicketPage() {
     if (res.ok) {
       invalidate();
       const data = await res.json();
-      router.push(`/my-account/support/${data.id ?? data.data?.id}`);
+      const ticketId = data.id ?? data.data?.id ?? data.data?.uuid ?? data.uuid;
+      router.push(ticketId ? `/my-account/support/${ticketId}` : '/my-account/support');
     } else {
       const d = await res.json();
       const msg = typeof d.error === 'string' ? d.error : (d.message ?? 'Failed to create ticket.');

@@ -188,7 +188,7 @@ export default function SupportPage() {
 
                   {/* Main content */}
                   <div className="flex-1 min-w-0">
-                    <Link href={`/my-account/support/${t.uuid ?? t.id}`} className="block">
+                    <Link href={`/my-account/support/${t.uuid ?? t.id ?? ''}`} className={`block${!(t.uuid ?? t.id) ? ' pointer-events-none' : ''}`}>
                       <p className="text-sm font-semibold text-[#0F1112] leading-snug group-hover:text-[#ec7161] transition-colors line-clamp-2">
                         {String(t.subject ?? '').replace(/\s*\[[^\]]+\]/g, '').trim()}
                       </p>

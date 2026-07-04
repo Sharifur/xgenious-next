@@ -194,6 +194,7 @@ When adding a single-segment route (e.g. `/free-tools`): add it to `NEXT_ROUTES`
 | XG-022 | SQA checkout audit + fsReady guard + crash reporter | DONE | HIGH | ~30k | Full SQA pass: 30/30 non-regular checkout plans verified (page load, price, FastSpring popup). Root cause of customer "crash": button clickable before FS script loads → silent no-op. Fix: `disabled={!fsReady}` + Loading… spinner on Confirm & Pay button (`CheckoutClient.tsx`). Also built crash-email system: `CrashReporter` (window.onerror + unhandledrejection), `error.tsx` + `global-error.tsx` report on mount, `/api/crash-report` POST → AWS SES → dvrobin4@gmail.com. tsc clean. |
 
 | XG-023 | Meta Pixel + Conversions API (CAPI) | DONE | HIGH | ~8k | Browser pixel + server-side CAPI for 5 events: PageView (all pages), InitiateCheckout (Confirm & Pay click), Purchase (FastSpring popup closed with order), CompleteRegistration (register success), Contact (contact form submit). Pixel ID 78345310. Dedup via event_id. PII hashed SHA-256 server-side. |
+| XG-024 | Fix /support/undefined crash | DONE | HIGH | ~3k | Guard ticket ID in 3 places: new/page.tsx navigates to list if API returns no id; page.tsx link skips if t.uuid??t.id is falsy; [id]/page.tsx loadTicket early-returns if id==='undefined' |
 
 ### Sprint Stats
-- Total: 23  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 23  /  BLOCKED: 0
+- Total: 24  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 24  /  BLOCKED: 0

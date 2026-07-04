@@ -61,6 +61,7 @@ export default function TicketDetailPage() {
   const [confirmClose, setConfirmClose] = useState(false);
 
   async function loadTicket() {
+    if (!id || id === 'undefined') return;
     try {
       const res = await fetch(`/api/support-tickets/${id}`);
       if (!res.ok) {
