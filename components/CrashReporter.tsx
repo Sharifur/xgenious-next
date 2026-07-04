@@ -2,23 +2,40 @@
 import { useEffect } from 'react';
 import { reportCrash } from '@/lib/crash';
 
+// Patterns that indicate third-party script noise, not our app crashes
+const THIRD_PARTY_PATTERNS = [
+  /chrome-extension:\/\//,
+  /cortex-api\./,
+  /livechat\.js/,
+];
+
+function isThirdParty(stack: string, source: string): boolean {
+  const haystack = stack + source;
+  return THIRD_PARTY_PATTERNS.some((re) => re.test(haystack));
+}
+
 export default function CrashReporter() {
   useEffect(() => {
     function onError(event: ErrorEvent) {
+      const source = `${event.filename}:${event.lineno}:${event.colno}`;
+      const stack = event.error?.stack ?? '';
+      if (isThirdParty(stack, source)) return;
       reportCrash({
         type: 'JS runtime error',
         message: event.message,
-        stack: event.error?.stack ?? '',
-        source: `${event.filename}:${event.lineno}:${event.colno}`,
+        stack,
+        source,
       });
     }
 
     function onUnhandledRejection(event: PromiseRejectionEvent) {
       const reason = event.reason;
+      const stack = reason?.stack ?? '';
+      if (isThirdParty(stack, '')) return;
       reportCrash({
         type: 'Unhandled promise rejection',
         message: String(reason?.message ?? reason ?? 'Unknown rejection'),
-        stack: reason?.stack ?? '',
+        stack,
         source: 'unhandledrejection',
       });
     }
