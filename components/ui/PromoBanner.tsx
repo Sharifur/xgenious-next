@@ -11,7 +11,11 @@ export default function PromoBanner() {
   const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setDismissed(localStorage.getItem(STORAGE_KEY) === '1');
+    try {
+      setDismissed(localStorage.getItem(STORAGE_KEY) === '1');
+    } catch {
+      /* storage blocked (privacy mode / enterprise policy) — show banner */
+    }
   }, []);
 
   // Publish the bar's height as a CSS var so the fixed Navbar and page
@@ -37,7 +41,7 @@ export default function PromoBanner() {
 
   const dismiss = () => {
     setDismissed(true);
-    localStorage.setItem(STORAGE_KEY, '1');
+    try { localStorage.setItem(STORAGE_KEY, '1'); } catch { /* storage blocked */ }
   };
 
   const copyCode = async () => {
