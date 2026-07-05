@@ -14,9 +14,20 @@ const BENIGN_MESSAGES = [
   /ResizeObserver loop/,
 ];
 
+// Errors from unresolvable sources (inline/eval scripts) we can't act on
+const UNATTRIBUTABLE_MESSAGES = [
+  /Maximum call stack size exceeded/,
+];
+
 function isThirdParty(stack: string, source: string): boolean {
   const haystack = stack + source;
   return THIRD_PARTY_PATTERNS.some((re) => re.test(haystack));
+}
+
+function isUnattributable(message: string, source: string): boolean {
+  // source starts with "undefined:" when filename is missing — third-party inline/eval script
+  if (!source.startsWith('undefined:')) return false;
+  return UNATTRIBUTABLE_MESSAGES.some((re) => re.test(message));
 }
 
 function isBenign(message: string): boolean {
@@ -30,6 +41,7 @@ export default function CrashReporter() {
       const stack = event.error?.stack ?? '';
       if (isThirdParty(stack, source)) return;
       if (isBenign(event.message)) return;
+      if (isUnattributable(event.message, source)) return;
       reportCrash({
         type: 'JS runtime error',
         message: event.message,
