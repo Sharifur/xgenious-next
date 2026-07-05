@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { reportCrash } from '@/lib/crash';
+import { reportCrash, isNetworkError } from '@/lib/crash';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -77,13 +77,16 @@ export default function TicketDetailPage() {
       const data = await res.json();
       setTicket(data.data ?? data);
     } catch (err) {
-      reportCrash({
-        type: 'API fetch failure',
-        message: err instanceof Error ? err.message : 'Failed to fetch',
-        stack: err instanceof Error ? (err.stack ?? '') : '',
-        apiEndpoint: `/api/support-tickets/${id}`,
-        operation: 'loadTicket',
-      });
+      const msg = err instanceof Error ? err.message : 'Failed to fetch';
+      if (!isNetworkError(msg)) {
+        reportCrash({
+          type: 'API fetch failure',
+          message: msg,
+          stack: err instanceof Error ? (err.stack ?? '') : '',
+          apiEndpoint: `/api/support-tickets/${id}`,
+          operation: 'loadTicket',
+        });
+      }
     }
   }
 
