@@ -9,9 +9,18 @@ const THIRD_PARTY_PATTERNS = [
   /livechat\.js/,
 ];
 
+// Benign browser notifications that fire as errors but don't break the page
+const BENIGN_MESSAGES = [
+  /ResizeObserver loop/,
+];
+
 function isThirdParty(stack: string, source: string): boolean {
   const haystack = stack + source;
   return THIRD_PARTY_PATTERNS.some((re) => re.test(haystack));
+}
+
+function isBenign(message: string): boolean {
+  return BENIGN_MESSAGES.some((re) => re.test(message));
 }
 
 export default function CrashReporter() {
@@ -20,6 +29,7 @@ export default function CrashReporter() {
       const source = `${event.filename}:${event.lineno}:${event.colno}`;
       const stack = event.error?.stack ?? '';
       if (isThirdParty(stack, source)) return;
+      if (isBenign(event.message)) return;
       reportCrash({
         type: 'JS runtime error',
         message: event.message,

@@ -15,6 +15,18 @@ export interface CrashData {
 
 const reported = new Set<string>();
 
+// Pure network failures (no HTTP response) — transient, not actionable code bugs
+const NETWORK_ERROR_PATTERNS = [
+  /NetworkError when attempting to fetch/,
+  /Failed to fetch/,
+  /Load failed/,
+  /network error/i,
+];
+
+export function isNetworkError(message: string): boolean {
+  return NETWORK_ERROR_PATTERNS.some((re) => re.test(message));
+}
+
 export function reportCrash(data: CrashData) {
   const key = `${data.type}::${data.message?.slice(0, 100)}::${data.apiEndpoint ?? ''}::${data.operation ?? ''}`;
   if (reported.has(key)) return;
