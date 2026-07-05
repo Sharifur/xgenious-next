@@ -3,6 +3,15 @@ import { auth } from '@/auth';
 
 const TASKIP_API = 'https://public-api.taskip.net/api/public-v1/support-ticket';
 
+const TASKIP_HEADERS = {
+  'X-Secret-Key': process.env.TASKIP_SECRET_KEY!,
+  'Content-Type': 'application/json',
+};
+
+async function safeJson(res: Response): Promise<unknown> {
+  try { return await res.json(); } catch { return { error: `Taskip returned HTTP ${res.status} with non-JSON body` }; }
+}
+
 export async function GET(req: NextRequest) {
   const session = await auth();
   if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -15,16 +24,18 @@ export async function GET(req: NextRequest) {
   });
   if (session.wpEmail) params.set('search', session.wpEmail);
 
-  const res = await fetch(`${TASKIP_API}?${params}`, {
-    headers: {
-      'X-Secret-Key': process.env.TASKIP_SECRET_KEY!,
-      'Content-Type': 'application/json',
-    },
-    cache: 'no-store',
-  });
-
-  const data = await res.json();
-  return NextResponse.json(data, { status: res.status });
+  try {
+    const res = await fetch(`${TASKIP_API}?${params}`, {
+      headers: TASKIP_HEADERS,
+      cache: 'no-store',
+      signal: AbortSignal.timeout(10_000),
+    });
+    const data = await safeJson(res);
+    return NextResponse.json(data, { status: res.status });
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : 'Upstream error';
+    return NextResponse.json({ error: msg }, { status: 502 });
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -55,17 +66,19 @@ export async function POST(req: NextRequest) {
 
   console.log('[support-tickets POST] payload', JSON.stringify(payload));
 
-  const res = await fetch(TASKIP_API, {
-    method: 'POST',
-    headers: {
-      'X-Secret-Key': process.env.TASKIP_SECRET_KEY!,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-    cache: 'no-store',
-  });
-
-  const data = await res.json();
-  if (!res.ok) console.error('[support-tickets POST] Taskip error', res.status, JSON.stringify(data));
-  return NextResponse.json(data, { status: res.status });
+  try {
+    const res = await fetch(TASKIP_API, {
+      method: 'POST',
+      headers: TASKIP_HEADERS,
+      body: JSON.stringify(payload),
+      cache: 'no-store',
+      signal: AbortSignal.timeout(10_000),
+    });
+    const data = await safeJson(res);
+    if (!res.ok) console.error('[support-tickets POST] Taskip error', res.status, JSON.stringify(data));
+    return NextResponse.json(data, { status: res.status });
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : 'Upstream error';
+    return NextResponse.json({ error: msg }, { status: 502 });
+  }
 }

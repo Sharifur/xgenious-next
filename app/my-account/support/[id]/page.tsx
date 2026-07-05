@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import { reportCrash, isNetworkError } from '@/lib/crash';
 import Link from 'next/link';
@@ -59,12 +59,19 @@ export default function TicketDetailPage() {
   const [error, setError] = useState('');
   const [closing, setClosing] = useState(false);
   const [confirmClose, setConfirmClose] = useState(false);
+  const pollStoppedRef = useRef(false);
 
   async function loadTicket() {
     if (!id || id === 'undefined') return;
     try {
       const res = await fetch(`/api/support-tickets/${id}`);
       if (!res.ok) {
+        // 4xx = unrecoverable data error — stop polling, don't spam crash reports
+        if (res.status >= 400 && res.status < 500) {
+          pollStoppedRef.current = true;
+          return;
+        }
+        // 5xx = server error — report once, keep polling (may recover)
         reportCrash({
           type: 'API error response',
           message: `HTTP ${res.status} from support ticket API`,
@@ -91,8 +98,12 @@ export default function TicketDetailPage() {
   }
 
   useEffect(() => {
+    pollStoppedRef.current = false;
     loadTicket();
-    const interval = setInterval(loadTicket, 30_000);
+    const interval = setInterval(() => {
+      if (pollStoppedRef.current) return;
+      loadTicket();
+    }, 30_000);
     return () => clearInterval(interval);
   }, [id]);
 
