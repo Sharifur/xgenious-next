@@ -9,7 +9,9 @@ export default function IframeNotice() {
   const [url, setUrl] = useState('');
 
   useEffect(() => {
-    if (window.self !== window.top) {
+    let inIframe = false;
+    try { inIframe = window.self !== window.top; } catch { inIframe = true; }
+    if (inIframe) {
       setIsIframe(true);
       setUrl(window.location.href);
       const timer = setTimeout(() => setVisible(true), 4000);
