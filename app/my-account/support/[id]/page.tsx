@@ -71,14 +71,7 @@ export default function TicketDetailPage() {
           pollStoppedRef.current = true;
           return;
         }
-        // 5xx = server error — report once, keep polling (may recover)
-        reportCrash({
-          type: 'API error response',
-          message: `HTTP ${res.status} from support ticket API`,
-          apiEndpoint: `/api/support-tickets/${id}`,
-          operation: 'loadTicket',
-          httpStatus: String(res.status),
-        });
+        // 5xx = upstream Taskip outage — transient, keep polling silently
         return;
       }
       const data = await res.json();
