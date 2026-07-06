@@ -4,6 +4,19 @@
 
 # Xgenious-Next — Project Rules
 
+## Git Branch Rules
+
+**Always push to `dev` branch. Never push directly to `main`.**
+
+```bash
+git push origin dev       # ✅ correct
+git push origin main      # ❌ never do this
+```
+
+`main` is production (Vercel auto-deploys). Changes go `dev` → PR → `main` only via GitHub pull request.
+
+---
+
 ## Stack
 
 Next.js App Router (Vercel) + WordPress REST API (Vultr VPS). Auth.js v5. Full integration reference: `docs/integrations.md`.
