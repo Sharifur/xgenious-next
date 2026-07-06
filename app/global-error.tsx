@@ -9,6 +9,15 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
+    const isChunkError = /ChunkLoadError|Loading chunk|Failed to load chunk/i.test(error.message);
+    if (isChunkError) {
+      const key = `chunk-reload:${window.location.pathname}`;
+      if (!sessionStorage.getItem(key)) {
+        sessionStorage.setItem(key, '1');
+        window.location.reload();
+      }
+      return;
+    }
     fetch('/api/crash-report', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

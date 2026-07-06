@@ -11,6 +11,16 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
+    const isChunkError = /ChunkLoadError|Loading chunk|Failed to load chunk/i.test(error.message);
+    if (isChunkError) {
+      // Stale deployment — old chunk URLs no longer exist. Reload once to get fresh HTML.
+      const key = `chunk-reload:${window.location.pathname}`;
+      if (!sessionStorage.getItem(key)) {
+        sessionStorage.setItem(key, '1');
+        window.location.reload();
+      }
+      return; // don't report — not actionable
+    }
     fetch('/api/crash-report', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -18,8 +28,8 @@ export default function GlobalError({
         type: 'React render error',
         message: error.message,
         stack: error.stack ?? '',
-        url: typeof window !== 'undefined' ? window.location.href : '',
-        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+        url: window.location.href,
+        userAgent: navigator.userAgent,
         digest: error.digest ?? '',
       }),
     }).catch(() => {});
