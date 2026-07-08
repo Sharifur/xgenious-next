@@ -106,6 +106,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/free-tools/jpg-to-webp`, priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/free-tools/png-to-avif`, priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/free-tools/jpg-to-avif`, priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: `${BASE_URL}/free-tools/saas-calculators`, priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: `${BASE_URL}/free-tools/break-even-calculator`, priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: `${BASE_URL}/free-tools/saas-valuation-calculator`, priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: `${BASE_URL}/free-tools/nrr-calculator`, priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: `${BASE_URL}/free-tools/payback-period-calculator`, priority: 0.8, changeFrequency: 'weekly' as const },
   ];
 
   return staticPages.map((page) => ({

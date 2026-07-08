@@ -211,5 +211,7 @@ When adding a single-segment route (e.g. `/free-tools`): add it to `NEXT_ROUTES`
 
 | XG-025 | Fix /login removeChild crash on Android Chrome | DONE | HIGH | ~3k | Added suppressHydrationWarning to all inputs in login/register/forgot-password — Chrome password manager injects DOM nodes React can't reconcile |
 
+| XG-026 | SaaS calculators hub + 4 new tools + SEO/AEO/lead-gen pass | DONE | HIGH | ~45k | Phase 1–5: New `/free-tools/saas-calculators` hub page targeting "free SaaS calculators" head term (18 tools, ItemList+FAQPage JSON-LD, 8 AEO Q&As, CTA → /contact); 4 new calculator components (BreakEven, SaasValuation, NRR, PaybackPeriod) + full data entries with FAQ/featureList/comparisonTable/commonErrors; mid-page coral CTA on all SaaS tool pages; SaaS breadcrumb updated to hub URL; llms.txt SaaS calculators section; free-tools/page.tsx meta updated + SaaS founders spotlight; sitemap +5 URLs. tsc clean. |
+
 ### Sprint Stats
-- Total: 25  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 25  /  BLOCKED: 0
+- Total: 26  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 26  /  BLOCKED: 0
