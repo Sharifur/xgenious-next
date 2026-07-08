@@ -50,6 +50,10 @@ const COMPONENT_MAP: Record<string, React.ComponentType> = {
   'jpg-to-webp':                       dynamic(() => import('./JpgToWebp'), { ssr: false }),
   'png-to-avif':                       dynamic(() => import('./PngToAvif'), { ssr: false }),
   'jpg-to-avif':                       dynamic(() => import('./JpgToAvif'), { ssr: false }),
+  'break-even-calculator':             dynamic(() => import('./BreakEvenCalculator'), { ssr: false }),
+  'saas-valuation-calculator':         dynamic(() => import('./SaasValuationCalculator'), { ssr: false }),
+  'nrr-calculator':                    dynamic(() => import('./NrrCalculator'), { ssr: false }),
+  'payback-period-calculator':         dynamic(() => import('./PaybackPeriodCalculator'), { ssr: false }),
 };
 
 export default function ToolRenderer({ slug }: { slug: string }) {

@@ -209,10 +209,10 @@ export default async function FreeToolPage({ params }: PageProps) {
             </Link>
             <span>/</span>
             <Link
-              href={`/free-tools?category=${tool.category}`}
+              href={tool.category === 'saas' ? '/free-tools/saas-calculators' : `/free-tools?category=${tool.category}`}
               className="capitalize hover:text-[#0F1112] transition-colors duration-150"
             >
-              {tool.category}
+              {tool.category === 'saas' ? 'SaaS Calculators' : tool.category}
             </Link>
             <span>/</span>
             <span className="text-[#0F1112] font-medium">{tool.title}</span>
@@ -451,6 +451,43 @@ export default async function FreeToolPage({ params }: PageProps) {
                   <p className="text-[13px] text-[#484848] leading-[21px]">{fix}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── SaaS CTA (SaaS tools only) ───────────────────────────────────── */}
+      {tool.category === 'saas' && (
+        <section className="py-10 sm:py-12" style={{ background: '#fff1ee' }}>
+          <div className="container-page px-4 sm:px-6 lg:px-0">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+              <div className="flex flex-col gap-2 max-w-[520px]">
+                <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: '#f26b4e' }}>Building a SaaS?</p>
+                <h2 className="text-[20px] sm:text-[24px] font-semibold text-[#0F1112] leading-[28px] sm:leading-[32px] tracking-[-0.01em]">
+                  Turn these numbers into a real product
+                </h2>
+                <p className="text-[14px] text-[#484848] leading-[22px]">
+                  We build production SaaS products in 6–8 weeks. Fixed price, committed timeline.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3 sm:flex-shrink-0">
+                <Link
+                  href="/book-a-call"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-[14px] font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+                  style={{ background: '#f26b4e', boxShadow: '0 4px 16px rgba(242,107,78,0.25)' }}
+                >
+                  Book a free call
+                  <svg width="13" height="13" viewBox="0 0 15 15" fill="none">
+                    <path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/custom-saas-development-company"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-[14px] font-semibold border border-[#f26b4e] text-[#f26b4e] bg-white transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+                >
+                  See our SaaS work
+                </Link>
+              </div>
             </div>
           </div>
         </section>

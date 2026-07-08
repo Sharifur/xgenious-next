@@ -222,6 +222,41 @@ Self-hosted AI chatbot + support ticketing SaaS on Laravel — build a Crisp or 
 - Key features: semantic AI chatbot, support ticketing with human handoff, multi-tenant SaaS management, subscription billing, white-label, knowledge base
 - Keywords: ai chatbot script, laravel chatbot script, customer support chatbot script, intercom alternative self-hosted, crisp alternative script, helpdesk script laravel, white label chatbot software
 
+## Free SaaS Calculators
+
+18 free browser-based calculators for SaaS founders, operators, and investors. No login, no signup, no data uploaded. All calculations run client-side.
+
+Hub page: https://xgenious.com/free-tools/saas-calculators
+
+### SaaS Metrics Calculators
+
+- [SaaS Pricing Calculator](https://xgenious.com/free-tools/saas-pricing-calculator): Model pricing tiers and forecast MRR and blended ARPU across up to 6 plans
+- [MRR Growth Simulator](https://xgenious.com/free-tools/mrr-growth-simulator): Simulate monthly recurring revenue growth over 24 months with churn
+- [Churn Rate Calculator](https://xgenious.com/free-tools/churn-rate-calculator): Calculate customer churn rate, MRR churn, retention rate, and customer LTV
+- [Customer LTV Calculator](https://xgenious.com/free-tools/customer-ltv-calculator): Lifetime value per customer with LTV:CAC ratio
+- [CAC Calculator](https://xgenious.com/free-tools/cac-calculator): Customer acquisition cost with payback period and efficiency metrics
+- [NRR Calculator](https://xgenious.com/free-tools/nrr-calculator): Net Revenue Retention and Gross Revenue Retention from expansion, contraction, and churn MRR
+- [CAC Payback Period Calculator](https://xgenious.com/free-tools/payback-period-calculator): Months to recover customer acquisition cost, LTV:CAC ratio, first-year ROI
+- [SaaS Valuation Calculator](https://xgenious.com/free-tools/saas-valuation-calculator): ARR multiple range, Rule of 40 score, NRR quality-adjusted valuation estimate
+- [SaaS Runway Calculator](https://xgenious.com/free-tools/saas-runway-calculator): Cash runway in months, break-even date, months to profitability
+
+### Business & Financial Calculators
+
+- [Break-Even Calculator](https://xgenious.com/free-tools/break-even-calculator): Break-even units and revenue, contribution margin, safety margin
+- [Build vs Buy Calculator](https://xgenious.com/free-tools/build-vs-buy-calculator): Total cost comparison for build vs buy decisions
+- [Equity Dilution Calculator](https://xgenious.com/free-tools/equity-dilution-calculator): Founder and investor equity after multiple funding rounds
+- [Custom Software ROI Calculator](https://xgenious.com/free-tools/custom-software-roi-calculator): Return on investment for custom software development
+
+### SaaS Planning Tools
+
+- [MVP Cost Estimator](https://xgenious.com/free-tools/mvp-cost-estimator): Estimate software development cost for an MVP
+- [Sprint Velocity Calculator](https://xgenious.com/free-tools/sprint-velocity-calculator): Agile sprint capacity and team velocity
+- [Tech Stack Recommender](https://xgenious.com/free-tools/tech-stack-recommender): Technology selection for SaaS and web apps
+- [Cold Email ROI Calculator](https://xgenious.com/free-tools/cold-email-roi-calculator): Email campaign return on investment
+- [Sales Pipeline Calculator](https://xgenious.com/free-tools/sales-pipeline-calculator): Pipeline value, conversion rates, and revenue forecast
+
+Keywords: free saas calculators, saas metrics calculator, mrr calculator, churn rate calculator free, saas valuation calculator, nrr calculator, payback period calculator saas, break even calculator startup, free startup calculators
+
 ## Company
 
 - [About](https://xgenious.com/about)
