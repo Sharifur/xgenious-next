@@ -59,6 +59,16 @@
       "source": "/our-products/prohandy-on-demand-home-service-marketplace-platform/",
       "destination": "/products/prohandy-on-demand-home-service-marketplace",
       "permanent": true
+    },
+    {
+      "source": "/docs",
+      "destination": "https://docs.xgenious.com",
+      "permanent": true
+    },
+    {
+      "source": "/docs/:path*",
+      "destination": "https://docs.xgenious.com/:path*",
+      "permanent": true
     }
   ],
   "rewrites": [
