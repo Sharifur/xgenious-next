@@ -215,6 +215,9 @@ When adding a single-segment route (e.g. `/free-tools`): add it to `NEXT_ROUTES`
 
 | XG-027 | Redirect /docs/* → docs.xgenious.com | DONE | MED | ~3k | Added 301 redirects in vercel.json: `/docs` → `https://docs.xgenious.com`, `/docs/:path*` → `https://docs.xgenious.com/:path*` (path suffix preserved). Docs site moved off main domain; edge redirect runs before middleware/Next routing, no app code touched. |
 | XG-028 | Fix Prohandy app-store addon titles + price | DONE | LOW | ~5k | `lib/checkout-products.ts` prohandy-everything-bundle addons: relabeled `prohandy-appstore-google` → "Google Play — Publish Both Apps, We Handle It" and `prohandy-appstore-apple` → "Apple App Store — Publish Both Apps, We Handle It" (platform name leads, was confusingly similar). Fixed price 398→399 on both. tsc clean. |
+| XG-029 | Fix Qixer app-store addon titles | DONE | LOW | ~2k | `lib/checkout-products.ts` qixer-everything-bundle addons: relabeled `qixer-appstore-google` → "Google Play — Publish Both Apps, We Handle It" and `qixer-appstore-apple` → "Apple App Store — Publish Both Apps, We Handle It" (title-only, price already correct at 199/399). tsc clean. |
+| XG-030 | Fix GoCar app-store addon titles | DONE | LOW | ~2k | `lib/checkout-products.ts` gocar-everything-bundle addons only (not exclusive-pack, out of scope): relabeled `gocar-appstore-google` → "Google Play — Publish Customer App, We Handle It" and `gocar-appstore-apple` → "Apple App Store — Publish Customer App, We Handle It" (title-only, price already correct at 199/399). tsc clean. |
+| XG-031 | Fix Xilancer app-store addon titles + price | DONE | LOW | ~2k | `lib/checkout-products.ts` xilancer-bundle-pack addons: relabeled `xilancer-appstore-google` → "Google Play — Publish Both Apps, We Handle It" and `xilancer-appstore-apple` → "Apple App Store — Publish Both Apps, We Handle It". Fixed price 398→399 on both (same recurring bug as XG-028). Confirmed no remaining `398` price values anywhere in checkout-products.ts. tsc clean. |
 
 ### Sprint Stats
-- Total: 28  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 28  /  BLOCKED: 0
+- Total: 31  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 31  /  BLOCKED: 0
