@@ -1062,7 +1062,7 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'gocar-appstore-google',
-        label: 'Publish Customer App to Google Play — We Handle It',
+        label: 'Google Play — Publish Customer App, We Handle It',
         description: 'Your app, live on Google Play. We sign, submit, and follow up with Google until approved.',
         price: 199,
         originalPrice: 399,
@@ -1079,7 +1079,7 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'gocar-appstore-apple',
-        label: 'Publish Customer App to App Store — We Handle It',
+        label: 'Apple App Store — Publish Customer App, We Handle It',
         description: 'Your app, live on the App Store. We handle signing, submission, and App Store review until approved.',
         price: 199,
         originalPrice: 399,
