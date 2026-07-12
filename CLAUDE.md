@@ -214,6 +214,7 @@ When adding a single-segment route (e.g. `/free-tools`): add it to `NEXT_ROUTES`
 | XG-026 | SaaS calculators hub + 4 new tools + SEO/AEO/lead-gen pass | DONE | HIGH | ~45k | Phase 1–5: New `/free-tools/saas-calculators` hub page targeting "free SaaS calculators" head term (18 tools, ItemList+FAQPage JSON-LD, 8 AEO Q&As, CTA → /contact); 4 new calculator components (BreakEven, SaasValuation, NRR, PaybackPeriod) + full data entries with FAQ/featureList/comparisonTable/commonErrors; mid-page coral CTA on all SaaS tool pages; SaaS breadcrumb updated to hub URL; llms.txt SaaS calculators section; free-tools/page.tsx meta updated + SaaS founders spotlight; sitemap +5 URLs. tsc clean. |
 
 | XG-027 | Redirect /docs/* → docs.xgenious.com | DONE | MED | ~3k | Added 301 redirects in vercel.json: `/docs` → `https://docs.xgenious.com`, `/docs/:path*` → `https://docs.xgenious.com/:path*` (path suffix preserved). Docs site moved off main domain; edge redirect runs before middleware/Next routing, no app code touched. |
+| XG-028 | Fix Prohandy app-store addon titles + price | DONE | LOW | ~5k | `lib/checkout-products.ts` prohandy-everything-bundle addons: relabeled `prohandy-appstore-google` → "Google Play — Publish Both Apps, We Handle It" and `prohandy-appstore-apple` → "Apple App Store — Publish Both Apps, We Handle It" (platform name leads, was confusingly similar). Fixed price 398→399 on both. tsc clean. |
 
 ### Sprint Stats
-- Total: 27  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 27  /  BLOCKED: 0
+- Total: 28  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 28  /  BLOCKED: 0
