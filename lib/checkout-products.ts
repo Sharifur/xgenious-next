@@ -727,9 +727,9 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'prohandy-appstore-google',
-        label: 'Publish Both Apps to Google Play — We Handle It',
+        label: 'Google Play — Publish Both Apps, We Handle It',
         description: 'Both apps live on Google Play. We sign, submit, and follow up with Google until both are approved.',
-        price: 398,
+        price: 399,
         originalPrice: 800,
         includes: [
           'APK signing & release build for both apps',
@@ -744,9 +744,9 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'prohandy-appstore-apple',
-        label: 'Publish Both Apps to App Store — We Handle It',
+        label: 'Apple App Store — Publish Both Apps, We Handle It',
         description: 'Both apps live on the App Store. We handle signing, submission, and App Store review until approved.',
-        price: 398,
+        price: 399,
         originalPrice: 800,
         includes: [
           'IPA build & code signing for both apps',
