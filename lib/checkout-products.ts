@@ -97,9 +97,9 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'xilancer-appstore-google',
-        label: 'Publish Both Apps to Google Play — We Handle It',
+        label: 'Google Play — Publish Both Apps, We Handle It',
         description: 'Your apps, live on Google Play. We sign, submit, and follow up with Google until both apps are approved.',
-        price: 398,
+        price: 399,
         originalPrice: 800,
         includes: [
           'APK signing & release build',
@@ -114,9 +114,9 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'xilancer-appstore-apple',
-        label: 'Publish Both Apps to the App Store — We Handle It',
+        label: 'Apple App Store — Publish Both Apps, We Handle It',
         description: 'Your apps, live on the App Store. We handle signing, submission, and App Store review until both are approved.',
-        price: 398,
+        price: 399,
         originalPrice: 800,
         includes: [
           'IPA build & code signing',
@@ -403,7 +403,7 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'fundorex-appstore-google',
-        label: 'Publish Mobile App to Google Play — We Handle It',
+        label: 'Google Play — Publish Mobile App, We Handle It',
         description: 'Your app, live on Google Play. We sign, submit, and follow up with Google until approved.',
         price: 199,
         originalPrice: 399,
@@ -420,7 +420,7 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'fundorex-appstore-apple',
-        label: 'Publish Mobile App to App Store — We Handle It',
+        label: 'Apple App Store — Publish Mobile App, We Handle It',
         description: 'Your app, live on the App Store. We handle signing, submission, and App Store review until approved.',
         price: 199,
         originalPrice: 399,
@@ -959,7 +959,7 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'gocar-appstore-google',
-        label: 'Publish Customer App to Google Play — We Handle It',
+        label: 'Google Play — Publish Customer App, We Handle It',
         description: 'Your app, live on Google Play. We sign, submit, and follow up with Google until approved.',
         price: 199,
         originalPrice: 399,
@@ -976,7 +976,7 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'gocar-appstore-apple',
-        label: 'Publish Customer App to App Store — We Handle It',
+        label: 'Apple App Store — Publish Customer App, We Handle It',
         description: 'Your app, live on the App Store. We handle signing, submission, and App Store review until approved.',
         price: 199,
         originalPrice: 399,
@@ -1062,7 +1062,7 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'gocar-appstore-google',
-        label: 'Publish Customer App to Google Play — We Handle It',
+        label: 'Google Play — Publish Customer App, We Handle It',
         description: 'Your app, live on Google Play. We sign, submit, and follow up with Google until approved.',
         price: 199,
         originalPrice: 399,
@@ -1079,7 +1079,7 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'gocar-appstore-apple',
-        label: 'Publish Customer App to App Store — We Handle It',
+        label: 'Apple App Store — Publish Customer App, We Handle It',
         description: 'Your app, live on the App Store. We handle signing, submission, and App Store review until approved.',
         price: 199,
         originalPrice: 399,
@@ -1178,7 +1178,7 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'qixer-appstore-google',
-        label: 'Publish Both Apps to Google Play — We Handle It',
+        label: 'Google Play — Publish Both Apps, We Handle It',
         description: 'Both apps live on Google Play. We sign, submit, and follow up with Google until both are approved.',
         price: 199,
         originalPrice: 399,
@@ -1195,7 +1195,7 @@ const PRODUCTS: Record<string, CheckoutProduct> = {
       },
       {
         path: 'qixer-appstore-apple',
-        label: 'Publish Both Apps to App Store — We Handle It',
+        label: 'Apple App Store — Publish Both Apps, We Handle It',
         description: 'Both apps live on the App Store. We handle signing, submission, and App Store review until approved.',
         price: 199,
         originalPrice: 399,
