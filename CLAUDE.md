@@ -222,5 +222,7 @@ When adding a single-segment route (e.g. `/free-tools`): add it to `NEXT_ROUTES`
 | XG-033 | Fix GoCar exclusive-pack app-store addon titles | DONE | LOW | ~1k | `lib/checkout-products.ts` gocar-exclusive-pack addons (last remaining "Publish X to Google Play/App Store" pattern in file): relabeled to platform-leading form. Confirmed via grep: zero remaining old-style labels anywhere in checkout-products.ts. tsc clean. |
 | XG-034 | Render support ticket attachments (my-account) | DONE | MED | ~10k | Per `taskip-api/docs/public-api-support-ticket-attachments.md`: `GET support-ticket/{uuid}` (show) returns `data.attachment` (single MediaResource, ticket-level) and `data.replies[].attachment` (array, reply-level) — page previously ignored both entirely. Added `Attachments` component to `app/my-account/support/[id]/page.tsx`: image thumbnails render inline, other file types render as download chip (name + size). Wired into original-message block + each reply. No API route changes needed — GET proxy already passes upstream JSON through untouched. tsc clean. |
 
+| XG-035 | Fix default "Active" ticket filter — add Replied & Queue | DONE | MED | ~4k | `store/useTicketsStore.ts` "active" filter only matched status 0/1 (Open/In Progress); customer requested default view include Replied (3) and Queue (5) too, excluding Waiting-For-Reply (4) and Closed (2). Updated filter + dropdown label in `app/my-account/support/page.tsx`. tsc clean. |
+
 ### Sprint Stats
-- Total: 34  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 34  /  BLOCKED: 0
+- Total: 35  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 35  /  BLOCKED: 0

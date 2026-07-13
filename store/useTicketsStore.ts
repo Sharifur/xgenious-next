@@ -80,8 +80,11 @@ export const useTicketsStore = create<TicketsStore>((set, get) => ({
       if (params.status === 'all-except-closed') {
         tickets = tickets.filter((t) => !isClosedT(t));
       } else if (params.status === 'active') {
-        // open (0) or in progress (1) only
-        tickets = tickets.filter((t) => t.status === 0 || t.status === 1 || t.status === 'open' || t.status === 'in-progress');
+        // open (0), in progress (1), replied (3), queue (5) — excludes waiting-for-reply (4) and closed (2)
+        tickets = tickets.filter((t) =>
+          t.status === 0 || t.status === 1 || t.status === 3 || t.status === 5 ||
+          t.status === 'open' || t.status === 'in-progress' || t.status === 'replied' || t.status === 'queue'
+        );
       }
       const total = data.total ?? data.meta?.total ?? tickets.length;
 
