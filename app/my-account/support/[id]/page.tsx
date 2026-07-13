@@ -40,6 +40,54 @@ function extractFluentForm(html: string): Record<string, string> | null {
   return Object.keys(result).length > 0 ? result : null;
 }
 
+type MediaAttachment = {
+  id: number;
+  title: string;
+  ext: string;
+  size: number;
+  url: string;
+  media_type: string;
+};
+
+function formatBytes(bytes: number): string {
+  if (!bytes) return '0 B';
+  const units = ['B', 'KB', 'MB', 'GB'];
+  const i = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1);
+  return `${(bytes / 1024 ** i).toFixed(i === 0 ? 0 : 1)} ${units[i]}`;
+}
+
+function Attachments({ items }: { items: MediaAttachment[] | null | undefined }) {
+  if (!items || items.length === 0) return null;
+  return (
+    <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-gray-100">
+      {items.map((a) => (
+        <a
+          key={a.id}
+          href={a.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group"
+        >
+          {a.media_type === 'image' ? (
+            <img
+              src={a.url}
+              alt={a.title}
+              className="w-16 h-16 rounded-lg object-cover border border-gray-200 group-hover:border-[#ec7161] transition-colors"
+            />
+          ) : (
+            <span className="flex items-center gap-1.5 text-xs px-2.5 py-1.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-600 group-hover:border-[#ec7161] group-hover:text-[#ec7161] transition-colors">
+              <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              {a.title} · {formatBytes(a.size)}
+            </span>
+          )}
+        </a>
+      ))}
+    </div>
+  );
+}
+
 function Avatar({ name, isSupport, imageUrl }: { name: string; isSupport: boolean; imageUrl?: string }) {
   if (imageUrl) {
     return <img src={imageUrl} alt={name} className="w-6 h-6 rounded-full object-cover flex-shrink-0" />;
@@ -310,6 +358,7 @@ export default function TicketDetailPage() {
             dangerouslySetInnerHTML={{ __html: ticket.description ?? '' }}
           />
         )}
+        <Attachments items={ticket.attachment ? [ticket.attachment] : null} />
       </div>
 
       {/* Replies */}
@@ -335,6 +384,7 @@ export default function TicketDetailPage() {
                   className="prose prose-sm max-w-none text-sm text-gray-700 [&_img]:max-w-full [&_img]:rounded-lg [&_a]:text-[#ec7161] [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4"
                   dangerouslySetInnerHTML={{ __html: r.description ?? '' }}
                 />
+                <Attachments items={r.attachment} />
               </div>
             );
           })}
