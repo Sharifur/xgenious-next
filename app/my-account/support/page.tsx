@@ -136,7 +136,7 @@ export default function SupportPage() {
           onChange={(e) => { setStatus(e.target.value); setPage(1); }}
           className="px-3.5 py-2 border border-gray-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#ec7161]/20 focus:border-[#ec7161]"
         >
-          <option value="active">Active (open &amp; in progress)</option>
+          <option value="active">Active (open, in progress, replied &amp; queue)</option>
           <option value="all-except-closed">All (except closed)</option>
           <option value="all">All tickets</option>
           <option value="0">Open</option>
