@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import { reportCrash, isNetworkError } from '@/lib/crash';
 import Link from 'next/link';
@@ -56,35 +56,163 @@ function formatBytes(bytes: number): string {
   return `${(bytes / 1024 ** i).toFixed(i === 0 ? 0 : 1)} ${units[i]}`;
 }
 
-function Attachments({ items }: { items: MediaAttachment[] | null | undefined }) {
-  if (!items || items.length === 0) return null;
+function ImageLightbox({ attachment, onClose }: { attachment: MediaAttachment; onClose: () => void }) {
+  const [zoom, setZoom] = useState(1);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
+  const dragStart = useRef({ x: 0, y: 0, px: 0, py: 0 });
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  const reset = useCallback(() => { setZoom(1); setPos({ x: 0, y: 0 }); }, []);
+
+  const handleWheel = useCallback((e: React.WheelEvent) => {
+    e.preventDefault();
+    setZoom(z => Math.min(Math.max(z + (e.deltaY > 0 ? -0.15 : 0.15), 0.5), 5));
+  }, []);
+
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (zoom <= 1) return;
+    setDragging(true);
+    dragStart.current = { x: e.clientX, y: e.clientY, px: pos.x, py: pos.y };
+  }, [zoom, pos]);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!dragging) return;
+    setPos({ x: dragStart.current.px + (e.clientX - dragStart.current.x), y: dragStart.current.py + (e.clientY - dragStart.current.y) });
+  }, [dragging]);
+
+  const handleMouseUp = useCallback(() => setDragging(false), []);
+
+  const handleDownload = useCallback(() => {
+    const a = document.createElement('a');
+    a.href = attachment.url;
+    a.download = attachment.title || 'download';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }, [attachment]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === '+' || e.key === '=') setZoom(z => Math.min(z + 0.25, 5));
+      if (e.key === '-') setZoom(z => Math.max(z - 0.25, 0.5));
+      if (e.key === '0') reset();
+    };
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+  }, [onClose, reset]);
+
   return (
-    <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-gray-100">
-      {items.map((a) => (
-        <a
-          key={a.id}
-          href={a.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group"
-        >
-          {a.media_type === 'image' ? (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80" onClick={onClose}>
+      {/* Top toolbar */}
+      <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 py-3 bg-gradient-to-b from-black/60 to-transparent z-10" onClick={e => e.stopPropagation()}>
+        <p className="text-white text-sm font-medium truncate max-w-[60%]">{attachment.title}</p>
+        <div className="flex items-center gap-2">
+          <button onClick={() => setZoom(z => Math.min(z + 0.25, 5))} className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" title="Zoom in">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </button>
+          <button onClick={() => setZoom(z => Math.max(z - 0.25, 0.5))} className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" title="Zoom out">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </button>
+          <button onClick={reset} className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors text-xs font-bold" title="Reset zoom">
+            1:1
+          </button>
+          <button onClick={handleDownload} className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" title="Download">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </button>
+          <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" title="Close">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Image */}
+      <div
+        className="w-full h-full flex items-center justify-center overflow-hidden"
+        style={{ cursor: zoom > 1 ? (dragging ? 'grabbing' : 'grab') : 'zoom-in' }}
+        onClick={e => e.stopPropagation()}
+        onWheel={handleWheel}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+      >
+        <img
+          ref={imgRef}
+          src={attachment.url}
+          alt={attachment.title}
+          className="max-w-[90vw] max-h-[85vh] object-contain select-none transition-transform duration-100"
+          style={{ transform: `scale(${zoom}) translate(${pos.x / zoom}px, ${pos.y / zoom}px)` }}
+          draggable={false}
+        />
+      </div>
+
+      {/* Zoom indicator */}
+      {zoom !== 1 && (
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-white/10 text-white text-xs font-medium backdrop-blur-sm">
+          {Math.round(zoom * 100)}%
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Attachments({ items }: { items: MediaAttachment[] | null | undefined }) {
+  const [lightbox, setLightbox] = useState<MediaAttachment | null>(null);
+
+  if (!items || items.length === 0) return null;
+
+  const images = items.filter(a => a.media_type === 'image');
+  const files = items.filter(a => a.media_type !== 'image');
+
+  const handleFileDownload = (a: MediaAttachment) => {
+    const link = document.createElement('a');
+    link.href = a.url;
+    link.download = a.title || 'download';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <>
+      <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-gray-100">
+        {images.map((a) => (
+          <button
+            key={a.id}
+            onClick={() => setLightbox(a)}
+            className="group relative rounded-lg overflow-hidden border border-gray-200 hover:border-[#ec7161] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ec7161]"
+          >
             <img
               src={a.url}
               alt={a.title}
-              className="w-16 h-16 rounded-lg object-cover border border-gray-200 group-hover:border-[#ec7161] transition-colors"
+              className="w-20 h-20 object-cover"
             />
-          ) : (
-            <span className="flex items-center gap-1.5 text-xs px-2.5 py-1.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-600 group-hover:border-[#ec7161] group-hover:text-[#ec7161] transition-colors">
-              <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <svg className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
               </svg>
-              {a.title} · {formatBytes(a.size)}
-            </span>
-          )}
-        </a>
-      ))}
-    </div>
+            </div>
+          </button>
+        ))}
+        {files.map((a) => (
+          <button
+            key={a.id}
+            onClick={() => handleFileDownload(a)}
+            className="group flex items-center gap-2 text-xs px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-600 hover:border-[#ec7161] hover:text-[#ec7161] transition-colors cursor-pointer"
+          >
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span className="font-medium">{a.title}</span>
+            <span className="text-gray-400">{formatBytes(a.size)}</span>
+          </button>
+        ))}
+      </div>
+      {lightbox && <ImageLightbox attachment={lightbox} onClose={() => setLightbox(null)} />}
+    </>
   );
 }
 
@@ -109,6 +237,13 @@ export default function TicketDetailPage() {
   const [confirmClose, setConfirmClose] = useState(false);
   const pollStoppedRef = useRef(false);
 
+  // Pagination state for older replies
+  const [olderReplies, setOlderReplies] = useState<any[]>([]);
+  const [loadingOlder, setLoadingOlder] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0); // 0 = not loaded yet
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalReplies, setTotalReplies] = useState(0);
+
   async function loadTicket() {
     if (!id || id === 'undefined') return;
     try {
@@ -123,7 +258,11 @@ export default function TicketDetailPage() {
         return;
       }
       const data = await res.json();
-      setTicket(data.data ?? data);
+      const ticketData = data.data ?? data;
+      setTicket(ticketData);
+      // Capture reply count from meta (may come from show endpoint)
+      const meta = ticketData?.meta;
+      if (meta?.reply_count) setTotalReplies(meta.reply_count);
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Failed to fetch';
       if (!isNetworkError(msg)) {
@@ -138,8 +277,43 @@ export default function TicketDetailPage() {
     }
   }
 
+  async function loadOlderReplies() {
+    if (loadingOlder || !id) return;
+    setLoadingOlder(true);
+    try {
+      // First load: start from last page (oldest replies). Then decrement.
+      const pageToLoad = currentPage === 0 ? totalPages : currentPage - 1;
+      if (pageToLoad < 1) { setLoadingOlder(false); return; }
+
+      const res = await fetch(`/api/support-tickets/${id}/replies?page=${pageToLoad}&per_page=10`);
+      if (!res.ok) {
+        setLoadingOlder(false);
+        return;
+      }
+      const data = await res.json();
+      const newReplies: any[] = data.data ?? [];
+      const meta = data.meta;
+
+      if (meta) {
+        setTotalPages(meta.last_page ?? 1);
+        setTotalReplies(meta.total ?? totalReplies);
+      }
+
+      // Paginated endpoint returns oldest-first — prepend to olderReplies
+      setOlderReplies(prev => [...newReplies, ...prev]);
+      setCurrentPage(pageToLoad);
+    } catch {
+      // silent
+    }
+    setLoadingOlder(false);
+  }
+
   useEffect(() => {
     pollStoppedRef.current = false;
+    setOlderReplies([]);
+    setCurrentPage(0);
+    setTotalPages(1);
+    setTotalReplies(0);
     loadTicket();
     const interval = setInterval(() => {
       if (pollStoppedRef.current) return;
@@ -232,7 +406,15 @@ export default function TicketDetailPage() {
 
   const allReplies: any[] = ticket.replies ?? ticket.ticket_replies ?? [];
   const customerId = ticket.created_by?.id;
-  const replies = allReplies.filter((r) => !r.description?.includes('ff_all_data'));
+  const latestReplies = allReplies.filter((r) => !r.description?.includes('ff_all_data'));
+  // Combine: older replies (oldest-first from paginated endpoint) + latest replies (newest-first from show endpoint)
+  const replies = [...olderReplies.filter((r) => !r.description?.includes('ff_all_data')), ...latestReplies];
+
+  // Calculate if there are more older replies to load
+  const replyCount = totalReplies || ticket.meta?.reply_count || 0;
+  const displayedCount = olderReplies.length + latestReplies.length;
+  const hasMoreOlder = replyCount > displayedCount && replyCount > 10;
+  const remainingCount = Math.max(0, replyCount - displayedCount);
 
   const stat = STATUS_MAP[ticket.status] ?? STATUS_MAP[0];
   const subject = cleanSubject(ticket.subject ?? '');
@@ -364,6 +546,33 @@ export default function TicketDetailPage() {
       {/* Replies */}
       {replies.length > 0 && (
         <div className="space-y-3">
+          {/* Show older messages button */}
+          {hasMoreOlder && (
+            <div className="flex justify-center">
+              <button
+                onClick={loadOlderReplies}
+                disabled={loadingOlder}
+                className="flex items-center gap-2 px-4 py-2 text-sm text-[#ec7161] hover:text-[#e05e4d] hover:bg-[#ec7161]/5 rounded-lg transition-colors disabled:opacity-60 font-medium"
+              >
+                {loadingOlder ? (
+                  <>
+                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Loading…
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                    </svg>
+                    Show older messages ({remainingCount} more)
+                  </>
+                )}
+              </button>
+            </div>
+          )}
           {replies.map((r: any) => {
             const isSupport = r.user?.id !== customerId;
             const authorName = r.user?.full_name ?? (isSupport ? 'Support' : 'Customer');
