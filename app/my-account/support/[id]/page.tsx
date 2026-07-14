@@ -282,9 +282,20 @@ export default function TicketDetailPage() {
     setLoadingOlder(true);
     try {
       // First click: totalPages isn't known yet (no /replies call has run). Derive the real
-      // last page from reply_count instead of falling through to the unfetched default (1),
-      // which used to strand every reply between the last page and page 1 unreachable.
-      const knownLastPage = totalPages || Math.max(1, Math.ceil((totalReplies || 10) / 10));
+      // last page from reply_count when we have it; otherwise probe page 1 for meta.last_page
+      // (show's reply_count meta isn't always present) instead of falling through to an
+      // unfetched default, which used to strand every reply between the last page and page 1.
+      let knownLastPage = totalPages;
+      if (!knownLastPage) {
+        if (totalReplies) {
+          knownLastPage = Math.max(1, Math.ceil(totalReplies / 10));
+        } else {
+          const probe = await fetch(`/api/support-tickets/${id}/replies?page=1&per_page=10`);
+          const probeData = probe.ok ? await probe.json() : null;
+          knownLastPage = probeData?.meta?.last_page ?? 1;
+          if (probeData?.meta?.total) setTotalReplies(probeData.meta.total);
+        }
+      }
       const pageToLoad = currentPage === 0 ? knownLastPage : currentPage - 1;
       if (pageToLoad < 1) { setLoadingOlder(false); return; }
 
@@ -414,14 +425,17 @@ export default function TicketDetailPage() {
   // show's preview window and /replies pages are independent, non-page-aligned views over the
   // same data — the last older page can overlap the live preview, so dedupe by id.
   const olderDeduped = olderReplies.filter((r) => !r.description?.includes('ff_all_data') && !latestIds.has(r.id));
-  // Combine: older replies (oldest-first from paginated endpoint) + latest replies (from show endpoint)
-  const replies = [...olderDeduped, ...latestReplies];
+  // Combine older (from /replies) + latest (from show) then sort ascending by id — id is a
+  // reliable monotonic proxy for creation order; the live show endpoint has been observed
+  // returning its window newest-first despite docs, so never trust raw API order for display.
+  const replies = [...olderDeduped, ...latestReplies].sort((a, b) => (a.id ?? 0) - (b.id ?? 0));
 
   // Calculate if there are more older replies to load. Before the first page fetch, gate on
-  // reply_count; after that, stop exactly when we've landed on page 1 (nothing before it).
+  // reply_count OR a full 10-item preview window (reply_count/meta may be absent on `show`);
+  // after that, stop exactly when we've landed on page 1 (nothing before it).
   const replyCount = totalReplies || ticket.meta?.reply_count || 0;
   const displayedCount = olderDeduped.length + latestReplies.length;
-  const hasMoreOlder = currentPage === 0 ? replyCount > 10 : currentPage > 1;
+  const hasMoreOlder = currentPage === 0 ? (replyCount > 10 || latestReplies.length >= 10) : currentPage > 1;
   const remainingCount = Math.max(0, replyCount - displayedCount);
 
   const stat = STATUS_MAP[ticket.status] ?? STATUS_MAP[0];
