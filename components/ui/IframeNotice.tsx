@@ -13,7 +13,9 @@ export default function IframeNotice() {
     try { inIframe = window.self !== window.top; } catch { inIframe = true; }
     if (inIframe) {
       setIsIframe(true);
-      setUrl(window.location.href);
+      const exitUrl = new URL(window.location.href);
+      exitUrl.searchParams.set('ref', 'iframe');
+      setUrl(exitUrl.toString());
       const timer = setTimeout(() => setVisible(true), 4000);
       return () => clearTimeout(timer);
     }
