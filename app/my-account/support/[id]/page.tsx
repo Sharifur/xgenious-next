@@ -281,8 +281,11 @@ export default function TicketDetailPage() {
     if (loadingOlder || !id) return;
     setLoadingOlder(true);
     try {
-      // First load: start from last page (oldest replies). Then decrement.
-      const pageToLoad = currentPage === 0 ? totalPages : currentPage - 1;
+      // First click: totalPages isn't known yet (no /replies call has run). Derive the real
+      // last page from reply_count instead of falling through to the unfetched default (1),
+      // which used to strand every reply between the last page and page 1 unreachable.
+      const knownLastPage = totalPages || Math.max(1, Math.ceil((totalReplies || 10) / 10));
+      const pageToLoad = currentPage === 0 ? knownLastPage : currentPage - 1;
       if (pageToLoad < 1) { setLoadingOlder(false); return; }
 
       const res = await fetch(`/api/support-tickets/${id}/replies?page=${pageToLoad}&per_page=10`);
@@ -295,7 +298,7 @@ export default function TicketDetailPage() {
       const meta = data.meta;
 
       if (meta) {
-        setTotalPages(meta.last_page ?? 1);
+        setTotalPages(meta.last_page ?? knownLastPage);
         setTotalReplies(meta.total ?? totalReplies);
       }
 
@@ -407,13 +410,18 @@ export default function TicketDetailPage() {
   const allReplies: any[] = ticket.replies ?? ticket.ticket_replies ?? [];
   const customerId = ticket.created_by?.id;
   const latestReplies = allReplies.filter((r) => !r.description?.includes('ff_all_data'));
-  // Combine: older replies (oldest-first from paginated endpoint) + latest replies (newest-first from show endpoint)
-  const replies = [...olderReplies.filter((r) => !r.description?.includes('ff_all_data')), ...latestReplies];
+  const latestIds = new Set(latestReplies.map((r) => r.id));
+  // show's preview window and /replies pages are independent, non-page-aligned views over the
+  // same data — the last older page can overlap the live preview, so dedupe by id.
+  const olderDeduped = olderReplies.filter((r) => !r.description?.includes('ff_all_data') && !latestIds.has(r.id));
+  // Combine: older replies (oldest-first from paginated endpoint) + latest replies (from show endpoint)
+  const replies = [...olderDeduped, ...latestReplies];
 
-  // Calculate if there are more older replies to load
+  // Calculate if there are more older replies to load. Before the first page fetch, gate on
+  // reply_count; after that, stop exactly when we've landed on page 1 (nothing before it).
   const replyCount = totalReplies || ticket.meta?.reply_count || 0;
-  const displayedCount = olderReplies.length + latestReplies.length;
-  const hasMoreOlder = replyCount > displayedCount && replyCount > 10;
+  const displayedCount = olderDeduped.length + latestReplies.length;
+  const hasMoreOlder = currentPage === 0 ? replyCount > 10 : currentPage > 1;
   const remainingCount = Math.max(0, replyCount - displayedCount);
 
   const stat = STATUS_MAP[ticket.status] ?? STATUS_MAP[0];
