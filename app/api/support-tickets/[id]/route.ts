@@ -38,8 +38,8 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   const { id } = await params;
   const body = await req.json();
   try {
-    const res = await fetch(`${TASKIP_API}/${id}`, {
-      method: 'PUT',
+    const res = await fetch(`${TASKIP_API}/status-update/${id}`, {
+      method: 'POST',
       headers: TASKIP_HEADERS,
       body: JSON.stringify(body),
       cache: 'no-store',
