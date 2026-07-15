@@ -99,8 +99,6 @@
     { "source": "/feed/:path*", "destination": "http://origin.xgenious.com/feed/:path*" },
     { "source": "/xmlrpc.php", "destination": "http://origin.xgenious.com/xmlrpc.php" },
     { "source": "/sitemap_index.xml", "destination": "http://origin.xgenious.com/sitemap_index.xml" },
-    { "source": "/post-sitemap.xml", "destination": "http://origin.xgenious.com/post-sitemap.xml" },
-    { "source": "/category-sitemap.xml", "destination": "http://origin.xgenious.com/category-sitemap.xml" },
-    { "source": "/tag-sitemap.xml", "destination": "http://origin.xgenious.com/tag-sitemap.xml" }
+    { "source": "/:name-sitemap.xml", "destination": "http://origin.xgenious.com/:name-sitemap.xml" }
   ]
 }
