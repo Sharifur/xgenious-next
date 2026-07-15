@@ -1,4 +1,13 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const LEGAL_LINKS = [
+  { label: 'Terms Of Service', href: '/terms-of-service' },
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Refund Policy', href: '/refund-policy' },
+];
 
 const SOCIAL_LINKS = [
   { label: 'Facebook', href: 'https://www.facebook.com/xgenious', icon: (
@@ -48,6 +57,31 @@ const COMPANY = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  // Checkout: strip to logo + legal links only — the full sitemap/social/CTA
+  // footer is pure exit-route distraction right where the purchase happens.
+  if (pathname?.startsWith('/checkout')) {
+    return (
+      <footer className="bg-[#0C0C0E] text-white">
+        <div className="container-page px-4 sm:px-6 lg:px-0 py-8 flex flex-col items-center gap-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/xgenious-logo-footer.png" alt="Xgenious" className="h-7 w-auto" />
+          <div className="flex items-center gap-5 flex-wrap justify-center">
+            {LEGAL_LINKS.map((l) => (
+              <Link key={l.label} href={l.href} className="text-[12px] text-[#A6A6A6] hover:text-white transition-colors">
+                {l.label}
+              </Link>
+            ))}
+          </div>
+          <p className="text-[11px] text-[#6b7280] text-center">
+            © 2017 - 2026 All Right Reserved By Xgenious
+          </p>
+        </div>
+      </footer>
+    );
+  }
+
   return (
     <footer className="bg-[#0C0C0E] text-white relative overflow-hidden">
       {/* Background wordmark */}
