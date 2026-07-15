@@ -194,7 +194,6 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
   const [appliedCouponCode, setAppliedCouponCode] = useState('');
   const [fsOrderTotal, setFsOrderTotal] = useState<number | null>(null);
   const couponTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const autoAppliedRef = useRef(false);
   const router = useRouter();
   const { status } = useSession();
   const sessionStatusRef = useRef(status);
@@ -202,11 +201,20 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
   useEffect(() => { sessionStatusRef.current = status; }, [status]);
 
   useEffect(() => {
-    window.onFastSpringPopupClosed = (order) => {
+    // onFastSpringWebhookReceived carries the real order.completed payload
+    // (id, total, currency, items) — this is where Purchase must fire from.
+    window.onFastSpringWebhookReceived = (order) => {
       if (!order) return;
       const sourceUrl = window.location.href;
-      const productIds = order.items.map((i) => i.product);
+      const productIds = order.items?.map((i) => i.product) ?? [];
       trackPurchase(sourceUrl, order.total, order.currency, productIds);
+    };
+
+    // onFastSpringPopupClosed only ever receives {id, reference} (both null
+    // if the checkout was abandoned) — never total/currency/items. It's for
+    // driving the post-purchase redirect only, not Purchase tracking.
+    window.onFastSpringPopupClosed = (order) => {
+      if (!order?.id) return;
       if (sessionStatusRef.current === 'authenticated') {
         router.push('/my-account/downloads');
       } else {
@@ -319,18 +327,6 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
     validate(2);
   };
 
-  // Auto-apply the site-wide promo as soon as FastSpring is ready, so users
-  // see the discount without clicking Apply themselves.
-  useEffect(() => {
-    // Guard against StrictMode's dev double-invoke firing two overlapping
-    // push+promo flights that race each other's dataCallback.
-    if (fsReady && PROMO_CODE && couponCode === PROMO_CODE && couponStatus === 'idle' && !autoAppliedRef.current) {
-      autoAppliedRef.current = true;
-      applyCoupon();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fsReady]);
-
   const handleConfirm = () => {
     const items = [product.path, ...Array.from(selectedAddons)];
     if (!window.fastspring?.builder) {
@@ -355,11 +351,19 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
 
   return (
     <>
+      <style>{`
+        @keyframes checkout-coupon-pulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(232,112,90,0.45); }
+          50% { box-shadow: 0 0 0 4px rgba(232,112,90,0); }
+        }
+        .checkout-coupon-nudge { animation: checkout-coupon-pulse 1.8s ease-in-out infinite; }
+      `}</style>
       <Script
         id="fsc-api"
         src={FASTSPRING_SCRIPT}
         data-storefront={FASTSPRING_STORE}
         data-popup-closed="onFastSpringPopupClosed"
+        data-popup-webhook-received="onFastSpringWebhookReceived"
         data-error-callback="onFastSpringError"
         data-data-callback="dataCallback"
         data-continuous="true"
@@ -740,7 +744,13 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
                       </button>
                     </div>
                   ) : (
-                    <div className="flex gap-2">
+                    <div
+                      className={
+                        couponStatus === 'idle' && couponCode.trim()
+                          ? 'flex gap-2 rounded-lg checkout-coupon-nudge'
+                          : 'flex gap-2 rounded-lg'
+                      }
+                    >
                       <input
                         type="text"
                         value={couponCode}
@@ -760,7 +770,7 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
                       <button
                         onClick={applyCoupon}
                         disabled={!couponCode.trim() || !fsReady || couponStatus === 'applying'}
-                        className="flex-shrink-0 rounded-lg border border-[#E5E7EC] bg-[#F5F6F8] px-4 py-2.5 text-[13px] font-semibold text-[#374151] hover:bg-[#E5E7EC] transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                        className="flex-shrink-0 rounded-lg border border-[#e8705a] bg-[#F5F6F8] px-4 py-2.5 text-[13px] font-semibold text-[#e8705a] hover:bg-[#e8705a] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                       >
                         {couponStatus === 'applying' ? 'Applying…' : 'Apply'}
                       </button>

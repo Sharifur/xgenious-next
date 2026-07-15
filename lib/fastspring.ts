@@ -22,6 +22,14 @@ export interface FastSpringOrderItem {
   };
 }
 
+// data-popup-closed only ever passes {id, reference} — both null if the
+// checkout was abandoned. It never carries total/currency/items; that data
+// only arrives via data-popup-webhook-received (FastSpringOrder below).
+export interface FastSpringPopupClosedResult {
+  id: string | null;
+  reference: string | null;
+}
+
 export const FASTSPRING_TEST_MODE = process.env.NEXT_PUBLIC_FASTSPRING_TEST_MODE === 'true';
 export const FASTSPRING_STORE = 'xgenious.onfastspring.com/popup-xgenious';
 export const FASTSPRING_SCRIPT = 'https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js';
@@ -66,7 +74,7 @@ declare global {
       };
     };
     onFastSpringWebhookReceived: (order: FastSpringOrder) => void;
-    onFastSpringPopupClosed: (order: FastSpringOrder | null) => void;
+    onFastSpringPopupClosed: (result: FastSpringPopupClosedResult | null) => void;
     onFastSpringError: (code: string | number | undefined, details?: unknown) => void;
   }
 }
