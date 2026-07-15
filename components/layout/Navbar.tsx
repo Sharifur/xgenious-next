@@ -222,6 +222,7 @@ export default function Navbar() {
     return () => obs.disconnect();
   }, []);
 
+  const isCheckout = pathname?.startsWith('/checkout');
   const isDark = !forceWhite && DARK_PAGES.some((p) => pathname?.startsWith(p));
   const isServicesActive = pathname?.startsWith('/services');
 
@@ -239,6 +240,44 @@ export default function Navbar() {
     : 'text-[14px] font-medium leading-5 text-[#1a1a2e] hover:text-[#000] transition-colors';
 
   const hamburgerClass = isDark ? 'bg-[#EBECEE]' : 'bg-[#1a1a2e]';
+
+  // Checkout: strip dropdown nav links so there's no browsing escape route,
+  // but keep Contact + account access for support during the purchase.
+  if (isCheckout) {
+    return (
+      <header className="relative py-3 px-3 lg:py-4 lg:px-8">
+        <div className="max-w-[1320px] mx-auto">
+          <div className="h-[60px] flex items-center justify-between">
+            <Link href="/" className="flex items-center flex-shrink-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/xgenious-logo.svg" alt="Xgenious" className="h-[34px] w-auto" />
+            </Link>
+
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <Button href="/contact" variant="primary" size="sm">Contact Us</Button>
+
+              <Link
+                href="/my-account"
+                aria-label="My Account"
+                className="group relative w-[38px] h-[38px] rounded-full bg-[#F26B4E] flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(242,107,78,0.45)] active:translate-y-0"
+              >
+                <span
+                  aria-hidden
+                  className="absolute inset-0 rounded-full bg-[#F26B4E] opacity-0 scale-100 group-hover:scale-[1.45] group-hover:opacity-30 transition-all duration-500 ease-out"
+                />
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="relative">
+                  <path
+                    d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
+                    fill="white"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className={`${noSticky && !isDark ? 'relative' : isDark ? 'absolute top-[var(--promo-h,0px)] left-0 right-0 z-50' : 'fixed top-[var(--promo-h,0px)] left-0 right-0 z-50'} pt-3 px-3 lg:pt-4 lg:px-8`}>

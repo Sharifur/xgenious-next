@@ -1,18 +1,24 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { PROMO_CODE } from '@/lib/fastspring';
 
 const STORAGE_KEY = 'xg-promo-welcome10-dismissed';
 
 export default function PromoBanner() {
-  const [dismissed, setDismissed] = useState(true);
+  const [dismissedStorage, setDismissedStorage] = useState(true);
   const [copied, setCopied] = useState(false);
   const barRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  // The coupon auto-applies at checkout itself, so the banner advertising it
+  // is redundant there — hide it.
+  const isCheckout = pathname?.startsWith('/checkout');
+  const dismissed = dismissedStorage || isCheckout;
 
   useEffect(() => {
     try {
-      setDismissed(localStorage.getItem(STORAGE_KEY) === '1');
+      setDismissedStorage(localStorage.getItem(STORAGE_KEY) === '1');
     } catch {
       /* storage blocked (privacy mode / enterprise policy) — show banner */
     }
@@ -40,7 +46,7 @@ export default function PromoBanner() {
   if (dismissed) return null;
 
   const dismiss = () => {
-    setDismissed(true);
+    setDismissedStorage(true);
     try { localStorage.setItem(STORAGE_KEY, '1'); } catch { /* storage blocked */ }
   };
 

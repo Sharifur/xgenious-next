@@ -31,15 +31,17 @@ export const FASTSPRING_SCRIPT = 'https://sbl.onfastspring.com/sbl/1.0.6/fastspr
 // advertised by the PromoBanner. Set to '' to disable auto-apply.
 export const PROMO_CODE = 'WELCOME_10';
 
-export function launchCheckout(productPaths: string[]): void {
+export function launchCheckout(productPaths: string[], couponOverride?: string): void {
   const fs = window.fastspring;
   if (!fs?.builder) return;
   // Single atomic push with checkout:true avoids the mobile race condition
   // where builder.checkout() fires before the prior push is processed.
+  // If the user entered a custom coupon via promo(), don't overwrite it.
+  const coupon = couponOverride !== undefined ? couponOverride : PROMO_CODE;
   fs.builder.push({
     reset: true,
     ...(FASTSPRING_TEST_MODE ? { mode: 'test' } : {}),
-    ...(PROMO_CODE ? { coupon: PROMO_CODE } : {}),
+    ...(coupon ? { coupon } : {}),
     products: productPaths.map((path) => ({ path, quantity: 1 })),
     checkout: true,
   });
@@ -58,6 +60,7 @@ declare global {
           paymentContact?: { email?: string; firstName?: string; lastName?: string };
           tags?: Record<string, string>;
         } | ((builder: object) => void)) => void;
+        promo: (code: string) => void;
         checkout: () => void;
         add: (productPath: string) => void;
       };

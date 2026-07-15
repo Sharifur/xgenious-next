@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import type { CheckoutProduct } from '@/lib/checkout-products';
-import { FASTSPRING_STORE, FASTSPRING_SCRIPT, FASTSPRING_TEST_MODE, launchCheckout } from '@/lib/fastspring';
+import { FASTSPRING_STORE, FASTSPRING_SCRIPT, FASTSPRING_TEST_MODE, PROMO_CODE, launchCheckout } from '@/lib/fastspring';
 import { reportCrash } from '@/lib/crash';
 import { trackInitiateCheckout, trackPurchase } from '@/lib/meta-events';
 
@@ -134,10 +134,67 @@ function CheckIcon() {
   );
 }
 
+// Card-network marks shown at checkout — matches what FastSpring's own popup accepts.
+function PaymentLogoVisa() {
+  return (
+    <svg width="38" height="24" viewBox="0 0 38 24" role="img" aria-label="Visa">
+      <rect width="38" height="24" rx="4" fill="#1A1F71" />
+      <text x="19" y="16.5" textAnchor="middle" fontFamily="Arial, sans-serif" fontStyle="italic" fontWeight="bold" fontSize="10.5" fill="#fff">VISA</text>
+    </svg>
+  );
+}
+
+function PaymentLogoMastercard() {
+  return (
+    <svg width="38" height="24" viewBox="0 0 38 24" role="img" aria-label="Mastercard">
+      <rect width="38" height="24" rx="4" fill="#fff" stroke="#E5E7EC" />
+      <circle cx="16" cy="12" r="7" fill="#EB001B" />
+      <circle cx="22" cy="12" r="7" fill="#F79E1B" fillOpacity="0.9" style={{ mixBlendMode: 'multiply' }} />
+    </svg>
+  );
+}
+
+function PaymentLogoAmex() {
+  return (
+    <svg width="38" height="24" viewBox="0 0 38 24" role="img" aria-label="American Express">
+      <rect width="38" height="24" rx="4" fill="#1F72CD" />
+      <text x="19" y="16" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="8.5" fill="#fff">AMEX</text>
+    </svg>
+  );
+}
+
+function PaymentLogoPayPal() {
+  return (
+    <svg width="38" height="24" viewBox="0 0 38 24" role="img" aria-label="PayPal">
+      <rect width="38" height="24" rx="4" fill="#fff" stroke="#E5E7EC" />
+      <text x="6" y="16" fontFamily="Arial, sans-serif" fontWeight="bold" fontStyle="italic" fontSize="10" fill="#003087">Pay</text>
+      <text x="20" y="16" fontFamily="Arial, sans-serif" fontWeight="bold" fontStyle="italic" fontSize="10" fill="#0070E0">Pal</text>
+    </svg>
+  );
+}
+
+// FastSpring's own ribbon mark — matches the branding shown in their checkout popup.
+function FastSpringMark() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" role="img" aria-label="FastSpring" className="flex-shrink-0">
+      <rect x="3" y="2" width="18" height="6" rx="2" fill="#F5841F" transform="rotate(-12 12 5)" />
+      <rect x="3" y="9" width="18" height="6" rx="2" fill="#F5841F" fillOpacity="0.75" transform="rotate(-12 12 12)" />
+      <rect x="3" y="16" width="18" height="6" rx="2" fill="#F5841F" fillOpacity="0.5" transform="rotate(-12 12 19)" />
+    </svg>
+  );
+}
+
 export default function CheckoutClient({ product }: { product: CheckoutProduct }) {
   const [selectedAddons, setSelectedAddons] = useState<Set<string>>(new Set());
   const [expandedAddon, setExpandedAddon] = useState<string | null>(null);
   const [fsReady, setFsReady] = useState(false);
+  const [couponCode, setCouponCode] = useState(PROMO_CODE);
+  const [couponStatus, setCouponStatus] = useState<'idle' | 'applying' | 'applied' | 'error'>('idle');
+  const [couponMessage, setCouponMessage] = useState('');
+  const [appliedCouponCode, setAppliedCouponCode] = useState('');
+  const [fsOrderTotal, setFsOrderTotal] = useState<number | null>(null);
+  const couponTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const autoAppliedRef = useRef(false);
   const router = useRouter();
   const { status } = useSession();
   const sessionStatusRef = useRef(status);
@@ -168,6 +225,19 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
     };
   }, [router]);
 
+  // FastSpring data callback — fires when session data (order total, tax, coupon) changes
+  useEffect(() => {
+    const scriptEl = document.getElementById('fsc-api');
+    if (!scriptEl) return;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).dataCallback = (data: { totalValue?: number }) => {
+      if (data?.totalValue !== undefined) {
+        setFsOrderTotal(data.totalValue);
+      }
+    };
+    scriptEl.setAttribute('data-data-callback', 'dataCallback');
+  }, []);
+
   const disabledAddons = new Set(
     product.addons
       .filter((a) => a.disables && selectedAddons.has(a.path))
@@ -196,6 +266,71 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
 
   const orderTotal = product.price + addonTotal;
 
+  const applyCoupon = () => {
+    const code = couponCode.trim();
+    if (!code) return;
+    if (!window.fastspring?.builder) {
+      setCouponStatus('error');
+      setCouponMessage('Payment system not loaded yet.');
+      return;
+    }
+    // Clear any pending validation timeout from a previous Apply click
+    if (couponTimeoutRef.current) clearTimeout(couponTimeoutRef.current);
+
+    setCouponStatus('applying');
+    setCouponMessage('');
+    setAppliedCouponCode('');
+    // The builder session has no cart until launchCheckout() runs, so promo()
+    // alone validates against an empty $0 order. Push the real cart first so
+    // the dataCallback reflects an actual discount.
+    const items = [product.path, ...Array.from(selectedAddons)];
+    window.fastspring.builder.push({
+      reset: true,
+      ...(FASTSPRING_TEST_MODE ? { mode: 'test' } : {}),
+      products: items.map((path) => ({ path, quantity: 1 })),
+    });
+    window.fastspring.builder.promo(code);
+
+    // promo() is fire-and-forget — validate via the data-data-callback.
+    // Compare against our undiscounted orderTotal: if the SBL total drops
+    // below that, the coupon is valid. Retry once if the callback hasn't
+    // fired yet (current is null).
+    const validate = (retriesLeft: number) => {
+      couponTimeoutRef.current = setTimeout(() => {
+        setFsOrderTotal((current) => {
+          if (current === null && retriesLeft > 0) {
+            // Data callback hasn't fired yet — schedule a retry
+            validate(retriesLeft - 1);
+            return current;
+          }
+          if (current !== null && current < orderTotal) {
+            setCouponStatus('applied');
+            setAppliedCouponCode(code);
+            setCouponMessage('');
+          } else {
+            setCouponStatus('error');
+            setAppliedCouponCode('');
+            setCouponMessage(`"${code}" is not a valid coupon code`);
+          }
+          return current;
+        });
+      }, retriesLeft > 0 ? 1500 : 2500);
+    };
+    validate(2);
+  };
+
+  // Auto-apply the site-wide promo as soon as FastSpring is ready, so users
+  // see the discount without clicking Apply themselves.
+  useEffect(() => {
+    // Guard against StrictMode's dev double-invoke firing two overlapping
+    // push+promo flights that race each other's dataCallback.
+    if (fsReady && PROMO_CODE && couponCode === PROMO_CODE && couponStatus === 'idle' && !autoAppliedRef.current) {
+      autoAppliedRef.current = true;
+      applyCoupon();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fsReady]);
+
   const handleConfirm = () => {
     const items = [product.path, ...Array.from(selectedAddons)];
     if (!window.fastspring?.builder) {
@@ -208,7 +343,12 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
       return;
     }
     trackInitiateCheckout(window.location.href, items, orderTotal);
-    launchCheckout(items);
+    // If user entered a custom coupon (different from auto-applied), pass it through.
+    // If they explicitly removed the coupon (empty input), pass '' to suppress auto-apply.
+    // If untouched, pass undefined so launchCheckout uses the default PROMO_CODE.
+    const userCoupon = couponCode.trim();
+    const coupon = userCoupon === PROMO_CODE ? undefined : userCoupon || '';
+    launchCheckout(items, coupon);
   };
 
   const savings = product.originalPrice - product.price;
@@ -221,6 +361,7 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
         data-storefront={FASTSPRING_STORE}
         data-popup-closed="onFastSpringPopupClosed"
         data-error-callback="onFastSpringError"
+        data-data-callback="dataCallback"
         data-continuous="true"
         strategy="afterInteractive"
         onLoad={() => setFsReady(true)}
@@ -407,6 +548,46 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
                   </div>
                 </div>
               )}
+
+              {/* Mini FAQ — answers common objections before they leave the page to research */}
+              <div className="mt-6">
+                <h3 className="text-[15px] font-bold text-[#0F1112] mb-3">Common Questions</h3>
+                <div className="flex flex-col gap-2">
+                  {[
+                    {
+                      q: 'What exactly do I get after purchase?',
+                      a: 'Full source code, a lifetime license, and instant download access to your account — no recurring fees.',
+                    },
+                    {
+                      q: 'Do I get software updates?',
+                      a: 'Updates are included per your license — check the feature list above for this product\'s update terms, or ask us before you buy via the chat widget.',
+                    },
+                    {
+                      q: 'What if I need help with installation?',
+                      a: product.addons.some((a) => /install|launch/i.test(a.label))
+                        ? 'We offer an optional "We Install & Launch It For You" add-on above — pick it during checkout, or add support after purchase from your account.'
+                        : 'Our support team can help you get set up after purchase — reach out from your account dashboard or the chat widget on this page.',
+                    },
+                    {
+                      q: 'What if it doesn\'t work for me?',
+                      a: 'You\'re covered by our 14-day money-back guarantee on the software — full refund, no questions asked. Add-on services are non-refundable once work begins.',
+                    },
+                  ].map((item) => (
+                    <details key={item.q} className="group rounded-xl border border-[#E5E7EC] bg-white px-4 py-3 open:bg-[#F9FAFB]">
+                      <summary className="flex items-center justify-between gap-3 cursor-pointer list-none text-[13px] font-semibold text-[#0F1112]">
+                        {item.q}
+                        <svg
+                          width="12" height="12" viewBox="0 0 24 24" fill="none"
+                          className="flex-shrink-0 transition-transform group-open:rotate-180"
+                        >
+                          <path d="M6 9l6 6 6-6" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </summary>
+                      <p className="mt-2 text-[12px] text-[#6b7280] leading-5">{item.a}</p>
+                    </details>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Right — Payment Panel (order-1 on mobile so it shows first) */}
@@ -430,10 +611,25 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
                 </div>
 
                 <div className="border-t border-[#F3F4F6] pt-3 mb-5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[15px] font-bold text-[#0F1112]">Total</span>
-                    <span className="text-[22px] font-bold text-[#0F1112]">${orderTotal}</span>
-                  </div>
+                  {couponStatus === 'applied' && fsOrderTotal !== null && fsOrderTotal < orderTotal ? (
+                    <>
+                      <div className="flex items-center justify-between mb-0.5">
+                        <span className="text-[13px] text-[#9ca3af] line-through">${orderTotal}</span>
+                        <span className="text-[11px] font-semibold text-[#16a34a]">
+                          −${(orderTotal - fsOrderTotal).toFixed(2)} ({appliedCouponCode})
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[15px] font-bold text-[#0F1112]">Total</span>
+                        <span className="text-[22px] font-bold text-[#16a34a]">${fsOrderTotal.toFixed(2)}</span>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex items-center justify-between">
+                      <span className="text-[15px] font-bold text-[#0F1112]">Total</span>
+                      <span className="text-[22px] font-bold text-[#0F1112]">${orderTotal}</span>
+                    </div>
+                  )}
                   <p className="text-[11px] text-[#9ca3af] mt-0.5">One-time payment · No recurring fees</p>
                 </div>
 
@@ -515,6 +711,73 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
                   );
                 })}
 
+                {/* Coupon code input */}
+                <div className="mb-4">
+                  <label className="block text-[13px] font-semibold text-[#0F1112] mb-1.5">
+                    Have a coupon code?
+                  </label>
+                  {couponStatus === 'applied' && appliedCouponCode ? (
+                    <div className="flex items-center gap-2 rounded-lg border border-[#dcfce7] bg-[#f0fdf4] px-3 py-2.5">
+                      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" className="flex-shrink-0">
+                        <circle cx="10" cy="10" r="10" fill="#dcfce7" />
+                        <path d="M6 10l3 3 5-5" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span className="flex-1 text-[13px] font-mono font-bold text-[#16a34a] tracking-wide">
+                        {appliedCouponCode}
+                      </span>
+                      <button
+                        onClick={() => {
+                          setCouponCode('');
+                          setCouponStatus('idle');
+                          setAppliedCouponCode('');
+                          setCouponMessage('');
+                          setFsOrderTotal(null);
+                          if (couponTimeoutRef.current) clearTimeout(couponTimeoutRef.current);
+                        }}
+                        className="text-[11px] font-semibold text-[#6b7280] hover:text-[#dc2626] transition-colors cursor-pointer"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={couponCode}
+                        onChange={(e) => {
+                          setCouponCode(e.target.value.toUpperCase());
+                          if (couponStatus === 'error') {
+                            setCouponStatus('idle');
+                            setCouponMessage('');
+                          }
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') applyCoupon();
+                        }}
+                        placeholder="e.g. WELCOME10"
+                        className="flex-1 min-w-0 rounded-lg border border-[#E5E7EC] bg-white px-3 py-2.5 text-[13px] font-mono font-semibold tracking-wide text-[#0F1112] placeholder:text-[#9ca3af] placeholder:font-sans placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-[#e8705a]/40 focus:border-[#e8705a] transition-colors"
+                      />
+                      <button
+                        onClick={applyCoupon}
+                        disabled={!couponCode.trim() || !fsReady || couponStatus === 'applying'}
+                        className="flex-shrink-0 rounded-lg border border-[#E5E7EC] bg-[#F5F6F8] px-4 py-2.5 text-[13px] font-semibold text-[#374151] hover:bg-[#E5E7EC] transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                      >
+                        {couponStatus === 'applying' ? 'Applying…' : 'Apply'}
+                      </button>
+                    </div>
+                  )}
+                  {couponStatus === 'error' && couponMessage && (
+                    <p className="mt-1.5 text-[12px] font-medium text-[#dc2626]">
+                      {couponMessage}
+                    </p>
+                  )}
+                  {!couponCode && PROMO_CODE && couponStatus !== 'applied' && (
+                    <p className="mt-1.5 text-[11px] text-[#9ca3af]">
+                      Use code <span className="font-mono font-semibold">{PROMO_CODE}</span> for 10% off
+                    </p>
+                  )}
+                </div>
+
                 <button
                   onClick={handleConfirm}
                   disabled={!fsReady}
@@ -539,22 +802,43 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
                   )}
                 </button>
 
-                <p className="mt-2 text-center text-[11px] text-[#9ca3af]">
+                <p className="mt-2 flex items-start justify-center gap-1.5 text-[11px] text-[#6b7280]">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 mt-0.5"><path d="M22 4H2v16h20V4zM2 4l10 8 10-8" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  <span>Instant access in your account + email confirmation with your license</span>
+                </p>
+
+                {/* Guarantee badge — elevated from footer fine print, sits right under the CTA */}
+                <div className="mt-3 flex items-center gap-2.5 rounded-xl border border-[#dcfce7] bg-[#f0fdf4] px-3.5 py-3">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#16a34a" fillOpacity="0.15" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M9 12l2 2 4-4" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <div>
+                    <p className="text-[13px] font-bold text-[#15803d] leading-tight">14-Day Money-Back Guarantee</p>
+                    <p className="text-[11px] text-[#166534] leading-tight mt-0.5">Not satisfied? Full refund, no questions asked.</p>
+                  </div>
+                </div>
+
+                <p className="mt-3 text-center text-[11px] text-[#9ca3af]">
                   VAT / tax not included — may be added at checkout depending on your country.
                 </p>
 
+                {/* Accepted payment methods — reduces "will my card work" hesitation */}
+                <div className="mt-3 flex items-center justify-center gap-2">
+                  <PaymentLogoVisa />
+                  <PaymentLogoMastercard />
+                  <PaymentLogoAmex />
+                  <PaymentLogoPayPal />
+                </div>
+
                 <div className="mt-3 flex flex-col gap-2 text-[11px] text-[#9ca3af]">
                   <span className="flex items-center gap-1.5">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="#9ca3af" strokeWidth="2" /><path d="M7 11V7a5 5 0 0110 0v4" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" /></svg>
-                    Payment secured by FastSpring
+                    <FastSpringMark />
+                    Payment secured by FastSpring — an authorized reseller
                   </span>
                   <span className="flex items-center gap-1.5">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 12V22H4V12M22 7H2v5h20V7zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z" stroke="#9ca3af" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     Instant download after payment
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                    14-day refund on software (addon services non-refundable)
                   </span>
                 </div>
               </div>
