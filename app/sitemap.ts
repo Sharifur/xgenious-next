@@ -57,6 +57,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/free-software/genius-crm`, priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-software/genius-hrm`, priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-software/genius-support`, priority: 0.9, changeFrequency: 'monthly' as const },
+    { url: `${BASE_URL}/free-software/genius-campaign`, priority: 0.9, changeFrequency: 'monthly' as const },
+    { url: `${BASE_URL}/free-software/genius-debug`, priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-tools`, priority: 0.9, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/free-tools/json-formatter`, priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/free-tools/password-generator`, priority: 0.8, changeFrequency: 'weekly' as const },
