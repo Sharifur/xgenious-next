@@ -7,25 +7,20 @@ export default function WhatIs() {
         </h2>
 
         <p className="text-[17px] text-[#0F1112] leading-8 mb-6 p-5 rounded-2xl border border-[#E5E7EC] bg-[#f9fafb]">
-          <strong>Genius Campaign</strong> is free, open-source <strong>email marketing software</strong> built with Laravel. It provides sequence automation, webhooks, built-in email templates, AI-assisted writing, and email verification — self-hosted on your own server, MIT licensed, with no per-contact fees.
+          <strong>Genius Campaign</strong> is a free, open-source, self-hosted <strong>email marketing and outreach platform</strong>. Contacts, templates, sequences, campaigns, deliverability, and sender rotation live in one console — MIT licensed, with no per-contact fees.
         </p>
 
         <p className="text-[16px] text-[#484848] leading-8 mb-5">
-          Most email marketing platforms charge more as your contact list grows — that pricing model is common across the industry, from entry-level tools up to enterprise sending platforms. Genius Campaign is a one-time free download — full source code, deploy on any Linux VPS, no recurring cost regardless of list size.
+          Hosted cold-outreach tools like Smartlead and Instantly charge monthly fees that scale with contacts and send volume, on top of whatever email provider you already pay for. Genius Campaign is a one-time free download — full source code, deploy on your own infrastructure, no recurring bill regardless of list size.
         </p>
         <p className="text-[16px] text-[#484848] leading-8 mb-5">
-          The system ships with a <strong>sequence and automation builder</strong> for drip campaigns and behavioral triggers, <strong>inbound and outbound webhooks</strong> for connecting to the rest of your stack, and <strong>AI-assisted subject line and copy writing</strong> to speed up campaign creation. Sending runs through your own <strong>AWS SES</strong> or <strong>Google Workspace</strong> connection, with built-in email verification to protect your sender reputation.
+          The system ships with a <strong>sequence builder</strong> for multi-step drip automation, <strong>inbound and outbound webhooks</strong> for connecting to the rest of your stack, and an <strong>AI-assisted template editor</strong> with spintax variants. Sending rotates automatically across your own <strong>AWS SES</strong> and <strong>Gmail Workspace</strong> accounts, quota-aware, with bulk <strong>email verification</strong> before every send.
         </p>
         <p className="text-[16px] text-[#484848] leading-8">
-          Email remains one of the highest-ROI marketing channels available, and{' '}
-          <a href="https://en.wikipedia.org/wiki/Email_marketing" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 text-[#16a34a]">
-            email marketing ↗
+          <a href="https://en.wikipedia.org/wiki/Email_marketing" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2" style={{ color: '#6366F1' }}>
+            Email marketing ↗
           </a>{' '}
-          continues to be a core acquisition and retention tool for businesses of every size. Yet most small teams pay a recurring monthly fee for tools they could self-host for free. Genius Campaign gives those teams the same core workflow — sequences, templates, deliverability tooling — without the ongoing cost. See{' '}
-          <a href="https://mailchimp.com/resources/email-marketing-benchmarks/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 text-[#16a34a]">
-            industry email marketing benchmarks ↗
-          </a>{' '}
-          for typical open and click rates by sector.
+          remains one of the highest-ROI channels available, but most tools in the category charge a recurring fee for infrastructure four AWS services already provide. Genius Campaign gives you the same sequence-and-campaign workflow without renting your sender reputation from a vendor.
         </p>
       </div>
     </section>

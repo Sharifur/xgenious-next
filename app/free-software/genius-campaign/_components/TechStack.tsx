@@ -8,10 +8,10 @@ export default function TechStack() {
         <div className="container-page px-4 sm:px-6 lg:px-0">
           <div className="text-center mb-12">
             <h2 className="text-[28px] sm:text-[38px] font-semibold text-[#0F1112]">
-              Built on a Modern, Battle-Tested Stack
+              Built on a Modern, Self-Hostable Stack
             </h2>
             <p className="text-[#484848] text-[15px] mt-3 max-w-[520px] mx-auto leading-7">
-              No proprietary runtime. No SaaS dependencies. Runs on standard Linux hosting.
+              NestJS API and workers, Postgres for storage, Redis for the send queue. Cloudflare R2 is optional.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[900px] mx-auto">
@@ -50,10 +50,10 @@ export default function TechStack() {
           <div className="max-w-[820px] mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-[28px] sm:text-[36px] font-semibold text-white">
-                Server Requirements
+                System Requirements
               </h2>
               <p className="text-[#9ca3af] text-[15px] mt-3 leading-7">
-                Any standard Linux VPS. No Docker required.
+                Docker recommended. Bare-metal deployment documented too.
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

@@ -158,18 +158,18 @@ const PRODUCTS = [
     id: 'genius-campaign',
     href: '/free-software/genius-campaign',
     name: 'Genius Campaign',
-    tagline: 'Free Self-Hosted Email Marketing — Laravel · PHP 8.2+',
+    tagline: 'Free Self-Hosted Email Marketing & Outreach Platform',
     description:
-      'A self-hosted email marketing platform with sequence automation, webhooks, built-in templates, AI-assisted writing, and AWS SES or Google Workspace sending. No per-contact fees, MIT licensed.',
-    badge: 'Laravel · PHP 8.2+ · MIT',
+      'A self-hosted email marketing and outreach console — contacts, templates, sequences, campaigns, deliverability, and sender rotation. Bring your own AWS SES or Gmail Workspace, no per-contact fees, MIT licensed.',
+    badge: 'NestJS · PostgreSQL · MIT',
     stats: [
-      { label: 'Modules', value: '6' },
-      { label: 'Sending', value: '2' },
+      { label: 'Modules', value: '9' },
+      { label: 'Pricing', value: '$0' },
       { label: 'License', value: 'MIT' },
       { label: 'Free Forever', value: '' },
     ],
-    color: '#16a34a',
-    lightColor: '#dcfce7',
+    color: '#6366F1',
+    lightColor: '#EEF0FD',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
         <path d="M4 4h16v16H4z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
@@ -177,12 +177,12 @@ const PRODUCTS = [
       </svg>
     ),
     highlights: [
-      'Sequence and automation builder — drip campaigns, behavioral triggers',
-      'Inbound and outbound webhooks for event-driven sending',
-      'Built-in email templates plus AI-assisted subject and copy writing',
-      'AWS SES and Google Workspace sending integrations',
-      'Email verification to protect sender reputation',
-      'Contact segmentation and campaign open/click analytics',
+      'Bring your own AWS SES / Gmail Workspace — no third-party data routing',
+      'Sender rotation across accounts, quota-aware',
+      'Multi-step drip sequences with per-contact enrollment',
+      'Inbound and outbound webhooks — auto-enroll on events',
+      'AI-assisted template editor with spintax variants',
+      'Bulk email verification before every send',
     ],
   },
   {

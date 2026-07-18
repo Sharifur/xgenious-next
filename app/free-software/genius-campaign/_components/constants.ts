@@ -1,115 +1,141 @@
-export const COLOR = '#16a34a';
-export const LIGHT_COLOR = '#dcfce7';
+export const COLOR = '#6366F1';
+export const COLOR_HOVER = '#5457EC';
+export const COLOR_GRADIENT_END = '#4F46E5';
+export const LIGHT_COLOR = '#EEF0FD';
+export const DARK_BG = '#0B0C0F';
 export const BASE_URL = 'https://xgenious.com';
 export const CANONICAL = `${BASE_URL}/free-software/genius-campaign`;
-export const DEMO_URL = '';
-export const DOCS_URL = '';
-export const GITHUB_URL = '';
-export const LICENSE_UUID = '';
+
+export const GITHUB_URL = 'https://github.com/XgeniousLLC/geniousCampaign/archive/refs/heads/main.zip';
+export const DOCS_URL = 'https://xgeniousllc.github.io/geniousCampaign/#/';
+export const DEPLOY_GUIDE_URL = 'https://xgeniousllc.github.io/geniousCampaign/#/docs/DEPLOY';
+export const PUBLIC_API_URL = 'https://xgeniousllc.github.io/geniousCampaign/#/docs/PUBLIC_API';
+export const LICENSE_UUID = '612ad2e7-d451-428b-b962-9ee7fa3ed0fc';
 
 export const MODULES = [
   {
-    name: 'Sequences & Automation',
+    name: 'Contacts, Lists & Tags',
     features: [
-      'Drip campaign builder — multi-step email sequences',
-      'Behavioral triggers — send based on subscriber actions',
-      'Delay and condition steps between sequence emails',
-      'Pause, resume, or exit subscribers from a running sequence',
+      'CSV import with arbitrary column mapping',
+      'Real-time import progress',
+      'Pick-or-create lists and tags at import time',
     ],
   },
   {
-    name: 'Webhooks & Triggers',
+    name: 'Template Editor',
     features: [
-      'Inbound webhooks — start a sequence from any external event',
-      'Outbound webhooks — push campaign and email events to other systems',
-      'Trigger sequences from signups, purchases, or custom app events',
-      'JSON payloads for easy integration with your existing stack',
+      'Rich-text editor with spintax variants',
+      'AI-assisted copywriting (OpenAI or DeepSeek)',
+      'Reusable templates across campaigns and sequences',
     ],
   },
   {
-    name: 'Email Templates & AI Writing',
+    name: 'Sequences',
     features: [
-      'Built-in email templates for common campaign types',
-      'AI-assisted subject line and email copy suggestions',
-      'Drag-and-drop content blocks, no HTML required',
-      'Save custom templates for reuse across campaigns',
+      'Multi-step drip sequences with per-contact enrollment',
+      'Pause and resume individual contacts mid-sequence',
+      'Per-step delays between messages',
     ],
   },
   {
-    name: 'Sending Infrastructure',
+    name: 'Campaigns',
     features: [
-      'AWS SES integration for high-deliverability sending',
-      'Google Workspace support for sending and syncing mail',
-      'Configurable sending domains and reply-to addresses',
-      'Queue-based dispatch so large sends do not block the app',
+      'One-off sends targeted by list, tag, or hand-picked contacts',
+      'Open and click tracking',
+      'Engagement analytics per campaign',
     ],
   },
   {
     name: 'Email Verification',
     features: [
-      'Validate recipient addresses before a campaign sends',
-      'Flag invalid, risky, or undeliverable addresses',
-      'Protect sender reputation by reducing bounce rate',
-      'Keep contact lists clean as they grow',
+      'Bulk deliverability checks before you send',
+      'Reoon as primary verification provider, NeverBounce as fallback',
+      'Reduces bounces and protects sender reputation',
     ],
   },
   {
-    name: 'Contacts & Analytics',
+    name: 'Triggers & Webhooks',
     features: [
-      'Contact list management with segmentation',
-      'Group and filter contacts for targeted sends',
-      'Campaign analytics — opens, clicks, and engagement',
-      'Track sequence performance over time',
+      'Auto-enroll contacts on events — tag added, field changed, list joined',
+      'Inbound HMAC-signed webhook trigger',
+      'Connect to the rest of your stack without polling',
+    ],
+  },
+  {
+    name: 'Public API',
+    features: [
+      'API-key-authenticated endpoint for external forms and automation tools',
+      'Push contacts in with automatic list/tag attachment',
+    ],
+  },
+  {
+    name: 'Sender Rotation',
+    features: [
+      'Rotate across AWS SES and Gmail Workspace accounts',
+      'Quota-aware — spreads volume automatically',
+      'Protects deliverability by not overloading one sender',
+    ],
+  },
+  {
+    name: 'Team & Audit',
+    features: [
+      'Role-based access — owner, editor, viewer',
+      'Full audit log of account activity',
+      'Global suppression list',
     ],
   },
 ];
 
 export const TECH_STACK = [
-  { name: 'Laravel', role: 'PHP backend, routing, ORM, queues', logo: '/tech/laravel.svg' },
-  { name: 'PHP 8.2+', role: 'Application runtime', logo: '/tech/php.svg' },
-  { name: 'MySQL 8.0', role: 'Primary relational database', logo: '/tech/mysql.svg' },
-  { name: 'AWS SES', role: 'Transactional and campaign email sending', logo: '/tech/aws.svg' },
-  { name: 'Queue Worker', role: 'Background sequence and campaign dispatch', logo: null },
-  { name: 'Google Workspace API', role: 'Send and sync via Google Workspace', logo: null },
+  { name: 'NestJS', role: 'API and background job services', logo: '/tech/nestjs.svg' },
+  { name: 'PostgreSQL + Drizzle ORM', role: 'Contacts, campaigns, and sequence data', logo: '/tech/postgresql.svg' },
+  { name: 'BullMQ + Redis', role: 'Sequence and campaign send queue', logo: null },
+  { name: 'React (Vite)', role: 'Admin console frontend', logo: '/tech/react.svg' },
+  { name: 'Tailwind CSS', role: 'UI styling', logo: '/tech/tailwind.svg' },
+  { name: 'Zustand', role: 'Frontend state management', logo: null },
 ];
 
 export const SERVER_REQUIREMENTS = [
-  { label: 'OS', value: 'Ubuntu 22.04 LTS' },
-  { label: 'PHP', value: '8.2+' },
-  { label: 'Database', value: 'MySQL 8.0' },
-  { label: 'Queue', value: 'Database or Redis driver' },
-  { label: 'Web Server', value: 'Nginx or Apache' },
-  { label: 'Min RAM', value: '2 GB' },
+  { label: 'Runtime', value: 'Docker (recommended) or Node 20+' },
+  { label: 'Database', value: 'PostgreSQL' },
+  { label: 'Queue', value: 'Redis (BullMQ)' },
+  { label: 'Sending', value: 'Your own AWS SES or Gmail Workspace credentials' },
+  { label: 'Storage', value: 'Cloudflare R2 (optional, for attachments)' },
+  { label: 'Deploy path', value: 'docker compose up or bare-metal' },
 ];
 
 export const FAQS = [
   {
-    q: 'Is Genius Campaign really free with no limitations?',
-    a: 'Yes. MIT licensed. Every feature is included at no cost — no paid tier, no per-contact pricing, no feature locks. Deploy as many instances as you need on your own server.',
+    q: 'Does my email actually route through Xgenious or a third-party server?',
+    a: 'No. Genius Campaign connects directly to your own AWS SES or Gmail Workspace account, and your own Cloudflare R2 bucket if you use one. Calls go straight from your deployment to AWS/Google/Cloudflare — nothing proxies through a third-party server, including ours.',
   },
   {
-    q: 'Is Genius Campaign self-hosted or a SaaS product?',
-    a: 'Self-hosted only. You install Genius Campaign on your own server and it sends through your own AWS SES or Google Workspace account. There is no hosted Xgenious version — your contact data and sending reputation stay entirely under your control.',
+    q: 'Is Genius Campaign really free with no limitations?',
+    a: 'Yes. MIT licensed, confirmed in the repository LICENSE file. Every feature is included at no cost — no paid tier, no per-contact pricing, no feature locks.',
   },
   {
     q: 'What do the AI writing features actually do?',
-    a: 'Genius Campaign includes AI-assisted email and subject line writing to help you draft campaign copy faster. You describe what the email should say and refine the suggestion — it is an assistant for drafting, not an autopilot that sends without review.',
+    a: 'The template editor includes AI-assisted copywriting via OpenAI or DeepSeek, plus spintax variants for subject line and body rotation. It drafts and suggests — you review and send.',
   },
   {
-    q: 'How do I set up AWS SES or Google Workspace sending?',
-    a: 'Add your AWS SES credentials or Google Workspace API details in the admin settings, then verify your sending domain with the standard DNS records (SPF, DKIM, DMARC). Once verified, Genius Campaign routes all campaign and sequence emails through that connection.',
+    q: 'What is sender rotation, and why does it matter?',
+    a: 'Genius Campaign rotates sends across your connected AWS SES and Gmail Workspace accounts automatically, tracking each account’s quota. Spreading volume across senders protects deliverability instead of pushing everything through one address.',
   },
   {
-    q: 'What server do I need to run Genius Campaign?',
-    a: 'Ubuntu 22.04 LTS with PHP 8.2+, MySQL 8.0, and a queue worker (database or Redis driver) for background sending. A minimum of 2 GB RAM is recommended. Any standard VPS or cloud instance works — no managed services required.',
+    q: 'How does email verification work?',
+    a: 'Before a campaign sends, contacts are checked against Reoon (primary) with NeverBounce as a fallback provider. Invalid and risky addresses are flagged so your bounce rate — and sender reputation — stays healthy.',
   },
   {
-    q: 'How does email verification protect my sender reputation?',
-    a: 'Before a campaign sends, Genius Campaign checks recipient addresses and flags invalid or risky ones. Sending to fewer bad addresses means fewer bounces, which keeps your AWS SES or Google Workspace sending reputation healthy over time.',
+    q: 'Can I trigger sequences from my own app or forms?',
+    a: 'Yes. Contacts can auto-enroll into a sequence on a tag added, a field changed, a list joined, or an inbound HMAC-signed webhook. There’s also an API-key-authenticated public API for pushing contacts in from external forms or automation tools.',
   },
   {
-    q: 'How is Genius Campaign different from Mailchimp, ActiveCampaign, or Klaviyo?',
-    a: 'Mailchimp, ActiveCampaign, and Klaviyo charge monthly fees that scale with your contact list size. Genius Campaign is a one-time free download — self-hosted, MIT licensed, full source code, with no per-contact pricing and no monthly bill regardless of list size.',
+    q: 'How do I deploy it?',
+    a: 'docker compose up is the recommended path and covers Postgres, Redis, the API, and the web console. Bare-metal deployment is also documented, along with the full environment variable reference for production.',
+  },
+  {
+    q: 'How is this different from Smartlead, Instantly, or Mailchimp?',
+    a: 'Smartlead and Instantly charge per-tier monthly fees that scale with contacts and send volume; Mailchimp scales similarly. Genius Campaign is a one-time free download — self-hosted, MIT licensed, full source code — with no per-contact or per-send fee, and your data never leaves your infrastructure.',
   },
   {
     q: 'Can I modify the source code or white-label it for clients?',

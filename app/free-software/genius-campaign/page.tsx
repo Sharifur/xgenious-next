@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import JsonLd from './_components/JsonLd';
 import Hero from './_components/Hero';
+import Screenshots from './_components/Screenshots';
 import WhatIs from './_components/WhatIs';
+import WhoItsFor from './_components/WhoItsFor';
 import Modules from './_components/Modules';
 import Comparison from './_components/Comparison';
+import BringYourOwn from './_components/BringYourOwn';
 import HowItWorks from './_components/HowItWorks';
 import TechStack from './_components/TechStack';
 import FAQ from './_components/FAQ';
@@ -11,40 +14,38 @@ import DownloadCTA from './_components/DownloadCTA';
 import { BASE_URL, CANONICAL } from './_components/constants';
 
 export const metadata: Metadata = {
-  title: 'Free Email Marketing Software — Open Source & Self-Hosted',
+  title: 'Genius Campaign — Free Self-Hosted Email Outreach Platform',
   description:
-    'Free, open-source email marketing software with sequences, webhooks, AI writing & AWS SES sending. MIT licensed, self-hosted, no per-contact fees.',
+    'Open-source, self-hosted email marketing & outreach. Sequences, sender rotation, webhooks. Bring your own AWS SES / Gmail Workspace, no per-contact fees.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Free Email Marketing Software — Open Source & Self-Hosted | Xgenious',
+    title: 'Genius Campaign — Free Self-Hosted Email Outreach Platform | Xgenious',
     description:
-      'Genius Campaign: free self-hosted email marketing — sequences, webhooks, AI writing, AWS SES, Google Workspace, email verification. MIT licensed, no per-contact fees.',
+      'Contacts, templates, sequences, campaigns, deliverability, and sender rotation in one self-hosted console. Bring your own AWS SES, Gmail Workspace, and Cloudflare R2. MIT licensed.',
     url: CANONICAL,
     siteName: 'Xgenious',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: '/free-software/genius-campaign/dashboard.png', width: 2000, height: 827, alt: 'Genius Campaign dashboard' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Email Marketing Software — Open Source & Self-Hosted',
+    title: 'Genius Campaign — Free Self-Hosted Email Outreach Platform',
     description:
-      'Genius Campaign: free self-hosted email marketing — sequences, webhooks, AI writing, AWS SES, Google Workspace, email verification. MIT licensed, no per-contact fees.',
-    images: ['/og-image.png'],
+      'Contacts, templates, sequences, campaigns, deliverability, and sender rotation in one self-hosted console. Bring your own AWS SES / Gmail Workspace. MIT licensed.',
+    images: ['/free-software/genius-campaign/dashboard.png'],
   },
   keywords: [
-    'free email marketing software',
-    'open source email marketing',
-    'self hosted email marketing platform',
-    'mailchimp alternative free',
-    'activecampaign alternative open source',
-    'klaviyo alternative free',
-    'laravel email marketing',
-    'email sequence automation software',
-    'aws ses email marketing',
-    'free drip campaign software',
-    'webhook email automation',
-    'free bulk email software',
+    'self hosted email outreach platform',
+    'self hosted smartlead alternative',
+    'self hosted instantly alternative',
+    'open source cold email software',
+    'self hosted email marketing with sender rotation',
+    'bring your own ses cold email tool',
+    'email marketing software with webhooks',
+    'self hosted email sequence automation',
+    'open source email marketing google workspace',
+    'free mailchimp alternative self hosted',
   ],
 };
 
@@ -53,9 +54,12 @@ export default function GeniusCampaignPage() {
     <>
       <JsonLd />
       <Hero />
+      <Screenshots />
       <WhatIs />
+      <WhoItsFor />
       <Modules />
       <Comparison />
+      <BringYourOwn />
       <HowItWorks />
       <TechStack />
       <FAQ />

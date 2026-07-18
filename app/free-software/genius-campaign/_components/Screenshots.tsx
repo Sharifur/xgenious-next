@@ -6,12 +6,12 @@ import Image from 'next/image';
 import { COLOR, LIGHT_COLOR } from './constants';
 
 const SHOTS = [
-  { file: 'issues.png', title: 'Issues Feed', caption: 'Grouped, triageable — filter, sort, and search (⌘K) across every project.' },
-  { file: 'issue-detail.png', title: 'Issue Detail', caption: 'Symbolicated stack trace, highlights, linked trace and replay, full activity log.' },
-  { file: 'trace.png', title: 'Trace Waterfall', caption: 'Span timings with error markers, linked back to the issue that fired.' },
-  { file: 'replay.png', title: 'Session Replay', caption: 'On-error, privacy-masked DOM replay with an error-marked timeline.' },
-  { file: 'alerts.png', title: 'Alert Rules', caption: 'New-issue, regression, and frequency-spike rules with dedupe and throttle.' },
-  { file: 'settings.png', title: 'Project Settings', caption: 'DSN keys, kill switch, GitHub App, members, retention, and metrics.' },
+  { file: 'dashboard.png', title: 'Dashboard', caption: 'Campaigns, sequences, and deliverability at a glance.' },
+  { file: 'contacts.png', title: 'Contacts', caption: 'CSV import with arbitrary column mapping and real-time import progress.' },
+  { file: 'template-editor.png', title: 'Template Editor', caption: 'Rich-text editor with spintax variants and AI-assisted copywriting.' },
+  { file: 'campaign-detail.png', title: 'Campaign Detail', caption: 'Open and click tracking with engagement analytics per campaign.' },
+  { file: 'sequence-builder.png', title: 'Sequence Builder', caption: 'Multi-step drip sequences with per-contact enrollment and per-step delays.' },
+  { file: 'webhooks.png', title: 'Webhooks', caption: 'Auto-enroll contacts on tag, field, list, or inbound HMAC-signed webhook events.' },
 ];
 
 function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => void; onNav: (i: number) => void }) {
@@ -36,7 +36,7 @@ function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => voi
       <div
         className="fixed inset-0 z-[9999]"
         onClick={onClose}
-        style={{ background: 'rgba(15,17,18,0.85)', backdropFilter: 'blur(4px)' }}
+        style={{ background: 'rgba(11,12,15,0.85)', backdropFilter: 'blur(4px)' }}
       />
       <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 sm:p-8 pointer-events-none">
         <div className="relative w-full max-w-[1200px] pointer-events-auto">
@@ -71,10 +71,10 @@ function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => voi
 
           <div className="rounded-2xl overflow-hidden bg-black">
             <Image
-              src={`/free-software/genius-debug/${shot.file}`}
-              alt={`Genius Debug ${shot.title} — ${shot.caption}`}
-              width={1440}
-              height={860}
+              src={`/free-software/genius-campaign/${shot.file}`}
+              alt={`Genius Campaign ${shot.title} — ${shot.caption}`}
+              width={2000}
+              height={1052}
               className="w-full h-auto"
               priority
             />
@@ -104,10 +104,10 @@ export default function Screenshots() {
             Screenshots
           </span>
           <h2 className="text-[28px] sm:text-[38px] font-semibold text-[#0F1112]">
-            See the Dashboard
+            See the Console
           </h2>
           <p className="text-[#484848] text-[15px] mt-3 max-w-[560px] mx-auto leading-7">
-            Issues, traces, and replays — the same triage loop, running on your own server. Click any screenshot to zoom in.
+            Contacts, templates, sequences, and campaigns — running on your own server. Click any screenshot to zoom in.
           </p>
         </div>
 
@@ -116,15 +116,15 @@ export default function Screenshots() {
             <button
               key={s.file}
               onClick={() => setOpenIndex(i)}
-              className="text-left rounded-2xl border border-[#E5E7EC] bg-white overflow-hidden cursor-zoom-in group focus:outline-none focus-visible:ring-2"
+              className="cursor-zoom-in text-left rounded-2xl border border-[#E5E7EC] bg-white overflow-hidden group focus:outline-none focus-visible:ring-2"
               style={{ ['--tw-ring-color' as string]: COLOR }}
             >
               <div className="relative overflow-hidden">
                 <Image
-                  src={`/free-software/genius-debug/${s.file}`}
-                  alt={`Genius Debug ${s.title} — ${s.caption}`}
-                  width={1440}
-                  height={860}
+                  src={`/free-software/genius-campaign/${s.file}`}
+                  alt={`Genius Campaign ${s.title} — ${s.caption}`}
+                  width={2000}
+                  height={1052}
                   className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">

@@ -45,7 +45,7 @@ export default function DownloadCTA() {
             licenseUuid={LICENSE_UUID}
             label="Download .zip"
             buttonColor={COLOR}
-            className="w-full inline-flex items-center justify-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:-translate-y-0.5"
+            className="cursor-pointer w-full inline-flex items-center justify-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:-translate-y-0.5"
           />
         </div>
       </div>

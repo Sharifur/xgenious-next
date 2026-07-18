@@ -3,18 +3,18 @@ import { COLOR, LIGHT_COLOR } from './constants';
 const STEPS = [
   {
     number: '01',
-    title: 'Install on Your Server',
-    desc: 'Download Genius Campaign and run the guided installer on Ubuntu 22.04 LTS. The script configures PHP 8.2+, MySQL 8.0, Nginx, and the queue worker automatically. Setup takes under 30 minutes.',
+    title: 'Deploy',
+    desc: 'docker compose up brings up Postgres, Redis, the API, and the web console in one command. Bare-metal deployment is documented too.',
   },
   {
     number: '02',
     title: 'Connect Sending & Verify Domain',
-    desc: 'Add your AWS SES or Google Workspace credentials in the admin panel, then verify your sending domain with SPF, DKIM, and DMARC records so campaigns land in the inbox instead of spam.',
+    desc: 'Add your AWS SES or Gmail Workspace credentials, then verify your sending domain with SPF, DKIM, and DMARC so campaigns land in the inbox.',
   },
   {
     number: '03',
-    title: 'Build Your First Sequence and Go Live',
-    desc: 'Import or segment your contacts, pick a built-in template or draft one with AI assistance, build your first automated sequence, and send. Campaign analytics track opens and clicks from the first send.',
+    title: 'Import Contacts and Send',
+    desc: 'Import contacts by CSV, pick a template or draft one with AI assistance, build a sequence or a one-off campaign, and send. Verification runs before dispatch.',
   },
 ];
 
@@ -30,7 +30,7 @@ export default function HowItWorks() {
             How It Works
           </span>
           <h2 className="text-[28px] sm:text-[38px] font-semibold text-[#0F1112]">
-            From Download to Live in 3 Steps
+            From Deploy to First Send in 3 Steps
           </h2>
         </div>
 

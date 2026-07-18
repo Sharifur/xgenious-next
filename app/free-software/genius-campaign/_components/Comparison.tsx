@@ -1,15 +1,16 @@
 import { COLOR, LIGHT_COLOR } from './constants';
 
 const ROWS = [
-  { feature: 'Price', geniusCampaign: 'Free forever', mailchimp: '$13–$350/mo', activeCampaign: '$29–$149/mo', klaviyo: '$20–$1,700/mo' },
-  { feature: 'Self-hosted', geniusCampaign: 'Yes — your server', mailchimp: 'No (SaaS only)', activeCampaign: 'No (SaaS only)', klaviyo: 'No (SaaS only)' },
-  { feature: 'Source code access', geniusCampaign: 'Full (MIT license)', mailchimp: 'No', activeCampaign: 'No', klaviyo: 'No' },
-  { feature: 'Pricing model', geniusCampaign: 'No per-contact fee', mailchimp: 'Scales with contacts', activeCampaign: 'Scales with contacts', klaviyo: 'Scales with contacts' },
-  { feature: 'Sequence / automation builder', geniusCampaign: 'Built in', mailchimp: 'Available', activeCampaign: 'Available', klaviyo: 'Available' },
-  { feature: 'Webhooks', geniusCampaign: 'Built in', mailchimp: 'Available', activeCampaign: 'Available', klaviyo: 'Available' },
-  { feature: 'AI writing assistance', geniusCampaign: 'Built in', mailchimp: 'Available', activeCampaign: 'Available', klaviyo: 'Available' },
-  { feature: 'Data ownership', geniusCampaign: 'Your server, your data', mailchimp: 'Vendor servers', activeCampaign: 'Vendor servers', klaviyo: 'Vendor servers' },
-  { feature: 'Vendor lock-in', geniusCampaign: 'None', mailchimp: 'Moderate', activeCampaign: 'Moderate', klaviyo: 'Moderate' },
+  { feature: 'Price', geniusCampaign: 'Free forever', smartlead: '$39–$379/mo', instantly: '$37.60–$358+/mo', mailchimp: '$13–$350/mo' },
+  { feature: 'Self-hosted', geniusCampaign: 'Yes — your infrastructure', smartlead: 'No (SaaS only)', instantly: 'No (SaaS only)', mailchimp: 'No (SaaS only)' },
+  { feature: 'Source code access', geniusCampaign: 'Full (MIT license)', smartlead: 'No', instantly: 'No', mailchimp: 'No' },
+  { feature: 'Sending infrastructure', geniusCampaign: 'Your own AWS SES / Gmail Workspace', smartlead: 'Vendor mailbox infrastructure', instantly: 'Vendor mailbox infrastructure', mailchimp: 'Vendor-managed sending' },
+  { feature: 'Sender rotation', geniusCampaign: 'Built in, quota-aware', smartlead: 'Built in', instantly: 'Built in', mailchimp: 'Not applicable' },
+  { feature: 'Sequences / drip automation', geniusCampaign: 'Built in', smartlead: 'Built in', instantly: 'Built in', mailchimp: 'Available' },
+  { feature: 'Webhooks & triggers', geniusCampaign: 'Built in (inbound + outbound)', smartlead: 'Pro plan and up', instantly: 'Available', mailchimp: 'Available' },
+  { feature: 'AI writing assistance', geniusCampaign: 'Built in', smartlead: 'Available', instantly: 'Available', mailchimp: 'Available' },
+  { feature: 'Email verification', geniusCampaign: 'Built in (Reoon + NeverBounce)', smartlead: 'Add-on credits', instantly: 'Add-on module', mailchimp: 'Not built in' },
+  { feature: 'Data ownership', geniusCampaign: 'Your server, your data', smartlead: 'Vendor servers', instantly: 'Vendor servers', mailchimp: 'Vendor servers' },
 ];
 
 function Tick() {
@@ -33,25 +34,25 @@ export default function Comparison() {
             Comparison
           </span>
           <h2 className="text-[28px] sm:text-[36px] font-semibold text-[#0F1112]">
-            Genius Campaign vs Mailchimp vs ActiveCampaign vs Klaviyo
+            Genius Campaign vs Smartlead vs Instantly vs Mailchimp
           </h2>
-          <p className="text-[#484848] text-[15px] mt-3 max-w-[560px] mx-auto leading-7">
-            Same core workflow. No per-contact fees. No SaaS contract. Your server.
+          <p className="text-[#484848] text-[15px] mt-3 max-w-[600px] mx-auto leading-7">
+            Same core sequence-and-campaign workflow. No per-contact or per-send fee. Your infrastructure.
           </p>
         </div>
 
-        <div className="max-w-[1000px] mx-auto overflow-x-auto">
+        <div className="max-w-[1050px] mx-auto overflow-x-auto">
           <table className="w-full text-[13px] sm:text-[14px] border-collapse">
             <thead>
               <tr>
-                <th className="text-left px-4 py-3 text-[#6b7280] font-medium border-b border-[#E5E7EC] w-[180px]">Feature</th>
+                <th className="text-left px-4 py-3 text-[#6b7280] font-medium border-b border-[#E5E7EC] w-[200px]">Feature</th>
                 <th className="px-4 py-3 border-b border-[#E5E7EC] rounded-t-xl" style={{ background: LIGHT_COLOR, color: COLOR }}>
                   <span className="font-bold">Genius Campaign</span>
                   <span className="block text-[11px] font-normal mt-0.5">Free · Open Source</span>
                 </th>
+                <th className="px-4 py-3 text-[#6b7280] font-medium border-b border-[#E5E7EC] text-center">Smartlead</th>
+                <th className="px-4 py-3 text-[#6b7280] font-medium border-b border-[#E5E7EC] text-center">Instantly</th>
                 <th className="px-4 py-3 text-[#6b7280] font-medium border-b border-[#E5E7EC] text-center">Mailchimp</th>
-                <th className="px-4 py-3 text-[#6b7280] font-medium border-b border-[#E5E7EC] text-center">ActiveCampaign</th>
-                <th className="px-4 py-3 text-[#6b7280] font-medium border-b border-[#E5E7EC] text-center">Klaviyo</th>
               </tr>
             </thead>
             <tbody>
@@ -61,17 +62,17 @@ export default function Comparison() {
                   <td className="px-4 py-3 text-center font-semibold" style={{ color: COLOR, background: `${LIGHT_COLOR}60` }}>
                     <Tick />{row.geniusCampaign}
                   </td>
+                  <td className="px-4 py-3 text-center text-[#6b7280]">{row.smartlead}</td>
+                  <td className="px-4 py-3 text-center text-[#6b7280]">{row.instantly}</td>
                   <td className="px-4 py-3 text-center text-[#6b7280]">{row.mailchimp}</td>
-                  <td className="px-4 py-3 text-center text-[#6b7280]">{row.activeCampaign}</td>
-                  <td className="px-4 py-3 text-center text-[#6b7280]">{row.klaviyo}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        <p className="text-center text-[12px] text-[#9ca3af] mt-5 max-w-[560px] mx-auto">
-          Mailchimp, ActiveCampaign, and Klaviyo pricing as of 2025. Costs scale with contact list size — Genius Campaign does not.
+        <p className="text-center text-[12px] text-[#9ca3af] mt-5 max-w-[620px] mx-auto">
+          Smartlead, Instantly, and Mailchimp pricing per each vendor&apos;s published plans, 2026. Costs scale with contacts and send volume — Genius Campaign does not.
         </p>
       </div>
     </section>

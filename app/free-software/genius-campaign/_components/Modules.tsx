@@ -21,10 +21,10 @@ export default function Modules() {
             Features
           </span>
           <h2 className="text-[28px] sm:text-[38px] font-semibold text-[#0F1112]">
-            6 Modules. Full Campaign Lifecycle.
+            9 Modules. Full Outreach Lifecycle.
           </h2>
           <p className="text-[#484848] text-[15px] mt-3 max-w-[560px] mx-auto leading-7">
-            From first sequence to sent campaign — every core email marketing workflow is built in and ready to use out of the box.
+            From contact import to sent campaign — every core email outreach workflow is built in and ready to use out of the box.
           </p>
         </div>
 

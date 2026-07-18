@@ -5,11 +5,11 @@ export const DARK_BG = '#0E0E14';
 export const BASE_URL = 'https://xgenious.com';
 export const CANONICAL = `${BASE_URL}/free-software/genius-debug`;
 
-export const GITHUB_URL = 'https://github.com/XgeniousLLC/geniusDebug/archive/refs/heads/main.zip';
+export const GITHUB_URL = '';
 export const DOCS_URL = 'https://xgeniousllc.github.io/geniusDebug/index.html';
 export const DEPLOY_GUIDE_URL = 'https://xgeniousllc.github.io/geniusDebug/deployment-guide.html';
 export const INTEGRATION_GUIDE_URL = 'https://xgeniousllc.github.io/geniusDebug/integration.html';
-export const LICENSE_UUID = '';
+export const LICENSE_UUID = 'a427eabe-a3d6-4395-b5e9-ecbaeefc6ae4';
 
 export const MODULES = [
   {
