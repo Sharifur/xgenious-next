@@ -181,6 +181,8 @@ Completed ticket history (XG-001 → XG-052, all DONE) archived to `docs/sprint-
 
 | Ticket | Title | Status | Priority | Tokens | Description |
 |--------|-------|--------|----------|--------|-------------|
+| XG-053 | Genius Campaign page (basic) | DONE | HIGH | ~120k | New free-software page: AI email marketing solution — webhook, sequence trigger, templates, AI, SES, Google Workspace, email verification. Details/screenshots to follow. |
+| XG-054 | geniusDebug page (rebuilt w/ real brief + keyword research) | DONE | HIGH | ~150k | Self-hosted Sentry alternative for JS/Next.js (NestJS/Postgres/Redis/R2/SES stack) — replaced initial generic Laravel-debugger draft with real product facts, added GlitchTip 3-way comparison, Quickstart section, SEO keyword clustering via live SERP research. |
 
 ### Sprint Stats
-- Total: 52  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 52  /  BLOCKED: 0
+- Total: 54  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 54  /  BLOCKED: 0

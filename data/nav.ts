@@ -38,6 +38,8 @@ export const freeSoftwareDropdown: DropdownItem[] = [
   { label: 'Genius CRM', description: 'Free self-hosted CRM — Laravel 12 + React 19', href: '/free-software/genius-crm' },
   { label: 'Genius HRM', description: 'Free HR management system — Laravel + React', href: '/free-software/genius-hrm' },
   { label: 'Genius Support', description: 'Free self-hosted support portal — Laravel + Reverb', href: '/free-software/genius-support' },
+  { label: 'Genius Campaign', description: 'Free self-hosted email outreach — bring your own AWS SES', href: '/free-software/genius-campaign' },
+  { label: 'Genius Debug', description: 'Self-hosted Sentry alternative — error monitoring + replay', href: '/free-software/genius-debug' },
 ];
 
 export const freeToolsLink = { label: 'Free Tools', href: '/free-tools' };

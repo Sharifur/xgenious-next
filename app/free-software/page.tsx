@@ -154,6 +154,69 @@ const PRODUCTS = [
       'Admin panel — departments, branding, templates, analytics',
     ],
   },
+  {
+    id: 'genius-campaign',
+    href: '/free-software/genius-campaign',
+    name: 'Genius Campaign',
+    tagline: 'Free Self-Hosted Email Marketing & Outreach Platform',
+    description:
+      'A self-hosted email marketing and outreach console — contacts, templates, sequences, campaigns, deliverability, and sender rotation. Bring your own AWS SES or Gmail Workspace, no per-contact fees, MIT licensed.',
+    badge: 'NestJS · PostgreSQL · MIT',
+    stats: [
+      { label: 'Modules', value: '9' },
+      { label: 'Pricing', value: '$0' },
+      { label: 'License', value: 'MIT' },
+      { label: 'Free Forever', value: '' },
+    ],
+    color: '#6366F1',
+    lightColor: '#EEF0FD',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M4 4h16v16H4z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+        <path d="M4 6l8 7 8-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    highlights: [
+      'Bring your own AWS SES / Gmail Workspace — no third-party data routing',
+      'Sender rotation across accounts, quota-aware',
+      'Multi-step drip sequences with per-contact enrollment',
+      'Inbound and outbound webhooks — auto-enroll on events',
+      'AI-assisted template editor with spintax variants',
+      'Bulk email verification before every send',
+    ],
+  },
+  {
+    id: 'genius-debug',
+    href: '/free-software/genius-debug',
+    name: 'Genius Debug',
+    tagline: 'Free Self-Hosted Sentry Alternative',
+    description:
+      'A minimal, self-hosted error and performance monitoring platform for JavaScript and Next.js/React apps. Error grouping, source-map symbolication, distributed traces, and session replay — reuses your existing Sentry SDK, no per-event pricing.',
+    badge: 'NestJS · PostgreSQL · Open Source',
+    stats: [
+      { label: 'Modules', value: '8' },
+      { label: 'Pricing', value: '$0' },
+      { label: 'License', value: 'OSS' },
+      { label: 'Free Forever', value: '' },
+    ],
+    color: '#6C5FC7',
+    lightColor: '#EFECFB',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M9 9l1.5-1.5M15 9l-1.5-1.5M9 15l1.5 1.5M15 15l-1.5 1.5M4 12h2M18 12h2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <rect x="8" y="6" width="8" height="13" rx="4" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M8 11h8M4 8l2.5 2M20 8l-2.5 2M4 17l2.5-2M20 17l-2.5-2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+    ),
+    highlights: [
+      'Reuses the standard Sentry SDK — repoint the DSN, no rewrite',
+      'Error grouping, fingerprinting, and regression detection',
+      'Source-map symbolication for minified stack traces',
+      'Distributed traces and on-error session replay',
+      'GitHub integration — suspect commits, auto-resolve',
+      'Remote kill switch, back-pressure shedding, no per-event pricing',
+    ],
+  },
 ];
 
 export default function FreeSoftwarePage() {
@@ -193,7 +256,7 @@ export default function FreeSoftwarePage() {
       <section className="py-16 sm:py-20 lg:py-[100px] bg-white">
         <div className="container-page px-4 sm:px-6 lg:px-0">
           <p className="text-[13px] font-medium text-[#6b7280] uppercase tracking-wider mb-10 text-center">
-            4 Free Products Available
+            {PRODUCTS.length} Free Products Available
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {PRODUCTS.map((product) => (
