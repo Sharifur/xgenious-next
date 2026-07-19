@@ -183,6 +183,7 @@ Completed ticket history (XG-001 → XG-052, all DONE) archived to `docs/sprint-
 |--------|-------|--------|----------|--------|-------------|
 | XG-053 | Genius Campaign page (basic) | DONE | HIGH | ~120k | New free-software page: AI email marketing solution — webhook, sequence trigger, templates, AI, SES, Google Workspace, email verification. Details/screenshots to follow. |
 | XG-054 | geniusDebug page (rebuilt w/ real brief + keyword research) | DONE | HIGH | ~150k | Self-hosted Sentry alternative for JS/Next.js (NestJS/Postgres/Redis/R2/SES stack) — replaced initial generic Laravel-debugger draft with real product facts, added GlitchTip 3-way comparison, Quickstart section, SEO keyword clustering via live SERP research. |
+| XG-055 | Genius Campaign lead integration | DONE | HIGH | ~60k | Wired into shared `app/api/download-lead/route.ts` (single choke point for all free-software pages, current + future). Upserts contact (`POST /api/v1/contacts`, listId/tagIds) then enrolls into sequence (`POST /api/v1/contacts/{email}/enroll`), fire-and-forget alongside existing Taskip push. Env: `GENIUS_CAMPAIGN_API_HOST`, `GENIUS_CAMPAIGN_API_KEY`, `GENIUS_CAMPAIGN_LIST_ID`, `GENIUS_CAMPAIGN_SEQUENCE_ID`, `GENIUS_CAMPAIGN_TAG_ID` in `.env.local`. |
 
 ### Sprint Stats
-- Total: 54  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 54  /  BLOCKED: 0
+- Total: 55  /  TODO: 0  /  IN_PROGRESS: 0  /  DONE: 55  /  BLOCKED: 0
