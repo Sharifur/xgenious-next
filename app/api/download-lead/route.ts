@@ -75,6 +75,50 @@ export async function POST(req: NextRequest) {
     console.warn('TASKIP_SECRET_KEY not set — lead not forwarded to Taskip:', { email, product });
   }
 
+  const gcApiKey = process.env.GENIUS_CAMPAIGN_API_KEY;
+  const gcApiHost = process.env.GENIUS_CAMPAIGN_API_HOST;
+
+  if (gcApiKey && gcApiHost) {
+    try {
+      const contactRes = await fetch(`${gcApiHost}/api/v1/contacts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Api-Key': gcApiKey,
+        },
+        body: JSON.stringify({
+          email,
+          firstName: name ? name.split(' ')[0] : undefined,
+          lastName: name ? name.split(' ').slice(1).join(' ') || undefined : undefined,
+          customFields: { source: `free-software:${product}` },
+          listId: process.env.GENIUS_CAMPAIGN_LIST_ID || undefined,
+          tagIds: process.env.GENIUS_CAMPAIGN_TAG_ID ? [process.env.GENIUS_CAMPAIGN_TAG_ID] : undefined,
+        }),
+      });
+
+      if (contactRes.ok && process.env.GENIUS_CAMPAIGN_SEQUENCE_ID) {
+        const enrollRes = await fetch(
+          `${gcApiHost}/api/v1/contacts/${encodeURIComponent(email)}/enroll`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Api-Key': gcApiKey,
+            },
+            body: JSON.stringify({ sequenceId: process.env.GENIUS_CAMPAIGN_SEQUENCE_ID }),
+          }
+        );
+        if (!enrollRes.ok && enrollRes.status !== 409) {
+          console.error('Genius Campaign enroll failed:', enrollRes.status, await enrollRes.text());
+        }
+      } else if (!contactRes.ok) {
+        console.error('Genius Campaign contact upsert failed:', contactRes.status, await contactRes.text());
+      }
+    } catch (err) {
+      console.error('Genius Campaign lead push error:', err);
+    }
+  }
+
   let resolvedDownloadUrl = downloadUrl;
   if (licenseUuid) {
     try {
