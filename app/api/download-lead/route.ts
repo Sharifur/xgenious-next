@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
           email,
           firstName: name ? name.split(' ')[0] : undefined,
           lastName: name ? name.split(' ').slice(1).join(' ') || undefined : undefined,
-          customFields: { source: `free-software:${product}` },
+          customFields: { source: `free-software:${product}`, software_name: product },
           listId: process.env.GENIUS_CAMPAIGN_LIST_ID || undefined,
           tagIds: process.env.GENIUS_CAMPAIGN_TAG_ID ? [process.env.GENIUS_CAMPAIGN_TAG_ID] : undefined,
         }),
