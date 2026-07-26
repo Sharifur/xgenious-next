@@ -12,6 +12,7 @@
     "@aws-sdk/client-s3": "^3.1050.0",
     "@aws-sdk/client-ses": "^3.1049.0",
     "@hookform/resolvers": "^5.2.2",
+    "@sentry/nextjs": "^10.68.0",
     "@tabler/icons-react": "^3.44.0",
     "@tiptap/extension-image": "^3.23.6",
     "@tiptap/extension-placeholder": "^3.23.6",
