@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "next build && node scripts/upload-sourcemaps.mjs",
   "redirects": [
     {
       "source": "/our-products/nazmart-multi-tenancy-ecommerce-platform-saas",
