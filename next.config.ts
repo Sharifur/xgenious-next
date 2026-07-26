@@ -73,9 +73,9 @@ export default withSentryConfig(nextConfig, {
   release: { create: false },
   tunnelRoute: "/monitoring",
   silent: true,
-  // inject MUST be true so webpack writes the sentry-dbid-<uuid> runtime
-  // marker into build output — scripts/upload-sourcemaps.mjs reads it to
-  // match source maps to events since we have no SENTRY_AUTH_TOKEN.
-  sourcemaps: { disable: false, inject: true, deleteSourcemapsAfterUpload: false },
+  // debugId markers are injected into build output automatically (no config
+  // flag needed in this SDK version) — scripts/upload-sourcemaps.mjs reads
+  // them to match source maps to events since we have no SENTRY_AUTH_TOKEN.
+  sourcemaps: { disable: false, deleteSourcemapsAfterUpload: false },
   widenClientFileUpload: true,
 });
