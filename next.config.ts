@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.0.102'],
@@ -68,4 +69,9 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  release: { create: false },
+  tunnelRoute: "/monitoring",
+  silent: true,
+  sourcemaps: { disable: false },
+});
