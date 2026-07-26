@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/upload-sourcemaps.mjs",
     "start": "next start",
     "lint": "eslint"
   },
