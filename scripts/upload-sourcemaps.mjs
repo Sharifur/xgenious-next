@@ -102,22 +102,45 @@ async function extractDebugIdFromJs(mapPath) {
   return null;
 }
 
-async function uploadBatch(files, batchNum, totalBatches) {
-  const res = await fetch(
-    `${apiUrl}/api/${projectId}/releases/${release}/upload`,
-    {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// The upstream API occasionally 500s on a batch (transient, not our payload —
+// same request retried alone succeeds). Retry a few times with backoff before
+// giving up on that batch; a failed batch must never fail the whole deploy —
+// sourcemap upload is best-effort, symbolication for one release isn't worth
+// blocking prod.
+async function uploadBatch(files, batchNum, totalBatches, attempt = 1) {
+  const MAX_ATTEMPTS = 3;
+  let res;
+  try {
+    res = await fetch(`${apiUrl}/api/${projectId}/releases/${release}/upload`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${orgToken}`,
       },
       body: JSON.stringify({ files, commitSha: release }),
-    },
-  );
+    });
+  } catch (err) {
+    if (attempt < MAX_ATTEMPTS) {
+      console.warn(`[geniusdebug] Batch ${batchNum}/${totalBatches} network error (attempt ${attempt}/${MAX_ATTEMPTS}): ${err.message} — retrying...`);
+      await sleep(attempt * 1000);
+      return uploadBatch(files, batchNum, totalBatches, attempt + 1);
+    }
+    console.error(`[geniusdebug] Batch ${batchNum}/${totalBatches} failed after ${MAX_ATTEMPTS} attempts: ${err.message} — skipping.`);
+    return null;
+  }
 
   if (!res.ok) {
     const body = await res.text();
-    throw new Error(`Batch ${batchNum}/${totalBatches} failed: ${res.status} ${body}`);
+    // Retry transient server errors; 4xx (bad payload/auth) won't fix itself.
+    if (res.status >= 500 && attempt < MAX_ATTEMPTS) {
+      console.warn(`[geniusdebug] Batch ${batchNum}/${totalBatches} got ${res.status} (attempt ${attempt}/${MAX_ATTEMPTS}) — retrying...`);
+      await sleep(attempt * 1000);
+      return uploadBatch(files, batchNum, totalBatches, attempt + 1);
+    }
+    console.error(`[geniusdebug] Batch ${batchNum}/${totalBatches} failed: ${res.status} ${body} — skipping.`);
+    return null;
   }
 
   return res.json();
@@ -168,9 +191,16 @@ async function main() {
     console.log(`[geniusdebug] Uploading batch ${i + 1}/${totalBatches} (${batch.length} files)...`);
     return uploadBatch(batch, i + 1, totalBatches);
   });
-  const totalUploaded = results.reduce((sum, r) => sum + r.uploaded, 0);
+  const failedBatches = results.filter((r) => r === null).length;
+  const totalUploaded = results.reduce((sum, r) => sum + (r?.uploaded ?? 0), 0);
 
   console.log(`[geniusdebug] Uploaded ${totalUploaded} source maps for release ${release}.`);
+  if (failedBatches > 0) {
+    console.warn(`[geniusdebug] ${failedBatches}/${totalBatches} batch(es) failed and were skipped — symbolication may be incomplete for this release.`);
+  }
 }
 
-main();
+// Sourcemap upload is best-effort — never fail the build/deploy over it.
+main().catch((err) => {
+  console.error(`[geniusdebug] Unexpected error, skipping upload: ${err.message}`);
+});
