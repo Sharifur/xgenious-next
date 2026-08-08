@@ -51,7 +51,7 @@ const FAQS = [
   },
   {
     q: 'Is there a mobile app for Helpnest?',
-    a: 'A mobile app is planned and listed as coming soon. The web platform is fully responsive and works on mobile browsers for both agents and end users.',
+    a: 'A mobile app is available with the Everything Bundle ($89) and the Exclusive License ($199) — not included in the Regular license. The web platform is also fully responsive and works on mobile browsers for both agents and end users.',
   },
 ];
 
