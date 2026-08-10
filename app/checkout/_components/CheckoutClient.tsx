@@ -193,9 +193,13 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
   const [couponMessage, setCouponMessage] = useState('');
   const [appliedCouponCode, setAppliedCouponCode] = useState('');
   const [fsOrderTotal, setFsOrderTotal] = useState<number | null>(null);
+  const [checkoutError, setCheckoutError] = useState(false);
+  const [fallbackLoading, setFallbackLoading] = useState(false);
+  const [fallbackEmail, setFallbackEmail] = useState('');
+  const [fallbackEmailError, setFallbackEmailError] = useState('');
   const couponTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const router = useRouter();
-  const { status } = useSession();
+  const { status, data: session } = useSession();
   const sessionStatusRef = useRef(status);
 
   useEffect(() => { sessionStatusRef.current = status; }, [status]);
@@ -230,6 +234,7 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
         apiEndpoint: `${FASTSPRING_STORE}`,
         httpStatus: String(code ?? ''),
       });
+      setCheckoutError(true);
     };
   }, [router]);
 
@@ -328,6 +333,7 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
   };
 
   const handleConfirm = () => {
+    setCheckoutError(false);
     const items = [product.path, ...Array.from(selectedAddons)];
     if (!window.fastspring?.builder) {
       reportCrash({
@@ -336,6 +342,7 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
         operation: 'launchCheckout',
         apiEndpoint: FASTSPRING_STORE,
       });
+      setCheckoutError(true);
       return;
     }
     trackInitiateCheckout(window.location.href, items, orderTotal);
@@ -345,6 +352,50 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
     const userCoupon = couponCode.trim();
     const coupon = userCoupon === PROMO_CODE ? undefined : userCoupon || '';
     launchCheckout(items, coupon);
+  };
+
+  // Fallback when the popup fails to load — creates a FastSpring hosted
+  // session carrying the same cart and does a full top-level redirect,
+  // which isn't subject to the third-party iframe/cookie blocking that
+  // breaks the embedded popup on some mobile browsers.
+  const handleFallbackCheckout = async () => {
+    const email = session?.wpEmail || fallbackEmail.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setFallbackEmailError('Enter a valid email to continue.');
+      return;
+    }
+    setFallbackEmailError('');
+    setFallbackLoading(true);
+    const items = [product.path, ...Array.from(selectedAddons)];
+    const coupon = couponCode.trim() || undefined;
+    try {
+      const res = await fetch('/api/checkout/fastspring-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items, coupon, email }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data?.checkoutUrl) {
+        reportCrash({
+          type: 'FastSpring session fallback failed',
+          message: data?.error ?? `HTTP ${res.status}`,
+          operation: 'fastspring-session-fallback',
+          apiEndpoint: '/api/checkout/fastspring-session',
+          httpStatus: String(res.status),
+        });
+        setFallbackLoading(false);
+        return;
+      }
+      window.location.href = data.checkoutUrl;
+    } catch (err) {
+      reportCrash({
+        type: 'FastSpring session fallback failed',
+        message: err instanceof Error ? err.message : 'unknown error',
+        operation: 'fastspring-session-fallback',
+        apiEndpoint: '/api/checkout/fastspring-session',
+      });
+      setFallbackLoading(false);
+    }
   };
 
   const savings = product.originalPrice - product.price;
@@ -787,6 +838,37 @@ export default function CheckoutClient({ product }: { product: CheckoutProduct }
                     </p>
                   )}
                 </div>
+
+                {checkoutError && (
+                  <div className="mb-4 rounded-xl border border-[#fecaca] bg-[#fef2f2] px-3.5 py-3">
+                    <p className="text-[13px] font-bold text-[#dc2626] leading-tight">Checkout couldn&apos;t load</p>
+                    <p className="text-[12px] text-[#7f1d1d] leading-4 mt-1">
+                      This is usually an ad blocker, privacy extension, or a strict browser setting blocking the payment popup. Continue on FastSpring&apos;s secure page instead — your cart carries over.
+                    </p>
+                    {!session?.wpEmail && (
+                      <input
+                        type="email"
+                        value={fallbackEmail}
+                        onChange={(e) => {
+                          setFallbackEmail(e.target.value);
+                          if (fallbackEmailError) setFallbackEmailError('');
+                        }}
+                        placeholder="you@example.com"
+                        className="mt-2 w-full rounded-lg border border-[#fecaca] bg-white px-3 py-2 text-[13px] text-[#0F1112] placeholder:text-[#9ca3af] focus:outline-none focus:ring-2 focus:ring-[#dc2626]/30"
+                      />
+                    )}
+                    {fallbackEmailError && (
+                      <p className="mt-1 text-[11px] font-medium text-[#dc2626]">{fallbackEmailError}</p>
+                    )}
+                    <button
+                      onClick={handleFallbackCheckout}
+                      disabled={fallbackLoading}
+                      className="mt-2 text-[12px] font-semibold text-[#dc2626] underline underline-offset-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {fallbackLoading ? 'Redirecting…' : 'Continue to Secure Checkout'}
+                    </button>
+                  </div>
+                )}
 
                 <button
                   onClick={handleConfirm}
