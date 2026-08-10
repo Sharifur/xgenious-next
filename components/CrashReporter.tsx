@@ -14,6 +14,11 @@ const BENIGN_MESSAGES = [
   /ResizeObserver loop/,
 ];
 
+// Browsers strip filename/line/col/stack for cross-origin script errors (spec
+// behavior, not a bug) and replace the message with exactly this string — no
+// debuggable info is ever available, so it's never actionable.
+const CROSS_ORIGIN_MESSAGE = /^Script error\.?$/;
+
 // Errors from unresolvable sources (inline/eval scripts) we can't act on
 const UNATTRIBUTABLE_MESSAGES = [
   /Maximum call stack size exceeded/,
@@ -42,6 +47,7 @@ export default function CrashReporter() {
       if (isThirdParty(stack, source)) return;
       if (isBenign(event.message)) return;
       if (isUnattributable(event.message, source)) return;
+      if (CROSS_ORIGIN_MESSAGE.test(event.message)) return;
       reportCrash({
         type: 'JS runtime error',
         message: event.message,
