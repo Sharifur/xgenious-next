@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import RecaptchaLazy from '@/components/RecaptchaLazy';
 import CTASection from '@/components/sections/CTASection';
 import { trackContact } from '@/lib/meta-events';
 
@@ -68,7 +68,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const recaptchaRef = useRef<any>(null);
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -221,7 +221,7 @@ export default function ContactPage() {
                   </div>
 
                   {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
-                    <ReCAPTCHA
+                    <RecaptchaLazy
                       ref={recaptchaRef}
                       sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                     />

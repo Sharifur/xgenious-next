@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import ReCAPTCHA from 'react-google-recaptcha';
+import RecaptchaLazy from '@/components/RecaptchaLazy';
 import AuthPanel from '@/components/auth/AuthPanel';
 import { loginSchema, type LoginInput } from '@/lib/schemas/auth';
 
@@ -17,7 +17,7 @@ function LoginForm() {
   const [resendMsg, setResendMsg] = useState('');
   const [countdown, setCountdown] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const recaptchaRef = useRef<any>(null);
 
   const justReset = params.get('reset') === '1';
 
@@ -171,7 +171,7 @@ function LoginForm() {
             </div>
 
             {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
-              <ReCAPTCHA ref={recaptchaRef} sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
+              <RecaptchaLazy ref={recaptchaRef} sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
             )}
 
             <button
