@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
-import ReCAPTCHA from 'react-google-recaptcha';
+import RecaptchaLazy from '@/components/RecaptchaLazy';
 import AuthPanel from '@/components/auth/AuthPanel';
 import { registerSchema, type RegisterInput } from '@/lib/schemas/auth';
 import { trackCompleteRegistration } from '@/lib/meta-events';
@@ -61,7 +61,7 @@ export default function RegisterPage() {
   const [resendMsg, setResendMsg] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const recaptchaRef = useRef<any>(null);
 
   const {
     register,
@@ -282,7 +282,7 @@ export default function RegisterPage() {
                 </div>
 
                 {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
-                  <ReCAPTCHA ref={recaptchaRef} sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
+                  <RecaptchaLazy ref={recaptchaRef} sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
                 )}
 
                 <button
