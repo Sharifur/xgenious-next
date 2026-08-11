@@ -6,7 +6,7 @@ import { ComponentProps, forwardRef } from 'react';
 const ReCAPTCHAComponent = dynamic(
   () => import('react-google-recaptcha').then((mod) => mod.default),
   { ssr: false }
-);
+) as any;
 
 type RecaptchaProps = ComponentProps<typeof ReCAPTCHAComponent>;
 
