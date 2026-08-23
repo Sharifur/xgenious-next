@@ -1,6 +1,7 @@
 import { auth } from '@/auth';
 import Link from 'next/link';
 import SupportNotices from '@/components/SupportNotices';
+import RenewAddonsBanner from '@/components/RenewAddonsBanner';
 
 export const metadata = { title: 'Dashboard — My Account' };
 
@@ -117,6 +118,7 @@ export default async function DashboardPage() {
         </div>
       </div>
 
+      <RenewAddonsBanner />
       <SupportNotices />
 
       {/* Quick actions */}

@@ -1,7 +1,11 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 import type { PurchaseItem } from '@/lib/license-server';
 import { useLicensesStore } from '@/store/useLicensesStore';
+import { getAvailableAddons, canRenewSupport, supportRenewalLabel, hasUpsellOffers, categorizeAddonPath, resolveSupportRenewalPath } from '@/lib/license-offers';
+import LicenseUpsellAction from '@/components/LicenseUpsellAction';
+import AddonInfoDisclosure from '@/components/AddonInfoDisclosure';
 
 const LS_PREFIX = 'xg_update_url_';
 const TTL_MS = 60 * 60 * 1000;
@@ -29,6 +33,8 @@ function loadUpdateUrls(licenseKeys: string[]): Record<string, string> {
 export default function DownloadsPage() {
   const { items: allItems, loading, error, fetch: fetchLicenses } = useLicensesStore();
   const items = allItems.filter((i) => i.license_key && i.validity !== 'blocked');
+  const { data: session } = useSession();
+  const userEmail = (session as any)?.wpEmail ?? session?.user?.email ?? '';
   const [loadingKey, setLoadingKey] = useState<string | null>(null);
   const [updateUrls, setUpdateUrls] = useState<Record<string, string>>({});
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
@@ -131,7 +137,12 @@ export default function DownloadsPage() {
 
       {items.length > 0 && (
         <div className="space-y-3">
-          {items.map((item) => (
+          {items.map((item) => {
+            const renewalOffered = canRenewSupport(item);
+            const addonOffers = getAvailableAddons(item).filter((o) => !o.alreadyOwned);
+            const showUpsell = hasUpsellOffers(item);
+
+            return (
             <div key={item.license_key} className="bg-white rounded-2xl border border-gray-200 p-5 space-y-4">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 bg-[#ec7161]/10 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -200,8 +211,46 @@ export default function DownloadsPage() {
                   </div>
                 </div>
               )}
+
+              {showUpsell && (
+                <div className="border-t border-gray-100 pt-4 space-y-2.5">
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Renew & Add-ons</p>
+                  {renewalOffered && (
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-sm font-medium text-[#0F1112]">Support renewal</p>
+                      <LicenseUpsellAction
+                        licenseKey={item.license_key}
+                        productUid={item.product_uid}
+                        productPath={resolveSupportRenewalPath(item)}
+                        licenseType="support_renewal"
+                        label={supportRenewalLabel(item)}
+                        userEmail={userEmail}
+                        variant="compact"
+                      />
+                    </div>
+                  )}
+                  {addonOffers.map(({ addon }) => (
+                    <div key={addon.path} className="flex flex-wrap items-center justify-between gap-3">
+                      <div className="flex items-center gap-1.5">
+                        <p className="text-sm font-medium text-[#0F1112]">{addon.label}</p>
+                        <AddonInfoDisclosure addon={addon} />
+                      </div>
+                      <LicenseUpsellAction
+                        licenseKey={item.license_key}
+                        productUid={item.product_uid}
+                        productPath={addon.path}
+                        licenseType={categorizeAddonPath(addon.path)}
+                        label={`Add — $${addon.price}`}
+                        userEmail={userEmail}
+                        variant="compact"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>

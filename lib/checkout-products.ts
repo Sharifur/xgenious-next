@@ -23,7 +23,7 @@ export interface CheckoutProduct {
   addons: CheckoutAddon[];
 }
 
-const PRODUCTS: Record<string, CheckoutProduct> = {
+export const PRODUCTS: Record<string, CheckoutProduct> = {
   'xilancer-bundle-pack': {
     path: 'xilancer-bundle-pack',
     name: 'Xilancer — Everything Bundle',
