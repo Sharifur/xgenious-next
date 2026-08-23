@@ -5,7 +5,9 @@ import { useParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useLicensesStore } from '@/store/useLicensesStore';
 import type { LicenseActivation } from '@/lib/license-server';
-import SupportRenewalButton from '@/components/SupportRenewalButton';
+import LicenseUpsellAction from '@/components/LicenseUpsellAction';
+import AddonInfoDisclosure from '@/components/AddonInfoDisclosure';
+import { getAvailableAddons, categorizeAddonPath, resolveSupportRenewalPath } from '@/lib/license-offers';
 
 function CopyButton({ value }: { value: string }) {
   const [copied, setCopied] = useState(false);
@@ -133,6 +135,7 @@ export default function LicenseDetailPage() {
   if (!item) return null;
 
   const activeDomains = item.activations?.filter((a) => a.status === 1).length ?? 0;
+  const availableAddons = getAvailableAddons(item).filter((o) => !o.alreadyOwned);
 
   return (
     <div className="space-y-4">
@@ -195,12 +198,14 @@ export default function LicenseDetailPage() {
                 ({item.support_active ? 'active' : 'expired'})
               </span>
             </p>
-            {item.can_extend && process.env.NEXT_PUBLIC_FASTSPRING_STOREFRONT && (
+            {!item.support_active && (
               <div className="mt-2">
-                <SupportRenewalButton
+                <LicenseUpsellAction
                   licenseKey={item.license_key}
                   productUid={item.product_uid}
-                  productPath={`${item.product_uid}-support`}
+                  productPath={resolveSupportRenewalPath(item)}
+                  licenseType="support_renewal"
+                  label="Renew Support"
                   userEmail={userEmail}
                 />
               </div>
@@ -216,6 +221,35 @@ export default function LicenseDetailPage() {
           </div>
         </div>
       </div>
+
+      {/* Available add-ons */}
+      {availableAddons.length > 0 && (
+        <div className="bg-white rounded-2xl border border-gray-200 p-5">
+          <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Available Add-ons</h2>
+          <div className="space-y-3">
+            {availableAddons.map(({ addon }) => (
+              <div key={addon.path} className="flex flex-wrap items-center justify-between gap-3 py-2 border-b border-gray-100 last:border-0 last:pb-0">
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-sm font-medium text-[#0F1112]">{addon.label}</p>
+                    <AddonInfoDisclosure addon={addon} />
+                  </div>
+                  <p className="text-xs text-gray-400 mt-0.5">{addon.description}</p>
+                </div>
+                <LicenseUpsellAction
+                  licenseKey={item.license_key}
+                  productUid={item.product_uid}
+                  productPath={addon.path}
+                  licenseType={categorizeAddonPath(addon.path)}
+                  label={`Add — $${addon.price}`}
+                  userEmail={userEmail}
+                  variant="compact"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Domains */}
       <div className="bg-white rounded-2xl border border-gray-200 p-5">

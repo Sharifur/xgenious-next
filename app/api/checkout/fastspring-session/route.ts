@@ -7,13 +7,16 @@ import { FASTSPRING_STORE } from '@/lib/fastspring';
 // then the client does a full top-level redirect (not an iframe), which isn't
 // subject to the same blocking.
 export async function POST(request: NextRequest) {
-  const { items, coupon, email } = await request.json();
+  const { items, coupon, email, tags } = await request.json();
 
   if (!Array.isArray(items) || items.length === 0) {
     return NextResponse.json({ error: 'items required' }, { status: 400 });
   }
   if (typeof email !== 'string' || !email.trim()) {
     return NextResponse.json({ error: 'email required' }, { status: 400 });
+  }
+  if (tags !== undefined && (typeof tags !== 'object' || tags === null || Array.isArray(tags))) {
+    return NextResponse.json({ error: 'tags must be an object' }, { status: 400 });
   }
 
   const username = process.env.FASTSPRING_API_USERNAME;
@@ -33,6 +36,7 @@ export async function POST(request: NextRequest) {
     body: JSON.stringify({
       items: items.map((path: string) => ({ product: path, quantity: 1 })),
       ...(coupon ? { coupon } : {}),
+      ...(tags ? { tags } : {}),
       contact: { email: email.trim() },
     }),
     cache: 'no-store',
