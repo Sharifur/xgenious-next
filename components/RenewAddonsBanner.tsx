@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { useLicensesStore } from '@/store/useLicensesStore';
-import { hasUpsellOffers, needsSupportRenewal } from '@/lib/license-offers';
+import { hasUpsellOffers, canRenewSupport } from '@/lib/license-offers';
 
 export default function RenewAddonsBanner() {
   const { items, fetch: fetchLicenses } = useLicensesStore();
@@ -12,11 +12,11 @@ export default function RenewAddonsBanner() {
   const actionable = items.filter(hasUpsellOffers);
   if (actionable.length === 0) return null;
 
-  const renewalCount = actionable.filter(needsSupportRenewal).length;
+  const renewalCount = actionable.filter(canRenewSupport).length;
   const addonCount = actionable.length - renewalCount;
 
   const parts: string[] = [];
-  if (renewalCount > 0) parts.push(`${renewalCount} license${renewalCount > 1 ? 's' : ''} need${renewalCount === 1 ? 's' : ''} renewal`);
+  if (renewalCount > 0) parts.push(`${renewalCount} license${renewalCount > 1 ? 's' : ''} can be renewed`);
   if (addonCount > 0) parts.push(`${addonCount} add-on${addonCount > 1 ? 's' : ''} available`);
 
   return (

@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import LicenseUpsellAction from '@/components/LicenseUpsellAction';
 import AddonInfoDisclosure from '@/components/AddonInfoDisclosure';
-import { getAvailableAddons, needsSupportRenewal, categorizeAddonPath, resolveSupportRenewalPath } from '@/lib/license-offers';
+import { getAvailableAddons, canRenewSupport, supportRenewalLabel, categorizeAddonPath, resolveSupportRenewalPath } from '@/lib/license-offers';
 import type { PurchaseItem } from '@/lib/license-server';
 
 interface Props {
@@ -11,10 +11,10 @@ interface Props {
 }
 
 export default function LicenseUpsellCard({ item, userEmail }: Props) {
-  const renewalNeeded = needsSupportRenewal(item);
+  const renewalOffered = canRenewSupport(item);
   const offers = getAvailableAddons(item).filter((o) => !o.alreadyOwned);
 
-  if (!renewalNeeded && offers.length === 0) return null;
+  if (!renewalOffered && offers.length === 0) return null;
 
   const slug = encodeURIComponent(item.license_key ?? item.purchase_code);
 
@@ -36,7 +36,7 @@ export default function LicenseUpsellCard({ item, userEmail }: Props) {
       </div>
 
       <div className="space-y-2.5">
-        {renewalNeeded && (
+        {renewalOffered && (
           <div className="flex items-center justify-between gap-3">
             <p className="text-sm font-medium text-[#0F1112]">Support renewal</p>
             <LicenseUpsellAction
@@ -44,7 +44,7 @@ export default function LicenseUpsellCard({ item, userEmail }: Props) {
               productUid={item.product_uid}
               productPath={resolveSupportRenewalPath(item)}
               licenseType="support_renewal"
-              label="Renew Support"
+              label={supportRenewalLabel(item)}
               userEmail={userEmail}
               variant="compact"
             />

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useLicensesStore } from '@/store/useLicensesStore';
-import { needsSupportRenewal, hasUpsellOffers, resolveSupportRenewalPath } from '@/lib/license-offers';
+import { canRenewSupport, supportRenewalLabel, hasUpsellOffers, resolveSupportRenewalPath } from '@/lib/license-offers';
 import LicenseUpsellAction from '@/components/LicenseUpsellAction';
 
 export default function LicensesPage() {
@@ -41,7 +41,7 @@ export default function LicensesPage() {
               const activeDomains = item.activations?.filter((a) => a.status === 1).length ?? 0;
               const totalDomains = item.activations?.length ?? 0;
 
-              const renewalNeeded = needsSupportRenewal(item);
+              const renewalOffered = canRenewSupport(item);
               const showUpsell = hasUpsellOffers(item);
 
               return (
@@ -91,13 +91,13 @@ export default function LicensesPage() {
                       {item.validity === 'blocked' ? 'Blocked' : 'Valid'}
                     </span>
                     {showUpsell && (
-                      renewalNeeded ? (
+                      renewalOffered ? (
                         <LicenseUpsellAction
                           licenseKey={item.license_key}
                           productUid={item.product_uid}
                           productPath={resolveSupportRenewalPath(item)}
                           licenseType="support_renewal"
-                          label="Renew"
+                          label={supportRenewalLabel(item)}
                           userEmail={userEmail}
                           variant="compact"
                         />

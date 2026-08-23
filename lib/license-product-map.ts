@@ -1,4 +1,4 @@
-import { PRODUCTS, type CheckoutProduct } from './checkout-products';
+import { PRODUCTS, getCheckoutProduct, type CheckoutProduct } from './checkout-products';
 import type { PurchaseItem } from './license-server';
 
 // license-server `product_uid` -> base checkout-products.ts slug prefix
@@ -63,6 +63,18 @@ function sameBuckets(a: Set<string>, b: Set<string>): boolean {
   return a.size === b.size && [...a].every((x) => b.has(x));
 }
 
+// Explicit tier overrides for `${slug}::${tierLabel}` combinations the
+// automatic keyword matcher can't cleanly resolve, but the business has
+// confirmed the mapping anyway (checked before automatic matching below).
+const TIER_OVERRIDES: Record<string, string> = {
+  // Envato "Regular License" buyers of Nexelit are treated as the bundled
+  // regular+installation FastSpring tier for renewal/add-on purposes, even
+  // though they never got the install service from Envato — confirmed
+  // 2026-08-24, the business is OK offering install/support at that tier's
+  // pricing rather than showing nothing.
+  'nexelit::Regular License': 'nexelit-regular-and-installation',
+};
+
 // Resolves a purchased license to its lib/checkout-products.ts catalog entry,
 // used to know which addons/renewal path apply. Two steps: (1) product_uid ->
 // base slug (exact, see PRODUCT_SLUG_BY_UID), then (2) among that slug's base
@@ -79,6 +91,10 @@ export function resolveCheckoutProduct(item: PurchaseItem): CheckoutProduct | nu
   if (!slug) return null;
 
   const tierLabel = item.variant?.name ?? item.license_type;
+
+  const override = TIER_OVERRIDES[`${slug}::${tierLabel}`];
+  if (override) return getCheckoutProduct(override);
+
   const tierBuckets = tierKeywords(tierLabel);
   if (tierBuckets.size === 0) return null;
 

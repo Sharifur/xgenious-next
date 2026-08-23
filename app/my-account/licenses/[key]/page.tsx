@@ -7,7 +7,7 @@ import { useLicensesStore } from '@/store/useLicensesStore';
 import type { LicenseActivation } from '@/lib/license-server';
 import LicenseUpsellAction from '@/components/LicenseUpsellAction';
 import AddonInfoDisclosure from '@/components/AddonInfoDisclosure';
-import { getAvailableAddons, categorizeAddonPath, resolveSupportRenewalPath } from '@/lib/license-offers';
+import { getAvailableAddons, categorizeAddonPath, resolveSupportRenewalPath, canRenewSupport, supportRenewalLabel } from '@/lib/license-offers';
 
 function CopyButton({ value }: { value: string }) {
   const [copied, setCopied] = useState(false);
@@ -198,14 +198,14 @@ export default function LicenseDetailPage() {
                 ({item.support_active ? 'active' : 'expired'})
               </span>
             </p>
-            {!item.support_active && (
+            {canRenewSupport(item) && (
               <div className="mt-2">
                 <LicenseUpsellAction
                   licenseKey={item.license_key}
                   productUid={item.product_uid}
                   productPath={resolveSupportRenewalPath(item)}
                   licenseType="support_renewal"
-                  label="Renew Support"
+                  label={supportRenewalLabel(item)}
                   userEmail={userEmail}
                 />
               </div>

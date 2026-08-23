@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import type { PurchaseItem } from '@/lib/license-server';
 import { useLicensesStore } from '@/store/useLicensesStore';
-import { getAvailableAddons, needsSupportRenewal, hasUpsellOffers, categorizeAddonPath, resolveSupportRenewalPath } from '@/lib/license-offers';
+import { getAvailableAddons, canRenewSupport, supportRenewalLabel, hasUpsellOffers, categorizeAddonPath, resolveSupportRenewalPath } from '@/lib/license-offers';
 import LicenseUpsellAction from '@/components/LicenseUpsellAction';
 import AddonInfoDisclosure from '@/components/AddonInfoDisclosure';
 
@@ -138,7 +138,7 @@ export default function DownloadsPage() {
       {items.length > 0 && (
         <div className="space-y-3">
           {items.map((item) => {
-            const renewalNeeded = needsSupportRenewal(item);
+            const renewalOffered = canRenewSupport(item);
             const addonOffers = getAvailableAddons(item).filter((o) => !o.alreadyOwned);
             const showUpsell = hasUpsellOffers(item);
 
@@ -215,7 +215,7 @@ export default function DownloadsPage() {
               {showUpsell && (
                 <div className="border-t border-gray-100 pt-4 space-y-2.5">
                   <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Renew & Add-ons</p>
-                  {renewalNeeded && (
+                  {renewalOffered && (
                     <div className="flex items-center justify-between gap-3">
                       <p className="text-sm font-medium text-[#0F1112]">Support renewal</p>
                       <LicenseUpsellAction
@@ -223,7 +223,7 @@ export default function DownloadsPage() {
                         productUid={item.product_uid}
                         productPath={resolveSupportRenewalPath(item)}
                         licenseType="support_renewal"
-                        label="Renew Support"
+                        label={supportRenewalLabel(item)}
                         userEmail={userEmail}
                         variant="compact"
                       />

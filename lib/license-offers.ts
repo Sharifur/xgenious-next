@@ -19,7 +19,7 @@ export function categorizeAddonPath(path: string): LicenseUpsellCategory {
 // Non-support addons (install/mobile/appstore) available for a purchased
 // license, cross-referenced against what's already owned (item.addons) and
 // mutually-exclusive addons (disables). Support extension is excluded here —
-// it has its own dedicated renew flow (see needsSupportRenewal /
+// it has its own dedicated renew flow (see canRenewSupport /
 // resolveSupportRenewalPath) rather than living in the generic addon list.
 // Returns [] when the license's product can't be resolved (see
 // resolveCheckoutProduct) — never guesses at an unmapped product's addons.
@@ -35,23 +35,37 @@ export function getAvailableAddons(item: PurchaseItem): LicenseOffer[] {
     .map((a) => ({ addon: a, alreadyOwned: ownedPaths.has(a.path) }));
 }
 
-export function needsSupportRenewal(item: PurchaseItem): boolean {
-  return !item.support_active;
+// Whether the "Renew Support" action should be offered at all — gated on the
+// license server's own can_extend flag, not on whether support has already
+// lapsed, so extension is offered proactively (not just after expiry).
+// Envato-sourced licenses always offer it regardless of can_extend: that
+// flag reflects the license server's own extension bookkeeping, which isn't
+// reliably maintained for Envato purchases, and Envato buyers should always
+// be able to attempt a direct renewal from us.
+export function canRenewSupport(item: PurchaseItem): boolean {
+  return item.can_extend || item.platform === 'envato';
 }
 
 // The FastSpring product path for extending this license's support, resolved
 // from the verified catalog mapping — never guessed from product_uid (which
 // is an opaque license-server identifier, not a FastSpring slug). Returns
-// null when the product is unmapped or the license isn't extendable, so
-// callers render a "contact us" fallback instead of a broken checkout.
+// null when the product is unmapped or (for non-Envato licenses) not
+// extendable, so callers render a "contact us" fallback instead of a broken
+// checkout.
 export function resolveSupportRenewalPath(item: PurchaseItem): string | null {
-  if (!item.can_extend) return null;
+  if (!canRenewSupport(item)) return null;
   const product = resolveCheckoutProduct(item);
   const supportAddon = product?.addons.find((a) => categorizeAddonPath(a.path) === 'support_renewal');
   return supportAddon?.path ?? null;
 }
 
+// Button label — "Renew" once support has lapsed, "Extend" while it's still
+// active but renewable ahead of expiry.
+export function supportRenewalLabel(item: PurchaseItem): string {
+  return item.support_active ? 'Extend Support' : 'Renew Support';
+}
+
 export function hasUpsellOffers(item: PurchaseItem): boolean {
-  if (needsSupportRenewal(item)) return true;
+  if (canRenewSupport(item)) return true;
   return getAvailableAddons(item).some((o) => !o.alreadyOwned);
 }
