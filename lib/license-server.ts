@@ -29,7 +29,7 @@ export interface PurchaseAddon {
   product_uid: string;
   product_name: string;
   license_type: string;
-  purchase_type?: 'renewal' | 'addon' | 'new';
+  purchase_type?: 'support_renewal' | 'addon' | 'new';
   amount: string | null;
   currency?: string;
   paid_at?: string | null;
