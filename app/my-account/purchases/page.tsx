@@ -77,17 +77,23 @@ export default function PurchasesPage() {
                       </td>
                     </tr>
                     {item.addons?.map((addon) => (
-                      <tr key={addon.license_key ?? addon.purchase_code} className="bg-gray-50/40">
+                      <tr key={addon.id} className="bg-gray-50/40">
                         <td className="px-5 py-3 text-gray-500 text-xs pl-8">↳ {addon.product_name}</td>
                         <td className="px-5 py-3 font-mono text-xs text-gray-400">{addon.license_key ?? '—'}</td>
                         <td className="px-5 py-3 text-xs text-gray-400">
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-blue-50 text-blue-600">add-on</span>
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-blue-50 text-blue-600 capitalize">
+                            {addon.purchase_type ?? 'add-on'}
+                          </span>
                         </td>
                         <td className="px-5 py-3" />
                         <td className="px-5 py-3 text-xs text-gray-400">
                           {addon.amount ? `${addon.currency ?? ''} ${parseFloat(addon.amount).toFixed(2)}`.trim() : '—'}
                         </td>
-                        <td className="px-5 py-3" />
+                        <td className="px-5 py-3 text-xs text-gray-400">
+                          {addon.paid_at
+                            ? new Date(addon.paid_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                            : '—'}
+                        </td>
                         <td className="px-5 py-3" />
                       </tr>
                     ))}

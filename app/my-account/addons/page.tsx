@@ -13,6 +13,7 @@ export default function AddonsPage() {
   useEffect(() => { fetchLicenses(); }, [fetchLicenses]);
 
   const actionable = items.filter(hasUpsellOffers);
+  const recentlyPurchased = items.flatMap((item) => item.addons ?? []);
 
   return (
     <div className="space-y-4">
@@ -42,6 +43,28 @@ export default function AddonsPage() {
           {actionable.map((item) => (
             <LicenseUpsellCard key={item.license_key ?? item.purchase_code} item={item} userEmail={userEmail} />
           ))}
+        </div>
+      )}
+
+      {!loading && !error && recentlyPurchased.length > 0 && (
+        <div className="pt-2">
+          <h2 className="text-sm font-semibold text-[#0F1112] mb-2">Recently Purchased</h2>
+          <div className="bg-white rounded-2xl border border-gray-200 divide-y divide-gray-50">
+            {recentlyPurchased.map((addon) => (
+              <div key={addon.id} className="flex items-center justify-between px-5 py-3 text-sm">
+                <div>
+                  <p className="font-medium text-[#0F1112]">{addon.product_name}</p>
+                  <p className="text-xs text-gray-400 mt-0.5 capitalize">
+                    {addon.purchase_type ?? 'add-on'}
+                    {addon.paid_at ? ` · ${new Date(addon.paid_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}` : ''}
+                  </p>
+                </div>
+                <span className="text-gray-600 font-medium">
+                  {addon.amount ? `${addon.currency ?? ''} ${parseFloat(addon.amount).toFixed(2)}`.trim() : '—'}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
