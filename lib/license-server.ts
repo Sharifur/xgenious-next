@@ -23,13 +23,16 @@ export interface LicenseActivation {
 }
 
 export interface PurchaseAddon {
+  id: number;
   license_key: string;
   purchase_code: string;
   product_uid: string;
   product_name: string;
   license_type: string;
+  purchase_type?: 'support_renewal' | 'addon' | 'new';
   amount: string | null;
   currency?: string;
+  paid_at?: string | null;
 }
 
 export interface PurchaseItem {

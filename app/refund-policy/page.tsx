@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function RefundPolicyPage() {
   return (
-    <PolicyLayout title="Refund Policy" badge="Legal" lastUpdated="June 6, 2025">
+    <PolicyLayout title="Refund Policy" badge="Legal" lastUpdated="August 26, 2026">
 
       <p>
         This policy applies to all products and services offered by Xgenious. The applicable refund terms depend on <strong>where you made your purchase</strong>. Please read the relevant section below.
@@ -44,11 +44,16 @@ export default function RefundPolicyPage() {
         <li>Web + mobile app installation and configuration</li>
         <li>Google Play Store submission and release</li>
         <li>Apple App Store submission and release</li>
+        <li>Support plan renewals and extended support subscriptions</li>
         <li>Any other service delivered by the Xgenious team</li>
       </ul>
 
       <p>
         Because these are <strong>human-delivered services</strong>, work begins immediately after purchase. Costs are incurred regardless of whether you choose to use the delivered service. Refund requests for addon services will not be accepted.
+      </p>
+
+      <p>
+        This also applies to <strong>add-ons and support renewals purchased from your account dashboard</strong> after your original purchase — including support-period extensions and installation/app-store add-ons. These entitlements (an extended support window, or a queued installation/app-store service) activate immediately on purchase, so they are non-refundable once processed, in the same way as the addon services described above.
       </p>
 
       <h2>Products Purchased via Envato</h2>
