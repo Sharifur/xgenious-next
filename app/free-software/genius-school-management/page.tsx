@@ -24,13 +24,13 @@ const DEMO_ROLES = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Free School Management Software — 19 Modules, MIT Licensed | Xgenious',
+  title: 'Free School Management Software: 19 Modules, MIT Licensed | Xgenious',
   description:
     'Download free school management software with 19 modules. Covers free student management, attendance, fee collection, exams, payroll, library, transport and school resources management. Self-hosted, MIT licensed, no per-student fee.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/free-software/genius-school-management` },
   openGraph: {
-    title: 'Free School Management Software — 19 Modules, MIT Licensed | Xgenious',
+    title: 'Free School Management Software: 19 Modules, MIT Licensed | Xgenious',
     description:
       'Free school software with 19 modules: student management, attendance, fees, exams, payroll, library, transport. Self-hosted, MIT licensed, no per-student fee.',
     url: `${BASE_URL}/free-software/genius-school-management`,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free School Management Software — 19 Modules, MIT Licensed',
+    title: 'Free School Management Software: 19 Modules, MIT Licensed',
     description: 'Free school software: 19 modules, MIT licensed, self-hosted. Student management, fees, exams, payroll, library & more.',
     images: ['/og-image.png'],
   },
@@ -89,14 +89,14 @@ const howToSchema = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
   name: 'How to Install Free School Management Software',
-  description: 'Install Genius School Management — free, self-hosted school software — on your server in 3 steps.',
+  description: 'Install Genius School Management, free, self-hosted school software, on your server in 3 steps.',
   totalTime: 'PT15M',
   step: [
     {
       '@type': 'HowToStep',
       position: 1,
       name: 'Download the free software',
-      text: 'Click "Download Free" and enter your email. You receive a direct GitHub link to the latest release ZIP — no account required.',
+      text: 'Click "Download Free" and enter your email. You receive a direct GitHub link to the latest release ZIP. No account required.',
     },
     {
       '@type': 'HowToStep',
@@ -117,16 +117,16 @@ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'What is free school management software?', acceptedAnswer: { '@type': 'Answer', text: 'Free school management software is a digital platform that helps schools automate administrative tasks — student admissions, attendance, fee collection, exam management, payroll, and communication — without recurring licensing costs. Genius School Management is MIT licensed, meaning every feature is available free forever with no upgrade tiers, no per-student fee, and no expiry.' } },
+    { '@type': 'Question', name: 'What is free school management software?', acceptedAnswer: { '@type': 'Answer', text: 'Free school management software is a digital platform that helps schools automate administrative tasks: student admissions, attendance, fee collection, exam management, payroll, and communication, without recurring licensing costs. Genius School Management is MIT licensed, meaning every feature is available free forever with no upgrade tiers, no per-student fee, and no expiry.' } },
     { '@type': 'Question', name: 'Is Genius School Management really free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. It is MIT licensed. Every feature ships in the public repository with no paid tier, no feature locks, and no upgrade prompts. There is no per-student fee, no expiry, and no limit on the number of schools or students.' } },
     { '@type': 'Question', name: 'What is the best free school management platform?', acceptedAnswer: { '@type': 'Answer', text: 'Genius School Management is among the most complete free school management platforms available. It includes 19 fully built modules, supports unlimited schools on one installation, and is MIT licensed with no paid tiers. Other free options include OpenEduCat (Odoo-based) and Gibbon, but neither offers the same depth of fee management, payroll, transport, and hostel management built into a single self-hosted system.' } },
-    { '@type': 'Question', name: 'Does this free school software include student management tools?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The free student management module covers multi-step admission wizards, student ID cards, bulk CSV import, class and section assignments, year-end promotion, alumni record retention, and a parent portal with a dedicated child progress view — all included at no cost.' } },
+    { '@type': 'Question', name: 'Does this free school software include student management tools?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The free student management module covers multi-step admission wizards, student ID cards, bulk CSV import, class and section assignments, year-end promotion, alumni record retention, and a parent portal with a dedicated child progress view, all included at no cost.' } },
     { '@type': 'Question', name: 'What school resources can be managed with this free software?', acceptedAnswer: { '@type': 'Answer', text: 'The school resources management features include library management (book catalog, ISBN lookup, digital e-library, overdue fines), inventory and asset management (serial and condition tracking, maintenance requests, low-stock alerts), lab consumables stock registers, hostel room and warden assignment, and transport route and vehicle management. All resources are managed from the same dashboard.' } },
     { '@type': 'Question', name: 'How does this free school software compare to paid school management platforms?', acceptedAnswer: { '@type': 'Answer', text: 'Paid school management platforms typically charge $50–$300 per month and split features across pricing tiers. Genius School Management includes all 19 modules free, with no feature locks, no per-student fee, no internet dependency (self-hosted), and full source code access under MIT license. You own your data and control where it lives.' } },
     { '@type': 'Question', name: 'Can I use it commercially or white-label it?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The MIT license allows commercial use, modification, and redistribution. You can fork it, white-label it, and build services on top.' } },
     { '@type': 'Question', name: 'Does it support multiple schools?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. A single installation supports unlimited schools with fully isolated data per school via a school_id global scope.' } },
     { '@type': 'Question', name: 'What languages does it support?', acceptedAnswer: { '@type': 'Answer', text: 'English and Bengali are built in. The system is RTL-ready for Arabic and Urdu.' } },
-    { '@type': 'Question', name: 'Do I need technical knowledge to install it?', acceptedAnswer: { '@type': 'Answer', text: 'Basic server administration knowledge is needed — you will need to configure PHP, MySQL, and a web server. The full installation guide is in the user manual. If you prefer a managed setup, Xgenious offers a professional installation service.' } },
+    { '@type': 'Question', name: 'Do I need technical knowledge to install it?', acceptedAnswer: { '@type': 'Answer', text: 'Basic server administration knowledge is needed: you will need to configure PHP, MySQL, and a web server. The full installation guide is in the user manual. If you prefer a managed setup, Xgenious offers a professional installation service.' } },
     { '@type': 'Question', name: 'Where do I report bugs or request features?', acceptedAnswer: { '@type': 'Answer', text: 'Open an issue on the GitHub repository. Xgenious actively maintains the codebase and reviews submissions regularly.' } },
   ],
 };
@@ -138,8 +138,8 @@ const MODULES = [
       '8 built-in roles: Super Admin, School Admin, Teacher, Accountant, Librarian, Driver, Parent, Student',
       'Role-based access control (RBAC) via Spatie Permissions',
       'Two-factor authentication (TOTP) for Admin and Accountant',
-      'Activity log — every login, role change, and financial action recorded',
-      'Session management — active sessions list, remote logout',
+      'Activity log: every login, role change, and financial action recorded',
+      'Session management: active sessions list, remote logout',
     ],
   },
   {
@@ -280,7 +280,7 @@ const SERVER_REQUIREMENTS = [
 const FAQ = [
   {
     q: 'What is free school management software?',
-    a: 'Free school management software is a digital platform that automates school administrative tasks — student admissions, daily attendance, fee collection, exam scheduling, staff payroll, library management, and parent communication — without recurring licensing costs. Genius School Management is MIT licensed, meaning every feature is available free forever with no upgrade tiers, no per-student fee, and no expiry.',
+    a: 'Free school management software is a digital platform that automates school administrative tasks: student admissions, daily attendance, fee collection, exam scheduling, staff payroll, library management, and parent communication, without recurring licensing costs. Genius School Management is MIT licensed, meaning every feature is available free forever with no upgrade tiers, no per-student fee, and no expiry.',
   },
   {
     q: 'Is Genius School Management really free?',
@@ -288,11 +288,11 @@ const FAQ = [
   },
   {
     q: 'What is the best free school management platform?',
-    a: 'Genius School Management is among the most complete free school management platforms available. It includes 19 fully built modules in a single self-hosted installation — covering everything from student admissions to staff payroll. Other free options include OpenEduCat (Odoo-based ERP) and Gibbon (open source), but neither offers the same combination of fee management, payroll, transport, hostel, and inventory management built into one system.',
+    a: 'Genius School Management is among the most complete free school management platforms available. It includes 19 fully built modules in a single self-hosted installation, covering everything from student admissions to staff payroll. Other free options include OpenEduCat (Odoo-based ERP) and Gibbon (open source), but neither offers the same combination of fee management, payroll, transport, hostel, and inventory management built into one system.',
   },
   {
     q: 'Does this free school software include student management tools?',
-    a: 'Yes. The free student management module covers multi-step admission wizards, student ID card generation, bulk CSV import, class and section assignment, year-end promotion workflows, alumni record retention, and a parent portal with a dedicated child progress view — all included at no cost.',
+    a: 'Yes. The free student management module covers multi-step admission wizards, student ID card generation, bulk CSV import, class and section assignment, year-end promotion workflows, alumni record retention, and a parent portal with a dedicated child progress view, all included at no cost.',
   },
   {
     q: 'What school resources can be managed with this free software?',
@@ -304,7 +304,7 @@ const FAQ = [
   },
   {
     q: 'Can I use it commercially or white-label it?',
-    a: 'Yes. The MIT license allows commercial use, modification, and redistribution. You can fork it, white-label it, sell installation and customisation services on top, and build products on the codebase — all without licensing fees.',
+    a: 'Yes. The MIT license allows commercial use, modification, and redistribution. You can fork it, white-label it, sell installation and customisation services on top, and build products on the codebase, all without licensing fees.',
   },
   {
     q: 'Does it support multiple schools from one installation?',
@@ -316,7 +316,7 @@ const FAQ = [
   },
   {
     q: 'Do I need technical knowledge to install it?',
-    a: 'Basic server administration knowledge is needed — you will configure PHP 8.3+, MySQL 8+, Redis, and a web server (Apache or Nginx). The full step-by-step installation guide is in the user manual. If you prefer a managed setup, Xgenious offers a professional installation service.',
+    a: 'Basic server administration knowledge is needed: you will configure PHP 8.3+, MySQL 8+, Redis, and a web server (Apache or Nginx). The full step-by-step installation guide is in the user manual. If you prefer a managed setup, Xgenious offers a professional installation service.',
   },
   {
     q: 'Where do I report bugs or request features?',
@@ -378,7 +378,7 @@ export default function GeniusSchoolManagementPage() {
             </h1>
 
             <p className="text-[#484848] text-[16px] sm:text-[18px] leading-8 max-w-[680px]">
-              A production-ready, open-source school ERP covering every aspect of school operations — student admissions, attendance, fees, exams, payroll, library, transport, and more. Self-hosted. Zero licensing fees.
+              A production-ready, open-source school ERP covering every aspect of school operations: student admissions, attendance, fees, exams, payroll, library, transport, and more. Self-hosted. Zero licensing fees.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 mt-2 flex-wrap justify-center">
@@ -388,7 +388,7 @@ export default function GeniusSchoolManagementPage() {
                 productLightColor="#fde8e5"
                 githubUrl={GITHUB_URL}
                 licenseUuid={LICENSE_UUID}
-                label="Download Free — No Account Needed"
+                label="Download Free: No Account Needed"
                 className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:-translate-y-0.5"
               />
               {DEMO_URL && (
@@ -458,7 +458,7 @@ export default function GeniusSchoolManagementPage() {
                 </svg>
               </div>
               <div>
-                <p className="text-[13px] font-bold text-[#ca8a04] uppercase tracking-wide">Demo Mode — Click a role to explore</p>
+                <p className="text-[13px] font-bold text-[#ca8a04] uppercase tracking-wide">Demo Mode: Click a role to explore</p>
                 <p className="text-[13px] text-[#6b7280] mt-0.5">
                   Password for all accounts: <strong className="text-[#0F1112]">password</strong>
                 </p>
@@ -518,16 +518,16 @@ export default function GeniusSchoolManagementPage() {
             What is Free School Management Software?
           </h2>
           <p className="text-[16px] text-[#484848] leading-8 mb-5">
-            <strong>Free school management software</strong> is a digital platform that helps schools, colleges, and educational institutions automate administrative operations — student admissions, daily attendance, fee collection, exam scheduling, staff payroll, library management, and parent communication — without recurring licensing costs or per-student fees.
+            <strong>Free school management software</strong> is a digital platform that helps schools, colleges, and educational institutions automate administrative operations: student admissions, daily attendance, fee collection, exam scheduling, staff payroll, library management, and parent communication, without recurring licensing costs or per-student fees.
           </p>
           <p className="text-[16px] text-[#484848] leading-8 mb-5">
-            Genius School Management is an <strong>open-source school management platform</strong> built with Laravel 11, React 18, and Inertia.js. It ships <strong>19 fully built modules</strong> covering every school workflow — from first-day admissions to year-end reports — within a single self-hosted installation that supports unlimited schools with fully isolated data per school.
+            Genius School Management is an <strong>open-source school management platform</strong> built with Laravel 11, React 18, and Inertia.js. It ships <strong>19 fully built modules</strong> covering every school workflow, from first-day admissions to year-end reports, within a single self-hosted installation that supports unlimited schools with fully isolated data per school.
           </p>
           <p className="text-[16px] text-[#484848] leading-8 mb-5">
-            Unlike paid school management platforms that charge $50–$300 per month or lock features behind tiers, Genius School Management is <strong>MIT licensed</strong> — you self-host it on any VPS or shared hosting, own your data, fork the codebase, white-label it for clients, or build commercial products on top. No recurring fees. No vendor lock-in. No internet dependency.
+            Unlike paid school management platforms that charge $50–$300 per month or lock features behind tiers, Genius School Management is <strong>MIT licensed</strong>: you self-host it on any VPS or shared hosting, own your data, fork the codebase, white-label it for clients, or build commercial products on top. No recurring fees. No vendor lock-in. No internet dependency.
           </p>
           <p className="text-[16px] text-[#484848] leading-8">
-            The <strong>school resources management</strong> capabilities include a full library system, asset and inventory tracking, hostel and transport management, and lab consumables stock registers — all managed from the same unified dashboard used for student and staff administration.
+            The <strong>school resources management</strong> capabilities include a full library system, asset and inventory tracking, hostel and transport management, and lab consumables stock registers, all managed from the same unified dashboard used for student and staff administration.
           </p>
         </div>
       </section>
@@ -557,7 +557,7 @@ export default function GeniusSchoolManagementPage() {
                   </svg>
                 ),
                 title: 'No hidden limits',
-                body: 'No per-student fee. No module unlock. No expiry date. No usage cap. Every feature in the repository is free — checked and MIT licensed.',
+                body: 'No per-student fee. No module unlock. No expiry date. No usage cap. Every feature in the repository is free, checked and MIT licensed.',
               },
               {
                 icon: (
@@ -567,7 +567,7 @@ export default function GeniusSchoolManagementPage() {
                   </svg>
                 ),
                 title: 'Paid options (optional)',
-                body: 'Need help? Xgenious offers optional professional installation, customisation, and support services — but the software itself is always free.',
+                body: 'Need help? Xgenious offers optional professional installation, customisation, and support services, but the software itself is always free.',
               },
             ].map((item) => (
               <div key={item.title} className="rounded-2xl bg-white border border-[#E5E7EC] p-6 flex flex-col gap-3">
@@ -590,7 +590,7 @@ export default function GeniusSchoolManagementPage() {
               19 Modules. Every School Need Covered.
             </h2>
             <p className="text-[#484848] text-[15px] mt-3 max-w-[560px] mx-auto leading-7">
-              From first-day admissions to year-end reports — every school workflow is built in and ready to use.
+              From first-day admissions to year-end reports, every school workflow is built in and ready to use.
             </p>
           </div>
 
@@ -692,57 +692,57 @@ export default function GeniusSchoolManagementPage() {
             screenshots={[
               {
                 src: '/site-images/free-software/genius-school-ms/dashboard-super-admin.png',
-                alt: 'Genius School Management — Super Admin Dashboard showing platform overview with school analytics, revenue, and user growth charts',
+                alt: 'Genius School Management: Super Admin Dashboard showing platform overview with school analytics, revenue, and user growth charts',
                 title: 'Super Admin Dashboard',
-                description: 'Platform overview — schools, users, revenue, and subscription analytics',
+                description: 'Platform overview: schools, users, revenue, and subscription analytics',
               },
               {
                 src: '/site-images/free-software/genius-school-ms/student-management.png',
-                alt: 'Genius School Management — Student Management page showing student list with admission numbers, class/section, guardian info, status badges and admitted dates',
+                alt: 'Genius School Management: Student Management page showing student list with admission numbers, class/section, guardian info, status badges and admitted dates',
                 title: 'Student Management',
                 description: 'Admission records, class assignments, guardian contacts and status tracking',
               },
               {
                 src: '/site-images/free-software/genius-school-ms/exam-results.png',
-                alt: 'Genius School Management — Exam Results page showing merit list with per-subject marks, GPA, pass/fail badges and grade scale reference',
-                title: 'Exam Results — Merit List',
+                alt: 'Genius School Management: Exam Results page showing merit list with per-subject marks, GPA, pass/fail badges and grade scale reference',
+                title: 'Exam Results: Merit List',
                 description: 'Per-subject marks, GPA calculation, pass/fail badges and class ranking',
               },
               {
                 src: '/site-images/free-software/genius-school-ms/fee-management.png',
-                alt: 'Genius School Management — Fee Management page showing payment receipts, total collected, outstanding balance, paid receipts and payment methods',
+                alt: 'Genius School Management: Fee Management page showing payment receipts, total collected, outstanding balance, paid receipts and payment methods',
                 title: 'Fee Management',
-                description: 'Tuition and exam fee collection, receipt generation — cash, bKash and Nagad',
+                description: 'Tuition and exam fee collection, receipt generation: cash, bKash and Nagad',
               },
               {
                 src: '/site-images/free-software/genius-school-ms/library-module.png',
-                alt: 'Genius School Management — Library module showing book catalog with title, author, category, ISBN, location, copies and availability tracking',
+                alt: 'Genius School Management: Library module showing book catalog with title, author, category, ISBN, location, copies and availability tracking',
                 title: 'Library Module',
                 description: 'Book catalog with ISBN, shelf location, availability and overdue tracking',
               },
               {
                 src: '/site-images/free-software/genius-school-ms/payroll.png',
-                alt: 'Genius School Management — Payroll page showing staff salary breakdown with basic pay, allowances, deductions, net salary, days worked and payment status',
+                alt: 'Genius School Management: Payroll page showing staff salary breakdown with basic pay, allowances, deductions, net salary, days worked and payment status',
                 title: 'Payroll',
                 description: 'Staff salary generation with allowances, deductions and pay slip export',
               },
               {
                 src: '/site-images/free-software/genius-school-ms/timetable-builder.png',
-                alt: 'Genius School Management — Timetable Builder showing weekly class schedule grid with color-coded subjects, teachers and room assignments per period',
+                alt: 'Genius School Management: Timetable Builder showing weekly class schedule grid with color-coded subjects, teachers and room assignments per period',
                 title: 'Timetable Builder',
                 description: 'Weekly schedule with color-coded subjects, teacher and room assignments',
               },
               {
                 src: '/site-images/free-software/genius-school-ms/attendance.png',
-                alt: 'Genius School Management — Student Attendance page showing daily class-wise attendance with present, absent, late and half-day status per student',
+                alt: 'Genius School Management: Student Attendance page showing daily class-wise attendance with present, absent, late and half-day status per student',
                 title: 'Student Attendance',
-                description: 'Daily class-wise attendance with present, absent, late and half-day tracking — bulk mark and save',
+                description: 'Daily class-wise attendance with present, absent, late and half-day tracking, bulk mark and save',
               },
               {
                 src: '/site-images/free-software/genius-school-ms/staff-management.png',
-                alt: 'Genius School Management — Staff management page showing employee list with ID, department, designation, phone, joining date and active/on-leave status',
+                alt: 'Genius School Management: Staff management page showing employee list with ID, department, designation, phone, joining date and active/on-leave status',
                 title: 'Staff Management',
-                description: 'Employee records with department, designation, contact and status — active, on leave and resigned',
+                description: 'Employee records with department, designation, contact and status: active, on leave and resigned',
               },
             ]}
           />
@@ -824,7 +824,7 @@ export default function GeniusSchoolManagementPage() {
               },
               {
                 title: 'Software Agencies',
-                desc: 'MIT license — fork, white-label, and resell development services on top.',
+                desc: 'MIT license: fork, white-label, and resell development services on top.',
               },
             ].map((c) => (
               <div key={c.title} className="rounded-2xl border border-[#E5E7EC] p-6">
@@ -840,7 +840,7 @@ export default function GeniusSchoolManagementPage() {
       <section className="py-12 sm:py-14 bg-[#f9fafb] border-y border-[#E5E7EC]">
         <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[820px] mx-auto">
           <h2 className="text-[22px] sm:text-[28px] font-semibold text-[#0F1112] mb-4">
-            School Resources Management — Everything in One Place
+            School Resources Management: Everything in One Place
           </h2>
           <p className="text-[15px] text-[#484848] leading-7 mb-6">
             <strong>School resources management software</strong> typically requires separate tools for library, inventory, assets, hostel, and transport. Genius School Management consolidates all resource management into a single self-hosted platform:
@@ -885,12 +885,12 @@ export default function GeniusSchoolManagementPage() {
                   ['Cost', 'Free forever (MIT)', '$50–$300/month', 'Free (limited features)'],
                   ['Data ownership', 'Your server', "Vendor's cloud", 'Varies'],
                   ['Source code', 'Full (MIT license)', 'None (closed source)', 'Open source (varies)'],
-                  ['All modules included', '19 — no tier split', 'Split by pricing tier', 'Fewer modules'],
+                  ['All modules included', '19, no tier split', 'Split by pricing tier', 'Fewer modules'],
                   ['Customisation', 'Unlimited (fork freely)', 'Limited or paid add-ons', 'Varies by project'],
-                  ['Multi-school support', 'Yes — one install', 'Often a paid add-on', 'Rarely built in'],
-                  ['Student management', 'Full — admissions to alumni', 'Full (paid)', 'Partial'],
+                  ['Multi-school support', 'Yes, one install', 'Often a paid add-on', 'Rarely built in'],
+                  ['Student management', 'Full: admissions to alumni', 'Full (paid)', 'Partial'],
                   ['School resources mgmt', 'Library, assets, hostel, transport', 'Partial or add-on', 'Partial'],
-                  ['Internet required', 'No — fully self-hosted', 'Yes (cloud only)', 'Depends'],
+                  ['Internet required', 'No, fully self-hosted', 'Yes (cloud only)', 'Depends'],
                   ['Setup time', '~15 minutes', 'Account + onboarding calls', 'Varies'],
                 ].map(([feature, ours, theirs, other]) => (
                   <tr key={feature} className="border-b border-[#E5E7EC] last:border-0">
@@ -955,7 +955,7 @@ export default function GeniusSchoolManagementPage() {
             productLightColor="#fde8e5"
             githubUrl={GITHUB_URL}
             licenseUuid={LICENSE_UUID}
-            label="Get Free Download — No Credit Card"
+            label="Get Free Download: No Credit Card"
           />
           <p className="text-[13px] text-[#d1d5db]">
             Need help setting it up?{' '}

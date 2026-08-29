@@ -21,7 +21,7 @@ export default function DownloadCTA() {
           productLightColor={LIGHT_COLOR}
           githubUrl={GITHUB_URL}
           licenseUuid={LICENSE_UUID}
-          label="Get Free Download — No Credit Card"
+          label="Get Free Download: No Credit Card"
           buttonColor={COLOR}
         />
         <p className="text-[13px] text-[#d1d5db]">

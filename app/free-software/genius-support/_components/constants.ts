@@ -24,7 +24,7 @@ export const MODULES = [
       'Self-service ticket submission and tracking',
       'Reply to agents directly from the portal',
       'Knowledge base search for instant self-help',
-      'Resolution rating — customers rate every resolved ticket',
+      'Resolution rating: customers rate every resolved ticket',
       'Profile management and ticket history',
     ],
   },
@@ -34,17 +34,17 @@ export const MODULES = [
       'Unified ticket queue with filter and search',
       'Compose replies with rich text editor',
       'Internal notes visible only to agents',
-      'Bulk actions — reassign, close, or change priority',
+      'Bulk actions: reassign, close, or change priority',
       'Real-time notifications for new and updated tickets',
     ],
   },
   {
     name: 'Admin Panel',
     features: [
-      'User management — customers, agents, and admins',
+      'User management: customers, agents, and admins',
       'Department setup with dedicated agent assignment',
       'Custom email reply templates',
-      'Branding — upload logo, set colour scheme, custom domain',
+      'Branding: upload logo, set colour scheme, custom domain',
       'Analytics and reporting: ticket volume, response times, CSAT',
     ],
   },
@@ -62,7 +62,7 @@ export const MODULES = [
     name: 'Email-to-Ticket (IMAP)',
     features: [
       'Connect any IMAP inbox to auto-create tickets from emails',
-      'Preserve email threading — replies stay linked',
+      'Preserve email threading: replies stay linked',
       'Agent replies sent as emails from your domain',
       'Configurable polling interval and department mapping',
       'Works with Gmail, Outlook, and any IMAP-compatible mailbox',
@@ -89,7 +89,7 @@ export const SERVER_REQUIREMENTS = [
 ];
 
 export const ROLES = [
-  { role: 'Admin', desc: 'Full access — users, departments, email settings, branding, analytics, and all tickets' },
+  { role: 'Admin', desc: 'Full access: users, departments, email settings, branding, analytics, and all tickets' },
   { role: 'Agent', desc: 'Handle ticket queue, reply to customers, create internal notes, bulk actions' },
   { role: 'Customer', desc: 'Submit tickets, track status, reply to agents, search knowledge base, rate resolutions' },
 ];
@@ -97,7 +97,7 @@ export const ROLES = [
 export const FAQS = [
   {
     q: 'Is Genius Support really free with no limitations?',
-    a: 'Yes. MIT licensed. Every feature in the repository is included at no cost — no paid tier, no per-agent pricing, no feature locks. Deploy as many instances as you need.',
+    a: 'Yes. MIT licensed. Every feature in the repository is included at no cost: no paid tier, no per-agent pricing, no feature locks. Deploy as many instances as you need.',
   },
   {
     q: 'Can I modify the source code?',
@@ -109,19 +109,19 @@ export const FAQS = [
   },
   {
     q: 'What server do I need to run Genius Support?',
-    a: 'Ubuntu 22.04 LTS with PHP 8.2+, MySQL 8.0, Node.js 20, and Nginx. A minimum of 2 GB RAM is recommended. Any standard VPS or cloud instance works — no managed services required. Supervisor manages background processes for queues and the WebSocket server.',
+    a: 'Ubuntu 22.04 LTS with PHP 8.2+, MySQL 8.0, Node.js 20, and Nginx. A minimum of 2 GB RAM is recommended. Any standard VPS or cloud instance works: no managed services required. Supervisor manages background processes for queues and the WebSocket server.',
   },
   {
     q: 'Does it support multiple departments?',
     a: 'Yes. You can create unlimited departments (for example, Billing, Technical Support, Sales). Each ticket is routed to a department, and each department has its own assigned agents. Tickets can be reassigned across departments at any time.',
   },
   {
-    q: 'How does real-time work — do I need a paid service like Pusher?',
+    q: 'How does real-time work? Do I need a paid service like Pusher?',
     a: 'No. Genius Support uses Laravel Reverb, the official self-hosted WebSocket server from the Laravel team. Real-time ticket updates run entirely on your own server with no third-party WebSocket service required.',
   },
   {
     q: 'How is Genius Support different from Zendesk or Freshdesk?',
-    a: 'Zendesk and Freshdesk charge $19–$149 per agent per month. Genius Support is a one-time free download — self-hosted, MIT licensed, full source code, no per-agent fees and no monthly charges. Your data stays on your own server.',
+    a: 'Zendesk and Freshdesk charge $19–$149 per agent per month. Genius Support is a one-time free download: self-hosted, MIT licensed, full source code, no per-agent fees and no monthly charges. Your data stays on your own server.',
   },
   {
     q: 'Can I white-label Genius Support for clients?',

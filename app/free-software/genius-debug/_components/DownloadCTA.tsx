@@ -2,10 +2,10 @@ import DownloadButton from '@/components/ui/DownloadButton';
 import { COLOR, LIGHT_COLOR, GITHUB_URL, LICENSE_UUID } from './constants';
 
 const INCLUDES = [
-  'Ingest — envelope intake service',
-  'API — dashboard REST API',
-  'Workers — processing pipeline',
-  'Web — React dashboard SPA',
+  'Ingest: envelope intake service',
+  'API: dashboard REST API',
+  'Workers: processing pipeline',
+  'Web: React dashboard SPA',
   'Docker Compose file + per-service Dockerfiles',
   'Full documentation',
 ];

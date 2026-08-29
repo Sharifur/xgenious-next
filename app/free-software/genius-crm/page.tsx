@@ -13,13 +13,13 @@ const DEMO_URL = 'https://crm-demo.xgenious.com/login';
 const DOCS_URL = 'https://genious-crm-9wkn.vercel.app/';
 
 export const metadata: Metadata = {
-  title: 'Free CRM Software — Laravel 12 + React 19, Self-Hosted',
+  title: 'Free CRM Software: Laravel 12 + React 19, Self-Hosted',
   description:
     'Download a free, open-source CRM built with Laravel 12 and React 19. Manage contacts, leads, deals (Kanban), tasks, and companies. Self-hosted, MIT licensed, no subscription fees.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/free-software/genius-crm` },
   openGraph: {
-    title: 'Free CRM Software — Laravel 12 + React 19 | Xgenious',
+    title: 'Free CRM Software: Laravel 12 + React 19 | Xgenious',
     description:
       'Production-ready CRM with 12 modules. Contacts, leads, deal pipeline (Kanban), RBAC, REST API, 2FA. Free download, MIT license.',
     url: `${BASE_URL}/free-software/genius-crm`,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free CRM Software — Laravel 12 + React 19',
+    title: 'Free CRM Software: Laravel 12 + React 19',
     description: 'Download a free self-hosted CRM with 12 modules. Laravel 12 + React 19. MIT licensed.',
     images: ['/og-image.png'],
   },
@@ -66,10 +66,10 @@ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'Is Genius CRM really free with no limitations?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. It is MIT licensed. Every feature in the repository is available at no cost — no paid tier, no feature locks, no upgrade prompts.' } },
+    { '@type': 'Question', name: 'Is Genius CRM really free with no limitations?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. It is MIT licensed. Every feature in the repository is available at no cost: no paid tier, no feature locks, no upgrade prompts.' } },
     { '@type': 'Question', name: 'Can I use it for my business or clients?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The MIT license allows commercial use. You can deploy it for your business, white-label it for clients, and build services on top of it.' } },
-    { '@type': 'Question', name: 'How does self-hosting work?', acceptedAnswer: { '@type': 'Answer', text: 'You deploy it on your own VPS, shared hosting, or Docker environment. Your data stays on your server — nothing goes through Xgenious infrastructure.' } },
-    { '@type': 'Question', name: 'Does it have an API for integrations?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. A versioned REST API (v1) covers all core entities — contacts, leads, deals, tasks. Authentication is via Laravel Sanctum tokens.' } },
+    { '@type': 'Question', name: 'How does self-hosting work?', acceptedAnswer: { '@type': 'Answer', text: 'You deploy it on your own VPS, shared hosting, or Docker environment. Your data stays on your server. Nothing goes through Xgenious infrastructure.' } },
+    { '@type': 'Question', name: 'Does it have an API for integrations?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. A versioned REST API (v1) covers all core entities: contacts, leads, deals, tasks. Authentication is via Laravel Sanctum tokens.' } },
     { '@type': 'Question', name: 'What is the difference between Admin, Manager, and Sales User?', acceptedAnswer: { '@type': 'Answer', text: 'Admins manage users, roles, and settings. Managers see all records across users. Sales Users see only the records assigned to them.' } },
     { '@type': 'Question', name: 'Does it support team use?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Create multiple users, assign roles, assign leads and deals to specific users, and use the global activity feed to track team activity.' } },
   ],
@@ -176,7 +176,7 @@ const FEATURES = [
     name: 'Developer Features',
     features: [
       '12 independent Laravel modules via nwidart/laravel-modules',
-      'Add a feature by creating a new module — zero changes to existing code',
+      'Add a feature by creating a new module: zero changes to existing code',
       'Docker + docker-compose.prod.yml for production',
       'GitHub Actions CI with PHP 8.2 and 8.3 matrix',
       'CSV import engine with chunk-based memory-safe insertion',
@@ -214,13 +214,13 @@ const SERVER_REQUIREMENTS = [
   { label: 'Redis', value: '6+ (queue and cache, optional)' },
   { label: 'Composer', value: '2.x' },
   { label: 'Web Server', value: 'Apache or Nginx' },
-  { label: 'Docker', value: 'Optional — docker-compose included' },
+  { label: 'Docker', value: 'Optional: docker-compose included' },
 ];
 
 const FAQ = [
   {
     q: 'Is Genius CRM really free with no limitations?',
-    a: 'Yes. It is MIT licensed. Every feature in the repository is available at no cost — no paid tier, no feature locks, no upgrade prompts.',
+    a: 'Yes. It is MIT licensed. Every feature in the repository is available at no cost: no paid tier, no feature locks, no upgrade prompts.',
   },
   {
     q: 'Can I use it for my business or clients?',
@@ -228,11 +228,11 @@ const FAQ = [
   },
   {
     q: 'How does self-hosting work?',
-    a: 'You deploy it on your own VPS, shared hosting, or Docker environment. Your data stays on your server — nothing goes through Xgenious infrastructure.',
+    a: 'You deploy it on your own VPS, shared hosting, or Docker environment. Your data stays on your server. Nothing goes through Xgenious infrastructure.',
   },
   {
     q: 'Does it have an API for integrations?',
-    a: 'Yes. A versioned REST API (v1) covers all core entities — contacts, leads, deals, tasks. Authentication is via Laravel Sanctum tokens.',
+    a: 'Yes. A versioned REST API (v1) covers all core entities: contacts, leads, deals, tasks. Authentication is via Laravel Sanctum tokens.',
   },
   {
     q: 'What is the difference between Admin, Manager, and Sales User?',
@@ -290,7 +290,7 @@ export default function GeniusCRMPage() {
             </h1>
 
             <p className="text-[#484848] text-[16px] sm:text-[18px] leading-8 max-w-[680px]">
-              A full-featured, self-hosted CRM built with <strong>Laravel 12</strong> and <strong>React 19</strong>. Manage contacts, leads, deal pipelines, tasks, and companies — with role-based access, REST API, 2FA, and Docker support. No subscriptions. No vendor lock-in.
+              A full-featured, self-hosted CRM built with <strong>Laravel 12</strong> and <strong>React 19</strong>. Manage contacts, leads, deal pipelines, tasks, and companies, with role-based access, REST API, 2FA, and Docker support. No subscriptions. No vendor lock-in.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
@@ -300,7 +300,7 @@ export default function GeniusCRMPage() {
                 productLightColor={LIGHT_COLOR}
                 githubUrl={GITHUB_URL}
                 licenseUuid={LICENSE_UUID}
-                label="Download Free — No Account Needed"
+                label="Download Free: No Account Needed"
                 className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:-translate-y-0.5"
               />
               {DEMO_URL && (
@@ -380,39 +380,39 @@ export default function GeniusCRMPage() {
             screenshots={[
               {
                 src: '/site-images/free-software/genius-crm/dashboard.png',
-                alt: 'Genius CRM — Dashboard showing KPI widgets for total contacts, active leads, open deals, open tasks, follow-ups due and closing this week',
+                alt: 'Genius CRM: Dashboard showing KPI widgets for total contacts, active leads, open deals, open tasks, follow-ups due and closing this week',
                 title: 'Dashboard',
-                description: 'KPI overview — contacts, active leads, open deals, tasks and follow-ups due this week',
+                description: 'KPI overview: contacts, active leads, open deals, tasks and follow-ups due this week',
               },
               {
                 src: '/site-images/free-software/genius-crm/deal-pipeline.png',
-                alt: 'Genius CRM — Deal Pipeline Kanban board with columns for New Deal, Proposal Sent, Negotiation, Won and Lost stages',
+                alt: 'Genius CRM: Deal Pipeline Kanban board with columns for New Deal, Proposal Sent, Negotiation, Won and Lost stages',
                 title: 'Deal Pipeline (Kanban)',
                 description: 'Drag-and-drop deal cards across 5 stages with win probability and assigned rep per deal',
               },
               {
                 src: '/site-images/free-software/genius-crm/contacts.png',
-                alt: 'Genius CRM — Contact Management page showing contact list with name, email, phone, company and tags',
+                alt: 'Genius CRM: Contact Management page showing contact list with name, email, phone, company and tags',
                 title: 'Contact Management',
-                description: 'Contact list with email, phone, company link and custom tags — CSV import supported',
+                description: 'Contact list with email, phone, company link and custom tags; CSV import supported',
               },
               {
                 src: '/site-images/free-software/genius-crm/leads.png',
-                alt: 'Genius CRM — Lead Tracker showing leads with source, assigned rep, status badges and follow-up date alerts',
+                alt: 'Genius CRM: Lead Tracker showing leads with source, assigned rep, status badges and follow-up date alerts',
                 title: 'Lead Tracker',
                 description: 'Lead status workflow with source tracking, assignment, follow-up dates and overdue alerts',
               },
               {
                 src: '/site-images/free-software/genius-crm/company-profiles.png',
-                alt: 'Genius CRM — Company Profile page showing company details, linked contacts, deals and tasks',
+                alt: 'Genius CRM: Company Profile page showing company details, linked contacts, deals and tasks',
                 title: 'Company Profiles',
-                description: 'Company records linked to contacts, deals and tasks — full activity in one view',
+                description: 'Company records linked to contacts, deals and tasks; full activity in one view',
               },
               {
                 src: '/site-images/free-software/genius-crm/reports.png',
-                alt: 'Genius CRM — Reports page showing pipeline value, won/lost value, conversion rate, deals by stage and lead pipeline charts',
+                alt: 'Genius CRM: Reports page showing pipeline value, won/lost value, conversion rate, deals by stage and lead pipeline charts',
                 title: 'Reports & Analytics',
-                description: 'Pipeline value, won/lost breakdown, conversion rate, deals by stage — CSV export included',
+                description: 'Pipeline value, won/lost breakdown, conversion rate, deals by stage; CSV export included',
               },
             ]}
           />
@@ -429,7 +429,7 @@ export default function GeniusCRMPage() {
             Genius CRM is a free, open-source customer relationship management system built with <strong>Laravel 12</strong>, <strong>React 19</strong>, and <strong>Inertia.js</strong>. It gives sales teams and small businesses a complete CRM without any subscription fees.
           </p>
           <p className="text-[16px] text-[#484848] leading-8 mb-5">
-            The system includes <strong>12 independent modules</strong> — contacts, leads, a drag-and-drop deal pipeline (Kanban), task management, company profiles, an activity feed, role-based access control, REST API, and more. The modular architecture means you can add new features without touching existing code.
+            The system includes <strong>12 independent modules</strong>: contacts, leads, a drag-and-drop deal pipeline (Kanban), task management, company profiles, an activity feed, role-based access control, REST API, and more. The modular architecture means you can add new features without touching existing code.
           </p>
           <p className="text-[16px] text-[#484848] leading-8">
             It is MIT licensed and self-hosted. Your sales data stays on your own server. No vendor lock-in, no per-seat pricing, no feature gating based on plan tier.
@@ -445,7 +445,7 @@ export default function GeniusCRMPage() {
               12 Modules. Everything a Growing Team Needs.
             </h2>
             <p className="text-[#484848] text-[15px] mt-3 max-w-[540px] mx-auto leading-7">
-              Contacts to closed deals — every step of your sales process is covered and nothing requires a paid upgrade.
+              Contacts to closed deals: every step of your sales process is covered and nothing requires a paid upgrade.
             </p>
           </div>
 
@@ -483,7 +483,7 @@ export default function GeniusCRMPage() {
               Built on a Rock-Solid Modern Stack
             </h2>
             <p className="text-[#484848] text-[15px] mt-3 max-w-[520px] mx-auto leading-7">
-              Modular by design — add a new feature module without touching existing code.
+              Modular by design: add a new feature module without touching existing code.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[900px] mx-auto">
@@ -540,15 +540,15 @@ export default function GeniusCRMPage() {
             {[
               {
                 title: 'Solo Founders',
-                desc: 'Stop tracking deals in a spreadsheet. A real CRM with contacts, leads, and a pipeline — at zero monthly cost.',
+                desc: 'Stop tracking deals in a spreadsheet. A real CRM with contacts, leads, and a pipeline, at zero monthly cost.',
               },
               {
                 title: 'Small Sales Teams',
-                desc: 'Assign leads, track deals, log activity — with role-based access so everyone sees what they need.',
+                desc: 'Assign leads, track deals, log activity, with role-based access so everyone sees what they need.',
               },
               {
                 title: 'Developers & Agencies',
-                desc: 'MIT license — fork it, rebrand it, build commercial products on top. Add modules without touching existing code.',
+                desc: 'MIT license: fork it, rebrand it, build commercial products on top. Add modules without touching existing code.',
               },
             ].map((c) => (
               <div key={c.title} className="rounded-2xl border border-[#E5E7EC] p-6">
@@ -644,7 +644,7 @@ export default function GeniusCRMPage() {
             productLightColor={LIGHT_COLOR}
             githubUrl={GITHUB_URL}
             licenseUuid={LICENSE_UUID}
-            label="Get Free Download — No Credit Card"
+            label="Get Free Download: No Credit Card"
             buttonColor="#ffffff"
             className="inline-flex items-center gap-2 text-[#0F1112] font-semibold text-[15px] rounded-full px-9 py-4 transition-all hover:-translate-y-0.5"
           />

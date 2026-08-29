@@ -14,13 +14,13 @@ import DownloadCTA from './_components/DownloadCTA';
 import { BASE_URL, CANONICAL } from './_components/constants';
 
 export const metadata: Metadata = {
-  title: 'Genius Campaign — Free Self-Hosted Email Outreach Platform',
+  title: 'Genius Campaign: Free Self-Hosted Email Outreach Platform',
   description:
     'Open-source, self-hosted email marketing & outreach. Sequences, sender rotation, webhooks. Bring your own AWS SES / Gmail Workspace, no per-contact fees.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Genius Campaign — Free Self-Hosted Email Outreach Platform | Xgenious',
+    title: 'Genius Campaign: Free Self-Hosted Email Outreach Platform | Xgenious',
     description:
       'Contacts, templates, sequences, campaigns, deliverability, and sender rotation in one self-hosted console. Bring your own AWS SES, Gmail Workspace, and Cloudflare R2. MIT licensed.',
     url: CANONICAL,
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Genius Campaign — Free Self-Hosted Email Outreach Platform',
+    title: 'Genius Campaign: Free Self-Hosted Email Outreach Platform',
     description:
       'Contacts, templates, sequences, campaigns, deliverability, and sender rotation in one self-hosted console. Bring your own AWS SES / Gmail Workspace. MIT licensed.',
     images: ['/free-software/genius-campaign/dashboard.png'],

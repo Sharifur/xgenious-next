@@ -24,7 +24,7 @@ export default function Modules() {
             9 Modules. Full Outreach Lifecycle.
           </h2>
           <p className="text-[#484848] text-[15px] mt-3 max-w-[560px] mx-auto leading-7">
-            From contact import to sent campaign — every core email outreach workflow is built in and ready to use out of the box.
+            From contact import to sent campaign: every core email outreach workflow is built in and ready to use out of the box.
           </p>
         </div>
 

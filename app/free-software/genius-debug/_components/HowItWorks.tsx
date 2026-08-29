@@ -4,17 +4,17 @@ const STEPS = [
   {
     number: '01',
     title: 'Your App Keeps Its Sentry SDK',
-    desc: 'No SDK swap. @sentry/nextjs (or any Sentry client) keeps sending its standard envelopes — you just repoint the DSN and tunnel route at your own server.',
+    desc: 'No SDK swap. @sentry/nextjs (or any Sentry client) keeps sending its standard envelopes; you just repoint the DSN and tunnel route at your own server.',
   },
   {
     number: '02',
     title: 'Ingest, Queue, Process',
-    desc: 'A thin ingest endpoint authenticates, rate-limits, and enqueues onto Redis (BullMQ). Workers normalize, symbolicate, fingerprint, and group events into issues — ingest itself stays fast so your app is never blocked.',
+    desc: 'A thin ingest endpoint authenticates, rate-limits, and enqueues onto Redis (BullMQ). Workers normalize, symbolicate, fingerprint, and group events into issues; ingest itself stays fast so your app is never blocked.',
   },
   {
     number: '03',
     title: 'Triage in the Dashboard',
-    desc: 'Issues, traces, and session replays land in Postgres + R2 and surface in the React dashboard. Filter, search (⌘K), merge, assign, and set alert rules — email delivered via AWS SES.',
+    desc: 'Issues, traces, and session replays land in Postgres + R2 and surface in the React dashboard. Filter, search (⌘K), merge, assign, and set alert rules; email delivered via AWS SES.',
   },
 ];
 
@@ -33,7 +33,7 @@ export default function HowItWorks() {
             Client → Ingest → Workers → Dashboard
           </h2>
           <p className="text-[#484848] text-[15px] mt-3 max-w-[620px] mx-auto leading-7">
-            Four services, one docker compose file. The ingest path is async and best-effort by design — Genius Debug never sits in your app&apos;s critical path.
+            Four services, one docker compose file. The ingest path is async and best-effort by design; Genius Debug never sits in your app&apos;s critical path.
           </p>
         </div>
 

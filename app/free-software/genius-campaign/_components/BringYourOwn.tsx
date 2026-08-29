@@ -3,7 +3,7 @@ import { COLOR, LIGHT_COLOR, DEPLOY_GUIDE_URL } from './constants';
 const POINTS = [
   {
     title: 'Nothing proxies through a third-party server',
-    desc: 'AWS SES, Gmail Workspace, and Cloudflare R2 calls go directly from your deployment to AWS, Google, and Cloudflare. Xgenious never sits in that path — we don’t see your emails or your subscriber data.',
+    desc: 'AWS SES, Gmail Workspace, and Cloudflare R2 calls go directly from your deployment to AWS, Google, and Cloudflare. Xgenious never sits in that path; we don’t see your emails or your subscriber data.',
   },
   {
     title: 'Your sending domain’s reputation is yours',
@@ -30,7 +30,7 @@ export default function BringYourOwn() {
             Your Infrastructure. Not Ours.
           </h2>
           <p className="text-[#484848] text-[15px] mt-3 max-w-[560px] mx-auto leading-7">
-            This is the whole point of self-hosting — worth spelling out before you click download.
+            This is the whole point of self-hosting, worth spelling out before you click download.
           </p>
         </div>
 

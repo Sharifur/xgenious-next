@@ -79,10 +79,10 @@ export default function FAQ() {
 
             <div className="mt-8 pt-8 border-t border-[#E5E7EC] flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-[#6b7280]">
               <span>Related:</span>
-              <Link href="/free-software/genius-hrm" className="hover:underline" style={{ color: COLOR }}>Genius HRM — Free HR Software</Link>
-              <Link href="/free-software/genius-crm" className="hover:underline" style={{ color: COLOR }}>Genius CRM — Free CRM System</Link>
-              <Link href="/products/helpnest-ai-chatbot-support-script" className="hover:underline" style={{ color: COLOR }}>Helpnest — AI Support Platform</Link>
-              <a href="https://en.wikipedia.org/wiki/Issue_tracking_system" target="_blank" rel="noopener noreferrer" className="text-[#6b7280] hover:underline">Issue Tracking — Wikipedia ↗</a>
+              <Link href="/free-software/genius-hrm" className="hover:underline" style={{ color: COLOR }}>Genius HRM: Free HR Software</Link>
+              <Link href="/free-software/genius-crm" className="hover:underline" style={{ color: COLOR }}>Genius CRM: Free CRM System</Link>
+              <Link href="/products/helpnest-ai-chatbot-support-script" className="hover:underline" style={{ color: COLOR }}>Helpnest: AI Support Platform</Link>
+              <a href="https://en.wikipedia.org/wiki/Issue_tracking_system" target="_blank" rel="noopener noreferrer" className="text-[#6b7280] hover:underline">Issue Tracking: Wikipedia ↗</a>
             </div>
 
           </div>

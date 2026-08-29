@@ -13,13 +13,13 @@ const DEMO_URL = 'https://genius-hrm.xgenious.com/login';
 const DOCS_URL = 'https://genious-hrm-whnd.vercel.app/';
 
 export const metadata: Metadata = {
-  title: 'Free Open Source HRM System — Laravel 13 + React 18',
+  title: 'Free Open Source HRM System: Laravel 13 + React 18',
   description:
     'Download a free, self-hosted HR management system built with Laravel 13 and React 18. 13 modules: employees, payroll, attendance, leave, recruitment, and performance management. MIT licensed.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/free-software/genius-hrm` },
   openGraph: {
-    title: 'Free Open Source HRM System — Laravel 13 + React 18 | Xgenious',
+    title: 'Free Open Source HRM System: Laravel 13 + React 18 | Xgenious',
     description:
       'Complete HR management system with 13 modules. Payroll, attendance, recruitment, performance appraisals. Free download, MIT license, self-hosted.',
     url: `${BASE_URL}/free-software/genius-hrm`,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Open Source HRM System — Laravel 13 + React 18',
+    title: 'Free Open Source HRM System: Laravel 13 + React 18',
     description: 'Download a free HR management system with 13 modules. Laravel 13 + React 18. MIT licensed.',
     images: ['/og-image.png'],
   },
@@ -66,7 +66,7 @@ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'Is Genius HRM really free with no limitations?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. MIT licensed. Every feature in the public repository is available at no cost — no paid tier, no feature locks, no per-user pricing.' } },
+    { '@type': 'Question', name: 'Is Genius HRM really free with no limitations?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. MIT licensed. Every feature in the public repository is available at no cost: no paid tier, no feature locks, no per-user pricing.' } },
     { '@type': 'Question', name: 'Can I modify the source code?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Full source code is included. No restrictions on modification, redistribution, or commercial use.' } },
     { '@type': 'Question', name: 'Does it support multiple companies?', acceptedAnswer: { '@type': 'Answer', text: 'V1 is single-tenant. Multi-tenant support is planned for a future release.' } },
     { '@type': 'Question', name: 'Do I need coding skills to install it?', acceptedAnswer: { '@type': 'Answer', text: 'Basic command-line familiarity is needed. The install guide covers every step. Xgenious also offers a professional installation service.' } },
@@ -79,7 +79,7 @@ const MODULES = [
   {
     name: 'Employee Management',
     features: [
-      'Complete employee profiles — personal, contact, employment details',
+      'Complete employee profiles: personal, contact, employment details',
       'Auto-generated employee IDs (EMP-001 format)',
       'Department and position management with hierarchy',
       'Employment history auto-tracked on every field change',
@@ -216,7 +216,7 @@ const SERVER_REQUIREMENTS = [
 ];
 
 const ROLES = [
-  { role: 'Admin', desc: 'Full system access — all modules, settings, user management' },
+  { role: 'Admin', desc: 'Full system access: all modules, settings, user management' },
   { role: 'HR Manager', desc: 'Manage employees, payroll, leave, documents, and reports' },
   { role: 'Manager', desc: 'View team attendance, approve leaves, submit performance reviews' },
   { role: 'Employee', desc: 'View own profile, apply for leave, view own payslips, set own goals' },
@@ -227,7 +227,7 @@ const ROLES = [
 const FAQ = [
   {
     q: 'Is Genius HRM really free with no limitations?',
-    a: 'Yes. MIT licensed. Every feature in the public repository is available at no cost — no paid tier, no feature locks, no per-user pricing.',
+    a: 'Yes. MIT licensed. Every feature in the public repository is available at no cost: no paid tier, no feature locks, no per-user pricing.',
   },
   {
     q: 'Can I modify the source code?',
@@ -293,7 +293,7 @@ export default function GeniusHRMPage() {
             </div>
 
             <h1 className="text-[36px] leading-[44px] sm:text-[54px] sm:leading-[62px] lg:text-[66px] lg:leading-[74px] font-semibold text-[#0F1112]">
-              Complete Open-Source HRM System — Free Forever
+              Complete Open-Source HRM System: Free Forever
             </h1>
 
             <p className="text-[#484848] text-[16px] sm:text-[18px] leading-8 max-w-[680px]">
@@ -307,7 +307,7 @@ export default function GeniusHRMPage() {
                 productLightColor={LIGHT_COLOR}
                 githubUrl={GITHUB_URL}
                 licenseUuid={LICENSE_UUID}
-                label="Download Free — No Account Needed"
+                label="Download Free, No Account Needed"
                 buttonColor="#ec7161"
                 className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:-translate-y-0.5"
               />
@@ -389,39 +389,39 @@ export default function GeniusHRMPage() {
             screenshots={[
               {
                 src: '/site-images/free-software/genius-hrm/dashboard.png',
-                alt: 'Genius HRM — Dashboard showing KPI widgets for total employees, present today, on leave, open positions, departments, payroll net, training completion and pending approvals',
+                alt: 'Genius HRM: Dashboard showing KPI widgets for total employees, present today, on leave, open positions, departments, payroll net, training completion and pending approvals',
                 title: 'HR Dashboard',
-                description: 'Org-wide KPIs — headcount, attendance, payroll total, training completion and pending approvals',
+                description: 'Org-wide KPIs: headcount, attendance, payroll total, training completion and pending approvals',
               },
               {
                 src: '/site-images/free-software/genius-hrm/employees.png',
-                alt: 'Genius HRM — Employee directory showing staff list with ID, department, position, joining date and active/on-leave/inactive status',
+                alt: 'Genius HRM: Employee directory showing staff list with ID, department, position, joining date and active/on-leave/inactive status',
                 title: 'Employee Directory',
-                description: 'Full employee records with department, position, joined date and status — searchable and filterable',
+                description: 'Full employee records with department, position, joined date and status, searchable and filterable',
               },
               {
                 src: '/site-images/free-software/genius-hrm/recruitment.png',
-                alt: 'Genius HRM — Recruitment page showing job postings with department, location, type, status and applicant count',
+                alt: 'Genius HRM: Recruitment page showing job postings with department, location, type, status and applicant count',
                 title: 'Recruitment',
                 description: 'Job postings with published/draft/closed status, applicant count and deadline tracking',
               },
               {
                 src: '/site-images/free-software/genius-hrm/training.png',
-                alt: 'Genius HRM — Training and Development page showing courses with category, mode, duration, cost, sessions and status',
+                alt: 'Genius HRM: Training and Development page showing courses with category, mode, duration, cost, sessions and status',
                 title: 'Training & Development',
-                description: 'Course catalog with active courses, sessions, enrollments and completions — online and in-person',
+                description: 'Course catalog with active courses, sessions, enrollments and completions, online and in-person',
               },
               {
                 src: '/site-images/free-software/genius-hrm/payroll.png',
-                alt: 'Genius HRM — Payroll runs list showing monthly payroll with employee count, gross, deductions, net salary and paid/draft status',
+                alt: 'Genius HRM: Payroll runs list showing monthly payroll with employee count, gross, deductions, net salary and paid/draft status',
                 title: 'Payroll Runs',
-                description: 'Monthly payroll with gross, deductions, net salary — draft to paid workflow with run history',
+                description: 'Monthly payroll with gross, deductions, net salary; draft to paid workflow with run history',
               },
               {
                 src: '/site-images/free-software/genius-hrm/reports.png',
-                alt: 'Genius HRM — Reports and Analytics showing headcount by department, headcount trend, employment status breakdown and payroll trend',
+                alt: 'Genius HRM: Reports and Analytics showing headcount by department, headcount trend, employment status breakdown and payroll trend',
                 title: 'Reports & Analytics',
-                description: 'Org-wide insights — headcount by department, employment status, payroll trend and training completion',
+                description: 'Org-wide insights: headcount by department, employment status, payroll trend and training completion',
               },
             ]}
           />
@@ -435,13 +435,13 @@ export default function GeniusHRMPage() {
             What is Genius HRM?
           </h2>
           <p className="text-[16px] text-[#484848] leading-8 mb-5">
-            Genius HRM is a free, open-source HR management system built with <strong>Laravel 13</strong>, <strong>React 18</strong>, and <strong>Inertia.js</strong>. It gives HR teams a complete platform to manage the full employee lifecycle — from recruitment and onboarding through payroll, attendance, and performance appraisals.
+            Genius HRM is a free, open-source HR management system built with <strong>Laravel 13</strong>, <strong>React 18</strong>, and <strong>Inertia.js</strong>. It gives HR teams a complete platform to manage the full employee lifecycle: from recruitment and onboarding through payroll, attendance, and performance appraisals.
           </p>
           <p className="text-[16px] text-[#484848] leading-8 mb-5">
             The system ships with <strong>13 fully built modules</strong> and <strong>55 granular permissions</strong> across 6 roles. Unlike HR SaaS tools that charge $5–$15 per user per month, Genius HRM is self-hosted with no per-user pricing and no recurring fees.
           </p>
           <p className="text-[16px] text-[#484848] leading-8">
-            It is MIT licensed. You can deploy it on any VPS or shared hosting, fork the codebase, customise it for your organisation, or build client projects on top — without any licensing costs.
+            It is MIT licensed. You can deploy it on any VPS or shared hosting, fork the codebase, customise it for your organisation, or build client projects on top, without any licensing costs.
           </p>
         </div>
       </section>
@@ -454,7 +454,7 @@ export default function GeniusHRMPage() {
               13 Modules. Full Employee Lifecycle.
             </h2>
             <p className="text-[#484848] text-[15px] mt-3 max-w-[560px] mx-auto leading-7">
-              From first job posting to final payslip — every HR workflow is built in and ready to use.
+              From first job posting to final payslip: every HR workflow is built in and ready to use.
             </p>
           </div>
 
@@ -514,7 +514,7 @@ export default function GeniusHRMPage() {
               Built on Modern, Battle-Tested Stack
             </h2>
             <p className="text-[#484848] text-[15px] mt-3 max-w-[520px] mx-auto leading-7">
-              No Docker required. Runs on any standard PHP hosting — Laravel Herd, Forge, or shared VPS.
+              No Docker required. Runs on any standard PHP hosting: Laravel Herd, Forge, or shared VPS.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[900px] mx-auto">
@@ -602,7 +602,7 @@ export default function GeniusHRMPage() {
             productLightColor={LIGHT_COLOR}
             githubUrl={GITHUB_URL}
             licenseUuid={LICENSE_UUID}
-            label="Get Free Download — No Credit Card"
+            label="Get Free Download, No Credit Card"
             buttonColor="#ec7161"
           />
           <p className="text-[13px] text-[#d1d5db]">

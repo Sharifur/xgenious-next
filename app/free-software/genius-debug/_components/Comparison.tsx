@@ -4,10 +4,10 @@ const ROWS = [
   { feature: 'Price', geniusDebug: 'Free (your server costs only)', sentry: '$26–$80+/mo + overage', glitchtip: 'Free self-host · $15+/mo hosted' },
   { feature: 'Hosting', geniusDebug: 'Your infra', sentry: 'Vendor cloud (SaaS-first)', glitchtip: 'Your infra' },
   { feature: 'Data ownership', geniusDebug: '100% yours', sentry: 'Vendor-held', glitchtip: '100% yours' },
-  { feature: 'Sentry SDK compatible', geniusDebug: 'Yes — standard @sentry/* SDKs', sentry: 'Yes (native)', glitchtip: 'Yes — same wire protocol' },
+  { feature: 'Sentry SDK compatible', geniusDebug: 'Yes: standard @sentry/* SDKs', sentry: 'Yes (native)', glitchtip: 'Yes: same wire protocol' },
   { feature: 'Error grouping + symbolication', geniusDebug: 'Yes', sentry: 'Yes', glitchtip: 'Yes' },
   { feature: 'Distributed traces', geniusDebug: 'Yes', sentry: 'Yes', glitchtip: 'Fails silently (unsupported)' },
-  { feature: 'Session replay', geniusDebug: 'Yes — on-error, privacy-masked', sentry: 'Yes', glitchtip: 'Fails silently (unsupported)' },
+  { feature: 'Session replay', geniusDebug: 'Yes: on-error, privacy-masked', sentry: 'Yes', glitchtip: 'Fails silently (unsupported)' },
   { feature: 'GitHub deep-links + auto-resolve', geniusDebug: 'Yes', sentry: 'Yes', glitchtip: 'No' },
   { feature: 'Resource footprint', geniusDebug: 'Small VPS (~2 GB RAM)', sentry: '16+ GB (self-hosted) or SaaS', glitchtip: 'Very light (~256 MB RAM)' },
   { feature: 'Setup', geniusDebug: 'Docker Compose / VPS', sentry: 'Sign up (SaaS) or 40+ containers (self-host)', glitchtip: 'Docker Compose / VPS' },
@@ -37,7 +37,7 @@ export default function Comparison() {
             Genius Debug vs Sentry SaaS vs GlitchTip
           </h2>
           <p className="text-[#484848] text-[15px] mt-3 max-w-[620px] mx-auto leading-7">
-            GlitchTip is the closest self-hosted comparison — lighter to run, but Session Replay and trace waterfalls fail silently. Genius Debug keeps both working.
+            GlitchTip is the closest self-hosted comparison: lighter to run, but Session Replay and trace waterfalls fail silently. Genius Debug keeps both working.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export default function Comparison() {
         </div>
 
         <p className="text-center text-[12px] text-[#9ca3af] mt-5 max-w-[620px] mx-auto">
-          Sentry pricing and GlitchTip resource figures per each project&apos;s published docs, 2026. GlitchTip is Sentry-protocol compatible but does not implement Session Replay, Profiling, or trace waterfalls — those SDK calls fail silently.
+          Sentry pricing and GlitchTip resource figures per each project&apos;s published docs, 2026. GlitchTip is Sentry-protocol compatible but does not implement Session Replay, Profiling, or trace waterfalls; those SDK calls fail silently.
         </p>
       </div>
     </section>

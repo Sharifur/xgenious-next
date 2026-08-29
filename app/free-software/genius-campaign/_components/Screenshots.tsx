@@ -72,7 +72,7 @@ function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => voi
           <div className="rounded-2xl overflow-hidden bg-black">
             <Image
               src={`/free-software/genius-campaign/${shot.file}`}
-              alt={`Genius Campaign ${shot.title} — ${shot.caption}`}
+              alt={`Genius Campaign ${shot.title}: ${shot.caption}`}
               width={2000}
               height={1052}
               className="w-full h-auto"
@@ -81,7 +81,7 @@ function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => voi
           </div>
           <p className="text-center text-white text-[13px] mt-4">
             <span className="font-semibold">{shot.title}</span>
-            <span className="text-[#9ca3af]"> — {shot.caption}</span>
+            <span className="text-[#9ca3af]">: {shot.caption}</span>
           </p>
         </div>
       </div>
@@ -107,7 +107,7 @@ export default function Screenshots() {
             See the Console
           </h2>
           <p className="text-[#484848] text-[15px] mt-3 max-w-[560px] mx-auto leading-7">
-            Contacts, templates, sequences, and campaigns — running on your own server. Click any screenshot to zoom in.
+            Contacts, templates, sequences, and campaigns, running on your own server. Click any screenshot to zoom in.
           </p>
         </div>
 
@@ -122,7 +122,7 @@ export default function Screenshots() {
               <div className="relative overflow-hidden">
                 <Image
                   src={`/free-software/genius-campaign/${s.file}`}
-                  alt={`Genius Campaign ${s.title} — ${s.caption}`}
+                  alt={`Genius Campaign ${s.title}: ${s.caption}`}
                   width={2000}
                   height={1052}
                   className="w-full h-auto transition-transform duration-300 group-hover:scale-105"

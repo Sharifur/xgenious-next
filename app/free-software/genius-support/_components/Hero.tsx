@@ -24,11 +24,11 @@ export default function Hero() {
           </div>
 
           <h1 className="text-[36px] leading-[44px] sm:text-[54px] sm:leading-[62px] lg:text-[66px] lg:leading-[74px] font-semibold text-[#0F1112]">
-            Free Support Portal Software — Open Source Helpdesk
+            Free Support Portal Software: Open Source Helpdesk
           </h1>
 
           <p className="text-[#484848] text-[16px] sm:text-[18px] leading-8 max-w-[680px]">
-            <strong>Genius Support</strong> is a complete support portal built with <strong>Laravel</strong> and <strong>Laravel Reverb</strong>. Customer portal, agent dashboard, knowledge base, email-to-ticket automation, and real-time WebSocket updates — self-hosted, no per-agent fees, forever free.
+            <strong>Genius Support</strong> is a complete support portal built with <strong>Laravel</strong> and <strong>Laravel Reverb</strong>. Customer portal, agent dashboard, knowledge base, email-to-ticket automation, and real-time WebSocket updates. Self-hosted, no per-agent fees, forever free.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
@@ -38,7 +38,7 @@ export default function Hero() {
               productLightColor={LIGHT_COLOR}
               githubUrl={GITHUB_URL}
               licenseUuid={LICENSE_UUID}
-              label="Download Free — No Account Needed"
+              label="Download Free: No Account Needed"
               buttonColor={COLOR}
               className="inline-flex items-center gap-2 text-white font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:-translate-y-0.5"
             />

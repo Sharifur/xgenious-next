@@ -33,7 +33,7 @@ export const MODULES = [
   {
     name: 'GitHub Integration',
     features: [
-      'One-click GitHub App install — personal or org',
+      'One-click GitHub App install: personal or org',
       '"Open in GitHub" on every stack frame',
       'Suspect-commit detection for each issue',
       'Auto-resolve when a commit message says "fixes SHORT-ID"',
@@ -51,7 +51,7 @@ export const MODULES = [
     name: 'Session Replay',
     features: [
       'On-error, privacy-masked DOM replay',
-      'Error-marked timeline — jump straight to the failure',
+      'Error-marked timeline: jump straight to the failure',
       'See exactly what the user did before it broke',
     ],
   },
@@ -67,14 +67,14 @@ export const MODULES = [
     name: 'Fast Triage UX',
     features: [
       'Filters, sort, and global search (⌘K)',
-      'Keyboard navigation — j/k/e/x/↵',
+      'Keyboard navigation: j/k/e/x/↵',
       'Merge issues, assign to members, editable highlights',
     ],
   },
   {
     name: 'Safety & Scale Controls',
     features: [
-      'Remote kill switch — disable ingest with no redeploy',
+      'Remote kill switch: disable ingest with no redeploy',
       'Back-pressure shedding under load, dead-letter queue for poison events',
       'Time-partitioned events with auto-rolled monthly partitions and retention purges',
       'Multi-project support with per-project DSN keys and roles',
@@ -107,11 +107,11 @@ export const FAQS = [
   },
   {
     q: 'Will it slow down my app?',
-    a: 'No. The SDK path is async and best-effort, and ingest is gated by a remote kill switch. If Genius Debug is down or overloaded, your app is unaffected — it just stops shipping events, nothing blocks.',
+    a: 'No. The SDK path is async and best-effort, and ingest is gated by a remote kill switch. If Genius Debug is down or overloaded, your app is unaffected; it just stops shipping events, nothing blocks.',
   },
   {
     q: 'What does it cost?',
-    a: 'The software is free and open-source. You only pay for the server you run it on — a small VPS is enough for a small team. There is no per-event, per-replay, or per-seat pricing.',
+    a: 'The software is free and open-source. You only pay for the server you run it on: a small VPS is enough for a small team. There is no per-event, per-replay, or per-seat pricing.',
   },
   {
     q: 'Do I need Cloudflare R2 or AWS SES to use it?',
@@ -119,22 +119,22 @@ export const FAQS = [
   },
   {
     q: 'Does it support Laravel / PHP?',
-    a: 'The ingest backend is platform-agnostic and already groups platform:"php" events, so a Laravel app can send events to it today. A first-class Laravel integration guide is planned for v2 — for now, Next.js / React via @sentry/nextjs is the primary supported path.',
+    a: 'The ingest backend is platform-agnostic and already groups platform:"php" events, so a Laravel app can send events to it today. A first-class Laravel integration guide is planned for v2; for now, Next.js / React via @sentry/nextjs is the primary supported path.',
   },
   {
     q: 'How is this different from GlitchTip, the other popular self-hosted Sentry alternative?',
-    a: 'GlitchTip is lighter to run but does not implement Session Replay, Profiling, or trace waterfalls — calls to those APIs fail silently. Genius Debug keeps distributed traces and on-error session replay working, so you are not trading away the features that make debugging fast.',
+    a: 'GlitchTip is lighter to run but does not implement Session Replay, Profiling, or trace waterfalls; calls to those APIs fail silently. Genius Debug keeps distributed traces and on-error session replay working, so you are not trading away the features that make debugging fast.',
   },
   {
     q: 'Why not just self-host Sentry itself instead of a separate tool?',
-    a: 'Self-hosted Sentry needs Kafka, ClickHouse, Snuba, Relay, Symbolicator, Postgres, Redis, Memcached, and dozens of worker containers — 16GB+ RAM as a bare minimum, more like 32GB if it shares a box with anything else. Genius Debug runs on ~2GB RAM / 2 vCPU because it only implements the triage loop a small team actually uses, not Sentry’s full platform.',
+    a: 'Self-hosted Sentry needs Kafka, ClickHouse, Snuba, Relay, Symbolicator, Postgres, Redis, Memcached, and dozens of worker containers: 16GB+ RAM as a bare minimum, more like 32GB if it shares a box with anything else. Genius Debug runs on ~2GB RAM / 2 vCPU because it only implements the triage loop a small team actually uses, not Sentry’s full platform.',
   },
   {
     q: 'Can I migrate off Sentry SaaS?',
     a: 'Yes. Swap the DSN, disable Sentry’s source-map upload step in CI, and add Genius Debug’s uploader instead. No application code changes are required.',
   },
   {
-    q: 'Is Genius Debug open source — what license is it under?',
-    a: 'Yes, the full source is included with your download. A formal LICENSE file (MIT is the intended license) is being finalized — check it before relying on Genius Debug for a commercial redistribution.',
+    q: 'Is Genius Debug open source? What license is it under?',
+    a: 'Yes, the full source is included with your download. A formal LICENSE file (MIT is the intended license) is being finalized. Check it before relying on Genius Debug for a commercial redistribution.',
   },
 ];

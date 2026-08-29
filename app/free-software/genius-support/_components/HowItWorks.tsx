@@ -9,12 +9,12 @@ const STEPS = [
   {
     number: '02',
     title: 'Configure Email and Departments',
-    desc: 'Connect your IMAP inbox so incoming customer emails automatically create tickets. Create departments, assign agents, and set up reply email templates — all from the admin panel.',
+    desc: 'Connect your IMAP inbox so incoming customer emails automatically create tickets. Create departments, assign agents, and set up reply email templates, all from the admin panel.',
   },
   {
     number: '03',
     title: 'Go Live',
-    desc: 'Share the customer portal URL. Customers submit and track tickets; agents resolve them in real time. The WebSocket server (Laravel Reverb) delivers instant updates to every open browser tab — no polling, no page refresh.',
+    desc: 'Share the customer portal URL. Customers submit and track tickets; agents resolve them in real time. The WebSocket server (Laravel Reverb) delivers instant updates to every open browser tab: no polling, no page refresh.',
   },
 ];
 

@@ -7,11 +7,11 @@ export default function WhatIs() {
         </h2>
 
         <p className="text-[17px] text-[#0F1112] leading-8 mb-6 p-5 rounded-2xl border border-[#E5E7EC] bg-[#f9fafb]">
-          <strong>Genius Campaign</strong> is a free, open-source, self-hosted <strong>email marketing and outreach platform</strong>. Contacts, templates, sequences, campaigns, deliverability, and sender rotation live in one console — MIT licensed, with no per-contact fees.
+          <strong>Genius Campaign</strong> is a free, open-source, self-hosted <strong>email marketing and outreach platform</strong>. Contacts, templates, sequences, campaigns, deliverability, and sender rotation live in one console: MIT licensed, with no per-contact fees.
         </p>
 
         <p className="text-[16px] text-[#484848] leading-8 mb-5">
-          Hosted cold-outreach tools like Smartlead and Instantly charge monthly fees that scale with contacts and send volume, on top of whatever email provider you already pay for. Genius Campaign is a one-time free download — full source code, deploy on your own infrastructure, no recurring bill regardless of list size.
+          Hosted cold-outreach tools like Smartlead and Instantly charge monthly fees that scale with contacts and send volume, on top of whatever email provider you already pay for. Genius Campaign is a one-time free download: full source code, deploy on your own infrastructure, no recurring bill regardless of list size.
         </p>
         <p className="text-[16px] text-[#484848] leading-8 mb-5">
           The system ships with a <strong>sequence builder</strong> for multi-step drip automation, <strong>inbound and outbound webhooks</strong> for connecting to the rest of your stack, and an <strong>AI-assisted template editor</strong> with spintax variants. Sending rotates automatically across your own <strong>AWS SES</strong> and <strong>Gmail Workspace</strong> accounts, quota-aware, with bulk <strong>email verification</strong> before every send.

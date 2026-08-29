@@ -2,8 +2,8 @@ import DownloadButton from '@/components/ui/DownloadButton';
 import { COLOR, LIGHT_COLOR, GITHUB_URL, LICENSE_UUID, DOCS_URL } from './constants';
 
 const INCLUDES = [
-  'API — contacts, campaigns, sequences, webhooks',
-  'Web — React admin console',
+  'API: contacts, campaigns, sequences, webhooks',
+  'Web: React admin console',
   'Sender rotation across AWS SES / Gmail Workspace',
   'Docker Compose file for one-command deploy',
   'Full documentation',
@@ -21,7 +21,7 @@ export default function DownloadCTA() {
             <h2 className="text-[26px] sm:text-[32px] font-semibold text-[#0F1112] leading-tight">
               Download Genius Campaign
             </h2>
-            <p className="text-[#484848] text-[14px] mt-2">Full source · MIT licensed — free forever, self-hosted</p>
+            <p className="text-[#484848] text-[14px] mt-2">Full source · MIT licensed: free forever, self-hosted</p>
           </div>
 
           <ul className="flex flex-col gap-2">

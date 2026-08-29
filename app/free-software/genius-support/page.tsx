@@ -17,15 +17,15 @@ const BASE_URL = 'https://xgenious.com';
 const CANONICAL = `${BASE_URL}/free-software/genius-support`;
 
 export const metadata: Metadata = {
-  title: 'Free Support Portal Software — Open Source Helpdesk',
+  title: 'Free Support Portal Software: Open Source Helpdesk',
   description:
     'Free open-source helpdesk software with ticketing, customer portal, knowledge base, and email-to-ticket automation. MIT licensed, self-hosted, no per-agent fees ever.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Free Support Portal Software — Open Source Helpdesk | Xgenious',
+    title: 'Free Support Portal Software: Open Source Helpdesk | Xgenious',
     description:
-      'Genius Support: free self-hosted helpdesk — ticketing, customer portal, knowledge base, email-to-ticket, WebSocket. MIT licensed, no per-agent fees.',
+      'Genius Support: free self-hosted helpdesk, ticketing, customer portal, knowledge base, email-to-ticket, WebSocket. MIT licensed, no per-agent fees.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Support Portal Software — Open Source Helpdesk',
+    title: 'Free Support Portal Software: Open Source Helpdesk',
     description:
-      'Genius Support: free self-hosted helpdesk — ticketing, customer portal, knowledge base, email-to-ticket, WebSocket. MIT licensed, no per-agent fees.',
+      'Genius Support: free self-hosted helpdesk, ticketing, customer portal, knowledge base, email-to-ticket, WebSocket. MIT licensed, no per-agent fees.',
     images: ['/og-image.png'],
   },
   keywords: [

@@ -11,7 +11,7 @@ export default function JsonLd() {
     applicationCategory: 'DeveloperApplication',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     description:
-      'Genius Debug is a free, open-source, self-hosted Sentry alternative for JavaScript and Next.js/React apps. Captures runtime errors, groups them into issues, symbolicates stack traces, and pairs each error with a distributed trace and a short session replay — reusing the standard Sentry SDK.',
+      'Genius Debug is a free, open-source, self-hosted Sentry alternative for JavaScript and Next.js/React apps. Captures runtime errors, groups them into issues, symbolicates stack traces, and pairs each error with a distributed trace and a short session replay, reusing the standard Sentry SDK.',
     url: CANONICAL,
     author: { '@type': 'Organization', name: 'Xgenious', url: BASE_URL },
     programmingLanguage: ['TypeScript', 'JavaScript'],
@@ -38,7 +38,7 @@ export default function JsonLd() {
       {
         '@type': 'HowToStep',
         name: "Point Your Sentry SDK at Your Instance",
-        text: 'Repoint your existing @sentry/nextjs (or other Sentry SDK) DSN at your self-hosted ingest endpoint — no application code changes required.',
+        text: 'Repoint your existing @sentry/nextjs (or other Sentry SDK) DSN at your self-hosted ingest endpoint. No application code changes required.',
         position: 3,
       },
     ],
