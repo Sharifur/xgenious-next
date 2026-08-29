@@ -105,7 +105,27 @@ function Dropdown({
   );
 }
 
-function ProductsMega({ items, dark }: { items: DropdownItem[]; dark?: boolean }) {
+function MegaMenu({
+  label,
+  items,
+  dark,
+  active,
+  kicker,
+  subtitle,
+  footerText,
+  footerCtaLabel,
+  footerCtaHref,
+}: {
+  label: string;
+  items: DropdownItem[];
+  dark?: boolean;
+  active?: boolean;
+  kicker: string;
+  subtitle: string;
+  footerText: string;
+  footerCtaLabel: string;
+  footerCtaHref: string;
+}) {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -125,19 +145,23 @@ function ProductsMega({ items, dark }: { items: DropdownItem[]; dark?: boolean }
     >
       <button
         className={`flex items-center gap-1.5 text-[14px] font-medium leading-5 transition-colors py-1 cursor-pointer ${
-          dark ? 'text-[#EBECEE] hover:text-white' : 'text-[#1a1a2e] hover:text-[#000]'
+          active
+            ? 'text-[#F26B4E]'
+            : dark
+            ? 'text-[#EBECEE] hover:text-white'
+            : 'text-[#1a1a2e] hover:text-[#000]'
         }`}
         onClick={() => setOpen((v) => !v)}
       >
-        Product
+        {label}
         <Chevron open={open} />
       </button>
 
       {open && (
         <div className="absolute top-[calc(100%+12px)] left-0 -ml-8 w-[680px] max-w-[calc(100vw-2rem)] bg-white border border-[#E5E7EC] rounded-2xl shadow-[0_24px_60px_rgba(15,17,18,0.16)] p-3 z-50">
           <div className="flex items-center justify-between px-3 pt-1 pb-2.5">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#8A8F99]">Our Products</span>
-            <span className="text-[11px] text-[#B0B4BD]">{items.length} ready-to-launch platforms</span>
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[#8A8F99]">{kicker}</span>
+            <span className="text-[11px] text-[#B0B4BD]">{subtitle}</span>
           </div>
 
           <div className="grid grid-cols-2 gap-1">
@@ -187,13 +211,13 @@ function ProductsMega({ items, dark }: { items: DropdownItem[]; dark?: boolean }
           </div>
 
           <div className="mt-2 pt-2.5 border-t border-[#F0F1F3] flex items-center justify-between px-3">
-            <span className="text-[12px] text-[#8A8F99]">Need something custom-built?</span>
+            <span className="text-[12px] text-[#8A8F99]">{footerText}</span>
             <Link
-              href="/custom-saas-development-company"
+              href={footerCtaHref}
               className="text-[12px] font-semibold text-[#F26B4E] hover:underline"
               onClick={() => setOpen(false)}
             >
-              Custom SaaS Development →
+              {footerCtaLabel} →
             </Link>
           </div>
         </div>
@@ -301,8 +325,27 @@ export default function Navbar() {
 
           <nav className="hidden lg:flex items-center gap-7">
             <Dropdown label="Services" items={servicesDropdown} active={isServicesActive} dark={isDark} />
-            <ProductsMega items={productsDropdown} dark={isDark} />
-            <Dropdown label="Free Software" items={freeSoftwareDropdown} active={pathname?.startsWith('/free-software')} dark={isDark} />
+            <MegaMenu
+              label="Product"
+              items={productsDropdown}
+              dark={isDark}
+              kicker="Our Products"
+              subtitle={`${productsDropdown.length} ready-to-launch platforms`}
+              footerText="Need something custom-built?"
+              footerCtaLabel="Custom SaaS Development"
+              footerCtaHref="/custom-saas-development-company"
+            />
+            <MegaMenu
+              label="Free Software"
+              items={freeSoftwareDropdown}
+              dark={isDark}
+              active={pathname?.startsWith('/free-software')}
+              kicker="Free & Open Source"
+              subtitle={`${freeSoftwareDropdown.length} free, MIT-licensed products`}
+              footerText="Need it customized or hosted for you?"
+              footerCtaLabel="Contact Us"
+              footerCtaHref="/contact"
+            />
             <Dropdown label="Company" items={companyDropdown} dark={isDark} />
             <Link href="https://xgenious.com/blog/" className={linkClass}>Blog</Link>
             <Link href="/contact" className={linkClass}>Contact</Link>

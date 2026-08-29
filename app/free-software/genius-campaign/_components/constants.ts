@@ -56,7 +56,7 @@ export const MODULES = [
   {
     name: 'Triggers & Webhooks',
     features: [
-      'Auto-enroll contacts on events — tag added, field changed, list joined',
+      'Auto-enroll contacts on events: tag added, field changed, list joined',
       'Inbound HMAC-signed webhook trigger',
       'Connect to the rest of your stack without polling',
     ],
@@ -72,14 +72,14 @@ export const MODULES = [
     name: 'Sender Rotation',
     features: [
       'Rotate across AWS SES and Gmail Workspace accounts',
-      'Quota-aware — spreads volume automatically',
+      'Quota-aware: spreads volume automatically',
       'Protects deliverability by not overloading one sender',
     ],
   },
   {
     name: 'Team & Audit',
     features: [
-      'Role-based access — owner, editor, viewer',
+      'Role-based access: owner, editor, viewer',
       'Full audit log of account activity',
       'Global suppression list',
     ],
@@ -107,15 +107,15 @@ export const SERVER_REQUIREMENTS = [
 export const FAQS = [
   {
     q: 'Does my email actually route through Xgenious or a third-party server?',
-    a: 'No. Genius Campaign connects directly to your own AWS SES or Gmail Workspace account, and your own Cloudflare R2 bucket if you use one. Calls go straight from your deployment to AWS/Google/Cloudflare — nothing proxies through a third-party server, including ours.',
+    a: 'No. Genius Campaign connects directly to your own AWS SES or Gmail Workspace account, and your own Cloudflare R2 bucket if you use one. Calls go straight from your deployment to AWS/Google/Cloudflare; nothing proxies through a third-party server, including ours.',
   },
   {
     q: 'Is Genius Campaign really free with no limitations?',
-    a: 'Yes. MIT licensed, confirmed in the repository LICENSE file. Every feature is included at no cost — no paid tier, no per-contact pricing, no feature locks.',
+    a: 'Yes. MIT licensed, confirmed in the repository LICENSE file. Every feature is included at no cost: no paid tier, no per-contact pricing, no feature locks.',
   },
   {
     q: 'What do the AI writing features actually do?',
-    a: 'The template editor includes AI-assisted copywriting via OpenAI or DeepSeek, plus spintax variants for subject line and body rotation. It drafts and suggests — you review and send.',
+    a: 'The template editor includes AI-assisted copywriting via OpenAI or DeepSeek, plus spintax variants for subject line and body rotation. It drafts and suggests; you review and send.',
   },
   {
     q: 'What is sender rotation, and why does it matter?',
@@ -123,7 +123,7 @@ export const FAQS = [
   },
   {
     q: 'How does email verification work?',
-    a: 'Before a campaign sends, contacts are checked against Reoon (primary) with NeverBounce as a fallback provider. Invalid and risky addresses are flagged so your bounce rate — and sender reputation — stays healthy.',
+    a: 'Before a campaign sends, contacts are checked against Reoon (primary) with NeverBounce as a fallback provider. Invalid and risky addresses are flagged so your bounce rate, and sender reputation, stays healthy.',
   },
   {
     q: 'Can I trigger sequences from my own app or forms?',
@@ -135,7 +135,7 @@ export const FAQS = [
   },
   {
     q: 'How is this different from Smartlead, Instantly, or Mailchimp?',
-    a: 'Smartlead and Instantly charge per-tier monthly fees that scale with contacts and send volume; Mailchimp scales similarly. Genius Campaign is a one-time free download — self-hosted, MIT licensed, full source code — with no per-contact or per-send fee, and your data never leaves your infrastructure.',
+    a: 'Smartlead and Instantly charge per-tier monthly fees that scale with contacts and send volume; Mailchimp scales similarly. Genius Campaign is a one-time free download (self-hosted, MIT licensed, full source code) with no per-contact or per-send fee, and your data never leaves your infrastructure.',
   },
   {
     q: 'Can I modify the source code or white-label it for clients?',

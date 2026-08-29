@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { COLOR, LIGHT_COLOR } from './constants';
 
 const SHOTS = [
-  { file: 'issues.png', title: 'Issues Feed', caption: 'Grouped, triageable — filter, sort, and search (⌘K) across every project.' },
+  { file: 'issues.png', title: 'Issues Feed', caption: 'Grouped, triageable: filter, sort, and search (⌘K) across every project.' },
   { file: 'issue-detail.png', title: 'Issue Detail', caption: 'Symbolicated stack trace, highlights, linked trace and replay, full activity log.' },
   { file: 'trace.png', title: 'Trace Waterfall', caption: 'Span timings with error markers, linked back to the issue that fired.' },
   { file: 'replay.png', title: 'Session Replay', caption: 'On-error, privacy-masked DOM replay with an error-marked timeline.' },
@@ -72,7 +72,7 @@ function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => voi
           <div className="rounded-2xl overflow-hidden bg-black">
             <Image
               src={`/free-software/genius-debug/${shot.file}`}
-              alt={`Genius Debug ${shot.title} — ${shot.caption}`}
+              alt={`Genius Debug ${shot.title}: ${shot.caption}`}
               width={1440}
               height={860}
               className="w-full h-auto"
@@ -81,7 +81,7 @@ function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => voi
           </div>
           <p className="text-center text-white text-[13px] mt-4">
             <span className="font-semibold">{shot.title}</span>
-            <span className="text-[#9ca3af]"> — {shot.caption}</span>
+            <span className="text-[#9ca3af]">: {shot.caption}</span>
           </p>
         </div>
       </div>
@@ -107,7 +107,7 @@ export default function Screenshots() {
             See the Dashboard
           </h2>
           <p className="text-[#484848] text-[15px] mt-3 max-w-[560px] mx-auto leading-7">
-            Issues, traces, and replays — the same triage loop, running on your own server. Click any screenshot to zoom in.
+            Issues, traces, and replays: the same triage loop, running on your own server. Click any screenshot to zoom in.
           </p>
         </div>
 
@@ -122,7 +122,7 @@ export default function Screenshots() {
               <div className="relative overflow-hidden">
                 <Image
                   src={`/free-software/genius-debug/${s.file}`}
-                  alt={`Genius Debug ${s.title} — ${s.caption}`}
+                  alt={`Genius Debug ${s.title}: ${s.caption}`}
                   width={1440}
                   height={860}
                   className="w-full h-auto transition-transform duration-300 group-hover:scale-105"

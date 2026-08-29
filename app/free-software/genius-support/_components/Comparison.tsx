@@ -2,7 +2,7 @@ import { COLOR, LIGHT_COLOR } from './constants';
 
 const ROWS = [
   { feature: 'Price', geniusSupport: 'Free forever', zendesk: '$19–$115/agent/mo', freshdesk: '$15–$79/agent/mo' },
-  { feature: 'Self-hosted', geniusSupport: 'Yes — your server', zendesk: 'No (SaaS only)', freshdesk: 'No (SaaS only)' },
+  { feature: 'Self-hosted', geniusSupport: 'Yes: your server', zendesk: 'No (SaaS only)', freshdesk: 'No (SaaS only)' },
   { feature: 'Source code access', geniusSupport: 'Full (MIT license)', zendesk: 'No', freshdesk: 'No' },
   { feature: 'Email-to-ticket (IMAP)', geniusSupport: 'Built in', zendesk: 'Built in', freshdesk: 'Built in' },
   { feature: 'Real-time updates', geniusSupport: 'Self-hosted WebSocket', zendesk: 'Proprietary', freshdesk: 'Proprietary' },
@@ -70,7 +70,7 @@ export default function Comparison() {
         </div>
 
         <p className="text-center text-[12px] text-[#9ca3af] mt-5 max-w-[500px] mx-auto">
-          Zendesk and Freshdesk pricing as of 2025. Per-agent costs scale with team size — Genius Support does not.
+          Zendesk and Freshdesk pricing as of 2025. Per-agent costs scale with team size; Genius Support does not.
         </p>
       </div>
     </section>

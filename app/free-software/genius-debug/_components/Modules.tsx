@@ -24,7 +24,7 @@ export default function Modules() {
             The Core Triage Loop. Nothing Extra.
           </h2>
           <p className="text-[#484848] text-[15px] mt-3 max-w-[560px] mx-auto leading-7">
-            The 20% of Sentry a small team actually lives in, day to day — grouped, symbolicated, traced, and replayed.
+            The 20% of Sentry a small team actually lives in, day to day: grouped, symbolicated, traced, and replayed.
           </p>
         </div>
 

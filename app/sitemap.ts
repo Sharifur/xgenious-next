@@ -57,6 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/free-software/genius-support`, lastModified: '2026-06-04', priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-software/genius-campaign`, lastModified: '2026-07-19', priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-software/genius-debug`, lastModified: '2026-07-19', priority: 0.9, changeFrequency: 'monthly' as const },
+    { url: `${BASE_URL}/free-software/free-self-hosted-ecommerce-platform`, lastModified: '2026-08-29', priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-tools`, lastModified: '2026-05-20', priority: 0.9, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/free-tools/json-formatter`, lastModified: '2026-05-20', priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/free-tools/password-generator`, lastModified: '2026-05-20', priority: 0.8, changeFrequency: 'weekly' as const },

@@ -24,7 +24,7 @@ export default function Modules() {
             6 Modules. Full Support Lifecycle.
           </h2>
           <p className="text-[#484848] text-[15px] mt-3 max-w-[560px] mx-auto leading-7">
-            From first customer email to resolved ticket — every support workflow is built in and ready to use out of the box.
+            From first customer email to resolved ticket: every support workflow is built in and ready to use out of the box.
           </p>
         </div>
 

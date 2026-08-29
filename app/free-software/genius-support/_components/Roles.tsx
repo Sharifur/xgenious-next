@@ -9,7 +9,7 @@ export default function Roles() {
             Three Roles. Every Perspective Covered.
           </h2>
           <p className="text-[#484848] text-[15px] mt-3 max-w-[520px] mx-auto leading-7">
-            Customers, agents, and admins each get a tailored experience — no shared interface, no permission confusion.
+            Customers, agents, and admins each get a tailored experience: no shared interface, no permission confusion.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-[900px] mx-auto">

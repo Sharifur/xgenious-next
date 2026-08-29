@@ -2,7 +2,7 @@ import { COLOR, LIGHT_COLOR } from './constants';
 
 const ROWS = [
   { feature: 'Price', geniusCampaign: 'Free forever', smartlead: '$39–$379/mo', instantly: '$37.60–$358+/mo', mailchimp: '$13–$350/mo' },
-  { feature: 'Self-hosted', geniusCampaign: 'Yes — your infrastructure', smartlead: 'No (SaaS only)', instantly: 'No (SaaS only)', mailchimp: 'No (SaaS only)' },
+  { feature: 'Self-hosted', geniusCampaign: 'Yes, your infrastructure', smartlead: 'No (SaaS only)', instantly: 'No (SaaS only)', mailchimp: 'No (SaaS only)' },
   { feature: 'Source code access', geniusCampaign: 'Full (MIT license)', smartlead: 'No', instantly: 'No', mailchimp: 'No' },
   { feature: 'Sending infrastructure', geniusCampaign: 'Your own AWS SES / Gmail Workspace', smartlead: 'Vendor mailbox infrastructure', instantly: 'Vendor mailbox infrastructure', mailchimp: 'Vendor-managed sending' },
   { feature: 'Sender rotation', geniusCampaign: 'Built in, quota-aware', smartlead: 'Built in', instantly: 'Built in', mailchimp: 'Not applicable' },
@@ -72,7 +72,7 @@ export default function Comparison() {
         </div>
 
         <p className="text-center text-[12px] text-[#9ca3af] mt-5 max-w-[620px] mx-auto">
-          Smartlead, Instantly, and Mailchimp pricing per each vendor&apos;s published plans, 2026. Costs scale with contacts and send volume — Genius Campaign does not.
+          Smartlead, Instantly, and Mailchimp pricing per each vendor&apos;s published plans, 2026. Costs scale with contacts and send volume; Genius Campaign does not.
         </p>
       </div>
     </section>

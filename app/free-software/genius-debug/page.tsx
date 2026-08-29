@@ -14,23 +14,23 @@ import DownloadCTA from './_components/DownloadCTA';
 import { BASE_URL, CANONICAL } from './_components/constants';
 
 export const metadata: Metadata = {
-  title: 'Genius Debug — Free Self-Hosted Sentry Alternative',
+  title: 'Genius Debug: Free Self-Hosted Sentry Alternative',
   description:
-    'Open-source, self-hosted error monitoring for Next.js & React. Traces, source maps, and session replay — reuse your Sentry SDK, no per-event pricing.',
+    'Open-source, self-hosted error monitoring for Next.js & React. Traces, source maps, and session replay. Reuse your Sentry SDK, no per-event pricing.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Genius Debug — Free Self-Hosted Sentry Alternative | Xgenious',
+    title: 'Genius Debug: Free Self-Hosted Sentry Alternative | Xgenious',
     description:
       'Self-hosted error monitoring for JavaScript & Next.js. Error grouping, symbolication, distributed traces, session replay. Reuses the standard Sentry SDK. Free, open source.',
     url: CANONICAL,
     siteName: 'Xgenious',
-    images: [{ url: '/free-software/genius-debug/issues.png', width: 1440, height: 860, alt: 'Genius Debug issues feed — grouped, triageable errors' }],
+    images: [{ url: '/free-software/genius-debug/issues.png', width: 1440, height: 860, alt: 'Genius Debug issues feed: grouped, triageable errors' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Genius Debug — Free Self-Hosted Sentry Alternative',
+    title: 'Genius Debug: Free Self-Hosted Sentry Alternative',
     description:
       'Self-hosted error monitoring for JavaScript & Next.js. Error grouping, symbolication, traces, session replay. Reuses the standard Sentry SDK.',
     images: ['/free-software/genius-debug/issues.png'],

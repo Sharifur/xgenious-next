@@ -53,7 +53,7 @@ export default function TechStack() {
                 System Requirements
               </h2>
               <p className="text-[#9ca3af] text-[15px] mt-3 leading-7">
-                Any standard VPS — DigitalOcean, Hetzner, AWS EC2, or Coolify.
+                Any standard VPS: DigitalOcean, Hetzner, AWS EC2, or Coolify.
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

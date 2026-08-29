@@ -55,7 +55,7 @@ export default function FAQ() {
             >
               <div>
                 <p className="text-white font-semibold text-[16px] mb-1">Still have questions?</p>
-                <p className="text-[#9A9AA8] text-[14px]">Check the docs or open a ticket — we&apos;ll help directly.</p>
+                <p className="text-[#9A9AA8] text-[14px]">Check the docs or open a ticket; we&apos;ll help directly.</p>
               </div>
               <div className="flex items-center gap-3 flex-shrink-0">
                 <a
@@ -79,9 +79,9 @@ export default function FAQ() {
 
             <div className="mt-8 pt-8 border-t border-[#E5E7EC] flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-[#6b7280]">
               <span>Related:</span>
-              <Link href="/free-software/genius-support" className="hover:underline" style={{ color: COLOR }}>Genius Support — Free Helpdesk Software</Link>
-              <Link href="/free-software/genius-crm" className="hover:underline" style={{ color: COLOR }}>Genius CRM — Free CRM System</Link>
-              <a href="https://develop.sentry.dev/sdk/envelopes/" target="_blank" rel="noopener noreferrer" className="text-[#6b7280] hover:underline">Sentry Envelope Protocol — Sentry Docs ↗</a>
+              <Link href="/free-software/genius-support" className="hover:underline" style={{ color: COLOR }}>Genius Support: Free Helpdesk Software</Link>
+              <Link href="/free-software/genius-crm" className="hover:underline" style={{ color: COLOR }}>Genius CRM: Free CRM System</Link>
+              <a href="https://develop.sentry.dev/sdk/envelopes/" target="_blank" rel="noopener noreferrer" className="text-[#6b7280] hover:underline">Sentry Envelope Protocol: Sentry Docs ↗</a>
             </div>
 
           </div>

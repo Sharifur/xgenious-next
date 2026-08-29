@@ -55,7 +55,7 @@ export default function FAQ() {
             >
               <div>
                 <p className="text-white font-semibold text-[16px] mb-1">Still have questions?</p>
-                <p className="text-[#9AA1AD] text-[14px]">Check the docs or open a ticket — we&apos;ll help directly.</p>
+                <p className="text-[#9AA1AD] text-[14px]">Check the docs or open a ticket. We&apos;ll help directly.</p>
               </div>
               <div className="flex items-center gap-3 flex-shrink-0">
                 <a
@@ -81,8 +81,8 @@ export default function FAQ() {
               <span>Resources:</span>
               <a href={DEPLOY_GUIDE_URL} target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: COLOR }}>Deployment Guide</a>
               <a href={PUBLIC_API_URL} target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: COLOR }}>Public API Reference</a>
-              <Link href="/free-software/genius-debug" className="hover:underline" style={{ color: COLOR }}>Genius Debug — Self-Hosted Sentry Alternative</Link>
-              <Link href="/free-software/genius-support" className="hover:underline" style={{ color: COLOR }}>Genius Support — Free Helpdesk</Link>
+              <Link href="/free-software/genius-debug" className="hover:underline" style={{ color: COLOR }}>Genius Debug: Self-Hosted Sentry Alternative</Link>
+              <Link href="/free-software/genius-support" className="hover:underline" style={{ color: COLOR }}>Genius Support: Free Helpdesk</Link>
             </div>
 
           </div>

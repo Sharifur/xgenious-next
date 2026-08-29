@@ -40,6 +40,14 @@ Free open-source HR management system. Laravel 13 + React 18. 13 modules: employ
 - Stack: Laravel 13, React 18, Inertia.js, MySQL, shadcn/ui
 - Target users: SMEs, HR teams, developers, agencies
 
+### Genius Commerz: Free Self-Hosted eCommerce Platform
+Free, self-hosted eCommerce platform for cross-border merchants. Laravel 12 + React 19 + Inertia v3. 98 built-in integrations: 39 payment gateways, 20 SMS gateways, 19 shipping carriers + 3 Bangladesh couriers, 11 fraud checkers, 4 AI providers, 2 exchange-rate sources. Also known as: free ecommerce platform, self hosted ecommerce software, free ecommerce solution, woocommerce alternative, shopify alternative no fees.
+Country-aware checkout (adapts address fields and postal labels per country), multi-currency with frozen exchange rates, destination-based tax with one-click EU VAT/UK VAT/US/Canada templates, and verified webhook-based payment settlement. Supports 213 countries and 155 currencies. 0% commission on every order.
+- [Genius Commerz landing page](https://xgenious.com/free-software/free-self-hosted-ecommerce-platform)
+- License: MIT
+- Stack: Laravel 12, PHP 8.2+, MySQL 8, React 19, Inertia v3, TypeScript, Vite
+- Target users: Cross-border merchants, agencies evaluating a WooCommerce/Shopify alternative, developers extending a store
+
 ## Premium Scripts & Marketplace Products
 
 ### Xilancer — Freelancer Marketplace Script

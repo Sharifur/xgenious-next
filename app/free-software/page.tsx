@@ -4,13 +4,13 @@ import Link from 'next/link';
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'Free Open Source Software — School ERP & CRM',
+  title: 'Free Open Source Software: School ERP & CRM',
   description:
-    'Download free, open-source software built by Xgenious. Production-ready school management system and CRM — MIT licensed, self-hosted, no subscriptions.',
+    'Download free, open-source software built by Xgenious. Production-ready school management system and CRM, MIT licensed, self-hosted, no subscriptions.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/free-software` },
   openGraph: {
-    title: 'Free Open Source Software — School ERP & CRM | Xgenious',
+    title: 'Free Open Source Software: School ERP & CRM | Xgenious',
     description:
       'Free school management system and CRM software built with Laravel and React. MIT licensed, self-hosted, no subscription fees.',
     url: `${BASE_URL}/free-software`,
@@ -34,7 +34,7 @@ const PRODUCTS = [
     id: 'genius-school-management',
     href: '/free-software/genius-school-management',
     name: 'Genius School Management',
-    tagline: 'Free School ERP — Laravel 11 + React 18',
+    tagline: 'Free School ERP: Laravel 11 + React 18',
     description:
       'A production-ready school management system with 19 modules. Student admissions, attendance, fee collection, exams, payroll, library, transport, and more. Multi-school support, MIT licensed.',
     badge: 'Laravel 11 · React 18 · MIT',
@@ -53,7 +53,7 @@ const PRODUCTS = [
       </svg>
     ),
     highlights: [
-      'Multi-school — single install, unlimited schools',
+      'Multi-school: single install, unlimited schools',
       'Student admission, attendance, fee collection',
       'Exam results and report card PDF (queued)',
       'Staff HR, payroll, leave management',
@@ -65,7 +65,7 @@ const PRODUCTS = [
     id: 'genius-hrm',
     href: '/free-software/genius-hrm',
     name: 'Genius HRM',
-    tagline: 'Free Open-Source HRM — Laravel 13 + React 18',
+    tagline: 'Free Open-Source HRM: Laravel 13 + React 18',
     description:
       'A complete HR management system with 13 modules. Employee profiles, payroll, attendance, leave, recruitment pipeline, performance appraisals, and 55-permission RBAC. No per-user fees, MIT licensed.',
     badge: 'Laravel 13 · React 18 · MIT',
@@ -88,7 +88,7 @@ const PRODUCTS = [
       'Payroll: Draft → Approve → Paid, printable payslips',
       'Attendance, shift management, overtime tracking',
       'Leave types, accrual rules, approval workflow',
-      'Recruitment ATS — job posts to hired employee',
+      'Recruitment ATS: job posts to hired employee',
       'Performance cycles, goals, self + manager review',
     ],
   },
@@ -96,7 +96,7 @@ const PRODUCTS = [
     id: 'genius-crm',
     href: '/free-software/genius-crm',
     name: 'Genius CRM',
-    tagline: 'Free Self-Hosted CRM — Laravel 12 + React 19',
+    tagline: 'Free Self-Hosted CRM: Laravel 12 + React 19',
     description:
       'A modular CRM with 12 modules. Contacts, leads, drag-and-drop deal pipeline (Kanban), tasks, company profiles, REST API, 2FA, and Docker support. No monthly fees, MIT licensed.',
     badge: 'Laravel 12 · React 19 · MIT',
@@ -120,7 +120,7 @@ const PRODUCTS = [
       'Drag-and-drop Kanban board (5 stages)',
       'Company profiles with linked contacts and deals',
       'Task management with daily email digest',
-      'Role-based access — Admin, Manager, Sales User',
+      'Role-based access: Admin, Manager, Sales User',
       'REST API + 2FA + Docker',
     ],
   },
@@ -128,9 +128,9 @@ const PRODUCTS = [
     id: 'genius-support',
     href: '/free-software/genius-support',
     name: 'Genius Support',
-    tagline: 'Free Self-Hosted Support Portal — Laravel · Reverb WebSocket',
+    tagline: 'Free Self-Hosted Support Portal: Laravel · Reverb WebSocket',
     description:
-      'A complete support portal with ticketing, customer portal, agent dashboard, knowledge base, and email-to-ticket automation via IMAP. Real-time updates using Laravel Reverb — no Pusher required. MIT licensed.',
+      'A complete support portal with ticketing, customer portal, agent dashboard, knowledge base, and email-to-ticket automation via IMAP. Real-time updates using Laravel Reverb, no Pusher required. MIT licensed.',
     badge: 'Laravel · PHP 8.2+ · MIT',
     stats: [
       { label: 'Modules', value: '6' },
@@ -146,12 +146,12 @@ const PRODUCTS = [
       </svg>
     ),
     highlights: [
-      'Customer portal — submit, track, and rate tickets',
-      'Agent dashboard — queue, replies, internal notes, bulk actions',
-      'Email-to-ticket via IMAP — any inbox becomes a support queue',
-      'Knowledge base — self-service articles reduce ticket volume',
+      'Customer portal: submit, track, and rate tickets',
+      'Agent dashboard: queue, replies, internal notes, bulk actions',
+      'Email-to-ticket via IMAP: any inbox becomes a support queue',
+      'Knowledge base: self-service articles reduce ticket volume',
       'Real-time WebSocket updates via Laravel Reverb (no Pusher)',
-      'Admin panel — departments, branding, templates, analytics',
+      'Admin panel: departments, branding, templates, analytics',
     ],
   },
   {
@@ -160,7 +160,7 @@ const PRODUCTS = [
     name: 'Genius Campaign',
     tagline: 'Free Self-Hosted Email Marketing & Outreach Platform',
     description:
-      'A self-hosted email marketing and outreach console — contacts, templates, sequences, campaigns, deliverability, and sender rotation. Bring your own AWS SES or Gmail Workspace, no per-contact fees, MIT licensed.',
+      'A self-hosted email marketing and outreach console: contacts, templates, sequences, campaigns, deliverability, and sender rotation. Bring your own AWS SES or Gmail Workspace, no per-contact fees, MIT licensed.',
     badge: 'NestJS · PostgreSQL · MIT',
     stats: [
       { label: 'Modules', value: '9' },
@@ -177,10 +177,10 @@ const PRODUCTS = [
       </svg>
     ),
     highlights: [
-      'Bring your own AWS SES / Gmail Workspace — no third-party data routing',
+      'Bring your own AWS SES / Gmail Workspace: no third-party data routing',
       'Sender rotation across accounts, quota-aware',
       'Multi-step drip sequences with per-contact enrollment',
-      'Inbound and outbound webhooks — auto-enroll on events',
+      'Inbound and outbound webhooks: auto-enroll on events',
       'AI-assisted template editor with spintax variants',
       'Bulk email verification before every send',
     ],
@@ -191,7 +191,7 @@ const PRODUCTS = [
     name: 'Genius Debug',
     tagline: 'Free Self-Hosted Sentry Alternative',
     description:
-      'A minimal, self-hosted error and performance monitoring platform for JavaScript and Next.js/React apps. Error grouping, source-map symbolication, distributed traces, and session replay — reuses your existing Sentry SDK, no per-event pricing.',
+      'A minimal, self-hosted error and performance monitoring platform for JavaScript and Next.js/React apps. Error grouping, source-map symbolication, distributed traces, and session replay; reuses your existing Sentry SDK, no per-event pricing.',
     badge: 'NestJS · PostgreSQL · Open Source',
     stats: [
       { label: 'Modules', value: '8' },
@@ -209,12 +209,44 @@ const PRODUCTS = [
       </svg>
     ),
     highlights: [
-      'Reuses the standard Sentry SDK — repoint the DSN, no rewrite',
+      'Reuses the standard Sentry SDK: repoint the DSN, no rewrite',
       'Error grouping, fingerprinting, and regression detection',
       'Source-map symbolication for minified stack traces',
       'Distributed traces and on-error session replay',
-      'GitHub integration — suspect commits, auto-resolve',
+      'GitHub integration: suspect commits, auto-resolve',
       'Remote kill switch, back-pressure shedding, no per-event pricing',
+    ],
+  },
+  {
+    id: 'genius-commerz',
+    href: '/free-software/free-self-hosted-ecommerce-platform',
+    name: 'Genius Commerz',
+    tagline: 'Free Self-Hosted eCommerce Platform: Laravel 12 + React 19',
+    description:
+      'A self-hosted eCommerce platform built for cross-border merchants. 39 payment gateways, 19 shipping carriers, 20 SMS gateways, and 11 fraud checkers across 213 countries and 155 currencies. No commission, MIT licensed.',
+    badge: 'Laravel 12 · React 19 · MIT',
+    stats: [
+      { label: 'Integrations', value: '98' },
+      { label: 'Commission', value: '0%' },
+      { label: 'License', value: 'MIT' },
+      { label: 'Free Forever', value: '' },
+    ],
+    color: '#059669',
+    lightColor: '#ECFDF5',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <circle cx="9" cy="21" r="1" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="20" cy="21" r="1" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    highlights: [
+      '39 payment gateways across worldwide, BD, India, Africa, Gulf, Europe, LatAm',
+      'Country-aware checkout: adapts address fields and postal labels per country',
+      'Multi-currency with frozen exchange rates, tax-audit safe',
+      'Destination-based tax with one-click EU VAT / US / Canada templates',
+      '19 shipping carriers + 3 Bangladesh couriers, live-rate fallback chain',
+      'Two files to add a new payment, shipping, SMS, or fraud provider',
     ],
   },
 ];
@@ -341,7 +373,7 @@ export default function FreeSoftwarePage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full mt-2">
               {[
                 { title: 'MIT Licensed', desc: 'Use commercially. Modify. Redistribute. No restrictions.' },
-                { title: 'Self-host anywhere', desc: 'VPS, shared hosting, Docker — you own the data.' },
+                { title: 'Self-host anywhere', desc: 'VPS, shared hosting, Docker; you own the data.' },
                 { title: 'Fork and customise', desc: 'Clean modular codebase. Add features without touching existing code.' },
               ].map((item) => (
                 <div key={item.title} className="rounded-xl border border-white/10 p-5 text-left">

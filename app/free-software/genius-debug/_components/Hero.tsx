@@ -31,7 +31,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-[#484848] text-[16px] sm:text-[18px] leading-8 max-w-[680px]">
-            <strong>Genius Debug</strong> is a minimal, self-hosted Sentry alternative for JavaScript and Next.js/React apps. Capture, group, and triage runtime errors — stack traces, source-mapped code locations, distributed traces, and short session replays — on your own infrastructure.
+            <strong>Genius Debug</strong> is a minimal, self-hosted Sentry alternative for JavaScript and Next.js/React apps. Capture, group, and triage runtime errors on your own infrastructure: stack traces, source-mapped code locations, distributed traces, and short session replays.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">

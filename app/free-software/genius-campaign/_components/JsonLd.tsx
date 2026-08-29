@@ -11,7 +11,7 @@ export default function JsonLd() {
     applicationCategory: 'BusinessApplication',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     description:
-      'Genius Campaign is a free, open-source, self-hosted email marketing and outreach platform. Contacts, templates, sequences, campaigns, deliverability, and sender rotation in one console — bring your own AWS SES, Gmail Workspace, and Cloudflare R2.',
+      'Genius Campaign is a free, open-source, self-hosted email marketing and outreach platform. Contacts, templates, sequences, campaigns, deliverability, and sender rotation in one console. Bring your own AWS SES, Gmail Workspace, and Cloudflare R2.',
     url: CANONICAL,
     author: { '@type': 'Organization', name: 'Xgenious', url: BASE_URL },
     license: 'https://opensource.org/licenses/MIT',
@@ -39,7 +39,7 @@ export default function JsonLd() {
       {
         '@type': 'HowToStep',
         name: 'Import Contacts and Send',
-        text: 'Import contacts by CSV, build a sequence or campaign with the AI-assisted template editor, and send — verification runs before dispatch.',
+        text: 'Import contacts by CSV, build a sequence or campaign with the AI-assisted template editor, and send; verification runs before dispatch.',
         position: 3,
       },
     ],
