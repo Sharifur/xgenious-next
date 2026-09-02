@@ -215,6 +215,10 @@ export const FAQS = [
     answer: 'Nazmart supports 19+ payment gateways including Stripe, PayPal, Razorpay, Flutterwave, Mollie, Paystack, Cashfree, Instamojo, Midtrans, Mercado Pago, Square, CinetPay, and more. New integrations are added continuously. Vendors receive automatic payouts after your platform commission is deducted.',
   },
   {
+    question: 'What SMS and WhatsApp gateways does Nazmart support?',
+    answer: "The bundled SMS Gateway plugin ships with 23+ regional integrations: Twilio, Vonage, Sinch, and Plivo globally; Africa's Talking, Termii, BulkSMS, and Hubtel across Africa; AlphaNet, Bulk SMS BD, Mimosms, and SSL Wireless for Bangladesh; Fast2SMS, MSG91, and TextLocal for India; Zenvia, Gupshup, and Infobip for Latin America; MSEGate, SMS Misr, and Unifonic for the Middle East; plus Sendra and Wati for WhatsApp. Included in the Everything Bundle and Exclusive License.",
+  },
+  {
     question: 'Do vendors get their own mobile app?',
     answer: 'Yes. The Everything Bundle and Exclusive License include a Flutter-based Android and iOS mobile app for tenant store owners and their customers. Push notifications, order tracking, product management, and checkout are all production-ready. Store owners can publish the app under their own brand name.',
   },
