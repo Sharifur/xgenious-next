@@ -11,6 +11,7 @@ import MarketplaceFeatures from './_components/MarketplaceFeatures';
 import MobileApp from './_components/MobileApp';
 import POS from './_components/POS';
 import PremiumPlugins from './_components/PremiumPlugins';
+import SmsGateways from './_components/SmsGateways';
 import TechStack from './_components/TechStack';
 import Comparison from './_components/Comparison';
 import Reviews from './_components/Reviews';
@@ -71,6 +72,7 @@ export default function NazmartPage() {
       <MobileApp />
       <POS />
       <PremiumPlugins />
+      <SmsGateways />
       <TechStack />
       <Comparison />
       <Reviews />

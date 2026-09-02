@@ -14,8 +14,17 @@ export default function JsonLd() {
       availability: 'https://schema.org/InStock',
       url: PURCHASE_URL,
     },
-    description: 'Nazmart is a multi-tenancy eCommerce SaaS platform built with Laravel. Launch a Shopify-like marketplace with vendor subscription billing, custom domains per store, Flutter mobile apps, and 19+ payment gateways. One-time purchase from $69.',
+    description: 'Nazmart is a multi-tenancy eCommerce SaaS platform built with Laravel. Launch a Shopify-like marketplace with vendor subscription billing, custom domains per store, Flutter mobile apps, 19+ payment gateways, and 23+ SMS & WhatsApp gateways. One-time purchase from $69.',
     url: CANONICAL,
+    featureList: [
+      'Multi-tenancy architecture with isolated vendor stores',
+      'SaaS subscription billing for vendors',
+      'Custom domain per tenant store',
+      '19+ payment gateways: Stripe, PayPal, Razorpay, Flutterwave, Mollie, Paystack, and more',
+      "23+ SMS & WhatsApp gateways: Twilio, Vonage, Sinch, Plivo, Africa's Talking, Termii, BulkSMS, Hubtel, AlphaNet, Bulk SMS BD, Mimosms, SSL Wireless, Fast2SMS, MSG91, TextLocal, Zenvia, Gupshup, Infobip, MSEGate, SMS Misr, Unifonic, Sendra, and Wati",
+      'Flutter mobile apps for Android and iOS',
+      'Point of Sale (POS) plugin for physical stores',
+    ],
     author: { '@type': 'Organization', name: 'Xgenious', url: BASE_URL },
     aggregateRating: {
       '@type': 'AggregateRating',
