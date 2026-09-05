@@ -2,6 +2,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import { reportCrash, isNetworkError } from '@/lib/crash';
+import { useLicensesStore } from '@/store/useLicensesStore';
+import { findLinkedPurchase, isSupportExpired } from '@/lib/support-tickets';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -229,6 +231,7 @@ function Avatar({ name, isSupport, imageUrl }: { name: string; isSupport: boolea
 
 export default function TicketDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const { items: purchases, fetch: fetchLicenses } = useLicensesStore();
   const [ticket, setTicket] = useState<any>(null);
   const [reply, setReply] = useState('');
   const [sending, setSending] = useState(false);
@@ -335,6 +338,8 @@ export default function TicketDetailPage() {
     }, 30_000);
     return () => clearInterval(interval);
   }, [id]);
+
+  useEffect(() => { fetchLicenses(); }, [fetchLicenses]);
 
   async function handleClose() {
     setClosing(true);
@@ -443,6 +448,12 @@ export default function TicketDetailPage() {
 
   const descFields = extractFluentForm(ticket.description ?? '');
 
+  const linkedPurchase = findLinkedPurchase(
+    { subject: ticket.subject, description: ticket.description },
+    purchases
+  );
+  const supportExpired = isSupportExpired(linkedPurchase);
+
   const PRIORITY_MAP: Record<string | number, { label: string; cls: string }> = {
     0: { label: 'Low',    cls: 'text-gray-500' },
     1: { label: 'Medium', cls: 'text-yellow-700' },
@@ -512,6 +523,28 @@ export default function TicketDetailPage() {
           )}
         </div>
       </div>
+
+      {supportExpired && (
+        <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+          <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+          </svg>
+          <div className="flex-1 text-sm">
+            <p className="font-medium text-red-700">
+              Support period expired {new Date(linkedPurchase!.supported_until).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+            </p>
+            <p className="text-red-600 mt-0.5">
+              This license&apos;s support window has ended for {linkedPurchase!.product_name}. Renewing support restores priority assistance on this ticket.
+            </p>
+          </div>
+          <Link
+            href="/my-account/addons"
+            className="flex-shrink-0 px-3 py-1.5 bg-red-500 text-white text-xs font-semibold rounded-lg hover:bg-red-600 transition-colors whitespace-nowrap"
+          >
+            Renew &amp; Add-ons
+          </Link>
+        </div>
+      )}
 
       {/* Original message */}
       <div className="bg-white rounded-2xl border border-gray-200 p-6">
