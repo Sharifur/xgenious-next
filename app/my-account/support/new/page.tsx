@@ -57,7 +57,7 @@ export default function NewTicketPage() {
     setSelectedKey(licenseKey);
     const match = myPurchases.find((p) => p.license_key === licenseKey);
     setValue('product', match?.product_name ?? '', { shouldValidate: true });
-    setValue('purchaseCode', match?.license_key ?? '', { shouldValidate: true });
+    setValue('purchaseCode', match?.purchase_code ?? '', { shouldValidate: true });
   }
 
   function switchToManual() {
@@ -143,15 +143,18 @@ export default function NewTicketPage() {
                   <option value="">Select one of your purchases…</option>
                   {myPurchases.map((p) => (
                     <option key={p.license_key} value={p.license_key}>
-                      {p.product_name}{p.variant?.name ? ` (${p.variant.name})` : ''} — {p.license_key}
+                      {p.product_name}{p.variant?.name ? ` (${p.variant.name})` : ''} — {p.purchase_code}
                     </option>
                   ))}
                 </select>
                 <input type="hidden" {...register('product')} />
                 <input type="hidden" {...register('purchaseCode')} />
-                {selectedKey && (
-                  <p className="mt-1.5 text-xs text-gray-400">Purchase code: <span className="font-mono">{selectedKey}</span></p>
-                )}
+                {selectedKey && (() => {
+                  const selectedPurchase = myPurchases.find((p) => p.license_key === selectedKey);
+                  return selectedPurchase ? (
+                    <p className="mt-1.5 text-xs text-gray-400">Purchase code: <span className="font-mono">{selectedPurchase.purchase_code}</span></p>
+                  ) : null;
+                })()}
                 {(errors.product || errors.purchaseCode) && (
                   <p className="mt-1 text-xs text-red-500">Please choose one of your purchases from the list.</p>
                 )}
