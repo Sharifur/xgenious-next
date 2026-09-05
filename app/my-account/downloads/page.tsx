@@ -155,7 +155,7 @@ export default function DownloadsPage() {
                   <p className="text-xs text-gray-400 mt-0.5">{item.variant?.name ?? item.license_type} · <span className="capitalize">{item.platform}</span></p>
                   {item.latest_version && item.version_updated_at && (
                     <p className="text-xs text-gray-500 mt-1">
-                      Current version: <span className="font-medium">{item.latest_version}</span> · Updated {new Date(item.version_updated_at).toLocaleDateString()}
+                      Current version: <span className="font-medium">{item.latest_version}</span> · Updated {new Date(item.version_updated_at).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}
                     </p>
                   )}
                 </div>

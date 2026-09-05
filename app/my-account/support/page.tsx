@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTicketsStore } from '@/store/useTicketsStore';
+import { useLicensesStore } from '@/store/useLicensesStore';
+import { findLinkedPurchase, isSupportExpired } from '@/lib/support-tickets';
 import SupportNotices from '@/components/SupportNotices';
 
 // Backend SupportTicketStatusEum: 0=Open 1=In Progress 2=Close 3=Replied 4=Waiting For Reply 5=Queue
@@ -49,6 +51,7 @@ const PAGE_SIZE = 20;
 
 export default function SupportPage() {
   const store = useTicketsStore();
+  const { items: purchases, fetch: fetchLicenses } = useLicensesStore();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('active');
@@ -63,6 +66,8 @@ export default function SupportPage() {
     store.fetch(params);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, search, status]);
+
+  useEffect(() => { fetchLicenses(); }, [fetchLicenses]);
 
   const tickets = entry?.tickets ?? [];
   const total = entry?.total ?? 0;
@@ -179,6 +184,8 @@ export default function SupportPage() {
             const isClosing = closingId === t.id;
             const isConfirming = confirmClose === t.id;
             const lastActivity = (t.last_replied_at as string | undefined) ?? t.updated_at;
+            const linkedPurchase = findLinkedPurchase(t as { subject?: string; description?: string }, purchases);
+            const supportExpired = isSupportExpired(linkedPurchase);
 
             return (
               <div key={t.id} className="bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-colors group">
@@ -209,6 +216,15 @@ export default function SupportPage() {
 
                   {/* Right side */}
                   <div className="flex items-center gap-2 flex-shrink-0">
+                    {supportExpired && (
+                      <Link
+                        href="/my-account/addons"
+                        className="text-xs font-medium px-2 py-0.5 rounded-full border bg-red-50 text-red-600 border-red-100 hover:bg-red-100 transition-colors"
+                        title="Support renewal needed"
+                      >
+                        Support expired {new Date(linkedPurchase!.supported_until).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                      </Link>
+                    )}
                     <span className={`text-xs font-medium px-2 py-0.5 rounded-full border capitalize ${stat.cls}`}>
                       {stat.label}
                     </span>
