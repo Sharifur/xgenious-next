@@ -79,6 +79,12 @@ const BLOCKED = new Set([
   'zehnminuten.de','zehnminutenmail.de','zetmail.com','zippymail.info',
   'zoaxe.com','zoemail.net','zoemail.org','zomg.info','zxcv.com',
   'zxcvbnm.com','zzz.com',
+  // Added from download-lead bounce/invalid-email report, 2026-09-08
+  'sbxglobal.net','noreply0.com','gemil.com','websend.net','rockstarseo.net',
+  'filmkachat.ru','andindoc.com','elygifts.com','1secmail.com','1secmail.net',
+  'gmai.com','gail.com','trip.dewuch.com','fvmaily.com',
+  'hold.codepb.com','slotbeer.com','example.com','copawoke.com','aganseo.com',
+  'candaba.com','jinxmp3.com','atomicmail.io','wuuvo.com',
 ]);
 
 export function isDisposableEmail(email: string): boolean {
