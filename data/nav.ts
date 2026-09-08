@@ -1,3 +1,14 @@
+import type { ComponentType } from 'react';
+import {
+  IconSchool,
+  IconAddressBook,
+  IconUsersGroup,
+  IconHeadset,
+  IconSend,
+  IconBug,
+  IconShoppingCart,
+} from '@tabler/icons-react';
+
 export interface DropdownItem {
   label: string;
   href: string;
@@ -5,6 +16,7 @@ export interface DropdownItem {
   category?: string;
   accent?: string;
   image?: string;
+  icon?: ComponentType<{ size?: number; stroke?: number; className?: string }>;
 }
 
 export const servicesDropdown: DropdownItem[] = [
@@ -34,13 +46,13 @@ export const productsDropdown: DropdownItem[] = [
 ];
 
 export const freeSoftwareDropdown: DropdownItem[] = [
-  { label: 'Genius School Management', description: 'Free school ERP: Laravel 11 + React 18', category: 'School ERP', accent: '#4f46e5', href: '/free-software/genius-school-management' },
-  { label: 'Genius CRM', description: 'Free self-hosted CRM: Laravel 12 + React 19', category: 'CRM', accent: '#ec7161', href: '/free-software/genius-crm' },
-  { label: 'Genius HRM', description: 'Free HR management system: Laravel + React', category: 'HRM', accent: '#7c3aed', href: '/free-software/genius-hrm' },
-  { label: 'Genius Support', description: 'Free self-hosted support portal: Laravel + Reverb', category: 'Support', accent: '#0284c7', href: '/free-software/genius-support' },
-  { label: 'Genius Campaign', description: 'Free self-hosted email outreach: bring your own AWS SES', category: 'Marketing', accent: '#6366F1', href: '/free-software/genius-campaign' },
-  { label: 'Genius Debug', description: 'Self-hosted Sentry alternative: error monitoring + replay', category: 'Monitoring', accent: '#6C5FC7', href: '/free-software/genius-debug' },
-  { label: 'Genius Commerz', description: 'Free self-hosted eCommerce platform: Laravel 12 + React 19', category: 'eCommerce', accent: '#059669', href: '/free-software/free-self-hosted-ecommerce-platform' },
+  { label: 'Genius School Management', description: 'Free school ERP: Laravel 11 + React 18', category: 'School ERP', accent: '#4f46e5', icon: IconSchool, href: '/free-software/genius-school-management' },
+  { label: 'Genius CRM', description: 'Free self-hosted CRM: Laravel 12 + React 19', category: 'CRM', accent: '#ec7161', icon: IconAddressBook, href: '/free-software/genius-crm' },
+  { label: 'Genius HRM', description: 'Free HR management system: Laravel + React', category: 'HRM', accent: '#7c3aed', icon: IconUsersGroup, href: '/free-software/genius-hrm' },
+  { label: 'Genius Support', description: 'Free self-hosted support portal: Laravel + Reverb', category: 'Support', accent: '#0284c7', icon: IconHeadset, href: '/free-software/genius-support' },
+  { label: 'Genius Campaign', description: 'Free self-hosted email outreach: bring your own AWS SES', category: 'Marketing', accent: '#6366F1', icon: IconSend, href: '/free-software/genius-campaign' },
+  { label: 'Genius Debug', description: 'Self-hosted Sentry alternative: error monitoring + replay', category: 'Monitoring', accent: '#6C5FC7', icon: IconBug, href: '/free-software/genius-debug' },
+  { label: 'Genius Commerz', description: 'Free self-hosted eCommerce platform: Laravel 12 + React 19', category: 'eCommerce', accent: '#059669', icon: IconShoppingCart, href: '/free-software/free-self-hosted-ecommerce-platform' },
 ];
 
 export const freeToolsLink = { label: 'Free Tools', href: '/free-tools' };
