@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { BASE_URL, CANONICAL } from './_components/constants';
+import { BASE_URL, CANONICAL, COLOR, REGULAR_PRICE, BUNDLE_PRICE } from './_components/constants';
+import BundleValueNudge from '@/components/ui/BundleValueNudge';
 import JsonLd from './_components/JsonLd';
 import Hero from './_components/Hero';
 import StatsBar from './_components/StatsBar';
@@ -78,6 +79,15 @@ export default function NazmartPage() {
       <Reviews />
       <Pricing />
       <FAQ />
+      <BundleValueNudge
+        productName="Nazmart"
+        regularPrice={REGULAR_PRICE}
+        bundlePrice={BUNDLE_PRICE}
+        bundleLabel="Everything Bundle"
+        bundleHighlight="17 premium plugins + mobile app + POS + domain reseller"
+        accentColor={COLOR}
+        storageKey="xg-bundle-nudge-nazmart-dismissed"
+      />
     </>
   );
 }

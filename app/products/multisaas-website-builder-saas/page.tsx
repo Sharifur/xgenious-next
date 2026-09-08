@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { BASE_URL, CANONICAL } from './_components/constants';
+import { BASE_URL, CANONICAL, COLOR, REGULAR_PRICE, BUNDLE_PRICE } from './_components/constants';
+import BundleValueNudge from '@/components/ui/BundleValueNudge';
 import JsonLd from './_components/JsonLd';
 import StickyBar from './_components/StickyBar';
 import Hero from './_components/Hero';
@@ -72,6 +73,15 @@ export default function MultisaasPage() {
         <FAQ />
         <ClosingCta />
       </main>
+      <BundleValueNudge
+        productName="MultiSaas"
+        regularPrice={REGULAR_PRICE}
+        bundlePrice={BUNDLE_PRICE}
+        bundleLabel="Bundle Pack"
+        bundleHighlight="5 premium plugins — Cloud Storage, Site Analytics, Domain Reseller & more"
+        accentColor={COLOR}
+        storageKey="xg-bundle-nudge-multisaas-dismissed"
+      />
     </>
   );
 }

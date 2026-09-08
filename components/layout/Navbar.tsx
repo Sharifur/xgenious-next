@@ -181,7 +181,9 @@ function MegaMenu({
                     className="w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center flex-shrink-0 text-[15px] font-bold transition-transform group-hover:scale-105"
                     style={{ background: `${accent}18`, color: accent }}
                   >
-                    {item.image ? (
+                    {item.icon ? (
+                      <item.icon size={18} stroke={1.8} />
+                    ) : item.image ? (
                       <Image src={item.image} alt={`${item.label} logo`} width={36} height={36} className="w-full h-full object-cover" />
                     ) : (
                       item.label[0]
@@ -192,7 +194,7 @@ function MegaMenu({
                       <span className="text-[13px] font-semibold text-[#0F1112]">{item.label}</span>
                       {item.category && (
                         <span
-                          className="text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wide"
+                          className="text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wide whitespace-nowrap flex-shrink-0"
                           style={{ background: `${accent}14`, color: accent }}
                         >
                           {item.category}
