@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { BASE_URL, CANONICAL } from './_components/constants';
+import { BASE_URL, CANONICAL, COLOR, REGULAR_PRICE, COMBO_PRICE } from './_components/constants';
+import BundleValueNudge from '@/components/ui/BundleValueNudge';
 import JsonLd from './_components/JsonLd';
 import StickyBar from './_components/StickyBar';
 import Hero from './_components/Hero';
@@ -65,6 +66,15 @@ export default function QixerPage() {
       <Reviews />
       <Pricing />
       <FAQ />
+      <BundleValueNudge
+        productName="Qixer"
+        regularPrice={REGULAR_PRICE}
+        bundlePrice={COMBO_PRICE}
+        bundleLabel="Everything Bundle"
+        bundleHighlight="Buyer + Seller mobile apps, Wallet, Job Posting & more"
+        accentColor={COLOR}
+        storageKey="xg-bundle-nudge-qixer-dismissed"
+      />
     </>
   );
 }

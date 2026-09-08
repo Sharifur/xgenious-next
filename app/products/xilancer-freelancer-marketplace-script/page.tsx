@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { BASE_URL, CANONICAL } from './_components/constants';
+import { BASE_URL, CANONICAL, COLOR, REGULAR_PRICE, BUNDLE_PRICE } from './_components/constants';
+import BundleValueNudge from '@/components/ui/BundleValueNudge';
 import JsonLd from './_components/JsonLd';
 import Hero from './_components/Hero';
 import StatsDefinition from './_components/StatsDefinition';
@@ -74,6 +75,15 @@ export default function XilancerPage() {
       <ComparisonTable />
       <Pricing />
       <FAQ />
+      <BundleValueNudge
+        productName="Xilancer"
+        regularPrice={REGULAR_PRICE}
+        bundlePrice={BUNDLE_PRICE}
+        bundleLabel="Bundle Pack"
+        bundleHighlight="6 premium plugins — Security, Cloud Storage, Hourly Hiring & more"
+        accentColor={COLOR}
+        storageKey="xg-bundle-nudge-xilancer-dismissed"
+      />
     </>
   );
 }
