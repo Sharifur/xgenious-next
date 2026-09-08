@@ -13,6 +13,7 @@ interface Props {
 export default function LicenseUpsellCard({ item, userEmail }: Props) {
   const renewalOffered = canRenewSupport(item);
   const offers = getAvailableAddons(item).filter((o) => !o.alreadyOwned);
+  const supportExpired = !item.support_active;
 
   if (!renewalOffered && offers.length === 0) return null;
 
@@ -34,6 +35,17 @@ export default function LicenseUpsellCard({ item, userEmail }: Props) {
           View license →
         </Link>
       </div>
+
+      {supportExpired && (
+        <div className="flex items-start gap-2.5 p-3 mb-3 bg-red-50 border border-red-100 rounded-xl">
+          <svg className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+          </svg>
+          <p className="text-xs text-red-600">
+            Support expired {new Date(item.supported_until).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })} — renew to keep getting updates and priority help.
+          </p>
+        </div>
+      )}
 
       <div className="space-y-2.5">
         {renewalOffered && (

@@ -176,17 +176,31 @@ export default function DownloadsPage() {
                   </button>
                 )}
 
-                <button
-                  onClick={() => handleGenerateUpdateUrl(item)}
-                  disabled={loadingKey?.startsWith(item.license_key) ?? false}
-                  className="flex items-center gap-2 px-4 py-2 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {loadingKey === item.license_key + ':update' ? (
-                    <><div className="w-3.5 h-3.5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />Generating…</>
-                  ) : (
-                    <><LinkIcon />{updateUrls[item.license_key] ? 'Regenerate URL' : 'Generate Update URL'}</>
-                  )}
-                </button>
+                <div>
+                  <button
+                    onClick={() => handleGenerateUpdateUrl(item)}
+                    disabled={loadingKey?.startsWith(item.license_key) ?? false}
+                    className="flex items-center gap-2 px-4 py-2 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {loadingKey === item.license_key + ':update' ? (
+                      <><div className="w-3.5 h-3.5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />Generating…</>
+                    ) : (
+                      <><LinkIcon />Update File</>
+                    )}
+                  </button>
+                  <p className="text-xs text-gray-400 mt-1.5">
+                    You can download the manual file for update manually by following{' '}
+                    <a
+                      href="https://docs.xgenious.com/docs/common-documentation/how-to-download-manual-update-file/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#ec7161] hover:underline"
+                    >
+                      this documentation
+                    </a>
+                    .
+                  </p>
+                </div>
               </div>
 
               {pageErrors[item.license_key] && (
