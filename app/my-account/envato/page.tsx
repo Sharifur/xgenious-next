@@ -46,27 +46,71 @@ export default function EnvatoAccountPage() {
         <div>
           <h2 className="text-base font-semibold text-[#0F1112]">Connect your Envato account</h2>
           <p className="text-sm text-gray-600 mt-2 leading-relaxed">
-            Connect the Envato account you used to purchase Xgenious products. You will be securely
-            redirected to Envato to sign in and approve access—Xgenious never sees your Envato password.
+            Link the Envato account you used to purchase Xgenious products to unlock downloads, updates,
+            license management, and support&mdash;automatically matched to your purchase history.
           </p>
-          <p className="text-sm text-gray-600 mt-3 leading-relaxed">
-            After you approve, we will read your Envato username and purchase history to find purchases
-            of eligible Xgenious products. For each matching purchase, we may save the product name and
-            Envato item ID, purchase code, license type, purchase date, support information, and the
-            Envato username used for the purchase. We use this information only to verify ownership and
-            add available Xgenious downloads, updates, license management, and support options to your
-            Xgenious account.
-          </p>
-          <p className="text-sm text-gray-600 mt-3 leading-relaxed">
-            We do not import or provide downloads for purchases from other Envato authors, products that
-            are not configured in our system, or products without an available Xgenious download package.
-            Connecting does not change your Envato license or support terms.
-          </p>
-          <p className="text-sm text-gray-600 mt-3 leading-relaxed">
-            You can sync again at any time or disconnect your account. Disconnecting removes our access
-            token; downloads already shown in your Xgenious account remain subject to our license and
-            access policy.
-          </p>
+
+          <div className="mt-4 bg-blue-50/60 border border-blue-100 rounded-xl p-4">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0 text-blue-600">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2l8 4v6c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10V6l8-4z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+                  <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0 space-y-3">
+                <p className="text-sm font-semibold text-[#0F1112]">
+                  You&apos;ll sign in on Envato&apos;s site &mdash; we never see your password
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide mb-1.5">We access</p>
+                    <ul className="space-y-1.5">
+                      {[
+                        'Your Envato username',
+                        'Purchase history for eligible Xgenious products',
+                        'Item name, ID, purchase code, license type & date',
+                        'Support status for each license',
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-1.5 text-xs text-gray-600">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" className="mt-0.5 flex-shrink-0 text-green-600">
+                            <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide mb-1.5">We never access</p>
+                    <ul className="space-y-1.5">
+                      {[
+                        'Your Envato password',
+                        'Purchases from other authors',
+                        'Payment or billing details',
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-1.5 text-xs text-gray-600">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" className="mt-0.5 flex-shrink-0 text-gray-400">
+                            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <p className="text-xs text-gray-500 leading-relaxed pt-2 border-t border-blue-100">
+                  You can disconnect at any time to revoke access. See our{' '}
+                  <Link href="/privacy-policy#envato-account-connection" className="font-medium text-blue-700 hover:underline">
+                    Privacy Policy
+                  </Link>{' '}
+                  for full details on how this data is used and retained.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {result && RESULT_MESSAGES[result] && !isConnected && !isFailed && (

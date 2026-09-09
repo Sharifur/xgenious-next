@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <PolicyLayout title="Privacy Policy" badge="Legal" lastUpdated="January 16, 2025">
+    <PolicyLayout title="Privacy Policy" badge="Legal" lastUpdated="September 10, 2026">
       <h2>1. Introduction</h2>
       <p>
         Welcome to XGENIOUS. XGENIOUS ("us", "we", or "our") operates <a href="https://xgenious.com/">https://xgenious.com/</a> (hereinafter referred to as "Service"). Our Privacy Policy governs your visit to our website and explains how we collect, safeguard and disclose information that results from your use of our Service.
@@ -170,22 +170,43 @@ export default function PrivacyPolicyPage() {
         We may provide paid products and/or services within our Service. In that case, we use third-party services for payment processing. We will not store or collect your payment card details. That information is provided directly to our third-party payment processors whose use of your personal information is governed by their Privacy Policy.
       </p>
 
-      <h2>16. Links to Other Sites</h2>
+      <h2 id="envato-account-connection">16. Envato Account Connection</h2>
+      <p>
+        If you choose to link the Envato account you used to purchase Xgenious products, you will be redirected to Envato to sign in and approve access via OAuth. We never see or store your Envato password.
+      </p>
+      <p>Once you approve the connection, we access and may store the following from your Envato account:</p>
+      <ul>
+        <li>Your Envato username</li>
+        <li>Purchase history, limited to eligible Xgenious-authored products</li>
+        <li>For each matching purchase: product name, Envato item ID, purchase code, license type, purchase date, and support status</li>
+      </ul>
+      <p>We use this information solely to verify ownership of your purchase and to unlock your Xgenious downloads, updates, license management, and support options. We do not:</p>
+      <ul>
+        <li>Access or store your Envato password — authentication happens entirely on Envato&apos;s site via OAuth</li>
+        <li>Import or expose purchases from other Envato authors, or products not configured in our system</li>
+        <li>Sell, rent, or share this data with third parties</li>
+        <li>Use this data for advertising or marketing purposes</li>
+      </ul>
+      <p>
+        We retain an access token so we can re-check your purchase history when you sync. You can disconnect your Envato account at any time from your account settings, which immediately revokes and deletes our stored access token. Purchase records already used to grant downloads remain in your Xgenious account and stay subject to our standard license and access policy; disconnecting does not affect your Envato license or support terms.
+      </p>
+
+      <h2>17. Links to Other Sites</h2>
       <p>
         Our Service may contain links to other sites that are not operated by us. If you click a third party link, you will be directed to that third party&apos;s site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.
       </p>
 
-      <h2>17. Children&apos;s Privacy</h2>
+      <h2>18. Children&apos;s Privacy</h2>
       <p>
         Our Services are not intended for use by children under the age of 18. We do not knowingly collect personally identifiable information from Children under 18. If you become aware that a Child has provided us with Personal Data, please contact us.
       </p>
 
-      <h2>18. Changes to This Privacy Policy</h2>
+      <h2>19. Changes to This Privacy Policy</h2>
       <p>
         We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
       </p>
 
-      <h2>19. Contact Us</h2>
+      <h2>20. Contact Us</h2>
       <p>
         If you have any questions about this Privacy Policy, please contact us by email: <a href="mailto:contact@xgenious.com">contact@xgenious.com</a>
       </p>
