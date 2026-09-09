@@ -152,7 +152,14 @@ export default function DownloadsPage() {
                 </div>
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-[#0F1112]">{item.product_name}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{item.variant?.name ?? item.license_type} · <span className="capitalize">{item.platform}</span></p>
+                  <p className="text-xs text-gray-400 mt-0.5">
+                    {item.variant?.name ?? item.license_type} · <span className="capitalize">{item.platform}</span>
+                    {item.source === 'envato_import' && (
+                      <span className="ml-1.5 px-1.5 py-0.5 rounded-full text-[10px] font-medium bg-green-50 text-green-700 align-middle">
+                        Imported from Envato
+                      </span>
+                    )}
+                  </p>
                   {item.latest_version && item.version_updated_at && (
                     <p className="text-xs text-gray-500 mt-1">
                       Current version: <span className="font-medium">{item.latest_version}</span> · Updated {new Date(item.version_updated_at).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}
@@ -162,7 +169,7 @@ export default function DownloadsPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
-                {item.platform === 'xgenious' && (
+                {(item.platform === 'xgenious' || item.platform === 'envato') && (
                   <button
                     onClick={() => handleFreshInstall(item)}
                     disabled={loadingKey?.startsWith(item.license_key) ?? false}

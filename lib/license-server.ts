@@ -37,6 +37,8 @@ export interface PurchaseAddon {
 
 export interface PurchaseItem {
   platform: string;
+  source?: 'direct' | 'envato_import';
+  imported_at?: string | null;
   purchase_code: string;
   license_key: string;
   product_uid: string;

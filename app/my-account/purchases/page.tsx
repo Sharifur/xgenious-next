@@ -53,6 +53,11 @@ export default function PurchasesPage() {
                         <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600 capitalize">
                           {item.platform}
                         </span>
+                        {item.source === 'envato_import' && (
+                          <span className="ml-1.5 px-2 py-0.5 rounded-full text-xs font-medium bg-green-50 text-green-700">
+                            Imported {item.imported_at ? new Date(item.imported_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : ''}
+                          </span>
+                        )}
                       </td>
                       <td className="px-5 py-4 text-gray-700">
                         {item.payment?.amount

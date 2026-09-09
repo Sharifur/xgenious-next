@@ -1,20 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import { lsFetch } from '@/lib/license-server';
 import { buildSignedAssertion } from '@/lib/envato-assertion';
 
-export async function POST(req: NextRequest) {
+export async function GET() {
   const session = await auth();
   if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-
-  const { license_key, domain, action } = await req.json();
-
-  if (!license_key || !domain || !action) {
-    return NextResponse.json({ error: 'license_key, domain and action are required' }, { status: 400 });
-  }
-  if (action !== 'activate' && action !== 'deactivate') {
-    return NextResponse.json({ error: 'action must be activate or deactivate' }, { status: 400 });
-  }
 
   const xgeniousUserId = session.wpUserId;
   const email = session.wpEmail ?? session.user?.email;
@@ -26,19 +17,17 @@ export async function POST(req: NextRequest) {
     xgeniousUserId,
     email,
     displayName: session.user?.name,
-    returnPath: '/my-account/downloads',
+    returnPath: '/my-account/envato',
   });
 
-  const res = await lsFetch('/licenses/domain', {
-    method: 'POST',
-    body: JSON.stringify({ license_key, domain, action, assertion, signature }),
-  });
+  const query = `assertion=${encodeURIComponent(JSON.stringify(assertion))}&signature=${encodeURIComponent(signature)}`;
+  const res = await lsFetch(`/envato/connections/status?${query}`);
   const data = await res.json();
 
   if (!res.ok) {
-    console.error('[license-server] domain error:', res.status, JSON.stringify(data));
+    console.error('[license-server] envato status error:', res.status, JSON.stringify(data));
     const userMsg = res.status < 500
-      ? ((data as { message?: string }).message ?? 'Domain action failed')
+      ? ((data as { message?: string }).message ?? 'Failed to fetch Envato connection status')
       : 'Service temporarily unavailable. Please try again later.';
     return NextResponse.json({ error: userMsg }, { status: res.status < 500 ? res.status : 503 });
   }
