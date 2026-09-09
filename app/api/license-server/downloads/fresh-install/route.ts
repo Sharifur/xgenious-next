@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import { lsFetch } from '@/lib/license-server';
+import { buildSignedAssertion } from '@/lib/envato-assertion';
 
 export async function HEAD(req: NextRequest) {
   return GET(req);
@@ -18,8 +19,22 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'license_key and product_uid are required' }, { status: 400 });
   }
 
+  const xgeniousUserId = session.wpUserId;
+  const email = session.wpEmail ?? session.user?.email;
+  if (!xgeniousUserId || !email) {
+    return NextResponse.json({ error: 'No account identity in session' }, { status: 400 });
+  }
+
+  const { assertion, signature } = buildSignedAssertion({
+    xgeniousUserId,
+    email,
+    displayName: session.user?.name,
+    returnPath: '/my-account/downloads',
+  });
+
   const res = await lsFetch(
-    `/downloads/fresh-install?license_key=${encodeURIComponent(license_key)}&product_uid=${encodeURIComponent(product_uid)}`
+    `/downloads/fresh-install?license_key=${encodeURIComponent(license_key)}&product_uid=${encodeURIComponent(product_uid)}` +
+      `&assertion=${encodeURIComponent(JSON.stringify(assertion))}&signature=${encodeURIComponent(signature)}`
   );
   const data = await res.json();
 
