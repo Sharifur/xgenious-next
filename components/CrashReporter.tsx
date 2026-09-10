@@ -12,6 +12,10 @@ const THIRD_PARTY_PATTERNS = [
 // Benign browser notifications that fire as errors but don't break the page
 const BENIGN_MESSAGES = [
   /ResizeObserver loop/,
+  // Thrown by browser extensions' injected RPC/messaging bridges (e.g.
+  // Grammarly, ad blockers, video-download helpers) — no stack trace is
+  // attached, so it isn't caught by isThirdParty, and it's never actionable.
+  /Object Not Found Matching Id/,
 ];
 
 // Browsers strip filename/line/col/stack for cross-origin script errors (spec
@@ -59,10 +63,12 @@ export default function CrashReporter() {
     function onUnhandledRejection(event: PromiseRejectionEvent) {
       const reason = event.reason;
       const stack = reason?.stack ?? '';
+      const message = String(reason?.message ?? reason ?? 'Unknown rejection');
       if (isThirdParty(stack, '')) return;
+      if (isBenign(message)) return;
       reportCrash({
         type: 'Unhandled promise rejection',
-        message: String(reason?.message ?? reason ?? 'Unknown rejection'),
+        message,
         stack,
         source: 'unhandledrejection',
       });
