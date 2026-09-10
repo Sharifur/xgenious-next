@@ -3,6 +3,7 @@ import { isDisposableEmail } from '@/lib/disposable-emails';
 import { generateVerificationToken } from '@/lib/token';
 import { sendEmail, verificationEmailHtml, BASE_URL } from '@/lib/email';
 import { verifyRecaptcha } from '@/lib/recaptcha';
+import { pushToGeniusCampaign } from '@/lib/genius-campaign';
 
 const WP_BASE = process.env.WORDPRESS_BASE_URL ?? 'https://xgenious.com';
 const WP_ADMIN_USER = process.env.WP_ADMIN_USERNAME!;
@@ -99,6 +100,19 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error('[register] email send failed:', err);
   }
+
+  // Push new user to Genius Campaign — fire-and-forget, never blocks registration.
+  // Uses list 46ce0562-da1b-4f72-8dcd-5c4a99772a9a / tag b59be24d-4bdf-4f22-a3fe-86c5f6a17928
+  // (env GENIUS_CAMPAIGN_* overrides defaults via lib/genius-campaign.ts).
+  pushToGeniusCampaign({
+    email,
+    firstName: firstName ?? undefined,
+    lastName: lastName ?? undefined,
+    customFields: {
+      xgenious_source: 'registration',
+      xgenious_username: username ?? '',
+    },
+  }).catch(() => null);
 
   return NextResponse.json({ ok: true, userId, requiresVerification: true }, { status: 201 });
 }
