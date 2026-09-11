@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import type { PurchaseItem } from '@/lib/license-server';
 import { useLicensesStore } from '@/store/useLicensesStore';
@@ -169,45 +169,23 @@ export default function DownloadsPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
-                {(item.platform === 'xgenious' || item.platform === 'envato') && (
-                  <button
-                    onClick={() => handleFreshInstall(item)}
-                    disabled={loadingKey?.startsWith(item.license_key) ?? false}
-                    className="flex items-center gap-2 px-4 py-2 bg-[#ec7161] text-white text-sm font-medium rounded-lg hover:bg-[#e05e4d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    {loadingKey === item.license_key + ':fresh' ? (
-                      <><div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />Starting…</>
-                    ) : (
-                      <><DownloadIcon />Fresh Install</>
-                    )}
-                  </button>
-                )}
+                <button
+                  onClick={() => handleFreshInstall(item)}
+                  disabled={loadingKey?.startsWith(item.license_key) ?? false}
+                  className="flex items-center gap-2 px-4 py-2 bg-[#ec7161] text-white text-sm font-medium rounded-lg hover:bg-[#e05e4d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {loadingKey === item.license_key + ':fresh' ? (
+                    <><div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />Starting…</>
+                  ) : (
+                    <><DownloadIcon />Fresh Install</>
+                  )}
+                </button>
 
-                <div>
-                  <button
-                    onClick={() => handleGenerateUpdateUrl(item)}
-                    disabled={loadingKey?.startsWith(item.license_key) ?? false}
-                    className="flex items-center gap-2 px-4 py-2 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    {loadingKey === item.license_key + ':update' ? (
-                      <><div className="w-3.5 h-3.5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />Generating…</>
-                    ) : (
-                      <><LinkIcon />Update File</>
-                    )}
-                  </button>
-                  <p className="text-xs text-gray-400 mt-1.5">
-                    You can download the manual file for update manually by following{' '}
-                    <a
-                      href="https://docs.xgenious.com/docs/common-documentation/how-to-download-manual-update-file/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#ec7161] hover:underline"
-                    >
-                      this documentation
-                    </a>
-                    .
-                  </p>
-                </div>
+                <UpdateFileButton
+                  loading={loadingKey === item.license_key + ':update'}
+                  disabled={loadingKey?.startsWith(item.license_key) ?? false}
+                  onClick={() => handleGenerateUpdateUrl(item)}
+                />
               </div>
 
               {pageErrors[item.license_key] && (
@@ -283,6 +261,52 @@ function DownloadIcon() {
     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
     </svg>
+  );
+}
+
+function UpdateFileButton({ loading, disabled, onClick }: { loading: boolean; disabled: boolean; onClick: () => void }) {
+  const [showTip, setShowTip] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!showTip) return;
+    function handleClickOutside(e: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) setShowTip(false);
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showTip]);
+
+  return (
+    <div ref={wrapperRef} className="relative">
+      <button
+        onClick={() => { onClick(); setShowTip(true); }}
+        disabled={disabled}
+        className="flex items-center gap-2 px-4 py-2 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+      >
+        {loading ? (
+          <><div className="w-3.5 h-3.5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />Generating…</>
+        ) : (
+          <><LinkIcon />Update File</>
+        )}
+      </button>
+
+      {showTip && (
+        <div className="absolute z-30 top-full left-0 mt-2 w-72 max-w-[85vw] p-3 bg-white rounded-lg border border-gray-200 shadow-lg text-xs text-gray-400">
+          <div className="absolute -top-1.5 left-4 w-3 h-3 bg-white border-l border-t border-gray-200 rotate-45" />
+          You can download the manual file for update manually by following{' '}
+          <a
+            href="https://docs.xgenious.com/docs/common-documentation/how-to-download-manual-update-file/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#ec7161] hover:underline"
+          >
+            this documentation
+          </a>
+          .
+        </div>
+      )}
+    </div>
   );
 }
 
