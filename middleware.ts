@@ -62,10 +62,20 @@ export default auth(function middleware(req: NextRequest & { auth: any }) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
 
-  // Single-segment paths not matching a Next.js route → WordPress proxy
-  if (segments.length === 1 && !NEXT_ROUTES.has(segments[0]) && !segments[0].includes('.')) {
-    const target = pathname.endsWith('/') ? pathname : `${pathname}/`;
-    return NextResponse.rewrite(`${VPS}${target}${req.nextUrl.search}`);
+  // Single-segment paths not matching a Next.js route → WordPress proxy.
+  // ".md" is an intentional exception to the dot-exclusion below: WordPress
+  // serves a Markdown alternate view at <slug>.md (inc/markdown-endpoint.php
+  // in xgenious-next-wp-theme), which needs no trailing slash appended or
+  // its own suffix check there fails. Every other dot is presumed a static
+  // file extension and must NOT be proxied.
+  if (segments.length === 1 && !NEXT_ROUTES.has(segments[0])) {
+    const isMarkdownView = segments[0].endsWith('.md');
+    if (isMarkdownView || !segments[0].includes('.')) {
+      const target = isMarkdownView
+        ? pathname
+        : (pathname.endsWith('/') ? pathname : `${pathname}/`);
+      return NextResponse.rewrite(`${VPS}${target}${req.nextUrl.search}`);
+    }
   }
 });
 
