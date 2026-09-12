@@ -16,13 +16,13 @@ import { BASE_URL, CANONICAL } from './_components/constants';
 export const metadata: Metadata = {
   title: 'Genius Campaign: Free Self-Hosted Email Outreach Platform',
   description:
-    'Open-source, self-hosted email marketing & outreach. Sequences, sender rotation, webhooks. Bring your own AWS SES / Gmail Workspace, no per-contact fees.',
+    'Open-source, self-hosted email marketing & outreach — custom fields, A/B variants, conditional templates, sequences, sender rotation, webhooks. Bring your own AWS SES / Gmail Workspace, no per-contact fees. Last 20 days: live RBAC, global guards, multi-subject shuffles, retention-aware email log.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Genius Campaign: Free Self-Hosted Email Outreach Platform | Xgenious',
     description:
-      'Contacts, templates, sequences, campaigns, deliverability, and sender rotation in one self-hosted console. Bring your own AWS SES, Gmail Workspace, and Cloudflare R2. MIT licensed.',
+      'Contacts with custom fields, templates with A/B + conditional logic, sequences with Stats, campaigns with scheduling, verification, triggers/webhooks, public API, sender rotation, and Team RBAC — all self-hosted on your AWS SES / Gmail Workspace + Cloudflare R2. MIT licensed.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/free-software/genius-campaign/dashboard.png', width: 2000, height: 827, alt: 'Genius Campaign dashboard' }],
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Genius Campaign: Free Self-Hosted Email Outreach Platform',
     description:
-      'Contacts, templates, sequences, campaigns, deliverability, and sender rotation in one self-hosted console. Bring your own AWS SES / Gmail Workspace. MIT licensed.',
+      'Contacts with custom fields, templates with A/B + conditional logic, sequences with Stats, campaigns with scheduling, verification, triggers/webhooks, public API, sender rotation, and Team RBAC — self-hosted. MIT licensed.',
     images: ['/free-software/genius-campaign/dashboard.png'],
   },
   keywords: [
@@ -46,6 +46,10 @@ export const metadata: Metadata = {
     'self hosted email sequence automation',
     'open source email marketing google workspace',
     'free mailchimp alternative self hosted',
+    'email marketing custom fields',
+    'email template ab testing self hosted',
+    'conditional email templates',
+    'self hosted email verification reoon',
   ],
 };
 
