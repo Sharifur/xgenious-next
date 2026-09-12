@@ -16,72 +16,72 @@ export const MODULES = [
   {
     name: 'Contacts, Lists & Tags',
     features: [
-      'CSV import with arbitrary column mapping',
-      'Real-time import progress',
-      'Pick-or-create lists and tags at import time',
+      'CSV import with arbitrary column mapping & real-time progress',
+      'Pick-or-create lists/tags at import, server-side pagination & bulk actions',
+      'Custom fields (text/number/date/url/boolean/dropdown) per contact',
     ],
   },
   {
     name: 'Template Editor',
     features: [
-      'Rich-text editor with spintax variants',
-      'AI-assisted copywriting (OpenAI or DeepSeek)',
-      'Reusable templates across campaigns and sequences',
+      'Rich-text + spintax, multi-subject & preview-text shuffle',
+      'Conditional if/else with variable defaults, AI-assisted copy (OpenAI/DeepSeek)',
+      'CTA button/link controls, paste-and-drop image upload, reusable across campaigns',
     ],
   },
   {
     name: 'Sequences',
     features: [
-      'Multi-step drip sequences with per-contact enrollment',
-      'Pause and resume individual contacts mid-sequence',
-      'Per-step delays between messages',
+      'Multi-step drip with per-contact enrollment, pause/resume mid-sequence',
+      'A/B step variants — multiple templates per step, Stats tab (enrolled/open/click)',
+      'Per-sequence sender override, enrolled date/last step/last executed time',
     ],
   },
   {
     name: 'Campaigns',
     features: [
-      'One-off sends targeted by list, tag, or hand-picked contacts',
-      'Open and click tracking',
-      'Engagement analytics per campaign',
+      'One-off sends by list/tag/hand-picked, schedule for later or run-for-real',
+      'Open/click/delivered tracking with engagement analytics per campaign',
+      'Sender override (From name/reply-to), search/filter on detail view',
     ],
   },
   {
     name: 'Email Verification',
     features: [
-      'Bulk deliverability checks before you send',
-      'Reoon as primary verification provider, NeverBounce as fallback',
-      'Reduces bounces and protects sender reputation',
+      'Bulk checks before you send + per-contact click-to-verify',
+      'Reoon primary, NeverBounce fallback — auto-suppresses risky/invalid',
+      'Live bulk-verify progress, protects sender reputation',
     ],
   },
   {
     name: 'Triggers & Webhooks',
     features: [
-      'Auto-enroll contacts on events: tag added, field changed, list joined',
-      'Inbound HMAC-signed webhook trigger',
-      'Connect to the rest of your stack without polling',
+      'Auto-enroll on tag added, field changed, list joined, or HMAC webhook',
+      'Webhook-based trigger + fired-events history',
+      'Connect your stack without polling',
     ],
   },
   {
     name: 'Public API',
     features: [
-      'API-key-authenticated endpoint for external forms and automation tools',
-      'Push contacts in with automatic list/tag attachment',
+      'API-key endpoint for forms/automation — push contacts, idempotent enroll',
+      'Remove from list/tags/sequences, stop-all, rate-limited & expiring keys',
     ],
   },
   {
     name: 'Sender Rotation',
     features: [
-      'Rotate across AWS SES and Gmail Workspace accounts',
-      'Quota-aware: spreads volume automatically',
-      'Protects deliverability by not overloading one sender',
+      'Rotate across multiple AWS SES + Gmail Workspace accounts, quota-aware',
+      'Per-account named credentials, test-email button, delivers click/open tracking',
+      'Protects deliverability by spreading volume',
     ],
   },
   {
     name: 'Team & Audit',
     features: [
-      'Role-based access: owner, editor, viewer',
-      'Full audit log of account activity',
-      'Global suppression list',
+      'RBAC: owner/editor/viewer — global guards, live-validated JWT, last-owner protection',
+      'Full audit log (now includes role changes) + global suppression checked before every send',
+      'Team management in Administration → Team, clear email log by retention window',
     ],
   },
 ];
