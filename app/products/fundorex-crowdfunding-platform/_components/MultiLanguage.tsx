@@ -114,14 +114,14 @@ export default function MultiLanguage() {
                 Multi-Language & RTL
               </div>
               <h2 className="text-[26px] sm:text-[32px] font-bold text-[#0F1112] leading-tight mb-4">
-                Launch in Any Language — Including RTL
+                Launch in Any Language, Including RTL
               </h2>
               <p className="text-[15px] text-[#6b7280] leading-7 mb-6">
-                Fundorex ships with a complete translation system. Manage every UI string from the admin panel — no code changes needed. Full right-to-left layout support for Arabic, Urdu, Hebrew, and more.
+                Fundorex ships with a complete translation system. Manage every UI string from the admin panel with no code changes needed. Full right-to-left layout support for Arabic, Urdu, Hebrew, and more.
               </p>
               <div className="flex flex-col gap-3">
                 {[
-                  'Admin panel translation manager — no code',
+                  'No-code admin panel translation manager',
                   'RTL layout built-in for Arabic, Urdu, Hebrew',
                   'Translated email templates included',
                   'Multi-currency support with locale formatting',
@@ -135,6 +135,10 @@ export default function MultiLanguage() {
                   </div>
                 ))}
               </div>
+
+              <p className="text-[12px] font-semibold mt-4" style={{ color: COLOR }}>
+                Included in the Everything Bundle and Extended License (not Regular License).
+              </p>
 
               {/* Language selector buttons */}
               <div className="flex flex-wrap gap-2 mt-7">

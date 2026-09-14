@@ -201,14 +201,16 @@ Self-hosted classified ads / listing platform on Laravel — launch an OLX or Cr
 - Keywords: classified ads script, classified ads laravel, olx clone script, craigslist clone script, local marketplace script, php classified script, classified listing platform
 
 ### Fundorex — Crowdfunding Platform Script (Laravel)
-Self-hosted crowdfunding / fundraising platform on Laravel — launch a Kickstarter or GoFundMe-style site for donation and community campaigns. Donor wallet, volunteer management, event ticketing, 20+ payment gateways, and a Flutter mobile app. One-time purchase, full source code, no monthly fees.
+Self-hosted crowdfunding / fundraising platform on Laravel — launch a Kickstarter or GoFundMe-style site for donation and community campaigns. Donor wallet, volunteer management, event ticketing, 20+ payment gateways, and a Flutter mobile app. Core ships with free Donations (simple, one-off giving); an optional Fundraising plugin adds true Kickstarter-style reward-based crowdfunding (goals, deadlines, reward tiers, moderation, refund queue). An official plugin architecture (manifest-based scaffolding, safe enable/disable, no core files touched) lets developers build custom plugins. One-time purchase, full source code, no monthly fees.
 - [Fundorex product page](https://xgenious.com/products/fundorex-crowdfunding-platform)
 - [Live demo](https://fundorex.xgenious.com)
 - [Purchase on CodeCanyon](https://codecanyon.net/item/fundorex-crowdfunding-platform/33286096)
-- Stack: Laravel, PHP, MySQL, Flutter (mobile app)
+- [Changelog](https://docs.xgenious.com/docs/fundorex/instructions/changes-logs/)
+- [Plugin development docs](https://docs.xgenious.com/docs/fundorex/plugin-development/scaffold-manifest/)
+- Stack: Laravel 12, PHP 8.2+, MySQL, Flutter (mobile app)
 - Pricing: Regular $69 / Combo $79 / Extended $199 — one-time, no monthly fees
-- Key features: donation & community campaigns, donor wallet, volunteer management, event ticketing, 20+ payment gateways, Flutter mobile app, admin dashboard
-- Keywords: crowdfunding platform script, laravel crowdfunding script, kickstarter clone script, gofundme clone script, fundraising platform script, donation website script
+- Key features: donation & community campaigns, Fundraising plugin (Kickstarter-style reward crowdfunding), donor wallet, volunteer management, event ticketing, 20+ payment gateways, Flutter mobile app, extensible plugin architecture, admin dashboard
+- Keywords: crowdfunding platform script, laravel crowdfunding script, kickstarter clone script, gofundme clone script, fundraising platform script, donation website script, crowdfunding script codecanyon
 
 ### GoCar — On-Demand Car Service Marketplace
 Self-hosted on-demand car service marketplace on Laravel + Flutter — connect car owners with mechanics and service providers (an "Uber for car services"). Vehicle-specific booking, real-time tracking, and 19+ payment gateways. One-time purchase, full source code, no monthly fees.

@@ -27,7 +27,7 @@ const FAQS = [
   },
   {
     q: 'Does it support multiple languages?',
-    a: 'Yes. Fundorex includes a full translation system with RTL layout support. You can manage all UI strings from the admin panel without touching code. Launch in Arabic, French, Spanish, or any other language.',
+    a: 'Yes, in the Everything Bundle and Extended License. Fundorex includes a full translation system with RTL layout support. You can manage all UI strings from the admin panel without touching code. Launch in Arabic, French, Spanish, or any other language. Not included in the Regular License.',
   },
   {
     q: 'How does admin commission work?',
@@ -72,6 +72,22 @@ const FAQS = [
   {
     q: 'What is the difference between platform fee and transaction fee?',
     a: 'Platform fee is the commission the admin charges on each donation — configurable as a percentage or flat amount. Transaction fee is the charge applied by the payment gateway (e.g. Stripe). Both are displayed transparently to donors before they complete a contribution.',
+  },
+  {
+    q: "What's the difference between the Fundraising plugin and built-in Donations?",
+    a: 'Donations are included free in core Fundorex — simple, one-off gift-based giving with no goals or deadlines. The Fundraising plugin adds true Kickstarter-style crowdfunding on top: campaign goals, deadlines, backer reward tiers, all-or-nothing or flexible funding, plus built-in moderation and a refund queue. Run both side by side from the same admin panel.',
+  },
+  {
+    q: 'Can I build my own plugins for Fundorex?',
+    a: "Yes. Fundorex ships with an official plugin architecture — Super Admin controlled, safe to enable or disable, and it never touches core files. Use the manifest-based scaffolding system to build, test, and ship your own plugins. Full developer documentation, including the scaffold and manifest guide, is available at docs.xgenious.com/docs/fundorex/.",
+  },
+  {
+    q: "What's Fundorex's refund policy?",
+    a: "Refunds depend on where you purchased. Bought via CodeCanyon? Envato's own refund policy applies (codecanyon.net/page/customer_refund_policy), not Xgenious's. Bought directly through xgenious.com — Bundle Pack or Extended License checkout? You get a 14-day refund window; just contact support with your receipt. Add-on services like installation are non-refundable once work begins.",
+  },
+  {
+    q: 'How often is Fundorex updated?',
+    a: "Fundorex ships regular updates. The latest, version 2.1.0, added admin campaign previews, an emergency-causes page-builder widget, and the Xendit payment gateway. Earlier releases delivered a full Tailwind-based admin and frontend rebuild (v2.0.0) and a Laravel 12 upgrade (v1.7.0). All licenses include lifetime free updates — see the full changelog in the documentation.",
   },
 ];
 

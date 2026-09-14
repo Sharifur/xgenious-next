@@ -10,6 +10,7 @@ const REGULAR_FEATURES = [
   { label: 'All Platform Features', ok: true },
   { label: '20+ Payment Gateways', ok: true },
   { label: 'Event Ticketing Module', ok: true },
+  { label: 'Multi-language + RTL', ok: false },
   { label: 'Lifetime License + Updates', ok: true },
   { label: '6 Months Support', ok: true },
   { label: 'Flutter Mobile App', ok: false },
@@ -22,6 +23,7 @@ const BUNDLE_FEATURES = [
   { label: 'All Platform Features', ok: true },
   { label: '20+ Payment Gateways', ok: true },
   { label: 'Event Ticketing Module', ok: true },
+  { label: 'Multi-language + RTL', ok: true },
   { label: 'Lifetime License + Updates', ok: true },
   { label: '6 Months Support', ok: true },
   { label: 'Flutter Mobile App', ok: true },
@@ -128,15 +130,18 @@ export default function Pricing() {
               <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#16a34a] text-white">
                 MOBILE APP
               </span>
+              <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#16a34a] text-white">
+                2 PLUGINS INCLUDED
+              </span>
             </div>
 
             <div className="mb-5">
               <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${COLOR}cc` }}>Everything Bundle</p>
 
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[20px] font-semibold line-through" style={{ color: '#4b6b5a' }}>$118</span>
+                <span className="text-[20px] font-semibold line-through" style={{ color: '#4b6b5a' }}>$196</span>
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${COLOR}25`, color: COLOR }}>
-                  33% OFF
+                  60% OFF
                 </span>
               </div>
 
@@ -156,9 +161,18 @@ export default function Pricing() {
                     <span className="text-[12px] font-semibold line-through" style={{ color: '#4b6b5a' }}>{price}</span>
                   </div>
                 ))}
+                {[
+                  ['Fundraising Plugin', '$39'],
+                  ['AI Multilingual Plugin', '$39'],
+                ].map(([item, price]) => (
+                  <div key={item} className="flex items-center justify-between">
+                    <span className="text-[12px]" style={{ color: '#8aaa98' }}>{item}</span>
+                    <span className="text-[12px] font-semibold line-through" style={{ color: '#4b6b5a' }}>{price}</span>
+                  </div>
+                ))}
                 <div className="border-t mt-1 pt-1.5 flex items-center justify-between" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
                   <span className="text-[12px] font-bold text-white">Total value</span>
-                  <span className="text-[12px] font-bold" style={{ color: COLOR }}>${REGULAR_PRICE + 49} → ${COMBO_PRICE}</span>
+                  <span className="text-[12px] font-bold" style={{ color: COLOR }}>${REGULAR_PRICE + 49 + 39 + 39} → ${COMBO_PRICE}</span>
                 </div>
               </div>
             </div>

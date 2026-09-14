@@ -6,6 +6,7 @@ const ROWS = [
   { feature: 'Platform commission',   fundorex: 'None — you keep 100%', saas: '3–8% per transaction', custom: 'None' },
   { feature: 'Source code included',  fundorex: 'Yes — full Laravel',  saas: 'No',                   custom: 'Yes' },
   { feature: 'Flutter mobile app',    fundorex: 'Yes (Combo pack)',    saas: 'Sometimes extra',       custom: 'Extra cost' },
+  { feature: 'Donations + reward crowdfunding', fundorex: 'Yes, both, same platform', saas: 'Pick one, not both', custom: 'Custom build' },
   { feature: 'Community campaigns',   fundorex: 'Yes',                  saas: 'Rarely',               custom: 'Custom build' },
   { feature: 'Volunteer management',  fundorex: 'Yes',                  saas: 'No',                   custom: 'Custom build' },
   { feature: 'Built-in donor wallet', fundorex: 'Yes',                  saas: 'Rarely',               custom: 'Custom build' },
@@ -14,9 +15,10 @@ const ROWS = [
   { feature: 'Gift-based donations',  fundorex: 'Yes',                  saas: 'Some',                 custom: 'Custom build' },
   { feature: 'White-label / own brand', fundorex: 'Yes — fully',        saas: 'Limited',              custom: 'Yes' },
   { feature: 'Self-hosted',           fundorex: 'Yes — any VPS',        saas: 'No — vendor cloud',    custom: 'Yes' },
-  { feature: 'Multi-language + RTL',  fundorex: 'Yes',                  saas: 'Varies',               custom: 'Custom build' },
+  { feature: 'Multi-language + RTL',  fundorex: 'Yes (Combo/Extended)', saas: 'Varies',               custom: 'Custom build' },
   { feature: 'Setup time',            fundorex: '< 30 minutes',         saas: '< 1 hour',             custom: '3–12 months' },
   { feature: 'Ongoing cost',          fundorex: '$0/month',             saas: '$99–$499/month',       custom: 'Maintenance contract' },
+  { feature: 'Extensible plugin architecture', fundorex: 'Yes — official plugin system', saas: 'No', custom: 'Yes — at extra dev cost' },
 ];
 
 function Check() {
@@ -45,7 +47,7 @@ export default function Comparison() {
             Fundorex vs SaaS Platforms vs Custom Development
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
-            See why 734+ teams chose Fundorex — a self-hosted crowdfunding platform script with zero monthly fees and full source code.
+            See why 734+ teams chose Fundorex, a self-hosted script supporting both donation and reward-based crowdfunding campaigns, with a 4.70/5 rating, one-time $69 pricing, zero monthly fees, full source code, and an extensible plugin architecture.
           </p>
         </div>
 
