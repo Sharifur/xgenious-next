@@ -25,11 +25,11 @@ export default function Hero() {
 
         <h1 className="text-[28px] leading-[36px] sm:text-[48px] sm:leading-[56px] lg:text-[62px] lg:leading-[70px] font-bold text-[#0F1112] max-w-[950px]">
           Launch Your Own{' '}
-          <span style={{ color: COLOR }}>Crowdfunding Platform</span>
+          <span style={{ color: COLOR }}>Crowdfunding Platform Script</span>
         </h1>
 
         <p className="text-[#484848] text-[14px] sm:text-[17px] leading-7 max-w-[560px]">
-          A self-hosted Laravel crowdfunding platform script with community campaigns, donor wallet, volunteer management, event ticketing, 20+ payment gateways, and a Flutter mobile app. One-time purchase — no monthly fees.
+          A self-hosted Laravel crowdfunding and fundraising platform script that doubles as a Kickstarter clone — with community campaigns, donor wallet, volunteer management, event ticketing, 20+ payment gateways, and a Flutter mobile app. One-time purchase — no monthly fees.
         </p>
 
         <div className="flex items-center gap-3 flex-wrap justify-center mt-1">

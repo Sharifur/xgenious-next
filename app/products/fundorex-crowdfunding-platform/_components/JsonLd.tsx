@@ -7,6 +7,7 @@ export default function JsonLd() {
     name: 'Fundorex',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
+    softwareVersion: '2.1.0',
     offers: {
       '@type': 'Offer',
       price: String(REGULAR_PRICE),
@@ -185,6 +186,38 @@ export default function JsonLd() {
         acceptedAnswer: {
           '@type': 'Answer',
           text: 'Yes. Fundorex supports reward-based crowdfunding with campaign goals, deadlines, backer gift tiers, and public campaign discovery — similar to Kickstarter. It also supports pure donation campaigns and community fundraising, making it more versatile than a standard Kickstarter clone script.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: "What's the difference between the Fundraising plugin and built-in Donations?",
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Donations are included free in core Fundorex — simple, one-off gift-based giving with no goals or deadlines. The Fundraising plugin adds true Kickstarter-style crowdfunding on top: campaign goals, deadlines, backer reward tiers, all-or-nothing or flexible funding, plus built-in moderation and a refund queue. Run both side by side from the same admin panel.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I build my own plugins for Fundorex?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. Fundorex ships with an official plugin architecture — Super Admin controlled, safe to enable or disable, and it never touches core files. Use the manifest-based scaffolding system to build, test, and ship your own plugins. Full developer documentation, including the scaffold and manifest guide, is available at docs.xgenious.com/docs/fundorex/.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: "What's Fundorex's refund policy?",
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "Refunds depend on where you purchased. Bought via CodeCanyon? Envato's own refund policy applies, not Xgenious's. Bought directly through xgenious.com — Bundle Pack or Extended License checkout? You get a 14-day refund window; just contact support with your receipt. Add-on services like installation are non-refundable once work begins.",
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How often is Fundorex updated?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "Fundorex ships regular updates. The latest, version 2.1.0, added admin campaign previews, an emergency-causes page-builder widget, and the Xendit payment gateway. Earlier releases delivered a full Tailwind-based admin and frontend rebuild (v2.0.0) and a Laravel 12 upgrade (v1.7.0). All licenses include lifetime free updates.",
         },
       },
     ],

@@ -4,6 +4,7 @@ import JsonLd from './_components/JsonLd';
 import Hero from './_components/Hero';
 import Features from './_components/Features';
 import DonationFlow from './_components/DonationFlow';
+import FundingModels from './_components/FundingModels';
 import PaymentGateways from './_components/PaymentGateways';
 import HowItWorks from './_components/HowItWorks';
 import WhoIsItFor from './_components/WhoIsItFor';
@@ -11,21 +12,23 @@ import Comparison from './_components/Comparison';
 import MultiLanguage from './_components/MultiLanguage';
 import MobileApp from './_components/MobileApp';
 import TechStack from './_components/TechStack';
+import PluginDevelopment from './_components/PluginDevelopment';
+import WhatsNew from './_components/WhatsNew';
 import Reviews from './_components/Reviews';
 import Pricing from './_components/Pricing';
 import FAQ from './_components/FAQ';
 import StickyBar from './_components/StickyBar';
 
 export const metadata: Metadata = {
-  title: 'Fundorex — Crowdfunding Platform Script for Laravel',
+  title: 'Fundorex — Crowdfunding Platform Script & Kickstarter Clone',
   description:
     'Fundorex is a self-hosted Laravel crowdfunding platform script with community campaigns, donor wallet, volunteer management, 20+ payment gateways, event ticketing, and Flutter mobile app. One-time purchase from $69.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Fundorex — Crowdfunding Platform Script | Xgenious',
+    title: 'Fundorex — Crowdfunding Platform Script & Kickstarter Clone | Xgenious',
     description:
-      'Build a powerful fundraising platform. Laravel backend, 20+ payment gateways, Flutter mobile app, donation campaigns, event ticketing. From $49 one-time.',
+      'A Laravel crowdfunding and fundraising platform script that doubles as a Kickstarter clone. 20+ payment gateways, Flutter mobile app, donation campaigns, event ticketing. From $69 one-time.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/products/fundorex-hero-center.jpg', width: 1200, height: 630, alt: 'Fundorex Crowdfunding Platform' }],
@@ -33,8 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Fundorex — Crowdfunding Platform Script',
-    description: 'Self-hosted crowdfunding platform. Laravel + Flutter mobile app. 20+ payment gateways. From $49 one-time.',
+    title: 'Fundorex — Crowdfunding Platform Script & Kickstarter Clone',
+    description: 'Self-hosted Laravel crowdfunding & fundraising platform script. Kickstarter clone alternative, Flutter mobile app, 20+ payment gateways. From $69 one-time.',
     images: ['/products/fundorex-hero-center.jpg'],
   },
   keywords: [
@@ -63,11 +66,14 @@ export default function FundorexPage() {
       <PaymentGateways />
       <Features />
       <DonationFlow />
+      <FundingModels />
       <HowItWorks />
       <WhoIsItFor />
       <MultiLanguage />
       <MobileApp />
       <TechStack />
+      <PluginDevelopment />
+      <WhatsNew />
       <Comparison />
       <Reviews />
       <Pricing />

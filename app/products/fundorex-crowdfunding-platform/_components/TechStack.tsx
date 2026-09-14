@@ -48,6 +48,19 @@ export default function TechStack() {
           Full source code included. Extend, customize, or integrate with any third-party service without restrictions.
         </p>
 
+        <div className="mt-8 rounded-2xl border border-[#E5E7EC] bg-[#F9FAFB] p-5 max-w-[720px] mx-auto">
+          <p className="text-center text-[11px] font-bold uppercase tracking-widest text-[#9ca3af] mb-3">System Requirements</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[13px] text-[#374151]">
+            <span><strong className="text-[#0F1112]">PHP</strong> 8.4 or higher</span>
+            <span className="text-[#d1d5db]">•</span>
+            <span><strong className="text-[#0F1112]">Laravel</strong> 12</span>
+            <span className="text-[#d1d5db]">•</span>
+            <span><strong className="text-[#0F1112]">MySQL</strong> database</span>
+            <span className="text-[#d1d5db]">•</span>
+            <span>Runs on <strong className="text-[#0F1112]">shared hosting (cPanel/Plesk)</strong> or any Linux VPS</span>
+          </div>
+        </div>
+
       </div>
     </section>
   );

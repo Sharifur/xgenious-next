@@ -6,6 +6,10 @@ export const PURCHASE_URL = 'https://codecanyon.net/item/fundorex-crowdfunding-p
 export const DEMO_URL = 'https://fundorex.xgenious.com';
 export const ADMIN_URL = 'https://fundorex.xgenious.com/admin';
 export const DOCS_URL = 'https://docs.xgenious.com/docs/fundorex/';
+export const PLUGIN_DEV_DOCS_URL = 'https://docs.xgenious.com/docs/fundorex/plugin-development/scaffold-manifest/';
+export const CHANGELOG_URL = 'https://docs.xgenious.com/docs/fundorex/instructions/changes-logs/';
+export const REFUND_POLICY_URL = '/refund-policy';
+export const ENVATO_REFUND_POLICY_URL = 'https://codecanyon.net/page/customer_refund_policy';
 export const REGULAR_PRICE = 69;
 export const COMBO_PRICE = 79;
 export const EXTENDED_PRICE = 199;
@@ -138,12 +142,34 @@ export const FEATURES: { title: string; desc: string; img?: string }[] = [
   },
 ];
 
-export const REVIEWS = [
+export const CHANGELOG: { version: string; date: string; summary: string }[] = [
+  { version: 'Latest', date: 'September 15, 2026', summary: 'The plugin framework goes production-ready (discovery, enable/disable/uninstall, menus, assets, migrations, audit log). The new Fundraising plugin (Kickstarter-style crowdfunding) and AI Multilingual plugin (AI-assisted translation) both become feature-complete.' },
+  { version: '2.1.0', date: 'June 24, 2026', summary: 'Admin campaign preview for draft/archived/banned campaigns, emergency causes page-builder widget, PDF invoice redesign, and the Xendit payment gateway.' },
+  { version: '2.0.2', date: 'June 4, 2026', summary: 'reCAPTCHA v2/v3 selector, donor name/email fields on donation logs, and compact K/M/B amount formatting.' },
+  { version: '2.0.0', date: 'May 19, 2026', summary: 'Major overhaul — brand-new admin panel and frontend rebuilt with Tailwind CSS, plus a visual drag-and-drop page builder.' },
+  { version: '1.7.0', date: 'July 31, 2025', summary: 'Upgraded the core to Laravel 12.' },
+];
+
+export const REVIEWS: { name: string; category: string; rating: number; body: string; source?: string }[] = [
   {
     name: 'nkingsly',
     category: 'Customer Support',
     rating: 5,
     body: 'Outstanding support from the Xgenious team. They are responsive, proactive, and genuinely go above and beyond to resolve issues. The product itself is excellent — everything works as described.',
+  },
+  {
+    name: 'Ashok Krish',
+    category: 'Customer Support',
+    rating: 5,
+    source: 'Trustpilot',
+    body: 'Using their Fundorex product of Xgenious and they were good in customer support of their products whenever I have faced issues.',
+  },
+  {
+    name: 'caribman',
+    category: 'Update Support',
+    rating: 5,
+    source: 'Trustpilot',
+    body: "I couldn't load my page after I updated to Fundorex v1.1.5, and Xgenious with their excellent service resolved the problem.",
   },
   {
     name: 'tuliog',

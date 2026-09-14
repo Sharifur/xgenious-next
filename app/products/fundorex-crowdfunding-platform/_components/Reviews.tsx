@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { REVIEWS } from './constants';
 
 function Stars({ count }: { count: number }) {
@@ -12,6 +13,35 @@ function Stars({ count }: { count: number }) {
   );
 }
 
+function TrustpilotIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+      <rect width="24" height="24" rx="5" fill="#00B67A" />
+      <path fill="#fff" d="M12 5.5l1.85 5.69h5.98l-4.84 3.52 1.85 5.69L12 16.88l-4.84 3.52 1.85-5.69-4.84-3.52h5.98L12 5.5z" />
+    </svg>
+  );
+}
+
+function EnvatoIcon() {
+  return (
+    <Image
+      src="/products/icons/envato-favicon.png"
+      alt="Envato"
+      width={14}
+      height={14}
+      className="rounded-[3px]"
+    />
+  );
+}
+
+function SourceBadge({ source }: { source: string }) {
+  return (
+    <span className="inline-flex items-center" title={source}>
+      {source === 'Trustpilot' ? <TrustpilotIcon /> : <EnvatoIcon />}
+    </span>
+  );
+}
+
 export default function Reviews() {
   return (
     <section className="py-16 sm:py-20 lg:py-[100px] bg-white">
@@ -22,7 +52,7 @@ export default function Reviews() {
             What Our Customers Think<br className="hidden sm:block" /> About Fundorex
           </h2>
           <p className="text-[#484848] text-[15px] sm:text-[17px] leading-7">
-            Real reviews from verified CodeCanyon buyers — 734+ sales, 4.70 average rating.
+            Real reviews from verified Envato buyers and Trustpilot — 734+ sales, 4.70 average rating.
           </p>
         </div>
 
@@ -40,9 +70,14 @@ export default function Reviews() {
                 </span>
               </div>
               <p className="text-[14px] text-[#374151] leading-6">{review.body}</p>
-              <p className="text-[13px] font-medium" style={{ color: '#c2500a' }}>
-                by {review.name}
-              </p>
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <p className="text-[13px] font-medium" style={{ color: '#c2500a' }}>
+                  by {review.name}
+                </p>
+                <span className="text-[11px] font-medium text-[#6b7280]">
+                  <SourceBadge source={review.source ?? 'Envato'} />
+                </span>
+              </div>
             </div>
           ))}
         </div>
