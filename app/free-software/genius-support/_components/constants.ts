@@ -16,13 +16,15 @@ export const MODULES = [
       'Priority levels: Low, Medium, High, Urgent',
       'Real-time status updates via WebSocket (Laravel Reverb)',
       'Department-based ticket routing and reassignment',
+      'Custom SLA timers per department: first-response and resolution deadlines',
     ],
   },
   {
     name: 'Customer Portal',
     features: [
+      'Submit tickets via guest form — no account required',
+      'Reply to tickets by email or secure portal link without logging in',
       'Self-service ticket submission and tracking',
-      'Reply to agents directly from the portal',
       'Knowledge base search for instant self-help',
       'Resolution rating: customers rate every resolved ticket',
       'Profile management and ticket history',
@@ -36,6 +38,8 @@ export const MODULES = [
       'Internal notes visible only to agents',
       'Bulk actions: reassign, close, or change priority',
       'Real-time notifications for new and updated tickets',
+      'Keyboard shortcuts: j/k to navigate, e to reply, x to close',
+      'Dark mode for low-light and extended-session work',
     ],
   },
   {
@@ -46,6 +50,9 @@ export const MODULES = [
       'Custom email reply templates',
       'Branding: upload logo, set colour scheme, custom domain',
       'Analytics and reporting: ticket volume, response times, CSAT',
+      'SLA policies with due-date tracking and overdue escalation alerts',
+      'Role-based access control: agents see only their departments',
+      'Optional two-factor authentication (2FA) for agents and admins',
     ],
   },
   {
@@ -68,6 +75,16 @@ export const MODULES = [
       'Works with Gmail, Outlook, and any IMAP-compatible mailbox',
     ],
   },
+  {
+    name: 'Automation & Routing',
+    features: [
+      'Auto-assign tickets by keyword, department, or sender domain',
+      'Canned response templates for common replies',
+      'Collision detection: see when another agent is typing',
+      'Auto-responder with customizable placeholders',
+      'Trigger-based escalation for overdue or urgent tickets',
+    ],
+  },
 ];
 
 export const TECH_STACK = [
@@ -86,6 +103,7 @@ export const SERVER_REQUIREMENTS = [
   { label: 'Node.js', value: '20+ (WebSocket server)' },
   { label: 'Web Server', value: 'Nginx or Apache' },
   { label: 'Min RAM', value: '2 GB' },
+  { label: 'Docker', value: 'Optional (Dockerfile included)' },
 ];
 
 export const ROLES = [
@@ -126,5 +144,29 @@ export const FAQS = [
   {
     q: 'Can I white-label Genius Support for clients?',
     a: 'Yes. The MIT license permits commercial use including client deployments. You can replace the logo, set a custom colour scheme, and run it under your own domain. There is no "Powered by Genius Support" branding requirement.',
+  },
+  {
+    q: 'Can customers submit tickets without creating an account?',
+    a: 'Yes. Genius Support includes a guest ticket form — customers submit their name, email, and message without registering. They receive a confirmation email with a secure portal link to view and reply to their ticket. They can also reply by email directly. No account, no password, no login wall.',
+  },
+  {
+    q: 'Can customers reply to their ticket without logging in?',
+    a: 'Yes, two ways. First, every agent reply is sent as an email from your domain — the customer just hits reply and the response lands in the ticket thread automatically. Second, the email includes a secure magic link that opens the ticket in the customer portal without a login screen. Both paths work without an account.',
+  },
+  {
+    q: 'Does Genius Support support SLA policies?',
+    a: 'Yes. Admins can define SLA policies per department with first-response and resolution time targets. Overdue tickets trigger escalation alerts, and the admin dashboard reports on SLA compliance, response times, and CSAT ratings.',
+  },
+  {
+    q: 'Is Genius Support GDPR compliant? Does my data stay on my server?',
+    a: 'Genius Support is fully self-hosted, so customer data, ticket correspondence, and email never leave your server. There is no third-party SaaS vendor with access to your data. This makes it suitable for teams with GDPR, HIPAA, or data-sovereignty requirements. You control retention, backups, and deletion.',
+  },
+  {
+    q: 'How do I migrate from Zendesk, Freshdesk, or osTicket?',
+    a: 'Export your ticket history as CSV from your current platform. Genius Support\u2019s installer includes an import script that maps tickets, customers, and agents. For email-based migration, connect your existing IMAP inbox and new emails flow in automatically. The full transition — including departments, agents, and knowledge base articles — typically takes under a day.',
+  },
+  {
+    q: 'What is the difference between the MIT license and AGPL used by FreeScout and Zammad?',
+    a: 'MIT is the most permissive open-source license: no restrictions on commercial use, modification, or redistribution. AGPL-3.0 (used by FreeScout and Zammad) has a network-use clause that requires you to publish source code if you modify and offer the software as a hosted service to others. For teams that want to customize and deploy without copyleft obligations, MIT is the safer choice.',
   },
 ];

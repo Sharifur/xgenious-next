@@ -1,7 +1,7 @@
 import { COLOR } from './constants';
 
 const STATS = [
-  { value: '6', label: 'Modules' },
+  { value: '7', label: 'Modules' },
   { value: '3', label: 'User Roles' },
   { value: 'IMAP', label: 'Email-to-Ticket' },
   { value: 'WebSocket', label: 'Real-Time' },

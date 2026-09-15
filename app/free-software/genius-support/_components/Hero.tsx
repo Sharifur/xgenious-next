@@ -19,16 +19,19 @@ export default function Hero() {
               MIT License
             </span>
             <span className="inline-flex items-center gap-1.5 bg-white/70 rounded-full px-4 py-1.5 border border-white text-[13px] font-medium text-[#484848]">
+              No Login Required
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white/70 rounded-full px-4 py-1.5 border border-white text-[13px] font-medium text-[#484848]">
               Laravel · PHP 8.2+
             </span>
           </div>
 
           <h1 className="text-[36px] leading-[44px] sm:text-[54px] sm:leading-[62px] lg:text-[66px] lg:leading-[74px] font-semibold text-[#0F1112]">
-            Free Support Portal Software: Open Source Helpdesk
+            Free Open Source Ticketing System
           </h1>
 
           <p className="text-[#484848] text-[16px] sm:text-[18px] leading-8 max-w-[680px]">
-            <strong>Genius Support</strong> is a complete support portal built with <strong>Laravel</strong> and <strong>Laravel Reverb</strong>. Customer portal, agent dashboard, knowledge base, email-to-ticket automation, and real-time WebSocket updates. Self-hosted, no per-agent fees, forever free.
+            <strong>Genius Support</strong> is a complete open-source support ticketing system built with <strong>Laravel</strong> and <strong>Laravel Reverb</strong>. Customers submit and reply to tickets without an account — via guest form, email, or secure portal link. Agent dashboard, knowledge base, SLA management, email-to-ticket automation, and real-time WebSocket updates. Self-hosted, MIT licensed, no per-agent fees, forever free.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
