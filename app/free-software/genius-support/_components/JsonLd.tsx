@@ -1,6 +1,7 @@
 import { CANONICAL, FAQS } from './constants';
 
 const BASE_URL = 'https://xgenious.com';
+const TRUSTPILOT_URL = 'https://www.trustpilot.com/review/xgenious.com';
 
 export default function JsonLd() {
   const software = {
@@ -11,11 +12,57 @@ export default function JsonLd() {
     applicationCategory: 'BusinessApplication',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     description:
-      'Free, open-source self-hosted support portal and ticketing system built with Laravel. Includes customer portal, agent dashboard, admin panel, knowledge base, email-to-ticket (IMAP), and real-time updates via Laravel Reverb WebSocket.',
+      'Free, open-source self-hosted support ticketing system built with Laravel. Includes customer portal with guest ticket submission (no login required), agent dashboard, admin panel, knowledge base, SLA management, email-to-ticket (IMAP), and real-time updates via Laravel Reverb WebSocket. MIT licensed.',
     url: CANONICAL,
     author: { '@type': 'Organization', name: 'Xgenious', url: BASE_URL },
     license: 'https://opensource.org/licenses/MIT',
     programmingLanguage: ['PHP'],
+    dateModified: '2026-09-15',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4',
+      reviewCount: '34',
+      bestRating: '5',
+      worstRating: '1',
+      url: TRUSTPILOT_URL,
+    },
+  };
+
+  const organization = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Xgenious LLC',
+    url: BASE_URL,
+    logo: `${BASE_URL}/logo.png`,
+    sameAs: [TRUSTPILOT_URL, 'https://github.com/xgeniousllc'],
+  };
+
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Free Software', item: `${BASE_URL}/free-software` },
+      { '@type': 'ListItem', position: 3, name: 'Genius Support', item: CANONICAL },
+    ],
+  };
+
+  const service = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Genius Support Installation & Custom Setup',
+    serviceType: 'Software Installation and Customization',
+    description:
+      'Professional installation, configuration, and white-label setup of Genius Support on your server. Includes email-to-ticket IMAP configuration, department and agent setup, branding, and deployment.',
+    provider: { '@type': 'Organization', name: 'Xgenious LLC', url: BASE_URL },
+    areaServed: 'Worldwide',
+    offers: {
+      '@type': 'Offer',
+      description: 'Custom installation and setup service. Contact for pricing.',
+      url: `${BASE_URL}/contact`,
+      availability: 'https://schema.org/InStock',
+    },
+    url: `${BASE_URL}/contact`,
   };
 
   const howTo = {
@@ -58,6 +105,9 @@ export default function JsonLd() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(software) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(service) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     </>

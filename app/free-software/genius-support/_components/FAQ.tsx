@@ -81,6 +81,8 @@ export default function FAQ() {
               <span>Related:</span>
               <Link href="/free-software/genius-hrm" className="hover:underline" style={{ color: COLOR }}>Genius HRM: Free HR Software</Link>
               <Link href="/free-software/genius-crm" className="hover:underline" style={{ color: COLOR }}>Genius CRM: Free CRM System</Link>
+              <Link href="/free-software/genius-debug" className="hover:underline" style={{ color: COLOR }}>Genius Debug: Free Error Monitoring</Link>
+              <Link href="/free-software/free-self-hosted-ecommerce-platform" className="hover:underline" style={{ color: COLOR }}>Free Ecommerce Platform</Link>
               <Link href="/products/helpnest-ai-chatbot-support-script" className="hover:underline" style={{ color: COLOR }}>Helpnest: AI Support Platform</Link>
               <a href="https://en.wikipedia.org/wiki/Issue_tracking_system" target="_blank" rel="noopener noreferrer" className="text-[#6b7280] hover:underline">Issue Tracking: Wikipedia ↗</a>
             </div>
