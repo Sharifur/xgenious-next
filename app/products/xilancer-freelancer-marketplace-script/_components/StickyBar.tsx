@@ -10,6 +10,7 @@ export default function StickyBar() {
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 600);
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
