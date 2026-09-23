@@ -101,7 +101,7 @@ export default function BundleValueNudge({
 
   return (
     <div
-      className={`fixed z-40 bottom-[240px] right-4 md:right-6 w-[min(92vw,320px)] transition-all duration-200 ease-out ${
+      className={`fixed z-40 bottom-[240px] left-4 right-4 md:left-auto md:right-6 md:w-[320px] transition-all duration-200 ease-out ${
         shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
       }`}
       role="complementary"
