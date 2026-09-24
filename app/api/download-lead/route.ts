@@ -95,6 +95,17 @@ export async function POST(req: NextRequest) {
     } catch (err) {
       console.error('License server signed URL fetch failed:', err);
     }
+
+    // Record the downloader in license server
+    try {
+      await lsFetch(`/public-api/free-software/${licenseUuid}/notify`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email }),
+      });
+    } catch (err) {
+      console.error('License server notify failed:', err);
+    }
   }
 
   const fromEmail = process.env.CONTACT_FROM_EMAIL ? `Xgenious <${process.env.CONTACT_FROM_EMAIL}>` : undefined;
