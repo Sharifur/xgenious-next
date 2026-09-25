@@ -249,6 +249,38 @@ const PRODUCTS = [
       'Two files to add a new payment, shipping, SMS, or fraud provider',
     ],
   },
+  {
+    id: 'genius-books',
+    href: '/free-software/genius-books',
+    name: 'Genius Books',
+    tagline: 'Free Open Source Accounting SaaS: Laravel 13 + React 19',
+    description:
+      'Self-hosted multi-tenant accounting: customers, products, quotes, invoices, payments, expenses, bank reconciliation, ledger & reports. 10 finance integrations (Xero, QuickBooks, FreshBooks…), REST API. MIT licensed.',
+    badge: 'Laravel 13 · React 19 · MIT',
+    stats: [
+      { label: 'Modules', value: '12+' },
+      { label: 'Tenants', value: '∞' },
+      { label: 'Integrations', value: '10' },
+      { label: 'Free Forever', value: '' },
+    ],
+    color: '#4f46e5',
+    lightColor: '#eef2ff',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+        <path d="M8 7h8M8 11h8M8 15h5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      </svg>
+    ),
+    highlights: [
+      'Multi-tenant: one install, unlimited businesses, company_id isolation',
+      'Invoices with authoritative calculator (inclusive/exclusive tax, discounts)',
+      'Payments: partial/over/multi-invoice, credit notes, refunds',
+      'Expenses, vendors, attachments, recurring — ledger-posted',
+      'Bank reconciliation: CSV import + auto-match ±3 days',
+      'REST API (Bearer gb_*) + 10 two-way SaaS syncs (Xero, QuickBooks…)',
+    ],
+  },
 ];
 
 export default function FreeSoftwarePage() {
