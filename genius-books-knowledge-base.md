@@ -1,7 +1,7 @@
 # Genius Books — Knowledge Base, Competitor Research & SEO Keywords
 
 Free, self-hosted, multi-tenant accounting software built by Xgenious (Laravel 13 + React 19, MIT).
-Landing page: `/free-software/genius-books`. Live demo: https://genius-book.xgenious.com/portal/login.
+Landing page: `/free-software/free-accounting-software` (301 from `/free-software/genius-books`). Live demo: https://genius-book.xgenious.com/portal/login.
 Source: https://github.com/XgeniousLLC/geniusBooks.
 
 ---
@@ -158,6 +158,35 @@ Screenshots (1440×, full-page, from the live demo, Nova Retail Ltd company):
 | `reports.png` | Accounts receivable + aging |
 | `integrations.png` | 10 finance integrations |
 | `api.png` | API application tokens |
+
+---
+
+## 6b. SEO audit (seo-audit + ai-seo skills) — findings & fixes
+
+Run against `/free-software/free-accounting-software` for the primary keyword **free accounting software**.
+
+| Priority | Finding | Fix applied |
+|---|---|---|
+| CRITICAL | URL was brand-only (`/free-software/genius-books`), no keyword | Changed to `/free-software/free-accounting-software` + 301 redirect from the old slug, updated nav/sitemap/listing |
+| CRITICAL | Meta description ~190 chars (over 155) | Rewritten to 140 chars with primary + secondary keywords |
+| HIGH | No 40–60 word definition block | Added extractable "What is Genius Books?" definition (49 words) after the hero |
+| HIGH | Keyword not in first 100 words / H1 not exact | H1 = "Free Accounting Software You Self-Host Forever"; hero paragraph opens with "free, open-source accounting software" |
+| HIGH | No how-to section | Added "How to Set It Up in 3 Steps" + `HowTo` JSON-LD |
+| HIGH | Only 2 internal links | Added a "More free software" block linking Genius CRM, Genius HRM and the free-software hub |
+| MEDIUM | Only 1 external link (GitHub) | Added authority links: Wikipedia (comparison of accounting software, double-entry) and Investopedia |
+| MEDIUM | No statistic/data point | Added Luca Pacioli 1494 double-entry fact with Wikipedia citation (+37% AI-citation boost) |
+| MEDIUM | Comparison table used a generic "Typical free tool" | Added named competitor table vs Akaunting, Wave, Zoho Books, Invoice Ninja |
+| MEDIUM | No `HowTo` schema; `SoftwareApplication` missing features | Added `HowTo` JSON-LD and `featureList` to `SoftwareApplication` |
+| LOW | Title 59 chars, brand-first | Title now 51 chars, primary keyword first: "Free Accounting Software — Open Source, Self-Hosted" |
+| LOW | `llms.txt` had no Genius Books entry | Added a machine-readable Genius Books section (AI presence) |
+
+Still verified: canonical, OG/Twitter, `SoftwareApplication` + `FAQPage` (8 Q&As, 40–80 words), robots allow AI bots, sitemap entry with `lastModified`.
+
+### Content gaps identified (competitor coverage we now address or should add later)
+
+- **Comparison pages** (highest AI citation rate, 33%) → added named competitor table; expand with `/free-software/quickbooks-alternative` etc. later.
+- **How-to / guides** (15%) → covered bank reconciliation and setup; future articles: "How to reconcile a bank statement", "Single-entry vs double-entry bookkeeping", "VAT/GST invoice requirements".
+- **Glossary / basics** (informational) → linked authority sources; a glossary block could capture "chart of accounts", "accounts receivable", "accrual vs cash".
 
 ---
 

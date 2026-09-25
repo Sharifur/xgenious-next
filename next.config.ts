@@ -19,6 +19,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        // Keyword-optimised URL replaced the original brand slug.
+        source: '/free-software/genius-books',
+        destination: '/free-software/free-accounting-software',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
