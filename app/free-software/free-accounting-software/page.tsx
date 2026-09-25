@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import DownloadButton from '@/components/ui/DownloadButton';
 import BookingCTA from '@/components/sections/BookingCTA';
@@ -278,16 +279,16 @@ const HOW_TO_STEPS = [
 ];
 
 const INTEGRATIONS = [
-  { name: 'Xero', api: 'api.xero.com/api.xro/2.0', entities: 'Contacts, invoices, payments, chart of accounts' },
-  { name: 'QuickBooks Online', api: 'quickbooks.api.intuit.com/v3', entities: 'Customers, invoices, payments, accounts' },
-  { name: 'FreshBooks', api: 'api.freshbooks.com', entities: 'Clients, invoices, payments' },
-  { name: 'HubSpot', api: 'api.hubapi.com', entities: 'Contacts, deals' },
-  { name: 'Zoho Books', api: 'zohoapis.com/books/v3', entities: 'Contacts, invoices, bills' },
-  { name: 'Wave', api: 'gql.waveapps.com', entities: 'Customers, invoices, transactions' },
-  { name: 'Sage Business Cloud', api: 'api.sage.com', entities: 'Customers, invoices, payments' },
-  { name: 'Oracle NetSuite', api: 'suitetalk.api.netsuite.com', entities: 'Customers, invoices, journal entries' },
-  { name: 'MYOB', api: 'api.myob.com/accountright', entities: 'Customers, invoices, payments' },
-  { name: 'Kashoo', api: 'api.kashoo.com', entities: 'Customers, invoices, expenses' },
+  { name: 'Xero', logo: '/integrations/xero.png', api: 'api.xero.com/api.xro/2.0', entities: 'Contacts, invoices, payments, chart of accounts' },
+  { name: 'QuickBooks Online', logo: '/integrations/quickbooks.png', api: 'quickbooks.api.intuit.com/v3', entities: 'Customers, invoices, payments, accounts' },
+  { name: 'FreshBooks', logo: '/integrations/freshbooks.png', api: 'api.freshbooks.com', entities: 'Clients, invoices, payments' },
+  { name: 'HubSpot', logo: '/integrations/hubspot.png', api: 'api.hubapi.com', entities: 'Contacts, deals' },
+  { name: 'Zoho Books', logo: '/integrations/zoho.png', api: 'zohoapis.com/books/v3', entities: 'Contacts, invoices, bills' },
+  { name: 'Wave', logo: '/integrations/wave.png', api: 'gql.waveapps.com', entities: 'Customers, invoices, transactions' },
+  { name: 'Sage Business Cloud', logo: '/integrations/sage.png', api: 'api.sage.com', entities: 'Customers, invoices, payments' },
+  { name: 'Oracle NetSuite', logo: '/integrations/netsuite.png', api: 'suitetalk.api.netsuite.com', entities: 'Customers, invoices, journal entries' },
+  { name: 'MYOB', logo: '/integrations/myob.png', api: 'api.myob.com/accountright', entities: 'Customers, invoices, payments' },
+  { name: 'Kashoo', logo: '/integrations/kashoo.png', api: 'api.kashoo.com', entities: 'Customers, invoices, expenses' },
 ];
 
 const TECH_STACK = [
@@ -567,8 +568,8 @@ export default function FreeAccountingSoftwarePage() {
             {INTEGRATIONS.map((i) => (
               <div key={i.name} className="rounded-2xl border border-[#E5E7EC] bg-white p-5 hover:border-[#c7d2fe] hover:shadow-[0_6px_24px_rgba(79,70,229,0.08)] transition-all">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-[13px] font-bold text-white" style={{ background: COLOR }}>
-                    {i.name.charAt(0)}
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-white border border-[#E5E7EC] overflow-hidden">
+                    <Image src={i.logo} alt={`${i.name} logo`} width={28} height={28} className="object-contain" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-[14px] font-semibold text-[#0F1112] leading-tight">{i.name}</p>
