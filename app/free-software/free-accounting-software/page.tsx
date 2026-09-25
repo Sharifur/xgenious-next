@@ -14,7 +14,7 @@ const DEMO_URL = 'https://genius-book.xgenious.com/portal/login';
 const REPO_URL = 'https://github.com/XgeniousLLC/geniusBooks';
 
 export const metadata: Metadata = {
-  title: 'Free Accounting Software — Open Source, Self-Hosted',
+  title: 'Free Accounting Software — Open Source, MIT',
   description:
     'Download free, self-hosted accounting software with unlimited invoices, expenses, ledgers and reports. Multi-tenant, REST API, MIT licensed.',
   metadataBase: new URL(BASE_URL),
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Accounting Software — Open Source, Self-Hosted',
+  title: 'Free Accounting Software — Open Source, MIT',
     description: 'Unlimited invoices and businesses, REST API and 10 finance integrations. Self-hosted, MIT licensed.',
     images: ['/og-image.png'],
   },
