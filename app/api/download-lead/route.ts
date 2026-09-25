@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
 
     // Record the downloader in license server
     try {
-      await lsFetch(`/public-api/free-software/${licenseUuid}/notify`, {
+      await lsFetch(`/free-software/${licenseUuid}/notify`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),
