@@ -1,36 +1,39 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import DownloadButton from '@/components/ui/DownloadButton';
 import BookingCTA from '@/components/sections/BookingCTA';
 import ScreenshotGallery from '@/components/ui/ScreenshotGallery';
 
 const BASE_URL = 'https://xgenious.com';
+const PATH = '/free-software/free-accounting-software';
 const COLOR = '#4f46e5';
 const LIGHT_COLOR = '#eef2ff';
 const GITHUB_URL = 'https://github.com/XgeniousLLC/geniusBooks/archive/refs/tags/v1.0.0.zip';
 const LICENSE_UUID = '56704006-b4c5-4fbb-9b82-0b95d0437014';
 const DEMO_URL = 'https://genius-book.xgenious.com/portal/login';
+const DOCS_URL = 'https://xgeniousllc.github.io/geniusBooks/';
 const REPO_URL = 'https://github.com/XgeniousLLC/geniusBooks';
 
 export const metadata: Metadata = {
-  title: 'Free Open Source Accounting Software: Laravel 13 + React 19',
+  title: 'Free Accounting Software — Open Source, MIT',
   description:
-    'Download free self-hosted accounting software. Multi-tenant, invoices, payments, expenses, bank reconciliation, ledger & reports. 10 finance integrations (Xero, QuickBooks, HubSpot, FreshBooks), REST API. MIT licensed.',
+    'Download free, self-hosted accounting software with unlimited invoices, expenses, ledgers and reports. Multi-tenant, REST API, MIT licensed.',
   metadataBase: new URL(BASE_URL),
-  alternates: { canonical: `${BASE_URL}/free-software/genius-books` },
+  alternates: { canonical: `${BASE_URL}${PATH}` },
   openGraph: {
-    title: 'Free Open Source Accounting Software: Laravel 13 + React 19 | Xgenious',
+    title: 'Free Accounting Software — Open Source, Self-Hosted | Xgenious',
     description:
-      'Self-hosted QuickBooks/Xero alternative with unlimited invoices, unlimited businesses, full REST API and 10 two-way finance integrations. No per-seat fees, MIT licensed.',
-    url: `${BASE_URL}/free-software/genius-books`,
+      'Self-hosted QuickBooks, Xero, Wave and Akaunting alternative: unlimited invoices and businesses, a REST API and 10 two-way finance integrations. MIT licensed.',
+    url: `${BASE_URL}${PATH}`,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Open Source Accounting Software: Laravel 13 + React 19',
-    description: 'Self-hosted accounting SaaS: invoices, payments, expenses, ledger, reports, API + 10 integrations. MIT licensed.',
+  title: 'Free Accounting Software — Open Source, MIT',
+    description: 'Unlimited invoices and businesses, REST API and 10 finance integrations. Self-hosted, MIT licensed.',
     images: ['/og-image.png'],
   },
   keywords: [
@@ -40,51 +43,103 @@ export const metadata: Metadata = {
     'self hosted accounting software',
     'free invoicing software',
     'free bookkeeping software',
-    'multi-tenant accounting saas',
+    'multi-tenant accounting software',
     'laravel accounting software',
     'accounting software with api',
     'quickbooks alternative',
     'xero alternative',
+    'akaunting alternative',
     'wave accounting alternative',
     'zoho books alternative',
-    'akaunting alternative',
-    'free invoice management software',
-    'free expense tracking software',
-    'bank reconciliation software free',
-    'free accounting software with xero integration',
-    'download accounting software source code',
-    'MIT licensed accounting software',
+    'invoice ninja alternative',
   ],
 };
+
+// 40–60 word definition block (extractable by AI answer engines).
+const DEFINITION =
+  'Genius Books is free, open-source accounting software you self-host on your own server. It covers customers, quotes, invoices, payments, expenses, bank reconciliation, a chart of accounts, a double-entry-style ledger and financial reports — unlimited businesses and invoices, MIT licensed, with no subscription and no per-seat fees.';
 
 const softwareSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'Genius Books',
   operatingSystem: 'Linux, Windows, macOS',
-  applicationCategory: 'BusinessApplication',
+  applicationCategory: 'FinanceApplication',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  description:
-    'Free self-hosted multi-tenant accounting software — customers, quotes, invoices, payments, expenses, bank reconciliation, chart of accounts, ledger and reports. 10 finance integrations and a full REST API.',
-  url: `${BASE_URL}/free-software/genius-books`,
+  description: DEFINITION,
+  url: `${BASE_URL}${PATH}`,
   author: { '@type': 'Organization', name: 'Xgenious', url: BASE_URL },
   license: 'https://opensource.org/licenses/MIT',
   programmingLanguage: ['PHP', 'TypeScript'],
   sameAs: [REPO_URL],
+  featureList: [
+    'Multi-tenant accounting for unlimited businesses',
+    'Invoicing with authoritative server-side totals and tax',
+    'Payments, allocations and customer credit',
+    'Expenses and vendor management',
+    'Bank reconciliation with CSV import and auto-match',
+    'Chart of accounts and general ledger',
+    'Financial reports: P&L, receivables aging, tax summary',
+    'REST API with company-scoped Bearer tokens',
+    '10 two-way finance integrations (Xero, QuickBooks, HubSpot and more)',
+  ],
 };
+
+const FAQ = [
+  {
+    q: 'Is Genius Books really free with no invoice limits?',
+    a: 'Yes. Genius Books is MIT licensed with no paid tier and no feature locks. You get unlimited businesses, customers, invoices, payments and expenses, plus the full REST API and all ten finance integrations. Nothing is gated behind an upgrade, an email signup or a per-seat fee.',
+  },
+  {
+    q: 'Is it a good QuickBooks, Xero, Wave or Akaunting alternative?',
+    a: 'It covers the same core workflows — invoicing, payments, expenses, bank reconciliation, chart of accounts, profit and loss and receivables aging — and unlike most free tools it is self-hosted, multi-tenant and ships a full REST API at no cost. If you need to own your financial data, it is a strong alternative.',
+  },
+  {
+    q: 'Does it support multiple companies?',
+    a: 'Yes. Genius Books is multi-tenant from the ground up. One installation hosts unlimited businesses with strict company_id isolation, a company switcher and per-company roles. Accountants and agencies can serve many clients from a single deployment without any data leaking between them.',
+  },
+  {
+    q: 'Can I sync with Xero, QuickBooks or HubSpot?',
+    a: 'Yes. Ten finance platforms support two-way push and pull sync: Xero, QuickBooks Online, FreshBooks, HubSpot, Zoho Books, Wave, Sage Business Cloud, Oracle NetSuite, MYOB and Kashoo. Access tokens are encrypted at rest and every sync is written to an audit log.',
+  },
+  {
+    q: 'Is there an API for building integrations?',
+    a: 'Yes. Create company-scoped Bearer tokens under Settings → API applications and call /api/v1 for customers, products, quotes, invoices, payments, expenses, vendors and transactions. Responses are paginated JSON, tokens are revocable and an expiry can be set. The API uses the same ledger-backed services as the interface.',
+  },
+  {
+    q: 'Can I self-host on shared hosting or a VPS?',
+    a: 'Yes. PHP 8.4 with MySQL 8 runs on any VPS using Nginx or Apache, and shared cPanel hosting works too. On shared hosting the queue is driven from cron with queue:work --stop-when-empty and the scheduler runs every minute. No Docker or external service is required.',
+  },
+  {
+    q: 'Can I modify the source code?',
+    a: 'Yes. The complete Laravel and React source is included under the MIT license. You can modify it, white-label it, redistribute it or build commercial products on top with no restrictions — unlike source-available tools such as Invoice Ninja (Elastic License v2) or Manager.io (FSL).',
+  },
+  {
+    q: 'How do I upgrade when a new version is released?',
+    a: 'Pull the latest code, run composer install and npm run build, then php artisan migrate. The project follows semantic versioning with tagged releases and ships a migration guide per release. There is no licence server or activation step to re-verify after an upgrade.',
+  },
+];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: 'Is Genius Books really free with no invoice limits?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. MIT licensed with no paid tier and no feature locks. Unlimited businesses, customers, invoices, payments and expenses. Every module in the public repository is free.' } },
-    { '@type': 'Question', name: 'Is it a good QuickBooks, Xero or Wave alternative?', acceptedAnswer: { '@type': 'Answer', text: 'Genius Books covers the same core workflows (invoicing, payments, expenses, bank reconciliation, chart of accounts, P&L and receivables) and, unlike most cloud tools, it is self-hosted, multi-tenant and includes a full REST API at no cost.' } },
-    { '@type': 'Question', name: 'Does it support multiple companies?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. It is built multi-tenant from the ground up: one installation can host unlimited businesses with strict company_id isolation, a company switcher and per-company roles (Owner, Accountant, Staff).' } },
-    { '@type': 'Question', name: 'Can I sync with Xero, QuickBooks or HubSpot?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Ten finance platforms are supported for two-way push/pull sync: Xero, QuickBooks Online, FreshBooks, HubSpot, Zoho Books, Wave, Sage Business Cloud, Oracle NetSuite, MYOB and Kashoo. Tokens are encrypted and every sync is logged.' } },
-    { '@type': 'Question', name: 'Is there an API for building integrations?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Create Bearer tokens under Settings → API applications and call /api/v1 for customers, products, quotes, invoices, payments, expenses, vendors and the ledger. Tokens are company-scoped and revocable.' } },
-    { '@type': 'Question', name: 'Can I self-host on shared hosting or a VPS?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. PHP 8.4 + MySQL runs on any VPS (Nginx or Apache). Shared cPanel hosting works too — the queue runs from cron with --stop-when-empty. No Docker is required.' } },
-    { '@type': 'Question', name: 'Can I modify the source code?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The full Laravel + React source is included under the MIT license. Modify, white-label, redistribute or build commercial products on top with no restrictions.' } },
-    { '@type': 'Question', name: 'How do I upgrade when a new version is released?', acceptedAnswer: { '@type': 'Answer', text: 'Pull the latest code, run composer install and npm run build, then php artisan migrate. The project uses semantic versioning and ships migration guides per release.' } },
+  mainEntity: FAQ.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to set up free self-hosted accounting software',
+  description: 'Install Genius Books on your own server and start invoicing in three steps.',
+  totalTime: 'PT30M',
+  step: [
+    { '@type': 'HowToStep', name: 'Install and host', text: 'Download the source, run composer install and npm run build, configure the .env database credentials and run php artisan migrate.' },
+    { '@type': 'HowToStep', name: 'Create your business', text: 'Register, verify your email and complete the three-step wizard: business details, currency and financial year, then tax and invoice numbering. Invite your team.' },
+    { '@type': 'HowToStep', name: 'Run your books', text: 'Add customers and products, raise invoices, record and allocate payments, import and reconcile bank statements, then read the profit and loss and receivables reports.' },
   ],
 };
 
@@ -140,7 +195,7 @@ const MODULES = [
   {
     name: 'Payments & Credit',
     features: [
-      'Partial, over- and multi-invoice settlement with payment_allocations',
+      'Partial, over- and multi-invoice settlement with payment allocations',
       'Unapplied credit becomes visible customer credit',
       'Idempotent recording protects against double-submits',
       'Void with automatic ledger reversal and invoice recompute',
@@ -171,7 +226,7 @@ const MODULES = [
     name: 'Chart of Accounts & Ledger',
     features: [
       'Assets, Liabilities, Equity, Revenue and Expenses with parent/child hierarchy',
-      'LedgerPostingService is the single writer for every money movement',
+      'A single ledger service is the only writer for every money movement',
       'Paired transfers and counter-entry reversals keep history intact',
       'Unified transaction list with type, direction, account, date and text filters',
       'Manual transfers, adjustments and direct income posting',
@@ -209,67 +264,32 @@ const MODULES = [
   },
 ];
 
+const HOW_TO_STEPS = [
+  {
+    title: 'Install and host',
+    body: 'Download the source, run composer install and npm run build, set your database credentials in .env, then run php artisan migrate. Works on a VPS or shared cPanel hosting with no Docker.',
+  },
+  {
+    title: 'Create your business',
+    body: 'Register and complete the three-step wizard: business details, currency and financial year, then tax and invoice numbering. Invite accountants and staff with the right role.',
+  },
+  {
+    title: 'Run your books',
+    body: 'Add customers and products, raise invoices, record and allocate payments, import bank statements and reconcile them, then review profit and loss and receivables aging.',
+  },
+];
+
 const INTEGRATIONS = [
-  {
-    name: 'Xero',
-    api: 'api.xero.com/api.xro/2.0',
-    entities: 'Contacts, invoices, payments, chart of accounts',
-    note: 'Keep Xero and Genius Books in step in both directions.',
-  },
-  {
-    name: 'QuickBooks Online',
-    api: 'quickbooks.api.intuit.com/v3',
-    entities: 'Customers, invoices, payments, accounts',
-    note: 'Two-way sync with the world’s most-used small-business accounting tool.',
-  },
-  {
-    name: 'FreshBooks',
-    api: 'api.freshbooks.com',
-    entities: 'Clients, invoices, payments',
-    note: 'Ideal for service businesses already invoicing in FreshBooks.',
-  },
-  {
-    name: 'HubSpot',
-    api: 'api.hubapi.com',
-    entities: 'Contacts, deals',
-    note: 'Push billing customers and pull CRM contacts automatically.',
-  },
-  {
-    name: 'Zoho Books',
-    api: 'zohoapis.com/books/v3',
-    entities: 'Contacts, invoices, bills',
-    note: 'Sync customers and invoices with the Zoho finance suite.',
-  },
-  {
-    name: 'Wave',
-    api: 'gql.waveapps.com',
-    entities: 'Customers, invoices, transactions',
-    note: 'A free-to-free bridge for teams moving off Wave.',
-  },
-  {
-    name: 'Sage Business Cloud',
-    api: 'api.sage.com',
-    entities: 'Customers, invoices, payments',
-    note: 'Enterprise-ready accounting sync for Sage users.',
-  },
-  {
-    name: 'Oracle NetSuite',
-    api: 'suitetalk.api.netsuite.com',
-    entities: 'Customers, invoices, journal entries',
-    note: 'Connect Genius Books to a NetSuite back office.',
-  },
-  {
-    name: 'MYOB',
-    api: 'api.myob.com/accountright',
-    entities: 'Customers, invoices, payments',
-    note: 'Built for Australian and New Zealand accounting workflows.',
-  },
-  {
-    name: 'Kashoo',
-    api: 'api.kashoo.com',
-    entities: 'Customers, invoices, expenses',
-    note: 'Straightforward two-way sync for Kashoo books.',
-  },
+  { name: 'Xero', logo: '/integrations/xero.png', api: 'api.xero.com/api.xro/2.0', entities: 'Contacts, invoices, payments, chart of accounts' },
+  { name: 'QuickBooks Online', logo: '/integrations/quickbooks.png', api: 'quickbooks.api.intuit.com/v3', entities: 'Customers, invoices, payments, accounts' },
+  { name: 'FreshBooks', logo: '/integrations/freshbooks.png', api: 'api.freshbooks.com', entities: 'Clients, invoices, payments' },
+  { name: 'HubSpot', logo: '/integrations/hubspot.png', api: 'api.hubapi.com', entities: 'Contacts, deals' },
+  { name: 'Zoho Books', logo: '/integrations/zoho.png', api: 'zohoapis.com/books/v3', entities: 'Contacts, invoices, bills' },
+  { name: 'Wave', logo: '/integrations/wave.png', api: 'gql.waveapps.com', entities: 'Customers, invoices, transactions' },
+  { name: 'Sage Business Cloud', logo: '/integrations/sage.png', api: 'api.sage.com', entities: 'Customers, invoices, payments' },
+  { name: 'Oracle NetSuite', logo: '/integrations/netsuite.png', api: 'suitetalk.api.netsuite.com', entities: 'Customers, invoices, journal entries' },
+  { name: 'MYOB', logo: '/integrations/myob.png', api: 'api.myob.com/accountright', entities: 'Customers, invoices, payments' },
+  { name: 'Kashoo', logo: '/integrations/kashoo.png', api: 'api.kashoo.com', entities: 'Customers, invoices, expenses' },
 ];
 
 const TECH_STACK = [
@@ -281,7 +301,7 @@ const TECH_STACK = [
   { name: 'Barryvdh DomPDF', role: 'Invoice and report PDFs' },
   { name: 'Vite 7', role: 'Frontend build pipeline' },
   { name: 'Laravel Queue', role: 'Email, reminders, recurring jobs' },
-  { name: 'Stripe (no SDK)', role: 'Online invoice payments + webhooks' },
+  { name: 'Stripe', role: 'Online invoice payments + webhooks' },
 ];
 
 const SERVER_REQUIREMENTS = [
@@ -298,14 +318,14 @@ const ROLES = [
   { role: 'Staff', desc: 'Day-to-day selling and spending: customers, products, invoices, payments and expenses. Cannot void payments, manage accounts or view reports.' },
 ];
 
-const COMPARISON = [
-  { feature: 'License', genius: 'MIT — fully open source', typical: 'Freemium / open-core, paid apps' },
-  { feature: 'Hosting', genius: 'Self-hosted, your server', typical: 'Vendor cloud only' },
-  { feature: 'Businesses per install', genius: 'Unlimited (multi-tenant)', typical: 'One company per account' },
-  { feature: 'Invoices', genius: 'Unlimited', typical: 'Capped on free tiers' },
-  { feature: 'REST API', genius: 'Included, company-scoped tokens', typical: 'Paid plan or partner app' },
-  { feature: 'Finance integrations', genius: '10 two-way syncs included', typical: 'Limited or marketplace paid' },
-  { feature: 'Data ownership', genius: 'Yours, export anytime (CSV/PDF)', typical: 'Vendor-held' },
+const COMPETITORS = [
+  { feature: 'License', genius: 'MIT (true open source)', akaunting: 'Open source + paid apps', wave: 'Proprietary', zoho: 'Proprietary (free tier)', invoiceninja: 'Elastic License v2' },
+  { feature: 'Self-hosted', genius: 'Yes', akaunting: 'Yes', wave: 'No', zoho: 'No', invoiceninja: 'Yes' },
+  { feature: 'Multi-tenant (multi-company)', genius: 'Unlimited', akaunting: 'Multi-company', wave: 'One', zoho: 'Paid', invoiceninja: 'Multi' },
+  { feature: 'Unlimited invoices', genius: 'Yes', akaunting: 'Yes', wave: 'Yes', zoho: '~1,000/yr free', invoiceninja: 'Yes' },
+  { feature: 'Full accounting (ledger, P&L, aging)', genius: 'Yes', akaunting: 'Yes', wave: 'Yes', zoho: 'Yes', invoiceninja: 'Invoicing-first' },
+  { feature: 'REST API on free tier', genius: 'Included', akaunting: 'Paid app', wave: 'No public API', zoho: 'Paid/partner', invoiceninja: 'Yes' },
+  { feature: 'Finance integrations included', genius: '10 two-way', akaunting: 'Marketplace (paid)', wave: 'Limited', zoho: 'Own suite', invoiceninja: 'Automation platforms' },
 ];
 
 function CheckIcon({ color }: { color: string }) {
@@ -317,11 +337,12 @@ function CheckIcon({ color }: { color: string }) {
   );
 }
 
-export default function GeniusBooksPage() {
+export default function FreeAccountingSoftwarePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
 
       {/* Hero */}
       <section
@@ -347,14 +368,15 @@ export default function GeniusBooksPage() {
             </div>
 
             <h1 className="text-[36px] leading-[44px] sm:text-[54px] sm:leading-[62px] lg:text-[66px] lg:leading-[74px] font-semibold text-[#0F1112]">
-              Free Open-Source Accounting Software: Self-Hosted Forever
+              Free Accounting Software You Self-Host Forever
             </h1>
 
             <p className="text-[#484848] text-[16px] sm:text-[18px] leading-8 max-w-[700px]">
-              A complete, self-hosted accounting platform for small businesses, accountants and agencies.
-              Customers, quotes, invoices, payments, expenses, bank reconciliation, ledger and reports —
-              <strong> plus 10 two-way finance integrations and a full REST API</strong>. Built with
-              <strong> Laravel 13</strong> and <strong>React 19</strong>. No per-seat pricing. No invoice caps. Your data on your server.
+              Genius Books is <strong>free, open-source accounting software</strong> for small businesses,
+              accountants and agencies. Customers, quotes, invoices, payments, expenses, bank reconciliation,
+              ledger and reports — <strong>plus 10 two-way finance integrations and a full REST API</strong>.
+              Built with <strong>Laravel 13</strong> and <strong>React 19</strong>. No per-seat pricing, no invoice caps,
+              your data on your server.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 mt-2 flex-wrap justify-center">
@@ -381,15 +403,16 @@ export default function GeniusBooksPage() {
                 Try Live Demo
               </a>
               <a
-                href={REPO_URL}
+                href={DOCS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white border border-[#E5E7EC] text-[#0F1112] font-semibold text-[15px] rounded-full px-8 py-4 transition-all hover:border-[#0F1112]"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12.01 12.01 0 0024 12.5C24 5.87 18.63.5 12 .5z" />
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                View Source
+                Documentation
               </a>
             </div>
 
@@ -421,6 +444,18 @@ export default function GeniusBooksPage() {
         </div>
       </section>
 
+      {/* Definition block (AI-extractable) */}
+      <section className="py-14 sm:py-16 bg-white">
+        <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[860px] mx-auto">
+          <h2 className="text-[24px] sm:text-[30px] font-semibold text-[#0F1112] mb-4 text-center">
+            What is Genius Books?
+          </h2>
+          <p className="text-[17px] text-[#374151] leading-8 text-center">
+            {DEFINITION}
+          </p>
+        </div>
+      </section>
+
       {/* Screenshots */}
       <section className="py-16 sm:py-20 bg-white">
         <div className="container-page px-4 sm:px-6 lg:px-0">
@@ -439,88 +474,17 @@ export default function GeniusBooksPage() {
           <ScreenshotGallery
             demoUrl={DEMO_URL}
             screenshots={[
-              {
-                src: '/site-images/free-software/genius-books/dashboard.png',
-                alt: 'Genius Books dashboard showing revenue, expenses, outstanding and overdue KPIs, revenue vs expenses chart, expense breakdown, recent transactions and outstanding invoices',
-                title: 'Financial Dashboard',
-                description: 'KPIs, revenue vs expenses, expense breakdown and outstanding invoices at a glance',
-              },
-              {
-                src: '/site-images/free-software/genius-books/invoices.png',
-                alt: 'Genius Books invoice list with search, customer and status filters, invoice numbers, issue and due dates, status badges and totals',
-                title: 'Invoice Management',
-                description: 'Filter by customer and status, track Draft, Sent, Partially paid and Overdue',
-              },
-              {
-                src: '/site-images/free-software/genius-books/invoice-builder.png',
-                alt: 'Genius Books new invoice form with customer, issue and due dates, dynamic line items, line and invoice discounts, tax percentage and a live totals summary',
-                title: 'Invoice Builder',
-                description: 'Line items, discounts, inclusive/exclusive tax and a live totals summary',
-              },
-              {
-                src: '/site-images/free-software/genius-books/payments.png',
-                alt: 'Genius Books payments list showing received payments with customer, account, method, reference and allocated amounts',
-                title: 'Payments & Credit',
-                description: 'Partial, over- and multi-invoice settlement with unapplied customer credit',
-              },
-              {
-                src: '/site-images/free-software/genius-books/expenses.png',
-                alt: 'Genius Books expenses list with categories, vendors, accounts, dates, tax and amounts, plus a filtered total',
-                title: 'Expenses & Vendors',
-                description: 'Categorised spending, receipts, vendors and recurring expenses posted to the ledger',
-              },
-              {
-                src: '/site-images/free-software/genius-books/transactions.png',
-                alt: 'Genius Books unified transaction ledger with type, direction, account, date and source document filters',
-                title: 'Ledger & Transactions',
-                description: 'One auditable ledger for every money movement, with source drill-through',
-              },
-              {
-                src: '/site-images/free-software/genius-books/reports.png',
-                alt: 'Genius Books accounts receivable report with outstanding, overdue and opening balances, aging buckets and an open invoices list',
-                title: 'Reports & Aging',
-                description: 'Receivables aging, P&L, tax summary and general ledger with CSV/PDF export',
-              },
-              {
-                src: '/site-images/free-software/genius-books/integrations.png',
-                alt: 'Genius Books finance integrations page listing Xero, QuickBooks Online, FreshBooks, HubSpot, Zoho Books, Wave, Sage, NetSuite, MYOB and Kashoo with connect controls',
-                title: '10 Finance Integrations',
-                description: 'Connect Xero, QuickBooks, HubSpot and 7 more for two-way sync',
-              },
-              {
-                src: '/site-images/free-software/genius-books/api.png',
-                alt: 'Genius Books API applications page for creating company-scoped Bearer tokens used by the REST API at /api/v1',
-                title: 'REST API Tokens',
-                description: 'Issue company-scoped Bearer tokens for the full /api/v1 REST API',
-              },
+              { src: '/site-images/free-software/genius-books/dashboard.png', alt: 'Genius Books accounting dashboard with revenue, expenses, outstanding and overdue KPIs, revenue vs expenses chart, expense breakdown and outstanding invoices', title: 'Financial Dashboard', description: 'KPIs, revenue vs expenses, expense breakdown and outstanding invoices' },
+              { src: '/site-images/free-software/genius-books/invoices.png', alt: 'Free accounting software invoice list with search, customer and status filters, invoice numbers, dates, status badges and totals', title: 'Invoice Management', description: 'Filter by customer and status; track Draft, Sent, Partially paid and Overdue' },
+              { src: '/site-images/free-software/genius-books/invoice-builder.png', alt: 'New invoice form with customer, issue and due dates, dynamic line items, line and invoice discounts, tax percentage and a live totals summary', title: 'Invoice Builder', description: 'Line items, discounts, inclusive/exclusive tax and live totals' },
+              { src: '/site-images/free-software/genius-books/payments.png', alt: 'Payments list showing received payments with customer, account, method, reference and allocated amounts', title: 'Payments & Credit', description: 'Partial, over- and multi-invoice settlement with customer credit' },
+              { src: '/site-images/free-software/genius-books/expenses.png', alt: 'Expenses list with categories, vendors, accounts, dates, tax and amounts plus a filtered total', title: 'Expenses & Vendors', description: 'Categorised spending, receipts, vendors and recurring expenses' },
+              { src: '/site-images/free-software/genius-books/transactions.png', alt: 'Unified transaction ledger with type, direction, account, date and source document filters', title: 'Ledger & Transactions', description: 'One auditable ledger for every money movement with source drill-through' },
+              { src: '/site-images/free-software/genius-books/reports.png', alt: 'Accounts receivable report with outstanding, overdue and opening balances, aging buckets and an open invoices list', title: 'Reports & Aging', description: 'Receivables aging, P&L, tax summary and general ledger with CSV/PDF export' },
+              { src: '/site-images/free-software/genius-books/integrations.png', alt: 'Finance integrations page listing Xero, QuickBooks Online, FreshBooks, HubSpot, Zoho Books, Wave, Sage, NetSuite, MYOB and Kashoo', title: '10 Finance Integrations', description: 'Connect Xero, QuickBooks, HubSpot and 7 more for two-way sync' },
+              { src: '/site-images/free-software/genius-books/api.png', alt: 'API applications page for creating company-scoped Bearer tokens used by the REST API at /api/v1', title: 'REST API Tokens', description: 'Issue company-scoped Bearer tokens for the full /api/v1 REST API' },
             ]}
           />
-        </div>
-      </section>
-
-      {/* What is it */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[820px] mx-auto">
-          <h2 className="text-[28px] sm:text-[36px] font-semibold text-[#0F1112] mb-5 text-center">
-            What is Genius Books?
-          </h2>
-          <p className="text-[16px] text-[#484848] leading-8 mb-5">
-            Genius Books is a free, open-source accounting platform built with <strong>Laravel 13</strong>,
-            <strong> React 19</strong> and <strong>Inertia.js</strong>. Each business gets a fully isolated
-            workspace covering the complete workflow: Business → Customers → Products &amp; Services → Quotes →
-            Invoices → Payments → Expenses → Transactions → Reports.
-          </p>
-          <p className="text-[16px] text-[#484848] leading-8 mb-5">
-            Unlike cloud-only tools that cap invoices or lock features, Genius Books is self-hosted and
-            <strong> multi-tenant</strong> — one installation can serve unlimited businesses with strict
-            <code className="mx-1 rounded bg-[#f1f5f9] px-1.5 py-0.5 text-[14px]">company_id</code>
-            isolation. All money moves through a single ledger service with integer minor units, void-with-reason
-            and fully derived balances, so the books stay trustworthy and auditable.
-          </p>
-          <p className="text-[16px] text-[#484848] leading-8">
-            It is MIT licensed: deploy on a VPS or cPanel, fork the codebase, white-label it or build commercial
-            products on top — with no licensing costs, no per-seat fees and no vendor lock-in.
-          </p>
         </div>
       </section>
 
@@ -535,7 +499,6 @@ export default function GeniusBooksPage() {
               From the first customer to the annual reports — every accounting workflow is built in and ready to use.
             </p>
           </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {MODULES.map((mod) => (
               <div key={mod.name} className="bg-white rounded-2xl border border-[#E5E7EC] p-6">
@@ -562,8 +525,33 @@ export default function GeniusBooksPage() {
         </div>
       </section>
 
+      {/* How to use — 3 steps */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[960px] mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-[28px] sm:text-[38px] font-semibold text-[#0F1112]">
+              How to Set It Up in 3 Steps
+            </h2>
+            <p className="text-[#484848] text-[15px] mt-3 max-w-[560px] mx-auto leading-7">
+              Self-hosting free accounting software takes about 30 minutes — no Docker, no Kubernetes.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {HOW_TO_STEPS.map((step, i) => (
+              <div key={step.title} className="rounded-2xl border border-[#E5E7EC] bg-white p-6">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold mb-4" style={{ background: COLOR }}>
+                  {i + 1}
+                </div>
+                <h3 className="text-[15px] font-semibold text-[#0F1112] mb-2">{step.title}</h3>
+                <p className="text-[13px] text-[#484848] leading-6">{step.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Integrations — detailed */}
-      <section id="integrations" className="py-16 sm:py-20 bg-white">
+      <section id="integrations" className="py-16 sm:py-20 bg-[#f9fafb]">
         <div className="container-page px-4 sm:px-6 lg:px-0">
           <div className="text-center mb-12">
             <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[12px] font-medium mb-4" style={{ background: LIGHT_COLOR, color: COLOR }}>
@@ -582,21 +570,20 @@ export default function GeniusBooksPage() {
             {INTEGRATIONS.map((i) => (
               <div key={i.name} className="rounded-2xl border border-[#E5E7EC] bg-white p-5 hover:border-[#c7d2fe] hover:shadow-[0_6px_24px_rgba(79,70,229,0.08)] transition-all">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-[13px] font-bold text-white" style={{ background: COLOR }}>
-                    {i.name.charAt(0)}
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-white border border-[#E5E7EC] overflow-hidden">
+                    <Image src={i.logo} alt={`${i.name} logo`} width={28} height={28} className="object-contain" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-[14px] font-semibold text-[#0F1112] leading-tight">{i.name}</p>
                     <p className="text-[11px] text-[#6b7280] font-mono truncate">{i.api}</p>
                   </div>
                 </div>
-                <p className="text-[12px] font-medium text-[#4f46e5] mb-1.5">Syncs: {i.entities}</p>
-                <p className="text-[13px] text-[#484848] leading-5">{i.note}</p>
+                <p className="text-[12px] font-medium text-[#4f46e5] leading-5">Syncs: {i.entities}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-10 max-w-[900px] mx-auto rounded-2xl border border-[#E5E7EC] bg-[#f9fafb] p-6 sm:p-8">
+          <div className="mt-10 max-w-[900px] mx-auto rounded-2xl border border-[#E5E7EC] bg-white p-6 sm:p-8">
             <h3 className="text-[16px] font-semibold text-[#0F1112] mb-4">How two-way sync works</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
@@ -623,7 +610,7 @@ export default function GeniusBooksPage() {
       </section>
 
       {/* API */}
-      <section id="api" className="py-16 sm:py-20 bg-[#f9fafb]">
+      <section id="api" className="py-16 sm:py-20 bg-white">
         <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1000px] mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-[28px] sm:text-[38px] font-semibold text-[#0F1112]">
@@ -635,17 +622,17 @@ export default function GeniusBooksPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div className="rounded-2xl border border-[#E5E7EC] bg-white p-6">
+            <div className="rounded-2xl border border-[#E5E7EC] bg-[#f9fafb] p-6">
               <h3 className="text-[15px] font-semibold text-[#0F1112] mb-3">Endpoints</h3>
               <div className="space-y-2 text-[13px] text-[#484848]">
-                {['GET /api/v1/me', 'customers', 'products', 'quotes', 'invoices', 'payments (+void)', 'expenses (+void)', 'vendors', 'transactions (+transfer / income / adjustment)'].map((e) => (
+                {['GET /api/v1/me', '/api/v1/customers', '/api/v1/products', '/api/v1/quotes', '/api/v1/invoices', '/api/v1/payments (+void)', '/api/v1/expenses (+void)', '/api/v1/vendors', '/api/v1/transactions (+transfer / income / adjustment)'].map((e) => (
                   <div key={e} className="flex items-start gap-2">
                     <CheckIcon color={COLOR} />
-                    <span className="font-mono">{e.startsWith('GET') ? e : `/api/v1/${e}`}</span>
+                    <span className="font-mono">{e}</span>
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-[12px] text-[#6b7280]">JSON, paginated with <code className="rounded bg-[#f1f5f9] px-1">?page=1&amp;per_page=15</code> (max 100).</p>
+              <p className="mt-4 text-[12px] text-[#6b7280]">JSON, paginated with <code className="rounded bg-white px-1">?page=1&amp;per_page=15</code> (max 100).</p>
             </div>
             <div className="rounded-2xl border border-[#E5E7EC] bg-[#0f172a] p-6 overflow-x-auto">
               <p className="text-[12px] text-[#94a3b8] mb-3">Create a customer</p>
@@ -668,32 +655,39 @@ export default function GeniusBooksPage() {
         </div>
       </section>
 
-      {/* Comparison */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[900px] mx-auto">
+      {/* Comparison — named competitors */}
+      <section className="py-16 sm:py-20 bg-[#f9fafb]">
+        <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1040px] mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-[28px] sm:text-[36px] font-semibold text-[#0F1112]">
-              How Genius Books Compares
+              Genius Books vs Other Free Accounting Software
             </h2>
-            <p className="text-[#484848] text-[15px] mt-3 max-w-[620px] mx-auto leading-7">
-              A self-hosted, MIT-licensed alternative to freemium and open-core accounting tools.
+            <p className="text-[#484848] text-[15px] mt-3 max-w-[680px] mx-auto leading-7">
+              A side-by-side look at the most common free and open-source options: Akaunting, Wave, Zoho Books
+              and Invoice Ninja. Source: each vendor&rsquo;s public pricing and documentation, September 2026.
             </p>
           </div>
-          <div className="overflow-hidden rounded-2xl border border-[#E5E7EC]">
-            <table className="w-full text-left">
+          <div className="overflow-x-auto rounded-2xl border border-[#E5E7EC] bg-white">
+            <table className="w-full text-left min-w-[760px]">
               <thead>
                 <tr className="bg-[#f9fafb] text-[12px] uppercase tracking-wider text-[#6b7280]">
                   <th className="px-4 py-3 font-semibold">Feature</th>
                   <th className="px-4 py-3 font-semibold" style={{ color: COLOR }}>Genius Books</th>
-                  <th className="px-4 py-3 font-semibold">Typical free tool</th>
+                  <th className="px-4 py-3 font-semibold">Akaunting</th>
+                  <th className="px-4 py-3 font-semibold">Wave</th>
+                  <th className="px-4 py-3 font-semibold">Zoho Books</th>
+                  <th className="px-4 py-3 font-semibold">Invoice Ninja</th>
                 </tr>
               </thead>
               <tbody>
-                {COMPARISON.map((row) => (
+                {COMPETITORS.map((row) => (
                   <tr key={row.feature} className="border-t border-[#E5E7EC] text-[13px]">
                     <td className="px-4 py-3 font-medium text-[#0F1112]">{row.feature}</td>
-                    <td className="px-4 py-3 text-[#484848]">{row.genius}</td>
-                    <td className="px-4 py-3 text-[#6b7280]">{row.typical}</td>
+                    <td className="px-4 py-3 text-[#0F1112] font-medium">{row.genius}</td>
+                    <td className="px-4 py-3 text-[#6b7280]">{row.akaunting}</td>
+                    <td className="px-4 py-3 text-[#6b7280]">{row.wave}</td>
+                    <td className="px-4 py-3 text-[#6b7280]">{row.zoho}</td>
+                    <td className="px-4 py-3 text-[#6b7280]">{row.invoiceninja}</td>
                   </tr>
                 ))}
               </tbody>
@@ -703,7 +697,7 @@ export default function GeniusBooksPage() {
       </section>
 
       {/* RBAC */}
-      <section className="py-16 sm:py-20 bg-[#f9fafb]">
+      <section className="py-16 sm:py-20 bg-white">
         <div className="container-page px-4 sm:px-6 lg:px-0">
           <div className="text-center mb-12">
             <h2 className="text-[28px] sm:text-[38px] font-semibold text-[#0F1112]">
@@ -719,6 +713,38 @@ export default function GeniusBooksPage() {
                 <p className="text-[14px] font-semibold mb-2" style={{ color: COLOR }}>{r.role}</p>
                 <p className="text-[13px] text-[#484848] leading-6">{r.desc}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Learn the basics — authority links + statistic */}
+      <section className="py-16 sm:py-20 bg-[#f9fafb]">
+        <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[900px] mx-auto">
+          <h2 className="text-[26px] sm:text-[32px] font-semibold text-[#0F1112] text-center mb-4">
+            New to small-business accounting?
+          </h2>
+          <p className="text-[15px] text-[#484848] leading-7 text-center max-w-[680px] mx-auto">
+            Double-entry bookkeeping was codified by Luca Pacioli in 1494 and is still the standard behind every
+            modern accounting system. Genius Books records each money movement through a single ledger service so
+            balances are always derived and auditable, rather than typed in by hand.
+          </p>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { href: 'https://en.wikipedia.org/wiki/Comparison_of_accounting_software', label: 'Comparison of accounting software', src: 'Wikipedia' },
+              { href: 'https://en.wikipedia.org/wiki/Double-entry_bookkeeping', label: 'Double-entry bookkeeping', src: 'Wikipedia' },
+              { href: 'https://www.investopedia.com/terms/a/accounting.asp', label: 'Accounting — definition & basics', src: 'Investopedia' },
+            ].map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-2xl border border-[#E5E7EC] bg-white p-5 hover:border-[#c7d2fe] transition-colors"
+              >
+                <p className="text-[13px] font-semibold text-[#0F1112]">{l.label}</p>
+                <p className="text-[12px] text-[#6b7280] mt-1">{l.src}</p>
+              </a>
             ))}
           </div>
         </div>
@@ -766,7 +792,6 @@ export default function GeniusBooksPage() {
                 Runs on any standard PHP hosting. No Docker required.
               </p>
             </div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {SERVER_REQUIREMENTS.map((r) => (
                 <div key={r.label} className="flex items-center justify-between rounded-xl border border-white/10 px-5 py-4">
@@ -775,7 +800,6 @@ export default function GeniusBooksPage() {
                 </div>
               ))}
             </div>
-
             <div className="mt-6 rounded-xl border border-white/10 px-5 py-4">
               <p className="text-[13px] text-[#9ca3af] leading-6">
                 Queue and scheduler run from cron on shared hosting:
@@ -798,14 +822,37 @@ export default function GeniusBooksPage() {
                 Frequently Asked Questions
               </h2>
               <div className="flex flex-col gap-4">
-                {faqSchema.mainEntity.map((item) => (
-                  <div key={item.name} className="rounded-2xl border border-[#E5E7EC] bg-white p-6">
-                    <h3 className="text-[15px] font-semibold text-[#0F1112] mb-2">{item.name}</h3>
-                    <p className="text-[14px] text-[#484848] leading-6">{item.acceptedAnswer.text}</p>
+                {FAQ.map((item) => (
+                  <div key={item.q} className="rounded-2xl border border-[#E5E7EC] bg-white p-6">
+                    <h3 className="text-[15px] font-semibold text-[#0F1112] mb-2">{item.q}</h3>
+                    <p className="text-[14px] text-[#484848] leading-6">{item.a}</p>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related free software (internal links) */}
+      <section className="py-14 sm:py-16 bg-white border-t border-[#E5E7EC]">
+        <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[900px] mx-auto">
+          <h2 className="text-[20px] sm:text-[24px] font-semibold text-[#0F1112] text-center mb-6">
+            More free software by Xgenious
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Link href="/free-software/genius-crm" className="rounded-2xl border border-[#E5E7EC] bg-white p-5 hover:border-[#c7d2fe] transition-colors">
+              <p className="text-[13px] font-semibold text-[#0F1112]">Genius CRM</p>
+              <p className="text-[12px] text-[#6b7280] mt-1">Free self-hosted CRM with deals & contacts</p>
+            </Link>
+            <Link href="/free-software/genius-hrm" className="rounded-2xl border border-[#E5E7EC] bg-white p-5 hover:border-[#c7d2fe] transition-colors">
+              <p className="text-[13px] font-semibold text-[#0F1112]">Genius HRM</p>
+              <p className="text-[12px] text-[#6b7280] mt-1">Free HR & payroll for small teams</p>
+            </Link>
+            <Link href="/free-software" className="rounded-2xl border border-[#E5E7EC] bg-white p-5 hover:border-[#c7d2fe] transition-colors">
+              <p className="text-[13px] font-semibold text-[#0F1112]">All free software</p>
+              <p className="text-[12px] text-[#6b7280] mt-1">Every MIT product from Xgenious</p>
+            </Link>
           </div>
         </div>
       </section>

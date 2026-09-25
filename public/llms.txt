@@ -48,6 +48,16 @@ Country-aware checkout (adapts address fields and postal labels per country), mu
 - Stack: Laravel 12, PHP 8.2+, MySQL 8, React 19, Inertia v3, TypeScript, Vite
 - Target users: Cross-border merchants, agencies evaluating a WooCommerce/Shopify alternative, developers extending a store
 
+### Genius Books: Free Self-Hosted Accounting Software
+Free, self-hosted, multi-tenant accounting software. Laravel 13 + React 19. Covers customers, products, quotes, invoices, payments, expenses, bank reconciliation, chart of accounts, ledger and reports. Also known as: free accounting software, open source accounting software, self hosted accounting software, free invoicing software, free bookkeeping software, multi-tenant accounting software, QuickBooks alternative, Xero alternative, Wave alternative, Akaunting alternative.
+One installation hosts unlimited businesses with strict company_id isolation, a company switcher and per-company roles (Owner, Accountant, Staff). Server-side invoice calculator (line and invoice discounts, inclusive/exclusive tax), partial/over/multi-invoice payments with customer credit, credit notes and refunds, CSV bank statement import with auto-match, double-entry-style single ledger, receivables aging, P&L, tax summary and general ledger. Full REST API at /api/v1 with company-scoped Bearer tokens (customers, products, quotes, invoices, payments, expenses, vendors, transactions). 10 two-way finance integrations: Xero, QuickBooks Online, FreshBooks, HubSpot, Zoho Books, Wave, Sage Business Cloud, Oracle NetSuite, MYOB, Kashoo. No invoice caps, no per-seat fees, no paid tiers.
+- [Genius Books landing page](https://xgenious.com/free-software/free-accounting-software)
+- [Live demo](https://genius-book.xgenious.com/portal/login)
+- [Source code](https://github.com/XgeniousLLC/geniusBooks)
+- License: MIT
+- Stack: Laravel 13, PHP 8.4+, MySQL 8 / SQLite, React 19, Inertia.js, TypeScript, Vite, Spatie Permission, DomPDF, Stripe
+- Target users: Small businesses, accountants, bookkeepers, agencies, developers and self-hosters evaluating a free QuickBooks/Xero/Wave/Akaunting alternative
+
 ## Premium Scripts & Marketplace Products
 
 ### Xilancer — Freelancer Marketplace Script

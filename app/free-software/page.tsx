@@ -251,9 +251,9 @@ const PRODUCTS = [
   },
   {
     id: 'genius-books',
-    href: '/free-software/genius-books',
+    href: '/free-software/free-accounting-software',
     name: 'Genius Books',
-    tagline: 'Free Open Source Accounting SaaS: Laravel 13 + React 19',
+    tagline: 'Free Open Source Accounting Software: Laravel 13 + React 19',
     description:
       'Self-hosted multi-tenant accounting: customers, products, quotes, invoices, payments, expenses, bank reconciliation, ledger & reports. 10 finance integrations (Xero, QuickBooks, FreshBooks…), REST API. MIT licensed.',
     badge: 'Laravel 13 · React 19 · MIT',

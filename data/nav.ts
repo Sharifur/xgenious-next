@@ -54,7 +54,7 @@ export const freeSoftwareDropdown: DropdownItem[] = [
   { label: 'Genius Campaign', description: 'Free self-hosted email outreach: bring your own AWS SES', category: 'Marketing', accent: '#6366F1', icon: IconSend, href: '/free-software/genius-campaign' },
   { label: 'Genius Debug', description: 'Self-hosted Sentry alternative: error monitoring + replay', category: 'Monitoring', accent: '#6C5FC7', icon: IconBug, href: '/free-software/genius-debug' },
   { label: 'Genius Commerz', description: 'Free self-hosted eCommerce platform: Laravel 12 + React 19', category: 'eCommerce', accent: '#059669', icon: IconShoppingCart, href: '/free-software/free-self-hosted-ecommerce-platform' },
-  { label: 'Genius Books', description: 'Free multi-tenant accounting SaaS: Laravel 13 + React 19', category: 'Accounting', accent: '#4f46e5', icon: IconFileInvoice, href: '/free-software/genius-books' },
+  { label: 'Genius Books', description: 'Free multi-tenant accounting software: Laravel 13 + React 19', category: 'Accounting', accent: '#4f46e5', icon: IconFileInvoice, href: '/free-software/free-accounting-software' },
 ];
 
 export const freeToolsLink = { label: 'Free Tools', href: '/free-tools' };
