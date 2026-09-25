@@ -193,5 +193,22 @@ Still verified: canonical, OG/Twitter, `SoftwareApplication` + `FAQPage` (8 Q&As
 ## 7. Demo & download
 
 - **Live demo**: https://genius-book.xgenious.com/portal/login
-- **Download**: https://github.com/XgeniousLLC/geniusBooks/archive/refs/tags/v1.0.0.zip
+- **Documentation**: https://xgeniousllc.github.io/geniusBooks/ (GitHub Pages, served from `main` → `/docs`)
+  - User manual: /user-manual.html · API: /api-documentation.html · Developer: /developer-guide.html · Deployment: /deployment-guide.html
+- **Download**: signed URL from the license server; GitHub fallback https://github.com/XgeniousLLC/geniusBooks/archive/refs/tags/v1.0.0.zip
+- **Repository**: https://github.com/XgeniousLLC/geniusBooks (public)
 - **License UUID**: `56704006-b4c5-4fbb-9b82-0b95d0437014`
+
+### Download flow (shared by all free-software pages)
+
+`DownloadButton` (name + email modal) → `POST /api/download-lead` →
+Taskip lead + Genius Campaign contact → license-server signed URL and `notify` → SES email with the link.
+
+Known shared caveat: `app/api/download-lead/route.ts` only sends the email when `fromEmail && safeDownloadUrl`
+are both set, but always returns `{ ok: true }` — a missing `CONTACT_FROM_EMAIL`/SES config fails silently.
+
+### GitHub Pages publishing notes
+
+- The repo must be public (or the org on a paid plan) for Pages on the free tier.
+- `docs/.nojekyll` is committed so the HTML docs are served as-is rather than processed by Jekyll.
+- All doc links are relative, so they resolve correctly under the `/geniusBooks/` subpath.
