@@ -68,7 +68,7 @@
     },
     {
       "source": "/docs/:path*",
-      "destination": "https://docs.xgenious.com/:path*",
+      "destination": "https://docs.xgenious.com/docs/:path*",
       "permanent": true
     }
   ],
