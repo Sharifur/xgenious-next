@@ -26,10 +26,18 @@ export default function EnvatoAccountPage() {
   const result = searchParams.get('result');
   const { connection, loading, error, pollTimedOut, fetchStatus, connect, sync, disconnect } = useEnvatoStore();
   const [confirmingDisconnect, setConfirmingDisconnect] = useState(false);
+  const [showResyncOption, setShowResyncOption] = useState(false);
 
   useEffect(() => {
     fetchStatus();
   }, [fetchStatus]);
+
+  const handleRemoveAndResync = async () => {
+    await disconnect();
+    // After disconnecting, show connect button which allows re-syncing
+    setShowResyncOption(false);
+    setConfirmingDisconnect(false);
+  };
 
   const status = connection?.status ?? 'not_connected';
   const isSettling = status === 'pending' || status === 'syncing';
@@ -184,7 +192,7 @@ export default function EnvatoAccountPage() {
                 )}
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 {status === 'needs_reconnect' ? (
                   <button
                     onClick={() => connect()}
@@ -203,14 +211,30 @@ export default function EnvatoAccountPage() {
                   </button>
                 )}
 
-                {confirmingDisconnect ? (
+                {showResyncOption ? (
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={() => handleRemoveAndResync()}
+                      disabled={loading}
+                      className="px-3 py-1.5 bg-[#ec7161] text-white text-xs font-medium rounded-lg hover:bg-[#e05e4d] transition-colors disabled:opacity-60"
+                    >
+                      {loading ? 'Removing…' : 'Remove & Resync'}
+                    </button>
+                    <button
+                      onClick={() => setShowResyncOption(false)}
+                      className="px-3 py-1.5 border border-gray-200 text-gray-500 text-xs font-medium rounded-lg hover:bg-gray-50 transition-colors"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                ) : confirmingDisconnect ? (
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => { disconnect(); setConfirmingDisconnect(false); }}
                       disabled={loading}
                       className="px-3 py-1.5 bg-red-500 text-white text-xs font-medium rounded-lg hover:bg-red-600 transition-colors disabled:opacity-60"
                     >
-                      Confirm
+                      Confirm disconnect
                     </button>
                     <button
                       onClick={() => setConfirmingDisconnect(false)}
@@ -220,12 +244,20 @@ export default function EnvatoAccountPage() {
                     </button>
                   </div>
                 ) : (
-                  <button
-                    onClick={() => setConfirmingDisconnect(true)}
-                    className="px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                  >
-                    Disconnect
-                  </button>
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={() => setShowResyncOption(true)}
+                      className="px-3 py-1.5 text-xs font-medium text-gray-600 hover:text-[#ec7161] hover:bg-orange-50 rounded-lg transition-colors"
+                    >
+                      Remove & Resync
+                    </button>
+                    <button
+                      onClick={() => setConfirmingDisconnect(true)}
+                      className="px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                    >
+                      Disconnect
+                    </button>
+                  </div>
                 )}
               </div>
             </div>
