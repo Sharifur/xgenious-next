@@ -15,6 +15,7 @@ import TrustBand from './_components/TrustBand';
 import Pricing from './_components/Pricing';
 import FAQ from './_components/FAQ';
 import ClosingCta from './_components/ClosingCta';
+import RelatedGuides from '@/components/sections/RelatedGuides';
 
 export const metadata: Metadata = {
   title: 'SafeCart — Multi-Vendor Laravel eCommerce Platform | Xgenious',
@@ -79,6 +80,7 @@ export default function SafeCartPage() {
         <TrustBand />
         <Pricing />
         <FAQ />
+        <RelatedGuides guides={[{ href: '/ecommerce-php-script', label: 'Best multi vendor ecommerce scripts compared', blurb: 'See how the leading multi-vendor and single-vendor scripts compare on features, licensing and price.' }]} />
         <ClosingCta />
       </main>
     </>

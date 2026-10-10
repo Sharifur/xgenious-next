@@ -30,7 +30,8 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'anthropic-ai', allow: '/' },
       { userAgent: 'CCBot', allow: '/' },
     ],
-    sitemap: 'https://xgenious.com/sitemap.xml',
+    // post-sitemap.xml is Rank Math's (WordPress) sitemap, proxied via vercel.json.
+    sitemap: ['https://xgenious.com/sitemap.xml', 'https://xgenious.com/post-sitemap.xml'],
     host: 'https://xgenious.com',
   };
 }

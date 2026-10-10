@@ -15,6 +15,7 @@ import TrustBand from './_components/TrustBand';
 import Pricing from './_components/Pricing';
 import FAQ from './_components/FAQ';
 import ClosingCta from './_components/ClosingCta';
+import RelatedGuides from '@/components/sections/RelatedGuides';
 
 export const metadata: Metadata = {
   title: 'Grenmart — Organic & Grocery Laravel eCommerce Script',
@@ -70,6 +71,7 @@ export default function GrenmartPage() {
         <TrustBand />
         <Pricing />
         <FAQ />
+        <RelatedGuides guides={[{ href: '/ecommerce-php-script', label: 'Laravel eCommerce script comparison', blurb: 'Compare Laravel eCommerce scripts on features, licensing and price before you buy.' }]} />
         <ClosingCta />
       </main>
     </>

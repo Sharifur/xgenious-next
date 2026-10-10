@@ -5,6 +5,7 @@ import { TOOLS } from '@/data/free-tools';
 import ToolRenderer from '@/components/free-tools/ToolRenderer';
 import SectionBadge from '@/components/ui/SectionBadge';
 import AccordionItem from '@/components/ui/AccordionItem';
+import RelatedGuides from '@/components/sections/RelatedGuides';
 
 const BASE_URL = 'https://xgenious.com';
 
@@ -645,6 +646,8 @@ export default async function FreeToolPage({ params }: PageProps) {
           </div>
         </section>
       )}
+
+      {tool.guides && tool.guides.length > 0 && <RelatedGuides guides={tool.guides} />}
 
       {/* ── External links ───────────────────────────────────────────────── */}
       {tool.externalLinks.length > 0 && (

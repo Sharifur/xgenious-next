@@ -9,7 +9,7 @@ import Testimonials from '@/components/sections/Testimonials';
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'About Xgenious — Custom SaaS & Software Development Company',
+  title: 'About Xgenious: Makers of Nazmart, Taskip & Fundorex',
   description:
     'Xgenious is a custom software development company founded in 2017. We build SaaS, web apps, mobile apps, and AI agents for mid-market teams. 13,000+ users across our own products. UK · US · UAE.',
   metadataBase: new URL(BASE_URL),
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: '/about',
   },
   openGraph: {
-    title: 'About Xgenious — Custom SaaS & Software Development Company',
+    title: 'About Xgenious: Makers of Nazmart, Taskip & Fundorex',
     description:
       'Xgenious is a custom software development company founded in 2017. We build SaaS, web apps, mobile apps, and AI agents for mid-market teams. 13,000+ users across our own products. UK · US · UAE.',
     url: `${BASE_URL}/about`,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Xgenious — Custom SaaS & Software Development Company',
+    title: 'About Xgenious: Makers of Nazmart, Taskip & Fundorex',
     description:
       'Xgenious is a custom software development company founded in 2017. We build SaaS, web apps, mobile apps, and AI agents for mid-market teams. 13,000+ users across our own products. UK · US · UAE.',
     images: ['/og-image.png'],
