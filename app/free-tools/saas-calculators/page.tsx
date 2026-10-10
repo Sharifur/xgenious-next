@@ -6,9 +6,9 @@ import AccordionItem from '@/components/ui/AccordionItem';
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'Free SaaS Calculators — Pricing, MRR, Churn & Growth',
+  title: 'Free SaaS Calculators (2026): MRR, Churn, LTV, CAC & Runway',
   description:
-    'Free SaaS calculators for pricing, MRR, churn, CAC, LTV, runway, NRR, and valuation. No login, no signup. Built for SaaS founders and operators.',
+    '18 free SaaS calculators: MRR, churn, LTV:CAC, runway, NRR and valuation. Instant results, no signup. Built for SaaS founders and operators.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/free-tools/saas-calculators` },
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     'startup calculators free',
   ],
   openGraph: {
-    title: 'Free SaaS Calculators — Pricing, MRR, Churn & Growth | Xgenious',
+    title: 'Free SaaS Calculators (2026): MRR, Churn, LTV, CAC & Runway | Xgenious',
     description:
       'Free SaaS calculators for pricing, MRR, churn, CAC, LTV, runway, NRR, and valuation. No login, no signup. Built for SaaS founders and operators.',
     url: `${BASE_URL}/free-tools/saas-calculators`,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@xgenious1',
     creator: '@xgenious1',
-    title: 'Free SaaS Calculators — Pricing, MRR, Churn & Growth | Xgenious',
+    title: 'Free SaaS Calculators (2026): MRR, Churn, LTV, CAC & Runway | Xgenious',
     description:
       'Free SaaS calculators for pricing, MRR, churn, CAC, LTV, runway, NRR, and valuation. No login, no signup. Built for SaaS founders and operators.',
   },

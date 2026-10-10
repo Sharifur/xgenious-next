@@ -17,6 +17,8 @@ export interface FreeTool {
   faq: { q: string; a: string }[];
   relatedTools: string[];
   externalLinks: { label: string; url: string }[];
+  // Internal links to WordPress guide posts (rendered by free-tools/[slug] via RelatedGuides).
+  guides?: { href: string; label: string; blurb: string }[];
   comparisonTable?: { caption: string; headers: string[]; rows: string[][] };
   featureList?: string[];
   featureCards?: { title: string; desc: string }[];
@@ -1418,6 +1420,10 @@ export const TOOLS: FreeTool[] = [
       { q: 'Is my data sent to a server?', a: 'No. The attendance calculation runs entirely in your browser with JavaScript. No dates, attendance figures, or personal data are uploaded, logged, or stored anywhere. You can enter sensitive academic records without any privacy concern.' },
     ],
     relatedTools: ['gpa-calculator', 'exam-grade-calculator', 'school-fee-calculator', 'leave-accrual-calculator', 'meeting-cost-calculator', 'freelance-rate-calculator', 'salary-hike-calculator', 'invoice-generator'],
+    guides: [
+      { href: '/free-school-management-software', label: 'Free school management software compared', blurb: '10 free school management systems compared: open source, self-hosted and cloud options.' },
+      { href: '/best-school-management-software', label: 'Best school management software', blurb: 'Paid and free school management software compared by modules, price and support.' },
+    ],
     externalLinks: [
       { label: 'UNESCO — Education standards', url: 'https://www.unesco.org/en/education' },
       { label: 'UGC — Attendance requirements India', url: 'https://www.ugc.gov.in' },
@@ -1568,6 +1574,10 @@ export const TOOLS: FreeTool[] = [
       { q: 'Is my data sent to a server?', a: 'No. The fee calculation runs entirely in your browser with JavaScript. No fee amounts, student categories, or school data are uploaded, logged, or stored anywhere. You can build sensitive fee structures without any privacy concern.' },
     ],
     relatedTools: ['gpa-calculator', 'attendance-percentage-calculator', 'invoice-generator', 'exam-grade-calculator', 'meeting-cost-calculator', 'freelance-rate-calculator', 'salary-hike-calculator', 'payroll-breakdown-calculator'],
+    guides: [
+      { href: '/free-school-management-software', label: 'Free school management software compared', blurb: '10 free school management systems compared: open source, self-hosted and cloud options.' },
+      { href: '/best-school-management-software', label: 'Best school management software', blurb: 'Paid and free school management software compared by modules, price and support.' },
+    ],
     externalLinks: [
       { label: 'UNESCO — Education financing', url: 'https://www.unesco.org/en/education/financing' },
       { label: 'World Bank — Education', url: 'https://www.worldbank.org/en/topic/education' },

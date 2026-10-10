@@ -17,6 +17,7 @@ import Comparison from './_components/Comparison';
 import Reviews from './_components/Reviews';
 import Pricing from './_components/Pricing';
 import FAQ from './_components/FAQ';
+import RelatedGuides from '@/components/sections/RelatedGuides';
 
 export const metadata: Metadata = {
   title: 'Prohandy — On-Demand Home Service Marketplace Script',
@@ -70,6 +71,11 @@ export default function ProhandyPage() {
       <Reviews />
       <Pricing />
       <FAQ />
+      <RelatedGuides
+        guides={[
+          { href: '/top-on-demand-service-business-ideas', label: 'Top on-demand service business ideas', blurb: 'On-demand service business ideas worth building, and how a ready-made home service marketplace script gets you to launch faster.' },
+        ]}
+      />
       <BundleValueNudge
         productName="Prohandy"
         regularPrice={REGULAR_PRICE}

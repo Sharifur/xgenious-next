@@ -19,6 +19,7 @@ import Reviews from './_components/Reviews';
 import FAQ from './_components/FAQ';
 import Pricing from './_components/Pricing';
 import StickyBar from './_components/StickyBar';
+import RelatedGuides from '@/components/sections/RelatedGuides';
 
 export const metadata: Metadata = {
   title: 'Nazmart — Multi-Tenancy eCommerce SaaS Platform',
@@ -79,6 +80,7 @@ export default function NazmartPage() {
       <Reviews />
       <Pricing />
       <FAQ />
+      <RelatedGuides guides={[{ href: '/ecommerce-php-script', label: 'Compare Nazmart with other eCommerce PHP scripts', blurb: 'Side-by-side pricing, features and hosting needs for the 10 leading Laravel and PHP eCommerce scripts.' }]} />
       <BundleValueNudge
         productName="Nazmart"
         regularPrice={REGULAR_PRICE}

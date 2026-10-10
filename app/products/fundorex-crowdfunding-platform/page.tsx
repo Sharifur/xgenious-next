@@ -18,6 +18,7 @@ import Reviews from './_components/Reviews';
 import Pricing from './_components/Pricing';
 import FAQ from './_components/FAQ';
 import StickyBar from './_components/StickyBar';
+import RelatedGuides from '@/components/sections/RelatedGuides';
 
 export const metadata: Metadata = {
   title: 'Fundorex — Crowdfunding Platform Script & Kickstarter Clone',
@@ -78,6 +79,13 @@ export default function FundorexPage() {
       <Reviews />
       <Pricing />
       <FAQ />
+      <RelatedGuides
+        heading="Crowdfunding guides"
+        guides={[
+          { href: '/best-php-crowdfunding-scripts', label: 'Best PHP crowdfunding scripts compared', blurb: 'Paid, self-hosted crowdfunding scripts compared on features, payment gateways and price.' },
+          { href: '/open-source-crowdfunding-platform', label: 'Open source crowdfunding platforms', blurb: 'Free and open-source options, and when a ready-made script is the cheaper route.' },
+        ]}
+      />
     </>
   );
 }

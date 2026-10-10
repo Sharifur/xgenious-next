@@ -3,6 +3,7 @@ import Link from 'next/link';
 import DownloadButton from '@/components/ui/DownloadButton';
 import BookingCTA from '@/components/sections/BookingCTA';
 import ScreenshotGallery from '@/components/ui/ScreenshotGallery';
+import RelatedGuides from '@/components/sections/RelatedGuides';
 
 const BASE_URL = 'https://xgenious.com';
 const COLOR = '#7c3aed';
@@ -585,6 +586,12 @@ export default function GeniusHRMPage() {
       </section>
 
       {/* Final CTA */}
+      <RelatedGuides
+        guides={[
+          { href: '/best-hr-software-for-small-business', label: 'Best HR software for small business', blurb: 'Seven HR tools compared on price per employee, payroll, hiring and free plans.' },
+          { href: '/free-hr-software-for-small-business', label: 'Free HR software for small business', blurb: 'Free and open-source HR software options for small teams.' },
+        ]}
+      />
       <section className="py-16 sm:py-20 relative overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/cta-bg.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />

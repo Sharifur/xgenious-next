@@ -4,6 +4,7 @@ import Link from 'next/link';
 import DownloadButton from '@/components/ui/DownloadButton';
 import BookingCTA from '@/components/sections/BookingCTA';
 import ScreenshotGallery from '@/components/ui/ScreenshotGallery';
+import RelatedGuides from '@/components/sections/RelatedGuides';
 
 const BASE_URL = 'https://xgenious.com';
 const COLOR = '#4f46e5';
@@ -24,13 +25,13 @@ const DEMO_ROLES = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Free School Management Software: 19 Modules, MIT Licensed | Xgenious',
+  title: 'Free School Management Software: 19 Modules, MIT Licensed',
   description:
     'Download free school management software with 19 modules. Covers free student management, attendance, fee collection, exams, payroll, library, transport and school resources management. Self-hosted, MIT licensed, no per-student fee.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/free-software/genius-school-management` },
   openGraph: {
-    title: 'Free School Management Software: 19 Modules, MIT Licensed | Xgenious',
+    title: 'Free School Management Software: 19 Modules, MIT Licensed',
     description:
       'Free school software with 19 modules: student management, attendance, fees, exams, payroll, library, transport. Self-hosted, MIT licensed, no per-student fee.',
     url: `${BASE_URL}/free-software/genius-school-management`,
@@ -938,6 +939,12 @@ export default function GeniusSchoolManagementPage() {
       </section>
 
       {/* Final CTA */}
+      <RelatedGuides
+        guides={[
+          { href: '/free-school-management-software', label: 'Free school management software compared', blurb: '10 free school management systems compared: open source, self-hosted and cloud options.' },
+          { href: '/best-school-management-software', label: 'Best school management software', blurb: 'Paid and free school management software compared by modules, price and support.' },
+        ]}
+      />
       <section className="py-16 sm:py-20 relative overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/cta-bg.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
