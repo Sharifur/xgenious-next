@@ -7,9 +7,9 @@ import Footer from "@/components/layout/Footer";
 import TopLoader from "@/components/ui/TopLoader";
 import IframeNotice from "@/components/ui/IframeNotice";
 import PromoBanner from "@/components/ui/PromoBanner";
-import { Providers } from "@/components/Providers";
 import CrashReporter from "@/components/CrashReporter";
 import MetaPixel from "@/components/MetaPixel";
+import WebVitals from "@/components/WebVitals";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
@@ -17,7 +17,6 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
 });
 
 const nunitoSans = Nunito_Sans({
@@ -65,7 +64,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://connect.facebook.net" />
         <link rel="preconnect" href="https://www.facebook.com" />
         {GTM_ID && (
-          <Script id="gtm-script" strategy="afterInteractive">
+          <Script id="gtm-script" strategy="lazyOnload">
             {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -102,15 +101,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </noscript>
         )}
         <MetaPixel />
+        <WebVitals />
         <CrashReporter />
         <TopLoader />
         <IframeNotice />
-        <Providers>
-          <PromoBanner />
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </Providers>
+        <PromoBanner />
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
         {/* Non-critical chat widget — load after the page is idle so it doesn't compete with LCP */}
         <Script src="https://cortex-api.xgenious.com/livechat.js" data-site="xgenious" strategy="lazyOnload" />
         {/* FastSpring is scoped to the routes that use it: /checkout (CheckoutClient) and /my-account (layout) */}

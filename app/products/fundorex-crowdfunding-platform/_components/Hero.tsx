@@ -80,6 +80,7 @@ export default function Hero() {
             height={474}
             className="w-full object-cover object-top"
             priority
+            sizes="(max-width: 768px) 100vw, 948px"
           />
         </div>
       </div>
