@@ -7,20 +7,24 @@ import { PROMO_CODE } from '@/lib/fastspring';
 const STORAGE_KEY = 'xg-promo-welcome10-dismissed';
 
 export default function PromoBanner() {
-  const [dismissedStorage, setDismissedStorage] = useState(true);
+  // null = storage not read yet (SSR + first client render). In that state the layout's
+  // inline --promo-h estimate must stay untouched, otherwise hydration wipes the reserved
+  // space and the page shifts twice (0 → banner height).
+  const [dismissedStorage, setDismissedStorage] = useState<boolean | null>(null);
   const [copied, setCopied] = useState(false);
   const barRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   // The coupon auto-applies at checkout itself, so the banner advertising it
   // is redundant there — hide it.
   const isCheckout = pathname?.startsWith('/checkout');
-  const dismissed = dismissedStorage || isCheckout;
+  const dismissed = dismissedStorage !== false || isCheckout;
 
   useEffect(() => {
     try {
       setDismissedStorage(localStorage.getItem(STORAGE_KEY) === '1');
     } catch {
       /* storage blocked (privacy mode / enterprise policy) — show banner */
+      setDismissedStorage(false);
     }
   }, []);
 
@@ -28,6 +32,7 @@ export default function PromoBanner() {
   // content can offset themselves beneath it.
   useEffect(() => {
     const root = document.documentElement;
+    if (dismissedStorage === null && !isCheckout) return;
     if (dismissed || !barRef.current) {
       root.style.setProperty('--promo-h', '0px');
       return;
@@ -41,7 +46,7 @@ export default function PromoBanner() {
       ro.disconnect();
       root.style.setProperty('--promo-h', '0px');
     };
-  }, [dismissed]);
+  }, [dismissed, dismissedStorage, isCheckout]);
 
   if (dismissed) return null;
 

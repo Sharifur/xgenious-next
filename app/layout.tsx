@@ -77,14 +77,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             the fixed Navbar + body content down, which CrUX was scoring as CLS
             > 0.25 on mobile where the banner wraps to two lines. PromoBanner's own
             ResizeObserver still corrects this estimate to the exact pixel height. */}
-        <Script id="promo-h-init" strategy="beforeInteractive">
-          {`(function(){try{
+        {/* Plain inline <script>, not next/script beforeInteractive: that variant is queued through
+            Next's runtime (self.__next_s) and runs after first paint, which is too late to
+            reserve the space. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{
             if(localStorage.getItem('xg-promo-welcome10-dismissed')==='1')return;
             if(location.pathname.indexOf('/checkout')===0)return;
             var h=window.innerWidth<640?64:44;
             document.documentElement.style.setProperty('--promo-h',h+'px');
-          }catch(e){}})();`}
-        </Script>
+          }catch(e){}})();`,
+          }}
+        />
       </head>
       <body
         className="flex flex-col min-h-screen antialiased font-sans text-[#0F1112] bg-white"
