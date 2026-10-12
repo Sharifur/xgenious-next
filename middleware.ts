@@ -40,11 +40,38 @@ const NEXT_ROUTES = new Set([
   'web-app-development-company',
 ]);
 
+// Session/click-specific params (GA cross-domain linker, ad click IDs, WP cache
+// buster) that never change page content. Left in place they create thousands
+// of duplicate URLs Google reports as "Alternate page with proper canonical".
+// UTMs are deliberately kept so GA still attributes campaigns.
+const STRIP_PARAMS = ['client_id', 'session_id', '_gl', 'cst', 'fbclid', 'gclid', 'msclkid'];
+
 const { auth } = NextAuth(authConfig);
 
 export default auth(function middleware(req: NextRequest & { auth: any }) {
   const { pathname } = req.nextUrl;
   const segments = pathname.split('/').filter(Boolean);
+
+  // Canonicalise host + tracking params in a single 301 hop.
+  const url = req.nextUrl.clone();
+  let canonicalise = false;
+  if (url.hostname === 'www.xgenious.com') {
+    url.hostname = 'xgenious.com';
+    url.port = '';
+    canonicalise = true;
+  }
+  for (const key of STRIP_PARAMS) {
+    if (url.searchParams.has(key)) {
+      url.searchParams.delete(key);
+      canonicalise = true;
+    }
+  }
+  // Legacy contact tab links (?tab=safecart) — the page has no tab state.
+  if (pathname === '/contact' && url.searchParams.has('tab')) {
+    url.searchParams.delete('tab');
+    canonicalise = true;
+  }
+  if (canonicalise) return NextResponse.redirect(url, 301);
 
   // Markdown content negotiation — AI agents requesting text/markdown get llms.txt
   const accept = req.headers.get('accept') ?? '';
