@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface AccordionItemProps {
   question: string;
@@ -42,19 +41,15 @@ export default function AccordionItem({ question, answer, defaultOpen = false, d
         </span>
       </button>
 
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="overflow-hidden"
-          >
-            <p className={`px-4 sm:px-7 pb-5 text-[14px] leading-[22px] max-w-[760px] ${dark ? 'text-[#9ca3af]' : 'text-[#484848]'}`}>{answer}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* CSS grid-rows transition (0fr → 1fr) animates height without JS; the answer stays in the DOM. */}
+      <div
+        className={`grid transition-[grid-template-rows,opacity] duration-[250ms] ease-in-out ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+        aria-hidden={!open}
+      >
+        <div className="overflow-hidden">
+          <p className={`px-4 sm:px-7 pb-5 text-[14px] leading-[22px] max-w-[760px] ${dark ? 'text-[#9ca3af]' : 'text-[#484848]'}`}>{answer}</p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -9,6 +9,7 @@ declare global {
       extra?: { eventID?: string },
     ) => void;
     _fbq: unknown;
+    __xgPixelQueue?: unknown[][];
   }
 }
 
@@ -17,8 +18,10 @@ export function pixelTrack(
   params?: Record<string, unknown>,
   eventId?: string,
 ) {
-  if (typeof window === 'undefined' || !window.fbq) return;
-  window.fbq('track', event, params ?? {}, eventId ? { eventID: eventId } : undefined);
+  if (typeof window === 'undefined') return;
+  const args = ['track', event, params ?? {}, eventId ? { eventID: eventId } : undefined];
+  if (window.fbq) (window.fbq as (...a: unknown[]) => void)(...args);
+  else (window.__xgPixelQueue ??= []).push(args);
 }
 
 export function pixelPageView(eventId?: string) {

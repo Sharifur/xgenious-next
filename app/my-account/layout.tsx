@@ -2,6 +2,7 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import Script from 'next/script';
 import { FASTSPRING_SCRIPT, FASTSPRING_STORE } from '@/lib/fastspring';
+import { Providers } from '@/components/Providers';
 import AccountSidebar from './_components/AccountSidebar';
 
 export const dynamic = 'force-dynamic';
@@ -12,6 +13,7 @@ export default async function AccountLayout({ children }: { children: React.Reac
   if (!session?.user) redirect('/login');
 
   return (
+    <Providers>
     <div className="min-h-[calc(100vh-140px)] bg-gray-50">
       {/* FastSpring — scoped to /my-account for the Renew/Add-on popups (not loaded on public pages).
           Shares the same script/storefront as /checkout so it never silently fails to load. */}
@@ -30,5 +32,6 @@ export default async function AccountLayout({ children }: { children: React.Reac
         </div>
       </div>
     </div>
+    </Providers>
   );
 }
