@@ -93,7 +93,7 @@ export default function RefundPolicyPage() {
       <h2>How to Initiate a Refund (Direct Purchases Only)</h2>
 
       <div className="policy-highlight">
-        <p><strong>Email:</strong> <a href="mailto:contact@xgenious.com">contact@xgenious.com</a></p>
+        <p><strong>Contact:</strong> <a href="/contact">our contact page</a></p>
         <p><strong>Contact Form:</strong> <a href="/contact">xgenious.com/contact</a></p>
       </div>
 

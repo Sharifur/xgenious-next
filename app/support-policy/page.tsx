@@ -47,7 +47,7 @@ export default function SupportPolicyPage() {
       <h2>4. Support Channels</h2>
 
       <div className="policy-highlight">
-        <p><strong>Email:</strong> <a href="mailto:contact@xgenious.com">contact@xgenious.com</a></p>
+        <p><strong>Contact:</strong> <a href="/contact">our contact page</a></p>
         <p><strong>Contact Form:</strong> <a href="/contact">xgenious.com/contact</a></p>
         <p><strong>My Account:</strong> <a href="/my-account">xgenious.com/my-account</a></p>
         <p><strong>WhatsApp (Priority Support only):</strong> <a href="https://wa.me/+8801811666560">+880 1811 666560</a></p>
@@ -96,7 +96,7 @@ export default function SupportPolicyPage() {
 
       <h2>10. Contact Us</h2>
       <p>
-        For any questions regarding this Support Policy, please contact us at <a href="mailto:contact@xgenious.com">contact@xgenious.com</a>.
+        For any questions regarding this Support Policy, please contact us via <a href="/contact">our contact page</a>.
       </p>
 
     </PolicyLayout>

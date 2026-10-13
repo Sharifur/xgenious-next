@@ -114,7 +114,7 @@ export default function TermsOfServicePage() {
 
       <h2>11. Contact Us</h2>
       <p>
-        If you have any questions about these Terms, please contact us at <a href="mailto:contact@xgenious.com">contact@xgenious.com</a>.
+        If you have any questions about these Terms, please contact us via <a href="/contact">our contact page</a>.
       </p>
     </PolicyLayout>
     </>
