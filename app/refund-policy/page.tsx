@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/refund-policy' },
   title: 'Refund Policy — Xgenious',
   description: 'Return and refund policy for products purchased directly from Xgenious or through Envato.',
 };

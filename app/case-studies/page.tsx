@@ -5,6 +5,7 @@ import SectionBadge from '@/components/ui/SectionBadge';
 import BookingCTA from '@/components/sections/BookingCTA';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies' },
   title: 'Case Studies — Client Projects',
   description: 'Real projects, measurable outcomes. See how Xgenious builds SaaS platforms, marketplaces, mobile apps and eCommerce systems, from brief to production.',
 };

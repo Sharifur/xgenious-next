@@ -32,6 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies/crowdfunding-platform' },
   title: { absolute: 'Crowdfunding Platform Case Study | Xgenious' },
   description:
     'How Xgenious built a full-featured crowdfunding platform with donation campaigns, event ticketing, 10+ payment gateways, and drag-and-drop campaign builders.',

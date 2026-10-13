@@ -32,6 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies/on-demand-home-service-app' },
   title: { absolute: 'Home Service Marketplace App: Case Study' },
   description: 'How Xgenious built a home service marketplace linking clients and providers, with Google Maps search, live chat, WhatsApp alerts and Flutter apps.',
 };

@@ -32,6 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies/ecommerce-platform-with-courier' },
   title: { absolute: 'eCommerce Platform with Courier: Case Study' },
   description: 'How Xgenious built an eCommerce platform with inventory, built-in courier integration, fraud detection, product variants and multi-currency support.',
 };

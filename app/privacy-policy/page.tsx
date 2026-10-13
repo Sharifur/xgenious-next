@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/privacy-policy' },
   title: 'Privacy Policy — Xgenious',
   description: 'How Xgenious collects, uses, and protects your personal data.',
 };

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/support-policy' },
   title: 'Support Policy — Xgenious',
   description: 'Xgenious support policy — what is covered, response times, and how to get help.',
 };

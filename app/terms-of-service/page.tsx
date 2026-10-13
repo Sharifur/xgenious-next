@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/terms-of-service' },
   title: 'Terms of Service — Xgenious',
   description: 'Terms and conditions governing your use of the Xgenious website and services.',
 };

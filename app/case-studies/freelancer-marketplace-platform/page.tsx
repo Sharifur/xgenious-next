@@ -32,6 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies/freelancer-marketplace-platform' },
   title: { absolute: 'Freelancer Marketplace Case Study | Xgenious' },
   description:
     'How Xgenious built a full-featured freelancer marketplace with escrow payments, live bidding, dispute resolution, and Flutter mobile apps — shipped in 8 weeks.',

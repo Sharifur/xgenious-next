@@ -32,6 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies/classified-ads-platform' },
   title: 'Classified Ads & Listing Platform — Case Study',
   description:
     'How Xgenious built a full classified ads platform with live chat, Google Maps discovery, membership tiers, a seller wallet, and drag-and-drop page builder.',

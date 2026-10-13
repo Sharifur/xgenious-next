@@ -32,6 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies/beauty-room-booking-app' },
   title: 'Beauty Room Booking App — Flutter Case Study',
   description: 'How Xgenious built a Flutter app for beauty professionals to book treatment rooms by the day, with smart access control and Stripe payments.',
 };

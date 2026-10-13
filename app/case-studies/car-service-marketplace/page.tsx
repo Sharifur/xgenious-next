@@ -32,6 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies/car-service-marketplace' },
   title: 'Car Service & Mechanic Marketplace — Case Study',
   description: 'How Xgenious built an on-demand car service marketplace with vehicle-matched booking, live order tracking, 19+ payment gateways and Android apps.',
 };

@@ -5,6 +5,7 @@ import FAQ from '@/components/sections/FAQ';
 import BookingCTA from '@/components/sections/BookingCTA';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies/ai-support-saas-platform' },
   title: { absolute: 'AI Customer Support SaaS: Case Study | Xgenious' },
   description: 'How Xgenious built a multi-tenant AI support platform with chatbots, ticketing, knowledge base and Stripe billing: a self-hosted Intercom alternative.',
 };

@@ -32,6 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies/multi-tenant-ecommerce-saas' },
   title: { absolute: 'Multi-Tenant eCommerce SaaS: Case Study' },
   description: 'How Xgenious built a multi-tenant eCommerce SaaS where merchants launch stores on custom domains, with 19+ payment gateways and Flutter apps.',
 };
