@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SectionBadge from '@/components/ui/SectionBadge';
 import BookingCTA from '@/components/sections/BookingCTA';
+import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/case-studies' },
@@ -158,6 +159,8 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
 export default function CaseStudiesPage() {
   return (
     <>
+      <JsonLd graph={[{ '@type': 'CollectionPage', '@id': 'https://xgenious.com/case-studies#webpage', name: 'Case Studies', url: 'https://xgenious.com/case-studies', isPartOf: { '@type': 'WebSite', url: 'https://xgenious.com' }, publisher: { '@id': ORG_ID } }, { '@type': 'ItemList', itemListElement: CASES.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.title, url: `https://xgenious.com${c.href}` })) }, ORG, crumbs([['Home', '/'], ['Case Studies', '/case-studies']])]} />
+    <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="pt-[120px] sm:pt-[160px] pb-16 sm:pb-20 bg-white">
         <div className="container-page px-4 sm:px-6 lg:px-0">
@@ -187,6 +190,7 @@ export default function CaseStudiesPage() {
       </section>
 
       <BookingCTA />
+    </>
     </>
   );
 }

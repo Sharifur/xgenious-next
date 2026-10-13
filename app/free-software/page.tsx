@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
 
 const BASE_URL = 'https://xgenious.com';
 
@@ -286,6 +287,8 @@ const PRODUCTS = [
 export default function FreeSoftwarePage() {
   return (
     <>
+      <JsonLd graph={[{ '@type': 'CollectionPage', '@id': 'https://xgenious.com/free-software#webpage', name: 'Free Open Source Software', url: 'https://xgenious.com/free-software', isPartOf: { '@type': 'WebSite', url: 'https://xgenious.com' }, publisher: { '@id': ORG_ID } }, { '@type': 'ItemList', itemListElement: PRODUCTS.map((p, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'SoftwareApplication', name: p.name, url: `https://xgenious.com${p.href}`, applicationCategory: 'BusinessApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } } })) }, ORG, crumbs([['Home', '/'], ['Free Software', '/free-software']])]} />
+    <>
       {/* Hero */}
       <section
         className="pt-[120px] pb-14 sm:pt-[160px] sm:pb-20"
@@ -423,6 +426,7 @@ export default function FreeSoftwarePage() {
           </div>
         </div>
       </section>
+    </>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
+import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/privacy-policy' },
@@ -9,6 +10,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
+    <>
+      <JsonLd graph={[webPage('Privacy Policy', '/privacy-policy'), ORG, crumbs([['Home', '/'], ['Privacy Policy', '/privacy-policy']])]} />
     <PolicyLayout title="Privacy Policy" badge="Legal" lastUpdated="September 10, 2026">
       <h2>1. Introduction</h2>
       <p>
@@ -212,5 +215,6 @@ export default function PrivacyPolicyPage() {
         If you have any questions about this Privacy Policy, please contact us by email: <a href="mailto:contact@xgenious.com">contact@xgenious.com</a>
       </p>
     </PolicyLayout>
+    </>
   );
 }

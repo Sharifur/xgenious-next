@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
+import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/support-policy' },
@@ -9,6 +10,8 @@ export const metadata: Metadata = {
 
 export default function SupportPolicyPage() {
   return (
+    <>
+      <JsonLd graph={[webPage('Support Policy', '/support-policy'), ORG, crumbs([['Home', '/'], ['Support Policy', '/support-policy']])]} />
     <PolicyLayout title="Support Policy" badge="Legal" lastUpdated="January 16, 2025">
 
       <h2>1. Overview</h2>
@@ -97,5 +100,6 @@ export default function SupportPolicyPage() {
       </p>
 
     </PolicyLayout>
+    </>
   );
 }

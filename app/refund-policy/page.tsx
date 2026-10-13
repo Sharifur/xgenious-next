@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
+import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/refund-policy' },
@@ -9,6 +10,8 @@ export const metadata: Metadata = {
 
 export default function RefundPolicyPage() {
   return (
+    <>
+      <JsonLd graph={[webPage('Refund Policy', '/refund-policy'), ORG, crumbs([['Home', '/'], ['Refund Policy', '/refund-policy']])]} />
     <PolicyLayout title="Refund Policy" badge="Legal" lastUpdated="August 26, 2026">
 
       <p>
@@ -99,5 +102,6 @@ export default function RefundPolicyPage() {
       </p>
 
     </PolicyLayout>
+    </>
   );
 }

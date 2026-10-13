@@ -5,6 +5,7 @@ import StatsGrid from '@/components/ui/StatsGrid';
 import Button, { ArrowIcon } from '@/components/ui/Button';
 import SectionBadge from '@/components/ui/SectionBadge';
 import Testimonials from '@/components/sections/Testimonials';
+import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
 
 const BASE_URL = 'https://xgenious.com';
 
@@ -63,6 +64,8 @@ const IMG = {
 
 export default function AboutPage() {
   return (
+    <>
+      <JsonLd graph={[{ '@type': 'AboutPage', '@id': 'https://xgenious.com/about#webpage', name: 'About Xgenious', url: 'https://xgenious.com/about', about: { '@id': ORG_ID }, isPartOf: { '@type': 'WebSite', url: 'https://xgenious.com' } }, ORG, crumbs([['Home', '/'], ['About', '/about']])]} />
     <>
       {/* ── 1. Hero ── */}
       <section style={{ background: 'linear-gradient(180deg, #f5f6ea 0%, #f3dacd 100%)' }} className="pt-[100px] pb-[60px] sm:pt-[140px] sm:pb-[100px]">
@@ -258,6 +261,7 @@ export default function AboutPage() {
           </Button>
         </div>
       </section>
+    </>
     </>
   );
 }
