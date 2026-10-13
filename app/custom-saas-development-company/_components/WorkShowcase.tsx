@@ -63,7 +63,7 @@ const PRODUCTS: Product[] = [
       { icon: Icon.users, name: 'Seller Dashboard' },
       { icon: Icon.lock, name: 'Role & Permissions' },
     ],
-    href: 'https://xgenious.com/our-products/nazmart-multi-tenancy-ecommerce-platform-saas/',
+    href: '/products/nazmart-multi-tenancy-ecommerce-platform',
     image: '/products/nazmart.png',
   },
   {
@@ -78,7 +78,7 @@ const PRODUCTS: Product[] = [
       { icon: Icon.users, name: 'Portfolio Profiles' },
       { icon: Icon.lock, name: 'Dispute Resolution', badge: 'New' },
     ],
-    href: 'https://xgenious.com/our-products/xilancer-freelancer-marketplace-platform/',
+    href: '/products/xilancer-freelancer-marketplace-script',
     image: '/products/xilancer.png',
   },
   {
@@ -93,7 +93,7 @@ const PRODUCTS: Product[] = [
       { icon: Icon.users, name: 'Provider Management' },
       { icon: Icon.chart, name: 'Admin Dashboard' },
     ],
-    href: 'https://xgenious.com/our-products/prohandy-on-demand-home-service-marketplace-platform',
+    href: '/products/prohandy-on-demand-home-service-marketplace',
     image: '/products/prohandy.png',
   },
   {
@@ -108,7 +108,7 @@ const PRODUCTS: Product[] = [
       { icon: Icon.users, name: 'Backer Profiles' },
       { icon: Icon.star, name: 'Reward Tiers' },
     ],
-    href: 'https://xgenious.com/our-products/fundorex-crowdfunding-platform/',
+    href: '/products/fundorex-crowdfunding-platform',
     image: '/products/fundorex.png',
   },
   {
@@ -123,7 +123,7 @@ const PRODUCTS: Product[] = [
       { icon: Icon.mail, name: 'Team Inbox' },
       { icon: Icon.chart, name: 'Support Analytics' },
     ],
-    href: 'https://xgenious.com/our-products/laravel-ai-chatbot-support-script/',
+    href: '/products/helpnest-ai-chatbot-support-script',
     image: '/products/helpnest.png',
   },
   {
@@ -138,7 +138,7 @@ const PRODUCTS: Product[] = [
       { icon: Icon.lock, name: 'Role Management' },
       { icon: Icon.grid, name: '21+ Templates' },
     ],
-    href: 'https://xgenious.com/our-products/nexelit-multipurpose-website-business-management-system-cms/',
+    href: '/products/nexelit-multipurpose-website-business-management-system-cms',
     image: '/products/nexelit.png',
   },
 ];

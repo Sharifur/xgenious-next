@@ -349,7 +349,7 @@ export default function Navbar() {
               footerCtaHref="/contact"
             />
             <Dropdown label="Company" items={companyDropdown} dark={isDark} />
-            <Link href="https://xgenious.com/blog/" className={linkClass}>Blog</Link>
+            <Link href="/blog" className={linkClass}>Blog</Link>
             <Link href="/contact" className={linkClass}>Contact</Link>
           </nav>
 
@@ -419,7 +419,7 @@ export default function Navbar() {
             </details>
           ))}
 
-          <Link href="https://xgenious.com/blog/" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>
+          <Link href="/blog" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>
             Blog
           </Link>
           <Link href="/contact" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>

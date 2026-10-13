@@ -57,7 +57,7 @@ export default function TechStack() {
             <p className="text-[13px] text-[#6b7280]">PHP 8.4+, PostgreSQL 14+, Redis, Laravel Reverb — full details in our documentation.</p>
           </div>
           <a
-            href="https://docs.xgenious.com/docs/helpnest-ai-based-support-chatbot-system/instruction/server-requirement/"
+            href="https://docs.xgenious.com/docs/helpnest-ai-based-support-chatbot-system/instructions/server-requirement/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-[13px] font-semibold rounded-full px-5 py-2.5 border-2 flex-shrink-0 transition-all hover:-translate-y-0.5"

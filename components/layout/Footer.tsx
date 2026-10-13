@@ -53,7 +53,7 @@ const LINKS = [
 const COMPANY = [
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
-  { label: 'My Account', href: 'https://xgenious.com/my-account/' },
+  { label: 'My Account', href: '/my-account' },
 ];
 
 export default function Footer() {
