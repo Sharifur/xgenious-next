@@ -39,7 +39,7 @@ export default function ProjectCatalogue() {
         {/* Screenshot */}
         <div className="relative max-w-[860px] mx-auto">
           <div className="rounded-2xl overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.12)]">
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 860px"
               src="/products/xilancer-catalogue.jpg"
               alt="Project and gig catalogue for clients in Xilancer"
               width={860}

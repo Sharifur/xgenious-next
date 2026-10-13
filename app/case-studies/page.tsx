@@ -113,7 +113,7 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
         className="w-full flex items-center justify-center overflow-hidden"
         style={{ background: cs.accentBg, height: 200 }}
       >
-        <Image
+        <Image sizes="(max-width: 768px) 100vw, 480px"
           src={cs.image}
           alt={cs.title}
           width={480}

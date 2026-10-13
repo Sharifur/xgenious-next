@@ -34,7 +34,7 @@ export default function MobileApp() {
 
             {/* Right phones */}
             <div className="flex-shrink-0 flex items-end justify-center lg:justify-end gap-[-20px] relative lg:translate-x-[100px]">
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 752px"
                 src="/products/helpnest-mobile-section.png"
                 alt="Helpnest mobile app — tickets and notifications"
                 width={752}

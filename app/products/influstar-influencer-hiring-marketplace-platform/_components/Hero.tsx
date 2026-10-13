@@ -101,7 +101,7 @@ export default function Hero() {
               <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
               <div className="ml-3 flex-1 max-w-[300px] bg-white rounded-full border border-[#e5e7eb] px-3 py-1 text-[11px] text-[#9ca3af]">influencer.bytesed.com</div>
             </div>
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 1580px"
               src="/products/influstar/hero-home.png"
               alt="Influstar influencer marketing marketplace — homepage with influencer collage, social statistics, and hire/get-hired flows"
               width={1580}

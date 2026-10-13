@@ -184,7 +184,7 @@ function MegaMenu({
                     {item.icon ? (
                       <item.icon size={18} stroke={1.8} />
                     ) : item.image ? (
-                      <Image src={item.image} alt={`${item.label} logo`} width={36} height={36} className="w-full h-full object-cover" />
+                      <Image sizes="36px" src={item.image} alt={`${item.label} logo`} width={36} height={36} className="w-full h-full object-cover" />
                     ) : (
                       item.label[0]
                     )}

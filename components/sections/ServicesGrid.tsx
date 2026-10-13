@@ -479,7 +479,7 @@ function IllustrationImg({
   const [errored, setErrored] = useState(false);
   if (errored) return fallback;
   return (
-    <Image
+    <Image sizes="(max-width: 768px) 100vw, 420px"
       src={src}
       alt={alt}
       width={420}

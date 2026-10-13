@@ -50,7 +50,7 @@ export default function NoCode() {
 
           <div className="relative">
             <div className="rounded-2xl overflow-hidden border border-[#E5E7EC] shadow-xl">
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 1035px"
                 src="/products/grenmart/feat-related.png"
                 alt="Grenmart related product suggestions and page builder layout"
                 width={1035}

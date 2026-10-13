@@ -27,7 +27,7 @@ function ShowcaseItem({ name, description, image }: typeof projects[0]) {
   return (
     <div className="flex flex-col gap-4">
       <div className="relative w-full rounded-[12px] overflow-hidden" style={{ height: 540 }}>
-        <Image src={image} alt={name} fill className="object-cover" />
+        <Image src={image} alt={name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
       </div>
       <div className="flex flex-col gap-[14px]">
         <h3 className="text-[#0f1112] font-bold" style={{ fontSize: 36, lineHeight: '46px' }}>

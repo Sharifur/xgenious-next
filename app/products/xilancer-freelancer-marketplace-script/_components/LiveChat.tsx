@@ -39,7 +39,7 @@ export default function LiveChat() {
         {/* Screenshot */}
         <div className="relative max-w-[860px] mx-auto">
           <div className="rounded-2xl overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.12)]">
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 860px"
               src="/products/xilancer-livechat.jpg"
               alt="Xilancer live chat system — real-time messaging between freelancers and clients"
               width={860}

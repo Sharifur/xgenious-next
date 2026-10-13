@@ -115,7 +115,7 @@ export default function MarketplaceFeatures() {
                 style={{ background: f.imageBg }}
               >
                 <div className="rounded-xl overflow-hidden shadow-md w-full">
-                  <Image
+                  <Image sizes="(max-width: 768px) 100vw, 540px"
                     src={f.image}
                     alt={f.title}
                     width={540}

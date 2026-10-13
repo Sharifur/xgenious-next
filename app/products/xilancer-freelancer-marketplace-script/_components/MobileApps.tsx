@@ -101,7 +101,7 @@ export default function MobileApps() {
                       boxShadow: `0 4px 16px ${COLOR}20`,
                     }}
                   >
-                    <Image
+                    <Image sizes="68px"
                       src={app.icon}
                       alt={`${app.name} icon`}
                       width={68}

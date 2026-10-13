@@ -98,7 +98,7 @@ export default function Hero() {
 
         <div className="mt-10 w-full max-w-[900px]">
           <div className="rounded-t-2xl overflow-hidden shadow-2xl border border-black/5">
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 928px"
               src="/products/listocean/hero-landing.png"
               alt="ListOcean classified ads platform — homepage with listing grid, categories, and search"
               width={928}

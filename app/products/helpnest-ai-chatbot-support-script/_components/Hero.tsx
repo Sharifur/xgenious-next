@@ -110,7 +110,7 @@ export default function Hero() {
 
         <div className="relative z-10 mt-12 lg:mt-16 max-w-[1100px] mx-auto">
           <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 948px"
               src="/products/helpnest-dashboard-v2.png"
               alt="Helpnest AI customer support platform dashboard"
               width={948}

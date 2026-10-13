@@ -107,7 +107,7 @@ export default function Hero() {
 
           <div className="mt-10 w-full max-w-[900px]">
             <div className="rounded-t-2xl overflow-hidden shadow-2xl">
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 1763px"
                 src="/products/multisaas-hero.png"
                 alt="MultiSaas multi-tenant website builder SaaS platform landing page"
                 width={1763}

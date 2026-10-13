@@ -42,7 +42,7 @@ function GatewayCard({ name, flag, region, logo }: { name: string; flag: string;
     <div className="rounded-2xl border border-[#E5E7EC] p-4 flex flex-col items-center text-center gap-2.5 hover:shadow-md transition-shadow">
       <div className="relative w-12 h-12 rounded-xl bg-[#F5F6F8] flex items-center justify-center flex-shrink-0">
         {logo ? (
-          <Image src={logo} alt={`${name} logo`} width={28} height={28} className="object-contain rounded-[4px]" />
+          <Image sizes="28px" src={logo} alt={`${name} logo`} width={28} height={28} className="object-contain rounded-[4px]" />
         ) : (
           <span className="text-[14px] font-bold" style={{ color: '#4c8a12' }}>
             {name.slice(0, 2).toUpperCase()}

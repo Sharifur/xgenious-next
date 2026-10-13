@@ -100,7 +100,7 @@ export default function Hero() {
 
         <div className="mt-10 w-full max-w-[900px]">
           <div className="rounded-t-2xl overflow-hidden shadow-2xl border border-black/5">
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 1100px"
               src="/products/safecart/hero-landing.png"
               alt="SafeCart multi-vendor eCommerce platform — storefront with product listings, categories, and vendor dashboard"
               width={1100}

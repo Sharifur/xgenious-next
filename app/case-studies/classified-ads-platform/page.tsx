@@ -142,7 +142,7 @@ export default function ClassifiedAdsPlatformCaseStudy() {
             </div>
 
             <div className="w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3', minHeight: 360 }}>
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 800px"
                 src="/site-images/case-studies/08-classified-ads.svg"
                 alt="Project screenshot"
                 width={800}

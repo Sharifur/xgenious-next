@@ -124,7 +124,7 @@ export default function Hero() {
               className="overflow-hidden shadow-2xl rounded-t-2xl"
               style={{ borderTop: '2px solid rgba(99,105,241,0.2)', borderLeft: '2px solid rgba(99,105,241,0.2)', borderRight: '2px solid rgba(99,105,241,0.2)' }}
             >
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 1100px"
                 src="/products/qixer-hero-preview.png"
                 alt="Qixer multi-vendor on-demand service marketplace platform"
                 width={1100}

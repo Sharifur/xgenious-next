@@ -38,6 +38,7 @@ export default function Integrations() {
               <Image
                 src={logo.src}
                 alt={logo.alt}
+                sizes={`${logo.w}px`}
                 width={logo.w}
                 height={48}
                 className={`object-contain w-auto ${logo.imgClass}`}

@@ -98,7 +98,7 @@ export default function Hero() {
 
         <div className="mt-10 w-full max-w-[900px]">
           <div className="rounded-t-2xl overflow-hidden shadow-2xl border border-black/5">
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 1964px"
               src="/products/nexelit/hero-landing.png"
               alt="Nexelit multipurpose CMS — agency homepage with navigation, hero, and service cards"
               width={1964}

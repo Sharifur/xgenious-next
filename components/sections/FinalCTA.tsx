@@ -11,6 +11,7 @@ export default function FinalCTA() {
             src="/globe.png"
             alt=""
             fill
+            sizes="100vw"
             className="object-cover object-top opacity-90"
             style={{
               filter: 'drop-shadow(0 0 60px rgba(242,107,78,0.2))',

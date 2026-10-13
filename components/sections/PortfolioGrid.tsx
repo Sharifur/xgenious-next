@@ -14,7 +14,7 @@ function ProductCard({ p }: { p: OwnProduct }) {
       rel="noopener noreferrer"
       className="group relative rounded-3xl overflow-hidden bg-[#1A1A1A] flex-shrink-0 w-[400px] h-[500px] block"
     >
-      <Image src={p.image} alt={p.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+      <Image src={p.image} alt={p.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
 
       {/* Bottom gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />

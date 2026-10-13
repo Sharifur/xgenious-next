@@ -109,7 +109,7 @@ export default function FeaturesShowcase() {
                 className="flex-1 w-full rounded-2xl overflow-hidden border border-[#E5E7EC] shadow-sm flex items-center justify-center"
                 style={item.imgBg ? { background: item.imgBg, padding: '30px' } : {}}
               >
-                <Image
+                <Image sizes="(max-width: 768px) 100vw, 520px"
                   src={item.img}
                   alt={item.title}
                   width={520}

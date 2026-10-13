@@ -68,7 +68,7 @@ export default function PlatformOrbit() {
                 className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ background: `${p.bg}15` }}
               >
-                <Image
+                <Image sizes="28px"
                   src={p.logo}
                   alt={p.name}
                   width={28}

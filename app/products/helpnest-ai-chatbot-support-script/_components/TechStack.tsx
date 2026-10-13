@@ -43,7 +43,7 @@ export default function TechStack() {
               className="bg-white rounded-2xl border border-[#E5E7EC] p-4 flex flex-col items-center text-center gap-2"
             >
               <div className="w-10 h-10 flex items-center justify-center">
-                <Image src={item.logo} alt={item.name} width={40} height={40} className="object-contain" />
+                <Image sizes="40px" src={item.logo} alt={item.name} width={40} height={40} className="object-contain" />
               </div>
               <p className="text-[14px] font-bold text-[#0F1112]">{item.name}</p>
               <p className="text-[11px] text-[#9ca3af]">{item.role}</p>

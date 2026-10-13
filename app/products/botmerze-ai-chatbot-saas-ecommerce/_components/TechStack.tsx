@@ -98,7 +98,7 @@ export default function TechStack() {
                     style={{ background: s.bg }}
                   >
                     {s.logo ? (
-                      <Image
+                      <Image sizes="22px"
                         src={s.logo}
                         alt={s.name}
                         width={22}

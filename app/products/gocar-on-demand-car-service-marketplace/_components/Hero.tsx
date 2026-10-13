@@ -113,7 +113,7 @@ export default function Hero() {
               className="overflow-hidden shadow-2xl rounded-t-2xl"
               style={{ borderTop: '2px solid rgba(220,38,38,0.2)', borderLeft: '2px solid rgba(220,38,38,0.2)', borderRight: '2px solid rgba(220,38,38,0.2)' }}
             >
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 1100px"
                 src="/products/gocar-hero-preview.png"
                 alt="GoCar on-demand car service marketplace platform"
                 width={1100}

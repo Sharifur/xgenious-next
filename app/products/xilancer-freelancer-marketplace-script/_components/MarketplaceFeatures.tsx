@@ -103,7 +103,7 @@ export default function MarketplaceFeatures() {
                 className={`rounded-xl flex items-center justify-center p-6 min-h-[240px] ${f.imageLeft ? 'md:order-1' : 'md:order-2'}`}
                 style={{ background: f.imageBg }}
               >
-                <Image
+                <Image sizes="(max-width: 768px) 100vw, 460px"
                   src={f.image}
                   alt={f.imageAlt}
                   width={460}

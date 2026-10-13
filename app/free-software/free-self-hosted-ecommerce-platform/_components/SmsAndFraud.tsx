@@ -17,7 +17,7 @@ function GroupGrid({ groups }: { groups: { region: string; providers: string[] }
             {group.providers.map((p) => (
               <li key={p} className="flex items-center gap-1.5 text-[12px] font-medium text-[#484848] bg-[#f9fafb] border border-[#E5E7EC] rounded-full pl-1 pr-2.5 py-0.5">
                 {PROVIDER_LOGOS[p] ? (
-                  <Image src={PROVIDER_LOGOS[p]} alt={p} width={14} height={14} className="rounded-sm object-contain flex-shrink-0" unoptimized />
+                  <Image sizes="14px" src={PROVIDER_LOGOS[p]} alt={p} width={14} height={14} className="rounded-sm object-contain flex-shrink-0" unoptimized />
                 ) : null}
                 {p}
               </li>

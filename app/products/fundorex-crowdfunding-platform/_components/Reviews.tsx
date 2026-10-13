@@ -24,7 +24,7 @@ function TrustpilotIcon() {
 
 function EnvatoIcon() {
   return (
-    <Image
+    <Image sizes="14px"
       src="/products/icons/envato-favicon.png"
       alt="Envato"
       width={14}

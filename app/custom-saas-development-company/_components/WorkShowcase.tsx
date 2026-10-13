@@ -234,7 +234,7 @@ export default function WorkShowcase() {
                     {/* Right — screenshot */}
                     <div className="w-full lg:w-[380px] flex-shrink-0 rounded-xl overflow-hidden bg-[#d8d8d8]" style={{ aspectRatio: '4/3' }}>
                       {product.image ? (
-                        <Image
+                        <Image sizes="(max-width: 768px) 100vw, 380px"
                           src={product.image}
                           alt={product.name}
                           width={380}
@@ -262,7 +262,7 @@ export default function WorkShowcase() {
                     <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0 ml-3">
                       {product.image && (
                         <div className="hidden sm:block w-[88px] h-[58px] rounded-lg overflow-hidden bg-[#d8d8d8] flex-shrink-0">
-                          <Image
+                          <Image sizes="88px"
                             src={product.image}
                             alt={product.name}
                             width={88}

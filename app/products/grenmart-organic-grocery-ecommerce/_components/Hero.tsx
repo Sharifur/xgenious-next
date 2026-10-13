@@ -86,7 +86,7 @@ export default function Hero() {
 
         <div className="mt-10 w-full max-w-[900px]">
           <div className="rounded-t-2xl overflow-hidden shadow-2xl border border-black/5">
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 2000px"
               src="/products/grenmart/hero-landing.png"
               alt="Grenmart organic and grocery Laravel eCommerce storefront homepage"
               width={2000}

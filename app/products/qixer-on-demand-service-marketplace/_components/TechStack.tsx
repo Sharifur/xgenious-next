@@ -87,7 +87,7 @@ export default function TechStack() {
             >
               <div className="w-10 h-10 flex items-center justify-center">
                 {item.logo ? (
-                  <Image src={item.logo} alt={item.name} width={40} height={40} className="object-contain" />
+                  <Image sizes="40px" src={item.logo} alt={item.name} width={40} height={40} className="object-contain" />
                 ) : (
                   item.icon
                 )}
