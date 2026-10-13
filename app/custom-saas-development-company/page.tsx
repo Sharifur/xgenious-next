@@ -53,7 +53,7 @@ import CTASection from './_components/CTASection';
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'Custom SaaS Development — Multi-Tenant Platforms & MVPs',
+  title: { absolute: 'Custom SaaS Development Company | Xgenious' },
   description:
     'Custom SaaS built from scratch — multi-tenant, subscription billing, GDPR & HIPAA-ready. Fixed-price from $3K. Built by a team running 7 SaaS products.',
   metadataBase: new URL(BASE_URL),

@@ -18,13 +18,13 @@ import FAQ from './_components/FAQ';
 import ClosingCta from './_components/ClosingCta';
 
 export const metadata: Metadata = {
-  title: 'Nexelit — Multipurpose Business CMS on Laravel | Xgenious',
+  title: { absolute: 'Nexelit: Multipurpose Business CMS | Xgenious' },
   description:
     'Nexelit is a multipurpose Laravel CMS — 9 built-in modules, drag & drop builders, 20+ payment gateways, RTL support, and full source code. One-time from $39.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Nexelit — Multipurpose Website & Business CMS Script | Xgenious',
+    title: 'Nexelit: Multipurpose Business CMS | Xgenious',
     description:
       'Launch any business website with Nexelit: 9 modules (shop, events, courses, appointments, donations, jobs, services, support tickets, knowledgebase), no-code drag & drop builders, 20+ payment gateways, RTL support. One-time purchase from $39.',
     url: CANONICAL,
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nexelit — Multipurpose Website & Business CMS | Xgenious',
+    title: 'Nexelit: Multipurpose Business CMS | Xgenious',
     description:
       'Nexelit — multipurpose Laravel CMS with 9 business modules, no-code builders, and 20+ payment gateways. One-time from $39.',
     images: ['/products/nexelit.png'],

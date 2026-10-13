@@ -18,7 +18,7 @@ const BookingCTA    = dynamic(() => import('@/components/sections/BookingCTA'));
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Custom SaaS & Software Development — Built to Ship | Xgenious' },
+  title: { absolute: 'Custom SaaS & Software Development Company | Xgenious' },
   description:
     'Custom SaaS, web apps, mobile apps, and AI agents — built to ship on time. Published scope, committed delivery date. Trusted by businesses in 100+ countries.',
   metadataBase: new URL(BASE_URL),
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Custom SaaS & Software Development — Built to Ship | Xgenious',
+    title: 'Custom SaaS & Software Development Company | Xgenious',
     description:
       'From-scratch SaaS, custom web platforms, mobile apps, and AI agents. Published scope. A committed delivery date.',
     url: BASE_URL,
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Custom SaaS & Software Development — Built to Ship | Xgenious',
+    title: 'Custom SaaS & Software Development Company | Xgenious',
     description:
       'From-scratch SaaS, custom web platforms, mobile apps, and AI agents. Published scope. A committed delivery date.',
     images: ['/og-image.png'],

@@ -13,15 +13,13 @@ const DEMO_URL = 'https://crm-demo.xgenious.com/login';
 const DOCS_URL = 'https://genious-crm-9wkn.vercel.app/';
 
 export const metadata: Metadata = {
-  title: 'Free CRM Software: Laravel 12 + React 19, Self-Hosted',
-  description:
-    'Download a free, open-source CRM built with Laravel 12 and React 19. Manage contacts, leads, deals (Kanban), tasks, and companies. Self-hosted, MIT licensed, no subscription fees.',
+  title: { absolute: 'Free Open Source CRM Software | Xgenious' },
+  description: 'Free open-source CRM built with Laravel 12 and React 19. Manage contacts, leads, Kanban deals, tasks and companies. Self-hosted, MIT licensed.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/free-software/genius-crm` },
   openGraph: {
-    title: 'Free CRM Software: Laravel 12 + React 19 | Xgenious',
-    description:
-      'Production-ready CRM with 12 modules. Contacts, leads, deal pipeline (Kanban), RBAC, REST API, 2FA. Free download, MIT license.',
+    title: 'Free Open Source CRM Software | Xgenious',
+    description: 'Free open-source CRM built with Laravel 12 and React 19. Manage contacts, leads, Kanban deals, tasks and companies. Self-hosted, MIT licensed.',
     url: `${BASE_URL}/free-software/genius-crm`,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -29,8 +27,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free CRM Software: Laravel 12 + React 19',
-    description: 'Download a free self-hosted CRM with 12 modules. Laravel 12 + React 19. MIT licensed.',
+    title: 'Free Open Source CRM Software | Xgenious',
+    description: 'Free open-source CRM built with Laravel 12 and React 19. Manage contacts, leads, Kanban deals, tasks and companies. Self-hosted, MIT licensed.',
     images: ['/og-image.png'],
   },
   keywords: [

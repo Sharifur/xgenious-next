@@ -21,15 +21,13 @@ import StickyBar from './_components/StickyBar';
 import RelatedGuides from '@/components/sections/RelatedGuides';
 
 export const metadata: Metadata = {
-  title: 'Fundorex — Crowdfunding Platform Script & Kickstarter Clone',
-  description:
-    'Fundorex is a self-hosted Laravel crowdfunding platform script with community campaigns, donor wallet, volunteer management, 20+ payment gateways, event ticketing, and Flutter mobile app. One-time purchase from $69.',
+  title: { absolute: 'Fundorex: Crowdfunding Platform Script | Xgenious' },
+  description: 'Self-hosted Laravel crowdfunding script with campaigns, donor wallet, volunteers, 20+ payment gateways and a Flutter app. One-time from $69.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Fundorex — Crowdfunding Platform Script & Kickstarter Clone | Xgenious',
-    description:
-      'A Laravel crowdfunding and fundraising platform script that doubles as a Kickstarter clone. 20+ payment gateways, Flutter mobile app, donation campaigns, event ticketing. From $69 one-time.',
+    title: 'Fundorex: Crowdfunding Platform Script | Xgenious',
+    description: 'Self-hosted Laravel crowdfunding script with campaigns, donor wallet, volunteers, 20+ payment gateways and a Flutter app. One-time from $69.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/products/fundorex-hero-center.jpg', width: 1200, height: 630, alt: 'Fundorex Crowdfunding Platform' }],
@@ -37,8 +35,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Fundorex — Crowdfunding Platform Script & Kickstarter Clone',
-    description: 'Self-hosted Laravel crowdfunding & fundraising platform script. Kickstarter clone alternative, Flutter mobile app, 20+ payment gateways. From $69 one-time.',
+    title: 'Fundorex: Crowdfunding Platform Script | Xgenious',
+    description: 'Self-hosted Laravel crowdfunding script with campaigns, donor wallet, volunteers, 20+ payment gateways and a Flutter app. One-time from $69.',
     images: ['/products/fundorex-hero-center.jpg'],
   },
   keywords: [

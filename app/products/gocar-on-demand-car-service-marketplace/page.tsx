@@ -15,14 +15,12 @@ import FAQ from './_components/FAQ';
 
 export const metadata: Metadata = {
   title: 'GoCar — On-Demand Car Service Marketplace Script',
-  description:
-    'Laravel + Flutter script to launch your own car service marketplace. Connect car owners with mechanics — vehicle-specific booking, real-time tracking, 19+ payment gateways. From $39.',
+  description: 'Laravel + Flutter script to launch a car service marketplace. Vehicle-specific booking, real-time tracking and 19+ payment gateways. From $39.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'GoCar — On-Demand Car Service Marketplace Platform | Xgenious',
-    description:
-      'Build your own car service marketplace. Laravel + Flutter script with vehicle-specific booking, real-time order tracking, branch management, and 19+ payment gateways. One-time $39 purchase.',
+    description: 'Laravel + Flutter script to launch a car service marketplace. Vehicle-specific booking, real-time tracking and 19+ payment gateways. From $39.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/products/gocar-hero.png', width: 1200, height: 630, alt: 'GoCar On-Demand Car Service Marketplace Platform' }],
@@ -31,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'GoCar — Car Service Marketplace Script',
-    description: 'Laravel + Flutter marketplace. Vehicle booking, real-time tracking, branch management, 19+ gateways. One-time $39.',
+    description: 'Laravel + Flutter script to launch a car service marketplace. Vehicle-specific booking, real-time tracking and 19+ payment gateways. From $39.',
     images: ['/products/gocar-hero.png'],
   },
   keywords: [

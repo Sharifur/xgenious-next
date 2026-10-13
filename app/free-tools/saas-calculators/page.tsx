@@ -6,9 +6,8 @@ import AccordionItem from '@/components/ui/AccordionItem';
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'Free SaaS Calculators (2026): MRR, Churn, LTV, CAC & Runway',
-  description:
-    '18 free SaaS calculators: MRR, churn, LTV:CAC, runway, NRR and valuation. Instant results, no signup. Built for SaaS founders and operators.',
+  title: { absolute: 'Free SaaS Calculators: MRR, Churn, LTV & CAC' },
+  description: '18 free SaaS calculators for MRR, churn, LTV:CAC, runway, NRR and valuation. Instant results, no signup, built for SaaS founders.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/free-tools/saas-calculators` },
   keywords: [
@@ -21,9 +20,8 @@ export const metadata: Metadata = {
     'startup calculators free',
   ],
   openGraph: {
-    title: 'Free SaaS Calculators (2026): MRR, Churn, LTV, CAC & Runway | Xgenious',
-    description:
-      'Free SaaS calculators for pricing, MRR, churn, CAC, LTV, runway, NRR, and valuation. No login, no signup. Built for SaaS founders and operators.',
+    title: 'Free SaaS Calculators: MRR, Churn, LTV & CAC',
+    description: '18 free SaaS calculators for MRR, churn, LTV:CAC, runway, NRR and valuation. Instant results, no signup, built for SaaS founders.',
     url: `${BASE_URL}/free-tools/saas-calculators`,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -33,9 +31,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@xgenious1',
     creator: '@xgenious1',
-    title: 'Free SaaS Calculators (2026): MRR, Churn, LTV, CAC & Runway | Xgenious',
-    description:
-      'Free SaaS calculators for pricing, MRR, churn, CAC, LTV, runway, NRR, and valuation. No login, no signup. Built for SaaS founders and operators.',
+    title: 'Free SaaS Calculators: MRR, Churn, LTV & CAC',
+    description: '18 free SaaS calculators for MRR, churn, LTV:CAC, runway, NRR and valuation. Instant results, no signup, built for SaaS founders.',
   },
 };
 

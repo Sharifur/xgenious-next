@@ -48,13 +48,13 @@ const data: IndustryPageData = {
     },
   ],
   ctaText: 'Ready to deploy a compliance-ready AI agent for your finance team?',
-  metaTitle: 'AI Agents for Finance — KYC Automation, Fraud Detection & Client Onboarding',
+  metaTitle: 'AI Agents for Finance: KYC & Fraud | Xgenious',
   metaDescription:
     'AI agents for financial services — KYC automation, fraud detection, and client onboarding. Compliance-ready. Fixed-price from $1,500.',
 };
 
 export const metadata: Metadata = {
-  title: data.metaTitle,
+  title: { absolute: data.metaTitle },
   description: data.metaDescription,
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `/${data.slug}` },

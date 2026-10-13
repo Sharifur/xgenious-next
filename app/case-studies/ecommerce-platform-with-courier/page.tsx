@@ -32,9 +32,8 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Full-Featured eCommerce Platform with Built-In Courier — Case Study',
-  description:
-    'How Xgenious built a complete eCommerce platform with inventory management, built-in courier integration, fraud detection, dynamic product variants, multi-currency, and multi-language support.',
+  title: { absolute: 'eCommerce Platform with Courier: Case Study' },
+  description: 'How Xgenious built an eCommerce platform with inventory, built-in courier integration, fraud detection, product variants and multi-currency support.',
 };
 
 const STATS = [

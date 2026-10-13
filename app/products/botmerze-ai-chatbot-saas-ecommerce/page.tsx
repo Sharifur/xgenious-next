@@ -16,13 +16,13 @@ import FAQ from './_components/FAQ';
 import ClosingCta from './_components/ClosingCta';
 
 export const metadata: Metadata = {
-  title: 'Botmerze: AI Chatbot SaaS for WooCommerce & Shopify',
+  title: { absolute: 'Botmerze: AI Chatbot SaaS for eCommerce | Xgenious' },
   description:
     'Self-hosted AI chatbot SaaS script. RAG-powered with pgvector, WooCommerce & Shopify sync, 18+ payment gateways. One-time $49 — no monthly AI fees.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Botmerze: AI Chatbot SaaS for WooCommerce & Shopify | Xgenious',
+    title: 'Botmerze: AI Chatbot SaaS for eCommerce | Xgenious',
     description:
       'Self-hosted AI chatbot SaaS script. RAG-powered with pgvector, WooCommerce & Shopify sync, lead capture, 18+ payment gateways. One-time $49.',
     url: CANONICAL,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Botmerze: AI Chatbot SaaS for WooCommerce & Shopify | Xgenious',
+    title: 'Botmerze: AI Chatbot SaaS for eCommerce | Xgenious',
     description:
       'Self-hosted AI chatbot SaaS script. RAG-powered with pgvector, WooCommerce & Shopify sync. One-time $49 — no monthly AI fees.',
     images: ['/og-image.png'],

@@ -22,13 +22,13 @@ import StickyDownload from './_components/StickyDownload';
 import { BASE_URL, CANONICAL } from './_components/constants';
 
 export const metadata: Metadata = {
-  title: 'Genius Commerz: Free Self-Hosted eCommerce Platform',
+  title: { absolute: 'Free Self-Hosted eCommerce Platform | Xgenious' },
   description:
     'Free, self-hosted eCommerce platform for cross-border merchants. 98 built-in integrations, MIT licensed, 0% commission.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Genius Commerz: Free Self-Hosted eCommerce Platform | Xgenious',
+    title: 'Free Self-Hosted eCommerce Platform | Xgenious',
     description:
       'Self-hosted eCommerce for merchants selling across borders. 98 built-in integrations: payment gateways, shipping carriers, SMS, and fraud checks, across 213 countries and 155 currencies. MIT licensed, free forever, 0% commission.',
     url: CANONICAL,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Genius Commerz: Free Self-Hosted eCommerce Platform',
+    title: 'Free Self-Hosted eCommerce Platform | Xgenious',
     description:
       'Self-hosted eCommerce for cross-border merchants. 39 payment gateways, 19 shipping carriers, 20 SMS gateways. MIT licensed, 0% commission.',
     images: ['/free-software/genius-commerz/admin-dashboard.png'],

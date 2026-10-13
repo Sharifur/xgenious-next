@@ -32,9 +32,8 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
-  title: 'On-Demand Home Service Marketplace — Laravel + Flutter Case Study',
-  description:
-    'How Xgenious built a full on-demand home service marketplace connecting clients with service providers — Google Maps discovery, real-time chat, WhatsApp notifications, and Flutter mobile apps.',
+  title: { absolute: 'Home Service Marketplace App: Case Study' },
+  description: 'How Xgenious built a home service marketplace linking clients and providers, with Google Maps search, live chat, WhatsApp alerts and Flutter apps.',
 };
 
 const STATS = [

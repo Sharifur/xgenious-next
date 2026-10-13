@@ -6,8 +6,7 @@ import BookingCTA from '@/components/sections/BookingCTA';
 
 export const metadata: Metadata = {
   title: 'Case Studies — Client Projects',
-  description:
-    'Real projects. Measurable outcomes. Explore how Xgenious builds SaaS platforms, marketplaces, mobile apps, and eCommerce systems — from problem brief to production.',
+  description: 'Real projects, measurable outcomes. See how Xgenious builds SaaS platforms, marketplaces, mobile apps and eCommerce systems, from brief to production.',
 };
 
 type CaseStudy = {

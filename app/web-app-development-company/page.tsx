@@ -53,7 +53,7 @@ const faqItems: FaqItem[] = [
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'Custom Web App Development — B2B Portals & Internal Tools',
+  title: { absolute: 'Custom Web App Development Company | Xgenious' },
   description:
     'Custom web apps for B2B portals, internal tools, and enterprise platforms. Fixed-price from $2,500. 2–16 weeks. GDPR-ready on day one.',
   metadataBase: new URL(BASE_URL),
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     canonical: '/web-app-development-company',
   },
   openGraph: {
-    title: 'Custom Web App Development — B2B Portals & Internal Tools | Xgenious',
+    title: 'Custom Web App Development Company | Xgenious',
     description:
       "From-scratch web apps built around your workflow, not someone else's. Published scope. Fixed price. Committed delivery date.",
     url: `${BASE_URL}/web-app-development-company`,
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Custom Web App Development — B2B Portals & Internal Tools | Xgenious',
+    title: 'Custom Web App Development Company | Xgenious',
     description:
       "From-scratch web apps built around your workflow, not someone else's. Published scope. Fixed price. Committed delivery date.",
     images: ['/og-web-app-development-company.png'],

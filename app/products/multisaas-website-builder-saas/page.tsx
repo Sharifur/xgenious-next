@@ -18,15 +18,13 @@ import FAQ from './_components/FAQ';
 import ClosingCta from './_components/ClosingCta';
 
 export const metadata: Metadata = {
-  title: 'MultiSaas: Multi-Tenant Website Builder SaaS Script',
-  description:
-    'Launch your own website builder SaaS. MultiSaas ships with 10+ modules, 15+ themes, custom domains per tenant, 19+ payment gateways, and 550+ clients worldwide. From $59 one-time.',
+  title: { absolute: 'MultiSaas: Website Builder SaaS Script | Xgenious' },
+  description: 'Launch your own website builder SaaS with MultiSaas: 10+ modules, 15+ themes, custom domains per tenant and 19+ gateways. From $59 one-time.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'MultiSaas: Multi-Tenant Website Builder SaaS Script | Xgenious',
-    description:
-      'Build and operate your own website builder SaaS. Multi-tenancy, 10+ modules, 15+ themes, custom domains, 19+ payment gateways. One-time $59 — no monthly fees.',
+    title: 'MultiSaas: Website Builder SaaS Script | Xgenious',
+    description: 'Launch your own website builder SaaS with MultiSaas: 10+ modules, 15+ themes, custom domains per tenant and 19+ gateways. From $59 one-time.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'MultiSaas — Multi-Tenant Website Builder SaaS' }],
@@ -34,9 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MultiSaas: Multi-Tenant Website Builder SaaS Script | Xgenious',
-    description:
-      'Launch your own website builder SaaS. 10+ modules, 15+ themes, custom domains, 19+ gateways. One-time $59.',
+    title: 'MultiSaas: Website Builder SaaS Script | Xgenious',
+    description: 'Launch your own website builder SaaS with MultiSaas: 10+ modules, 15+ themes, custom domains per tenant and 19+ gateways. From $59 one-time.',
     images: ['/og-image.png'],
   },
   keywords: [

@@ -21,15 +21,13 @@ const BASE_URL = 'https://xgenious.com';
 const CANONICAL = `${BASE_URL}/free-software/genius-support`;
 
 export const metadata: Metadata = {
-  title: 'Free Open Source Ticketing System: Self-Hosted Helpdesk',
-  description:
-    'Free open-source ticketing system with guest ticket submission (no login required), email-to-ticket, knowledge base, SLA management, and real-time WebSocket updates. MIT licensed, self-hosted, no per-agent fees.',
+  title: { absolute: 'Free Open Source Ticketing System | Xgenious' },
+  description: 'Free open-source ticketing system with guest tickets, email-to-ticket, knowledge base, SLAs and real-time updates. Self-hosted, no per-agent fees.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Free Open Source Ticketing System: Self-Hosted Helpdesk | Xgenious',
-    description:
-      'Genius Support: free self-hosted open-source ticketing system. Guest ticket submission without login, email-to-ticket, knowledge base, SLA, real-time WebSocket. MIT licensed, no per-agent fees.',
+    title: 'Free Open Source Ticketing System | Xgenious',
+    description: 'Free open-source ticketing system with guest tickets, email-to-ticket, knowledge base, SLAs and real-time updates. Self-hosted, no per-agent fees.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -37,9 +35,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Open Source Ticketing System: Self-Hosted Helpdesk',
-    description:
-      'Genius Support: free self-hosted open-source ticketing system. Guest ticket submission without login, email-to-ticket, knowledge base, SLA, real-time WebSocket. MIT licensed, no per-agent fees.',
+    title: 'Free Open Source Ticketing System | Xgenious',
+    description: 'Free open-source ticketing system with guest tickets, email-to-ticket, knowledge base, SLAs and real-time updates. Self-hosted, no per-agent fees.',
     images: ['/og-image.png'],
   },
   keywords: [

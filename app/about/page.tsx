@@ -9,17 +9,15 @@ import Testimonials from '@/components/sections/Testimonials';
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'About Xgenious: Makers of Nazmart, Taskip & Fundorex',
-  description:
-    'Xgenious is a custom software development company founded in 2017. We build SaaS, web apps, mobile apps, and AI agents for mid-market teams. 13,000+ users across our own products. UK · US · UAE.',
+  title: { absolute: 'About Xgenious: Makers of Nazmart & Fundorex' },
+  description: 'Xgenious is a custom software company founded in 2017, building SaaS, web apps, mobile apps and AI agents. 13,000+ users across our products. UK, US, UAE.',
   metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: '/about',
   },
   openGraph: {
-    title: 'About Xgenious: Makers of Nazmart, Taskip & Fundorex',
-    description:
-      'Xgenious is a custom software development company founded in 2017. We build SaaS, web apps, mobile apps, and AI agents for mid-market teams. 13,000+ users across our own products. UK · US · UAE.',
+    title: 'About Xgenious: Makers of Nazmart & Fundorex',
+    description: 'Xgenious is a custom software company founded in 2017, building SaaS, web apps, mobile apps and AI agents. 13,000+ users across our products. UK, US, UAE.',
     url: `${BASE_URL}/about`,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'About Xgenious' }],
@@ -28,9 +26,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Xgenious: Makers of Nazmart, Taskip & Fundorex',
-    description:
-      'Xgenious is a custom software development company founded in 2017. We build SaaS, web apps, mobile apps, and AI agents for mid-market teams. 13,000+ users across our own products. UK · US · UAE.',
+    title: 'About Xgenious: Makers of Nazmart & Fundorex',
+    description: 'Xgenious is a custom software company founded in 2017, building SaaS, web apps, mobile apps and AI agents. 13,000+ users across our products. UK, US, UAE.',
     images: ['/og-image.png'],
     site: '@xgenious1',
     creator: '@xgenious1',

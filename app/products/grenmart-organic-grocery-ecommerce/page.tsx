@@ -18,13 +18,13 @@ import ClosingCta from './_components/ClosingCta';
 import RelatedGuides from '@/components/sections/RelatedGuides';
 
 export const metadata: Metadata = {
-  title: 'Grenmart — Organic & Grocery Laravel eCommerce Script',
+  title: { absolute: 'Grenmart: Grocery eCommerce Script | Xgenious' },
   description:
     'Grenmart is an organic grocery & multipurpose Laravel eCommerce script — no-code builder, 50+ widgets, 20+ payment gateways. One-time from $39.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Grenmart — Organic & Grocery Laravel eCommerce Script | Xgenious',
+    title: 'Grenmart: Grocery eCommerce Script | Xgenious',
     description:
       'Launch your online grocery store with Grenmart: no-code page builder, 50+ widgets, 3 home variants, 20+ payment gateways, advanced inventory. One-time purchase, full source code from $39.',
     url: CANONICAL,
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Grenmart — Organic & Grocery Laravel eCommerce Script | Xgenious',
+    title: 'Grenmart: Grocery eCommerce Script | Xgenious',
     description:
       'Organic grocery & multipurpose Laravel eCommerce. No-code builder, 50+ widgets, 20+ payment gateways. One-time from $39.',
     images: ['/products/grenmart/hero-landing.png'],
