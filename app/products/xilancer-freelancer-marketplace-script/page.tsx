@@ -22,14 +22,12 @@ import StickyBar from './_components/StickyBar';
 
 export const metadata: Metadata = {
   title: 'Xilancer — Best Freelancing Platform Script',
-  description:
-    'Launch a Fiverr or Upwork clone with Xilancer — the best freelancing platform script. Laravel + Vue.js, escrow payments, native mobile apps, bidding system. From $59 one-time.',
+  description: 'Launch a Fiverr or Upwork clone with Xilancer: Laravel + Vue.js freelancer script with escrow, bidding and native mobile apps. From $59 one-time.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Xilancer — Best Freelancing Platform Script | Xgenious',
-    description:
-      'Build a complete self-hosted freelancing marketplace. Laravel backend, Vue.js frontend, native mobile apps, Stripe & PayPal escrow. One-time purchase from $59.',
+    description: 'Launch a Fiverr or Upwork clone with Xilancer: Laravel + Vue.js freelancer script with escrow, bidding and native mobile apps. From $59 one-time.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/products/xilancer-hero-center.jpg', width: 1039, height: 509, alt: 'Xilancer — Freelancer Marketplace Platform' }],
@@ -38,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Xilancer — Best Freelancing Platform Script',
-    description: 'Build a Fiverr or Upwork clone with Xilancer. Laravel + Vue.js. Native mobile apps. From $59 one-time purchase.',
+    description: 'Launch a Fiverr or Upwork clone with Xilancer: Laravel + Vue.js freelancer script with escrow, bidding and native mobile apps. From $59 one-time.',
     images: ['/products/xilancer-hero-center.jpg'],
   },
   keywords: [

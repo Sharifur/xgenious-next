@@ -32,9 +32,8 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Multi-Tenant eCommerce SaaS Platform — Laravel Case Study',
-  description:
-    'How Xgenious built a multi-tenant SaaS eCommerce platform where entrepreneurs launch stores with custom domains, 19+ payment gateways, and Flutter mobile apps under a single Laravel instance.',
+  title: { absolute: 'Multi-Tenant eCommerce SaaS: Case Study' },
+  description: 'How Xgenious built a multi-tenant eCommerce SaaS where merchants launch stores on custom domains, with 19+ payment gateways and Flutter apps.',
 };
 
 const STATS = [

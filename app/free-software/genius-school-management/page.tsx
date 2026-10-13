@@ -25,15 +25,13 @@ const DEMO_ROLES = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Free School Management Software: 19 Modules, MIT Licensed',
-  description:
-    'Download free school management software with 19 modules. Covers free student management, attendance, fee collection, exams, payroll, library, transport and school resources management. Self-hosted, MIT licensed, no per-student fee.',
+  title: { absolute: 'Free School Management Software | Xgenious' },
+  description: 'Free school management software with 19 modules: students, attendance, fees, exams, payroll, library and transport. Self-hosted, MIT licensed.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/free-software/genius-school-management` },
   openGraph: {
-    title: 'Free School Management Software: 19 Modules, MIT Licensed',
-    description:
-      'Free school software with 19 modules: student management, attendance, fees, exams, payroll, library, transport. Self-hosted, MIT licensed, no per-student fee.',
+    title: 'Free School Management Software | Xgenious',
+    description: 'Free school management software with 19 modules: students, attendance, fees, exams, payroll, library and transport. Self-hosted, MIT licensed.',
     url: `${BASE_URL}/free-software/genius-school-management`,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -41,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free School Management Software: 19 Modules, MIT Licensed',
-    description: 'Free school software: 19 modules, MIT licensed, self-hosted. Student management, fees, exams, payroll, library & more.',
+    title: 'Free School Management Software | Xgenious',
+    description: 'Free school management software with 19 modules: students, attendance, fees, exams, payroll, library and transport. Self-hosted, MIT licensed.',
     images: ['/og-image.png'],
   },
   keywords: [

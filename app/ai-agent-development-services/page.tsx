@@ -48,7 +48,7 @@ const faqItems: FaqItem[] = [
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: 'AI Agent Development Services — Custom AI Agents for Business',
+  title: { absolute: 'AI Agent Development Services | Xgenious' },
   description:
     'Custom AI agents — RAG pipelines, multi-agent workflows, LLM integrations. Production-grade, not demo-grade. Fixed-price from $1,500. 2–12 weeks.',
   metadataBase: new URL(BASE_URL),

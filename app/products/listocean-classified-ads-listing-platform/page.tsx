@@ -16,15 +16,13 @@ import FAQ from './_components/FAQ';
 import ClosingCta from './_components/ClosingCta';
 
 export const metadata: Metadata = {
-  title: 'ListOcean — Classified Ads Script on Laravel | Xgenious',
-  description:
-    'Laravel classified ads script with live chat, Google Maps, membership plans, wallet, and 4 no-code builders. Buy once from $29 — full source code, no monthly fees.',
+  title: { absolute: 'ListOcean: Classified Ads Script | Xgenious' },
+  description: 'Laravel classified ads script with live chat, Google Maps, memberships, wallet and 4 no-code builders. One-time from $29, full source code.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'ListOcean — Classified Ads Script on Laravel | Xgenious',
-    description:
-      'Launch a classified ads marketplace with ListOcean — live chat, Google Maps, memberships, digital wallet, 4 no-code builders, GDPR compliance. One-time from $29, full source code.',
+    title: 'ListOcean: Classified Ads Script | Xgenious',
+    description: 'Laravel classified ads script with live chat, Google Maps, memberships, wallet and 4 no-code builders. One-time from $29, full source code.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/products/listocean/preview.jpg', width: 1200, height: 630, alt: 'ListOcean — Classified Ads & Listing Platform' }],
@@ -32,9 +30,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ListOcean — Classified Ads Script on Laravel | Xgenious',
-    description:
-      'Laravel classified ads script with live chat, Google Maps, memberships, wallet & 4 no-code builders. One-time from $29 — full source code.',
+    title: 'ListOcean: Classified Ads Script | Xgenious',
+    description: 'Laravel classified ads script with live chat, Google Maps, memberships, wallet and 4 no-code builders. One-time from $29, full source code.',
     images: ['/products/listocean/preview.jpg'],
   },
   keywords: [

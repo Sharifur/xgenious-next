@@ -6,14 +6,12 @@ const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
   title: 'Book a Free 30-Min Strategy Call — Xgenious',
-  description:
-    'Schedule a free 30-minute strategy call with Xgenious. Discuss your SaaS, web app, mobile, or AI agent project. No obligation, published scope, committed delivery date.',
+  description: 'Book a free 30-minute strategy call with Xgenious about your SaaS, web, mobile or AI agent project. No obligation, clear scope, committed delivery date.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/book-a-call` },
   openGraph: {
     title: 'Book a Free 30-Min Strategy Call — Xgenious',
-    description:
-      'Schedule a free 30-minute strategy call with Xgenious. Discuss your SaaS, web app, mobile, or AI agent project. No obligation.',
+    description: 'Book a free 30-minute strategy call with Xgenious about your SaaS, web, mobile or AI agent project. No obligation, clear scope, committed delivery date.',
     url: `${BASE_URL}/book-a-call`,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -22,8 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Book a Free 30-Min Strategy Call — Xgenious',
-    description:
-      'Schedule a free 30-minute strategy call with Xgenious. No obligation.',
+    description: 'Book a free 30-minute strategy call with Xgenious about your SaaS, web, mobile or AI agent project. No obligation, clear scope, committed delivery date.',
     images: ['/og-image.png'],
   },
   keywords: [

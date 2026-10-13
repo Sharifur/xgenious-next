@@ -48,13 +48,13 @@ const data: IndustryPageData = {
     },
   ],
   ctaText: 'Ready to deploy an AI agent for your HR or recruiting team?',
-  metaTitle: 'AI Agents for HR & Recruiting — Resume Screening, Candidate Outreach & Onboarding',
+  metaTitle: 'AI Agents for HR & Recruiting | Xgenious',
   metaDescription:
     'AI agents for HR and recruiting — automated resume screening, candidate outreach, and employee onboarding. Fixed-price from $1,500.',
 };
 
 export const metadata: Metadata = {
-  title: data.metaTitle,
+  title: { absolute: data.metaTitle },
   description: data.metaDescription,
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `/${data.slug}` },

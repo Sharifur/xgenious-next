@@ -18,15 +18,13 @@ import FAQ from './_components/FAQ';
 import ClosingCta from './_components/ClosingCta';
 
 export const metadata: Metadata = {
-  title: 'Influstar — Influencer Hiring Marketplace Script | Xgenious',
-  description:
-    'Launch your own influencer marketplace with Influstar — a self-hosted Laravel 12 script with escrow payments, live chat, influencer subscriptions, custom offers & 20+ gateways. One-time from $39, full source code.',
+  title: { absolute: 'Influstar: Influencer Marketplace Script | Xgenious' },
+  description: 'Launch an influencer marketplace with Influstar: self-hosted Laravel script with escrow, live chat, subscriptions and 20+ gateways. From $39.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Influstar — Influencer Hiring Marketplace Script | Xgenious',
-    description:
-      'Build an influencer hiring platform where brands book creators and you earn commission. Escrow payments, subscriptions, custom offers, 20+ gateways. One-time from $39 — full Laravel source code.',
+    title: 'Influstar: Influencer Marketplace Script | Xgenious',
+    description: 'Launch an influencer marketplace with Influstar: self-hosted Laravel script with escrow, live chat, subscriptions and 20+ gateways. From $39.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Influstar — Influencer Hiring Marketplace Script' }],
@@ -34,9 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Influstar — Influencer Hiring Marketplace Script | Xgenious',
-    description:
-      'Self-hosted influencer marketplace on Laravel 12 — escrow, subscriptions, custom offers & 20+ gateways. One-time from $39, full source code.',
+    title: 'Influstar: Influencer Marketplace Script | Xgenious',
+    description: 'Launch an influencer marketplace with Influstar: self-hosted Laravel script with escrow, live chat, subscriptions and 20+ gateways. From $39.',
     images: ['/og-image.png'],
   },
   keywords: [

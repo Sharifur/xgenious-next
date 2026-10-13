@@ -17,13 +17,13 @@ import ClosingCta from './_components/ClosingCta';
 import RelatedGuides from '@/components/sections/RelatedGuides';
 
 export const metadata: Metadata = {
-  title: 'Single Vendor eCommerce Platform — Zaika Laravel Script',
+  title: { absolute: 'Zaika: Single Vendor eCommerce Script | Xgenious' },
   description:
     'Zaika is a single vendor eCommerce platform built on Laravel — no-code page builder, 30+ widgets, 15+ payment gateways. One-time from $39.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Single Vendor eCommerce Platform — Zaika Laravel Script | Xgenious',
+    title: 'Zaika: Single Vendor eCommerce Script | Xgenious',
     description:
       'Launch your single-vendor online store with Zaika: no-code drag & drop page builder, 30+ widgets, 15+ payment gateways, advanced inventory. One-time purchase, full Laravel source from $39.',
     url: CANONICAL,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Single Vendor eCommerce Platform — Zaika Laravel Script | Xgenious',
+    title: 'Zaika: Single Vendor eCommerce Script | Xgenious',
     description:
       'Single vendor eCommerce on Laravel. No-code builder, 30+ widgets, 15+ payment gateways. One-time from $39.',
     images: ['/products/zaika/og-zaika.png'],

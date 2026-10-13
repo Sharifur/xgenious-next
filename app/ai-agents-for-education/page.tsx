@@ -48,13 +48,13 @@ const data: IndustryPageData = {
     },
   ],
   ctaText: 'Ready to deploy an AI agent for your education platform?',
-  metaTitle: 'AI Agents for Education — Student Support, Content Generation & Admin Automation',
+  metaTitle: 'AI Agents for Education & Schools | Xgenious',
   metaDescription:
     'AI agents for education — student support agents, content generation, and admin automation. Fixed-price from $1,500.',
 };
 
 export const metadata: Metadata = {
-  title: data.metaTitle,
+  title: { absolute: data.metaTitle },
   description: data.metaDescription,
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `/${data.slug}` },

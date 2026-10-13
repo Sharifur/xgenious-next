@@ -14,15 +14,13 @@ import DownloadCTA from './_components/DownloadCTA';
 import { BASE_URL, CANONICAL } from './_components/constants';
 
 export const metadata: Metadata = {
-  title: 'Genius Campaign: Free Self-Hosted Email Outreach Platform',
-  description:
-    'Open-source, self-hosted email marketing & outreach — custom fields, A/B variants, conditional templates, sequences, sender rotation, webhooks. Bring your own AWS SES / Gmail Workspace, no per-contact fees. Last 20 days: live RBAC, global guards, multi-subject shuffles, retention-aware email log.',
+  title: { absolute: 'Free Self-Hosted Email Outreach Tool | Xgenious' },
+  description: 'Open-source, self-hosted email outreach with sequences, A/B variants, sender rotation and webhooks. Bring your own SES or Gmail, no per-contact fees.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Genius Campaign: Free Self-Hosted Email Outreach Platform | Xgenious',
-    description:
-      'Contacts with custom fields, templates with A/B + conditional logic, sequences with Stats, campaigns with scheduling, verification, triggers/webhooks, public API, sender rotation, and Team RBAC — all self-hosted on your AWS SES / Gmail Workspace + Cloudflare R2. MIT licensed.',
+    title: 'Free Self-Hosted Email Outreach Tool | Xgenious',
+    description: 'Open-source, self-hosted email outreach with sequences, A/B variants, sender rotation and webhooks. Bring your own SES or Gmail, no per-contact fees.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/free-software/genius-campaign/dashboard.png', width: 2000, height: 827, alt: 'Genius Campaign dashboard' }],
@@ -30,9 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Genius Campaign: Free Self-Hosted Email Outreach Platform',
-    description:
-      'Contacts with custom fields, templates with A/B + conditional logic, sequences with Stats, campaigns with scheduling, verification, triggers/webhooks, public API, sender rotation, and Team RBAC — self-hosted. MIT licensed.',
+    title: 'Free Self-Hosted Email Outreach Tool | Xgenious',
+    description: 'Open-source, self-hosted email outreach with sequences, A/B variants, sender rotation and webhooks. Bring your own SES or Gmail, no per-contact fees.',
     images: ['/free-software/genius-campaign/dashboard.png'],
   },
   keywords: [

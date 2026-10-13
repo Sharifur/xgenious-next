@@ -48,13 +48,13 @@ const data: IndustryPageData = {
     },
   ],
   ctaText: 'Ready to deploy an AI agent for your real estate team?',
-  metaTitle: 'AI Agents for Real Estate — Lead Nurturing & Market Intelligence',
+  metaTitle: 'AI Agents for Real Estate Lead Nurturing',
   metaDescription:
     'AI agents for real estate teams — automated lead qualification, property matching, and market report generation. Fixed-price from $1,500.',
 };
 
 export const metadata: Metadata = {
-  title: data.metaTitle,
+  title: { absolute: data.metaTitle },
   description: data.metaDescription,
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `/${data.slug}` },

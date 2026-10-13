@@ -47,16 +47,14 @@ const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
   title: 'Mobile App Development — iOS, Android & Flutter',
-  description:
-    'Xgenious builds custom iOS, Android, and Flutter apps — shipped to the App Store and Play Store, not stuck in TestFlight. Fixed-price from $2k. 4–16 weeks. GDPR-ready on day one.',
+  description: 'Custom iOS, Android and Flutter apps shipped to the App Store and Play Store. Fixed price from $2k, 4–16 weeks, GDPR-ready from day one.',
   metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: '/mobile-app-development',
   },
   openGraph: {
     title: 'Mobile App Development — iOS, Android & Flutter | Xgenious',
-    description:
-      'Production-grade iOS and Android apps. Flutter cross-platform or native when it demands it. Fixed price. Committed delivery date. App Store and Play Store, shipped.',
+    description: 'Custom iOS, Android and Flutter apps shipped to the App Store and Play Store. Fixed price from $2k, 4–16 weeks, GDPR-ready from day one.',
     url: `${BASE_URL}/mobile-app-development`,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Mobile App Development Company | iOS, Android & Flutter | Xgenious' }],
@@ -66,8 +64,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Mobile App Development — iOS, Android & Flutter | Xgenious',
-    description:
-      'Production-grade iOS and Android apps. Flutter cross-platform or native when it demands it. Fixed price. Committed delivery date. App Store and Play Store, shipped.',
+    description: 'Custom iOS, Android and Flutter apps shipped to the App Store and Play Store. Fixed price from $2k, 4–16 weeks, GDPR-ready from day one.',
     images: ['/og-image.png'],
     site: '@xgenious1',
     creator: '@xgenious1',

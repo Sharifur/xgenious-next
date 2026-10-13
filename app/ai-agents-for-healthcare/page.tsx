@@ -48,13 +48,13 @@ const data: IndustryPageData = {
     },
   ],
   ctaText: 'Ready to deploy a HIPAA-ready AI agent for your healthcare practice?',
-  metaTitle: 'AI Agents for Healthcare — Patient Intake, Scheduling & Admin Automation',
+  metaTitle: 'AI Agents for Healthcare: Intake & Scheduling',
   metaDescription:
     'AI agents for healthcare — patient intake automation, appointment scheduling, and billing query handling. HIPAA-ready. Fixed-price from $1,500.',
 };
 
 export const metadata: Metadata = {
-  title: data.metaTitle,
+  title: { absolute: data.metaTitle },
   description: data.metaDescription,
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `/${data.slug}` },

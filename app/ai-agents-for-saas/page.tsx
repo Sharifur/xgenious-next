@@ -48,13 +48,13 @@ const data: IndustryPageData = {
     },
   ],
   ctaText: 'Ready to deploy an AI agent for your SaaS product?',
-  metaTitle: 'AI Agents for SaaS — Automate Onboarding, Retention & Support',
+  metaTitle: 'AI Agents for SaaS: Onboarding & Retention',
   metaDescription:
     'Purpose-built AI agents for SaaS products — onboarding automation, churn prevention, and support deflection. Fixed-price from $1,500.',
 };
 
 export const metadata: Metadata = {
-  title: data.metaTitle,
+  title: { absolute: data.metaTitle },
   description: data.metaDescription,
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `/${data.slug}` },

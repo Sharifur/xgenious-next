@@ -33,8 +33,7 @@ const FAQS = [
 
 export const metadata: Metadata = {
   title: 'Beauty Room Booking App — Flutter Case Study',
-  description:
-    'How Xgenious built a Flutter-based mobile platform for beauty and wellness professionals to book premium treatment rooms on a daily basis, with smart access control and Stripe payments.',
+  description: 'How Xgenious built a Flutter app for beauty professionals to book treatment rooms by the day, with smart access control and Stripe payments.',
 };
 
 const STATS = [

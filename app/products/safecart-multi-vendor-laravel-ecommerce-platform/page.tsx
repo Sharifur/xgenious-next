@@ -18,15 +18,13 @@ import ClosingCta from './_components/ClosingCta';
 import RelatedGuides from '@/components/sections/RelatedGuides';
 
 export const metadata: Metadata = {
-  title: 'SafeCart — Multi-Vendor Laravel eCommerce Platform | Xgenious',
-  description:
-    'Self-hosted multi-vendor marketplace on Laravel 10. Ships with 3 Flutter mobile apps, POS, delivery tracking, 26+ gateways, and wallet system. One-time from $39 — full source code, no monthly fees.',
+  title: { absolute: 'SafeCart: Multi-Vendor eCommerce Script | Xgenious' },
+  description: 'Self-hosted multi-vendor marketplace on Laravel with 3 Flutter apps, POS, delivery tracking and 26+ gateways. One-time from $39, full source code.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'SafeCart — Multi-Vendor Laravel eCommerce Platform | Xgenious',
-    description:
-      'Build an Amazon-style marketplace with SafeCart — multi-vendor dashboards, Flutter mobile apps, POS system, live delivery tracking, 26+ payment gateways, and campaign tools. One-time from $39, full source code.',
+    title: 'SafeCart: Multi-Vendor eCommerce Script | Xgenious',
+    description: 'Self-hosted multi-vendor marketplace on Laravel with 3 Flutter apps, POS, delivery tracking and 26+ gateways. One-time from $39, full source code.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'SafeCart — Multi-Vendor Laravel eCommerce Platform' }],
@@ -34,9 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SafeCart — Multi-Vendor Laravel eCommerce Platform | Xgenious',
-    description:
-      'Multi-vendor marketplace script on Laravel 10 with Flutter mobile apps, POS, delivery tracking & 26+ gateways. One-time from $39 — full source code.',
+    title: 'SafeCart: Multi-Vendor eCommerce Script | Xgenious',
+    description: 'Self-hosted multi-vendor marketplace on Laravel with 3 Flutter apps, POS, delivery tracking and 26+ gateways. One-time from $39, full source code.',
     images: ['/og-image.png'],
   },
   keywords: [

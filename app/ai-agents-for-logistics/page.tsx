@@ -48,13 +48,13 @@ const data: IndustryPageData = {
     },
   ],
   ctaText: 'Ready to deploy an AI agent for your logistics operation?',
-  metaTitle: 'AI Agents for Logistics — Route Optimisation, Delivery Tracking & Exception Handling',
+  metaTitle: 'AI Agents for Logistics & Delivery | Xgenious',
   metaDescription:
     'AI agents for logistics — route optimisation, delivery exception handling, and real-time tracking notifications. Fixed-price from $1,500.',
 };
 
 export const metadata: Metadata = {
-  title: data.metaTitle,
+  title: { absolute: data.metaTitle },
   description: data.metaDescription,
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `/${data.slug}` },

@@ -14,15 +14,13 @@ const DEMO_URL = 'https://genius-hrm.xgenious.com/login';
 const DOCS_URL = 'https://genious-hrm-whnd.vercel.app/';
 
 export const metadata: Metadata = {
-  title: 'Free Open Source HRM System: Laravel 13 + React 18',
-  description:
-    'Download a free, self-hosted HR management system built with Laravel 13 and React 18. 13 modules: employees, payroll, attendance, leave, recruitment, and performance management. MIT licensed.',
+  title: { absolute: 'Free Open Source HRM System | Xgenious' },
+  description: 'Free self-hosted HRM system on Laravel and React with 13 modules: employees, payroll, attendance, leave, recruitment and performance. MIT licensed.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/free-software/genius-hrm` },
   openGraph: {
-    title: 'Free Open Source HRM System: Laravel 13 + React 18 | Xgenious',
-    description:
-      'Complete HR management system with 13 modules. Payroll, attendance, recruitment, performance appraisals. Free download, MIT license, self-hosted.',
+    title: 'Free Open Source HRM System | Xgenious',
+    description: 'Free self-hosted HRM system on Laravel and React with 13 modules: employees, payroll, attendance, leave, recruitment and performance. MIT licensed.',
     url: `${BASE_URL}/free-software/genius-hrm`,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -30,8 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Open Source HRM System: Laravel 13 + React 18',
-    description: 'Download a free HR management system with 13 modules. Laravel 13 + React 18. MIT licensed.',
+    title: 'Free Open Source HRM System | Xgenious',
+    description: 'Free self-hosted HRM system on Laravel and React with 13 modules: employees, payroll, attendance, leave, recruitment and performance. MIT licensed.',
     images: ['/og-image.png'],
   },
   keywords: [

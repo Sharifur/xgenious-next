@@ -48,13 +48,13 @@ const data: IndustryPageData = {
     },
   ],
   ctaText: 'Ready to deploy an AI agent for your e-commerce store?',
-  metaTitle: 'AI Agents for E-Commerce — Cart Recovery, Support & Personalisation',
+  metaTitle: 'AI Agents for E-Commerce: Sales & Support | Xgenious',
   metaDescription:
     'AI agents for e-commerce — cart recovery, personalised recommendations, and 24/7 customer support. Fixed-price from $1,500.',
 };
 
 export const metadata: Metadata = {
-  title: data.metaTitle,
+  title: { absolute: data.metaTitle },
   description: data.metaDescription,
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `/${data.slug}` },

@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalUrl = `${BASE_URL}/free-tools/${slug}`;
 
   return {
-    title: tool.metaTitle,
+    title: { absolute: tool.metaTitle },
     description: tool.metaDescription,
     keywords: tool.keywords,
     metadataBase: new URL(BASE_URL),
