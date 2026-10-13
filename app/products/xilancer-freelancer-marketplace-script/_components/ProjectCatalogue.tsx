@@ -10,7 +10,7 @@ export default function ProjectCatalogue() {
       <div
         className="absolute bottom-0 left-0 right-0 h-[55%] pointer-events-none"
         style={{
-          backgroundImage: 'url(/products/xilancer-catalogue-bg.png)',
+          backgroundImage: 'url(/products/xilancer-catalogue-bg.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
           backgroundRepeat: 'no-repeat',

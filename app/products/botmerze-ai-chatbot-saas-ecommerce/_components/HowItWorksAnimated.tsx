@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { COLOR, LIGHT_COLOR } from './constants';
+import { useInView } from '@/lib/use-in-view';
 
 /* ─── Step definitions ─── */
 const STEPS = [
@@ -201,16 +202,18 @@ const NAV_ITEMS = [
 
 export default function HowItWorksAnimated() {
   const [active, setActive] = useState(0);
+  const { ref, inView } = useInView<HTMLElement>();
 
   useEffect(() => {
+    if (!inView) return;
     const interval = setInterval(() => setActive((a) => (a + 1) % STEPS.length), 3500);
     return () => clearInterval(interval);
-  }, []);
+  }, [inView]);
 
   const Preview = PREVIEWS[active];
 
   return (
-    <section className="pb-20 lg:pb-[100px] bg-white">
+    <section ref={ref} className="pb-20 lg:pb-[100px] bg-white">
       <style>{`
         @keyframes preview-in { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
       `}</style>

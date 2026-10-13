@@ -32,7 +32,7 @@ export default function Hero() {
     <section
       className="overflow-hidden pt-[100px] sm:pt-[160px] lg:pt-[220px] relative"
       style={{
-        backgroundImage: 'url(/products/prohandy-bg.png)',
+        backgroundImage: 'url(/products/prohandy-bg.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center top',
       }}

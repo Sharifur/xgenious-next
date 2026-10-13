@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { COLOR, LIGHT_COLOR } from './constants';
+import { useInView } from '@/lib/use-in-view';
 
 const MESSAGES = [
   { role: 'user', text: 'How do I add the chat widget to my website?' },
@@ -79,8 +80,10 @@ export default function ChatDemo() {
   const [inputText, setInputText] = useState('');
   const [step, setStep] = useState(0);
   const messagesBoxRef = useRef<HTMLDivElement>(null);
+  const { ref, inView } = useInView<HTMLElement>();
 
   useEffect(() => {
+    if (!inView) return;
     const handles: ReturnType<typeof setTimeout>[] = [];
     let charInterval: ReturnType<typeof setInterval> | null = null;
 
@@ -133,7 +136,7 @@ export default function ChatDemo() {
     }
 
     return cleanup;
-  }, [step]);
+  }, [step, inView]);
 
   useEffect(() => {
     const box = messagesBoxRef.current;
@@ -141,7 +144,7 @@ export default function ChatDemo() {
   }, [visible, botTyping]);
 
   return (
-    <section className="pt-16 lg:pt-[100px]" style={{ background: '#F5F6F8' }}>
+    <section ref={ref} className="pt-16 lg:pt-[100px]" style={{ background: '#F5F6F8' }}>
       <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1100px] mx-auto">
 
         <div className="flex flex-col lg:flex-row items-center gap-14 lg:gap-16">

@@ -10,7 +10,7 @@ export default function LiveChat() {
       <div
         className="absolute bottom-0 left-0 right-0 h-[55%] pointer-events-none"
         style={{
-          backgroundImage: 'url(/products/xilancer-livechat-bg.png)',
+          backgroundImage: 'url(/products/xilancer-livechat-bg.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
           backgroundRepeat: 'no-repeat',

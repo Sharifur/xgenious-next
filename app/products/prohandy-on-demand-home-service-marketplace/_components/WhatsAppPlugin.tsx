@@ -231,7 +231,7 @@ function WaMockup({ visibleCount, typing }: { visibleCount: number; typing: bool
       <div className="flex-1 overflow-hidden relative" style={{ background: WA_BG }}>
         <div
           className="absolute inset-0 bg-repeat"
-          style={{ backgroundImage: "url('/products/prohandy-wa-bg.png')", backgroundSize: '200px', opacity: 0.1 }}
+          style={{ backgroundImage: "url('/products/prohandy-wa-bg.webp')", backgroundSize: '200px', opacity: 0.1 }}
         />
         <div className="relative z-10 flex flex-col gap-2 px-2.5 py-2.5 h-full justify-end">
           {STEPS.slice(0, visibleCount).map((step, i) => (

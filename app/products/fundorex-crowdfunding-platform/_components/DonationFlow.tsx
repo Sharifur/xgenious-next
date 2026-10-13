@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { COLOR, LIGHT_COLOR } from './constants';
+import { useInView } from '@/lib/use-in-view';
 
 const STEPS = [
   {
@@ -145,18 +146,20 @@ const SCREENS = [CampaignScreen, PaymentScreen, SuccessScreen];
 
 export default function DonationFlow() {
   const [step, setStep] = useState(0);
+  const { ref, inView } = useInView<HTMLElement>();
 
   useEffect(() => {
+    if (!inView) return;
     const timer = setInterval(() => {
       setStep((s) => (s + 1) % SCREENS.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, []);
+  }, [inView]);
 
   const Screen = SCREENS[step];
 
   return (
-    <section className="py-20 lg:py-[100px] bg-white">
+    <section ref={ref} className="py-20 lg:py-[100px] bg-white">
       <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1100px] mx-auto">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

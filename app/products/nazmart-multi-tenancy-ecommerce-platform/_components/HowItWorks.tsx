@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useInView } from '@/lib/use-in-view';
 
 const steps = [
   {
@@ -28,14 +29,15 @@ const CSS = `
   @keyframes pulseDot { 0%,100%{opacity:1} 50%{opacity:0} }
 `;
 
-function StepVisual({ step }: { step: number }) {
+function StepVisual({ step, running }: { step: number; running: boolean }) {
   const [tick, setTick] = useState(0);
 
   useEffect(() => {
     setTick(0);
+    if (!running) return;
     const id = setInterval(() => setTick((t) => t + 1), 1800);
     return () => clearInterval(id);
-  }, [step]);
+  }, [step, running]);
 
   /* ── Step 1: setup checklist, one item every tick ── */
   if (step === 0) {
@@ -300,15 +302,17 @@ function StepVisual({ step }: { step: number }) {
 export default function HowItWorks() {
   const [active, setActive] = useState(0);
   const [visualKey, setVisualKey] = useState(0);
+  const { ref, inView } = useInView<HTMLElement>();
 
   useEffect(() => {
+    if (!inView) return;
     // 5 phases × 1800ms + 1800ms hold = ~10800ms per step
     const id = setInterval(() => {
       setActive((prev) => (prev + 1) % steps.length);
       setVisualKey((k) => k + 1);
     }, 11000);
     return () => clearInterval(id);
-  }, []);
+  }, [inView]);
 
   function handleClick(i: number) {
     setActive(i);
@@ -316,7 +320,7 @@ export default function HowItWorks() {
   }
 
   return (
-    <section className="py-14 sm:py-20" style={{ background: '#fff' }}>
+    <section ref={ref} className="py-14 sm:py-20" style={{ background: '#fff' }}>
       <div className="container-page px-4 sm:px-6 lg:px-0">
 
         <div className="text-center mb-12 max-w-[520px] mx-auto">
@@ -331,7 +335,7 @@ export default function HowItWorks() {
           {/* Left — animated visual */}
           <div className="rounded-3xl p-6 sm:p-8 min-h-[300px] flex items-center justify-center" style={{ background: '#FDF3F0' }}>
             <div className="w-full max-w-[340px]">
-              <StepVisual key={`${active}-${visualKey}`} step={active} />
+              <StepVisual key={`${active}-${visualKey}`} step={active} running={inView} />
             </div>
           </div>
 
