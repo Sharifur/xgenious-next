@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
 import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
+import EmailLink from '@/components/EmailLink';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/refund-policy' },
@@ -93,7 +94,7 @@ export default function RefundPolicyPage() {
       <h2>How to Initiate a Refund (Direct Purchases Only)</h2>
 
       <div className="policy-highlight">
-        <p><strong>Contact:</strong> <a href="/contact">our contact page</a></p>
+        <p><strong>Email:</strong> <EmailLink /></p>
         <p><strong>Contact Form:</strong> <a href="/contact">xgenious.com/contact</a></p>
       </div>
 

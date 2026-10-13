@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
 import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
+import EmailLink from '@/components/EmailLink';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/privacy-policy' },
@@ -134,7 +135,7 @@ export default function PrivacyPolicyPage() {
         <li>The right to withdraw consent at any time</li>
       </ul>
       <p>
-        If you wish to be informed what Personal Data we hold about you or want it to be removed from our systems, please contact us via <a href="/contact">our contact page</a>.
+        If you wish to be informed what Personal Data we hold about you or want it to be removed from our systems, please email us at <EmailLink />.
       </p>
 
       <h2>11. Your Data Protection Rights under CalOPPA</h2>
@@ -145,7 +146,7 @@ export default function PrivacyPolicyPage() {
         <li>Users can visit our site anonymously</li>
         <li>Our Privacy Policy link includes the word "Privacy" and can easily be found on the home page</li>
         <li>Users will be notified of any privacy policy changes on our Privacy Policy Page</li>
-        <li>Users are able to change their personal information by contacting us via <a href="/contact">our contact page</a></li>
+        <li>Users are able to change their personal information by emailing us at <EmailLink /></li>
       </ul>
       <p>
         We honor Do Not Track signals and do not track, plant cookies, or use advertising when a Do Not Track browser mechanism is in place.
@@ -156,7 +157,7 @@ export default function PrivacyPolicyPage() {
         If you are a California resident, you are entitled to learn what data we collect about you, ask to delete your data and not to sell (share) it. To exercise your data protection rights, you can make certain requests and ask us what personal information we have about you.
       </p>
       <p>
-        We don&apos;t sell or rent your personal information to any third parties for any purpose. To exercise your California data protection rights, please send your request(s) via <a href="/contact">our contact page</a>.
+        We don&apos;t sell or rent your personal information to any third parties for any purpose. To exercise your California data protection rights, please send your request(s) by email: <EmailLink />.
       </p>
 
       <h2>13. Service Providers</h2>
@@ -212,7 +213,7 @@ export default function PrivacyPolicyPage() {
 
       <h2>20. Contact Us</h2>
       <p>
-        If you have any questions about this Privacy Policy, please contact us via <a href="/contact">our contact page</a>
+        If you have any questions about this Privacy Policy, please contact us by email: <EmailLink />
       </p>
     </PolicyLayout>
     </>

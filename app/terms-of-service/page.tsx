@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
 import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
+import EmailLink from '@/components/EmailLink';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/terms-of-service' },
@@ -114,7 +115,7 @@ export default function TermsOfServicePage() {
 
       <h2>11. Contact Us</h2>
       <p>
-        If you have any questions about these Terms, please contact us via <a href="/contact">our contact page</a>.
+        If you have any questions about these Terms, please contact us at <EmailLink />.
       </p>
     </PolicyLayout>
     </>
