@@ -10,6 +10,7 @@ import PromoBanner from "@/components/ui/PromoBanner";
 import CrashReporter from "@/components/CrashReporter";
 import MetaPixel from "@/components/MetaPixel";
 import WebVitals from "@/components/WebVitals";
+import InteractionSignal from "@/components/InteractionSignal";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
@@ -107,6 +108,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         )}
         <MetaPixel />
         <WebVitals />
+        <InteractionSignal />
         <CrashReporter />
         <TopLoader />
         <IframeNotice />
