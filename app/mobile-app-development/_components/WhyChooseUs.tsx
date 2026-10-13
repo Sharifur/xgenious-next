@@ -76,7 +76,7 @@ export default function WhyChooseUs() {
                 <div key={f.title} className="group flex flex-col gap-3 rounded-[12px] p-5 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                   <div className="flex items-center justify-center w-10 h-10 rounded-[8px] bg-[#181818] group-hover:bg-[#ec7161] transition-colors duration-200">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={f.icon} alt="" width={22} height={22} />
+                    <img loading="lazy" decoding="async" src={f.icon} alt="" width={22} height={22} />
                   </div>
                   <p className="font-semibold text-[#181818] text-[16px] leading-6">{f.title}</p>
                   <p className="font-normal text-[#484848] text-[14px] leading-[21px]">{f.desc}</p>
@@ -88,7 +88,7 @@ export default function WhyChooseUs() {
           {/* Right — single illustration */}
           <div className="flex-1 flex items-start justify-center overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <img loading="lazy" decoding="async"
               src="/site-images/app-dev/crafted-illustration.png"
               alt="App performance illustration"
               className="w-full max-w-[600px] xl:max-w-none"
@@ -120,7 +120,7 @@ export default function WhyChooseUs() {
               animate={leftInView ? 'visible' : 'hidden'}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/site-images/app-dev/user-first-experience.png" alt="User-First App" className="absolute left-0 top-0" />
+              <img loading="lazy" decoding="async" src="/site-images/app-dev/user-first-experience.png" alt="User-First App" className="absolute left-0 top-0" />
             </motion.div>
             <div className="absolute left-6 top-6 flex flex-col gap-2 w-[265px]">
               <p className="font-semibold text-[#181818] text-[24px] leading-8">User-First App Experience</p>
@@ -128,7 +128,7 @@ export default function WhyChooseUs() {
             </div>
             <div className="absolute flex items-center justify-center w-[47px] h-[47px] rounded-[23.5px] right-6 top-[33px] bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/site-images/app-dev/why-icon-user.svg" alt="" width={24} height={24} />
+              <img loading="lazy" decoding="async" src="/site-images/app-dev/why-icon-user.svg" alt="" width={24} height={24} />
             </div>
           </div>
 
@@ -156,7 +156,7 @@ export default function WhyChooseUs() {
               animate={rightInView ? 'visible' : 'hidden'}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/site-images/app-dev/why-man-phone.png" alt="Built Together" className="absolute inset-0 w-full h-full object-cover" />
+              <img loading="lazy" decoding="async" src="/site-images/app-dev/why-man-phone.png" alt="Built Together" className="absolute inset-0 w-full h-full object-cover" />
             </motion.div>
             <div className="absolute left-[23px] top-[23px] flex flex-col gap-2 w-[265px]">
               <p className="font-semibold text-[#181818] text-[24px] leading-8">Built Together, Built Better</p>
@@ -164,7 +164,7 @@ export default function WhyChooseUs() {
             </div>
             <div className="absolute flex items-center justify-center w-[47px] h-[47px] rounded-[23.5px] right-6 top-8 bg-[#f3dccf]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/site-images/app-dev/why-icon-built.svg" alt="" width={24} height={24} />
+              <img loading="lazy" decoding="async" src="/site-images/app-dev/why-icon-built.svg" alt="" width={24} height={24} />
             </div>
           </div>
         </div>

@@ -111,6 +111,7 @@ export default function Hero() {
               height={720}
               className="w-full h-auto block"
               priority
+              fetchPriority="high"
             />
           </div>
         </div>

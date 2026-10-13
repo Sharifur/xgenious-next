@@ -65,11 +65,11 @@ export default function Hero() {
         <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-[99px] border border-[#d1d5db] bg-white/60 backdrop-blur-sm">
           <div className="flex -space-x-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/site-images/web-app-dev/avatar-1.png" alt="" width={28} height={28} className="rounded-full ring-2 ring-white object-cover w-7 h-7 sm:w-8 sm:h-8" />
+            <img loading="lazy" decoding="async" src="/site-images/web-app-dev/avatar-1.png" alt="" width={28} height={28} className="rounded-full ring-2 ring-white object-cover w-7 h-7 sm:w-8 sm:h-8" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/site-images/web-app-dev/avatar-2.png" alt="" width={28} height={28} className="rounded-full ring-2 ring-white object-cover w-7 h-7 sm:w-8 sm:h-8" />
+            <img loading="lazy" decoding="async" src="/site-images/web-app-dev/avatar-2.png" alt="" width={28} height={28} className="rounded-full ring-2 ring-white object-cover w-7 h-7 sm:w-8 sm:h-8" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/site-images/web-app-dev/avatar-3.png" alt="" width={28} height={28} className="rounded-full ring-2 ring-white object-cover w-7 h-7 sm:w-8 sm:h-8" />
+            <img loading="lazy" decoding="async" src="/site-images/web-app-dev/avatar-3.png" alt="" width={28} height={28} className="rounded-full ring-2 ring-white object-cover w-7 h-7 sm:w-8 sm:h-8" />
           </div>
           <span className="font-normal text-[#374151] text-[12px] sm:text-[14px] leading-5">
             Trusted by 13k+ teams across 100+ countries

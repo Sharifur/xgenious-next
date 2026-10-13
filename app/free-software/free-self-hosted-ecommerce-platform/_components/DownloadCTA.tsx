@@ -13,7 +13,7 @@ export default function DownloadCTA() {
   return (
     <section className="py-16 sm:py-20 relative overflow-hidden">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/cta-bg.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
+      <img loading="lazy" decoding="async" src="/cta-bg.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
       <div className="absolute inset-0 bg-black/50" />
       <div className="container-page px-4 sm:px-6 lg:px-0 relative z-10">
         <div className="max-w-[560px] mx-auto bg-white rounded-3xl p-8 sm:p-10 flex flex-col gap-6">

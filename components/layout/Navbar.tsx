@@ -276,7 +276,7 @@ export default function Navbar() {
           <div className="h-[60px] flex items-center justify-between">
             <Link href="/" className="flex items-center flex-shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/xgenious-logo.svg" alt="Xgenious" className="h-[34px] w-auto" />
+              <img fetchPriority="low" src="/xgenious-logo.svg" alt="Xgenious" className="h-[34px] w-auto" />
             </Link>
 
             <div className="flex items-center gap-2 flex-shrink-0">
@@ -318,7 +318,7 @@ export default function Navbar() {
         <div className="px-5 h-[60px] flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center flex-shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <img fetchPriority="low"
               src={isDark ? '/xgenious-logo-white.png' : '/xgenious-logo.svg'}
               alt="Xgenious"
               className="h-[34px] w-auto"

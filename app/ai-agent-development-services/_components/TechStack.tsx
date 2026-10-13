@@ -27,7 +27,7 @@ function TechCard({ name, sub, logo }: (typeof TECHS)[number]) {
         style={{ width: 48, height: 48, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)' }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logo} alt={name} width={28} height={28} className="object-contain" />
+        <img loading="lazy" decoding="async" src={logo} alt={name} width={28} height={28} className="object-contain" />
       </div>
       <div className="flex flex-col gap-0.5">
         <span className="text-white font-semibold text-[15px]">{name}</span>

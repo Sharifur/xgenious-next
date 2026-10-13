@@ -21,7 +21,7 @@ function ComplianceItem({ icon, name, status }: ComplianceCard) {
         style={{ width: 44, height: 44, background: '#F5EBDA' }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={icon} alt="" width={22} height={22} className="object-contain" />
+        <img loading="lazy" decoding="async" src={icon} alt="" width={22} height={22} className="object-contain" />
       </div>
       <div className="flex flex-col gap-1">
         <p className="text-[#0F1112] font-bold text-[13px] leading-[18px] sm:text-[15px] sm:leading-[22px] lg:text-[18px] lg:leading-tight">{name}</p>

@@ -77,6 +77,7 @@ function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => voi
               height={1052}
               className="w-full h-auto"
               priority
+              fetchPriority="high"
             />
           </div>
           <p className="text-center text-white text-[13px] mt-4">

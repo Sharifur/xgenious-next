@@ -96,7 +96,7 @@ function POSMockup() {
                 >
                   <div className="h-14 flex items-center justify-center relative overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={p.img} alt={p.name} className="w-full h-full object-cover" />
+                    <img loading="lazy" decoding="async" src={p.img} alt={p.name} className="w-full h-full object-cover" />
                     {isTarget && added && (
                       <div className="absolute top-1 right-1 w-4 h-4 rounded-full flex items-center justify-center text-white text-[8px] font-bold" style={{ background: '#92E721', color: '#0d2b14', animation: 'posBadge 0.35s ease' }}>✓</div>
                     )}

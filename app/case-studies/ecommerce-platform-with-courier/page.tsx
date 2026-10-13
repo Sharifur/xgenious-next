@@ -148,6 +148,7 @@ export default function EcommerceCourierCaseStudy() {
                 height={600}
                 className="w-full h-full object-cover"
                 priority
+                fetchPriority="high"
               />
             </div>
 

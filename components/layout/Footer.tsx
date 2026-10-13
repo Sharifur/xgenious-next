@@ -66,7 +66,7 @@ export default function Footer() {
       <footer className="bg-[#0C0C0E] text-white">
         <div className="container-page px-4 sm:px-6 lg:px-0 py-8 flex flex-col items-center gap-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/xgenious-logo-footer.png" alt="Xgenious" className="h-7 w-auto" />
+          <img loading="lazy" decoding="async" src="/xgenious-logo-footer.png" alt="Xgenious" className="h-7 w-auto" />
           <div className="flex items-center gap-5 flex-wrap justify-center">
             {LEGAL_LINKS.map((l) => (
               <Link key={l.label} href={l.href} className="text-[12px] text-[#A6A6A6] hover:text-white transition-colors">
@@ -110,7 +110,7 @@ export default function Footer() {
           <div className="flex flex-col gap-5">
             {/* Logo */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <img loading="lazy" decoding="async"
               src="/xgenious-logo-footer.png"
               alt="Xgenious"
               className="h-9 w-auto flex-shrink-0 max-w-fit"

@@ -60,7 +60,7 @@ function PlanCard({ name, price, timeline, bestFor, features, cta, ctaHref, dark
 
         <div className="flex items-center gap-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/site-images/web-app-dev/dot.svg" alt="" width={6} height={6} />
+          <img loading="lazy" decoding="async" src="/site-images/web-app-dev/dot.svg" alt="" width={6} height={6} />
           <span className="font-normal" style={{ fontSize: 15, lineHeight: '22px', color: subtextColor }}>{timeline}</span>
         </div>
 
@@ -77,7 +77,7 @@ function PlanCard({ name, price, timeline, bestFor, features, cta, ctaHref, dark
               style={{ borderBottom: i < features.length - 1 ? `1px solid ${borderColor}` : 'none' }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={checkIcon} alt="" width={18} height={18} className="flex-shrink-0 mt-0.5" />
+              <img loading="lazy" decoding="async" src={checkIcon} alt="" width={18} height={18} className="flex-shrink-0 mt-0.5" />
               <span className="font-normal text-[14px] leading-[21px]" style={{ color: featureColor }}>
                 {f}
               </span>

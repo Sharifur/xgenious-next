@@ -64,7 +64,7 @@ export default function Process() {
       {/* Central phone mockup */}
       <div className="hidden lg:flex absolute overflow-hidden left-1/2 -translate-x-1/2 top-[296px] w-[618px] h-[751px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <img loading="lazy" decoding="async"
           src="/site-images/app-dev/process-phone.png"
           alt="App process"
           className="w-full h-full object-cover"
@@ -73,7 +73,7 @@ export default function Process() {
 
       {/* Blur overlay */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <img loading="lazy" decoding="async"
         src="/site-images/app-dev/process-blur.svg"
         alt=""
         className="hidden lg:block absolute top-[590px] left-1/2 -translate-x-1/2 w-[1399px] pointer-events-none z-[2]"
@@ -86,7 +86,7 @@ export default function Process() {
             <div key={step.title} className="group flex flex-col gap-4 sm:gap-[25px]">
               <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-[8px] bg-[#f5f6f8] group-hover:bg-[#ec7161] transition-colors duration-300 shrink-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={step.iconSrc} alt={step.title} width={40} height={40} />
+                <img loading="lazy" decoding="async" src={step.iconSrc} alt={step.title} width={40} height={40} />
               </div>
               <div className="flex flex-col gap-4">
                 <p className="font-semibold text-[#181818] text-[18px] leading-[26px] sm:text-[20px] sm:leading-[28px] lg:text-[22px] lg:leading-[30px]">

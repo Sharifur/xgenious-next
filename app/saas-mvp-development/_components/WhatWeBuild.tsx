@@ -64,7 +64,7 @@ function Card({ bg, image, alt, title, description }: Card) {
     <div className="bg-white rounded-[16px] overflow-hidden flex flex-col shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
       <div className="h-[200px] sm:h-[220px] overflow-hidden" style={{ background: bg }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <img loading="lazy" decoding="async"
           src={image}
           alt={alt}
           className="w-full h-full object-cover"

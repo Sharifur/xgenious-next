@@ -122,6 +122,7 @@ export default function ScreenshotGallery({ screenshots, demoUrl }: Props) {
                 height={900}
                 className="w-full h-auto max-h-[80vh] object-contain"
                 priority
+                fetchPriority="high"
               />
             </div>
 

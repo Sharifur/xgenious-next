@@ -18,7 +18,7 @@ export default function AboutSection() {
 
             <div className="relative rounded-[16px] overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <img loading="lazy" decoding="async"
                 src="/site-images/mvp/about-team.jpg"
                 alt="MVP development team collaborating on product design"
                 className="w-full h-auto object-cover"
@@ -29,7 +29,7 @@ export default function AboutSection() {
                 style={{ background: 'rgba(20,20,20,0.85)', backdropFilter: 'blur(8px)' }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/tech/xgenious-logo-icon.svg" alt="Xgenious" width={24} height={24} />
+                <img loading="lazy" decoding="async" src="/tech/xgenious-logo-icon.svg" alt="Xgenious" width={24} height={24} />
                 <span className="text-white font-semibold text-[13px] tracking-wide">xgenious</span>
               </div>
             </div>

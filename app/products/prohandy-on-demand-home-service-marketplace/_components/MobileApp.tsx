@@ -57,7 +57,6 @@ export default function MobileApp() {
                 width={600}
                 height={400}
                 className="object-contain object-bottom"
-                priority
               />
             </div>
 

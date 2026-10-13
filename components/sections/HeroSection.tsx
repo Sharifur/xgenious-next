@@ -63,7 +63,7 @@ function StackBlock({
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={icon} alt="" width="24" height="24" />
+        <img loading="lazy" decoding="async" src={icon} alt="" width="24" height="24" />
       </div>
       <div
         className="absolute w-4 h-4"
