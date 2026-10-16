@@ -129,7 +129,7 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
           borderRadius: cs.imageRight ? '0 16px 16px 0' : '16px 0 0 16px',
         }}
       >
-        <Image
+        <Image sizes="(max-width: 768px) 100vw, 480px"
           src={cs.image}
           alt={cs.title}
           width={480}

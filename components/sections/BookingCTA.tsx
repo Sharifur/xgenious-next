@@ -9,6 +9,7 @@ export default function BookingCTA() {
         src="/start-with-us-bg.jpg"
         alt=""
         fill
+        sizes="100vw"
         className="object-cover object-center"
         priority={false}
       />
@@ -21,6 +22,7 @@ export default function BookingCTA() {
         src="/start-with-us-section-bg-path.png"
         alt=""
         fill
+        sizes="100vw"
         className="object-cover object-center opacity-30 pointer-events-none"
         priority={false}
       />

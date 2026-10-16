@@ -29,7 +29,7 @@ const row2 = logos.slice(9);
 function LogoCard({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="flex-shrink-0 w-[100px] h-[64px] bg-white rounded-xl border border-[#e9d5ff] flex items-center justify-center px-3 mx-2">
-      <Image src={src} alt={alt} width={80} height={44} className="object-contain max-h-[44px] w-auto" />
+      <Image sizes="80px" src={src} alt={alt} width={80} height={44} className="object-contain max-h-[44px] w-auto" />
     </div>
   );
 }

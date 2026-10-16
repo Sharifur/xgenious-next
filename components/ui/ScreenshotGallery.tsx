@@ -115,13 +115,14 @@ export default function ScreenshotGallery({ screenshots, demoUrl }: Props) {
 
             {/* Image */}
             <div className="relative rounded-xl overflow-hidden shadow-2xl">
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 1440px"
                 src={screenshots[active].src}
                 alt={screenshots[active].alt}
                 width={1440}
                 height={900}
                 className="w-full h-auto max-h-[80vh] object-contain"
                 priority
+                fetchPriority="high"
               />
             </div>
 

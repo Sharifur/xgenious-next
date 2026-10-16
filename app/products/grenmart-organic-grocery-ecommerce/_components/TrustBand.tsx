@@ -47,7 +47,7 @@ export default function TrustBand() {
 
           <div className="relative">
             <div className="rounded-2xl overflow-hidden border border-[#E5E7EC] shadow-xl">
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 645px"
                 src="/products/grenmart/feat-cart.png"
                 alt="Grenmart cart, wishlist and product comparison in the live storefront"
                 width={645}

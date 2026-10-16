@@ -6,7 +6,7 @@ export default function MobileApp() {
       <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1200px] mx-auto">
         <div
           className="rounded-3xl overflow-hidden relative"
-          style={{ backgroundImage: 'url(/products/helpnest-mobile-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+          style={{ backgroundImage: 'url(/products/helpnest-mobile-bg.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-0 px-6 sm:px-10 lg:px-24 pt-8 lg:pt-0 lg:min-h-[380px]">
 
@@ -34,13 +34,12 @@ export default function MobileApp() {
 
             {/* Right phones */}
             <div className="flex-shrink-0 flex items-end justify-center lg:justify-end gap-[-20px] relative lg:translate-x-[100px]">
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 752px"
                 src="/products/helpnest-mobile-section.png"
                 alt="Helpnest mobile app — tickets and notifications"
                 width={752}
                 height={497}
                 className="object-contain object-bottom"
-                priority
               />
             </div>
 

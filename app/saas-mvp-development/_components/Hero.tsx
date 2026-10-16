@@ -70,7 +70,7 @@ export default function Hero() {
               style={{ border: '2px solid rgba(255,255,255,0.18)', boxShadow: '0 8px 40px rgba(0,0,0,0.6)', width: 'clamp(200px, 72vw, 400px)' }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <img loading="lazy" decoding="async"
                 src={p.src}
                 alt={p.alt}
                 className="w-full h-auto object-top"

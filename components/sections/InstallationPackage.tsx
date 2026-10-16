@@ -49,7 +49,7 @@ export default function InstallationPackage({
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-12 gap-4">
           <span className="inline-flex items-center gap-1.5 bg-[#FA8C00] text-white text-[12px] font-bold uppercase tracking-widest rounded-full px-4 py-1.5">
-            <img src="/icons/xilancer/badge-icon.svg" alt="" width={12} height={12} />
+            <img loading="lazy" decoding="async" src="/icons/xilancer/badge-icon.svg" alt="" width={12} height={12} />
             {badgeText}
           </span>
           <h2 className="text-[32px] sm:text-[44px] lg:text-[52px] font-bold text-[#0F1112] leading-tight max-w-[640px]">

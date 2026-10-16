@@ -25,7 +25,7 @@ export default function StickyBar() {
       <div className="container-page px-4 sm:px-6 lg:px-0 py-3 flex items-center justify-between gap-4 flex-wrap">
 
         <div className="flex items-center gap-3 min-w-0">
-          <Image src="/icons/xilancer-logo.svg" alt="Xilancer" width={100} height={19} className="flex-shrink-0" />
+          <Image sizes="100px" src="/icons/xilancer-logo.svg" alt="Xilancer" width={100} height={19} className="flex-shrink-0" />
           <div className="min-w-0">
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-0.5">

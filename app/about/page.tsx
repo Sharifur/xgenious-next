@@ -5,6 +5,7 @@ import StatsGrid from '@/components/ui/StatsGrid';
 import Button, { ArrowIcon } from '@/components/ui/Button';
 import SectionBadge from '@/components/ui/SectionBadge';
 import Testimonials from '@/components/sections/Testimonials';
+import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
 
 const BASE_URL = 'https://xgenious.com';
 
@@ -64,6 +65,8 @@ const IMG = {
 export default function AboutPage() {
   return (
     <>
+      <JsonLd graph={[{ '@type': 'AboutPage', '@id': 'https://xgenious.com/about#webpage', name: 'About Xgenious', url: 'https://xgenious.com/about', about: { '@id': ORG_ID }, isPartOf: { '@type': 'WebSite', url: 'https://xgenious.com' } }, ORG, crumbs([['Home', '/'], ['About', '/about']])]} />
+    <>
       {/* ── 1. Hero ── */}
       <section style={{ background: 'linear-gradient(180deg, #f5f6ea 0%, #f3dacd 100%)' }} className="pt-[100px] pb-[60px] sm:pt-[140px] sm:pb-[100px]">
         <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col items-center text-center gap-4 sm:gap-6 pb-10 sm:pb-14">
@@ -77,7 +80,7 @@ export default function AboutPage() {
         </div>
         <div className="container-page px-4 sm:px-6 lg:px-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <img loading="lazy" decoding="async"
             src="/site-images/about-hero-team.jpg"
             alt="Xgenious annual team tour"
             className="w-full max-w-[1100px] mx-auto block h-[200px] sm:h-[360px] lg:h-[520px] object-cover rounded-xl"
@@ -104,7 +107,7 @@ export default function AboutPage() {
       {/* ── 4. Stats / About ── */}
       <section className="bg-[#F5F6F8] py-14 sm:py-20 lg:py-24 relative overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <img loading="lazy" decoding="async"
           src="/start-with-us-section-bg-path.png"
           alt=""
           aria-hidden
@@ -191,7 +194,7 @@ export default function AboutPage() {
       <section className="bg-[#f5f6f8] py-14 sm:py-20 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/founder-section-bg.jpg" alt="" aria-hidden className="w-full h-full object-cover opacity-30 -scale-y-100" />
+          <img loading="lazy" decoding="async" src="/founder-section-bg.jpg" alt="" aria-hidden className="w-full h-full object-cover opacity-30 -scale-y-100" />
         </div>
         <div className="container-page px-4 sm:px-6 lg:px-0 relative">
           <h2 className="text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px] font-semibold text-[#181818] text-center mb-8 sm:mb-14 lg:mb-[70px]">
@@ -200,7 +203,7 @@ export default function AboutPage() {
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-[88px] items-start lg:items-center">
             <div className="flex-shrink-0 w-full lg:w-[560px] overflow-hidden bg-white rounded-xl lg:rounded-none">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <img loading="lazy" decoding="async"
                 src="/sharifur-rahman-robin.jpg"
                 alt="Sharifur Rahman — Founder & CEO"
                 className="w-full h-[260px] sm:h-[400px] lg:h-[582px] object-cover"
@@ -245,7 +248,7 @@ export default function AboutPage() {
       {/* ── 9. CTA ── */}
       <section className="py-14 sm:py-20 lg:py-24 relative overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/cta-bg.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
+        <img loading="lazy" decoding="async" src="/cta-bg.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
         <div className="container-page px-4 sm:px-6 lg:px-0 relative flex flex-col items-center text-center gap-6 sm:gap-8">
           <h2 className="text-[26px] leading-[34px] sm:text-[34px] sm:leading-[42px] lg:text-[44px] lg:leading-[52px] font-semibold text-white max-w-[665px]">
             Ready to Build Your SaaS or Marketplace?
@@ -258,6 +261,7 @@ export default function AboutPage() {
           </Button>
         </div>
       </section>
+    </>
     </>
   );
 }

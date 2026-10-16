@@ -1,13 +1,18 @@
 import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
+import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
+import EmailLink from '@/components/EmailLink';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/refund-policy' },
   title: 'Refund Policy — Xgenious',
   description: 'Return and refund policy for products purchased directly from Xgenious or through Envato.',
 };
 
 export default function RefundPolicyPage() {
   return (
+    <>
+      <JsonLd graph={[webPage('Refund Policy', '/refund-policy'), ORG, crumbs([['Home', '/'], ['Refund Policy', '/refund-policy']])]} />
     <PolicyLayout title="Refund Policy" badge="Legal" lastUpdated="August 26, 2026">
 
       <p>
@@ -89,7 +94,7 @@ export default function RefundPolicyPage() {
       <h2>How to Initiate a Refund (Direct Purchases Only)</h2>
 
       <div className="policy-highlight">
-        <p><strong>Email:</strong> <a href="mailto:contact@xgenious.com">contact@xgenious.com</a></p>
+        <p><strong>Email:</strong> <EmailLink /></p>
         <p><strong>Contact Form:</strong> <a href="/contact">xgenious.com/contact</a></p>
       </div>
 
@@ -98,5 +103,6 @@ export default function RefundPolicyPage() {
       </p>
 
     </PolicyLayout>
+    </>
   );
 }

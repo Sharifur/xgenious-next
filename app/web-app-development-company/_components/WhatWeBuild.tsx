@@ -67,7 +67,7 @@ function IntegrationIcon() {
 const cards = [
   {
     // eslint-disable-next-line @next/next/no-img-element
-    icon: <img src="/site-images/web-app-dev/icon-b2b-new.svg" alt="" width={28} height={28} />,
+    icon: <img loading="lazy" decoding="async" src="/site-images/web-app-dev/icon-b2b-new.svg" alt="" width={28} height={28} />,
     title: 'B2B Client Portals',
     description: 'Branded portals for suppliers, partners, vendors, and clients. Role-based access, invoicing, document sharing, real-time approvals, and status tracking — built around your exact workflow, not a generic template.',
     tags: ['Supplier portal', 'Client Portal', 'Partner portal'],
@@ -75,7 +75,7 @@ const cards = [
   },
   {
     // eslint-disable-next-line @next/next/no-img-element
-    icon: <img src="/site-images/web-app-dev/icon-internal.svg" alt="" width={28} height={28} />,
+    icon: <img loading="lazy" decoding="async" src="/site-images/web-app-dev/icon-internal.svg" alt="" width={28} height={28} />,
     title: 'Internal Tools and Dashboards',
     description: 'Custom-built ops consoles, back-office workflows, and reporting dashboards on your exact data model. Everything Retool promises — fully owned, no per-seat pricing, no vendor ceiling on what it can do.',
     tags: ['Ops consoles', 'Workflow engines', 'Reporting dashboards'],
@@ -83,7 +83,7 @@ const cards = [
   },
   {
     // eslint-disable-next-line @next/next/no-img-element
-    icon: <img src="/site-images/web-app-dev/icon-enterprise-new.svg" alt="" width={28} height={28} />,
+    icon: <img loading="lazy" decoding="async" src="/site-images/web-app-dev/icon-enterprise-new.svg" alt="" width={28} height={28} />,
     title: 'Enterprise Web Platforms',
     description: 'Custom CRMs, HRIS platforms, ERP extensions, and specialised compliance tools for the processes where off-the-shelf SaaS simply doesn\'t fit. Schema-up builds, never retrofitted from a template.',
     tags: ['Custom CRM', 'Custom HRIS', 'Metered billing'],
@@ -91,7 +91,7 @@ const cards = [
   },
   {
     // eslint-disable-next-line @next/next/no-img-element
-    icon: <img src="/site-images/web-app-dev/icon-legacy.svg" alt="" width={28} height={28} />,
+    icon: <img loading="lazy" decoding="async" src="/site-images/web-app-dev/icon-legacy.svg" alt="" width={28} height={28} />,
     title: 'Legacy Modernization',
     description: 'Rescue ageing PHP, ASP.NET, or Rails applications. We rebuild on a modern stack with zero feature regression, a controlled cutover plan, and a documented migration path your team can maintain long-term.',
     tags: ['PHP → React', 'ASP.NET → Next.js', 'Zero-downtime cutover'],
@@ -99,7 +99,7 @@ const cards = [
   },
   {
     // eslint-disable-next-line @next/next/no-img-element
-    icon: <img src="/site-images/web-app-dev/icon-pwa.svg" alt="" width={28} height={28} />,
+    icon: <img loading="lazy" decoding="async" src="/site-images/web-app-dev/icon-pwa.svg" alt="" width={28} height={28} />,
     title: 'Progressive Web Apps',
     description: 'Installable, offline-capable, push-notification-ready web apps — the fastest path to a mobile-feel experience without an App Store submission cycle or a separate native codebase to maintain.',
     tags: ['Offline-first', 'Push notifications', 'Installable'],
@@ -107,7 +107,7 @@ const cards = [
   },
   {
     // eslint-disable-next-line @next/next/no-img-element
-    icon: <img src="/site-images/web-app-dev/icon-third-party.jpg" alt="" width={28} height={28} className="object-contain" />,
+    icon: <img loading="lazy" decoding="async" src="/site-images/web-app-dev/icon-third-party.jpg" alt="" width={28} height={28} className="object-contain" />,
     title: 'Third-party Integration',
     description: 'Salesforce, HubSpot, Shopify, Xero, QuickBooks, Slack, Zapier, and custom REST/GraphQL APIs wired cleanly into your platform. Idempotent, observable, retried — integrations that don\'t silently fail at 2am.',
     tags: ['Salesforce / HubSpot', 'Stripe / Xero', 'Custom APIs'],
@@ -150,7 +150,7 @@ function Card({ icon, title, description, tags, img }: CardProps) {
       <div className="mt-auto px-5 pb-5">
         <div className="overflow-hidden rounded-[8px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img} alt={title} className="w-full object-cover" />
+          <img loading="lazy" decoding="async" src={img} alt={title} className="w-full object-cover" />
         </div>
       </div>
     </div>

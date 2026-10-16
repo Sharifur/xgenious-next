@@ -25,7 +25,7 @@ export default function TechStack() {
                   style={{ background: LIGHT_COLOR }}
                 >
                   {t.logo ? (
-                    <Image src={t.logo} alt={t.name} width={28} height={28} className="object-contain" />
+                    <Image sizes="28px" src={t.logo} alt={t.name} width={28} height={28} className="object-contain" />
                   ) : (
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                       <rect x="2" y="3" width="20" height="14" rx="2" stroke={COLOR} strokeWidth="1.5" />

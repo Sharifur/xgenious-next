@@ -51,13 +51,12 @@ export default function MobileApp() {
             </div>
 
             <div className="flex-shrink-0 flex items-end justify-center lg:justify-end relative lg:translate-x-[60px]">
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 600px"
                 src="/products/prohandy-mobile.png"
                 alt="Prohandy Flutter mobile apps for clients and service providers"
                 width={600}
                 height={400}
                 className="object-contain object-bottom"
-                priority
               />
             </div>
 

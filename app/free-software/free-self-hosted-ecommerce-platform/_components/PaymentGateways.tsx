@@ -38,7 +38,7 @@ export default function PaymentGateways() {
                 {group.providers.map((p) => (
                   <li key={p} className="flex items-center gap-1.5 text-[12.5px] font-medium text-[#484848] bg-white border border-[#E5E7EC] rounded-full pl-1.5 pr-3 py-1">
                     {PROVIDER_LOGOS[p] ? (
-                      <Image src={PROVIDER_LOGOS[p]} alt={p} width={16} height={16} className="rounded-sm object-contain flex-shrink-0" unoptimized />
+                      <Image sizes="16px" src={PROVIDER_LOGOS[p]} alt={p} width={16} height={16} className="rounded-sm object-contain flex-shrink-0" unoptimized />
                     ) : null}
                     {p}
                   </li>

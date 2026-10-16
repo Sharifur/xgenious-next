@@ -17,7 +17,7 @@ function BuildCard({
         style={{ width: 64, height: 64, background: '#f5ebda' }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={icon} alt="" width={36} height={36} className="object-contain" />
+        <img loading="lazy" decoding="async" src={icon} alt="" width={36} height={36} className="object-contain" />
       </div>
       <div className="flex flex-col gap-2">
         <p className="text-[#181818] font-semibold text-[16px] leading-[24px] sm:text-[20px] sm:leading-[28px]">

@@ -32,6 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies/on-demand-home-service-app' },
   title: { absolute: 'Home Service Marketplace App: Case Study' },
   description: 'How Xgenious built a home service marketplace linking clients and providers, with Google Maps search, live chat, WhatsApp alerts and Flutter apps.',
 };
@@ -141,13 +142,14 @@ export default function HomeServiceMarketplaceCaseStudy() {
             </div>
 
             <div className="w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3', minHeight: 360 }}>
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 800px"
                 src="/site-images/case-studies/06-home-service.svg"
                 alt="Project screenshot"
                 width={800}
                 height={600}
                 className="w-full h-full object-cover"
                 priority
+                fetchPriority="high"
               />
             </div>
 

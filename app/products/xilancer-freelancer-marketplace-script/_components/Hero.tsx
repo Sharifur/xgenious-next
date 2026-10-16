@@ -22,7 +22,7 @@ export default function Hero() {
         <div className="hidden lg:block absolute left-0 top-[420px] w-[280px] xl:w-[320px] rotate-[-4deg] translate-x-[100px]">
           <div style={{ animation: 'xilancer-float 5s ease-in-out infinite' }}>
             <div className="rounded-[10px] overflow-hidden">
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 320px"
                 src="/products/xilancer-hero-left.png"
                 alt="Xilancer freelancer marketplace script screenshot"
                 width={320}
@@ -37,7 +37,7 @@ export default function Hero() {
         <div className="hidden lg:block absolute right-0 top-[420px] w-[260px] xl:w-[300px] rotate-[4deg] translate-x-[-100px]">
           <div style={{ animation: 'xilancer-float 6s ease-in-out infinite 0.8s' }}>
             <div className="rounded-[10px] overflow-hidden">
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 300px"
                 src="/products/xilancer-hero-right.png"
                 alt="Xilancer admin panel screenshot"
                 width={300}
@@ -117,13 +117,14 @@ export default function Hero() {
               style={{ background: COLOR }}
             />
             <div className="relative z-10 rounded-t-2xl overflow-hidden">
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 900px"
                 src="/products/xilancer-hero-center.jpg"
                 alt="Xilancer freelancer marketplace script — connecting clients with talent"
                 width={900}
                 height={540}
                 className="w-full object-cover object-top"
                 priority
+                fetchPriority="high"
               />
             </div>
           </div>

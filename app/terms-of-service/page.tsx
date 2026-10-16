@@ -1,13 +1,18 @@
 import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
+import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
+import EmailLink from '@/components/EmailLink';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/terms-of-service' },
   title: 'Terms of Service — Xgenious',
   description: 'Terms and conditions governing your use of the Xgenious website and services.',
 };
 
 export default function TermsOfServicePage() {
   return (
+    <>
+      <JsonLd graph={[webPage('Terms of Service', '/terms-of-service'), ORG, crumbs([['Home', '/'], ['Terms of Service', '/terms-of-service']])]} />
     <PolicyLayout title="Terms of Service" badge="Legal">
       <h2>1. Terms</h2>
       <p>
@@ -110,8 +115,9 @@ export default function TermsOfServicePage() {
 
       <h2>11. Contact Us</h2>
       <p>
-        If you have any questions about these Terms, please contact us at <a href="mailto:contact@xgenious.com">contact@xgenious.com</a>.
+        If you have any questions about these Terms, please contact us at <EmailLink />.
       </p>
     </PolicyLayout>
+    </>
   );
 }

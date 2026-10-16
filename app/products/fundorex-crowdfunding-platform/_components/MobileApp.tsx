@@ -42,7 +42,7 @@ export default function MobileApp() {
             {/* Left phone */}
             <div className="absolute left-0 bottom-0 w-[170px] sm:w-[190px] rounded-[28px] overflow-hidden shadow-xl border-4 border-white z-10"
               style={{ transform: 'rotate(-6deg) translateY(24px)' }}>
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 190px"
                 src="/products/fundorex-mobile-3.jpg"
                 alt="Fundorex app events list"
                 width={190}
@@ -53,7 +53,7 @@ export default function MobileApp() {
 
             {/* Center phone — tallest, front */}
             <div className="relative w-[200px] sm:w-[220px] rounded-[32px] overflow-hidden shadow-2xl border-4 border-white z-20">
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 220px"
                 src="/products/fundorex-mobile-1.jpg"
                 alt="Fundorex app home screen"
                 width={220}
@@ -65,7 +65,7 @@ export default function MobileApp() {
             {/* Right phone */}
             <div className="absolute right-0 bottom-0 w-[170px] sm:w-[190px] rounded-[28px] overflow-hidden shadow-xl border-4 border-white z-10"
               style={{ transform: 'rotate(6deg) translateY(24px)' }}>
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 190px"
                 src="/products/fundorex-mobile-2.jpg"
                 alt="Fundorex app event detail"
                 width={190}

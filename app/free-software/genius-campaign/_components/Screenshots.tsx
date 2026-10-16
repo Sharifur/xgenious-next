@@ -70,13 +70,14 @@ function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => voi
           </button>
 
           <div className="rounded-2xl overflow-hidden bg-black">
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 2000px"
               src={`/free-software/genius-campaign/${shot.file}`}
               alt={`Genius Campaign ${shot.title}: ${shot.caption}`}
               width={2000}
               height={1052}
               className="w-full h-auto"
               priority
+              fetchPriority="high"
             />
           </div>
           <p className="text-center text-white text-[13px] mt-4">
@@ -120,7 +121,7 @@ export default function Screenshots() {
               style={{ ['--tw-ring-color' as string]: COLOR }}
             >
               <div className="relative overflow-hidden">
-                <Image
+                <Image sizes="(max-width: 768px) 100vw, 2000px"
                   src={`/free-software/genius-campaign/${s.file}`}
                   alt={`Genius Campaign ${s.title}: ${s.caption}`}
                   width={2000}

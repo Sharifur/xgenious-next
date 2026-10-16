@@ -210,7 +210,7 @@ const WF_STEPS = [
     label: 'Send welcome email',
     app: 'Mailchimp',
     connect: 'Authenticating with Mailchimp...',
-    working: 'Sending via SMTP · lead@company.com',
+    working: 'Sending via SMTP · new lead',
     done: '0.4 s',
     output: 'Delivered to inbox',
     color: '#4FC3F7',
@@ -452,7 +452,7 @@ const AutomationVisual = () => {
               <span className="text-[11px] font-semibold text-[#E5E7EC]">Trigger: Form submitted</span>
               <span className="text-[9px] font-semibold text-[#10B981]">received</span>
             </div>
-            <p className="text-[9px] text-[#8A8F99] mt-0.5">lead@company.com · just now</p>
+            <p className="text-[9px] text-[#8A8F99] mt-0.5">New lead · just now</p>
           </div>
         </div>
         <WfConnector fromStatus="done" />
@@ -495,7 +495,7 @@ const AutomationVisual = () => {
 
 const INT_SCENARIOS = [
   {
-    trigger: { name: 'Stripe',   color: '#635BFF', event: 'Payment received · $299.00', detail: 'from john@acme.com' },
+    trigger: { name: 'Stripe',   color: '#635BFF', event: 'Payment received · $299.00', detail: 'from a new customer' },
     actions:  [
       { name: 'HubSpot', color: '#FF7A59', text: 'Deal marked Closed Won' },
       { name: 'Slack',   color: '#4A9C6D', text: 'Notified #sales-wins channel' },

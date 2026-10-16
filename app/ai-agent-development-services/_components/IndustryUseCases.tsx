@@ -117,6 +117,7 @@ function IndustryCard({ icon, industry, useCases, image, href, decorative }: Ind
           src={image}
           alt={decorative ? '' : industry}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover opacity-40 transition-opacity duration-500 group-hover:opacity-60"
         />
       )}

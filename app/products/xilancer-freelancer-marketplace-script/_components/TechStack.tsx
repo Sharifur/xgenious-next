@@ -32,7 +32,7 @@ export default function TechStack() {
               className="rounded-2xl border border-[#E5E7EC] bg-white p-5 flex items-center gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
               <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-xl bg-[#F5F6F8]">
-                <Image src={tech.logo} alt={tech.name} width={28} height={28} className="object-contain" />
+                <Image sizes="28px" src={tech.logo} alt={tech.name} width={28} height={28} className="object-contain" />
               </div>
               <div className="min-w-0">
                 <p className="text-[14px] font-bold text-[#0F1112] truncate">{tech.name}</p>

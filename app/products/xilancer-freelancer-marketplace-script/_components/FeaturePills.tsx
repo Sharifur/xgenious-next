@@ -24,7 +24,7 @@ export default function FeaturePills() {
                 className="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0"
                 style={{ border: '1px solid #CFD2D6' }}
               >
-                <Image src={pill.icon} alt={pill.label} width={20} height={20} />
+                <Image sizes="20px" src={pill.icon} alt={pill.label} width={20} height={20} />
               </div>
               <span className="text-[13px] font-medium text-[#374151] text-left leading-tight whitespace-nowrap">
                 {pill.label}

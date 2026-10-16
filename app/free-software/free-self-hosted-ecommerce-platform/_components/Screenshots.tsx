@@ -78,10 +78,12 @@ function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => voi
             <Image
               src={`/free-software/genius-commerz/${shot.file}`}
               alt={`Genius Commerz ${shot.title}: ${shot.caption}`}
+              sizes={`(max-width: 768px) 100vw, ${shot.w}px`}
               width={shot.w}
               height={shot.h}
               className="w-auto h-auto max-h-[75vh] max-w-full object-contain"
               priority
+              fetchPriority="high"
             />
           </div>
           <p className="text-center text-white text-[13px] mt-4">
@@ -129,6 +131,7 @@ export default function Screenshots() {
                   src={`/free-software/genius-commerz/${s.file}`}
                   alt={`Genius Commerz ${s.title}: ${s.caption}`}
                   fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">

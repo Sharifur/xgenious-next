@@ -15,7 +15,7 @@ export default function MobileApp() {
         </div>
 
         <div className="max-w-[900px] mx-auto">
-          <Image
+          <Image sizes="(max-width: 768px) 100vw, 900px"
             src="/products/nazmart-mobile-app.png"
             alt="Nazmart Flutter mobile app for tenant shop — Android and iOS"
             width={900}

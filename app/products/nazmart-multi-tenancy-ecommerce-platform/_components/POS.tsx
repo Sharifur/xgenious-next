@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useInView } from '@/lib/use-in-view';
 
 const PRODUCTS = [
   { name: 'Rattan Chair',        price: 750,  img: 'https://images.unsplash.com/photo-1565307586367-2c27d915cc8e?w=120&h=80&fit=crop&auto=format' },
@@ -19,18 +20,18 @@ const CSS = `
   @keyframes posBadge   { from{opacity:0;transform:translateY(-4px) scale(0.7)} to{opacity:1;transform:translateY(0) scale(1)} }
 `;
 
-function POSMockup() {
+function POSMockup({ running }: { running: boolean }) {
   const [tick, setTick] = useState(0);
 
   useEffect(() => {
-    setTick(0);
+    if (!running) return;
     const id = setInterval(() => setTick(t => {
       // hold on confirmed for 2 extra ticks then loop
       if (t >= 9) return 0;
       return t + 1;
     }), 1600);
     return () => clearInterval(id);
-  }, []);
+  }, [running]);
 
   // phases
   // 0-1 : grid shown, nothing selected
@@ -96,7 +97,7 @@ function POSMockup() {
                 >
                   <div className="h-14 flex items-center justify-center relative overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={p.img} alt={p.name} className="w-full h-full object-cover" />
+                    <img loading="lazy" decoding="async" src={p.img} alt={p.name} className="w-full h-full object-cover" />
                     {isTarget && added && (
                       <div className="absolute top-1 right-1 w-4 h-4 rounded-full flex items-center justify-center text-white text-[8px] font-bold" style={{ background: '#92E721', color: '#0d2b14', animation: 'posBadge 0.35s ease' }}>✓</div>
                     )}
@@ -225,8 +226,9 @@ function POSMockup() {
 }
 
 export default function POS() {
+  const { ref, inView } = useInView<HTMLElement>();
   return (
-    <section id="pos-plugin" className="py-14 sm:py-20" style={{ background: '#F8F9FB' }}>
+    <section ref={ref} id="pos-plugin" className="py-14 sm:py-20" style={{ background: '#F8F9FB' }}>
       <div className="container-page px-4 sm:px-6 lg:px-0">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center max-w-[1000px] mx-auto">
@@ -274,7 +276,7 @@ export default function POS() {
 
           {/* Right — animated POS mockup */}
           <div className="w-full">
-            <POSMockup key="pos-demo" />
+            <POSMockup key="pos-demo" running={inView} />
             <p className="text-center text-[11px] text-[#9ca3af] mt-3">Live demo — add to cart → checkout flow</p>
           </div>
 

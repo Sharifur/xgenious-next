@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { COLOR, LIGHT_COLOR } from './constants';
+import { useInView } from '@/lib/use-in-view';
 
 /* ─── Step definitions ─── */
 const STEPS = [
@@ -50,7 +51,7 @@ function ConnectPreview() {
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${s.tc}15` }}>
               {s.logo ? (
-                <img src={s.logo} alt={s.type} className="w-5 h-5 object-contain" />
+                <img loading="lazy" decoding="async" src={s.logo} alt={s.type} className="w-5 h-5 object-contain" />
               ) : (
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={s.tc} strokeWidth="2" strokeLinecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
               )}
@@ -201,16 +202,18 @@ const NAV_ITEMS = [
 
 export default function HowItWorksAnimated() {
   const [active, setActive] = useState(0);
+  const { ref, inView } = useInView<HTMLElement>();
 
   useEffect(() => {
+    if (!inView) return;
     const interval = setInterval(() => setActive((a) => (a + 1) % STEPS.length), 3500);
     return () => clearInterval(interval);
-  }, []);
+  }, [inView]);
 
   const Preview = PREVIEWS[active];
 
   return (
-    <section className="pb-20 lg:pb-[100px] bg-white">
+    <section ref={ref} className="pb-20 lg:pb-[100px] bg-white">
       <style>{`
         @keyframes preview-in { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
       `}</style>

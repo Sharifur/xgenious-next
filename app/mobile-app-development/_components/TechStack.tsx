@@ -25,7 +25,7 @@ function TechBadge({ name, icon, style, borderColor, bg, duration = 6, delay = 0
       transition={{ duration, repeat: Infinity, ease: 'easeInOut', delay }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={icon} alt={name} width={24} height={24} />
+      <img loading="lazy" decoding="async" src={icon} alt={name} width={24} height={24} />
       <span className="font-medium text-[#181818]" style={{ fontSize: 16, lineHeight: '24px' }}>
         {name}
       </span>
@@ -72,7 +72,7 @@ export default function TechStack() {
 
           {/* Phone — full width, capped */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <img loading="lazy" decoding="async"
             src="/site-images/app-dev/tech-phone.png"
             alt="Tech stack phone"
             className="w-full max-w-[260px] mx-auto"
@@ -87,7 +87,7 @@ export default function TechStack() {
                 style={{ border: `1px solid ${tech.borderColor}`, background: tech.bg }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={tech.icon} alt={tech.name} width={20} height={20} />
+                <img loading="lazy" decoding="async" src={tech.icon} alt={tech.name} width={20} height={20} />
                 <span className="font-medium text-[#181818] text-[14px] leading-[21px]">
                   {tech.name}
                 </span>
@@ -107,7 +107,7 @@ export default function TechStack() {
         {/* Circular element with floating badges */}
         <div className="relative flex items-center justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <img loading="lazy" decoding="async"
             src="/site-images/app-dev/tech-phone.png"
             alt="Tech stack phone"
             className="relative z-[5] max-w-none"
@@ -144,7 +144,7 @@ export default function TechStack() {
             transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/site-images/app-dev/tech-ios.svg" alt="App Store" width={24} height={24} />
+            <img loading="lazy" decoding="async" src="/site-images/app-dev/tech-ios.svg" alt="App Store" width={24} height={24} />
             <span className="font-medium text-[#181818]" style={{ fontSize: 16, lineHeight: '24px' }}>
               App Store
             </span>
@@ -181,7 +181,7 @@ export default function TechStack() {
             transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut', delay: 2.4 }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/site-images/app-dev/tech-playstore.svg" alt="Play Store" width={24} height={24} />
+            <img loading="lazy" decoding="async" src="/site-images/app-dev/tech-playstore.svg" alt="Play Store" width={24} height={24} />
             <span className="font-medium text-[#181818]" style={{ fontSize: 16, lineHeight: '24px' }}>
               Play Store
             </span>

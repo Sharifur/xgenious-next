@@ -81,6 +81,7 @@ function FeatureCard({
             <Image
               src={img}
               alt={title}
+              sizes={large ? "(max-width: 768px) 100vw, 640px" : "(max-width: 768px) 100vw, 420px"}
               width={large ? 640 : 420}
               height={large ? 300 : 220}
               className="w-full h-full object-cover object-top rounded-t-xl"

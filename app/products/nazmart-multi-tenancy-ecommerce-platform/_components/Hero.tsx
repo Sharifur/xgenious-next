@@ -107,13 +107,14 @@ export default function Hero() {
           {/* Hero image */}
           <div className="mt-10 w-full max-w-[900px]">
             <div className="rounded-t-2xl overflow-hidden shadow-2xl">
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 900px"
                 src="/products/nazmart-hero.jpg"
                 alt="Nazmart multi-tenancy eCommerce SaaS platform dashboard"
                 width={900}
                 height={540}
                 className="w-full object-cover object-top"
                 priority
+                fetchPriority="high"
               />
             </div>
           </div>

@@ -5,6 +5,7 @@ import FAQ from '@/components/sections/FAQ';
 import BookingCTA from '@/components/sections/BookingCTA';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies/ai-support-saas-platform' },
   title: { absolute: 'AI Customer Support SaaS: Case Study | Xgenious' },
   description: 'How Xgenious built a multi-tenant AI support platform with chatbots, ticketing, knowledge base and Stripe billing: a self-hosted Intercom alternative.',
 };
@@ -146,13 +147,14 @@ export default function AISupportSaaSCaseStudy() {
 
             {/* Right — hero image */}
             <div className="w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3', minHeight: 360 }}>
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 800px"
                 src="/site-images/case-studies/01-ai-chatbot.svg"
                 alt="Project screenshot"
                 width={800}
                 height={600}
                 className="w-full h-full object-cover"
                 priority
+                fetchPriority="high"
               />
             </div>
 

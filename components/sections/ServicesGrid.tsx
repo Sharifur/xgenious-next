@@ -479,7 +479,7 @@ function IllustrationImg({
   const [errored, setErrored] = useState(false);
   if (errored) return fallback;
   return (
-    <Image
+    <Image sizes="(max-width: 768px) 100vw, 420px"
       src={src}
       alt={alt}
       width={420}
@@ -508,7 +508,7 @@ function CardBackground({ src }: { src: string }) {
     >
       {/* Hidden image element used purely to detect 404 → triggers fallback */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <img loading="lazy" decoding="async"
         src={src}
         alt=""
         className="hidden"

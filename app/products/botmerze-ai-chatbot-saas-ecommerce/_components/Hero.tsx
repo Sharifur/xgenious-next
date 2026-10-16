@@ -104,13 +104,14 @@ export default function Hero() {
         {/* Hero screenshot */}
         <div className="mt-14 relative max-w-[1100px] mx-auto">
           <div className="rounded-t-2xl overflow-hidden border border-b-0 border-[#E5E7EC]" style={{ boxShadow: `0 -8px 60px ${COLOR}25` }}>
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 1200px"
               src="/products/botmerze-hero-v2.png"
               alt="Botmerze AI chatbot dashboard — chatbot builder and live chat widget preview"
               width={1200}
               height={720}
               className="w-full h-auto block"
               priority
+              fetchPriority="high"
             />
           </div>
         </div>

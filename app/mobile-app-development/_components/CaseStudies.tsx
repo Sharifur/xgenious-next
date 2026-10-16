@@ -136,7 +136,7 @@ function CaseCard({ cs }: { cs: CaseStudy }) {
         className={`w-full lg:w-[45%] flex-shrink-0 flex items-center justify-center overflow-hidden p-8 lg:p-10${cs.imageRight ? ' lg:order-last' : ''}`}
         style={{ background: '#fff' }}
       >
-        <Image
+        <Image sizes="(max-width: 768px) 100vw, 480px"
           src={cs.image}
           alt={cs.title}
           width={480}

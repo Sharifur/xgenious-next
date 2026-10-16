@@ -32,6 +32,7 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/case-studies/freelancer-marketplace-platform' },
   title: { absolute: 'Freelancer Marketplace Case Study | Xgenious' },
   description:
     'How Xgenious built a full-featured freelancer marketplace with escrow payments, live bidding, dispute resolution, and Flutter mobile apps — shipped in 8 weeks.',
@@ -142,13 +143,14 @@ export default function FreelancerMarketplaceCaseStudy() {
             </div>
 
             <div className="w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3', minHeight: 360 }}>
-              <Image
+              <Image sizes="(max-width: 768px) 100vw, 800px"
                 src="/site-images/case-studies/03-freelance-marketplace.svg"
                 alt="Project screenshot"
                 width={800}
                 height={600}
                 className="w-full h-full object-cover"
                 priority
+                fetchPriority="high"
               />
             </div>
 

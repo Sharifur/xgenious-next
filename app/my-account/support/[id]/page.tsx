@@ -187,7 +187,7 @@ function Attachments({ items }: { items: MediaAttachment[] | null | undefined })
             onClick={() => setLightbox(a)}
             className="group relative rounded-lg overflow-hidden border border-gray-200 hover:border-[#ec7161] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ec7161]"
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={a.url}
               alt={a.title}
               className="w-20 h-20 object-cover"
@@ -220,7 +220,7 @@ function Attachments({ items }: { items: MediaAttachment[] | null | undefined })
 
 function Avatar({ name, isSupport, imageUrl }: { name: string; isSupport: boolean; imageUrl?: string }) {
   if (imageUrl) {
-    return <img src={imageUrl} alt={name} className="w-6 h-6 rounded-full object-cover flex-shrink-0" />;
+    return <img loading="lazy" decoding="async" src={imageUrl} alt={name} className="w-6 h-6 rounded-full object-cover flex-shrink-0" />;
   }
   return (
     <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 ${isSupport ? 'bg-[#ec7161]' : 'bg-gray-400'}`}>

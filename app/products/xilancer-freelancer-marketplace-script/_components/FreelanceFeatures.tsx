@@ -73,7 +73,7 @@ export default function FreelanceFeatures() {
               style={{ background: card.bg, borderColor: card.border }}
             >
               <div className="relative h-[220px] sm:h-[260px] overflow-hidden rounded-xl">
-                <Image src={card.src} alt={card.alt} fill className="object-cover object-top" />
+                <Image src={card.src} alt={card.alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top" />
                 <div
                   className="absolute bottom-0 left-0 right-0 h-[80px] pointer-events-none"
                   style={{ background: `linear-gradient(to bottom, transparent, ${card.bg})` }}
@@ -99,7 +99,7 @@ export default function FreelanceFeatures() {
               style={{ background: card.bg, borderColor: card.border }}
             >
               <div className="relative h-[180px] overflow-hidden rounded-xl">
-                <Image src={card.src} alt={card.alt} fill className="object-cover object-top" />
+                <Image src={card.src} alt={card.alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top" />
                 <div
                   className="absolute bottom-0 left-0 right-0 h-[60px] pointer-events-none"
                   style={{ background: `linear-gradient(to bottom, transparent, ${card.bg})` }}

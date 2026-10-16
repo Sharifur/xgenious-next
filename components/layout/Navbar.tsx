@@ -184,7 +184,7 @@ function MegaMenu({
                     {item.icon ? (
                       <item.icon size={18} stroke={1.8} />
                     ) : item.image ? (
-                      <Image src={item.image} alt={`${item.label} logo`} width={36} height={36} className="w-full h-full object-cover" />
+                      <Image sizes="36px" src={item.image} alt={`${item.label} logo`} width={36} height={36} className="w-full h-full object-cover" />
                     ) : (
                       item.label[0]
                     )}
@@ -276,7 +276,7 @@ export default function Navbar() {
           <div className="h-[60px] flex items-center justify-between">
             <Link href="/" className="flex items-center flex-shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/xgenious-logo.svg" alt="Xgenious" className="h-[34px] w-auto" />
+              <img fetchPriority="low" src="/xgenious-logo.svg" alt="Xgenious" className="h-[34px] w-auto" />
             </Link>
 
             <div className="flex items-center gap-2 flex-shrink-0">
@@ -318,7 +318,7 @@ export default function Navbar() {
         <div className="px-5 h-[60px] flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center flex-shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <img fetchPriority="low"
               src={isDark ? '/xgenious-logo-white.png' : '/xgenious-logo.svg'}
               alt="Xgenious"
               className="h-[34px] w-auto"
@@ -349,7 +349,7 @@ export default function Navbar() {
               footerCtaHref="/contact"
             />
             <Dropdown label="Company" items={companyDropdown} dark={isDark} />
-            <Link href="https://xgenious.com/blog/" className={linkClass}>Blog</Link>
+            <Link href="/blog" className={linkClass}>Blog</Link>
             <Link href="/contact" className={linkClass}>Contact</Link>
           </nav>
 
@@ -419,7 +419,7 @@ export default function Navbar() {
             </details>
           ))}
 
-          <Link href="https://xgenious.com/blog/" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>
+          <Link href="/blog" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>
             Blog
           </Link>
           <Link href="/contact" className="text-[14px] font-medium text-[#2F2F2F]" onClick={() => setMenuOpen(false)}>

@@ -1,13 +1,18 @@
 import type { Metadata } from 'next';
 import PolicyLayout from '@/components/ui/PolicyLayout';
+import { JsonLd, ORG, ORG_ID, crumbs, webPage } from '@/components/JsonLd';
+import EmailLink from '@/components/EmailLink';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/support-policy' },
   title: 'Support Policy — Xgenious',
   description: 'Xgenious support policy — what is covered, response times, and how to get help.',
 };
 
 export default function SupportPolicyPage() {
   return (
+    <>
+      <JsonLd graph={[webPage('Support Policy', '/support-policy'), ORG, crumbs([['Home', '/'], ['Support Policy', '/support-policy']])]} />
     <PolicyLayout title="Support Policy" badge="Legal" lastUpdated="January 16, 2025">
 
       <h2>1. Overview</h2>
@@ -43,9 +48,9 @@ export default function SupportPolicyPage() {
       <h2>4. Support Channels</h2>
 
       <div className="policy-highlight">
-        <p><strong>Email:</strong> <a href="mailto:contact@xgenious.com">contact@xgenious.com</a></p>
+        <p><strong>Email:</strong> <EmailLink /></p>
         <p><strong>Contact Form:</strong> <a href="/contact">xgenious.com/contact</a></p>
-        <p><strong>My Account:</strong> <a href="https://xgenious.com/my-account/">xgenious.com/my-account</a></p>
+        <p><strong>My Account:</strong> <a href="/my-account">xgenious.com/my-account</a></p>
         <p><strong>WhatsApp (Priority Support only):</strong> <a href="https://wa.me/+8801811666560">+880 1811 666560</a></p>
       </div>
 
@@ -92,9 +97,10 @@ export default function SupportPolicyPage() {
 
       <h2>10. Contact Us</h2>
       <p>
-        For any questions regarding this Support Policy, please contact us at <a href="mailto:contact@xgenious.com">contact@xgenious.com</a>.
+        For any questions regarding this Support Policy, please contact us at <EmailLink />.
       </p>
 
     </PolicyLayout>
+    </>
   );
 }

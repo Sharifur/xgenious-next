@@ -64,7 +64,7 @@ export default function WhyChooseUs() {
 
       {/* Overlay bg — bottom right */}
       <div className="absolute bottom-0 right-0 pointer-events-none">
-        <Image src="/overlaybg.svg" alt="" width={600} height={600} className="opacity-100" />
+        <Image sizes="(max-width: 768px) 100vw, 600px" src="/overlaybg.svg" alt="" width={600} height={600} className="opacity-100" />
       </div>
 
       <div className="container-page relative">

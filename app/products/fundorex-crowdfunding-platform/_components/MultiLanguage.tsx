@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { COLOR, LIGHT_COLOR } from './constants';
+import { useInView } from '@/lib/use-in-view';
 
 const LANGS = [
   {
@@ -75,8 +76,10 @@ const LANGS = [
 export default function MultiLanguage() {
   const [active, setActive] = useState(0);
   const [animating, setAnimating] = useState(false);
+  const { ref, inView } = useInView<HTMLElement>();
 
   useEffect(() => {
+    if (!inView) return;
     const timer = setInterval(() => {
       setAnimating(true);
       setTimeout(() => {
@@ -85,7 +88,7 @@ export default function MultiLanguage() {
       }, 250);
     }, 2500);
     return () => clearInterval(timer);
-  }, []);
+  }, [inView]);
 
   const lang = LANGS[active];
 
@@ -99,7 +102,7 @@ export default function MultiLanguage() {
   };
 
   return (
-    <section className="py-16 sm:py-20" style={{ background: '#F5F6F8' }}>
+    <section ref={ref} className="py-16 sm:py-20" style={{ background: '#F5F6F8' }}>
       <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[1100px] mx-auto">
         <div className="rounded-3xl border border-[#E5E7EC] bg-white overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2">

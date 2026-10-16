@@ -1,5 +1,5 @@
 'use client';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useDeferredValue } from 'react';
 
 const COLOR = '#f26b4e';
 
@@ -78,8 +78,10 @@ export default function CronExpressionBuilder() {
   const [expr, setExpr] = useState('0 0 * * *');
   const [copied, setCopied] = useState(false);
 
-  const human = useMemo(() => describe(expr), [expr]);
-  const runs = useMemo(() => nextRuns(expr), [expr]);
+  // The input stays instant; the minute-by-minute next-run scan (up to 10k iterations) runs on the deferred value.
+  const deferredExpr = useDeferredValue(expr);
+  const human = useMemo(() => describe(deferredExpr), [deferredExpr]);
+  const runs = useMemo(() => nextRuns(deferredExpr), [deferredExpr]);
 
   function copy() {
     navigator.clipboard.writeText(expr);

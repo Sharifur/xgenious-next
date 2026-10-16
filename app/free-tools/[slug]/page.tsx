@@ -54,6 +54,14 @@ const SERVICE_LINKS: Record<string, { label: string; desc: string; href: string;
   ],
 };
 
+// Renders "[label](/path)" in content strings as internal links.
+function withLinks(text: string) {
+  return text.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
+    const m = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part);
+    return m ? <Link key={i} href={m[2]} className="underline text-[#0F1112]">{m[1]}</Link> : part;
+  });
+}
+
 export function generateStaticParams() {
   return TOOLS.map((tool) => ({ slug: tool.slug }));
 }
@@ -264,10 +272,10 @@ export default async function FreeToolPage({ params }: PageProps) {
       {/* ── Tool widget ──────────────────────────────────────────────────── */}
       <section className="py-12 sm:py-16" style={{ background: '#F5F6F8' }}>
         <div className="container-page px-4 sm:px-6 lg:px-0">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-10 items-start">
+          <div className={`grid grid-cols-1 gap-8 lg:gap-10 items-start ${tool.fullWidthTool ? '' : 'lg:grid-cols-[1fr_1.4fr]'}`}>
 
             {/* Left: tagline + feature list */}
-            <div className="flex flex-col gap-5">
+            {!tool.fullWidthTool && <div className="flex flex-col gap-5">
               <div>
                 <p className="text-[11px] font-semibold tracking-widest uppercase mb-2" style={{ color: tool.color }}>{tool.category}</p>
                 <p className="text-[20px] sm:text-[22px] font-semibold text-[#0F1112] leading-[1.35] tracking-[-0.01em]">{tool.tagline}</p>
@@ -287,7 +295,7 @@ export default async function FreeToolPage({ params }: PageProps) {
                   ))}
                 </ul>
               )}
-            </div>
+            </div>}
 
             {/* Right: tool */}
             <div className="bg-white rounded-2xl border border-[#E5E7EC] shadow-[0_4px_24px_rgba(0,0,0,0.05)] p-5 sm:p-6">
@@ -381,6 +389,52 @@ export default async function FreeToolPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* ── Long-form content sections (optional) ───────────────────────── */}
+      {tool.contentSections?.map((sec, si) => (
+        <section key={sec.heading} className="py-12 sm:py-16" style={{ background: si % 2 === 0 ? '#F5F6F8' : '#fff' }}>
+          <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[900px]">
+            <h2 className="text-[24px] sm:text-[32px] leading-[32px] sm:leading-[40px] font-semibold text-[#0F1112] tracking-[-0.01em] mb-5">
+              {sec.heading}
+            </h2>
+            {sec.paragraphs?.map((para) => (
+              <p key={para} className="text-[15px] leading-[26px] text-[#484848] mb-4 max-w-[760px]">{withLinks(para)}</p>
+            ))}
+            {sec.items && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                {sec.items.map(({ title, text }) => (
+                  <div key={title ?? text} className="rounded-2xl border border-[#E5E7EC] bg-white p-5">
+                    {title && <h3 className="text-[15px] font-semibold text-[#0F1112] mb-1.5">{title}</h3>}
+                    <p className="text-[13px] text-[#484848] leading-[21px]">{text}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            {sec.table && (
+              <div className="overflow-x-auto rounded-2xl border border-[#E5E7EC] bg-white mt-6" tabIndex={0} role="region" aria-label={sec.table.caption}>
+                <table className="w-full text-[13px] sm:text-[14px]">
+                  <caption className="sr-only">{sec.table.caption}</caption>
+                  <thead>
+                    <tr style={{ background: tool.lightColor }}>
+                      {sec.table.headers.map((h) => <th key={h} scope="col" className="px-5 py-3.5 text-left font-semibold text-[#0F1112]">{h}</th>)}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sec.table.rows.map((row) => (
+                      <tr key={row[0]} className="border-t border-[#F0F1F3]">
+                        {row.map((cell, ci) => ci === 0
+                          ? <th key={ci} scope="row" className="px-5 py-3.5 text-left font-medium text-[#0F1112]">{cell}</th>
+                          : <td key={ci} className="px-5 py-3.5 text-[#484848]">{cell}</td>)}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+            {sec.footnote && <p className="text-[13px] text-[#6b7280] mt-3">{sec.footnote}</p>}
+          </div>
+        </section>
+      ))}
 
       {/* ── Comparison table (optional) ──────────────────────────────────── */}
       {tool.comparisonTable && (

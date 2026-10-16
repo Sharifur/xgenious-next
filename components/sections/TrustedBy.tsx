@@ -49,7 +49,7 @@ export default function TrustedBy({ title, dark = false }: { title?: string; dar
                 className="flex items-center justify-center h-[100px] min-w-[220px] flex-shrink-0"
                 style={{ borderLeft: `1px solid ${cellBorder1}` }}
               >
-                <Image
+                <Image sizes="(max-width: 768px) 100vw, 180px"
                   src={brand.src}
                   alt={brand.alt}
                   width={180}
@@ -77,7 +77,7 @@ export default function TrustedBy({ title, dark = false }: { title?: string; dar
                 className="flex items-center justify-center h-[100px] min-w-[200px] flex-shrink-0"
                 style={{ borderLeft: `1px solid ${cellBorder2}` }}
               >
-                <Image
+                <Image sizes="(max-width: 768px) 100vw, 170px"
                   src={brand.src}
                   alt={brand.alt}
                   width={170}

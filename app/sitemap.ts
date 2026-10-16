@@ -108,6 +108,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/free-tools/jpg-to-webp`, lastModified: '2026-05-20', priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/free-tools/png-to-avif`, lastModified: '2026-05-20', priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/free-tools/jpg-to-avif`, lastModified: '2026-05-20', priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: `${BASE_URL}/free-tools/ai-image-metadata-remover`, lastModified: '2026-10-16', priority: 0.8, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/free-tools/saas-calculators`, lastModified: '2026-07-09', priority: 0.9, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/free-tools/break-even-calculator`, lastModified: '2026-07-09', priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/free-tools/saas-valuation-calculator`, lastModified: '2026-07-09', priority: 0.8, changeFrequency: 'weekly' as const },

@@ -1655,6 +1655,7 @@ function FeatureCard({
             src={image}
             alt={title}
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-contain"
             style={{ padding: '16px' }}
           />

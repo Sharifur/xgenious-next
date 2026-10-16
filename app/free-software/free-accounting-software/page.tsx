@@ -571,7 +571,7 @@ export default function FreeAccountingSoftwarePage() {
               <div key={i.name} className="rounded-2xl border border-[#E5E7EC] bg-white p-5 hover:border-[#c7d2fe] hover:shadow-[0_6px_24px_rgba(79,70,229,0.08)] transition-all">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-white border border-[#E5E7EC] overflow-hidden">
-                    <Image src={i.logo} alt={`${i.name} logo`} width={28} height={28} className="object-contain" />
+                    <Image sizes="28px" src={i.logo} alt={`${i.name} logo`} width={28} height={28} className="object-contain" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-[14px] font-semibold text-[#0F1112] leading-tight">{i.name}</p>
@@ -860,7 +860,7 @@ export default function FreeAccountingSoftwarePage() {
       {/* Final CTA */}
       <section className="py-16 sm:py-20 relative overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/cta-bg.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
+        <img loading="lazy" decoding="async" src="/cta-bg.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
         <div className="absolute inset-0 bg-black/50" />
         <div className="container-page px-4 sm:px-6 lg:px-0 flex flex-col items-center text-center gap-6 max-w-[660px] mx-auto relative z-10">
           <h2 className="text-[28px] sm:text-[38px] font-semibold text-white leading-tight">

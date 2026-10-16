@@ -517,7 +517,7 @@ function SvgLeadCapture() {
       </rect>
       <rect x="13" y="77" width="13" height="9" rx="1.5" fill={`${C}15`} stroke={`${C}40`} strokeWidth="0.7"/>
       <path d="M13 77.8 L19.5 82 L26 77.8" stroke={`${C}70`} strokeWidth="0.8" fill="none"/>
-      <text x="30" y="83.5" fontSize="7" fill="#1f2937" fontWeight="500" clipPath="url(#btm-lc-ce)">john@gmail.com</text>
+      <text x="30" y="83.5" fontSize="7" fill="#1f2937" fontWeight="500" clipPath="url(#btm-lc-ce)">Customer email</text>
       <rect y="76" width="1.5" height="9" fill={C}>
         <animate attributeName="x" values="30;30;126;126;30" keyTimes="0;0.34;0.56;0.96;1" dur={D} repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.35 0 0.65 1;0 0 1 1;0 0 1 1"/>
         <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.33;0.35;0.55;0.57;1" dur={D} repeatCount="indefinite"/>
@@ -581,7 +581,7 @@ function SvgTicketSystem() {
       <rect x="8" y="30" width="3" height="80" rx="2" fill={C}/>
 
       <text x="18" y="45" fontSize="7.5" fill="#0F1112" fontWeight="700">Where is my order #4821?</text>
-      <text x="18" y="55" fontSize="6" fill="#9ca3af">john@customer.com · 2 hours ago</text>
+      <text x="18" y="55" fontSize="6" fill="#9ca3af">Customer · 2 hours ago</text>
 
       {/* Priority badge */}
       <rect x="18" y="60" width="36" height="11" rx="4" fill="#FEF3C7"/>

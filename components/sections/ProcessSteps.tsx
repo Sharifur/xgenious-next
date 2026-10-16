@@ -351,6 +351,7 @@ export default function ProcessSteps() {
         src="/how-we-work-bg.jpg"
         alt=""
         fill
+        sizes="100vw"
         className="object-cover"
         priority={false}
       />

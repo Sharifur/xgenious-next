@@ -62,7 +62,7 @@ export default function ProofCards() {
               {/* Icon */}
               <div className="relative w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(255,255,255,0.08)' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={card.icon} alt="" width={20} height={20} />
+                <img loading="lazy" decoding="async" src={card.icon} alt="" width={20} height={20} />
               </div>
 
               {/* Title */}

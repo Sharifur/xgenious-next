@@ -42,7 +42,7 @@ export default function WorkShowcase() {
             <div key={project.title} className="flex flex-col gap-4 sm:gap-6 rounded-[12px] overflow-hidden">
               <div className="overflow-hidden h-[220px] sm:h-[380px] lg:h-[540px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <img loading="lazy" decoding="async"
                   src={project.img}
                   alt={project.title}
                   className="w-full h-full object-cover"

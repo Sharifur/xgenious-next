@@ -94,13 +94,14 @@ export default function Hero() {
               <span className="w-2.5 h-2.5 rounded-full bg-black/10" />
               <span className="ml-3 text-[11px] text-[#9a7585]">zaika.bytesed.com</span>
             </div>
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 2000px"
               src="/products/zaika/hero-storefront.png"
               alt="Zaika single vendor eCommerce Laravel storefront — fashion homepage with big sale banner and product grid"
               width={2000}
               height={1974}
               className="w-full h-auto"
               priority
+              fetchPriority="high"
             />
           </div>
         </div>

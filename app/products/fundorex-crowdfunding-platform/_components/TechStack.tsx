@@ -31,7 +31,7 @@ export default function TechStack() {
             >
               <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-xl bg-[#F5F6F8]">
                 {tech.logo ? (
-                  <Image src={tech.logo} alt={tech.name} width={28} height={28} className="object-contain" />
+                  <Image sizes="28px" src={tech.logo} alt={tech.name} width={28} height={28} className="object-contain" />
                 ) : (
                   <span className="text-[11px] font-black" style={{ color: tech.color }}>{tech.initial}</span>
                 )}

@@ -43,7 +43,7 @@ export default function TechStack() {
               className="bg-white rounded-2xl border border-[#E5E7EC] p-4 flex flex-col items-center text-center gap-2"
             >
               <div className="w-10 h-10 flex items-center justify-center">
-                <Image src={item.logo} alt={item.name} width={40} height={40} className="object-contain" />
+                <Image sizes="40px" src={item.logo} alt={item.name} width={40} height={40} className="object-contain" />
               </div>
               <p className="text-[14px] font-bold text-[#0F1112]">{item.name}</p>
               <p className="text-[11px] text-[#9ca3af]">{item.role}</p>
@@ -57,7 +57,7 @@ export default function TechStack() {
             <p className="text-[13px] text-[#6b7280]">PHP 8.4+, PostgreSQL 14+, Redis, Laravel Reverb — full details in our documentation.</p>
           </div>
           <a
-            href="https://docs.xgenious.com/docs/helpnest-ai-based-support-chatbot-system/instruction/server-requirement/"
+            href="https://docs.xgenious.com/docs/helpnest-ai-based-support-chatbot-system/instructions/server-requirement/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-[13px] font-semibold rounded-full px-5 py-2.5 border-2 flex-shrink-0 transition-all hover:-translate-y-0.5"

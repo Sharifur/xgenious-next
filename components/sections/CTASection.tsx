@@ -26,7 +26,7 @@ export default function CTASection({
     >
       {bgPhoto && (
         /* eslint-disable-next-line @next/next/no-img-element */
-        <img
+        <img loading="lazy" decoding="async"
           src={bgPhoto}
           alt=""
           aria-hidden

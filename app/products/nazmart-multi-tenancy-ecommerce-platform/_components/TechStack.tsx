@@ -25,7 +25,7 @@ export default function TechStack() {
           {stack.map((t) => (
             <div key={t.name} className="rounded-2xl border border-[#E5E7EC] p-5 flex flex-col items-center text-center gap-3 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#F5F6F8] flex-shrink-0">
-                <Image src={t.logo} alt={t.name} width={30} height={30} className="object-contain" />
+                <Image sizes="30px" src={t.logo} alt={t.name} width={30} height={30} className="object-contain" />
               </div>
               <div>
                 <p className="text-[14px] font-bold text-[#0F1112]">{t.name}</p>

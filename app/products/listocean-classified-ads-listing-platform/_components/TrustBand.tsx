@@ -64,7 +64,7 @@ export default function TrustBand() {
               </div>
             ))}
             <div className="col-span-2 bg-white rounded-2xl border border-[#E5E7EC] p-5 flex items-center gap-4">
-              <Image src="/icons/elite-author.svg" alt="Envato Elite Author" width={40} height={40} className="flex-shrink-0" />
+              <Image sizes="40px" src="/icons/elite-author.svg" alt="Envato Elite Author" width={40} height={40} className="flex-shrink-0" />
               <div>
                 <p className="text-[13px] font-semibold text-[#0F1112]">Verified Elite Author</p>
                 <Link href={PURCHASE_URL} target="_blank" rel="noopener noreferrer" className="text-[12px] text-[#6b7280] hover:underline">

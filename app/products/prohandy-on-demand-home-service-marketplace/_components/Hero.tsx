@@ -32,14 +32,14 @@ export default function Hero() {
     <section
       className="overflow-hidden pt-[100px] sm:pt-[160px] lg:pt-[220px] relative"
       style={{
-        backgroundImage: 'url(/products/prohandy-bg.png)',
+        backgroundImage: 'url(/products/prohandy-bg.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center top',
       }}
     >
       {/* Lightning bolt — left */}
       <div className="prohandy-lightning pointer-events-none absolute left-[4%] top-[28%] hidden lg:block opacity-80">
-        <Image
+        <Image sizes="95px"
           src="/products/prohandy-lightning.svg"
           alt=""
           width={95}
@@ -49,7 +49,7 @@ export default function Hero() {
 
       {/* Star / sparkle — right */}
       <div className="prohandy-star pointer-events-none absolute right-[5%] top-[18%] hidden lg:block opacity-80">
-        <Image
+        <Image sizes="97px"
           src="/products/prohandy-star.svg"
           alt=""
           width={97}
@@ -146,13 +146,14 @@ export default function Hero() {
             className="overflow-hidden shadow-2xl"
             style={{ border: '3px solid rgba(255,255,255,0.15)', background: '#fff' }}
           >
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 1100px"
               src="/products/prohandy-dashboard.jpg"
               alt="Prohandy on-demand home service marketplace platform dashboard"
               width={1100}
               height={620}
               className="w-full object-cover"
               priority
+              fetchPriority="high"
             />
           </div>
         </div>
