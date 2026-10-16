@@ -7,10 +7,12 @@ export const AI_IMAGE_METADATA_REMOVER: FreeTool = {
   tagline: 'Remove EXIF, GPS, C2PA and AI prompts from images. Runs in your browser, nothing uploaded.',
   category: 'image',
   fullWidthTool: true,
+  ogImage: '/free-tools/ai-image-metadata-remover/og.png',
+  categoryLinkToHub: true,
   tier: 1,
   color: '#f26b4e',
   lightColor: '#fff1ee',
-  metaTitle: 'AI Image Metadata Remover: Free Online | Xgenious',
+  metaTitle: 'AI Image Metadata Remover: Remove C2PA & EXIF Free | Xgenious',
   metaDescription:
     'Free image metadata remover. Remove AI metadata, C2PA Content Credentials, EXIF and GPS from JPG, PNG, WebP, HEIC and AVIF. No signup, nothing uploaded.',
   keywords: [
@@ -60,7 +62,7 @@ export const AI_IMAGE_METADATA_REMOVER: FreeTool = {
   contentSections: [
     {
       heading: 'What metadata does this tool remove?',
-      paragraphs: ["Image files carry data next to the picture itself. It's useful for your photo library, but you may not want to share it."],
+      paragraphs: ["Image files carry data next to the picture itself. It's useful for your photo library, but you may not want to share it. This tool lets you remove EXIF data, GPS location and other hidden fields in one pass."],
       items: [
         { title: 'EXIF and GPS location', text: 'Camera or phone model, lens, serial number, capture time, software and exact GPS coordinates.' },
         { title: 'XMP and IPTC', text: 'Editing history, creator tool, captions and the IPTC "Digital Source Type" field that marks an image as AI-generated.' },
@@ -91,7 +93,7 @@ export const AI_IMAGE_METADATA_REMOVER: FreeTool = {
     },
     {
       heading: 'Why remove metadata from images and AI photos?',
-      paragraphs: ["Most people don't know what their files say about them. A phone photo can show where you live. An AI export can include your full prompt, the model you used, or folder paths from your computer. Cleaning files before you share them is basic privacy hygiene."],
+      paragraphs: ["Most people don't know what their files say about them. A phone photo can show where you live. An AI export can include your full prompt, the model you used, or folder paths from your computer. Cleaning files before you share them is basic privacy hygiene. To remove AI metadata from an image, drop it in the tool above and pick a preset: you see what was found, then download a clean copy."],
       items: [
         { title: 'Protect your location', text: 'GPS coordinates in a photo can be accurate to a few metres.' },
         { title: 'Keep your prompts and workflows yours', text: 'A Stable Diffusion or ComfyUI PNG is a full recipe that anyone can load and copy.' },

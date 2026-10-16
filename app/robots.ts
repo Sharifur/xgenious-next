@@ -11,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         // pricing.md and llms.txt are hand-maintained AEO assets in public/, not generated
         // page twins. A longer matching rule wins, so these beat the /*.md$ disallow.
-        allow: ['/', '/pricing.md', '/llms.txt'],
+        allow: ['/', '/pricing.md', '/llms.txt', '/_next/static/', '/_next/image'],
         disallow: [
           '/api/',
           '/_next/',
