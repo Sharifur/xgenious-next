@@ -35,6 +35,9 @@ export interface FreeTool {
   contentSections?: ContentSection[];
   // Render the tool full width, without the tagline/feature column beside it.
   fullWidthTool?: boolean;
+  // Page-specific social image (1200x630) and breadcrumb category step linking straight to the hub.
+  ogImage?: string;
+  categoryLinkToHub?: boolean;
 }
 
 export interface ContentSection {

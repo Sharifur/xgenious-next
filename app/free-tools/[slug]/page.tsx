@@ -88,7 +88,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: tool.metaDescription,
       url: canonicalUrl,
       siteName: 'Xgenious',
-      images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+      images: [{ url: tool.ogImage ?? '/og-image.png', width: 1200, height: 630, alt: tool.title }],
       type: 'website',
     },
     twitter: {
@@ -97,6 +97,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       creator: '@xgenious1',
       title: tool.metaTitle,
       description: tool.metaDescription,
+      images: [tool.ogImage ?? '/og-image.png'],
     },
   };
 }
@@ -157,7 +158,7 @@ export default async function FreeToolPage({ params }: PageProps) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Free Tools', item: `${BASE_URL}/free-tools` },
-      { '@type': 'ListItem', position: 2, name: tool.category.charAt(0).toUpperCase() + tool.category.slice(1), item: `${BASE_URL}/free-tools?category=${tool.category}` },
+      { '@type': 'ListItem', position: 2, name: tool.category.charAt(0).toUpperCase() + tool.category.slice(1), item: tool.categoryLinkToHub ? `${BASE_URL}/free-tools` : `${BASE_URL}/free-tools?category=${tool.category}` },
       { '@type': 'ListItem', position: 3, name: tool.title, item: toolUrl },
     ],
   };
@@ -218,7 +219,7 @@ export default async function FreeToolPage({ params }: PageProps) {
             </Link>
             <span>/</span>
             <Link
-              href={tool.category === 'saas' ? '/free-tools/saas-calculators' : `/free-tools?category=${tool.category}`}
+              href={tool.categoryLinkToHub ? '/free-tools' : tool.category === 'saas' ? '/free-tools/saas-calculators' : `/free-tools?category=${tool.category}`}
               className="capitalize hover:text-[#0F1112] transition-colors duration-150"
             >
               {tool.category === 'saas' ? 'SaaS Calculators' : tool.category}
