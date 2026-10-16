@@ -84,6 +84,19 @@ export const AI_IMAGE_METADATA_REMOVER: FreeTool = {
       footnote: "We keep your colour profile, so colours don't shift, and your photo stays the right way up.",
     },
     {
+      heading: 'How to check if an image has AI metadata',
+      paragraphs: [
+        'Drop the image into the tool above. Nothing is changed until you click Clean, so you can use it purely as a checker. Open "Metadata found" on the image card to see every field the file carries.',
+      ],
+      items: [
+        { title: 'AI generator', text: 'Shown when the file names a tool such as ChatGPT / DALL·E, Midjourney, Adobe Firefly, Stable Diffusion or ComfyUI, in its software fields, prompt text or Content Credentials.' },
+        { title: 'Digital Source Type', text: 'The IPTC field that labels an image as made or edited with AI. It appears under AI generation, shown as "Made with AI" or "Edited with AI".' },
+        { title: 'Content Credentials (C2PA)', text: 'If the file carries a signed C2PA record, the card shows it and gives a best-guess signer name. This is a detection by file signature, not a full signature validation.' },
+        { title: 'Prompts and settings', text: 'PNG files from Stable Diffusion, ComfyUI and similar tools store prompts, seeds and workflows as text. They are listed in full so you can see what would be shared.' },
+      ],
+      footnote: 'No result does not prove an image is not AI-generated. It only means this file has no such metadata. Invisible watermarks like SynthID are not metadata and are not detected.',
+    },
+    {
       heading: 'Remove C2PA Content Credentials from images',
       paragraphs: [
         'C2PA Content Credentials are a signed record inside the file that says which app or AI tool made or edited it. ChatGPT, Adobe Firefly, Microsoft Copilot, Google tools and some cameras add them.',
