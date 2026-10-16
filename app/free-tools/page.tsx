@@ -5,8 +5,8 @@ import { TOOLS, CATEGORY_COLORS, type FreeTool, type ToolCategory } from '@/data
 const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
-  title: { absolute: '52 Free SaaS Calculators & Online Tools | Xgenious' },
-  description: '52 free SaaS, developer and HR tools, including MRR, churn, LTV, NRR, valuation and payback calculators. No login or signup required.',
+  title: { absolute: '53 Free SaaS Calculators & Online Tools | Xgenious' },
+  description: '53 free SaaS, developer and HR tools, including MRR, churn, LTV, NRR, valuation and payback calculators. No login or signup required.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/free-tools` },
   keywords: [
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     'no login tools',
   ],
   openGraph: {
-    title: '52 Free SaaS Calculators & Online Tools | Xgenious',
-    description: '52 free SaaS, developer and HR tools, including MRR, churn, LTV, NRR, valuation and payback calculators. No login or signup required.',
+    title: '53 Free SaaS Calculators & Online Tools | Xgenious',
+    description: '53 free SaaS, developer and HR tools, including MRR, churn, LTV, NRR, valuation and payback calculators. No login or signup required.',
     url: `${BASE_URL}/free-tools`,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@xgenious1',
     creator: '@xgenious1',
-    title: '52 Free SaaS Calculators & Online Tools | Xgenious',
-    description: '52 free SaaS, developer and HR tools, including MRR, churn, LTV, NRR, valuation and payback calculators. No login or signup required.',
+    title: '53 Free SaaS Calculators & Online Tools | Xgenious',
+    description: '53 free SaaS, developer and HR tools, including MRR, churn, LTV, NRR, valuation and payback calculators. No login or signup required.',
   },
 };
 
@@ -48,7 +48,7 @@ const CATEGORIES: { key: string; label: string }[] = [
 ];
 
 const STATS = [
-  { value: '52', label: 'Tools' },
+  { value: '53', label: 'Tools' },
   { value: '8', label: 'Categories' },
   { value: '100%', label: 'Free' },
   { value: 'No Account', label: 'Required' },

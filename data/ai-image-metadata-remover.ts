@@ -1,0 +1,175 @@
+import type { FreeTool } from './free-tools';
+
+// Copy for /free-tools/ai-image-metadata-remover. Rendered by app/free-tools/[slug]/page.tsx.
+export const AI_IMAGE_METADATA_REMOVER: FreeTool = {
+  slug: 'ai-image-metadata-remover',
+  title: 'AI Image Metadata Remover',
+  tagline: 'Remove EXIF, GPS, C2PA and AI prompts from images. Runs in your browser, nothing uploaded.',
+  category: 'image',
+  fullWidthTool: true,
+  tier: 1,
+  color: '#f26b4e',
+  lightColor: '#fff1ee',
+  metaTitle: 'AI Image Metadata Remover: Free Online | Xgenious',
+  metaDescription:
+    'Free image metadata remover. Remove AI metadata, C2PA Content Credentials, EXIF and GPS from JPG, PNG, WebP, HEIC and AVIF. No signup, nothing uploaded.',
+  keywords: [
+    'image metadata remover', 'ai image metadata remover', 'metadata remover', 'remove ai metadata from image',
+    'remove c2pa', 'remove metadata from image', 'exif remover', 'remove exif data',
+  ],
+  h1: 'AI Image Metadata Remover',
+  intro:
+    'Remove metadata from images and AI photos: EXIF, GPS, C2PA Content Credentials and AI prompts. Free, unlimited, and nothing is uploaded.',
+  howToUse: [
+    { step: 'Add your images', desc: 'Drop JPG, PNG, WebP, HEIC or AVIF files, or paste from your clipboard. Add as many as you like.' },
+    { step: "See what's inside", desc: 'The tool reads each file in your browser and lists what it found: GPS location, camera details, editing software, C2PA Content Credentials, AI generator tags and saved prompts.' },
+    { step: 'Pick what to remove', desc: 'Remove everything, or choose Privacy clean to keep the AI disclosure and copyright.' },
+    { step: 'Download clean copies', desc: 'Get each file or a single ZIP. We re-scan every output so you can see what is left. Your originals are not changed.' },
+  ],
+  featureList: [
+    'Remove EXIF and GPS location data',
+    'Remove XMP and IPTC metadata',
+    'Remove C2PA Content Credentials',
+    'Remove Stable Diffusion and ComfyUI prompts from PNG',
+    'Before and after metadata viewer',
+    'Batch processing with ZIP download',
+    'Runs entirely in the browser, no uploads',
+  ],
+  featureCards: [
+    { title: 'Runs in your browser', desc: 'Images are read and cleaned on your own device in a background worker. No upload, no server, no account.' },
+    { title: 'No quality loss for JPG, PNG and WebP', desc: 'We cut out the metadata bytes and leave the image data untouched, then prove it by comparing the picture data before and after.' },
+    { title: 'See before and after', desc: 'A grouped viewer lists location, device, dates, editing history, AI data and Content Credentials, then re-scans the clean file.' },
+    { title: 'Three presets, batch and ZIP', desc: 'Remove everything, keep the AI disclosure and copyright, or remove only AI data. Clean many files at once and download one ZIP.' },
+  ],
+  comparisonTable: {
+    caption: 'How this tool compares',
+    headers: ['', 'Xgenious AI Image Metadata Remover', 'Typical free metadata removers', 'Paid "AI label" removers'],
+    rows: [
+      ['Price', 'Free, no caps', 'Free, often capped at 1–30 files', 'Monthly plan or one-time fee'],
+      ['Signup', 'None', 'Sometimes', 'Usually'],
+      ['Uploads your file', 'Never', 'Varies; older tools upload', 'Usually not'],
+      ['JPG, PNG, WebP', 'Yes, no quality loss', 'Yes (many re-save the image)', 'Yes'],
+      ['HEIC and AVIF', 'Yes', 'Often not supported', 'Rarely'],
+      ['C2PA Content Credentials', 'Yes', 'Newer tools only', 'Yes'],
+      ['AI prompts (Stable Diffusion, ComfyUI)', 'Yes', 'Some', 'Yes'],
+      ['Keep AI disclosure, remove private data', 'Yes', 'Rare', 'No'],
+      ['Before/after viewer and re-scan', 'Yes', 'Some', 'Yes'],
+      ['Batch and ZIP download', 'Yes, unlimited', 'Capped or paid', 'Paid'],
+    ],
+  },
+  contentSections: [
+    {
+      heading: 'What metadata does this tool remove?',
+      paragraphs: ["Image files carry data next to the picture itself. It's useful for your photo library, but you may not want to share it."],
+      items: [
+        { title: 'EXIF and GPS location', text: 'Camera or phone model, lens, serial number, capture time, software and exact GPS coordinates.' },
+        { title: 'XMP and IPTC', text: 'Editing history, creator tool, captions and the IPTC "Digital Source Type" field that marks an image as AI-generated.' },
+        { title: 'C2PA Content Credentials', text: 'A signed record of which app or AI tool made or edited the file. ChatGPT, Adobe Firefly, Microsoft Copilot, Google tools and some cameras add these.' },
+        { title: 'AI prompts and workflows', text: 'Stable Diffusion (AUTOMATIC1111, Forge), ComfyUI, InvokeAI, Fooocus and NovelAI save prompts, seeds, models and full node graphs inside PNG files.' },
+        { title: 'Hidden extras', text: 'Embedded thumbnails, comments, Motion Photo video and data tacked on after the image.' },
+      ],
+      table: {
+        caption: 'What is removed and kept, by format',
+        headers: ['Format', "What's removed", "What's kept", 'Quality'],
+        rows: [
+          ['JPG / JPEG', 'EXIF, GPS, XMP, IPTC, C2PA, comments, thumbnails, Motion Photo data', 'Colour profile, orientation', 'Unchanged (no re-save)'],
+          ['PNG', 'Text chunks (prompts, ComfyUI workflows), EXIF, XMP, C2PA, timestamps', 'Colour profile, transparency, animation', 'Unchanged (no re-save)'],
+          ['WebP', 'EXIF, XMP, C2PA', 'Colour profile, transparency, animation', 'Unchanged (no re-save)'],
+          ['HEIC / HEIF', 'Everything (the file is rebuilt)', 'Picture', 'Re-saved as JPEG (or PNG if transparent)'],
+          ['AVIF', 'Everything (the file is rebuilt)', 'Picture', 'Re-saved as JPEG (or PNG if transparent)'],
+        ],
+      },
+      footnote: "We keep your colour profile, so colours don't shift, and your photo stays the right way up.",
+    },
+    {
+      heading: 'Remove C2PA Content Credentials from images',
+      paragraphs: [
+        'C2PA Content Credentials are a signed record inside the file that says which app or AI tool made or edited it. ChatGPT, Adobe Firefly, Microsoft Copilot, Google tools and some cameras add them.',
+        'This tool removes the C2PA manifest from JPG, PNG and WebP without re-saving the image, and rebuilds HEIC and AVIF files without it. A Content Credentials checker will then find no credentials on your copy.',
+        "It doesn't remove pixel watermarks like SynthID, and it doesn't change what you're required to disclose.",
+      ],
+    },
+    {
+      heading: 'Why remove metadata from images and AI photos?',
+      paragraphs: ["Most people don't know what their files say about them. A phone photo can show where you live. An AI export can include your full prompt, the model you used, or folder paths from your computer. Cleaning files before you share them is basic privacy hygiene."],
+      items: [
+        { title: 'Protect your location', text: 'GPS coordinates in a photo can be accurate to a few metres.' },
+        { title: 'Keep your prompts and workflows yours', text: 'A Stable Diffusion or ComfyUI PNG is a full recipe that anyone can load and copy.' },
+        { title: 'Send clean files to clients', text: 'Deliver work without device serials, editing history or internal file names.' },
+        { title: 'Slightly smaller files', text: 'Dropping thumbnails and extra data trims file size without touching the picture.' },
+      ],
+    },
+    {
+      heading: 'Your files never leave your device',
+      paragraphs: [
+        "This tool runs entirely in your browser. Your images are read and cleaned on your own computer or phone. They are never uploaded to Xgenious or anyone else, and we don't store, see or log them.",
+        "You can check this yourself. Open your browser's developer tools, go to the Network tab, and clean a file: no image data goes out. Once the page has loaded, you can even turn off your internet and keep working.",
+        'Small print: We use standard site analytics to count visits and button clicks. It never includes your files, filenames or metadata. See our [privacy policy](/privacy-policy).',
+      ],
+    },
+    {
+      heading: "What this tool can't do",
+      items: [
+        { title: 'Invisible watermarks stay.', text: "Google's SynthID and similar watermarks are part of the pixels, not the metadata. No metadata tool can remove them, and we don't try." },
+        { title: 'It doesn\'t make an AI image "real".', text: 'A file with no metadata only shows that there is no record. It is not proof of anything.' },
+        { title: 'Platform records stay.', text: "If a platform already has your file, cleaning your copy doesn't change theirs." },
+        { title: 'What\'s visible stays visible.', text: 'Faces, street signs and reflections in the picture are not metadata.' },
+      ],
+    },
+    {
+      heading: 'Using AI images responsibly',
+      paragraphs: [
+        'This tool is built for privacy: keeping your location, devices, prompts and private files to yourself. It is not a way to pass off AI-generated images as real.',
+        "Many platforms ask you to disclose realistic AI-generated or AI-edited content, whatever the file's metadata says. Meta (Instagram, Facebook, Threads), TikTok, YouTube and LinkedIn have AI-labeling or disclosure rules, and they also use their own detection. New laws add transparency duties too, such as the EU AI Act's Article 50 obligations (applying from 2 August 2026) and California's AI Transparency Act. Removing metadata doesn't change what you're required to disclose.",
+        'If you need to keep the AI disclosure, for example when delivering AI-assisted work to a client, use Privacy clean. It removes location and device details and keeps the AI label and copyright information.',
+        "Please don't use this tool to mislead people, to strip credit from someone else's work, or to break a platform's rules or the law.",
+      ],
+    },
+    {
+      heading: 'Who uses an AI metadata remover?',
+      items: [
+        { title: 'Freelancers and agencies', text: 'Strip GPS, device details and prompt history before you deliver images to clients. Use Privacy clean when the client needs the AI disclosure kept.' },
+        { title: 'AI artists and prompt engineers', text: 'Share finished work without giving away your prompt, seed, LoRAs or ComfyUI workflow.' },
+        { title: 'Marketers and e-commerce teams', text: 'Publish product shots and blog images without camera serials, internal file paths or editing history.' },
+        { title: 'Journalists, NGOs and anyone at risk', text: 'Remove location and device details from photos before you send or post them.' },
+        { title: 'Everyday sharing', text: 'Selling something online, posting in a forum, or sending photos of your home: clean them first.' },
+      ],
+    },
+    {
+      heading: 'Which AI tools add metadata to images?',
+      paragraphs: ["Many AI image tools save information about how an image was made. Here's what we usually see. It changes over time, so always check your own file with the tool above."],
+      items: [
+        { title: 'ChatGPT / DALL·E (OpenAI)', text: 'C2PA Content Credentials.' },
+        { title: 'Google Gemini / Imagen', text: 'C2PA and IPTC tags, plus a SynthID watermark in the pixels.' },
+        { title: 'Adobe Firefly and Photoshop Generative Fill', text: 'C2PA and XMP.' },
+        { title: 'Microsoft Copilot / Designer', text: 'C2PA Content Credentials.' },
+        { title: 'Meta AI', text: 'IPTC tags, plus an invisible watermark.' },
+        { title: 'Midjourney', text: 'XMP/IPTC description fields.' },
+        { title: 'Stable Diffusion (AUTOMATIC1111, Forge) and ComfyUI', text: 'Prompts, settings and workflows in PNG text.' },
+      ],
+    },
+  ],
+  faq: [
+    { q: 'What does an AI image metadata remover do?', a: 'It deletes the data saved inside an image file next to the picture: EXIF, GPS, XMP, IPTC, C2PA Content Credentials and AI prompt text. The picture itself stays the same.' },
+    { q: 'Is my image uploaded anywhere?', a: "No. Everything happens in your browser. Files never leave your device, and you can confirm this in your browser's Network tab or by going offline." },
+    { q: 'Does removing metadata reduce image quality?', a: 'Not for JPG, PNG or WebP: we cut out the metadata bytes and leave the image data untouched. HEIC and AVIF files are re-saved as JPEG or PNG for now, and the tool tells you when that happens.' },
+    { q: 'Can it remove C2PA Content Credentials?', a: 'Yes. It removes the C2PA manifest from JPG, PNG and WebP files, and HEIC and AVIF files are rebuilt without it. Content Credentials checkers will then find no credentials on your copy.' },
+    { q: 'Does it remove SynthID or other invisible watermarks?', a: 'No. Those are built into the pixels, not the metadata. No metadata tool can remove them.' },
+    { q: 'Can this remove the "AI info" label from an image on Instagram, Facebook or TikTok?', a: "No tool can control a platform's label. Platforms use several signals: file metadata, their own detection, and what you choose to disclose. Removing metadata doesn't change their detection or their rules. If your image is AI-generated or heavily AI-edited, the platform's rules may still require you to label it." },
+    { q: 'Which AI tools leave metadata in images?', a: 'Common ones are ChatGPT/DALL·E, Gemini, Adobe Firefly, Microsoft Copilot and Meta AI (C2PA or IPTC tags), and Stable Diffusion and ComfyUI (prompts saved inside PNG files).' },
+    { q: 'How do I check if an image has AI metadata?', a: 'Drop it into the tool. The Before panel lists everything it finds, including who signed any Content Credentials and which AI tool is named. Nothing changes until you click Clean.' },
+    { q: 'Can I keep some metadata?', a: 'Yes. Privacy clean removes location, device and prompt data and keeps the AI disclosure (the IPTC "AI-generated" tag) and copyright. Signed Content Credentials can\'t survive any edit to a file, so that preset removes them and tells you.' },
+    { q: 'Does it work with iPhone HEIC photos?', a: "Yes. You can view and clean HEIC photos. For now the clean copy is saved as JPEG, or PNG if the image has transparency, because browsers can't save HEIC files." },
+    { q: 'Is there a limit on files or size?', a: "There's no daily limit and no signup. Each image can be up to 100 MB, and you can add up to 500 images at a time. Big batches are limited only by your device's memory." },
+    { q: 'Is it legal to remove image metadata?', a: "Removing metadata from your own files is generally fine and is a common privacy step. Don't use it to hide where content came from in ways that break the law, a platform's rules or a contract, or to pass off AI content as real." },
+  ],
+  relatedTools: ['png-to-webp', 'jpg-to-webp', 'png-to-avif', 'jpg-to-avif'],
+  externalLinks: [
+    { label: 'C2PA specifications', url: 'https://c2pa.org/specifications/' },
+    { label: 'IPTC — Digital Source Type vocabulary', url: 'https://cv.iptc.org/newscodes/digitalsourcetype/' },
+    { label: 'EU AI Act — Article 50 transparency obligations', url: 'https://artificialintelligenceact.eu/article/50/' },
+    { label: 'MDN — Web Workers API', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API' },
+  ],
+  applicationCategory: 'MultimediaApplication',
+  lastUpdated: 'October 2026',
+};

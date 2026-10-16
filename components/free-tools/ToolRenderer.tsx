@@ -50,6 +50,7 @@ const COMPONENT_MAP: Record<string, React.ComponentType> = {
   'jpg-to-webp':                       dynamic(() => import('./JpgToWebp'), { ssr: false }),
   'png-to-avif':                       dynamic(() => import('./PngToAvif'), { ssr: false }),
   'jpg-to-avif':                       dynamic(() => import('./JpgToAvif'), { ssr: false }),
+  'ai-image-metadata-remover':         dynamic(() => import('./AiImageMetadataRemover'), { ssr: false, loading: () => <div className="min-h-[240px]" aria-hidden /> }),
   'break-even-calculator':             dynamic(() => import('./BreakEvenCalculator'), { ssr: false }),
   'saas-valuation-calculator':         dynamic(() => import('./SaasValuationCalculator'), { ssr: false }),
   'nrr-calculator':                    dynamic(() => import('./NrrCalculator'), { ssr: false }),

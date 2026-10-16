@@ -1,3 +1,5 @@
+import { AI_IMAGE_METADATA_REMOVER } from './ai-image-metadata-remover';
+
 export type ToolCategory = 'developer' | 'hr' | 'school' | 'saas' | 'sales' | 'business' | 'image';
 
 export interface FreeTool {
@@ -29,6 +31,18 @@ export interface FreeTool {
   isImageTool?: boolean;
   acceptedFormats?: string[];
   outputFormat?: 'webp' | 'avif';
+  // Extra long-form H2 sections rendered after "How to use" (heading + paragraphs, H3 items, optional table).
+  contentSections?: ContentSection[];
+  // Render the tool full width, without the tagline/feature column beside it.
+  fullWidthTool?: boolean;
+}
+
+export interface ContentSection {
+  heading: string;
+  paragraphs?: string[];
+  items?: { title?: string; text: string }[];
+  table?: { caption: string; headers: string[]; rows: string[][] };
+  footnote?: string;
 }
 
 export const CATEGORY_COLORS: Record<ToolCategory, { color: string; light: string }> = {
@@ -3383,7 +3397,7 @@ export const TOOLS: FreeTool[] = [
       { q: 'Are my images uploaded to a server?', a: 'No. This converter runs entirely in your browser using the HTML canvas. Your PNG is never uploaded, stored, or sent anywhere — the conversion and download happen locally on your device.' },
       { q: 'Does WebP support transparency?', a: 'Yes. WebP supports an alpha channel, so transparent PNGs keep their transparency when converted to WebP — unlike JPEG, which has no transparency support.' },
     ],
-    relatedTools: ['jpg-to-webp', 'png-to-avif', 'jpg-to-avif', 'base64-encoder-decoder', 'color-contrast-checker', 'json-formatter', 'regex-tester', 'htaccess-generator'],
+    relatedTools: ['jpg-to-webp', 'png-to-avif', 'jpg-to-avif', 'base64-encoder-decoder', 'color-contrast-checker', 'json-formatter', 'regex-tester', 'ai-image-metadata-remover'],
     externalLinks: [
       { label: 'WebP — Google Developers', url: 'https://developers.google.com/speed/webp' },
       { label: 'web.dev — Modern image formats', url: 'https://web.dev/learn/images/webp' },
@@ -3463,7 +3477,7 @@ export const TOOLS: FreeTool[] = [
       { q: 'Are my images uploaded to a server?', a: 'No. This converter runs entirely in your browser using the HTML canvas. Your JPG is never uploaded, stored, or sent anywhere — the conversion and download happen locally on your device.' },
       { q: 'Can I convert JPEG and JPG files the same way?', a: 'Yes. JPG and JPEG are the same format — the only difference is the file extension. This tool converts both .jpg and .jpeg files to WebP identically.' },
     ],
-    relatedTools: ['png-to-webp', 'jpg-to-avif', 'png-to-avif', 'base64-encoder-decoder', 'color-contrast-checker', 'json-formatter', 'regex-tester', 'htaccess-generator'],
+    relatedTools: ['png-to-webp', 'jpg-to-avif', 'png-to-avif', 'base64-encoder-decoder', 'color-contrast-checker', 'json-formatter', 'regex-tester', 'ai-image-metadata-remover'],
     externalLinks: [
       { label: 'WebP — Google Developers', url: 'https://developers.google.com/speed/webp' },
       { label: 'web.dev — Modern image formats', url: 'https://web.dev/learn/images/webp' },
@@ -3543,7 +3557,7 @@ export const TOOLS: FreeTool[] = [
       { q: 'Are my images uploaded to a server?', a: 'No. This converter runs entirely in your browser using the HTML canvas. Your PNG is never uploaded, stored, or sent anywhere — the conversion and download happen locally on your device.' },
       { q: 'Does AVIF support transparency?', a: 'Yes. AVIF supports an alpha channel, so transparent PNGs keep their transparency when converted to AVIF — the same as WebP, and unlike JPEG.' },
     ],
-    relatedTools: ['png-to-webp', 'jpg-to-avif', 'jpg-to-webp', 'base64-encoder-decoder', 'color-contrast-checker', 'json-formatter', 'htaccess-generator', 'regex-tester'],
+    relatedTools: ['png-to-webp', 'jpg-to-avif', 'jpg-to-webp', 'base64-encoder-decoder', 'color-contrast-checker', 'json-formatter', 'ai-image-metadata-remover', 'regex-tester'],
     externalLinks: [
       { label: 'web.dev — Using AVIF', url: 'https://web.dev/articles/compress-images-avif' },
       { label: 'MDN — Image file types', url: 'https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types' },
@@ -3623,7 +3637,7 @@ export const TOOLS: FreeTool[] = [
       { q: 'Are my images uploaded to a server?', a: 'No. This converter runs entirely in your browser using the HTML canvas. Your JPG is never uploaded, stored, or sent anywhere — the conversion and download happen locally on your device.' },
       { q: 'Is AVIF better than WebP for JPG photos?', a: 'AVIF generally compresses photographs better than WebP, producing smaller files at the same quality. WebP has slightly broader browser support. For modern, performance-focused sites AVIF is usually the better choice, ideally with a WebP or JPEG fallback for older browsers.' },
     ],
-    relatedTools: ['jpg-to-webp', 'png-to-avif', 'png-to-webp', 'base64-encoder-decoder', 'color-contrast-checker', 'json-formatter', 'htaccess-generator', 'regex-tester'],
+    relatedTools: ['jpg-to-webp', 'png-to-avif', 'png-to-webp', 'base64-encoder-decoder', 'color-contrast-checker', 'json-formatter', 'ai-image-metadata-remover', 'regex-tester'],
     externalLinks: [
       { label: 'web.dev — Using AVIF', url: 'https://web.dev/articles/compress-images-avif' },
       { label: 'MDN — Image file types', url: 'https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types' },
@@ -3915,4 +3929,6 @@ export const TOOLS: FreeTool[] = [
     applicationCategory: 'BusinessApplication',
     lastUpdated: 'July 2026',
   },
+
+  AI_IMAGE_METADATA_REMOVER,
 ];

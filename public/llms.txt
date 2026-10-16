@@ -277,6 +277,10 @@ Hub page: https://xgenious.com/free-tools/saas-calculators
 
 Keywords: free saas calculators, saas metrics calculator, mrr calculator, churn rate calculator free, saas valuation calculator, nrr calculator, payback period calculator saas, break even calculator startup, free startup calculators
 
+## Free Image Tools
+
+- [AI Image Metadata Remover](https://xgenious.com/free-tools/ai-image-metadata-remover): remove EXIF, GPS, C2PA and AI prompts from images in the browser.
+
 ## Company
 
 - [About](https://xgenious.com/about)
