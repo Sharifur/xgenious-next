@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
@@ -118,7 +118,19 @@ function ToolCard({ tool }: { tool: CatalogTool }) {
   );
 }
 
-function CatalogBody({ tools, category }: { tools: CatalogTool[]; category: string | null }) {
+function categoryHref(key: string) {
+  return key === 'all' ? '/free-tools' : `/free-tools?category=${key}`;
+}
+
+function CatalogBody({
+  tools,
+  category,
+  onSelect,
+}: {
+  tools: CatalogTool[];
+  category: string | null;
+  onSelect?: (key: string) => void;
+}) {
   const activeCategory = category && category !== 'all' ? (category as ToolCategory) : null;
   const isValidCategory = activeCategory !== null && VALID_CATEGORIES.includes(activeCategory);
   const filtered = isValidCategory ? tools.filter((t) => t.category === activeCategory) : tools;
@@ -128,20 +140,28 @@ function CatalogBody({ tools, category }: { tools: CatalogTool[]; category: stri
       <div className="flex gap-2 overflow-x-auto pb-2 mb-8 scrollbar-none">
         {CATEGORIES.map(({ key, label }) => {
           const isActive = key === 'all' ? !activeCategory || !isValidCategory : activeCategory === key;
+          const href = categoryHref(key);
 
           return (
-            <Link
+            <a
               key={key}
-              href={key === 'all' ? '/free-tools' : `/free-tools?category=${key}`}
+              href={href}
               className="flex-shrink-0 px-4 py-2 rounded-full text-[13px] font-medium border transition-all duration-200"
               style={
                 isActive
                   ? { background: '#0F1112', color: '#ffffff', borderColor: '#0F1112' }
                   : { background: '#ffffff', color: '#484848', borderColor: '#E5E7EC' }
               }
+              onClick={(event) => {
+                if (!onSelect || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
+                  return;
+                }
+                event.preventDefault();
+                onSelect(key);
+              }}
             >
               {label}
-            </Link>
+            </a>
           );
         })}
       </div>
@@ -161,8 +181,29 @@ function CatalogBody({ tools, category }: { tools: CatalogTool[]; category: stri
 }
 
 function CatalogFromQuery({ tools }: { tools: CatalogTool[] }) {
-  const category = useSearchParams().get('category');
-  return <CatalogBody tools={tools} category={category} />;
+  const initialCategory = useSearchParams().get('category');
+  const [category, setCategory] = useState(initialCategory);
+
+  useEffect(() => {
+    const syncFromLocation = () => {
+      setCategory(new URLSearchParams(window.location.search).get('category'));
+    };
+    window.addEventListener('popstate', syncFromLocation);
+    return () => window.removeEventListener('popstate', syncFromLocation);
+  }, []);
+
+  // /free-tools is a fully static page, so every `?category=` URL shares one
+  // client-router cache entry. Next's <Link> then refuses to change the search
+  // string after a deep link (the cached canonical URL keeps the first query).
+  // Update the address bar with the platform history API and filter locally.
+  const selectCategory = (key: string) => {
+    setCategory(key === 'all' ? null : key);
+    const url = categoryHref(key);
+    if (`${window.location.pathname}${window.location.search}` === url) return;
+    History.prototype.pushState.call(window.history, window.history.state, '', url);
+  };
+
+  return <CatalogBody tools={tools} category={category} onSelect={selectCategory} />;
 }
 
 export default function ToolCatalog({ tools }: { tools: CatalogTool[] }) {
