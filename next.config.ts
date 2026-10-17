@@ -68,13 +68,6 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Edge-cache the homepage HTML at Vercel CDN — collapses TTFB from ~1.4s to ~50ms for cached hits
-        source: '/',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=3600' },
-        ],
-      },
-      {
         source: '/(.*)',
         headers: [
           {
