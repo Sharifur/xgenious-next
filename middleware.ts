@@ -1,7 +1,6 @@
 import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 
 // Kept as middleware.ts on purpose. Next.js 16 `proxy.ts` always runs on the
 // Node.js runtime, which would bill every matched request as Function Duration.
@@ -15,7 +14,7 @@ const STRIP_PARAMS = ['client_id', 'session_id', '_gl', 'cst', 'fbclid', 'gclid'
 
 const { auth } = NextAuth(authConfig);
 
-export default auth(function middleware(req: NextRequest & { auth: any }) {
+export default auth(function middleware(req) {
   const url = req.nextUrl.clone();
   let canonicalise = false;
 
