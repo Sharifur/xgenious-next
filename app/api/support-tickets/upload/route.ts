@@ -2,6 +2,10 @@ import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 
+// 5MB upload to R2. Cap well under the platform default so a stalled put
+// cannot be billed for minutes.
+export const maxDuration = 30;
+
 const MAX_SIZE = 5 * 1024 * 1024;
 const ALLOWED = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
 

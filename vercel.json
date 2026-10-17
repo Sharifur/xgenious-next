@@ -1,5 +1,13 @@
 {
   "buildCommand": "next build && node scripts/upload-sourcemaps.mjs",
+  "functions": {
+    "app/api/image-convert/route.ts": { "maxDuration": 30 },
+    "app/api/support-tickets/upload/route.ts": { "maxDuration": 30 },
+    "app/api/download-lead/route.ts": { "maxDuration": 30 },
+    "app/api/cron/cleanup-images/route.ts": { "maxDuration": 60 },
+    "app/my-account/**/*.tsx": { "maxDuration": 20 },
+    "app/api/**/route.ts": { "maxDuration": 15 }
+  },
   "redirects": [
     {
       "source": "/our-products/nazmart-multi-tenancy-ecommerce-platform-saas",
