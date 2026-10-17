@@ -31,6 +31,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/case-studies/freelancer-marketplace-platform`, lastModified: '2026-05-20', priority: 0.7, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/case-studies/multi-tenant-ecommerce-saas`, lastModified: '2026-05-20', priority: 0.7, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/case-studies/on-demand-home-service-app`, lastModified: '2026-05-20', priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: `${BASE_URL}/black-friday`, lastModified: '2026-10-17', priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: `${BASE_URL}/halloween-sale`, lastModified: '2026-10-17', priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/privacy-policy`, lastModified: '2026-05-17', priority: 0.3, changeFrequency: 'yearly' as const },
     { url: `${BASE_URL}/refund-policy`, lastModified: '2026-05-17', priority: 0.3, changeFrequency: 'yearly' as const },
     { url: `${BASE_URL}/support-policy`, lastModified: '2026-05-17', priority: 0.3, changeFrequency: 'yearly' as const },
