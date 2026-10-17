@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { generateResetToken } from '@/lib/token';
 import { sendEmail, resetEmailHtml, BASE_URL } from '@/lib/email';
 
+export const maxDuration = 15;
+
 const WP_BASE = process.env.WORDPRESS_BASE_URL ?? 'https://xgenious.com';
 const WP_ADMIN_USER = process.env.WP_ADMIN_USERNAME!;
 const WP_ADMIN_PASS = process.env.WP_ADMIN_APP_PASSWORD!;

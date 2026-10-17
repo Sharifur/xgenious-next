@@ -5,6 +5,8 @@ import { sendEmail, verificationEmailHtml, BASE_URL } from '@/lib/email';
 import { verifyRecaptcha } from '@/lib/recaptcha';
 import { pushToGeniusCampaign } from '@/lib/genius-campaign';
 
+export const maxDuration = 15;
+
 const WP_BASE = process.env.WORDPRESS_BASE_URL ?? 'https://xgenious.com';
 const WP_ADMIN_USER = process.env.WP_ADMIN_USERNAME!;
 const WP_ADMIN_PASS = process.env.WP_ADMIN_APP_PASSWORD!;

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createHash } from 'crypto';
 
+export const maxDuration = 15;
+
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const ACCESS_TOKEN = process.env.META_PIXEL_ACCESS_TOKEN?.trim();
 const GRAPH_URL = `https://graph.facebook.com/v19.0/${PIXEL_ID}/events`;

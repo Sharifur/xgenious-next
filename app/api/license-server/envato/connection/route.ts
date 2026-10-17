@@ -3,6 +3,8 @@ import { auth } from '@/auth';
 import { lsFetch } from '@/lib/license-server';
 import { buildSignedAssertion } from '@/lib/envato-assertion';
 
+export const maxDuration = 15;
+
 export async function DELETE() {
   const session = await auth();
   if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
