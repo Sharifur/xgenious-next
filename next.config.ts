@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
 
+const WP_ORIGIN = 'http://origin.xgenious.com';
+
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.0.102'],
   experimental: {
@@ -22,12 +24,46 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Platform redirect — does not invoke middleware or a function.
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.xgenious.com' }],
+        destination: 'https://xgenious.com/:path*',
+        permanent: true,
+      },
+      {
         // Keyword-optimised URL replaced the original brand slug.
         source: '/free-software/genius-books',
         destination: '/free-software/free-accounting-software',
         permanent: true,
       },
     ];
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          // AI agents requesting text/markdown get llms.txt. Browsers send
+          // text/html and do not match. Paths with a dot, /api, and /_next
+          // are excluded, matching the previous middleware check.
+          source: '/((?!api|_next|.*\\.).*)',
+          has: [{ type: 'header', key: 'accept', value: '.*text/markdown.*' }],
+          destination: '/llms.txt',
+        },
+      ],
+      fallback: [
+        {
+          // Unknown single-segment slugs are WordPress posts. Checked after
+          // App Router pages, so a new page.tsx wins without a route allowlist.
+          // Dots are static files and must not be proxied; ".md" is below.
+          source: '/:slug((?![^/]*\\.).+)',
+          destination: `${WP_ORIGIN}/:slug/`,
+        },
+        {
+          source: '/:slug.md',
+          destination: `${WP_ORIGIN}/:slug.md`,
+        },
+      ],
+    };
   },
   async headers() {
     return [

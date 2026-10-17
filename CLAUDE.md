@@ -70,7 +70,7 @@ Hooks run automatically — no action required. Understand what they guard so yo
 **What it checks:**
 
 - Every new static `page.tsx` must appear in `app/sitemap.ts`
-- Single-segment routes (e.g. `/new-page`) must be added to `NEXT_ROUTES` in `middleware.ts`
+- Unknown single-segment URLs fall through to WordPress via the `fallback` rewrite in `next.config.ts` (after App Router pages). Do not add them to middleware.
 
 **Re-install hooks after clone:**
 
@@ -161,11 +161,11 @@ app/products/my-page/
 
 | Handler | What it serves |
 |---|---|
-| Next.js | All routes listed in `NEXT_ROUTES` in `middleware.ts` |
-| WordPress | Unknown single-segment slugs (blog post URLs) — proxied via `middleware.ts` |
+| Next.js | App Router pages. A new `page.tsx` wins over the WordPress fallback automatically. |
+| WordPress | Unknown single-segment slugs (blog post URLs) — `fallback` rewrite in `next.config.ts`, after pages are checked |
 | Vercel rewrites | `/blog/*`, `/wp-json/*`, `/wp-admin/*` → `vercel.json` |
 
-When adding a single-segment route (e.g. `/free-tools`): add it to `NEXT_ROUTES` in `middleware.ts` **and** `app/sitemap.ts`, or `pre-push` will block the push.
+When adding a single-segment route (e.g. `/free-tools`): add it to `app/sitemap.ts`, or `pre-push` will block the push. Do not register it in middleware.
 
 ---
 

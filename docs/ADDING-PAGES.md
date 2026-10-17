@@ -1,6 +1,6 @@
 # Adding a New Page — Required Checklist
 
-Every new `page.tsx` must be registered in two places before pushing. The pre-push git hook (`scripts/check-new-pages.sh`) blocks the push if either is missing.
+Every new `page.tsx` must be added to the sitemap before pushing. The pre-push git hook (`scripts/check-new-pages.sh`) blocks the push if it is missing.
 
 ---
 
@@ -24,22 +24,11 @@ Priority guide:
 
 ---
 
-## 2. Add to `middleware.ts` — single-segment routes only
+## 2. Single-segment routes
 
-**Only needed if your route is one segment deep**, e.g. `/new-service` (not `/case-studies/new-study`).
+No middleware allowlist. Unknown one-segment URLs (WordPress posts at `/some-slug`) are proxied by a `fallback` rewrite in `next.config.ts`, which runs only after App Router pages are checked. Adding `app/new-service/page.tsx` is enough for that URL to be served by Next.js.
 
-Without this, production will proxy the URL to the WordPress VPS and return a 404.
-
-Open `middleware.ts` and add the slug to `NEXT_ROUTES`:
-
-```ts
-const NEXT_ROUTES = new Set([
-  // ... existing entries ...
-  'new-service',   // ← add here
-]);
-```
-
-Multi-segment routes (`/case-studies/foo`, `/free-tools/bar`) are handled automatically and do **not** need middleware registration.
+Multi-segment WordPress paths (`/blog`, `/category`, `/tag`, …) stay in `vercel.json` rewrites.
 
 ---
 
