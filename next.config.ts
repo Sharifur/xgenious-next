@@ -117,7 +117,10 @@ const nextConfig: NextConfig = {
 
 export default withSentryConfig(nextConfig, {
   release: { create: false },
-  tunnelRoute: "/monitoring",
+  // No tunnelRoute. The DSN host is debug-ingest.taskip.net, and the SDK only
+  // tunnels Sentry SaaS DSNs (o<id>.ingest.sentry.io), so "/monitoring" never
+  // received events. Dropping it removes a rewrite that would otherwise proxy
+  // crafted /monitoring?o=&p= requests at sentry.io.
   silent: true,
   // debugId markers are injected into build output automatically (no config
   // flag needed in this SDK version) — scripts/upload-sourcemaps.mjs reads
