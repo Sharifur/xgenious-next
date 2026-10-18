@@ -8,6 +8,8 @@ export const CODECANYON_URL = 'https://codecanyon.net/item/helpnest-ai-powered-c
 export const REGULAR_PRICE = 59;
 export const COMBO_PRICE = 89;
 export const EXTENDED_PRICE = 199;
+// Premium plugins are exclusive to the Everything Bundle + Exclusive License.
+export const PREMIUM_PLUGIN_COUNT = 13;
 
 export const REVIEWS = [
   {

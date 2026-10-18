@@ -14,6 +14,7 @@ import WhyHelpNest from './_components/WhyHelpNest';
 import MobileApp from './_components/MobileApp';
 import Comparison from './_components/Comparison';
 import Reviews from './_components/Reviews';
+import PremiumPlugins from './_components/PremiumPlugins';
 import Pricing from './_components/Pricing';
 import FAQ from './_components/FAQ';
 
@@ -66,6 +67,7 @@ export default function HelpNestPage() {
       <Comparison />
       <MobileApp />
       <Reviews />
+      <PremiumPlugins />
       <Pricing />
       <FAQ />
     </>

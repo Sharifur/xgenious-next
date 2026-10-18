@@ -1,4 +1,4 @@
-import { CANONICAL, REGULAR_PRICE, EXTENDED_PRICE } from './constants';
+import { CANONICAL, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE } from './constants';
 
 export default function JsonLd() {
   const product = {
@@ -8,7 +8,7 @@ export default function JsonLd() {
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
     description:
-      'Helpnest is a self-hosted Laravel PHP script to build your own AI-powered customer support SaaS platform. Features semantic AI chatbot, multi-tenant architecture, support ticketing, knowledge base, embeddable chat widget, and subscription management. One-time purchase starting at $59.',
+      'Helpnest is a self-hosted Laravel PHP script to build your own AI-powered customer support SaaS platform. Features semantic AI chatbot, multi-tenant architecture, support ticketing, knowledge base, embeddable chat widget, and subscription management. 13 premium plugins — WhatsApp, Messenger, SEO Suite, ad tracking and more — are included in the Everything Bundle and Exclusive License. One-time purchase starting at $59.',
     url: CANONICAL,
     author: { '@type': 'Organization', name: 'Xgenious', url: 'https://xgenious.com' },
     offers: [
@@ -21,10 +21,17 @@ export default function JsonLd() {
       },
       {
         '@type': 'Offer',
+        name: 'Everything Bundle',
+        price: String(COMBO_PRICE),
+        priceCurrency: 'USD',
+        description: 'Web platform plus all 13 premium plugins and the Flutter mobile app. Lifetime license and free updates. 6 months support.',
+      },
+      {
+        '@type': 'Offer',
         name: 'Extended License',
         price: String(EXTENDED_PRICE),
         priceCurrency: 'USD',
-        description: 'Build a paid SaaS business. Unlimited clients. Lifetime license and free updates. 6 months support.',
+        description: 'Build a paid SaaS business with all 13 premium plugins. Unlimited clients. Lifetime license and free updates. 6 months support.',
       },
     ],
     aggregateRating: {
@@ -141,6 +148,14 @@ export default function JsonLd() {
         acceptedAnswer: {
           '@type': 'Answer',
           text: 'Choose the Regular License ($59) for a single internal deployment — one company, one chatbot platform. Choose the Extended License ($199) if you want to sell chatbot access to paying clients and build a recurring SaaS revenue stream with subscription billing.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What are the Helpnest premium plugins and which license includes them?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Helpnest ships 13 premium plugins: Analytics Pro, CRM Sync, Integrations Hub (Slack, Discord & Telegram), Knowledge Sources, Store Import, Privacy & Compliance, EU Compliance, Chat Translation, WhatsApp, Messenger & Instagram, TikTok, SEO Suite and Ad Tracking. All 13 are included with the Everything Bundle ($89) and the Exclusive License ($199) — the Regular License gets the core platform only.',
         },
       },
       {

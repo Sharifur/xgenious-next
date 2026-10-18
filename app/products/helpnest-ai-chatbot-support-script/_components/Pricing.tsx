@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { COLOR, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE, CODECANYON_URL } from './constants';
+import { COLOR, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE, CODECANYON_URL, PREMIUM_PLUGIN_COUNT } from './constants';
 import CodeCanyonUpsellButton from '@/components/ui/CodeCanyonUpsellButton';
 
 const ACCENT = '#a78bfa';
@@ -15,12 +15,14 @@ const REGULAR_FEATURES = [
   { label: 'Stripe + PayPal Billing', ok: true },
   { label: 'Lifetime License + Updates', ok: true },
   { label: '6 Months Support', ok: true },
+  { label: `${PREMIUM_PLUGIN_COUNT} Premium Plugins`, ok: false },
   { label: 'Flutter Mobile App', ok: false },
   { label: 'SaaS / White-label Rights', ok: false },
 ];
 
 const BUNDLE_FEATURES = [
   { label: 'Everything in Regular License', ok: true },
+  { label: `All ${PREMIUM_PLUGIN_COUNT} Premium Plugins Included`, ok: true },
   { label: 'Flutter Mobile App (Coming Soon)', ok: true },
   { label: 'Lifetime License + Updates', ok: true },
   { label: '6 Months Support', ok: true },
@@ -29,6 +31,7 @@ const BUNDLE_FEATURES = [
 
 const EXCLUSIVE_FEATURES = [
   { label: 'Everything in Bundle Pack', ok: true },
+  { label: `All ${PREMIUM_PLUGIN_COUNT} Premium Plugins Included`, ok: true },
   { label: 'Build & Sell as a SaaS Business', ok: true },
   { label: 'Unlimited Client Workspaces', ok: true },
   { label: 'White-label — Remove All Branding', ok: true },
@@ -74,6 +77,7 @@ export default function Pricing() {
           </h2>
           <p className="text-[#484848] text-[15px] sm:text-[17px] leading-7">
             One-time purchase. No monthly fees. No per-agent charges. You own the platform forever.
+            The Everything Bundle and Exclusive License also include all {PREMIUM_PLUGIN_COUNT} premium plugins.
           </p>
         </div>
 
@@ -87,7 +91,7 @@ export default function Pricing() {
                 <span className="text-[48px] font-bold text-[#0F1112] leading-none">${REGULAR_PRICE}</span>
                 <span className="text-[15px] text-[#9ca3af]">one-time</span>
               </div>
-              <p className="text-[13px] text-[#6b7280] leading-5">Web platform only. One-time purchase, no monthly fees.</p>
+              <p className="text-[13px] text-[#6b7280] leading-5">Web platform only. Premium plugins not included.</p>
             </div>
 
             <CodeCanyonUpsellButton
@@ -95,7 +99,7 @@ export default function Pricing() {
               regularPrice={REGULAR_PRICE}
               bundlePrice={COMBO_PRICE}
               bundleCheckoutUrl="/checkout?product=helpnest-everything-bundle"
-              bundleItems={['Flutter Mobile App (Coming Soon)']}
+              bundleItems={['Flutter Mobile App (Coming Soon)', `${PREMIUM_PLUGIN_COUNT} Premium Plugins`]}
               bundleLabel="Everything Bundle"
               accentColor={COLOR}
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
@@ -127,6 +131,9 @@ export default function Pricing() {
               </span>
               <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#16a34a] text-white">
                 MOBILE APP
+              </span>
+              <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: '#1d4ed8', color: '#fff' }}>
+                {PREMIUM_PLUGIN_COUNT} PLUGINS
               </span>
             </div>
 
@@ -195,6 +202,9 @@ export default function Pricing() {
               </span>
               <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#1d4ed8] text-white">
                 SAAS RIGHTS
+              </span>
+              <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: `${ACCENT}33`, color: '#e0dbff' }}>
+                {PREMIUM_PLUGIN_COUNT} PLUGINS
               </span>
             </div>
 

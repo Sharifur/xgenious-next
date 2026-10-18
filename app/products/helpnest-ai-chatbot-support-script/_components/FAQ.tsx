@@ -34,6 +34,10 @@ const FAQS = [
     a: 'Choose the Regular License ($59) for a single internal deployment — one company, one chatbot. Choose the Exclusive License ($199) if you want to sell chatbot access to paying clients and build a recurring SaaS revenue stream.',
   },
   {
+    q: 'What are the premium plugins and which license includes them?',
+    a: 'Helpnest ships 13 premium plugins: Analytics Pro, CRM Sync, Integrations Hub (Slack, Discord & Telegram), Knowledge Sources, Store Import, Privacy & Compliance, EU Compliance, Chat Translation, WhatsApp, Messenger & Instagram, TikTok, SEO Suite and Ad Tracking. All 13 are included with the Everything Bundle ($89) and the Exclusive License ($199) — the Regular License gets the core platform only.',
+  },
+  {
     q: 'Will the chatbot replace human support agents?',
     a: 'Helpnest is designed to augment, not replace. The AI handles routine queries and FAQs automatically, while complex or sensitive issues are escalated to human agents through the ticketing system. You control escalation rules from the admin panel.',
   },
