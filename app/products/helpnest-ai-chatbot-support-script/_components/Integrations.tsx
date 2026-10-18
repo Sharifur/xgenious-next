@@ -25,7 +25,7 @@ export default function Integrations() {
             Embeds Anywhere. Connects to Your Stack.
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
-            The Helpnest chat widget embeds on any website with 2 lines of code. Connect your CRM, billing, and AI providers via built-in integrations.
+            The Helpnest chat widget embeds on any website with 2 lines of code. Connect your AI providers and billing out of the box, and add CRM, Slack and messaging channels with the <a href="#plugins" className="underline underline-offset-2" style={{ color: COLOR }}>premium plugins</a>.
           </p>
         </div>
 

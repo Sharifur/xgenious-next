@@ -128,7 +128,7 @@ export default function Features() {
             Everything You Need to Run an AI Support Business
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
-            From AI chatbot training to subscription billing — Helpnest ships every module your SaaS platform needs. No monthly fees, no hidden add-ons.
+            From AI chatbot training to subscription billing — Helpnest ships every module your SaaS platform needs. No monthly fees. The core AI chatbot script is complete on every licence.
           </p>
         </div>
 

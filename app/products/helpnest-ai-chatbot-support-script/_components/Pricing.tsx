@@ -15,7 +15,7 @@ const REGULAR_FEATURES = [
   { label: 'Stripe + PayPal Billing', ok: true },
   { label: 'Lifetime License + Updates', ok: true },
   { label: '6 Months Support', ok: true },
-  { label: `${PREMIUM_PLUGIN_COUNT} Premium Plugins`, ok: false },
+  { label: `${PREMIUM_PLUGIN_COUNT} premium plugins: not included (Bundle or Exclusive only)`, ok: false },
   { label: 'Flutter Mobile App', ok: false },
   { label: 'SaaS / White-label Rights', ok: false },
 ];
@@ -25,8 +25,9 @@ const BUNDLE_FEATURES = [
   { label: `All ${PREMIUM_PLUGIN_COUNT} Premium Plugins Included`, ok: true },
   { label: 'Flutter Mobile App (Coming Soon)', ok: true },
   { label: 'Lifetime License + Updates', ok: true },
+  { label: 'Free Future Plugin Updates', ok: true },
   { label: '6 Months Support', ok: true },
-  { label: 'SaaS / White-label Rights', ok: false },
+  { label: 'SaaS / White-label Rights', ok: true },
 ];
 
 const EXCLUSIVE_FEATURES = [
@@ -268,7 +269,7 @@ export default function Pricing() {
               className="flex items-center justify-center gap-2 text-white font-bold text-[15px] rounded-xl py-3.5 mb-6 transition-all hover:opacity-90 hover:-translate-y-0.5"
               style={{ background: ACCENT, boxShadow: `0 8px 24px ${ACCENT}45` }}
             >
-              Get Extended — ${EXTENDED_PRICE}
+              Get Exclusive — ${EXTENDED_PRICE}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

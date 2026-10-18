@@ -1,3 +1,5 @@
+import { PLUGINS } from './plugins';
+
 export const COLOR = '#4F46E5';
 export const LIGHT_COLOR = '#EEF2FF';
 export const BASE_URL = 'https://xgenious.com';
@@ -8,23 +10,8 @@ export const CODECANYON_URL = 'https://codecanyon.net/item/helpnest-ai-powered-c
 export const REGULAR_PRICE = 59;
 export const COMBO_PRICE = 89;
 export const EXTENDED_PRICE = 199;
-// Premium plugins are exclusive to the Everything Bundle + Exclusive License.
-// Keep these names in sync with the plugins array in PremiumPlugins.tsx.
-export const PREMIUM_PLUGIN_NAMES = [
-  'Analytics Pro',
-  'CRM Sync',
-  'Integrations Hub',
-  'Knowledge Sources',
-  'Store Import',
-  'Privacy & Compliance',
-  'EU Compliance',
-  'Chat Translation',
-  'WhatsApp',
-  'Messenger & Instagram',
-  'TikTok',
-  'SEO Suite',
-  'Ad Tracking',
-] as const;
+// Premium plugins are exclusive to the Everything Bundle + Exclusive License (see plugins.ts).
+export const PREMIUM_PLUGIN_NAMES = PLUGINS.map((p) => p.name);
 export const PREMIUM_PLUGIN_COUNT = PREMIUM_PLUGIN_NAMES.length;
 
 // AI providers and OpenAI models supported by the platform.

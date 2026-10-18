@@ -40,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/products/nazmart-multi-tenancy-ecommerce-platform`, lastModified: '2026-05-28', priority: 0.9, changeFrequency: 'weekly' as const },
     { url: `${BASE_URL}/products/xilancer-freelancer-marketplace-script`, lastModified: '2026-05-28', priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/products/fundorex-crowdfunding-platform`, lastModified: '2026-05-30', priority: 0.9, changeFrequency: 'monthly' as const },
-    { url: `${BASE_URL}/products/helpnest-ai-chatbot-support-script`, lastModified: '2026-05-31', priority: 0.9, changeFrequency: 'monthly' as const },
+    { url: `${BASE_URL}/products/helpnest-ai-chatbot-support-script`, lastModified: '2026-10-18', priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/products/prohandy-on-demand-home-service-marketplace`, lastModified: '2026-06-04', priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/products/gocar-on-demand-car-service-marketplace`, lastModified: '2026-06-09', priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${BASE_URL}/products/qixer-on-demand-service-marketplace`, lastModified: '2026-06-09', priority: 0.9, changeFrequency: 'monthly' as const },

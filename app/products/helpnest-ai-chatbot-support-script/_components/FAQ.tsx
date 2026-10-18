@@ -3,61 +3,19 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { COLOR, DOCS_URL } from './constants';
+import { FAQS, type Faq } from './faqs';
 
-const FAQS = [
-  {
-    q: 'What is Helpnest?',
-    a: 'Helpnest is a self-hosted Laravel PHP script to build your own AI-powered customer support platform like Crisp, Intercom, or Tidio. It includes a semantic AI chatbot, multi-tenant architecture, support ticketing, knowledge base, embeddable chat widget, visitor tracking, and subscription billing — all in one codebase.',
-  },
-  {
-    q: 'Can I use Helpnest to start my own SaaS business?',
-    a: 'Yes. The Exclusive License allows you to offer Helpnest as a paid service to unlimited clients. Stripe and PayPal subscription billing are built in, so you can create plans, charge clients monthly, and generate invoices — without writing billing logic from scratch.',
-  },
-  {
-    q: 'How does the AI chatbot work?',
-    a: 'Helpnest uses semantic search with vector similarity technology. Rather than matching keywords, the AI understands context and intent. It works with 5 AI providers — OpenAI (GPT-6, GPT-4.1, o3/o4), DeepSeek, Google Gemini, GLM (Z.ai) and MiniMax — and you choose which provider and model to use from the admin panel.',
-  },
-  {
-    q: 'What are the server requirements?',
-    a: 'Helpnest requires PHP 8.4+, PostgreSQL 14+, Redis for queues and cache, and Pusher for realtime events. A minimum of 4 GB RAM is recommended on any Linux VPS. It does not run on shared hosting with MySQL only.',
-  },
-  {
-    q: 'Does the chatbot support multiple languages?',
-    a: 'Yes. If you train the knowledge base with multilingual content, the AI chatbot can understand and respond in your customers preferred language without any additional configuration or translation plugins.',
-  },
-  {
-    q: 'How is Helpnest different from Crisp, Intercom, or Tidio?',
-    a: 'Crisp, Intercom, and Tidio are SaaS tools that charge $29–$45 per month per workspace indefinitely. Helpnest is a one-time $59 purchase — self-hosted on your own server, full source code, no monthly fees, multi-tenant by design, and white-label rights included in the Exclusive License.',
-  },
-  {
-    q: 'Which license do I need?',
-    a: 'Choose the Regular License ($59) for a single internal deployment — one company, one chatbot. Choose the Exclusive License ($199) if you want to sell chatbot access to paying clients and build a recurring SaaS revenue stream.',
-  },
-  {
-    q: 'What are the premium plugins and which license includes them?',
-    a: 'Helpnest ships 13 premium plugins: Analytics Pro, CRM Sync, Integrations Hub (Slack, Discord & Telegram), Knowledge Sources, Store Import, Privacy & Compliance, EU Compliance, Chat Translation, WhatsApp, Messenger & Instagram, TikTok, SEO Suite and Ad Tracking. All 13 are included with the Everything Bundle ($89) and the Exclusive License ($199) — the Regular License gets the core platform only.',
-  },
-  {
-    q: 'Will the chatbot replace human support agents?',
-    a: 'Helpnest is designed to augment, not replace. The AI handles routine queries and FAQs automatically, while complex or sensitive issues are escalated to human agents through the ticketing system. You control escalation rules from the admin panel.',
-  },
-  {
-    q: 'What is the knowledge base and how does it train the AI?',
-    a: 'The knowledge base is a searchable documentation system you build inside Helpnest. Articles you create are indexed using vector embeddings. When a visitor asks a question, the AI runs a semantic similarity search against your knowledge base to find the most relevant answer.',
-  },
-  {
-    q: 'Does Helpnest include visitor tracking?',
-    a: 'Yes. Helpnest shows a real-time visitor map with browsing history, current page, country, and address details. You can initiate a proactive chat with any live visitor directly from the dashboard.',
-  },
-  {
-    q: 'Is Helpnest multi-tenant?',
-    a: 'Yes. Helpnest is built with a multi-tenant architecture from the ground up. Each client workspace has isolated knowledge bases, agents, conversations, and billing — no data leaks between workspaces.',
-  },
-  {
-    q: 'Is there a mobile app for Helpnest?',
-    a: 'A mobile app is available with the Everything Bundle ($89) and the Exclusive License ($199) — not included in the Regular license. The web platform is also fully responsive and works on mobile browsers for both agents and end users.',
-  },
-];
+function Answer({ faq }: { faq: Faq }) {
+  if (!faq.link) return <>{faq.a}</>;
+  const [before, after] = faq.a.split(faq.link.label);
+  return (
+    <>
+      {before}
+      <Link href={faq.link.href} className="underline underline-offset-2" style={{ color: COLOR }}>{faq.link.label}</Link>
+      {after}
+    </>
+  );
+}
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
@@ -101,9 +59,9 @@ export default function FAQ() {
 
                 <div
                   className="overflow-hidden transition-all duration-300"
-                  style={{ maxHeight: open === i ? '400px' : '0px' }}
+                  style={{ maxHeight: open === i ? '600px' : '0px' }}
                 >
-                  <p className="px-6 pb-5 text-[14px] text-[#484848] leading-7">{faq.a}</p>
+                  <p className="px-6 pb-5 text-[14px] text-[#484848] leading-7"><Answer faq={faq} /></p>
                 </div>
               </div>
             ))}
@@ -141,6 +99,8 @@ export default function FAQ() {
             <span>Related:</span>
             <Link href="/products/xilancer-freelancer-marketplace-script" className="hover:underline" style={{ color: COLOR }}>Xilancer — Freelancer Marketplace</Link>
             <Link href="/products/nazmart-multi-tenancy-ecommerce-platform" className="hover:underline" style={{ color: COLOR }}>Nazmart — Multi-Tenant eCommerce</Link>
+            <Link href="/free-software/genius-support" className="hover:underline" style={{ color: COLOR }}>Genius Support — Free Open-Source Ticketing</Link>
+            <Link href="/case-studies/ai-support-saas-platform" className="hover:underline" style={{ color: COLOR }}>AI Customer Support SaaS Case Study</Link>
             <Link href="/custom-saas-development-company" className="hover:underline" style={{ color: COLOR }}>Custom SaaS Development</Link>
             <a href="https://en.wikipedia.org/wiki/Chatbot" target="_blank" rel="noopener noreferrer" className="text-[#6b7280] hover:underline">Chatbot — Wikipedia ↗</a>
           </div>
