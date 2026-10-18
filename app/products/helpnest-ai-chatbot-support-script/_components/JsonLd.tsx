@@ -115,7 +115,7 @@ export default function JsonLd() {
         name: 'How does the AI chatbot work?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Helpnest uses semantic search with vector similarity technology. The chatbot understands context and meaning rather than just matching keywords, powered by OpenAI (GPT-4, GPT-3.5) and Anthropic Claude APIs.',
+          text: 'Helpnest uses semantic search with vector similarity technology. The chatbot understands context and meaning rather than just matching keywords, and works with 5 AI providers — OpenAI (GPT-6, GPT-4.1, o3/o4), DeepSeek, Google Gemini, GLM and MiniMax.',
         },
       },
       {

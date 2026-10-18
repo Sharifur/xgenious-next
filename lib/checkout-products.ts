@@ -503,7 +503,7 @@ export const PRODUCTS: Record<string, CheckoutProduct> = {
     features: [
       'Helpnest Web Platform',
       'Admin Panel & Analytics',
-      'AI Chatbot (OpenAI + Claude)',
+      'AI Chatbot (5 AI Providers)',
       'Support Ticketing System',
       'Knowledge Base Builder',
       'Visitor Tracking',
@@ -536,7 +536,7 @@ export const PRODUCTS: Record<string, CheckoutProduct> = {
           'VPS server setup & configuration',
           'PostgreSQL 14+ with pgvector extension',
           'OCR configuration',
-          'AI provider (OpenAI / Claude) connection',
+          'AI provider (OpenAI / DeepSeek / Gemini / GLM / MiniMax) connection',
           'Stripe / PayPal payment configuration',
         ],
         excludes: [
@@ -556,7 +556,7 @@ export const PRODUCTS: Record<string, CheckoutProduct> = {
     features: [
       'Helpnest Web Platform',
       'Admin Panel & Analytics',
-      'AI Chatbot (OpenAI + Claude)',
+      'AI Chatbot (5 AI Providers)',
       'Support Ticketing System',
       'Knowledge Base Builder',
       'Visitor Tracking',
@@ -603,7 +603,7 @@ export const PRODUCTS: Record<string, CheckoutProduct> = {
           'VPS server setup & configuration',
           'PostgreSQL 14+ with pgvector extension',
           'OCR configuration',
-          'AI provider (OpenAI / Claude) connection',
+          'AI provider (OpenAI / DeepSeek / Gemini / GLM / MiniMax) connection',
           'Stripe / PayPal payment configuration',
         ],
         excludes: [
@@ -656,7 +656,7 @@ export const PRODUCTS: Record<string, CheckoutProduct> = {
           'VPS server setup & configuration',
           'PostgreSQL 14+ with pgvector extension',
           'OCR configuration',
-          'AI provider (OpenAI / Claude) connection',
+          'AI provider (OpenAI / DeepSeek / Gemini / GLM / MiniMax) connection',
           'Stripe / PayPal payment configuration',
         ],
         excludes: [

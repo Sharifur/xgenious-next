@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { COLOR, LIGHT_COLOR } from './constants';
+import { COLOR, LIGHT_COLOR, AI_PROVIDER_LIST, OPENAI_MODEL_RANGE } from './constants';
 
 const FEATURES = [
   {
     title: 'AI That Understands — Not Just Matches',
-    desc: 'Helpnest uses semantic vector similarity search powered by OpenAI and Anthropic Claude. The chatbot understands intent and context, not just keywords — resolving queries your FAQ never could.',
+    desc: `Helpnest uses semantic vector similarity search across 5 AI providers — ${AI_PROVIDER_LIST} — including OpenAI ${OPENAI_MODEL_RANGE}. The chatbot understands intent and context, not just keywords — resolving queries your FAQ never could.`,
     img: '/products/helpnest-feature-ai.jpg',
     large: true,
   },

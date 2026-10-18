@@ -15,7 +15,7 @@ const FAQS = [
   },
   {
     q: 'How does the AI chatbot work?',
-    a: 'Helpnest uses semantic search with vector similarity technology. Rather than matching keywords, the AI understands context and intent. It is powered by OpenAI (GPT-4, GPT-3.5) and Anthropic Claude — you choose which model to use from the admin panel.',
+    a: 'Helpnest uses semantic search with vector similarity technology. Rather than matching keywords, the AI understands context and intent. It works with 5 AI providers — OpenAI (GPT-6, GPT-4.1, o3/o4), DeepSeek, Google Gemini, GLM (Z.ai) and MiniMax — and you choose which provider and model to use from the admin panel.',
   },
   {
     q: 'What are the server requirements?',

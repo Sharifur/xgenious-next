@@ -9,7 +9,28 @@ export const REGULAR_PRICE = 59;
 export const COMBO_PRICE = 89;
 export const EXTENDED_PRICE = 199;
 // Premium plugins are exclusive to the Everything Bundle + Exclusive License.
-export const PREMIUM_PLUGIN_COUNT = 13;
+// Keep these names in sync with the plugins array in PremiumPlugins.tsx.
+export const PREMIUM_PLUGIN_NAMES = [
+  'Analytics Pro',
+  'CRM Sync',
+  'Integrations Hub',
+  'Knowledge Sources',
+  'Store Import',
+  'Privacy & Compliance',
+  'EU Compliance',
+  'Chat Translation',
+  'WhatsApp',
+  'Messenger & Instagram',
+  'TikTok',
+  'SEO Suite',
+  'Ad Tracking',
+] as const;
+export const PREMIUM_PLUGIN_COUNT = PREMIUM_PLUGIN_NAMES.length;
+
+// AI providers and OpenAI models supported by the platform.
+// Source of truth: core/app/Enums/AiProvider.php + AiModelName.php.
+export const AI_PROVIDER_LIST = 'OpenAI, DeepSeek, Google Gemini, GLM (Z.ai) and MiniMax';
+export const OPENAI_MODEL_RANGE = 'GPT-6, GPT-4.1, o3/o4 and GPT-4o';
 
 export const REVIEWS = [
   {

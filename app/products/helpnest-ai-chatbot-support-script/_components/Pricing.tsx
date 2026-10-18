@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { COLOR, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE, CODECANYON_URL, PREMIUM_PLUGIN_COUNT } from './constants';
+import { COLOR, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE, CODECANYON_URL, PREMIUM_PLUGIN_COUNT, PREMIUM_PLUGIN_NAMES } from './constants';
 import CodeCanyonUpsellButton from '@/components/ui/CodeCanyonUpsellButton';
 
 const ACCENT = '#a78bfa';
@@ -7,7 +7,7 @@ const ACCENT = '#a78bfa';
 const REGULAR_FEATURES = [
   { label: 'Helpnest Web Platform', ok: true },
   { label: 'Admin Panel & Analytics', ok: true },
-  { label: 'AI Chatbot (OpenAI + Claude)', ok: true },
+  { label: 'AI Chatbot (5 AI Providers)', ok: true },
   { label: 'Support Ticketing System', ok: true },
   { label: 'Knowledge Base Builder', ok: true },
   { label: 'Visitor Tracking', ok: true },
@@ -163,6 +163,27 @@ export default function Pricing() {
                     <span className="text-[12px] font-semibold line-through" style={{ color: '#4b6b5a' }}>{price}</span>
                   </div>
                 ))}
+
+                {/* Premium plugin list — bundle/exclusive only */}
+                <div className="mt-0.5">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[12px] font-semibold text-white">
+                      {PREMIUM_PLUGIN_COUNT} Premium Plugins
+                    </span>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: `${COLOR}25`, color: '#c7d2fe' }}>
+                      INCLUDED FREE
+                    </span>
+                  </div>
+                  <ul className="flex flex-col gap-[3px]">
+                    {PREMIUM_PLUGIN_NAMES.map((name) => (
+                      <li key={name} className="flex items-center gap-1.5 text-[10.5px] leading-[1.4]" style={{ color: '#8aaa98' }}>
+                        <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: COLOR }} />
+                        {name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
                 <div className="border-t mt-1 pt-1.5 flex items-center justify-between" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
                   <span className="text-[12px] font-bold text-white">Total value</span>
                   <span className="text-[12px] font-bold" style={{ color: COLOR }}>${REGULAR_PRICE + 49} → ${COMBO_PRICE}</span>

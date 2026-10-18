@@ -8,7 +8,7 @@ const ROWS = [
   { feature: 'Source code included',   helpnest: 'Yes — full Laravel',             crisp: 'No',                intercom: 'No',                tidio: 'No' },
   { feature: 'Multi-tenant SaaS',      helpnest: 'Yes — unlimited clients',        crisp: 'Per workspace',     intercom: 'Per workspace',     tidio: 'Per workspace' },
   { feature: 'AI chatbot',             helpnest: 'Yes — semantic vector search',   crisp: 'Paid add-on',       intercom: 'Paid add-on',       tidio: 'Basic rules-based' },
-  { feature: 'AI model support',       helpnest: 'GPT-4 + Claude',                 crisp: 'OpenAI only',       intercom: 'OpenAI only',       tidio: 'Limited' },
+  { feature: 'AI model support',       helpnest: 'GPT-6 + 5 AI providers',        crisp: 'OpenAI only',       intercom: 'OpenAI only',       tidio: 'Limited' },
   { feature: 'Knowledge base',         helpnest: 'Yes — AI-connected',             crisp: 'Yes',               intercom: 'Yes',               tidio: 'Limited' },
   { feature: 'Ticketing system',       helpnest: 'Yes — full help desk + SLA',     crisp: 'Yes',               intercom: 'Yes',               tidio: 'Basic' },
   { feature: 'Visitor tracking',       helpnest: 'Yes — real-time map',            crisp: 'Yes',               intercom: 'Yes',               tidio: 'Limited' },

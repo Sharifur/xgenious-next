@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Helpnest — AI Chatbot Support Script',
-    description: 'Self-hosted AI support platform. Laravel + OpenAI + Claude. Multi-tenant SaaS rights. From $59 one-time.',
+    description: 'Self-hosted AI support platform. Laravel + 5 AI providers (GPT-6, DeepSeek, Gemini). Multi-tenant SaaS rights. From $59 one-time.',
     images: ['/products/helpnest-hero.jpg'],
   },
   keywords: [
