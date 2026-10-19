@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { COLOR, LIGHT_COLOR } from './constants';
+import { COLOR, LIGHT_COLOR, AI_PROVIDER_LIST, OPENAI_MODEL_RANGE } from './constants';
 
 const FEATURES = [
   {
     title: 'AI That Understands — Not Just Matches',
-    desc: 'Helpnest uses semantic vector similarity search powered by OpenAI and Anthropic Claude. The chatbot understands intent and context, not just keywords — resolving queries your FAQ never could.',
+    desc: `Helpnest uses semantic vector similarity search across 5 AI providers — ${AI_PROVIDER_LIST} — including OpenAI ${OPENAI_MODEL_RANGE}. The chatbot understands intent and context, not just keywords — resolving queries your FAQ never could.`,
     img: '/products/helpnest-feature-ai.jpg',
     large: true,
   },
@@ -128,7 +128,7 @@ export default function Features() {
             Everything You Need to Run an AI Support Business
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
-            From AI chatbot training to subscription billing — Helpnest ships every module your SaaS platform needs. No monthly fees, no hidden add-ons.
+            From AI chatbot training to subscription billing — Helpnest ships every module your SaaS platform needs. No monthly fees. The core AI chatbot script is complete on every licence.
           </p>
         </div>
 

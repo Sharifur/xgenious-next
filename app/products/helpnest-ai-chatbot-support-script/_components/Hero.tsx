@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { COLOR, DEMO_URL, REGULAR_PRICE } from './constants';
+import { COLOR, DEMO_URL, CODECANYON_URL, REGULAR_PRICE, COMBO_PRICE, EXTENDED_PRICE, PREMIUM_PLUGIN_COUNT } from './constants';
 import ScrollToPricing from './ScrollToPricing';
 
 const QUICK_LINKS = [
   { label: 'Features', href: '#features' },
+  { label: 'Plugins', href: '#plugins' },
   { label: 'Live Demo', href: DEMO_URL },
   { label: 'Pricing', href: '#pricing' },
   { label: 'FAQ', href: '#faq' },
@@ -36,23 +37,23 @@ export default function Hero() {
               style={{ background: '#EEF2FF', color: COLOR }}
             >
               <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: COLOR }} />
-              AI-Powered Chatbot Script
+              Helpnest · Laravel AI chatbot script
             </div>
           </div>
 
           <h1 className="relative z-10 text-[28px] leading-[36px] sm:text-[48px] sm:leading-[56px] lg:text-[62px] lg:leading-[70px] font-bold text-white max-w-[860px]">
-            Launch Your Own{' '}
-            <span style={{ color: COLOR }}>AI Chatbot Support Platform</span>
+            Self-Hosted{' '}
+            <span style={{ color: COLOR }}>AI Chatbot Script</span> for Customer Support
           </h1>
 
-          <p className="relative z-10 text-[#a89bb5] text-[14px] sm:text-[17px] leading-7 max-w-[580px]">
-            A complete Laravel PHP script to build your own AI-powered customer support platform like Crisp, Intercom, or Tidio. Semantic AI chatbot, multi-tenant SaaS, ticketing, and subscription billing — one-time purchase.
+          <p className="relative z-10 text-[#a89bb5] text-[14px] sm:text-[17px] leading-7 max-w-[720px]">
+            Helpnest is a self-hosted AI chatbot script for Laravel. Launch your own AI customer support platform like Crisp, Intercom or Tidio, with a semantic AI chatbot (OpenAI and Claude), live chat with human hand-off, ticketing, a knowledge base and multi-tenant subscription billing. The core script is a one-time purchase from ${REGULAR_PRICE}, with no monthly fees. The Everything Bundle (${COMBO_PRICE}) and Exclusive License (${EXTENDED_PRICE}) add {PREMIUM_PLUGIN_COUNT} premium plugins: WhatsApp, Messenger &amp; Instagram, TikTok, Slack, CRM sync, Shopify and WooCommerce catalogue import, analytics and GDPR tools.
           </p>
 
           <div className="relative z-10 flex items-center gap-4 sm:gap-6 flex-wrap justify-center text-[13px]">
             <div className="flex items-center gap-1.5 text-[#a89bb5]">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <span><strong className="text-white">4.8/5</strong> Rating</span>
+              <a href={CODECANYON_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><strong className="text-white">4.8/5</strong> on CodeCanyon</a>
             </div>
             <span className="hidden sm:block w-px h-3.5 bg-white/15" />
             <div className="flex items-center gap-1.5 text-[#a89bb5]">

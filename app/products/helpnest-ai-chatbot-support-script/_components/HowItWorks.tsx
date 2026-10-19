@@ -5,7 +5,7 @@ const STEPS = [
   {
     n: '01',
     title: 'Install in Under 30 Minutes',
-    desc: 'Purchase Helpnest with a one-time payment. Upload to any PHP 8.4+ VPS with PostgreSQL 14+, Redis, and Pusher. Run the guided installer and configure your domain — live in under 30 minutes.',
+    desc: 'Purchase Helpnest with a one-time payment. Upload to any PHP 8.4+ VPS with PostgreSQL 14+, Redis, and realtime via Laravel Reverb or Pusher, your choice. Run the guided installer and configure your domain — live in under 30 minutes.',
   },
   {
     n: '02',

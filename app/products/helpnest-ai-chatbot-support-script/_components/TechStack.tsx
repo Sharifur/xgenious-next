@@ -1,13 +1,13 @@
 import Image from 'next/image';
-import { COLOR, LIGHT_COLOR } from './constants';
+import { COLOR, LIGHT_COLOR, AI_PROVIDER_LIST, OPENAI_MODEL_RANGE } from './constants';
 
 const STACK = [
   { name: 'Laravel 12', role: 'Backend Framework', logo: '/tech/laravel.svg' },
   { name: 'PHP 8.4+', role: 'Server Language', logo: '/tech/php.svg' },
   { name: 'PostgreSQL 14+', role: 'Database', logo: '/tech/postgresql.svg' },
-  { name: 'OpenAI GPT-4', role: 'AI Engine', logo: '/tech/openai.svg' },
+  { name: 'OpenAI GPT-6', role: 'AI Engine', logo: '/tech/openai.svg' },
   { name: 'Redis', role: 'Cache & Queues', logo: '/tech-logos/redis.svg' },
-  { name: 'Laravel Reverb', role: 'Realtime Events', logo: '/icons/tech/reverb.png' },
+  { name: 'Reverb or Pusher', role: 'Realtime Events', logo: '/icons/tech/reverb.png' },
   { name: 'Tailwind CSS', role: 'Frontend', logo: '/tech/tailwind.svg' },
   { name: 'Linux', role: 'Server OS', logo: '/tech/linux.svg' },
   { name: 'Stripe', role: 'Subscription Billing', logo: '/integrations/stripe.svg' },
@@ -32,7 +32,7 @@ export default function TechStack() {
             Production-Ready Technology
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
-            Helpnest is built on Laravel 12, PostgreSQL, and dual AI providers — OpenAI and Anthropic Claude — for maximum reliability.
+            Helpnest is a Laravel AI chatbot script built on Laravel 12 and PostgreSQL, and runs on 5 AI providers — {AI_PROVIDER_LIST}. It supports OpenAI {OPENAI_MODEL_RANGE} with automatic provider fallback for maximum reliability.
           </p>
         </div>
 
@@ -54,7 +54,7 @@ export default function TechStack() {
         <div className="rounded-2xl border border-[#E5E7EC] bg-white px-6 py-5 flex items-center justify-between gap-4 flex-wrap">
           <div>
             <p className="text-[15px] font-bold text-[#0F1112] mb-1">Server Requirements</p>
-            <p className="text-[13px] text-[#6b7280]">PHP 8.4+, PostgreSQL 14+, Redis, Laravel Reverb — full details in our documentation.</p>
+            <p className="text-[13px] text-[#6b7280]">PHP 8.4+, PostgreSQL 14+, Redis, and realtime via Laravel Reverb or Pusher, your choice. Full details in our documentation.</p>
           </div>
           <a
             href="https://docs.xgenious.com/docs/helpnest-ai-based-support-chatbot-system/instructions/server-requirement/"

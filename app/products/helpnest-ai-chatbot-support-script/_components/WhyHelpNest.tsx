@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { COLOR, LIGHT_COLOR } from './constants';
 
 function Check() {
@@ -134,7 +135,7 @@ export default function WhyHelpNest() {
             The Smarter Way to Build AI Customer Support
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
-            Stop paying month-to-month. Own your platform, control your data, and keep 100% of the revenue.
+            Stop paying month-to-month. Own your platform, control your data, and keep 100% of the revenue. Learn <Link href="/self-hosted-ai-chatbot-script" className="underline underline-offset-2" style={{ color: COLOR }}>why own a self-hosted AI chatbot script</Link>.
           </p>
         </div>
 

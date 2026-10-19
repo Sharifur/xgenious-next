@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendEmail, crashReportEmailHtml } from '@/lib/email';
 
+export const maxDuration = 15;
+
 const ALERT_EMAIL = 'dvrobin4@gmail.com';
 
 export async function POST(req: NextRequest) {

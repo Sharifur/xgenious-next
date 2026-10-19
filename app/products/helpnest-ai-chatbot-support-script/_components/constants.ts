@@ -1,3 +1,5 @@
+import { PLUGINS } from './plugins';
+
 export const COLOR = '#4F46E5';
 export const LIGHT_COLOR = '#EEF2FF';
 export const BASE_URL = 'https://xgenious.com';
@@ -8,6 +10,14 @@ export const CODECANYON_URL = 'https://codecanyon.net/item/helpnest-ai-powered-c
 export const REGULAR_PRICE = 59;
 export const COMBO_PRICE = 89;
 export const EXTENDED_PRICE = 199;
+// Premium plugins are exclusive to the Everything Bundle + Exclusive License (see plugins.ts).
+export const PREMIUM_PLUGIN_NAMES = PLUGINS.map((p) => p.name);
+export const PREMIUM_PLUGIN_COUNT = PREMIUM_PLUGIN_NAMES.length;
+
+// AI providers and OpenAI models supported by the platform.
+// Source of truth: core/app/Enums/AiProvider.php + AiModelName.php.
+export const AI_PROVIDER_LIST = 'OpenAI, DeepSeek, Google Gemini, GLM (Z.ai) and MiniMax';
+export const OPENAI_MODEL_RANGE = 'GPT-6, GPT-4.1, o3/o4 and GPT-4o';
 
 export const REVIEWS = [
   {

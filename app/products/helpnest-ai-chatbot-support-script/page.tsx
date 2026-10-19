@@ -14,28 +14,30 @@ import WhyHelpNest from './_components/WhyHelpNest';
 import MobileApp from './_components/MobileApp';
 import Comparison from './_components/Comparison';
 import Reviews from './_components/Reviews';
+import PremiumPlugins from './_components/PremiumPlugins';
+import LicenceTable from './_components/LicenceTable';
 import Pricing from './_components/Pricing';
 import FAQ from './_components/FAQ';
 
 export const metadata: Metadata = {
-  title: 'Helpnest — AI Chatbot Support Script for Laravel',
+  title: { absolute: 'Helpnest AI Chatbot Script: Self-Hosted Support for Laravel' },
   description:
-    'Self-hosted Laravel AI chatbot script. Build a Crisp or Intercom alternative with semantic AI, multi-tenant SaaS, ticketing, and billing. From $59.',
+    'Self-hosted AI chatbot script for Laravel: live chat, ticketing, multi-tenant SaaS. From $59 one-time; 13 plugins incl. WhatsApp with the $89 Bundle.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Helpnest — AI Chatbot Support Script | Xgenious',
+    title: 'Helpnest: Self-Hosted AI Chatbot Script + 13 Plugins',
     description:
-      'Build your own Crisp or Intercom alternative. Laravel AI chatbot, multi-tenant architecture, ticketing, knowledge base, and Stripe billing. One-time $59 purchase.',
+      'Own your AI support platform: Laravel AI chatbot, live chat and ticketing from $59 one-time. WhatsApp, Instagram and Slack plugins with the Bundle.',
     url: CANONICAL,
     siteName: 'Xgenious',
-    images: [{ url: '/products/helpnest-hero.jpg', width: 1200, height: 630, alt: 'Helpnest AI Customer Support Platform' }],
+    images: [{ url: '/products/helpnest-hero.jpg', width: 1200, height: 630, alt: 'Helpnest AI chatbot script dashboard with WhatsApp, Instagram and Slack plugins' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Helpnest — AI Chatbot Support Script',
-    description: 'Self-hosted AI support platform. Laravel + OpenAI + Claude. Multi-tenant SaaS rights. From $59 one-time.',
+    title: 'Helpnest: Self-Hosted AI Chatbot Script + 13 Plugins',
+    description: 'Self-hosted AI support platform. Laravel + 5 AI providers (GPT-6, DeepSeek, Gemini). Multi-tenant SaaS rights. From $59 one-time.',
     images: ['/products/helpnest-hero.jpg'],
   },
   keywords: [
@@ -57,6 +59,8 @@ export default function HelpNestPage() {
       <Hero />
       <PaymentGateways />
       <Features />
+      <PremiumPlugins />
+      <LicenceTable />
       <HowItWorks />
       <ChatDemo />
       <TechStack />

@@ -6,6 +6,10 @@ import { Providers } from '@/components/Providers';
 import AccountSidebar from './_components/AccountSidebar';
 
 export const dynamic = 'force-dynamic';
+// Account pages wait on WordPress / Taskip / the license server. 20s covers
+// a slow upstream; the previous platform default kept a hung render billable
+// for minutes.
+export const maxDuration = 20;
 export const metadata = { title: 'My Account' };
 
 export default async function AccountLayout({ children }: { children: React.ReactNode }) {

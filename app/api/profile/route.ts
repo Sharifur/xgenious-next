@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 
+export const maxDuration = 15;
+
 const WP_BASE = process.env.WORDPRESS_BASE_URL ?? 'https://xgenious.com';
 
 export async function GET() {

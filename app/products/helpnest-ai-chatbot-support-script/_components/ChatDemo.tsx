@@ -10,7 +10,7 @@ const MESSAGES = [
   { role: 'user', text: 'Does it support WordPress and Shopify?' },
   { role: 'bot',  text: 'Yes! Helpnest embeds on WordPress, Shopify, Webflow, Wix, or any custom HTML site instantly.' },
   { role: 'user', text: 'What AI model powers the chatbot?' },
-  { role: 'bot',  text: 'You choose — GPT-4, GPT-3.5, or Claude. Switch models anytime from your admin panel.' },
+  { role: 'bot',  text: 'You choose — GPT-6, GPT-4.1, DeepSeek, Gemini and more. Switch providers and models anytime from your admin panel.' },
 ];
 
 const HOW_IT_WORKS = [
@@ -191,7 +191,7 @@ export default function ChatDemo() {
                   <p className="text-white font-semibold text-[13px]">Helpnest AI Support</p>
                   <div className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    <span className="text-white/70 text-[11px]">Online — powered by GPT-4</span>
+                    <span className="text-white/70 text-[11px]">Online — powered by GPT-6</span>
                   </div>
                 </div>
                 <div className="flex gap-1.5">

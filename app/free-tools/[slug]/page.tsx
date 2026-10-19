@@ -153,14 +153,16 @@ export default async function FreeToolPage({ params }: PageProps) {
     ...(tool.featureList ? { featureList: tool.featureList } : {}),
   };
 
+  const breadcrumbSteps = [
+    { name: 'Free Tools', item: `${BASE_URL}/free-tools` },
+    // Tools flagged categoryLinkToHub have no separate category page, so the step would duplicate the hub.
+    ...(tool.categoryLinkToHub ? [] : [{ name: tool.category.charAt(0).toUpperCase() + tool.category.slice(1), item: `${BASE_URL}/free-tools?category=${tool.category}` }]),
+    { name: tool.title, item: toolUrl },
+  ];
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Free Tools', item: `${BASE_URL}/free-tools` },
-      { '@type': 'ListItem', position: 2, name: tool.category.charAt(0).toUpperCase() + tool.category.slice(1), item: tool.categoryLinkToHub ? `${BASE_URL}/free-tools` : `${BASE_URL}/free-tools?category=${tool.category}` },
-      { '@type': 'ListItem', position: 3, name: tool.title, item: toolUrl },
-    ],
+    itemListElement: breadcrumbSteps.map((st, i) => ({ '@type': 'ListItem', position: i + 1, ...st })),
   };
 
   const faqLd = {
@@ -217,13 +219,17 @@ export default async function FreeToolPage({ params }: PageProps) {
             <Link href="/free-tools" className="hover:text-[#0F1112] transition-colors duration-150">
               Free Tools
             </Link>
+            {!tool.categoryLinkToHub && (
+              <>
             <span>/</span>
             <Link
-              href={tool.categoryLinkToHub ? '/free-tools' : tool.category === 'saas' ? '/free-tools/saas-calculators' : `/free-tools?category=${tool.category}`}
+              href={tool.category === 'saas' ? '/free-tools/saas-calculators' : `/free-tools?category=${tool.category}`}
               className="capitalize hover:text-[#0F1112] transition-colors duration-150"
             >
               {tool.category === 'saas' ? 'SaaS Calculators' : tool.category}
             </Link>
+              </>
+            )}
             <span>/</span>
             <span className="text-[#0F1112] font-medium">{tool.title}</span>
           </nav>
