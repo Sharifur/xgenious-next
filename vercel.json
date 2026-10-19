@@ -1,7 +1,6 @@
 {
   "buildCommand": "next build && node scripts/upload-sourcemaps.mjs",
   "functions": {
-    "app/api/image-convert/route.ts": { "maxDuration": 30 },
     "app/api/support-tickets/upload/route.ts": { "maxDuration": 30 },
     "app/api/download-lead/route.ts": { "maxDuration": 30 },
     "app/api/contact/route.ts": { "maxDuration": 30 },
