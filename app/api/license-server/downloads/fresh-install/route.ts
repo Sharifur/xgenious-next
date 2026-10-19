@@ -3,10 +3,10 @@ import { auth } from '@/auth';
 import { lsFetch } from '@/lib/license-server';
 import { buildSignedAssertion } from '@/lib/envato-assertion';
 
-// Fresh-install ZIPs can be tens of MB; streaming one through this function
-// end-to-end (as GET does) needs more than the platform's default function
-// timeout to avoid a mid-stream 502 to the client on a slow connection.
-export const maxDuration = 300;
+// Auth + one license-server round trip, then a redirect. The ZIP itself is
+// fetched by the browser from the signed URL, so this must not stay at the
+// platform's long default (a stalled upstream used to be billable for minutes).
+export const maxDuration = 15;
 
 type DownloadUrlResult =
   | { error: NextResponse }
@@ -54,6 +54,17 @@ async function requestDownloadUrl(req: NextRequest): Promise<DownloadUrlResult> 
   return { data, product_uid };
 }
 
+function httpsDownloadUrl(raw: unknown): string | null {
+  if (typeof raw !== 'string' || !raw) return null;
+  try {
+    const url = new URL(raw);
+    if (url.protocol !== 'https:') return null;
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
+
 // A lightweight availability check: license-server's /downloads/fresh-install
 // call already validates the license and confirms the install file exists
 // on disk before it ever issues a signed URL, so a successful response here
@@ -62,29 +73,21 @@ async function requestDownloadUrl(req: NextRequest): Promise<DownloadUrlResult> 
 export async function HEAD(req: NextRequest) {
   const result = await requestDownloadUrl(req);
   if ('error' in result) return new Response(null, { status: result.error.status });
+  if (!httpsDownloadUrl(result.data.download_url)) return new Response(null, { status: 502 });
   return new Response(null, { status: 200 });
 }
 
 export async function GET(req: NextRequest) {
   const result = await requestDownloadUrl(req);
   if ('error' in result) return result.error;
-  const { data, product_uid } = result;
 
-  const fileRes = await fetch(data.download_url);
-  if (!fileRes.ok || !fileRes.body) {
+  const downloadUrl = httpsDownloadUrl(result.data.download_url);
+  if (!downloadUrl) {
     return NextResponse.json({ error: 'Failed to fetch file from storage' }, { status: 502 });
   }
 
-  const slug = (data.product_uid ?? product_uid).toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  const version = data.version ?? 'latest';
-  const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-  const filename = `xgenious-${slug}-${version}-${timestamp}.zip`;
-
-  const headers = new Headers({
-    'Content-Type': 'application/zip',
-    'Content-Disposition': `attachment; filename="${filename}"`,
-  });
-  if (data.file_size) headers.set('Content-Length', String(data.file_size));
-
-  return new Response(fileRes.body, { headers });
+  // The downloads page clicks an <a href> at this route. A temporary redirect
+  // lets the browser pull the ZIP from storage directly, so the bytes never
+  // transit this function (duration + origin transfer). 302 is not cached.
+  return NextResponse.redirect(downloadUrl, 302);
 }

@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # scripts/check-new-pages.sh
 # Run from repo root. Exits 1 if any static page.tsx is missing from
-# sitemap.ts or (for single-segment routes) from middleware.ts NEXT_ROUTES.
+# sitemap.ts. Unknown single-segment URLs fall through to WordPress via a
+# next.config.ts fallback rewrite that runs after App Router pages, so new
+# pages no longer need a middleware allowlist.
 
 SITEMAP="app/sitemap.ts"
-MIDDLEWARE="middleware.ts"
 ERRORS=0
 MISSING=()
 
@@ -38,17 +39,6 @@ while IFS= read -r page_file; do
     ERRORS=$((ERRORS + 1))
   fi
 
-  # --- Middleware check (single-segment routes only) ---
-  # Multi-segment routes (e.g. /case-studies/foo) are proxied correctly without registration.
-  # Single-segment routes (e.g. /new-page) fall through to WordPress unless listed in NEXT_ROUTES.
-  segment="${route#/}"
-  if [[ -n "$segment" && "$segment" != *"/"* ]]; then
-    if ! grep -qF "'${segment}'" "$MIDDLEWARE" && ! grep -qF "\"${segment}\"" "$MIDDLEWARE"; then
-      MISSING+=("MIDDLEWARE : '${segment}' missing from NEXT_ROUTES in middleware.ts")
-      ERRORS=$((ERRORS + 1))
-    fi
-  fi
-
 done < <(find app -name "page.tsx" | grep -v '/\[' | sort)
 
 if [[ "$ERRORS" -gt 0 ]]; then
@@ -61,5 +51,5 @@ if [[ "$ERRORS" -gt 0 ]]; then
 fi
 
 page_count=$(find app -name "page.tsx" | grep -v '/\[' | wc -l | tr -d ' ')
-printf '  pre-push: %s pages — sitemap + middleware OK\n' "$page_count"
+printf '  pre-push: %s pages — sitemap OK\n' "$page_count"
 exit 0

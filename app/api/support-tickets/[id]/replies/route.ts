@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 
+export const maxDuration = 15;
+
 const TASKIP_API = 'https://public-api.taskip.net/api/public-v1/support-ticket';
 
 const TASKIP_HEADERS = {

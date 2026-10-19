@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { FASTSPRING_STORE } from '@/lib/fastspring';
 
+export const maxDuration = 15;
+
 // Fallback path when the FastSpring popup (SBL iframe) fails to load — usually
 // third-party cookie/iframe blocking (iOS Safari ITP, ad/content blockers).
 // Creates a session via FastSpring's Sessions v1 API carrying the same cart,

@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
 
+const WP_ORIGIN = 'http://origin.xgenious.com';
+
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.0.102'],
   experimental: {
@@ -22,6 +24,13 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Platform redirect — does not invoke middleware or a function.
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.xgenious.com' }],
+        destination: 'https://xgenious.com/:path*',
+        permanent: true,
+      },
+      {
         // Keyword-optimised URL replaced the original brand slug.
         source: '/free-software/genius-books',
         destination: '/free-software/free-accounting-software',
@@ -29,15 +38,35 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          // AI agents requesting text/markdown get llms.txt. Browsers send
+          // text/html and do not match. Paths with a dot, /api, and /_next
+          // are excluded, matching the previous middleware check.
+          source: '/((?!api|_next|.*\\.).*)',
+          has: [{ type: 'header', key: 'accept', value: '.*text/markdown.*' }],
+          destination: '/llms.txt',
+        },
+      ],
+      fallback: [
+        {
+          // Unknown single-segment slugs are WordPress posts. Checked after
+          // App Router pages, so a new page.tsx wins without a route allowlist.
+          // Dots are static files and must not be proxied; ".md" is below.
+          source: '/:slug((?![^/]*\\.).+)',
+          destination: `${WP_ORIGIN}/:slug/`,
+        },
+        {
+          source: '/:slug.md',
+          destination: `${WP_ORIGIN}/:slug.md`,
+        },
+      ],
+    };
+  },
   async headers() {
     return [
-      {
-        // Edge-cache the homepage HTML at Vercel CDN — collapses TTFB from ~1.4s to ~50ms for cached hits
-        source: '/',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=3600' },
-        ],
-      },
       {
         source: '/(.*)',
         headers: [
@@ -81,7 +110,10 @@ const nextConfig: NextConfig = {
 
 export default withSentryConfig(nextConfig, {
   release: { create: false },
-  tunnelRoute: "/monitoring",
+  // No tunnelRoute. The DSN host is debug-ingest.taskip.net, and the SDK only
+  // tunnels Sentry SaaS DSNs (o<id>.ingest.sentry.io), so "/monitoring" never
+  // received events. Dropping it removes a rewrite that would otherwise proxy
+  // crafted /monitoring?o=&p= requests at sentry.io.
   silent: true,
   // debugId markers are injected into build output automatically (no config
   // flag needed in this SDK version) — scripts/upload-sourcemaps.mjs reads

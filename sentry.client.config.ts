@@ -7,6 +7,9 @@ Sentry.init({
   // No browser tracing: it patches fetch/XHR and observes long tasks on every page (INP cost);
   // geniusDebug is used for error capture only.
   tracesSampleRate: 0,
-  replaysOnErrorSampleRate: 1.0,
+  // Replay is not registered (no replayIntegration). This is a ceiling so a
+  // later SDK default cannot record a replay for every error. Replays are
+  // large payloads; 10% of errors is enough to debug.
+  replaysOnErrorSampleRate: 0.1,
   replaysSessionSampleRate: 0,
 });

@@ -6,6 +6,9 @@ import {
 } from '@aws-sdk/client-s3';
 import { NextRequest, NextResponse } from 'next/server';
 
+// Daily R2 listing. Bound it so a large prefix cannot run for the platform max.
+export const maxDuration = 60;
+
 const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
 
 function buildS3Client() {
