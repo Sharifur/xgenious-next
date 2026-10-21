@@ -12,12 +12,7 @@ const REGULAR_FEATURES = [
   { label: '6 Months Support', ok: true },
   { label: 'Freelancer Mobile App (Flutter)', ok: false },
   { label: 'Client Mobile App (Flutter)', ok: false },
-  { label: 'Freelancer Level Plugin', ok: false },
-  { label: 'Promotional Ads Plugin', ok: false },
-  { label: 'Security Plugin', ok: false },
-  { label: 'Cloud Storage Plugin', ok: false },
-  { label: 'Hourly Hiring Plugin', ok: false },
-  { label: 'Community Plugin', ok: false },
+  { label: '23 Premium Plugins', ok: false },
   { label: 'Source Code Modification Rights', ok: false },
 ];
 
@@ -31,12 +26,7 @@ const BUNDLE_FEATURES = [
   { label: '6 Months Support', ok: true },
   { label: 'Freelancer Mobile App (Flutter)', ok: true },
   { label: 'Client Mobile App (Flutter)', ok: true },
-  { label: 'Freelancer Level Plugin', ok: true },
-  { label: 'Promotional Ads Plugin', ok: true },
-  { label: 'Security Plugin', ok: true },
-  { label: 'Cloud Storage Plugin', ok: true },
-  { label: 'Hourly Hiring Plugin', ok: true },
-  { label: 'Community Plugin', ok: true },
+  { label: '23 Premium Plugins', ok: true },
   { label: 'Source Code Modification Rights', ok: false },
 ];
 
@@ -114,7 +104,7 @@ export default function Pricing() {
               regularPrice={REGULAR_PRICE}
               bundlePrice={BUNDLE_PRICE}
               bundleCheckoutUrl="/checkout?product=xilancer-bundle-pack"
-              bundleItems={['Freelancer Mobile App (Flutter)', 'Client Mobile App (Flutter)', 'Freelancer Level Plugin', 'Promotional Ads Plugin', 'Security Plugin', 'Cloud Storage Plugin', 'Hourly Hiring Plugin', 'Community Plugin']}
+              bundleItems={['Freelancer Mobile App (Flutter)', 'Client Mobile App (Flutter)', '23 Premium Plugins']}
               bundleLabel="Bundle Pack"
               accentColor={COLOR}
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
@@ -177,7 +167,7 @@ export default function Pricing() {
                   ['Web Platform', '$59'],
                   ['Freelancer Mobile App', '$49'],
                   ['Client Mobile App', '$49'],
-                  ['6 Premium Plugins', '$126'],
+                  ['23 Premium Plugins', '$126'],
                 ].map(([item, price]) => (
                   <div key={item} className="flex items-center justify-between">
                     <span className="text-[12px]" style={{ color: '#8aaa98' }}>{item}</span>
