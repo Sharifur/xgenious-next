@@ -1,12 +1,12 @@
 'use client';
 import { useState, useRef } from 'react';
+import { convertImage, type ConvertResult } from '@/lib/convert-image';
 
 const COLOR = '#f26b4e';
 const ACCEPT = 'image/png';
 const FORMAT = 'avif';
 const MAX_MB = 10;
 
-interface ConvertResult { url: string; filename: string; originalSize: number; convertedSize: number; savings: string; }
 
 export default function PngToAvif() {
   const [file, setFile] = useState<File | null>(null);
@@ -32,14 +32,7 @@ export default function PngToAvif() {
     if (!file) return;
     setLoading(true); setError(''); setResult(null);
     try {
-      const fd = new FormData();
-      fd.append('file', file);
-      fd.append('format', FORMAT);
-      fd.append('quality', String(quality));
-      const res = await fetch('/api/image-convert', { method: 'POST', body: fd });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? 'Conversion failed');
-      setResult(data);
+      setResult(await convertImage(file, FORMAT, quality));
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Conversion failed');
     } finally {
