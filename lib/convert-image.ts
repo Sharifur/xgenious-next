@@ -45,9 +45,10 @@ async function encodeWebp(data: ImageData, quality: number): Promise<Blob> {
 }
 
 async function encodeAvif(data: ImageData, quality: number): Promise<Blob> {
-  // Canvas cannot encode AVIF; load the WASM encoder only when it is needed.
-  const { encode } = await import('@jsquash/avif');
-  const buffer = await encode(data, { quality });
+  // Canvas cannot encode AVIF. The encoder module is loaded only for AVIF,
+  // and it must not import the package entry — see lib/avif-encode.ts.
+  const { encodeAvifImage } = await import('@/lib/avif-encode');
+  const buffer = await encodeAvifImage(data, quality);
   return new Blob([buffer], { type: 'image/avif' });
 }
 
