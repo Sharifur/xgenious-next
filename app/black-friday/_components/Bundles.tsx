@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import { BUNDLES, PRODUCTS } from './data';
+import { BUNDLES, BUNDLE_VALUE, PRODUCTS, money } from './data';
 
 const n = PRODUCTS.length;
+const saving = BUNDLE_VALUE - BUNDLES.everything.amount;
+const savingPct = Math.round((saving / BUNDLE_VALUE) * 100);
 
 export default function Bundles() {
   return (
-    <section id="bundles" className="sec" style={{ paddingBottom: 0, scrollMarginTop: 96 }}>
+    <section id="bundles" className="sec" style={{ scrollMarginTop: 96 }}>
       <div className="head">
         <div className="stack" style={{ gap: 12 }}>
           <span className="eyebrow">All-access bundle offers</span>
@@ -13,7 +15,6 @@ export default function Bundles() {
         </div>
         <p className="lede">Get all {n} platforms in one purchase. Fixed price, no coupon needed.</p>
       </div>
-      <div className="pills">{PRODUCTS.map((p) => <span key={p.slug}>{p.name}</span>)}</div>
       <div className="bundles">
         <article className="bundle primary">
           <div className="kicker"><span>All products · Everything Bundle</span><span className="pill">Best value</span></div>
@@ -21,7 +22,8 @@ export default function Bundles() {
             <h3>Everything Bundle</h3>
             <p>The Everything Bundle edition of all {n} products, for launching and running your own platforms.</p>
           </div>
-          <div className="amt"><b>{BUNDLES.everything.price}</b><span>one-time</span></div>
+          <div className="amt"><b>{BUNDLES.everything.price}</b><s>{money(BUNDLE_VALUE)}</s><span>one-time</span></div>
+          <p className="save">Save {money(saving)} ({savingPct}% off) vs. buying all {n} products separately</p>
           <ul>
             <li>All {n} web platforms</li>
             <li>Flutter mobile apps where available</li>

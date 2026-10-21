@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { PROMO_CODE } from '@/lib/fastspring';
+import { PROMO_CODE, PROMO_HIDDEN_PATHS } from '@/lib/fastspring';
 
 const STORAGE_KEY = 'xg-promo-welcome10-dismissed';
 
@@ -14,10 +14,10 @@ export default function PromoBanner() {
   const [copied, setCopied] = useState(false);
   const barRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-  // The coupon auto-applies at checkout itself, so the banner advertising it
-  // is redundant there — hide it.
-  const isCheckout = pathname?.startsWith('/checkout');
-  const dismissed = dismissedStorage !== false || isCheckout;
+  // Checkout auto-applies the coupon itself and campaign pages advertise their
+  // own coupon, so the banner is redundant or conflicting there — hide it.
+  const isHidden = PROMO_HIDDEN_PATHS.some((p) => pathname?.startsWith(p));
+  const dismissed = dismissedStorage !== false || isHidden;
 
   useEffect(() => {
     try {
@@ -32,7 +32,7 @@ export default function PromoBanner() {
   // content can offset themselves beneath it.
   useEffect(() => {
     const root = document.documentElement;
-    if (dismissedStorage === null && !isCheckout) return;
+    if (dismissedStorage === null && !isHidden) return;
     if (dismissed || !barRef.current) {
       root.style.setProperty('--promo-h', '0px');
       return;
@@ -46,7 +46,7 @@ export default function PromoBanner() {
       ro.disconnect();
       root.style.setProperty('--promo-h', '0px');
     };
-  }, [dismissed, dismissedStorage, isCheckout]);
+  }, [dismissed, dismissedStorage, isHidden]);
 
   if (dismissed) return null;
 

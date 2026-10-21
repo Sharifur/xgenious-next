@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import CampaignPage from './_components/CampaignPage';
 import Hero from './_components/Hero';
 import CyberMondayHero from './_components/CyberMondayHero';
-import { blackFridayAt } from './_components/data';
+import { blackFridayAt, campaignStatus } from './_components/data';
 
 // Re-render hourly so the page flips Early Black Friday -> Black Friday -> Cyber Monday on schedule.
 export const revalidate = 3600;
@@ -22,6 +22,8 @@ export function generateMetadata(): Metadata {
 }
 
 export default function BlackFridayPage() {
-  const campaign = blackFridayAt(new Date());
-  return <CampaignPage campaign={campaign} path="/black-friday" hero={campaign.theme === 'cm' ? <CyberMondayHero campaign={campaign} /> : <Hero campaign={campaign} />} />;
+  const now = new Date();
+  const campaign = blackFridayAt(now);
+  const status = campaignStatus(campaign, now);
+  return <CampaignPage campaign={campaign} path="/black-friday" status={status} hero={campaign.theme === 'cm' ? <CyberMondayHero campaign={campaign} status={status} /> : <Hero campaign={campaign} status={status} />} />;
 }

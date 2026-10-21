@@ -2098,7 +2098,7 @@ export const PRODUCTS: Record<string, CheckoutProduct> = {
 
   'infustar-bundle-pack': {
     path: 'infustar-bundle-pack',
-    name: 'Influstar — Regular License + Installation',
+    name: 'Influstar — Everything Bundle',
     tagline: 'Full Influstar marketplace with one-time professional installation on your server.',
     price: 49,
     originalPrice: 49,

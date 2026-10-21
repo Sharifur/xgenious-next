@@ -19,11 +19,11 @@ function useRemaining(endsAt: string) {
   return { d: p2(Math.floor(left / 86400)), h: p2(Math.floor((left % 86400) / 3600)), m: p2(Math.floor((left % 3600) / 60)), s: p2(left % 60) };
 }
 
-export default function Countdown({ endsAt, variant }: { endsAt: string; variant: Variant }) {
+export default function Countdown({ endsAt, variant, label = 'Time left' }: { endsAt: string; variant: Variant; label?: string }) {
   const { d, h, m, s } = useRemaining(endsAt);
   if (variant === 'boxes') {
     return (
-      <div className="boxes" role="timer" aria-label="Time left">
+      <div className="boxes" role="timer" aria-label={label}>
         {[[d, 'days'], [h, 'hours'], [m, 'mins']].map(([v, l]) => (
           <div className="box" key={l}><b>{v}</b><span>{l}</span></div>
         ))}

@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import TopLoader from "@/components/ui/TopLoader";
 import IframeNotice from "@/components/ui/IframeNotice";
 import PromoBanner from "@/components/ui/PromoBanner";
+import { PROMO_HIDDEN_PATHS } from "@/lib/fastspring";
 import CrashReporter from "@/components/CrashReporter";
 import MetaPixel from "@/components/MetaPixel";
 import WebVitals from "@/components/WebVitals";
@@ -55,7 +56,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" translate="no" className={`${inter.variable} ${nunitoSans.variable}`}>
+    <html lang="en" translate="no" suppressHydrationWarning className={`${inter.variable} ${nunitoSans.variable}`}>
       <head>
         {/* These load afterInteractive/lazyOnload either way — preconnecting doesn't
             change *when* they fire, only removes DNS/TCP/TLS setup cost from the
@@ -85,7 +86,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           dangerouslySetInnerHTML={{
             __html: `(function(){try{
             if(localStorage.getItem('xg-promo-welcome10-dismissed')==='1')return;
-            if(location.pathname.indexOf('/checkout')===0)return;
+            if(${JSON.stringify(PROMO_HIDDEN_PATHS)}.some(function(p){return location.pathname.indexOf(p)===0}))return;
             var h=window.innerWidth<640?64:44;
             document.documentElement.style.setProperty('--promo-h',h+'px');
           }catch(e){}})();`,
