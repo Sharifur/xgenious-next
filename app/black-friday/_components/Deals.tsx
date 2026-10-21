@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Campaign } from './data';
-import { pricedProducts } from './data';
+import { pricedProducts } from './pricing';
 
 export default function Deals({ campaign }: { campaign: Campaign }) {
   const { coupon, pct } = campaign;
@@ -13,7 +13,7 @@ export default function Deals({ campaign }: { campaign: Campaign }) {
             <span className="eyebrow">All products · {pct}% off</span>
             <h2 className="title">Pick your platform.</h2>
           </div>
-          <p className="lede">Use code <strong className="mono" style={{ color: 'var(--ink)' }}>{coupon}</strong> at checkout. The discount applies to every license.</p>
+          <p className="lede">Use code <strong className="mono" style={{ color: 'var(--ink)' }}>{coupon}</strong> at checkout. The discount applies to every bundle pack and exclusive license.</p>
         </div>
         <div className="grid-deals">
           {pricedProducts(campaign).map((p) => (
@@ -25,12 +25,12 @@ export default function Deals({ campaign }: { campaign: Campaign }) {
               </div>
               <div className="card-body">
                 <span className="cat">{p.cat}</span>
-                <h3>{p.name}</h3>
+                <h3><Link href={p.url} target="_blank" rel="noopener">{p.name}</Link></h3>
                 <p>{p.desc}</p>
                 <span className="muted" style={{ fontSize: 13 }}>{p.proof}</span>
                 <div className="price"><b>{p.newLabel}</b><s>{p.oldLabel}</s><em>Save {p.saveLabel}</em></div>
-                <Link href={p.url} className="btn btn-card">Get {p.name} for {p.newLabel}</Link>
-                <span className="note">Starting price, Regular License · code {coupon}</span>
+                <Link href={`/checkout?product=${p.checkout}&coupon=${coupon}`} className="btn btn-card">Get {p.name} for {p.newLabel}</Link>
+                <span className="note">Bundle pack price · code {coupon}</span>
               </div>
             </article>
           ))}

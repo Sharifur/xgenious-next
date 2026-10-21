@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import CampaignPage from '../black-friday/_components/CampaignPage';
 import Hero from '../black-friday/_components/Hero';
-import { HALLOWEEN } from '../black-friday/_components/data';
+import { HALLOWEEN, campaignStatus } from '../black-friday/_components/data';
+
+// Re-render hourly so the page flips upcoming -> live -> ended on schedule.
+export const revalidate = 3600;
 
 const TITLE = 'Halloween Sale 2026 — 50% Off Every Xgenious Script';
 const DESCRIPTION = 'Halloween 2026: get 50% off every Xgenious Laravel script with code HALLOWEEN50. One-time purchase, full source code, lifetime updates. Ends November 15.';
@@ -16,5 +19,6 @@ export const metadata: Metadata = {
 };
 
 export default function HalloweenSalePage() {
-  return <CampaignPage campaign={HALLOWEEN} path="/halloween-sale" hero={<Hero campaign={HALLOWEEN} />} />;
+  const status = campaignStatus(HALLOWEEN, new Date());
+  return <CampaignPage campaign={HALLOWEEN} path="/halloween-sale" status={status} hero={<Hero campaign={HALLOWEEN} status={status} />} />;
 }

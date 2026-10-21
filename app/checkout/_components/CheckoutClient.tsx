@@ -184,11 +184,11 @@ function FastSpringMark() {
   );
 }
 
-export default function CheckoutClient({ product }: { product: CheckoutProduct }) {
+export default function CheckoutClient({ product, initialCoupon }: { product: CheckoutProduct; initialCoupon?: string }) {
   const [selectedAddons, setSelectedAddons] = useState<Set<string>>(new Set());
   const [expandedAddon, setExpandedAddon] = useState<string | null>(null);
   const [fsReady, setFsReady] = useState(false);
-  const [couponCode, setCouponCode] = useState(PROMO_CODE);
+  const [couponCode, setCouponCode] = useState(initialCoupon ?? PROMO_CODE);
   const [couponStatus, setCouponStatus] = useState<'idle' | 'applying' | 'applied' | 'error'>('idle');
   const [couponMessage, setCouponMessage] = useState('');
   const [appliedCouponCode, setAppliedCouponCode] = useState('');

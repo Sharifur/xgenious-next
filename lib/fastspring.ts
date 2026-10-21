@@ -39,6 +39,10 @@ export const FASTSPRING_SCRIPT = 'https://sbl.onfastspring.com/sbl/1.0.6/fastspr
 // advertised by the PromoBanner. Set to '' to disable auto-apply.
 export const PROMO_CODE = 'WELCOME_10';
 
+// Routes where the PromoBanner stays hidden: checkout auto-applies the code
+// itself, and the campaign pages advertise their own, larger coupon.
+export const PROMO_HIDDEN_PATHS = ['/checkout', '/black-friday', '/halloween-sale'];
+
 export function launchCheckout(productPaths: string[], couponOverride?: string): void {
   const fs = window.fastspring;
   if (!fs?.builder) return;

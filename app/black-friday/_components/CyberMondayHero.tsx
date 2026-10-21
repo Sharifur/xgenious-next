@@ -1,9 +1,9 @@
 import Countdown from './Countdown';
-import CopyCode from './CopyCode';
-import type { Campaign } from './data';
-import { pricedProducts } from './data';
+import HeroActions from './HeroActions';
+import type { Campaign, CampaignStatus } from './data';
+import { pricedProducts } from './pricing';
 
-export default function CyberMondayHero({ campaign }: { campaign: Campaign }) {
+export default function CyberMondayHero({ campaign, status }: { campaign: Campaign; status: CampaignStatus }) {
   const { coupon, pct } = campaign;
   const products = pricedProducts(campaign);
   return (
@@ -17,10 +17,7 @@ export default function CyberMondayHero({ campaign }: { campaign: Campaign }) {
           </h1>
           <p style={{ marginTop: 28, fontSize: 'clamp(28px,3.4vw,44px)', fontWeight: 700, letterSpacing: '-.02em', lineHeight: 1.1 }}><span style={{ color: 'var(--accent)' }}>{pct}% off</span> every Xgenious script.</p>
           <p className="muted" style={{ marginTop: 16, maxWidth: 560, fontSize: 19 }}>One coupon unlocks every product. One-time purchase, full source code, lifetime updates.</p>
-          <div className="hero-actions">
-            <CopyCode variant="hero" coupon={coupon} />
-            <a href="#deals" className="btn btn-lg">Shop the deals <span>→</span></a>
-          </div>
+          <HeroActions campaign={campaign} status={status} />
         </div>
         <div className="term" style={{ flex: '1 1 400px', minWidth: 0 }}>
           <div className="term-bar"><i /><i /><i /><span style={{ marginLeft: 10 }}>checkout — xgenious.com</span></div>
@@ -37,8 +34,14 @@ export default function CyberMondayHero({ campaign }: { campaign: Campaign }) {
             </div>
           </div>
           <div className="term-foot">
-            <span style={{ fontSize: 13, color: 'var(--muted)' }}>Deal ends in</span>
-            <span className="mono" style={{ fontSize: 22, fontWeight: 700 }}><Countdown endsAt={campaign.endsAt} variant="term" /></span>
+            {status === 'ended' ? (
+              <span style={{ fontSize: 13, color: 'var(--muted)' }}>This deal has ended</span>
+            ) : (
+              <>
+                <span style={{ fontSize: 13, color: 'var(--muted)' }}>Deal ends in</span>
+                <span className="mono" style={{ fontSize: 22, fontWeight: 700 }}><Countdown endsAt={campaign.endsAt} variant="term" /></span>
+              </>
+            )}
           </div>
         </div>
       </div>

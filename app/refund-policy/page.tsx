@@ -13,7 +13,7 @@ export default function RefundPolicyPage() {
   return (
     <>
       <JsonLd graph={[webPage('Refund Policy', '/refund-policy'), ORG, crumbs([['Home', '/'], ['Refund Policy', '/refund-policy']])]} />
-    <PolicyLayout title="Refund Policy" badge="Legal" lastUpdated="August 26, 2026">
+    <PolicyLayout title="Refund Policy" badge="Legal" lastUpdated="October 21, 2026">
 
       <p>
         This policy applies to all products and services offered by Xgenious. The applicable refund terms depend on <strong>where you made your purchase</strong>. Please read the relevant section below.
@@ -31,6 +31,7 @@ export default function RefundPolicyPage() {
         <li>You must provide a valid receipt or proof of purchase</li>
         <li>Refund requests made after 14 days are not eligible</li>
         <li>Products that have been damaged by the buyer are not eligible for a refund</li>
+        <li>Licenses purchased with a 50% promotional discount are not eligible (see <em>Discounted Sale Purchases</em> below)</li>
       </ul>
 
       <p>
@@ -59,6 +60,16 @@ export default function RefundPolicyPage() {
 
       <p>
         This also applies to <strong>add-ons and support renewals purchased from your account dashboard</strong> after your original purchase — including support-period extensions and installation/app-store add-ons. These entitlements (an extended support window, or a queued installation/app-store service) activate immediately on purchase, so they are non-refundable once processed, in the same way as the addon services described above.
+      </p>
+
+      <h2>Discounted Sale Purchases — Non-Refundable</h2>
+
+      <blockquote>
+        Any Xgenious license purchased with a <strong>50% promotional discount</strong> — for example during the Halloween or Black Friday / Cyber Monday sales — is <strong>non-refundable</strong> once purchased.
+      </blockquote>
+
+      <p>
+        This applies to every Xgenious product and license bought at the 50% sale discount, whether the discount was applied with a sale coupon code or shown as the sale price at checkout. The 14-day refund window above does not apply to these purchases.
       </p>
 
       <h2>Products Purchased via Envato</h2>

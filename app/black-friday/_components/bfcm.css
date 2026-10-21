@@ -22,6 +22,7 @@
 .bfcm .coupon strong{font:700 24px ui-monospace,Menlo,monospace;letter-spacing:.04em}
 .bfcm .copy{border:0;background:var(--ink);color:var(--bg);font:700 15px var(--font-inter),sans-serif;padding:14px 18px;border-radius:10px;cursor:pointer;min-width:92px}
 .bfcm .hero-actions{display:flex;flex-wrap:wrap;align-items:stretch;gap:16px;margin-top:32px}
+.bfcm .hero-notice{margin-top:32px;font-size:18px;font-weight:600}
 .bfcm .hero-desc{margin-top:40px;max-width:620px;font-size:20px;line-height:1.5;color:var(--muted)}
 .bfcm .stats{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14px;color:var(--muted)}
 .bfcm .stats strong{color:var(--ink)}
@@ -33,9 +34,13 @@
 .bfcm .bf-title{font-weight:800;font-size:clamp(64px,13vw,184px);line-height:.84;letter-spacing:-.045em;text-transform:uppercase}
 .bfcm .bf-title span{display:block}
 .bfcm .bf-title span+span{color:var(--bg);-webkit-text-stroke:4px var(--ink);paint-order:stroke fill}
-.bfcm .bf-pct{display:flex;align-items:flex-start;gap:6px;color:var(--accent);line-height:.8}
-.bfcm .bf-pct b{font-weight:800;font-size:clamp(96px,16vw,220px);letter-spacing:-.06em}
-.bfcm .bf-pct div{display:flex;flex-direction:column;gap:10px;padding-top:8px;font-weight:800}
+.bfcm .bf-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 48px}
+@media (min-width:1024px){.bfcm .bf-top{flex-wrap:nowrap;align-items:center}.bfcm .bf-top .bf-title{font-size:clamp(64px,9.5vw,150px)}.bfcm .bf-top .bf-pct{align-self:center;margin:0 8px 0 0}.bfcm .bf-top .bf-pct b{font-size:clamp(80px,10vw,160px)}}
+.bfcm .bf-pct{position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;align-self:flex-start;margin:8px 0 0 8px;padding:clamp(20px,2.2vw,34px) clamp(22px,2.4vw,38px);border:2px dashed var(--accent);border-radius:32px;background:radial-gradient(120% 90% at 25% 0%,var(--accent-soft),transparent 70%),var(--surface);box-shadow:0 0 0 8px var(--accent-soft),0 34px 80px -28px var(--accent);transform:rotate(-3deg);color:var(--accent)}
+.bfcm .bf-pct-main{display:flex;align-items:flex-start;gap:6px;line-height:.8}
+.bfcm .bf-pct b{font-weight:800;font-size:clamp(96px,16vw,220px);letter-spacing:-.06em;background:linear-gradient(180deg,#fff 5%,var(--accent) 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bfcm .bf-pct-main div{display:flex;flex-direction:column;gap:10px;padding-top:8px;font-weight:800}
+.bfcm .bf-pct-cap{padding:7px 16px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font:700 12px ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase}
 .bfcm .grid-deals{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:20px;margin-top:44px}
 .bfcm .card{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:border-color .15s}
 .bfcm .card:hover{border-color:var(--accent)}
@@ -68,6 +73,9 @@
 .bfcm .bundle .amt{display:flex;align-items:baseline;gap:10px}
 .bfcm .bundle .amt b{font-size:clamp(56px,7vw,80px);font-weight:800;letter-spacing:-.045em;line-height:.9}
 .bfcm .bundle .amt span{font-size:16px;font-weight:600}
+.bfcm .bundle .amt s{font-size:22px;font-weight:600;opacity:.6}
+.bfcm .bundle .save{align-self:flex-start;margin-top:-10px;padding:6px 12px;border-radius:999px;font-size:14px;font-weight:700;background:var(--accent-soft);color:var(--accent)}
+.bfcm .bundle.primary .save{background:var(--accent-ink);color:var(--accent)}
 .bfcm .bundle li{display:flex;gap:10px;font-size:16px;margin-bottom:10px}
 .bfcm .bundle li::before{content:"✓";font-weight:800}
 .bfcm .bundle:not(.primary) li::before{color:var(--accent)}
@@ -116,3 +124,6 @@
 .bfcm .term-row{display:flex;justify-content:space-between;gap:12px;padding:4px 0;border-top:1px dashed var(--line)}
 .bfcm .term-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:16px 22px;background:var(--surface2)}
 @media (max-width:640px){.bfcm .sec{padding:56px 20px}.bfcm .coupon{width:100%;justify-content:space-between}}
+@media (max-width:1023px){.bfcm[data-theme="hw"] .bf-title{font-size:clamp(36px,10.5vw,120px)}}
+.bfcm .btn.btn-card{background:transparent;color:var(--ink)!important;border:1px solid var(--line);transition:border-color .15s,background .15s}
+.bfcm .btn.btn-card:hover{filter:none;border-color:var(--accent);background:var(--accent-soft)}
