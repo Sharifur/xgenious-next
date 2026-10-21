@@ -78,7 +78,7 @@ export default function XilancerPage() {
         regularPrice={REGULAR_PRICE}
         bundlePrice={BUNDLE_PRICE}
         bundleLabel="Bundle Pack"
-        bundleHighlight="6 premium plugins — Security, Cloud Storage, Hourly Hiring & more"
+        bundleHighlight="All 26 plugins — AI, NDA, SEO Tools, Webhooks, Affiliate, Referrals, Subscription Offers, Reports, Coupons, Email Marketing, Currency Switcher, Announcements, local payments and more"
         accentColor={COLOR}
         storageKey="xg-bundle-nudge-xilancer-dismissed"
       />
