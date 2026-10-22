@@ -2407,7 +2407,42 @@ export const PRODUCTS: Record<string, CheckoutProduct> = {
     ],
     addons: [],
   },
-
+  'all-products-everything-bundle-package': {
+    path: 'all-products-everything-bundle-package',
+    name: 'All Products — Everything Bundle',
+    tagline: 'Every Xgenious script with its bundle plugins and apps, in one purchase.',
+    price: 499,
+    originalPrice: 499,
+    badge: 'Best Value',
+    features: [
+      'Every Xgenious product, bundle edition',
+      'All premium plugins included',
+      'Mobile apps where available',
+      'Lifetime license validity',
+      'Lifetime free updates',
+      '6 months support',
+      'Personal & commercial use',
+    ],
+    addons: [],
+  },
+  'all-products-exclusive-package': {
+    path: 'all-products-exclusive-package',
+    name: 'All Products — Exclusive License',
+    tagline: 'Every Xgenious script with exclusive rights — SaaS, white-label and source code modification.',
+    price: 999,
+    originalPrice: 999,
+    features: [
+      'Every Xgenious product, exclusive edition',
+      'All premium plugins included',
+      'SaaS rights & white-label',
+      'Source code modification rights',
+      'Lifetime license validity',
+      'Lifetime free updates',
+      '6 months support',
+      'Personal & commercial use',
+    ],
+    addons: [],
+  },
 };
 
 export function getCheckoutProduct(path: string | undefined | null): CheckoutProduct | null {

@@ -81,6 +81,14 @@ export const HALLOWEEN: Campaign = {
   endLabel: 'November 15, 2026 at 11:59 PM UTC',
 };
 
+// Campaign whose window contains `now` (Halloween, then the Black Friday run), else null.
+export function activeCampaign(now: Date): Campaign | null {
+  for (const c of [HALLOWEEN, blackFridayAt(now)]) {
+    if (campaignStatus(c, now) === 'live') return c;
+  }
+  return null;
+}
+
 export const money = (n: number) => '$' + (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, '');
 
 const RAW_PRODUCTS = [
