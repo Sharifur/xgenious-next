@@ -81,6 +81,14 @@ export const HALLOWEEN: Campaign = {
   endLabel: 'November 15, 2026 at 11:59 PM UTC',
 };
 
+// Campaign whose window contains `now` (Halloween, then the Black Friday run), else null.
+export function activeCampaign(now: Date): Campaign | null {
+  for (const c of [HALLOWEEN, blackFridayAt(now)]) {
+    if (campaignStatus(c, now) === 'live') return c;
+  }
+  return null;
+}
+
 export const money = (n: number) => '$' + (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, '');
 
 const RAW_PRODUCTS = [
@@ -89,7 +97,7 @@ const RAW_PRODUCTS = [
   { slug: 'xilancer', checkout: 'xilancer-bundle-pack', name: 'Xilancer', cat: 'Freelancer marketplace', price: 59, desc: 'Build a Fiverr-style marketplace with gigs, projects, milestones and wallet payments.', proof: '★ 4.4/5 · 450+ installs', badge: '', url: '/products/xilancer-freelancer-marketplace-script' },
   { slug: 'prohandy', checkout: 'prohandy-everything-bundle', name: 'Prohandy', cat: 'On-demand home services', price: 39, desc: 'Multi-provider booking platform with Flutter apps, live chat, payments and provider ratings.', proof: 'Flutter apps + Laravel admin', badge: '', url: '/products/prohandy-on-demand-home-service-marketplace' },
   { slug: 'helpnest', checkout: 'helpnest-everything-bundle', name: 'Helpnest', cat: 'AI chatbot & support SaaS', price: 59, desc: 'AI chatbot and support ticketing you can run as your own SaaS.', proof: 'Laravel · PHP 8', badge: 'New', url: '/products/helpnest-ai-chatbot-support-script' },
-  { slug: 'nexelit', checkout: 'nexelit-extended-pack', name: 'Nexelit', cat: 'Multipurpose business CMS', price: 39, desc: 'Drag-and-drop website CMS with 21+ home page layouts for agencies and businesses.', proof: '21+ home pages', badge: '', url: '/products/nexelit-multipurpose-website-business-management-system-cms' },
+  { slug: 'nexelit', checkout: 'nexelit-exclusive-pack', name: 'Nexelit', cat: 'Multipurpose business CMS', price: 99, desc: 'Drag-and-drop website CMS with 21+ home page layouts for agencies and businesses.', proof: '21+ home pages', badge: '', url: '/products/nexelit-multipurpose-website-business-management-system-cms' },
   { slug: 'qixer', checkout: 'qixer-everything-bundle', name: 'Qixer', cat: 'On-demand service marketplace', price: 59, desc: 'TaskRabbit-style marketplace with buyer and seller Flutter apps, GPS discovery and 20+ payment gateways.', proof: 'Laravel 12 + Flutter apps', badge: '', url: '/products/qixer-on-demand-service-marketplace', img: '/products/qixer-hero-preview.png' },
   { slug: 'multisaas', checkout: 'multisaas-bundle-pack', name: 'MultiSaas', cat: 'Website builder SaaS', price: 59, desc: 'Launch your own website builder SaaS with 10+ modules, 15+ themes and custom domains per tenant.', proof: '10+ modules · 15+ themes', badge: '', url: '/products/multisaas-website-builder-saas', img: '/products/multisaas-hero.png' },
   { slug: 'botmerze', checkout: 'botmerze-everyting-bundle', name: 'Botmerze', cat: 'AI chatbot SaaS for eCommerce', price: 49, desc: 'Self-hosted AI chatbot SaaS. RAG-powered with pgvector, WooCommerce and Shopify sync, and 18+ payment gateways.', proof: 'No monthly AI fees', badge: '', url: '/products/botmerze-ai-chatbot-saas-ecommerce', img: '/products/botmerze-hero-v2.png' },

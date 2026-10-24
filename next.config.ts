@@ -36,6 +36,13 @@ const nextConfig: NextConfig = {
         destination: '/free-software/free-accounting-software',
         permanent: true,
       },
+      {
+        // Cyber Monday runs on /black-friday (Nov 30 – Dec 31 view). Temporary so
+        // browsers don't cache it if this ever becomes its own page.
+        source: '/:slug(cyber-monday|cybermonday)',
+        destination: '/black-friday',
+        permanent: false,
+      },
     ];
   },
   async rewrites() {
