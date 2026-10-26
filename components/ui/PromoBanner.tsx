@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { PROMO_CODE, PROMO_HIDDEN_PATHS } from '@/lib/fastspring';
 import { activeCampaign, type Campaign } from '@/app/black-friday/_components/data';
@@ -156,6 +157,12 @@ export default function PromoBanner() {
           {copiedLabel}
         </button>
         <span className="hidden sm:inline text-[#D6C6E0]">· ends {endLabel(campaign)}</span>
+        <Link
+          href="/halloween-sale"
+          className="inline-flex items-center gap-1 rounded-md border border-[#FF7A1A] text-[#FFA24D] hover:bg-[#FF7A1A] hover:text-[#0F0814] px-2.5 py-0.5 font-bold transition-colors"
+        >
+          Shop the sale <span aria-hidden>→</span>
+        </Link>
       </>
     ),
     bf: campaign && (
