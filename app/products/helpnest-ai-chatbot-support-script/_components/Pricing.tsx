@@ -23,7 +23,7 @@ const REGULAR_FEATURES = [
 const BUNDLE_FEATURES = [
   { label: 'Everything in Regular License', ok: true },
   { label: `All ${PREMIUM_PLUGIN_COUNT} Premium Plugins Included`, ok: true },
-  { label: 'Flutter Mobile App (Coming Soon)', ok: true },
+  { label: 'Flutter Mobile App', ok: true },
   { label: 'Lifetime License + Updates', ok: true },
   { label: 'Free Future Plugin Updates', ok: true },
   { label: '6 Months Support', ok: true },
@@ -100,7 +100,7 @@ export default function Pricing() {
               regularPrice={REGULAR_PRICE}
               bundlePrice={COMBO_PRICE}
               bundleCheckoutUrl="/checkout?product=helpnest-everything-bundle"
-              bundleItems={['Flutter Mobile App (Coming Soon)', `${PREMIUM_PLUGIN_COUNT} Premium Plugins`]}
+              bundleItems={['Flutter Mobile App', `${PREMIUM_PLUGIN_COUNT} Premium Plugins`]}
               bundleLabel="Everything Bundle"
               accentColor={COLOR}
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
