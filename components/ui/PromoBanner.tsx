@@ -161,7 +161,7 @@ export default function PromoBanner() {
           href="/halloween-sale"
           className="inline-flex items-center gap-1 rounded-md border border-[#FF7A1A] text-[#FFA24D] hover:bg-[#FF7A1A] hover:text-[#0F0814] px-2.5 py-0.5 font-bold transition-colors"
         >
-          Shop the sale <span aria-hidden>→</span>
+          Grab the treats 🎃 <span aria-hidden>→</span>
         </Link>
       </>
     ),
