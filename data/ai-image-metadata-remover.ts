@@ -12,16 +12,16 @@ export const AI_IMAGE_METADATA_REMOVER: FreeTool = {
   tier: 1,
   color: '#f26b4e',
   lightColor: '#fff1ee',
-  metaTitle: 'AI Image Metadata Remover: Remove C2PA & EXIF Free | Xgenious',
+  metaTitle: 'Remove C2PA & AI Metadata from Images Free | Xgenious',
   metaDescription:
-    'Free image metadata remover. Remove AI metadata, C2PA Content Credentials, EXIF and GPS from JPG, PNG, WebP, HEIC and AVIF. No signup, nothing uploaded.',
+    'Remove C2PA metadata and AI metadata from images free. Strips Content Credentials, EXIF and GPS from JPG, PNG, WebP, HEIC and AVIF. No signup, nothing uploaded.',
   keywords: [
     'image metadata remover', 'ai image metadata remover', 'metadata remover', 'remove ai metadata from image',
-    'remove c2pa', 'remove metadata from image', 'exif remover', 'remove exif data',
+    'remove c2pa', 'remove c2pa metadata', 'remove c2pa from image', 'remove ai metadata', 'remove metadata from image', 'exif remover', 'remove exif data',
   ],
   h1: 'AI Image Metadata Remover',
   intro:
-    'Remove metadata from images and AI photos: EXIF, GPS, C2PA Content Credentials and AI prompts. Free, unlimited, and nothing is uploaded.',
+    'Remove C2PA metadata and AI metadata from images and AI photos, plus EXIF, GPS and saved AI prompts. Free, unlimited, and nothing is uploaded.',
   howToUse: [
     { step: 'Add your images', desc: 'Drop JPG, PNG, WebP, HEIC or AVIF files, or paste from your clipboard. Add as many as you like.' },
     { step: "See what's inside", desc: 'The tool reads each file in your browser and lists what it found: GPS location, camera details, editing software, C2PA Content Credentials, AI generator tags and saved prompts.' },
@@ -97,12 +97,32 @@ export const AI_IMAGE_METADATA_REMOVER: FreeTool = {
       footnote: 'No result does not prove an image is not AI-generated. It only means this file has no such metadata. Invisible watermarks like SynthID are not metadata and are not detected.',
     },
     {
-      heading: 'Remove C2PA Content Credentials from images',
+      heading: 'How to remove C2PA metadata from an image',
       paragraphs: [
         'C2PA Content Credentials are a signed record inside the file that says which app or AI tool made or edited it. ChatGPT, Adobe Firefly, Microsoft Copilot, Google tools and some cameras add them.',
         'This tool removes the C2PA manifest from JPG, PNG and WebP without re-saving the image, and rebuilds HEIC and AVIF files without it. A Content Credentials checker will then find no credentials on your copy.',
+        'To remove C2PA metadata from an image: drop the file in the tool above, check the Content Credentials entry in the Before panel, click Clean, then download the copy. The After panel re-scans it so you can confirm the C2PA data is gone.',
         "It doesn't remove pixel watermarks like SynthID, and it doesn't change what you're required to disclose.",
+        'Video is not supported yet. C2PA in video (MP4, MOV) sits in a different container, so this tool only handles still images. Export a frame as an image if you only need a still.',
       ],
+    },
+    {
+      heading: 'Remove AI detection from an image: what metadata can and cannot do',
+      paragraphs: [
+        'AI detection uses more than one signal. Metadata is the easiest one: C2PA Content Credentials, the IPTC "Digital Source Type" tag and generator names in EXIF or XMP. This tool removes all of these, so a metadata-only check finds nothing in your copy.',
+        'It cannot beat pixel-level detection. Invisible watermarks such as Google SynthID, and classifiers that guess from the picture itself, read the image data, which this tool never changes. Platforms like Instagram, TikTok and YouTube also run their own detection and ask you to disclose realistic AI content.',
+      ],
+      table: {
+        caption: 'AI detection signals and what this tool does',
+        headers: ['Signal', 'Where it lives', 'Removed by this tool?'],
+        rows: [
+          ['C2PA Content Credentials', 'File metadata', 'Yes'],
+          ['IPTC Digital Source Type', 'File metadata (XMP)', 'Yes (kept in Privacy clean)'],
+          ['EXIF / XMP generator name, prompts', 'File metadata', 'Yes'],
+          ['SynthID and other invisible watermarks', 'Pixels', 'No'],
+          ['Classifier-based detection', 'Pixels', 'No'],
+        ],
+      },
     },
     {
       heading: 'Why remove metadata from images and AI photos?',
@@ -169,6 +189,9 @@ export const AI_IMAGE_METADATA_REMOVER: FreeTool = {
     { q: 'Is my image uploaded anywhere?', a: "No. Everything happens in your browser. Files never leave your device, and you can confirm this in your browser's Network tab or by going offline." },
     { q: 'Does removing metadata reduce image quality?', a: 'Not for JPG, PNG or WebP: we cut out the metadata bytes and leave the image data untouched. HEIC and AVIF files are re-saved as JPEG or PNG for now, and the tool tells you when that happens.' },
     { q: 'Can it remove C2PA Content Credentials?', a: 'Yes. It removes the C2PA manifest from JPG, PNG and WebP files, and HEIC and AVIF files are rebuilt without it. Content Credentials checkers will then find no credentials on your copy.' },
+    { q: 'How do I remove C2PA metadata from an image?', a: 'Drop the image into the tool, click Clean, and download the copy. The C2PA manifest is cut out of JPG, PNG and WebP files without re-saving the picture, and HEIC and AVIF files are rebuilt without it. The After panel re-scans the result to confirm.' },
+    { q: 'Can I remove C2PA metadata from a video?', a: 'Not yet. This tool works on still images only: JPG, PNG, WebP, HEIC and AVIF. Video files such as MP4 and MOV store C2PA data in a different container, so they need a video-specific tool.' },
+    { q: 'Can I remove AI detection from an image?', a: 'Only the metadata part. The tool removes C2PA, IPTC AI tags and generator names, so metadata checks find nothing. It does not change pixels, so invisible watermarks like SynthID and classifier-based detectors can still flag the image.' },
     { q: 'Does it remove SynthID or other invisible watermarks?', a: 'No. Those are built into the pixels, not the metadata. No metadata tool can remove them.' },
     { q: 'Can this remove the "AI info" label from an image on Instagram, Facebook or TikTok?', a: "No tool can control a platform's label. Platforms use several signals: file metadata, their own detection, and what you choose to disclose. Removing metadata doesn't change their detection or their rules. If your image is AI-generated or heavily AI-edited, the platform's rules may still require you to label it." },
     { q: 'Which AI tools leave metadata in images?', a: 'Common ones are ChatGPT/DALL·E, Gemini, Adobe Firefly, Microsoft Copilot and Meta AI (C2PA or IPTC tags), and Stable Diffusion and ComfyUI (prompts saved inside PNG files).' },

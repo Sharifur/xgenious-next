@@ -210,12 +210,12 @@ export default async function FreeToolPage({ params }: PageProps) {
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section
-        className="pt-[100px] sm:pt-[140px] pb-12 sm:pb-16"
+        className={tool.fullWidthTool ? 'pt-[88px] sm:pt-[104px] pb-4 sm:pb-6' : 'pt-[100px] sm:pt-[140px] pb-12 sm:pb-16'}
         style={{ background: `linear-gradient(180deg, ${tool.lightColor} 0%, #ffffff 100%)` }}
       >
         <div className="container-page px-4 sm:px-6 lg:px-0">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-1.5 text-[12px] text-[#6b7280] mb-8 flex-wrap">
+          <nav className={`flex items-center gap-1.5 text-[12px] text-[#6b7280] flex-wrap ${tool.fullWidthTool ? 'mb-3' : 'mb-8'}`}>
             <Link href="/free-tools" className="hover:text-[#0F1112] transition-colors duration-150">
               Free Tools
             </Link>
@@ -234,19 +234,19 @@ export default async function FreeToolPage({ params }: PageProps) {
             <span className="text-[#0F1112] font-medium">{tool.title}</span>
           </nav>
 
-          <div className="flex flex-col gap-5 max-w-[760px]">
-            <SectionBadge className="w-fit capitalize">{tool.category}</SectionBadge>
+          <div className={`flex flex-col max-w-[760px] ${tool.fullWidthTool ? 'gap-2' : 'gap-5'}`}>
+            {!tool.fullWidthTool && <SectionBadge className="w-fit capitalize">{tool.category}</SectionBadge>}
 
-            <h1 className="text-[30px] leading-[38px] sm:text-[44px] sm:leading-[52px] lg:text-[52px] lg:leading-[60px] font-semibold text-[#0F1112] tracking-[-0.02em]">
+            <h1 className={`font-semibold text-[#0F1112] tracking-[-0.02em] ${tool.fullWidthTool ? 'text-[26px] leading-[34px] sm:text-[32px] sm:leading-[40px]' : 'text-[30px] leading-[38px] sm:text-[44px] sm:leading-[52px] lg:text-[52px] lg:leading-[60px]'}`}>
               {tool.h1}
             </h1>
 
-            <p className="text-[15px] sm:text-[17px] leading-[27px] text-[#484848] max-w-[640px]">
+            <p className={`text-[#484848] max-w-[640px] ${tool.fullWidthTool ? 'text-[14px] leading-[22px]' : 'text-[15px] sm:text-[17px] leading-[27px]'}`}>
               {tool.intro}
             </p>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap gap-2 pt-2">
+            {!tool.fullWidthTool && <div className="flex flex-wrap gap-2 pt-2">
               {[
                 { label: 'Free — No Signup', icon: true },
                 { label: 'Runs in Browser', icon: true },
@@ -271,13 +271,13 @@ export default async function FreeToolPage({ params }: PageProps) {
                   Popular tool
                 </span>
               )}
-            </div>
+            </div>}
           </div>
         </div>
       </section>
 
       {/* ── Tool widget ──────────────────────────────────────────────────── */}
-      <section className="py-12 sm:py-16" style={{ background: '#F5F6F8' }}>
+      <section className={tool.fullWidthTool ? 'pt-4 pb-12 sm:pb-16' : 'py-12 sm:py-16'} style={{ background: tool.fullWidthTool ? '#ffffff' : '#F5F6F8' }}>
         <div className="container-page px-4 sm:px-6 lg:px-0">
           <div className={`grid grid-cols-1 gap-8 lg:gap-10 items-start ${tool.fullWidthTool ? '' : 'lg:grid-cols-[1fr_1.4fr]'}`}>
 
