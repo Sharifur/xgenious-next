@@ -111,7 +111,7 @@ export default function PromoBanner() {
   };
 
   const copiedLabel = copied && <span className="text-[11px] font-sans font-semibold opacity-70">✓ Copied</span>;
-  const codeBase = 'inline-flex items-center gap-1.5 font-mono font-bold tracking-wide transition-colors cursor-pointer';
+  const codeBase = 'relative z-10 inline-flex items-center gap-1.5 font-mono font-bold tracking-wide transition-colors cursor-pointer';
 
   const bar: Record<Theme, string> = {
     default: 'bg-gradient-to-r from-[#FF7A45] via-[#F2542D] to-[#FF7A45]',
@@ -224,6 +224,9 @@ export default function PromoBanner() {
 
   return (
     <div ref={barRef} className={`fixed top-0 left-0 right-0 z-[60] text-white shadow-sm ${bar[theme]}`}>
+      {(theme === 'bf' || theme === 'cm') && (
+        <Link href="/black-friday" aria-label={`${campaign?.name} — see the offers`} className="absolute inset-0" />
+      )}
       <div className="mx-auto max-w-7xl px-4 py-2.5 pr-10 flex items-center justify-center gap-x-2.5 gap-y-1 flex-wrap text-center text-[13px] sm:text-[14px] leading-snug font-medium">
         {content[theme]}
       </div>
