@@ -12,7 +12,7 @@ const BUNDLE_ITEMS = [
   { label: 'Nazmart Web Platform', value: 69 },
   { label: 'Mobile App (Flutter)', value: 79 },
   { label: 'POS Plugin',           value: 49 },
-  { label: 'Premium plugins',   value: 114 },
+  { label: '17 Premium Plugins',   value: 114 },
 ];
 const BUNDLE_TOTAL = BUNDLE_ITEMS.reduce((s, i) => s + i.value, 0); // 281
 
@@ -70,6 +70,7 @@ export default function Pricing() {
                 <span className="text-[15px] text-[#9ca3af]">one-time</span>
               </div>
               <p className="text-[13px] text-[#6b7280] leading-5">{regular.desc}</p>
+              <p className="text-[12px] text-[#b45309] mt-2">Core web panel only. Does not let you charge tenants.</p>
             </div>
 
             <CodeCanyonUpsellButton
@@ -77,7 +78,7 @@ export default function Pricing() {
               regularPrice={REGULAR_PRICE}
               bundlePrice={BUNDLE_PRICE}
               bundleCheckoutUrl="/checkout?product=nazmart-bundle-pack"
-              bundleItems={['Mobile App (Flutter)', 'POS Plugin', 'Premium plugins', 'Domain Reseller']}
+              bundleItems={['Mobile App (Flutter)', 'POS Plugin', '17 Premium Plugins', 'Domain Reseller']}
               bundleLabel="Everything Bundle"
               accentColor={COLOR}
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
@@ -107,6 +108,9 @@ export default function Pricing() {
             <div className="flex items-center gap-2 flex-wrap mb-5">
               <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: COLOR, color: '#0d2b14' }}>
                 BEST VALUE
+              </span>
+              <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#16a34a] text-white">
+                COMMERCIAL USE
               </span>
             </div>
 
@@ -172,6 +176,9 @@ export default function Pricing() {
             style={{ background: PURPLE_DARK, border: `1px solid ${PURPLE}40` }}
           >
             <div className="mb-5">
+              <span className="inline-flex text-[11px] font-bold px-3 py-1 rounded-full bg-[#16a34a] text-white mb-3">
+                COMMERCIAL USE
+              </span>
               <p className="text-[13px] font-semibold uppercase tracking-widest mb-3" style={{ color: `${PURPLE}cc` }}>
                 Exclusive License
               </p>

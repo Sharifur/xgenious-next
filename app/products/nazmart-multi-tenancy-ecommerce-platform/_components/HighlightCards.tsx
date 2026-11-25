@@ -20,7 +20,7 @@ const cards = [
   },
   {
     title: 'Storefront themes',
-    desc: 'Merchants pick a theme for their own storefront.',
+    desc: 'Merchants pick from 23+ themes for their own storefront.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#th)">

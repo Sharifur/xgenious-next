@@ -1,7 +1,7 @@
 export default function Comparison() {
   const rows = [
     ['Who owns the platform', 'Shopify', 'You'],
-    ['Your cost', '$29–$299 per store per month (annual billing), plus 2%–0.6% fee with outside gateways', 'One-time purchase from $69, plus your server'],
+    ['Your cost', '$29–$299 per store per month (annual billing), plus 2%–0.6% fee with outside gateways', 'One-time $99 Everything Bundle (the licence that lets you charge tenants), plus your server'],
     ['Revenue from other stores', 'None', 'Every store’s subscription'],
     ['Payment gateways', 'Shopify Payments where available, others with a fee', '20+ gateways, including regional ones'],
     ['Code and data', 'Hosted by Shopify', 'Self-hosted, your server'],

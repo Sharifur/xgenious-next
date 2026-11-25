@@ -20,7 +20,17 @@ export const FAQS: FaqItem[] = [
   {
     question: 'How much does it cost to launch?',
     answer:
-      'The script is $69 for the core web panel or $99 for the Everything Bundle with POS, mobile app and premium plugins. Add a VPS, a domain and a wildcard SSL certificate.',
+      'To charge stores, you need the $99 Everything Bundle (POS, Flutter app, domain reseller and 17 premium plugins) or the $299 Exclusive licence. The $69 Regular licence is the core web panel only and does not let you charge tenants. Add a VPS, a domain and a wildcard SSL certificate.',
+  },
+  {
+    question: 'Which licence do I need to charge stores?',
+    answer:
+      'The $99 Everything Bundle or the $299 Exclusive licence. The $69 Regular licence covers the core web panel only and does not let you charge tenants.',
+  },
+  {
+    question: 'Can I take a commission on store sales?',
+    answer:
+      'The landlord can set a commission from the admin panel; there is no automatic commission or payout feature. Most platforms earn from subscription plans, setup fees and add-ons.',
   },
   {
     question: 'Can merchants use their own domain?',
@@ -41,10 +51,6 @@ export const FAQS: FaqItem[] = [
   },
 ];
 
-// TODO: Licence FAQ omitted. Envato Extended License vs the xgenious.com
-// commercial-use wording still needs sign-off (research.md). Do not add it
-// until that wording is confirmed.
-
 export const OWNER_FEATURES = [
   { title: 'Subscription plans', desc: 'Trials and renewal reminders, with the prices you set.' },
   { title: 'Plan limits', desc: 'Each plan can unlock its own themes, gateways and modules.' },
@@ -52,11 +58,12 @@ export const OWNER_FEATURES = [
   { title: 'Custom domain approval', desc: 'Merchants can request their own domain. You approve it.' },
   { title: 'Landlord wallet and tickets', desc: 'A wallet for the platform owner, plus support tickets.' },
   { title: 'Webhooks', desc: 'Send store and billing events to the tools you already run.' },
+  { title: 'Commission (optional)', desc: 'The landlord can set a commission from the admin panel. There is no automatic commission or payout feature.' },
 ];
 
 export const MERCHANT_FEATURES = [
   { title: 'Page builder', desc: 'Merchants build pages by dragging blocks. No code.' },
-  { title: 'Storefront themes', desc: 'Several themes, so each store can look like its own brand.' },
+  { title: 'Storefront themes', desc: '23+ themes, so each store can look like its own brand.' },
   { title: 'Inventory', desc: 'Products with variants and custom attributes.' },
   { title: 'Promotions', desc: 'Coupons, campaigns and tax.' },
   { title: 'Digital goods', desc: 'Digital products and gift cards.' },

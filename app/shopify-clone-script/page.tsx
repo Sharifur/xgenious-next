@@ -10,6 +10,8 @@ import Hosting from './_components/Hosting';
 import Pricing from './_components/Pricing';
 import FaqSection from './_components/FaqSection';
 import BottomCta from './_components/BottomCta';
+import NazmartShowcase from '@/components/shared/NazmartShowcase';
+import RelatedGuides from '@/components/sections/RelatedGuides';
 
 const CANONICAL = 'https://xgenious.com/shopify-clone-script';
 
@@ -19,7 +21,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: { absolute: 'Shopify Clone Script: Launch Your Own Store Platform | Nazmart' },
   description:
-    'Nazmart is a self-hosted Shopify clone script: unlimited stores, own database per store, custom domains and subscription plans. From $69 one-time.',
+    'Nazmart is a self-hosted Shopify clone script: unlimited stores, own database per store, custom domains, 17 plugins. $99 bundle lets you charge tenants.',
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Shopify Clone Script: Run Your Own Shopify-Style Platform',
@@ -57,8 +59,22 @@ export default function ShopifyCloneScriptPage() {
       <InTheBox />
       <HowItWorks />
       <Revenue />
+      <NazmartShowcase
+        heading="Real Shopify-style platforms built on Nazmart"
+        intro="Each of these sells online stores to merchants in its own market:"
+      />
       <Hosting />
       <Pricing />
+      <RelatedGuides
+        heading="Compare before you buy"
+        guides={[
+          { href: '/best-multi-tenant-ecommerce-saas-scripts', label: '9 best multi-tenant ecommerce SaaS scripts', blurb: 'Nazmart, Botble, TLCommerce, WorkDo, Bagisto and more, with prices and update dates.' },
+          { href: '/nazmart-vs-botble-ecommerce-saas', label: 'Nazmart vs Botble Ecommerce SaaS', blurb: 'Two Laravel multi-tenant platforms: merchant features, API, hosting and the licence you need to charge tenants.' },
+          { href: '/nazmart-vs-tlcommerce-saas', label: 'Nazmart vs TLCommerce SaaS', blurb: 'Price, licence limits and update history.' },
+          { href: '/how-to-start-an-ecommerce-saas-business', label: 'How to start an ecommerce SaaS business', blurb: 'Niche, hosting, pricing and the first 50 stores.' },
+          { href: '/multi-vendor-vs-multi-tenant-ecommerce', label: 'Multi-vendor vs multi-tenant ecommerce', blurb: 'Marketplace or store platform? Pick the right model.' },
+        ]}
+      />
       <FaqSection />
       <BottomCta />
     </>
