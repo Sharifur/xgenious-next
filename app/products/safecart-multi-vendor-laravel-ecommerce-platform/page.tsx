@@ -77,7 +77,10 @@ export default function SafeCartPage() {
         <TrustBand />
         <Pricing />
         <FAQ />
-        <RelatedGuides guides={[{ href: '/ecommerce-php-script', label: 'Best multi vendor ecommerce scripts compared', blurb: 'See how the leading multi-vendor and single-vendor scripts compare on features, licensing and price.' }]} />
+        <RelatedGuides guides={[
+          { href: '/ecommerce-php-script', label: 'Best multi vendor ecommerce scripts compared', blurb: 'See how the leading multi-vendor and single-vendor scripts compare on features, licensing and price.' },
+          { href: '/multi-vendor-vs-multi-tenant-ecommerce', label: 'Multi-vendor vs multi-tenant ecommerce', blurb: 'Marketplace or store platform? Pick the right model before you buy a script.' },
+        ]} />
         <ClosingCta />
       </main>
     </>

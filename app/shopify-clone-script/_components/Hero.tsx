@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { COLOR } from '@/app/products/nazmart-multi-tenancy-ecommerce-platform/_components/constants';
 import { DEMO_URL, LAST_UPDATED, PRODUCT_PRICING } from './copy';
 
-const TRUST = ['v4.3.0, October 2026', 'Laravel 12 · PHP 8.3', '6 months support, lifetime updates'];
+const TRUST = ['534 sales on CodeCanyon', 'v4.3.0, October 2026', 'Laravel 12 · PHP 8.3', '6 months support, lifetime updates'];
 
 export default function Hero() {
   return (

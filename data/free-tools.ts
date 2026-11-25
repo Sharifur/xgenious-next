@@ -1973,11 +1973,14 @@ export const TOOLS: FreeTool[] = [
       { q: 'What churn rate should I assume?', a: 'Benchmarks for SaaS sold to small businesses put monthly churn at 3% to 7%. Start at 5% until you have your own data.' },
       { q: 'How do I price ecommerce SaaS plans?', a: 'Use three tiers that scale with the merchant’s business, such as products, staff accounts, themes or POS access, and offer a yearly plan at a discount. Price below the global platforms your merchants compare you with, but high enough to fund support.' },
       { q: 'Does this include payment processing revenue?', a: 'No. It models subscriptions, setup fees and add-ons. Most self-hosted platforms let each store connect its own gateway, so payments do not pass through the platform owner.' },
-      { q: 'What software do I need to run an ecommerce SaaS platform?', a: 'A multi-tenant ecommerce platform that creates stores automatically, bills plans and supports custom domains. Nazmart is one example: unlimited stores, a separate database per store, custom domains and subscription plans, from $69 for the core web panel.' },
+      { q: 'What software do I need to run an ecommerce SaaS platform?', a: 'A multi-tenant ecommerce platform that creates stores automatically, bills plans and supports custom domains. Nazmart is one example: unlimited stores, a separate database per store and custom domains. To charge tenants with it you need the $99 Everything Bundle or the $299 Exclusive licence; the $69 Regular licence is the core web panel only.' },
+      { q: 'Can my platform also take a commission on store sales?', a: 'This calculator models subscriptions, setup fees and add-ons. In Nazmart, the landlord can set a commission from the admin panel; there is no automatic commission or payout feature, so commission isn\'t modelled here.' },
     ],
     relatedTools: ['mrr-growth-simulator', 'churn-rate-calculator', 'customer-ltv-calculator', 'saas-pricing-calculator', 'cac-calculator', 'saas-runway-calculator', 'break-even-calculator', 'saas-valuation-calculator'],
     guides: [
       { href: '/shopify-clone-script', label: 'Shopify clone script', blurb: 'Launch your own Shopify-style platform with Nazmart.' },
+      { href: '/how-to-start-an-ecommerce-saas-business', label: 'How to start an ecommerce SaaS business', blurb: 'Pick a niche, choose a script, set up hosting, price plans and win your first 50 stores.' },
+      { href: '/best-multi-tenant-ecommerce-saas-scripts', label: 'Best multi-tenant ecommerce SaaS scripts', blurb: 'Nine platforms compared with prices, sales and update dates.' },
     ],
     externalLinks: [
       { label: 'Shopify FY2025 annual report (SEC 10-K)', url: 'https://www.sec.gov/Archives/edgar/data/1594805/000159480526000007/shop-20251231.htm' },

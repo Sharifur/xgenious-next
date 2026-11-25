@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Button, { ArrowIcon } from '@/components/ui/Button';
 import FAQ from '@/components/sections/FAQ';
 import BookingCTA from '@/components/sections/BookingCTA';
+import NazmartShowcase from '@/components/shared/NazmartShowcase';
 
 const FAQS = [
   {
@@ -371,21 +372,25 @@ export default function MultiTenantEcommerceCaseStudy() {
         </div>
       </section>
 
-      {/* TODO: Do not claim this case study was built on Nazmart. The page describes
-          row-level Eloquent scoping and Stripe Connect fee splits, which research.md
-          could not match to Nazmart's separate-database model. Confirm the client
-          record before replacing this with a "Built on Nazmart" block. */}
+      <NazmartShowcase
+        heading="Platforms running on Nazmart today"
+        intro="This case study was a custom build. If you want the same model ready-made, these businesses run it on Nazmart:"
+      />
+
       <section className="py-16 sm:py-20 bg-white border-t border-[#f0f0f0]">
         <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[760px]">
           <h2 className="text-[28px] leading-[36px] sm:text-[36px] sm:leading-[44px] font-semibold text-[#0F1112]">
             Want this without a custom build?
           </h2>
           <p className="mt-4 text-[15px] sm:text-[16px] leading-[26px] text-[#484848]">
-            Most of this platform’s core, including tenant stores, custom domains and subscription plans, is available ready-made in Nazmart, our multi-tenant ecommerce platform. The core web panel starts at $69 one-time. POS, the Flutter app and premium plugins are in the $99 bundle.
+            Most of this platform’s core, including tenant stores, custom domains and subscription plans, is available ready-made in Nazmart, our multi-tenant ecommerce platform. The $69 Regular licence covers the core web panel but does not let you charge tenants; to sell stores you need the $99 Everything Bundle (adds POS, the Flutter app and 17 premium plugins) or the $299 Exclusive licence.
           </p>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-wrap gap-3">
             <Button href="/products/nazmart-multi-tenancy-ecommerce-platform" variant="coral" icon={<ArrowIcon />}>
               See Nazmart
+            </Button>
+            <Button href="/best-multi-tenant-ecommerce-saas-scripts" variant="outline">
+              Compare multi-tenant platforms
             </Button>
           </div>
         </div>

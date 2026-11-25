@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const features = [
   {
-    title: '10 Modern eCommerce Themes to Choose From',
+    title: '23+ Modern eCommerce Themes to Choose From',
     desc: 'Manage users, vendors, and tenant shops effortlessly with a powerful system designed for streamlined operations, role management, and reliable marketplace control.',
     bullets: [
       'Active, Deactivate themes for tenant',
