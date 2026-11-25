@@ -26,6 +26,7 @@ const COMPONENT_MAP: Record<string, React.ComponentType> = {
   'churn-rate-calculator':             dynamic(() => import('./ChurnRateCalculator'), { ssr: false }),
   'customer-ltv-calculator':           dynamic(() => import('./CustomerLtvCalculator'), { ssr: false }),
   'mrr-growth-simulator':              dynamic(() => import('./MrrGrowthSimulator'), { ssr: false }),
+  'ecommerce-saas-revenue-calculator': dynamic(() => import('./EcommerceSaasRevenueCalculator'), { ssr: false }),
   'build-vs-buy-calculator':           dynamic(() => import('./BuildVsBuyCalculator'), { ssr: false }),
   'sales-pipeline-calculator':         dynamic(() => import('./SalesPipelineCalculator'), { ssr: false }),
   'cold-email-roi-calculator':         dynamic(() => import('./ColdEmailRoiCalculator'), { ssr: false }),

@@ -45,7 +45,7 @@ const personas = [
       'Launch a country-specific multi-vendor marketplace',
       'Support local payment gateways and RTL languages',
       'Vendors join and sell immediately — no coding needed',
-      'Full admin control over commissions, disputes, payouts',
+      'Full admin control over tenants, plans, domains and support tickets',
     ],
     bg: '#FDF3F0',
     border: '#F26B4E40',

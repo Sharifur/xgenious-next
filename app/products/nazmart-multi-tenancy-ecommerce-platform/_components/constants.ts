@@ -24,10 +24,10 @@ export const QUICK_LINKS = [
 ];
 
 export const STATS = [
-  { value: '525+', label: 'Sales on CodeCanyon' },
-  { value: '4.5/5', label: 'CodeCanyon rating' },
-  { value: '80+', label: 'Verified reviews' },
-  { value: '1-time', label: 'Purchase' },
+  { value: 'v4.3.0', label: 'October 2026 release' },
+  { value: 'Laravel 12', label: 'PHP 8.3' },
+  { value: '6 months', label: 'Support included' },
+  { value: 'Lifetime', label: 'Updates' },
 ];
 
 export const FEATURES = [
@@ -53,11 +53,11 @@ export const FEATURES = [
   },
   {
     title: 'Multiple Payment Gateways',
-    desc: 'Stripe, PayPal, Razorpay, Flutterwave, SSLCommerz and more. Vendors receive payouts automatically after platform commission is deducted.',
+    desc: 'Stripe, PayPal, Razorpay, Flutterwave, SSLCommerz and more. Each store connects the gateways its shoppers pay with.',
   },
   {
     title: 'Admin Super Dashboard',
-    desc: 'Central control over all tenants, subscriptions, commissions, withdrawals, and disputes. Revenue analytics and store-level reporting.',
+    desc: 'Central control over all tenants, plans, subscriptions, domains and support tickets. Revenue analytics and store-level reporting.',
   },
   {
     title: 'Multi-Language & RTL',
@@ -173,7 +173,7 @@ export const CODECANYON_REVIEWS = [
     name: 'marketplace_founder',
     category: 'Code Quality',
     rating: 5,
-    body: 'Launched our multi-vendor SaaS platform in under 3 weeks. The subscription billing, custom domain support, and commission system were all ready to go. Zero unexpected blockers.',
+    body: 'Launched our store platform in under 3 weeks. The subscription billing and custom domain support were ready to go. Zero unexpected blockers.',
   },
   {
     name: 'saas_ventures',
@@ -196,7 +196,7 @@ export const FAQS = [
   },
   {
     question: 'What is Nazmart?',
-    answer: 'Nazmart is a multi-tenancy eCommerce SaaS platform built with Laravel. It lets you launch a Shopify-like marketplace where vendors create and manage their own stores under your domain. One installation, unlimited tenant stores, subscription billing, custom domains, and a Flutter mobile app — all included from $69 one-time.',
+    answer: 'Nazmart is a multi-tenant eCommerce SaaS platform built with Laravel. It lets you launch a Shopify-like platform where merchants create and manage their own stores under your domain. One installation, unlimited tenant stores, subscription billing and custom domains from $69 one-time; the Flutter mobile app, POS and premium plugins come in the $99 Everything Bundle.',
   },
   {
     question: 'How is Nazmart different from Shopify or WooCommerce?',
@@ -204,7 +204,7 @@ export const FAQS = [
   },
   {
     question: 'What tech stack does Nazmart use?',
-    answer: 'Nazmart runs on Laravel (PHP 8+) for the backend, MySQL for the database, Redis for queuing and sessions, Tailwind CSS for the frontend, and Flutter for cross-platform Android/iOS mobile apps. It deploys on any standard Linux VPS or shared hosting that meets the PHP 8+ requirement.',
+    answer: 'Nazmart runs on Laravel (PHP 8.3) for the backend, MySQL for the database, Redis for queuing and sessions, Tailwind CSS for the frontend, and Flutter for cross-platform Android/iOS mobile apps. It runs best on a Linux VPS with PHP 8.3, MySQL, a wildcard subdomain and wildcard SSL; shared hosting is possible with our setup tutorial.',
   },
   {
     question: 'Is there a monthly fee for Nazmart?',
@@ -212,7 +212,7 @@ export const FAQS = [
   },
   {
     question: 'What payment gateways does Nazmart support?',
-    answer: 'Nazmart supports 19+ payment gateways including Stripe, PayPal, Razorpay, Flutterwave, Mollie, Paystack, Cashfree, Instamojo, Midtrans, Mercado Pago, Square, CinetPay, and more. New integrations are added continuously. Vendors receive automatic payouts after your platform commission is deducted.',
+    answer: 'Nazmart supports 19+ payment gateways including Stripe, PayPal, Razorpay, Flutterwave, Mollie, Paystack, Cashfree, Instamojo, Midtrans, Mercado Pago, Square, CinetPay, and more. New integrations are added continuously. Each store connects its own gateways.',
   },
   {
     question: 'What SMS and WhatsApp gateways does Nazmart support?',
@@ -303,7 +303,7 @@ export const PRICING_TIERS = [
     badge: 'Web + Plugins + Mobile App + POS',
     price: 99,
     original: 199,
-    desc: 'Web panel + all 17 premium plugins + mobile app + POS + domain reseller. Everything included.',
+    desc: 'Web panel + premium plugins + mobile app + POS + domain reseller. Everything included.',
     plan: [
       { label: 'Nazmart Web Panel', ok: true },
       { label: 'AI Integration', ok: true },
