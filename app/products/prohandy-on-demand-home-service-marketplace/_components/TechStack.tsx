@@ -12,7 +12,7 @@ const STACK: StackItem[] = [
   { name: 'Tailwind CSS', role: 'Admin Frontend', logo: '/tech/tailwind.svg' },
   { name: 'Linux', role: 'Server OS', logo: '/tech/linux.svg' },
   {
-    name: 'Flutter 3.32',
+    name: 'Flutter (latest)',
     role: 'Mobile Apps',
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -75,7 +75,7 @@ export default function TechStack() {
             Production-Ready Technology
           </h2>
           <p className="text-[15px] text-[#6b7280] leading-7">
-            Prohandy runs on Laravel 12 for the backend and Flutter 3.32 for cross-platform mobile apps — with Google Maps for location-based service discovery.
+            Prohandy runs on Laravel 12 for the backend and the latest Flutter for the mobile apps — with Google Maps for location-based service discovery.
           </p>
         </div>
 

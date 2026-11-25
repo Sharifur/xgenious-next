@@ -1992,6 +1992,55 @@ export const TOOLS: FreeTool[] = [
   },
 
   {
+    slug: 'home-service-marketplace-commission-calculator',
+    title: 'Home Service Marketplace Commission Calculator',
+    tagline: 'Estimate GMV, commission revenue, profit and break-even for your home service marketplace.',
+    category: 'business',
+    tier: 3,
+    color: '#f26b4e',
+    lightColor: '#fff1ee',
+    metaTitle: 'Home Service Marketplace Commission Calculator | Xgenious',
+    metaDescription: 'Estimate monthly GMV, commission revenue, profit and break-even for a handyman or home service marketplace from providers, jobs, ticket size and fees.',
+    keywords: ['home service marketplace commission calculator', 'marketplace commission calculator', 'handyman marketplace revenue calculator', 'service marketplace gmv calculator', 'how much commission should a marketplace take', 'urban company commission'],
+    h1: 'Home Service Marketplace Commission Calculator',
+    intro: 'A home service marketplace earns a commission on every job its providers complete, plus any booking fees. This calculator projects 24 months of providers, jobs, GMV, platform revenue and profit from your own numbers, and shows when you break even and what providers take home. All defaults are example values; replace them with yours.',
+    howToUse: [
+      { step: 'Enter your supply', desc: 'Providers at launch, new providers per month, churn and jobs per provider.' },
+      { step: 'Enter prices and fees', desc: 'Average job value, your commission, any booking fee, gateway fees and discounts.' },
+      { step: 'Enter costs', desc: 'Monthly fixed costs, marketing and the one-time platform cost.' },
+      { step: 'Read the results', desc: 'GMV, revenue, profit, break-even month and average provider earnings over 24 months.' },
+    ],
+    featureList: [
+      '24-month projection of providers, jobs, GMV, revenue and profit',
+      'Commission plus optional per-job booking fee',
+      'Gateway fees and discounts deducted from revenue',
+      'Break-even month including the one-time platform cost',
+      'Average provider earnings so you can check your commission is fair',
+      'Client-side only: nothing is uploaded or stored',
+    ],
+    faq: [
+      { q: 'How much commission should a home service marketplace take?', a: 'It depends on your market and what you provide. Urban Company\'s commissions and fees were 28.3% of professionals\' average gross earnings in the nine months to December 2025, according to Inc42. TaskRabbit instead charges clients a service fee and a Trust & Support fee and charges Taskers a one-time $25 registration fee. New local marketplaces often start lower to attract providers.' },
+      { q: 'What is GMV in a service marketplace?', a: 'Gross merchandise value: the total value of all jobs booked through the platform, before your commission and fees.' },
+      { q: 'What is a take rate?', a: 'Your revenue divided by GMV. A 15% commission with no other fees gives a 15% take rate.' },
+      { q: 'Does this include provider payouts?', a: 'Yes. The calculator shows what providers keep after your commission, before their own costs.' },
+      { q: 'Which software can run a commission marketplace?', a: 'ProHandy, our Laravel and Flutter script, lets the admin set commission platform-wide, per category or per provider, and manage provider withdrawals. Paid featured listings, a credit system for job offers and configurable withdrawal fees are included. The Everything Bundle with both apps is $69.' },
+    ],
+    relatedTools: ['break-even-calculator', 'build-vs-buy-calculator', 'customer-ltv-calculator', 'cac-calculator'],
+    externalLinks: [
+      { label: 'Inc42: what Urban Company keeps from every booking', url: 'https://inc42.com/features/inside-urban-companys-marketplace-model-what-it-keeps-from-every-booking/' },
+      { label: 'TaskRabbit: Service Fee', url: 'https://support.taskrabbit.com/hc/en-ca/articles/46260411872155-What-s-the-Taskrabbit-Service-Fee' },
+      { label: 'TaskRabbit: Registration Fee', url: 'https://support.taskrabbit.com/hc/en-us/articles/46260480151579-What-s-the-Registration-Fee' },
+    ],
+    guides: [
+      { href: '/monetization-models-for-home-service-marketplace', label: 'Monetization models for home service marketplaces', blurb: 'Commission, fees, featured listings and more, and how to combine them.' },
+      { href: '/how-to-start-a-handyman-marketplace', label: 'How to start a handyman marketplace', blurb: 'A 9-step launch plan from first city to first customers.' },
+      { href: '/urban-company-business-model', label: 'Urban Company business model', blurb: 'How Urban Company makes money, with FY26 numbers.' },
+    ],
+    applicationCategory: 'BusinessApplication',
+    lastUpdated: 'November 2026',
+  },
+
+  {
     slug: 'build-vs-buy-calculator',
     title: 'Build vs Buy Calculator',
     tagline: 'Compare the 5-year cost of building custom software vs buying a SaaS subscription.',
@@ -2052,7 +2101,7 @@ export const TOOLS: FreeTool[] = [
       { error: 'Using advertised seat price instead of invoiced price', code: 'seatPrice = $15 for enterprise plan', fix: 'Enterprise SaaS tiers, API add-ons, and premium support often 2–3× the advertised per-seat price. Use the actual invoiced cost per seat from your quote.' },
       { error: 'Treating build cost as year 1 only', code: 'Year 2+ cost = $0 for build path', fix: 'Build has annual hosting and maintenance every year — year 2+ is not free. Model the full recurring cost or the break-even calculation will be wrong.' },
     ],
-    relatedTools: ['mvp-cost-estimator', 'custom-software-roi-calculator', 'saas-runway-calculator', 'saas-pricing-calculator', 'churn-rate-calculator', 'customer-ltv-calculator', 'cac-calculator', 'mrr-growth-simulator'],
+    relatedTools: ['mvp-cost-estimator', 'custom-software-roi-calculator', 'saas-runway-calculator', 'saas-pricing-calculator', 'churn-rate-calculator', 'customer-ltv-calculator', 'cac-calculator', 'home-service-marketplace-commission-calculator'],
     externalLinks: [
       { label: 'Gartner — Build vs buy framework', url: 'https://www.gartner.com/en/information-technology/glossary/build-vs-buy' },
       { label: 'Harvard Business Review — Make or buy', url: 'https://hbr.org/topic/subject/make-versus-buy' },
@@ -3807,7 +3856,7 @@ export const TOOLS: FreeTool[] = [
       { error: 'Treating break-even as a target instead of a floor', code: 'Goal: reach break-even', fix: 'Break-even is a minimum threshold — the business loses money below it and earns nothing at it. The real targets are the margin of safety (20%+ buffer above break-even) and the unit economics that sustain growth (LTV:CAC > 3:1).' },
       { error: 'Recalculating break-even without updating fixed costs', code: 'Break-even model from month 1 used at month 12', fix: 'Fixed costs change as you hire, expand tooling, and rent more infrastructure. Recalculate break-even quarterly and every time a major fixed-cost item changes (new hire, office, major software upgrade).' },
     ],
-    relatedTools: ['saas-pricing-calculator', 'saas-runway-calculator', 'churn-rate-calculator', 'customer-ltv-calculator', 'cac-calculator', 'payback-period-calculator', 'mrr-growth-simulator', 'mvp-cost-estimator'],
+    relatedTools: ['saas-pricing-calculator', 'saas-runway-calculator', 'churn-rate-calculator', 'customer-ltv-calculator', 'cac-calculator', 'payback-period-calculator', 'mrr-growth-simulator', 'home-service-marketplace-commission-calculator'],
     externalLinks: [
       { label: 'Investopedia — Break-even analysis', url: 'https://www.investopedia.com/terms/b/breakevenanalysis.asp' },
       { label: 'SaaS Capital — Unit economics guide', url: 'https://www.saas-capital.com/blog/unit-economics/' },

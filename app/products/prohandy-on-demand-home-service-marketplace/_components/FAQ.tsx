@@ -2,20 +2,20 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { COLOR, REGULAR_PRICE, EXTENDED_PRICE } from './constants';
+import { COLOR, COMBO_PRICE, REGULAR_PRICE, EXTENDED_PRICE } from './constants';
 
 const FAQS = [
   {
     q: 'What is Prohandy?',
-    a: 'Prohandy is a complete Laravel 12 and Flutter 3.32 script for building an on-demand service marketplace. It connects clients with service providers through a dual-sided platform — clients book services with a cart system or post jobs, and providers manage listings, staff, and orders. It includes Flutter mobile apps for both clients and providers, a full admin panel, real-time live chat, push notifications, and 19 named payment gateways.',
+    a: 'Prohandy is a complete Laravel 12 and latest-Flutter script for building an on-demand service marketplace. It connects clients with service providers through a dual-sided platform — clients book services with a cart system or post jobs, and providers manage listings, staff, and orders. Flutter mobile apps for clients and providers come with the Everything Bundle; every licence includes the full admin panel, real-time live chat, push notifications, and 19 named payment gateways.',
   },
   {
     q: 'What is included with the Regular License?',
-    a: `The Regular License ($${REGULAR_PRICE}) includes the web frontend and Laravel admin panel. It covers a single project deployment — one domain — with a lifetime license, 6 months of technical support, lifetime free updates, and free cPanel installation. Flutter mobile apps (client and provider) are not included — they come with the Everything Bundle. You cannot charge end users or resell the platform under the Regular License.`,
+    a: `The Regular License ($${REGULAR_PRICE}) includes the web frontend and Laravel admin panel. It covers a single project deployment — one domain — with a lifetime license, 6 months of technical support, lifetime free updates, and free cPanel installation. You can charge your customers. Mobile apps and premium plugins need the Everything Bundle ($${COMBO_PRICE}).`,
   },
   {
-    q: 'What does the Extended License allow?',
-    a: `The Extended License ($${EXTENDED_PRICE}) includes everything in the Regular License plus commercial SaaS rights — you can build your own branded service marketplace, charge clients for bookings, white-label the platform by removing all Xgenious branding, and modify the source code freely. It cannot be resold or redistributed as-is.`,
+    q: 'What does the Exclusive License allow?',
+    a: `The Exclusive License ($${EXTENDED_PRICE}) includes everything in the Regular License plus commercial SaaS rights — you can build your own branded service marketplace, white-label the platform by removing all Xgenious branding, and modify the source code freely. It cannot be resold or redistributed as-is.`,
   },
   {
     q: 'Does Prohandy include Flutter mobile apps?',
@@ -35,7 +35,7 @@ const FAQS = [
   },
   {
     q: 'What payment gateways does Prohandy support?',
-    a: 'Prohandy includes 20+ payment gateways built into the admin panel — including Stripe, PayPal, Razorpay, Flutterwave, Paystack, Mollie, CinetPay, Square, and more. No third-party billing configuration is required beyond entering API keys in the admin panel.',
+    a: 'Prohandy includes 19 payment gateways built into the admin panel — including Stripe, PayPal, Razorpay, Flutterwave, Paystack, Mollie, CinetPay, Square, and more. No third-party billing configuration is required beyond entering API keys in the admin panel.',
   },
   {
     q: 'Is Prohandy multilingual?',
@@ -51,11 +51,11 @@ const FAQS = [
   },
   {
     q: 'Does Prohandy support social login?',
-    a: 'Yes. Both the client app and provider app support multiple authentication methods: email login, phone OTP login, Google sign-in, Facebook sign-in, and Apple sign-in (iOS). This reduces signup friction significantly and increases provider and client onboarding rates compared to email-only platforms.',
+    a: 'Yes. Both the client app and provider app support multiple authentication methods: email login, phone OTP login, Google sign-in, Facebook sign-in, and Apple sign-in (iOS). This reduces signup friction significantly and increases provider and client onboarding rates compared to email-only platforms. The demo apps are available on Google Play.',
   },
   {
     q: 'How does the provider payout and withdrawal system work?',
-    a: 'Providers accumulate earnings from completed orders in their Prohandy wallet. They can submit withdrawal requests from the provider app, specifying the amount and preferred payout method. Admins process withdrawal requests from the admin panel. Full withdrawal history is visible to providers in the app.',
+    a: 'Providers accumulate earnings from completed orders in their Prohandy wallet. They can submit withdrawal requests from the provider app, specifying the amount and preferred payout method. Admins process withdrawal requests from the admin panel, and withdrawal fees are configurable. Full withdrawal history is visible to providers in the app.',
   },
   {
     q: 'Does Prohandy have a coupon and discount system?',
@@ -63,7 +63,7 @@ const FAQS = [
   },
   {
     q: 'Can providers set their own pricing?',
-    a: 'Yes. Providers create their own service listings with custom pricing. Clients see the provider\'s price when browsing services. For job postings, providers submit custom offers including their own price and a cover letter — clients compare offers and hire the best fit. The admin can also set platform-wide commission rates.',
+    a: 'Yes. Providers create their own service listings with custom pricing. Clients see the provider\'s price when browsing services. For job postings, providers submit custom offers including their own price and a cover letter — clients compare offers and hire the best fit. The admin can set commission platform-wide, per category or per provider. Paid featured listings, a credit system for job offers and configurable withdrawal fees are included.',
   },
 ];
 
