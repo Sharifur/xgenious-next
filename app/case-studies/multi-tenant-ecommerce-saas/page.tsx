@@ -33,7 +33,7 @@ const FAQS = [
 
 export const metadata: Metadata = {
   alternates: { canonical: '/case-studies/multi-tenant-ecommerce-saas' },
-  title: { absolute: 'Multi-Tenant eCommerce SaaS: Case Study' },
+  title: { absolute: 'Multi-Tenant eCommerce SaaS Platform: Case Study | Xgenious' },
   description: 'How Xgenious built a multi-tenant eCommerce SaaS where merchants launch stores on custom domains, with 19+ payment gateways and Flutter apps.',
 };
 
@@ -367,6 +367,26 @@ export default function MultiTenantEcommerceCaseStudy() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TODO: Do not claim this case study was built on Nazmart. The page describes
+          row-level Eloquent scoping and Stripe Connect fee splits, which research.md
+          could not match to Nazmart's separate-database model. Confirm the client
+          record before replacing this with a "Built on Nazmart" block. */}
+      <section className="py-16 sm:py-20 bg-white border-t border-[#f0f0f0]">
+        <div className="container-page px-4 sm:px-6 lg:px-0 max-w-[760px]">
+          <h2 className="text-[28px] leading-[36px] sm:text-[36px] sm:leading-[44px] font-semibold text-[#0F1112]">
+            Want this without a custom build?
+          </h2>
+          <p className="mt-4 text-[15px] sm:text-[16px] leading-[26px] text-[#484848]">
+            Most of this platform’s core, including tenant stores, custom domains and subscription plans, is available ready-made in Nazmart, our multi-tenant ecommerce platform. The core web panel starts at $69 one-time. POS, the Flutter app and premium plugins are in the $99 bundle.
+          </p>
+          <div className="mt-6">
+            <Button href="/products/nazmart-multi-tenancy-ecommerce-platform" variant="coral" icon={<ArrowIcon />}>
+              See Nazmart
+            </Button>
           </div>
         </div>
       </section>

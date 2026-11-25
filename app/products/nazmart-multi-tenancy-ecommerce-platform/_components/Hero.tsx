@@ -35,40 +35,19 @@ export default function Hero() {
           </div>
 
           <h1 className="text-[36px] leading-[44px] sm:text-[52px] sm:leading-[60px] lg:text-[60px] lg:leading-[68px] font-bold text-[#0F1112] max-w-[860px]">
-            Build Your{' '}
+            Nazmart: Build Your Own{' '}
             <strong
               className="font-bold underline underline-offset-4 decoration-2"
               style={{ color: '#3a7d00', textDecorationColor: COLOR }}
             >
-              Multi-Tenancy eCommerce
+              Multi-Tenant eCommerce
             </strong>{' '}
             Platform
           </h1>
 
           <p className="text-[#484848] text-[15px] sm:text-[17px] leading-7 max-w-[580px]">
-            <strong>Nazmart is a multi-tenancy eCommerce platform</strong> — a single Laravel installation where unlimited vendors create their own branded online stores, pay you a subscription, and go live with a custom domain. You own the platform, keep 100% of subscription revenue, and scale without rebuilding.
+            <strong>Nazmart is a multi-tenant eCommerce platform</strong> — a single Laravel installation where unlimited merchants create their own branded online stores, pay you a subscription, and go live with a custom domain. You own the platform, keep 100% of subscription revenue, and scale without rebuilding.
           </p>
-
-          {/* Star rating */}
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-0.5">
-              <svg width="0" height="0" style={{ position: 'absolute' }}>
-                <defs>
-                  <linearGradient id="half-star-nazmart" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="50%" stopColor="#F59E0B" />
-                    <stop offset="50%" stopColor="#E5E7EB" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <svg key={i} width="16" height="16" viewBox="0 0 20 20" fill={i < 4 ? '#F59E0B' : 'url(#half-star-nazmart)'}>
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
-            </div>
-            <span className="text-[13px] font-semibold text-[#0F1112]">4.5/5</span>
-            <span className="text-[13px] text-[#6b7280]">· 80+ reviews · 525+ sales on CodeCanyon</span>
-          </div>
 
           <div className="flex items-center gap-3 flex-wrap justify-center mt-1">
             <a

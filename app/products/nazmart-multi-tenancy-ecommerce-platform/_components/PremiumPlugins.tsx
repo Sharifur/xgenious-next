@@ -161,7 +161,7 @@ export default function PremiumPlugins() {
             Bundle &amp; Complete Pack Only
           </div>
           <h2 className="text-[28px] sm:text-[40px] font-bold text-white mb-3 leading-tight">
-            16 Premium Plugins,{' '}
+            Premium plugins,{' '}
             <span style={{ color: COLOR }}>Included Free</span>
           </h2>
           <p className="text-[#8aaa98] text-[15px] leading-6">

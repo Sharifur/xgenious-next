@@ -12,7 +12,7 @@ const BUNDLE_ITEMS = [
   { label: 'Nazmart Web Platform', value: 69 },
   { label: 'Mobile App (Flutter)', value: 79 },
   { label: 'POS Plugin',           value: 49 },
-  { label: '17 Premium Plugins',   value: 114 },
+  { label: 'Premium plugins',   value: 114 },
 ];
 const BUNDLE_TOTAL = BUNDLE_ITEMS.reduce((s, i) => s + i.value, 0); // 281
 
@@ -22,8 +22,7 @@ const EXCLUSIVE_FEATURES = [
   'Remove / Replace Any Branding',
   'No License Key Enforcement',
   'Priority Support — 6 Months',
-  'Commercial Use — Unlimited Projects',
-  'Lifetime License + Free Updates',
+  'Lifetime updates',
 ];
 
 function CheckIcon({ color = '#16a34a' }: { color?: string }) {
@@ -56,7 +55,7 @@ export default function Pricing() {
             Simple, Honest Pricing
           </h2>
           <p className="text-[#484848] text-[15px] sm:text-[17px] leading-7">
-            One-time purchase. No monthly fees. No platform commission. You keep 100% of what your marketplace earns.
+            One-time purchase. No monthly fees. You keep the subscription revenue from the stores on your platform.
           </p>
         </div>
 
@@ -78,7 +77,7 @@ export default function Pricing() {
               regularPrice={REGULAR_PRICE}
               bundlePrice={BUNDLE_PRICE}
               bundleCheckoutUrl="/checkout?product=nazmart-bundle-pack"
-              bundleItems={['Mobile App (Flutter)', 'POS Plugin', '17 Premium Plugins', 'Domain Reseller']}
+              bundleItems={['Mobile App (Flutter)', 'POS Plugin', 'Premium plugins', 'Domain Reseller']}
               bundleLabel="Everything Bundle"
               accentColor={COLOR}
               className="flex items-center justify-center gap-2 font-semibold text-[14px] rounded-xl py-3 mb-6 border border-[#E5E7EC] text-[#0F1112] transition-all hover:bg-[#f9fafb]"
@@ -108,9 +107,6 @@ export default function Pricing() {
             <div className="flex items-center gap-2 flex-wrap mb-5">
               <span className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: COLOR, color: '#0d2b14' }}>
                 BEST VALUE
-              </span>
-              <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#16a34a] text-white">
-                COMMERCIAL USE
               </span>
             </div>
 

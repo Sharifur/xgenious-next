@@ -1741,7 +1741,7 @@ export const TOOLS: FreeTool[] = [
       { q: 'What causes high churn?', a: 'Main drivers: poor onboarding (users never activate), poor product-market fit, lack of perceived value, pricing mismatch, better competitor alternatives, or involuntary churn (failed payments). Failed payments alone account for 20–40% of cancellations in most SaaS products.' },
       { q: 'Is my data sent to a server?', a: 'No. The churn projection runs entirely in your browser with JavaScript. No revenue figures, customer counts, or business data are uploaded, logged, or stored anywhere. You can model sensitive MRR scenarios without any privacy concern.' },
     ],
-    relatedTools: ['customer-ltv-calculator', 'mrr-growth-simulator', 'saas-pricing-calculator', 'cac-calculator', 'saas-runway-calculator', 'lead-response-time-calculator', 'cold-email-roi-calculator', 'sales-pipeline-calculator'],
+    relatedTools: ['customer-ltv-calculator', 'mrr-growth-simulator', 'saas-pricing-calculator', 'cac-calculator', 'saas-runway-calculator', 'lead-response-time-calculator', 'cold-email-roi-calculator', 'ecommerce-saas-revenue-calculator'],
     externalLinks: [
       { label: 'OpenView — SaaS benchmarks report', url: 'https://openviewpartners.com/saas-benchmarks-report/' },
       { label: 'SaaStr — Churn benchmarks', url: 'https://www.saastr.com/the-top-10-mistakes-in-churn/' },
@@ -1811,7 +1811,7 @@ export const TOOLS: FreeTool[] = [
       { q: 'What is negative churn?', a: 'Negative net revenue churn occurs when expansion revenue (upsells, seat additions) from existing customers exceeds revenue lost from churned customers. This means existing customers grow faster than you lose them — a hallmark of elite SaaS businesses.' },
       { q: 'Is my data sent to a server?', a: 'No. The LTV calculation runs entirely in your browser with JavaScript. No ARPU, churn, CAC, or business figures are uploaded, logged, or stored anywhere. You can model sensitive unit economics without any privacy concern.' },
     ],
-    relatedTools: ['churn-rate-calculator', 'mrr-growth-simulator', 'cac-calculator', 'saas-pricing-calculator', 'saas-runway-calculator', 'cold-email-roi-calculator', 'sales-pipeline-calculator', 'lead-response-time-calculator'],
+    relatedTools: ['churn-rate-calculator', 'mrr-growth-simulator', 'cac-calculator', 'saas-pricing-calculator', 'saas-runway-calculator', 'cold-email-roi-calculator', 'sales-pipeline-calculator', 'ecommerce-saas-revenue-calculator'],
     externalLinks: [
       { label: 'Bessemer Venture Partners — SaaS metrics', url: 'https://www.bvp.com/atlas/scaling-to-100-million' },
       { label: 'Sequoia — Measuring SaaS business', url: 'https://www.sequoiacap.com/article/measuring-saas-business/' },
@@ -1883,7 +1883,7 @@ export const TOOLS: FreeTool[] = [
       { q: 'What is expansion MRR and why does it matter?', a: 'Expansion MRR is revenue added from existing customers through upsells, seat additions, plan upgrades, or usage increases — without acquiring new customers. When expansion MRR exceeds churned MRR, the business has negative net revenue churn, meaning it grows even with zero new sales. Expansion is the most capital-efficient form of growth and a key driver of elite SaaS unit economics.' },
       { q: 'Is my data sent to a server?', a: 'No. The MRR projection runs entirely in your browser with JavaScript. No revenue figures, growth rates, or business data are uploaded, logged, or stored anywhere. You can model sensitive financial scenarios without any privacy concern.' },
     ],
-    relatedTools: ['churn-rate-calculator', 'saas-pricing-calculator', 'saas-runway-calculator', 'customer-ltv-calculator', 'cac-calculator', 'cold-email-roi-calculator', 'sales-pipeline-calculator', 'lead-response-time-calculator'],
+    relatedTools: ['churn-rate-calculator', 'saas-pricing-calculator', 'saas-runway-calculator', 'customer-ltv-calculator', 'cac-calculator', 'cold-email-roi-calculator', 'sales-pipeline-calculator', 'ecommerce-saas-revenue-calculator'],
     externalLinks: [
       { label: 'Bessemer — State of the Cloud', url: 'https://www.bvp.com/atlas/state-of-the-cloud' },
       { label: 'SaaS Capital — MRR benchmarks', url: 'https://www.saas-capital.com/research/' },
@@ -1892,6 +1892,100 @@ export const TOOLS: FreeTool[] = [
     ],
     applicationCategory: 'BusinessApplication',
     lastUpdated: 'May 2026',
+  },
+
+  {
+    slug: 'ecommerce-saas-revenue-calculator',
+    title: 'Ecommerce SaaS Revenue Calculator',
+    tagline: 'Model MRR, profit and break-even for a Shopify-style store platform.',
+    category: 'saas',
+    tier: 3,
+    color: '#f26b4e',
+    lightColor: '#fff1ee',
+    metaTitle: 'Ecommerce SaaS Revenue Calculator (Free) | Xgenious',
+    metaDescription: 'Estimate MRR, profit and break-even for your own Shopify-style ecommerce SaaS: stores, plan mix, churn, setup fees and hosting. Free, no signup.',
+    keywords: ['ecommerce saas revenue calculator', 'store builder revenue calculator', 'shopify style platform revenue', 'ecommerce saas mrr calculator', 'multi-tenant saas revenue', 'how much can an ecommerce saas make'],
+    h1: 'Ecommerce SaaS Revenue Calculator: Model Your Own Shopify-Style Platform',
+    intro: 'An ecommerce SaaS platform earns a monthly plan from every store it hosts, plus setup fees and add-ons. This calculator projects 24 months of stores, monthly recurring revenue, costs and profit from your plan prices, plan mix, new stores per month and churn, and shows when you break even. All defaults are example values; replace them with your own.',
+    howToUse: [
+      { step: 'Set your plans', desc: 'Enter up to three plan prices and the share of stores you expect on each, plus how many pay yearly at a discount.' },
+      { step: 'Add growth and churn', desc: 'Enter new paying stores per month, how fast that grows, and the share of stores that cancel each month.' },
+      { step: 'Add costs and extras', desc: 'Enter setup fees, add-on revenue, payment fees on your billing, hosting and per-store costs, and your platform licence.' },
+      { step: 'Read the projection', desc: 'See MRR, ARR, active stores, monthly profit and break-even month, with a month-by-month table and chart.' },
+    ],
+    featureList: [
+      '24-month projection of stores, MRR, revenue, costs and profit',
+      'Three-plan mix with yearly-billing discount',
+      'Churn-adjusted store count and steady-state estimate',
+      'Setup-fee and add-on revenue lines',
+      'Break-even month including your platform licence cost',
+      'Client-side only: nothing you enter is uploaded or stored',
+    ],
+    featureCards: [
+      { title: 'Built for store platforms', desc: 'Models stores on plans rather than generic customers, with setup fees and add-ons the way ecommerce SaaS businesses actually earn.' },
+      { title: 'Churn you can see', desc: 'Shows how many stores you lose each month and where growth levels off, so you price for retention, not just signups.' },
+      { title: 'Profit, not just MRR', desc: 'Subtracts hosting, per-store costs and payment fees, and counts your licence, to give a real break-even month.' },
+      { title: 'Instant and private', desc: 'Runs in your browser. No signup, no data stored.' },
+    ],
+    comparisonTable: {
+      caption: 'Ecommerce SaaS revenue terms',
+      headers: ['Term', 'Meaning'],
+      rows: [
+        ['MRR', 'Monthly recurring revenue: active stores × average monthly plan (after yearly discounts) plus recurring add-ons'],
+        ['ARPA', 'Average revenue per account (store) per month'],
+        ['Churn', 'Share of stores that cancel in a month'],
+        ['Steady state', 'Store count where new stores equal churned stores: new per month ÷ churn rate'],
+        ['LTV', 'Average margin a store brings before it cancels: monthly margin ÷ churn rate'],
+        ['Break-even', 'First month when cumulative profit covers the licence and all costs'],
+      ],
+    },
+    contentSections: [
+      {
+        heading: 'How ecommerce SaaS platforms make money',
+        paragraphs: [
+          'A Shopify-style platform has four revenue lines: store subscriptions, one-time setup and design services, recurring add-ons such as themes, domains and SMS credits, and, for large platforms, payment processing.',
+          'Shopify shows how the lines can shift as a platform grows. In 2025 it reported $2.75 billion in subscription revenue and $8.80 billion from merchant solutions, mostly payments, with monthly recurring revenue of $205 million at year end. Small platforms rarely process payments, so subscriptions and services carry the business.',
+        ],
+      },
+      {
+        heading: 'Why churn decides the outcome',
+        paragraphs: [
+          'Small merchants open and close shops often. Benchmarks compiled from Recurly and Paddle data put monthly churn for SMB-focused SaaS at 3% to 7%. At 5% a month, you lose almost half your stores in a year, so a platform adding 20 stores a month levels off around 400 stores.',
+          'Yearly plans, done-for-you onboarding and features that help merchants sell (abandoned-cart emails, Google Shopping feeds, SMS campaigns) are the main levers for lowering churn.',
+        ],
+      },
+      {
+        heading: 'Example: three plan mixes compared',
+        table: {
+          caption: 'Blended monthly price per store for three illustrative plan mixes (before yearly discounts)',
+          headers: ['Mix', 'Starter $9', 'Growth $19', 'Pro $49', 'Blended price'],
+          rows: [
+            ['Budget-heavy', '70%', '25%', '5%', '$13.50'],
+            ['Balanced (default)', '50%', '35%', '15%', '$18.50'],
+            ['Premium-heavy', '30%', '40%', '30%', '$25.00'],
+          ],
+        },
+        footnote: 'Illustrative prices and shares, not market data.',
+      },
+    ],
+    faq: [
+      { q: 'How much can an ecommerce SaaS platform make?', a: 'It depends on stores, prices and churn. As an example, 150 stores paying an average of $19 a month bring $2,850 in monthly recurring revenue before costs. Use the calculator with your own numbers.' },
+      { q: 'What churn rate should I assume?', a: 'Benchmarks for SaaS sold to small businesses put monthly churn at 3% to 7%. Start at 5% until you have your own data.' },
+      { q: 'How do I price ecommerce SaaS plans?', a: 'Use three tiers that scale with the merchant’s business, such as products, staff accounts, themes or POS access, and offer a yearly plan at a discount. Price below the global platforms your merchants compare you with, but high enough to fund support.' },
+      { q: 'Does this include payment processing revenue?', a: 'No. It models subscriptions, setup fees and add-ons. Most self-hosted platforms let each store connect its own gateway, so payments do not pass through the platform owner.' },
+      { q: 'What software do I need to run an ecommerce SaaS platform?', a: 'A multi-tenant ecommerce platform that creates stores automatically, bills plans and supports custom domains. Nazmart is one example: unlimited stores, a separate database per store, custom domains and subscription plans, from $69 for the core web panel.' },
+    ],
+    relatedTools: ['mrr-growth-simulator', 'churn-rate-calculator', 'customer-ltv-calculator', 'saas-pricing-calculator', 'cac-calculator', 'saas-runway-calculator', 'break-even-calculator', 'saas-valuation-calculator'],
+    guides: [
+      { href: '/shopify-clone-script', label: 'Shopify clone script', blurb: 'Launch your own Shopify-style platform with Nazmart.' },
+    ],
+    externalLinks: [
+      { label: 'Shopify FY2025 annual report (SEC 10-K)', url: 'https://www.sec.gov/Archives/edgar/data/1594805/000159480526000007/shop-20251231.htm' },
+      { label: 'SaaS churn benchmarks (Vena)', url: 'https://www.venasolutions.com/blog/saas-churn-rate' },
+      { label: 'Shopify pricing', url: 'https://www.shopify.com/pricing' },
+    ],
+    lastUpdated: '2026-11-25',
+    applicationCategory: 'BusinessApplication',
   },
 
   {
@@ -2310,7 +2404,7 @@ export const TOOLS: FreeTool[] = [
       { error: 'Tier prices too close together', code: 'Starter $9, Growth $15, Business $22', fix: 'Tight pricing bands push customers to the cheapest tier. Multiply 3–5× between tiers to create meaningful perceived value steps and room for anchoring and the decoy effect.' },
       { error: 'No annual billing option', code: 'Monthly-only subscriptions', fix: 'Annual billing at 15–20% discount cuts churn, improves cash flow, and increases LTV. Most SaaS companies get 30–60% of customers on annual when it\'s the default or highlighted option.' },
     ],
-    relatedTools: ['mrr-growth-simulator', 'churn-rate-calculator', 'customer-ltv-calculator', 'saas-runway-calculator', 'cac-calculator', 'build-vs-buy-calculator', 'cold-email-roi-calculator', 'sales-pipeline-calculator'],
+    relatedTools: ['mrr-growth-simulator', 'churn-rate-calculator', 'customer-ltv-calculator', 'saas-runway-calculator', 'cac-calculator', 'build-vs-buy-calculator', 'cold-email-roi-calculator', 'ecommerce-saas-revenue-calculator'],
     externalLinks: [
       { label: 'OpenView — SaaS pricing guide', url: 'https://openviewpartners.com/saas-pricing/' },
       { label: 'ProfitWell — Pricing strategy research', url: 'https://www.profitwell.com/recur/all/saas-pricing-strategy' },
