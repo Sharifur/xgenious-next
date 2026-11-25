@@ -13,6 +13,11 @@ export type Campaign = {
 
 export type CampaignStatus = 'upcoming' | 'live' | 'ended';
 
+export const BFCM_COUPON = 'BFCM50';
+export const BFCM_PCT = 50;
+/** Last instant BFCM50 is live: end of Cyber Monday (extended), 31 Dec 2026 23:59:59 UTC. */
+export const BFCM_ENDS_AT = '2026-12-31T23:59:59Z';
+
 // All campaign times are UTC so the page flips at the same instant on the
 // server (Vercel runs in UTC) and for every visitor.
 export function campaignStatus(c: Campaign, now: Date): CampaignStatus {
@@ -64,7 +69,7 @@ const CYBER_MONDAY: Campaign = {
   headline: ['Cyber', 'Monday'],
   startsAt: '2026-11-30T00:00:00Z',
   startLabel: 'November 30, 2026 at 12:00 AM UTC',
-  endsAt: '2026-12-31T23:59:59Z',
+  endsAt: BFCM_ENDS_AT,
   endLabel: 'December 31, 2026 at 11:59 PM UTC',
 };
 
@@ -92,7 +97,7 @@ export function activeCampaign(now: Date): Campaign | null {
 export const money = (n: number) => '$' + (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, '');
 
 const RAW_PRODUCTS = [
-  { slug: 'nazmart', checkout: 'nazmart-bundle-pack', name: 'Nazmart', cat: 'Multi-tenancy eCommerce SaaS', price: 69, desc: 'Launch a Shopify-style platform where vendors open their own stores and pay you a subscription.', proof: '★ 4.5/5 · 525+ sales', badge: 'Best seller', url: '/products/nazmart-multi-tenancy-ecommerce-platform' },
+  { slug: 'nazmart', checkout: 'nazmart-bundle-pack', name: 'Nazmart', cat: 'Multi-tenancy eCommerce SaaS', price: 69, desc: 'Launch a Shopify-style platform where merchants open their own stores and pay you a subscription.', proof: 'Laravel 12 · PHP 8.3', badge: 'Best seller', url: '/products/nazmart-multi-tenancy-ecommerce-platform' },
   { slug: 'fundorex', checkout: 'fundorex-bundle-pack', name: 'Fundorex', cat: 'Crowdfunding & donations', price: 69, desc: 'Run donation or reward-based crowdfunding campaigns with multi-gateway payments and reports.', proof: '743+ sales', badge: 'Most sold', url: '/products/fundorex-crowdfunding-platform' },
   { slug: 'xilancer', checkout: 'xilancer-bundle-pack', name: 'Xilancer', cat: 'Freelancer marketplace', price: 59, desc: 'Build a Fiverr-style marketplace with gigs, projects, milestones and wallet payments.', proof: '★ 4.4/5 · 450+ installs', badge: '', url: '/products/xilancer-freelancer-marketplace-script' },
   { slug: 'prohandy', checkout: 'prohandy-everything-bundle', name: 'Prohandy', cat: 'On-demand home services', price: 39, desc: 'Multi-provider booking platform with Flutter apps, live chat, payments and provider ratings.', proof: 'Flutter apps + Laravel admin', badge: '', url: '/products/prohandy-on-demand-home-service-marketplace' },

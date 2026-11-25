@@ -22,15 +22,15 @@ import StickyBar from './_components/StickyBar';
 import RelatedGuides from '@/components/sections/RelatedGuides';
 
 export const metadata: Metadata = {
-  title: 'Nazmart — Multi-Tenancy eCommerce SaaS Platform',
+  title: { absolute: 'Nazmart: Multi-Tenant eCommerce SaaS Platform (Laravel)' },
   description:
-    'Nazmart is a multi-tenancy eCommerce platform. Laravel backend, vendor subscriptions, custom domains, Flutter mobile apps. From $69 one-time.',
+    'Nazmart is a multi-tenant eCommerce SaaS platform: unlimited stores, own database per store, custom domains and subscription plans. From $69.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Nazmart — Multi-Tenancy eCommerce SaaS Platform | Xgenious',
+    title: 'Nazmart: Multi-Tenant eCommerce SaaS Platform (Laravel)',
     description:
-      'Build a Shopify-like multi-vendor SaaS. Vendor subscriptions, custom domains per store, Flutter mobile apps, 19+ payment gateways. From $69 one-time.',
+      'Build a Shopify-like multi-tenant SaaS. Merchant stores, custom domains per store, and subscription plans you set. From $69 one-time.',
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/products/nazmart.png', width: 1200, height: 630, alt: 'Nazmart — Multi-Tenancy eCommerce Platform' }],
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nazmart — Multi-Tenancy eCommerce SaaS Platform',
-    description: 'Build a multi-tenancy eCommerce SaaS. Vendor subscriptions, custom domains, Flutter apps, 19+ payment gateways. From $69 one-time.',
+    title: 'Nazmart: Multi-Tenant eCommerce SaaS Platform (Laravel)',
+    description: 'Build a Shopify-like multi-tenant SaaS. Merchant stores, custom domains and subscription plans. From $69 one-time.',
     images: ['/products/nazmart.png'],
   },
   keywords: [
@@ -80,13 +80,17 @@ export default function NazmartPage() {
       <Reviews />
       <Pricing />
       <FAQ />
-      <RelatedGuides guides={[{ href: '/ecommerce-php-script', label: 'Compare Nazmart with other eCommerce PHP scripts', blurb: 'Side-by-side pricing, features and hosting needs for the 10 leading Laravel and PHP eCommerce scripts.' }]} />
+      <RelatedGuides guides={[
+        { href: '/shopify-clone-script', label: 'Shopify clone script: what you get', blurb: 'How Nazmart runs the Shopify business model on your own server, with pricing and hosting answers.' },
+        { href: '/free-tools/ecommerce-saas-revenue-calculator', label: 'Ecommerce SaaS revenue calculator', blurb: 'Model stores, plans, churn and profit before you launch.' },
+        { href: '/ecommerce-php-script', label: 'Compare Nazmart with other eCommerce PHP scripts', blurb: 'Side-by-side pricing, features and hosting needs for the 10 leading Laravel and PHP eCommerce scripts.' },
+      ]} />
       <BundleValueNudge
         productName="Nazmart"
         regularPrice={REGULAR_PRICE}
         bundlePrice={BUNDLE_PRICE}
         bundleLabel="Everything Bundle"
-        bundleHighlight="17 premium plugins + mobile app + POS + domain reseller"
+        bundleHighlight="premium plugins + mobile app + POS + domain reseller"
         accentColor={COLOR}
         storageKey="xg-bundle-nudge-nazmart-dismissed"
       />

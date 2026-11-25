@@ -22,7 +22,7 @@ export default function Reviews() {
             What Our Customers Think<br className="hidden sm:block" /> About Nazmart
           </h2>
           <p className="text-[#484848] text-[15px] sm:text-[17px] leading-7">
-            Real reviews from verified CodeCanyon buyers — 525+ sales, 4.51 average rating.
+            Reviews from CodeCanyon buyers.
           </p>
         </div>
 

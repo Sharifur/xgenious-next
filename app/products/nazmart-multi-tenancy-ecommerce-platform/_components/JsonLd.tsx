@@ -4,6 +4,7 @@ export default function JsonLd() {
   const softwareApp = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
+    '@id': `${CANONICAL}#software`,
     name: 'Nazmart',
     applicationCategory: 'WebApplication',
     operatingSystem: 'Web, Linux',
@@ -14,7 +15,7 @@ export default function JsonLd() {
       availability: 'https://schema.org/InStock',
       url: PURCHASE_URL,
     },
-    description: 'Nazmart is a multi-tenancy eCommerce SaaS platform built with Laravel. Launch a Shopify-like marketplace with vendor subscription billing, custom domains per store, Flutter mobile apps, 19+ payment gateways, and 23+ SMS & WhatsApp gateways. One-time purchase from $69.',
+    description: 'Nazmart is a multi-tenant eCommerce SaaS platform. Unlimited stores, a separate database per store, custom domains and subscription plans. The core web panel is a one-time purchase from $69. POS, the Flutter app and premium plugins are in the $99 bundle.',
     url: CANONICAL,
     featureList: [
       'Multi-tenancy architecture with isolated vendor stores',
@@ -26,13 +27,6 @@ export default function JsonLd() {
       'Point of Sale (POS) plugin for physical stores',
     ],
     author: { '@type': 'Organization', name: 'Xgenious', url: BASE_URL },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.51',
-      reviewCount: '43',
-      bestRating: '5',
-      worstRating: '1',
-    },
     review: CODECANYON_REVIEWS.slice(0, 5).map(r => ({
       '@type': 'Review',
       author: { '@type': 'Person', name: r.name },

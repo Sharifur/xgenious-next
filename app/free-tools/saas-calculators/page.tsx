@@ -7,7 +7,7 @@ const BASE_URL = 'https://xgenious.com';
 
 export const metadata: Metadata = {
   title: { absolute: 'Free SaaS Calculators: MRR, Churn, LTV & CAC' },
-  description: '18 free SaaS calculators for MRR, churn, LTV:CAC, runway, NRR and valuation. Instant results, no signup, built for SaaS founders.',
+  description: '19 free SaaS calculators for MRR, churn, LTV:CAC, runway, NRR and valuation. Instant results, no signup, built for SaaS founders.',
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: `${BASE_URL}/free-tools/saas-calculators` },
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Free SaaS Calculators: MRR, Churn, LTV & CAC',
-    description: '18 free SaaS calculators for MRR, churn, LTV:CAC, runway, NRR and valuation. Instant results, no signup, built for SaaS founders.',
+    description: '19 free SaaS calculators for MRR, churn, LTV:CAC, runway, NRR and valuation. Instant results, no signup, built for SaaS founders.',
     url: `${BASE_URL}/free-tools/saas-calculators`,
     siteName: 'Xgenious',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     site: '@xgenious1',
     creator: '@xgenious1',
     title: 'Free SaaS Calculators: MRR, Churn, LTV & CAC',
-    description: '18 free SaaS calculators for MRR, churn, LTV:CAC, runway, NRR and valuation. Instant results, no signup, built for SaaS founders.',
+    description: '19 free SaaS calculators for MRR, churn, LTV:CAC, runway, NRR and valuation. Instant results, no signup, built for SaaS founders.',
   },
 };
 
@@ -73,6 +73,11 @@ const TOOLS: CalcTool[] = [
     slug: 'mrr-growth-simulator',
     title: 'MRR Growth Simulator',
     tagline: 'Simulate monthly recurring revenue growth over 24 months.',
+  },
+  {
+    slug: 'ecommerce-saas-revenue-calculator',
+    title: 'Ecommerce SaaS Revenue Calculator',
+    tagline: 'Model MRR and profit for a Shopify-style store platform.',
   },
   {
     slug: 'cac-calculator',
@@ -144,7 +149,7 @@ const TOOLS: CalcTool[] = [
 const EXISTING_TOOLS = TOOLS.filter((t) => !t.comingSoon);
 
 const STATS = [
-  { value: '18', label: 'Tools' },
+  { value: '19', label: 'Tools' },
   { value: '100%', label: 'Free' },
   { value: 'No Signup', label: 'Required' },
   { value: 'Browser', label: 'Only' },
@@ -262,7 +267,7 @@ const FAQS = [
   {
     question: 'Are these SaaS calculators free to use?',
     answer:
-      'Yes, all 18 calculators are completely free — no login, no email, no signup required. Every calculation runs locally in your browser; no data is sent to any server. They are built and maintained by Xgenious, a SaaS development company, as a resource for founders and operators.',
+      'Yes, all 19 calculators are completely free — no login, no email, no signup required. Every calculation runs locally in your browser; no data is sent to any server. They are built and maintained by Xgenious, a SaaS development company, as a resource for founders and operators.',
   },
 ];
 
@@ -416,7 +421,7 @@ export default function SaasCalculatorsPage() {
               <em className="font-medium italic">Pricing, MRR, Churn &amp; Growth Tools</em>
             </h1>
             <p className="text-[16px] sm:text-[18px] leading-[28px] text-[#484848] max-w-[560px]">
-              18 free calculators for SaaS founders and operators. Model pricing, forecast MRR,
+              19 free calculators for SaaS founders and operators. Model pricing, forecast MRR,
               measure churn, calculate LTV and CAC, and stress-test your runway — no login, no
               signup, all in your browser.
             </p>
@@ -455,7 +460,7 @@ export default function SaasCalculatorsPage() {
                 className="inline-flex items-center gap-1.5 text-[13px] font-semibold self-start"
                 style={{ color: CORAL }}
               >
-                Browse all 18 tools
+                Browse all 19 tools
                 <svg width="13" height="13" viewBox="0 0 15 15" fill="none">
                   <path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -496,6 +501,12 @@ export default function SaasCalculatorsPage() {
                   path: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
                 },
                 {
+                  metric: 'Store platform revenue',
+                  desc: 'MRR and profit for an ecommerce SaaS',
+                  href: '/free-tools/ecommerce-saas-revenue-calculator',
+                  path: 'M3 17l4-8 4 4 4-6 4 2M3 21h18',
+                },
+                {
                   metric: 'Valuation',
                   desc: 'ARR multiple and Rule of 40 score',
                   href: '/free-tools/saas-valuation-calculator',
@@ -526,7 +537,7 @@ export default function SaasCalculatorsPage() {
       <section className="bg-white py-14 sm:py-16 lg:py-20">
         <div className="container-page px-4 sm:px-6 lg:px-0">
           <div className="flex flex-col gap-3 mb-10">
-            <SectionBadge className="self-start">All 18 Tools</SectionBadge>
+            <SectionBadge className="self-start">All 19 Tools</SectionBadge>
             <h2 className="text-[28px] sm:text-[34px] leading-[36px] sm:leading-[42px] font-semibold text-[#0F1112] tracking-[-0.01em] max-w-[560px]">
               Every SaaS metric, one free calculator
             </h2>

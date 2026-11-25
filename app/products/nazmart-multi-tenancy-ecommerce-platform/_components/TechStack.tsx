@@ -1,12 +1,13 @@
 import Image from 'next/image';
+import { DOCS_URL } from './constants';
 
 const stack = [
-  { name: 'Laravel',      desc: 'PHP 8+ backend framework',    logo: '/icons/fi_laravel.svg' },
+  { name: 'Laravel',      desc: 'PHP 8.3 backend',             logo: '/icons/fi_laravel.svg' },
   { name: 'Tailwind CSS', desc: 'Utility-first CSS framework', logo: '/tech/tailwind.svg' },
   { name: 'MySQL',        desc: 'Relational database',         logo: '/tech/mysql.svg' },
   { name: 'Flutter',      desc: 'Android & iOS mobile app',    logo: '/site-images/app-dev/logo-flutter.svg' },
   { name: 'Redis',        desc: 'Queues & session cache',      logo: '/tech-logos/redis.svg' },
-  { name: 'Linux VPS',    desc: 'Any standard hosting',        logo: '/tech/linux.svg' },
+  { name: 'Linux VPS',    desc: 'Recommended hosting',         logo: '/tech/linux.svg' },
 ];
 
 export default function TechStack() {
@@ -35,7 +36,13 @@ export default function TechStack() {
           ))}
         </div>
 
-        <p className="text-center text-[12px] text-[#9ca3af] mt-6">
+        <p className="text-center text-[13px] text-[#484848] mt-4">
+          <a href={DOCS_URL} target="_blank" rel="noopener noreferrer" className="underline font-semibold text-[#0F1112]">
+            Nazmart documentation
+          </a>
+          {' '}covers install, POS, the domain reseller and the admin panel.
+        </p>
+        <p className="text-center text-[12px] text-[#9ca3af] mt-3">
           According to the{' '}
           <a href="https://survey.stackoverflow.co/2024/technology#most-popular-technologies-webframe" target="_blank" rel="noopener noreferrer" className="underline">
             Stack Overflow Developer Survey 2024
