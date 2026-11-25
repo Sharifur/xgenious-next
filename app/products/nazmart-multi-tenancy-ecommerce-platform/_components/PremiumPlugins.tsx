@@ -138,6 +138,15 @@ const plugins = [
     ),
   },
   {
+    title: 'Single Page Checkout',
+    desc: 'Shoppers complete checkout on a single page.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6"/>
+      </svg>
+    ),
+  },
+  {
     title: 'Cloud Storage',
     desc: 'Store product images and files on AWS S3, DigitalOcean Spaces, or Wasabi — offload your server.',
     icon: (

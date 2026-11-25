@@ -219,6 +219,7 @@ export const PRODUCTS: Record<string, CheckoutProduct> = {
       'SMS Gateway',
       'WooCommerce Import',
       'Cloud Storage Plugin',
+      'Single Page Checkout',
       'Mobile App (Flutter)',
       'Lifetime License + Free Updates',
       '6 Months Support',
