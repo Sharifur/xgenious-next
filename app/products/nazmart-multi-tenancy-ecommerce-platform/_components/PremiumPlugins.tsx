@@ -94,7 +94,7 @@ const plugins = [
   },
   {
     title: 'Affiliate Program',
-    desc: 'Referral links, tiered commission tracking, and automated affiliate payout management.',
+    desc: 'Referral links, tiered affiliate commission tracking and payout records.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
@@ -161,7 +161,7 @@ export default function PremiumPlugins() {
             Bundle &amp; Complete Pack Only
           </div>
           <h2 className="text-[28px] sm:text-[40px] font-bold text-white mb-3 leading-tight">
-            Premium plugins,{' '}
+            17 Premium Plugins,{' '}
             <span style={{ color: COLOR }}>Included Free</span>
           </h2>
           <p className="text-[#8aaa98] text-[15px] leading-6">
@@ -191,7 +191,7 @@ export default function PremiumPlugins() {
         </div>
 
         <p className="text-center text-[13px] mt-8" style={{ color: '#4b6b5a' }}>
-          All plugins included in Everything Bundle ($99) and Exclusive License ($299) · Regular License gets core platform only
+          All 17 plugins included in the Everything Bundle ($99) and Exclusive License ($299), the two licences that let you charge tenants · The Regular License is the core platform only
         </p>
 
       </div>

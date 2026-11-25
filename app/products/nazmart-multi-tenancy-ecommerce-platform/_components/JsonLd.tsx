@@ -15,7 +15,7 @@ export default function JsonLd() {
       availability: 'https://schema.org/InStock',
       url: PURCHASE_URL,
     },
-    description: 'Nazmart is a multi-tenant eCommerce SaaS platform. Unlimited stores, a separate database per store, custom domains and subscription plans. The core web panel is a one-time purchase from $69. POS, the Flutter app and premium plugins are in the $99 bundle.',
+    description: 'Nazmart is a multi-tenant eCommerce SaaS platform. Unlimited stores, a separate database per store and custom domains. The $69 Regular licence covers the core web panel only and does not let you charge tenants. To sell stores on subscription, you need the $99 Everything Bundle or the $299 Exclusive licence.',
     url: CANONICAL,
     featureList: [
       'Multi-tenancy architecture with isolated vendor stores',

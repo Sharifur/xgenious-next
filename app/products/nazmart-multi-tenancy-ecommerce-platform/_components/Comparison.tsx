@@ -2,6 +2,7 @@ const rows = [
   { feature: 'Platform ownership',         nazmart: 'You own it 100%',  shopify: 'Rented (SaaS)',   woo: 'Partial',        custom: 'You own it' },
   { feature: 'Monthly SaaS fees',          nazmart: 'None',             shopify: '$39–$399/mo',      woo: 'Hosting only',   custom: '$5K–$20K/yr' },
   { feature: 'One-time purchase price',    nazmart: 'From $69',         shopify: '✗',                woo: 'Free plugin',    custom: '$50K+' },
+  { feature: 'Licence to charge tenants',  nazmart: '$99 Everything Bundle or $299 Exclusive', shopify: 'n/a', woo: 'n/a', custom: 'n/a' },
   { feature: 'Multi-tenancy built-in',     nazmart: '✓',                shopify: '✗',                woo: '✗',              custom: 'Custom build' },
   { feature: 'Vendor subscription billing',nazmart: '✓',                shopify: '✗',                woo: 'Plugin ($)',      custom: 'Custom build' },
   { feature: 'Custom domain per store',    nazmart: '✓ Included',       shopify: '✓ Extra cost',     woo: '✗',              custom: 'Custom build' },

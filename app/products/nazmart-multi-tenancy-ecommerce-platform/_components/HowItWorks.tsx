@@ -33,11 +33,10 @@ function StepVisual({ step, running }: { step: number; running: boolean }) {
   const [tick, setTick] = useState(0);
 
   useEffect(() => {
-    setTick(0);
     if (!running) return;
     const id = setInterval(() => setTick((t) => t + 1), 1800);
     return () => clearInterval(id);
-  }, [step, running]);
+  }, [running]);
 
   /* ── Step 1: setup checklist, one item every tick ── */
   if (step === 0) {
@@ -335,7 +334,7 @@ export default function HowItWorks() {
           {/* Left — animated visual */}
           <div className="rounded-3xl p-6 sm:p-8 min-h-[300px] flex items-center justify-center" style={{ background: '#FDF3F0' }}>
             <div className="w-full max-w-[340px]">
-              <StepVisual key={`${active}-${visualKey}`} step={active} running={inView} />
+              <StepVisual key={`${active}-${visualKey}-${inView}`} step={active} running={inView} />
             </div>
           </div>
 

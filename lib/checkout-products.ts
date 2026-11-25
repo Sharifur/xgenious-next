@@ -197,7 +197,7 @@ export const PRODUCTS: Record<string, CheckoutProduct> = {
   'nazmart-bundle-pack': {
     path: 'nazmart-bundle-pack',
     name: 'Nazmart — Everything Bundle',
-    tagline: 'Web Platform + Premium Plugins + Mobile App',
+    tagline: 'Web Platform + 17 Premium Plugins + Mobile App',
     price: 99,
     originalPrice: 199,
     badge: 'Web + Plugins + Mobile App',

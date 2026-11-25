@@ -196,7 +196,7 @@ export const FAQS = [
   },
   {
     question: 'What is Nazmart?',
-    answer: 'Nazmart is a multi-tenant eCommerce SaaS platform built with Laravel. It lets you launch a Shopify-like platform where merchants create and manage their own stores under your domain. One installation, unlimited tenant stores, subscription billing and custom domains from $69 one-time; the Flutter mobile app, POS and premium plugins come in the $99 Everything Bundle.',
+    answer: 'Nazmart is a multi-tenant eCommerce SaaS platform built with Laravel. It lets you launch a Shopify-like platform where merchants create and manage their own stores under your domain. One installation, unlimited tenant stores, subscription billing and custom domains. The $69 Regular licence covers the core web panel only and does not let you charge tenants; the $99 Everything Bundle (17 premium plugins, Flutter app, POS, domain reseller) or the $299 Exclusive licence does.',
   },
   {
     question: 'How is Nazmart different from Shopify or WooCommerce?',
@@ -208,7 +208,15 @@ export const FAQS = [
   },
   {
     question: 'Is there a monthly fee for Nazmart?',
-    answer: 'No. Nazmart is a one-time purchase on CodeCanyon — from $69 for the Regular License. There are no monthly platform fees, no revenue share, and no per-transaction charges from Xgenious. Your vendor subscription revenue is 100% yours to keep.',
+    answer: 'No. Nazmart is a one-time purchase. There are no monthly platform fees, no revenue share and no per-transaction charges from Xgenious. To charge tenants, buy the $99 Everything Bundle or the $299 Exclusive licence; the $69 Regular licence is the core web panel only.',
+  },
+  {
+    question: 'Which licence lets me charge tenants?',
+    answer: 'The $69 Regular licence covers the core web panel only and does not let you charge tenants. To sell stores on subscription, you need the $99 Everything Bundle or the $299 Exclusive licence.',
+  },
+  {
+    question: 'Can I take a commission on my tenants\' sales?',
+    answer: 'The landlord can set a commission from the admin panel; there is no automatic commission or payout feature.',
   },
   {
     question: 'What payment gateways does Nazmart support?',
@@ -303,7 +311,7 @@ export const PRICING_TIERS = [
     badge: 'Web + Plugins + Mobile App + POS',
     price: 99,
     original: 199,
-    desc: 'Web panel + premium plugins + mobile app + POS + domain reseller. Everything included.',
+    desc: 'Web panel + 17 premium plugins + mobile app + POS + domain reseller. Everything included.',
     plan: [
       { label: 'Nazmart Web Panel', ok: true },
       { label: 'AI Integration', ok: true },

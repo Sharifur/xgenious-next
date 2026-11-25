@@ -49,7 +49,7 @@ const GROUPS: { title: string; fields: Field[] }[] = [
       { key: 'billingFee', label: 'Payment fee on your billing (%)' },
       { key: 'fixedCost', label: 'Fixed hosting + tools per month ($)' },
       { key: 'varCost', label: 'Variable cost per store per month ($)' },
-      { key: 'licence', label: 'Platform licence, one-time ($)' },
+      { key: 'licence', label: 'Platform licence, one-time ($): Nazmart Everything Bundle is $99' },
     ],
   },
 ];
@@ -219,13 +219,19 @@ export default function EcommerceSaasRevenueCalculator() {
         <p className="text-[15px] leading-6 text-[#0F1112]">
           Ready to launch your own platform? Nazmart gives you stores, plans and billing out of the box.
         </p>
-        <div>
+        <div className="flex flex-wrap gap-3">
           <Link
             href="/products/nazmart-multi-tenancy-ecommerce-platform"
             className="inline-flex items-center text-white font-semibold text-[14px] rounded-full px-6 py-3"
             style={{ background: COLOR }}
           >
             See Nazmart
+          </Link>
+          <Link
+            href="/how-to-start-an-ecommerce-saas-business"
+            className="inline-flex items-center font-semibold text-[14px] rounded-full px-6 py-3 border border-[#E5E7EC] text-[#0F1112]"
+          >
+            How to start an ecommerce SaaS
           </Link>
         </div>
       </div>

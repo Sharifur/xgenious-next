@@ -30,7 +30,7 @@ export default function InTheBox() {
         </div>
         <div className="mt-10">
           <h3 className="text-[18px] font-bold text-[#0F1112] mb-4">
-            In the Everything Bundle (${BUNDLE_PRICE})
+            In the Everything Bundle (${BUNDLE_PRICE}): 17 premium plugins, app, POS
           </h3>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {BUNDLE_FEATURES.map((item) => (
@@ -40,6 +40,9 @@ export default function InTheBox() {
               </li>
             ))}
           </ul>
+          <p className="text-[13px] text-[#6b7280] mt-4">
+            The Everything Bundle and the Exclusive licence let you charge tenants; the $69 Regular licence does not.
+          </p>
         </div>
       </div>
     </section>
