@@ -72,13 +72,13 @@ export default function Hero() {
           </h1>
 
           <p className="text-white/65 text-[14px] sm:text-[16px] leading-7 max-w-[680px]">
-            <strong className="text-white">Prohandy</strong> is a Laravel 12 + Flutter 3.32 script for building a self-hosted on-demand service marketplace. It connects clients and providers across any service vertical — home services, beauty, automotive, pet care, and more — with cart-based booking, job posting, real-time chat, and 19 payment gateways. One-time purchase, full source code.
+            <strong className="text-white">Prohandy</strong> is a Laravel 12 and latest-Flutter script for building a self-hosted on-demand service marketplace. It connects clients and providers across any service vertical — home services, beauty, automotive, pet care, and more — with cart-based booking, job posting, real-time chat, and 19 payment gateways. One-time purchase, full source code.
           </p>
 
           <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center text-[13px]">
             <div className="flex items-center gap-1.5 text-white/60">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <span><strong className="text-white">5.0/5</strong> · 6 reviews</span>
+              <span><strong className="text-white">4.8/5</strong> · rated on CodeCanyon</span>
             </div>
             <span className="w-px h-3.5 bg-white/15 hidden sm:block" />
             <div className="flex items-center gap-1.5 text-white/60">

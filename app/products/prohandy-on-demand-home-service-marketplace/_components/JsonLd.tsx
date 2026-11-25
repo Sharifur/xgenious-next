@@ -1,4 +1,4 @@
-import { CANONICAL, REGULAR_PRICE, EXTENDED_PRICE } from './constants';
+import { CANONICAL, COMBO_PRICE, REGULAR_PRICE, EXTENDED_PRICE } from './constants';
 
 export default function JsonLd() {
   const product = {
@@ -8,7 +8,7 @@ export default function JsonLd() {
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web, Android',
     description:
-      `Prohandy is a Laravel and Flutter script for building an on-demand home service marketplace. Features dual-sided marketplace for clients and service providers, cart-based booking, job posting and hiring flow, real-time live chat, Google Maps integration, push notifications, and 20+ payment gateways. One-time purchase from $${REGULAR_PRICE}.`,
+      `Prohandy is a Laravel and Flutter script for building an on-demand home service marketplace. Features dual-sided marketplace for clients and service providers, cart-based booking, job posting and hiring flow, real-time live chat, Google Maps integration, push notifications, and 19 payment gateways. One-time purchase from $${REGULAR_PRICE}; mobile apps in the $${COMBO_PRICE} Everything Bundle.`,
     url: CANONICAL,
     author: { '@type': 'Organization', name: 'Xgenious', url: 'https://xgenious.com' },
     offers: [
@@ -21,19 +21,19 @@ export default function JsonLd() {
       },
       {
         '@type': 'Offer',
-        name: 'Extended License',
+        name: 'Everything Bundle',
+        price: String(COMBO_PRICE),
+        priceCurrency: 'USD',
+        description: 'Web platform and admin panel plus Flutter client app, Flutter provider app and WhatsApp plugin. Lifetime license and free updates. 6 months support.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Exclusive License',
         price: String(EXTENDED_PRICE),
         priceCurrency: 'USD',
         description: 'Build and sell as a SaaS business. White-label rights. Lifetime license and free updates. 6 months support.',
       },
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.80',
-      reviewCount: '18',
-      bestRating: '5',
-      worstRating: '1',
-    },
   };
 
   const howTo = {
@@ -72,7 +72,7 @@ export default function JsonLd() {
         name: 'What is Prohandy?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Prohandy is a complete Laravel and Flutter script for building an on-demand home service marketplace. It connects clients with service providers through cart-based booking, job posting, real-time live chat, Google Maps integration, push notifications, and 20+ payment gateways. Flutter mobile apps for both clients and providers are included. One-time purchase from $${REGULAR_PRICE}.`,
+          text: `Prohandy is a complete Laravel and Flutter script for building an on-demand home service marketplace. It connects clients with service providers through cart-based booking, job posting, real-time live chat, Google Maps integration, push notifications, and 19 payment gateways. Flutter mobile apps for clients and providers come with the $${COMBO_PRICE} Everything Bundle. One-time purchase from $${REGULAR_PRICE}.`,
         },
       },
       {
@@ -80,7 +80,7 @@ export default function JsonLd() {
         name: 'Does Prohandy include mobile apps?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Yes. Both the client Flutter app and provider Flutter app are built with Flutter and available on Android via Google Play. They are included with the Everything Bundle ($69) and Exclusive License ($${EXTENDED_PRICE}) — not the Regular License ($${REGULAR_PRICE}).`,
+          text: `Yes, with the Everything Bundle ($${COMBO_PRICE}) or the Exclusive License ($${EXTENDED_PRICE}): a Flutter client app and a Flutter provider app, built with the latest Flutter. The Regular License ($${REGULAR_PRICE}) is the web platform and admin only. Demo apps are on Google Play.`,
         },
       },
       {
@@ -88,7 +88,7 @@ export default function JsonLd() {
         name: 'What payment gateways does Prohandy support?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Prohandy includes 20+ payment gateways built into the admin panel — Stripe, PayPal, Razorpay, Flutterwave, Paystack, Mollie, CinetPay, Square, and more. No third-party billing setup required beyond entering API keys.',
+          text: 'Prohandy includes 19 payment gateways built into the admin panel — Stripe, PayPal, Razorpay, Flutterwave, Paystack, Mollie, CinetPay, Square, and more. No third-party billing setup required beyond entering API keys.',
         },
       },
       {
@@ -117,10 +117,10 @@ export default function JsonLd() {
       },
       {
         '@type': 'Question',
-        name: 'What is the difference between Regular and Extended license?',
+        name: 'What is the difference between the Regular, Everything Bundle and Exclusive licences?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `The Regular License ($${REGULAR_PRICE}) is for a single project deployment — one domain, personal or commercial use, but you cannot charge end users for the platform itself. The Extended License ($${EXTENDED_PRICE}) grants SaaS rights — you can build your own branded marketplace, charge clients, white-label by removing all Xgenious branding, and modify the source code freely.`,
+          text: `The Regular License ($${REGULAR_PRICE}) is the core web platform and admin panel for one domain. You can charge your customers. The Everything Bundle ($${COMBO_PRICE}) adds the Flutter client and provider apps and premium plugins such as WhatsApp. The Exclusive License ($${EXTENDED_PRICE}) adds SaaS and white-label rights and unrestricted source-code modification.`,
         },
       },
       {

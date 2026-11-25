@@ -19,14 +19,17 @@ import Pricing from './_components/Pricing';
 import FAQ from './_components/FAQ';
 import RelatedGuides from '@/components/sections/RelatedGuides';
 
+const META_DESCRIPTION = 'Handyman app and home service marketplace script: Laravel admin, Flutter customer and provider apps, job posts, chat, 19 payment gateways. From $39.';
+const META_TITLE = 'Prohandy: Handyman App & Home Service Marketplace Script';
+
 export const metadata: Metadata = {
-  title: { absolute: 'Prohandy: Home Service Marketplace Script' },
-  description: 'Laravel + Flutter script for your own home service marketplace: booking, job posts, live chat, Google Maps and 20+ payment gateways. From $39.',
+  title: { absolute: META_TITLE },
+  description: META_DESCRIPTION,
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: 'Prohandy: Home Service Marketplace Script',
-    description: 'Laravel + Flutter script for your own home service marketplace: booking, job posts, live chat, Google Maps and 20+ payment gateways. From $39.',
+    title: META_TITLE,
+    description: META_DESCRIPTION,
     url: CANONICAL,
     siteName: 'Xgenious',
     images: [{ url: '/products/prohandy-hero.png', width: 1200, height: 630, alt: 'Prohandy On-Demand Home Service Marketplace Platform' }],
@@ -34,11 +37,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Prohandy: Home Service Marketplace Script',
-    description: 'Laravel + Flutter script for your own home service marketplace: booking, job posts, live chat, Google Maps and 20+ payment gateways. From $39.',
+    title: META_TITLE,
+    description: META_DESCRIPTION,
     images: ['/products/prohandy-hero.png'],
   },
   keywords: [
+    'handyman app script',
+    'home service marketplace script',
+    'on demand service marketplace script',
+    'urban company clone',
+    'taskrabbit clone',
+    'handyman app source code',
     'on demand home service marketplace script',
     'home service marketplace platform',
     'laravel flutter marketplace script',
@@ -72,6 +81,10 @@ export default function ProhandyPage() {
       <RelatedGuides
         guides={[
           { href: '/top-on-demand-service-business-ideas', label: 'Top on-demand service business ideas', blurb: 'On-demand service business ideas worth building, and how a ready-made home service marketplace script gets you to launch faster.' },
+          { href: '/best-on-demand-service-marketplace-platforms', label: 'Best on-demand service marketplace scripts', blurb: '10 handyman and home service scripts compared by real price, included apps and update date.' },
+          { href: '/prohandy-vs-demandium', label: 'ProHandy vs Demandium', blurb: 'What each base price includes, which apps are add-ons, and how jobs get matched.' },
+          { href: '/how-to-start-a-handyman-marketplace', label: 'How to start a handyman marketplace', blurb: 'A 9-step launch plan: first city, legal basics, fees, providers and first customers.' },
+          { href: '/handyman-app-script', label: 'Handyman app script', blurb: 'Everything included in ProHandy, with licence and hosting answers.' },
         ]}
       />
       <BundleValueNudge
