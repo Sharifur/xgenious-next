@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { COMBO_PRICE, EXTENDED_PRICE } from './constants';
 
 export default function MobileApp() {
   return (
@@ -15,7 +16,7 @@ export default function MobileApp() {
                 Flutter Mobile Apps for Clients and Providers
               </h2>
               <p className="text-white/70 text-[14px] sm:text-[15px] leading-7 max-w-[400px] mx-auto lg:mx-0">
-                Both the client app and provider app are built with Flutter — available on Android — and included with every Prohandy license at no extra cost.
+                Both the client app and provider app are built with the latest Flutter. Demo apps are on Google Play.
               </p>
               <div className="flex items-center gap-3 flex-wrap justify-center lg:justify-start">
                 <a
@@ -44,9 +45,9 @@ export default function MobileApp() {
                 </a>
               </div>
               <p className="text-white/50 text-[12px] max-w-[340px] text-center lg:text-left">
-                Both apps included with{' '}
-                <span className="text-white font-semibold">Regular</span> and{' '}
-                <span className="text-white font-semibold">Extended License</span>
+                Both apps come with the{' '}
+                <span className="text-white font-semibold">Everything Bundle (${COMBO_PRICE})</span> and the{' '}
+                <span className="text-white font-semibold">Exclusive License (${EXTENDED_PRICE})</span>. Demo apps are on Google Play.
               </p>
             </div>
 

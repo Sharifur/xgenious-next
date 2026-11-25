@@ -33,7 +33,7 @@ export default function StickyBar() {
                 </svg>
               ))}
             </div>
-            <span className="hidden sm:inline text-[12px] text-[#6b7280]">5.0 · 73+ marketplaces built</span>
+            <span className="hidden sm:inline text-[12px] text-[#6b7280]">4.8 · 73+ marketplaces built</span>
           </div>
         </div>
 
